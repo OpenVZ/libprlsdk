@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp2 (http://www.altova.com) by artemr (EMBRACE) -->
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Max (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="ClientStatistic">
+		<xs:sequence>
+			<xs:element name="SbaInstallation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>class=CSbaInstallation;list=SbaInstallations;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Type" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+						<xs:element name="Result" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+						<xs:element name="ThisPath" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+						<xs:element name="ThisVer" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+						<xs:element name="SrcPath" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+						<xs:element name="DstPath" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+						<xs:element name="DstVer" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+						<xs:element name="CreationDateTime" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GuiUsage" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Actions" type="xs:anyType" minOccurs="0"/>
+						<xs:element name="Controls" type="xs:anyType" minOccurs="0"/>
+						<xs:element name="NewVmUsage" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Funnels" minOccurs="0" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation source="NewVmSources">header_fragment:
+enum NewVmSources
+{
+	Undefined = 0,
+	RealDvd,
+	ImageFile,
+	UsbDevice,
+	ExistingVm,
+	Bootcamp
+};</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="SourceType" type="xs:integer" default="Funnels::Undefined" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation source="Type">type=Funnels::NewVmSources</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Funnel" type="xs:string" minOccurs="0"/>
+												<xs:element name="Count" type="xs:integer" default="0" minOccurs="0"/>
+												<xs:element name="Success" type="xs:boolean" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="HostDisplays" type="xs:string" minOccurs="0"/>
+			<xs:element name="CepClientProxyInfo" type="xs:string" minOccurs="0"/>
+			<xs:element name="InstalledSoftware" type="xs:anyType" minOccurs="0"/>
+			<xs:element name="ClientId" type="xs:string" minOccurs="0"/>
+			<xs:element name="AppSwitcherItems" type="xs:anyType" minOccurs="0"/>
+			<xs:element name="LearnVideoUsage" type="xs:anyType" minOccurs="0"/>
+			<xs:element name="Messages" type="xs:anyType" minOccurs="0"/>
+			<xs:element name="HIDHostHookUsage" type="xs:anyType" minOccurs="0"/>
+			<xs:element name="OpenInIEClicks" type="xs:integer" minOccurs="0"/>
+			<xs:element name="HiDPIVmSettings" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="EnableHiResDrawing" type="xs:boolean" minOccurs="0"/>
+						<xs:element name="UseHiResInGuest" type="xs:boolean" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ParallelsProblemReport">
+		<xs:annotation>
+			<xs:documentation>class=CProblemReport;base_class=^-QObject;base_class=-CBaseNode;</xs:documentation>
+			<xs:documentation source="clearCrashDumps">header_fragment:
+   virtual void clearCrashDumps()
+   {
+       ClearList&lt;CRepCrashDump &gt;(m_lstCrashDumps);
+   }
+</xs:documentation>
+			<xs:documentation source="clearMemoryDumps">header_fragment:
+   virtual void clearMemoryDumps()
+   {
+       ClearList&lt;CRepMemoryDump &gt;(m_lstMemoryDumps);
+   }
+</xs:documentation>
+			<xs:documentation source="CustomInit">header_fragment:
+    void CustomInit();</xs:documentation>
+			<xs:documentation source="CustomInit_impl">unit_fragment:
+void CProblemReport::CustomInit()
+{
+    setLicense( new CDispLicense );
+    setContactInfo( new CRepContactInfo );
+    setUserDefinedData( new CRepUserDefinedData );
+    setAdvancedVmInfo( new CRepAdvancedVmInfo );
+    setAutoStatisticInfo( new CRepAutoStatisticInfo );
+    setSystemLogs( new CRepSystemLogs );
+   setClientInfo( new ClientInfo );
+}
+</xs:documentation>
+			<xs:documentation source="CrashDumpAppend">header_fragment:
+    virtual void appendCrashDump(CRepCrashDump * pDump);
+</xs:documentation>
+			<xs:documentation source="CrashDumpAppend_impl">unit_fragment:
+void CProblemReport::appendCrashDump(CRepCrashDump * pDump)
+{
+    m_lstCrashDumps += pDump;
+}
+</xs:documentation>
+			<xs:documentation source="MemoryDumpAppend">header_fragment:
+    virtual void appendMemoryDump(CRepMemoryDump * pDump);
+</xs:documentation>
+			<xs:documentation source="MemoryDumpAppend_impl">unit_fragment:
+void CProblemReport::appendMemoryDump(CRepMemoryDump * pDump)
+{
+    m_lstMemoryDumps += pDump;
+}
+</xs:documentation>
+			<xs:documentation source="appendSysLog">header_fragment:
+    virtual void appendSystemLog(CRepSystemLog * plog);
+</xs:documentation>
+			<xs:documentation source="appendSysLog_Impl">unit_fragment:
+void CProblemReport::appendSystemLog(CRepSystemLog * plog)
+{
+    getSystemLogs()->m_lstSystemLog += plog;
+}
+</xs:documentation>
+			<xs:documentation source="clearSystemLogs">header_fragment:
+    virtual void clearSystemLogs();
+</xs:documentation>
+			<xs:documentation source="clearSystemLogs_impl">unit_fragment:
+void CProblemReport::clearSystemLogs()
+   {
+       getSystemLogs()->clearSystemLogs();
+   }
+</xs:documentation>
+			<xs:documentation source="appendSystemLog
+">header_fragment:
+virtual void appendSystemLog(const QString &amp;, const QString &amp; );
+</xs:documentation>
+			<xs:documentation source="appendSystemLog
+_impl">unit_fragment:
+void CProblemReport::appendSystemLog(const QString &amp;, const QString &amp;)
+{
+}
+</xs:documentation>
+			<xs:documentation source="appendTemplateSystemLog
+">header_fragment:
+virtual void appendTemplateSystemLog(const QString &amp;, const QString &amp;, int );
+</xs:documentation>
+			<xs:documentation source="appendTemplateSystemLog
+_impl">unit_fragment:
+void CProblemReport::appendTemplateSystemLog(const QString &amp;, const QString &amp;, int )
+{
+}
+</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Type" type="xs:integer" default="PRT_REPORT_TYPE_UNDEFINED" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>method=ReportType;type=PRL_PROBLEM_REPORT_TYPE;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ServerVersion" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+				<xs:element name="ServerRevision" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+				<xs:element name="IsoVersion" type="xs:string" minOccurs="0"/>
+				<xs:element name="ProductName" type="xs:string" default="VER_SHORTPRODUCTNAME_STR" minOccurs="0"/>
+				<xs:element name="ReportReason" type="xs:integer" default="PRR_UNKNOWN" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>method=ReportReason;type=PRL_PROBLEM_REPORT_REASON;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ProblemCode" type="xs:integer" default="0" minOccurs="0"/>
+				<xs:element name="ClientVersion" type="xs:string" default="VER_FULL_BUILD_NUMBER_STR" minOccurs="0"/>
+				<xs:element name="ClientRevision" type="xs:string" default="VER_FEATURES_STR" minOccurs="0"/>
+				<xs:element name="ComputerModel" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+				<xs:element name="TimeZone" type="xs:int" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>In seconds - difference between local time and UTC time. Signed value.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="TimeZoneStr" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+				<xs:element name="Preamble" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getPreamble().isEmpty()</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="HostStatistic" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getHostStatistic().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="License" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CDispLicense;extern=XmlModel/DispConfig/CDispLicense.h;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="external" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ContactInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRepContactInfo;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Name" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+							<xs:element name="EMail" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+							<xs:element name="SendSolution" type="xs:boolean" default="false" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="HostInfo" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getHostInfo().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MoreHostInfo" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getMoreHostInfo().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AllProcesses" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getAllProcesses().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AllProcessesSamples" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getAllProcessesSamples().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="LoadedDrivers" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getLoadedDrivers().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ClientProxyInfo" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getClientProxyInfo().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AppConfig" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getAppConfig().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="NetConfig" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getNetConfig().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ContainersInfo" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VzConfig" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>condition:!getVzConfig().isEmpty()</xs:documentation>
+									<xs:documentation>virtual=on</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="VzNetConfig" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>condition:!getVzNetConfig().isEmpty()</xs:documentation>
+									<xs:documentation>virtual=on</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ContainersRunning" type="xs:integer" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MonitorData" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getMonitorData().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PerformanceCounters" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getPerformanceCounters().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="UserDefined" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRepUserDefinedData;method=UserDefinedData;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ProblemDescription" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ScreenShots">
+								<xs:annotation>
+									<xs:documentation>class=CRepScreenShots;single_fixed=on;</xs:documentation>
+									<xs:documentation source="append">header_fragment:
+    virtual void appendScreenshot(CRepScreenShot * pScr);</xs:documentation>
+									<xs:documentation source="append_impl">unit_fragment:
+void CRepScreenShots::appendScreenshot(CRepScreenShot * pScr)
+{
+    m_lstScreenShot += pScr;
+}
+</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ScreenShot" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>class=CRepScreenShot;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Name" type="xs:string" minOccurs="0"/>
+													<xs:element name="Data" type="xs:anyType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>default=XML_DEFAULT_STRING_DATA;</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CurrentVm" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getVmConfig().isEmpty()</xs:documentation>
+						<xs:documentation>method=VmConfig;virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="VzReport" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRepVzReport;</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ReportString" type="xs:string" minOccurs="0"/>
+							<xs:element name="NameInArchive" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AdvancedVmInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRepAdvancedVmInfo;</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Hdd" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=CRepHdd;list=Hdds;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Index" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+										<xs:element name="DiskInfo" type="xs:anyType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>default=XML_DEFAULT_STRING_DATA;</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NameInArchive" type="xs:string" minOccurs="0"/>
+							<xs:element name="Snapshots" type="xs:anyType" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="KeyboardMouseProfiles" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation/>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="KeyboardMouseProfile" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=ParallelsKeyboardMouse;extern=XmlModel/KeyboardMouse/ParallelsKeyboardMouse.h;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="external" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NameInArchive" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AutoStatisticInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRepAutoStatisticInfo;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AutoStatDispConfig" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;method=DispatcherConfig;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AutoStatVmCatalogue" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;method=VmCatalogue;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AutoStatVmList">
+								<xs:annotation>
+									<xs:documentation>class=CRepAutoStatVmList;single_fixed=on;method=VmList;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AutoStatVmConfig" type="xs:anyType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>method=VmConfigs;</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="AutoStatAdvancedVmInfo" type="xs:anyType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>method=AdvancedVmInfo</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AutoStatCTList" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>class=CRepAutoStatCTList;method=CTList;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AutoStatCT" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>class=CRepAutoStatCT;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="AutoStatCTID" type="xs:integer">
+														<xs:annotation>
+															<xs:documentation>default=XML_DEFAULT_NUMERIC_DATA;method=CTID;</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="AutoStatCTConfig" type="xs:anyType">
+														<xs:annotation>
+															<xs:documentation>method=CTConfig;</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="AllProcesses" type="xs:anyType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>condition:!getAllProcesses().isEmpty()</xs:documentation>
+															<xs:documentation>virtual=on</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="AllProcessesSamples" type="xs:anyType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>condition:!getAllProcessesSamples().isEmpty()</xs:documentation>
+															<xs:documentation>virtual=on</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="LoadedDrivers" type="xs:anyType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>condition:!getLoadedDrivers().isEmpty()</xs:documentation>
+															<xs:documentation>virtual=on</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ClientProxyInfo" type="xs:anyType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>condition:!getClientProxyInfo().isEmpty()</xs:documentation>
+															<xs:documentation>virtual=on</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AutoStatCTsExist" type="xs:integer" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_NUMERIC_DATA;method=CTExist;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AutoStatCTEzTemplates" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;method=CTEzTemplates;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AutoStatDiskOvercommit" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;method=DiskOvercommit;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AutoStatCpuUtilization" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;method=CpuUtilization;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AutoStatMemoryUtilization" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;method=MemoryUtilization;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AutoStatMemoryOvercommit" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>default=XML_DEFAULT_STRING_DATA;method=MemoryOvercommit;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="VmStateTransitions" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="UsbDevicesUsage" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="ClientStatistics" type="ClientStatistic" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="MigrationStatistics" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>class=CRepMigrationStatistics</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Data" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MounterStatistics" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>class=CRepMounterStatistics</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Data" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CrashDumpNames" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="VmStatistics">
+								<xs:annotation>
+									<xs:documentation>single_fixed=on;class=CRepVmStatistics</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VmStatItem" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>list=VmStatistics;class=CRepVmStatItem</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="VmUuid" type="xs:string" minOccurs="0"/>
+													<xs:element name="UsageData" type="xs:string" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="InstallationsData" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>class=CRepInstallations</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="MacInstallationHistoryes" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>class=CRepMacInstallations</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="MacInstallationHistory" minOccurs="0" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>list=MacOsInstallations;class=CRepMacInstallationData</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="InstalledVersionDate" type="xs:string" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PDInstallationHistoryes" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>class=CRepPDInstallations</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PDInstallationHistory" minOccurs="0" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>list=PDInstallations;class=CRepPDInstallationData</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="InstalledVersionName" type="xs:string" minOccurs="0"/>
+																<xs:element name="InstalledVersionDate" type="xs:string" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CrashDump" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>class=CRepCrashDump;list=CrashDumps;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Path" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+							<xs:element name="CreationDateTime" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+							<xs:element name="ApplicationPid" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+							<xs:element name="Dump" type="xs:base64Binary" minOccurs="0"/>
+							<xs:element name="NameInArchive" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MemoryDump" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>class=CRepMemoryDump;list=MemoryDumps;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Path" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+							<xs:element name="Dump" type="xs:base64Binary" minOccurs="0"/>
+							<xs:element name="NameInArchive" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Autoupdate" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getVmUpdaterInfo().isEmpty()</xs:documentation>
+						<xs:documentation>method=VmUpdaterInfo;virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="GuestOs" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getGuestOs().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SystemLogs" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRepSystemLogs;</xs:documentation>
+						<xs:documentation>header_fragment:
+   void clearSystemLogs()
+   {
+       ClearList&lt;CRepSystemLog &gt;(m_lstSystemLog);
+   }
+</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SystemLog" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=CRepSystemLog;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="xs:string" default="XML_DEFAULT_STRING_DATA" minOccurs="0"/>
+										<xs:element name="Data" type="xs:anyType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>default=XML_DEFAULT_STRING_DATA;</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ClientInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Environment" type="xs:string" minOccurs="0"/>
+							<xs:element name="HostInfo" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="NameInArchive" type="xs:string" minOccurs="0"/>
+							<xs:element name="ClientSettings" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="InstalledSoftware" type="xs:anyType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>virtual=on</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="CombinedReportId" type="xs:string" minOccurs="0"/>
+							<xs:element name="Rating" type="xs:integer" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VmDirectory" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="InstalledSoftware" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AppSwitchPackages" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AppSwitchAppList" type="xs:anyType" minOccurs="0"/>
+				<xs:element name="VersionMatrix" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRepVersionMatrix;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VersionItem" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=CRepVersionItem;list=VersionItems;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ParsedKey" type="xs:anyType" minOccurs="0"/>
+										<xs:element name="ActivationDate" type="xs:dateTime" default="QDateTime::fromString(XML_DEFAULT_DATE_TIME, XML_DATETIME_FORMAT)" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="GuestCommands" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="GuestCommand" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CommandName" type="xs:anyType" minOccurs="0"/>
+										<xs:element name="CommandResult" type="xs:anyType" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AudioPluginsInfo" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getAudioPluginsInfo().isEmpty()</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MountInfo" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getMountInfo().isEmpty()</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="LaunchdInfo" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getLaunchdInfo().isEmpty()</xs:documentation>
+						<xs:documentation>virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="FilesMd5InProductBundle" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getFilesMd5InProductBundle().isEmpty()</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SignInfo">
+					<xs:annotation>
+						<xs:documentation>class=CRepSignInfo;single_fixed=on;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Dispatcher" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation>method=DispatcherSigned;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Gui" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation>method=GuiSigned;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

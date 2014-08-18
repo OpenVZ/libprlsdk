@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by ff (gfgfgf) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ToolState" type="xs:int" default="0"/>
+	<xs:element name="ToolDate" type="xs:string"/>
+	<xs:element name="ToolData" type="xs:string"/>
+	<xs:element name="ToolInternalVersion" type="xs:string"/>
+	<xs:element name="ToolVersion" type="xs:string"/>
+	<xs:element name="ToolName" type="xs:string"/>
+	<xs:element name="ToolId" type="xs:string"/>
+	<xs:complexType name="GuestToolInfo">
+		<xs:annotation>
+			<xs:documentation>class=CGuestToolInfo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ToolId"/>
+			<xs:element ref="ToolName"/>
+			<xs:element ref="ToolVersion"/>
+			<xs:element ref="ToolInternalVersion"/>
+			<xs:element ref="ToolDate"/>
+			<xs:element ref="ToolState"/>
+			<xs:element ref="ToolData"/>
+			<xs:element name="ToolStringData" type="xs:string"/>
+			<xs:element name="ToolUpdateStatus" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConfOsType" type="xs:string"/>
+	<xs:element name="ConfOsVersion" type="xs:string"/>
+	<xs:element name="RealOsType" type="xs:string"/>
+	<xs:element name="RealOsVersion" type="xs:string"/>
+	<xs:element name="RealOsDetails" type="xs:string"/>
+	<xs:element name="Started" type="xs:boolean" default="false"/>
+	<xs:complexType name="GuestToolsList">
+		<xs:annotation>
+			<xs:documentation>class=CGuestToolsList</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="GuestToolInfo" type="GuestToolInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GuestOsInformation">
+		<xs:annotation>
+			<xs:documentation>class=CVmGuestOsInformation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Started"/>
+				<xs:element ref="ConfOsType"/>
+				<xs:element ref="ConfOsVersion"/>
+				<xs:element ref="RealOsType"/>
+				<xs:element ref="RealOsVersion"/>
+				<xs:element ref="RealOsDetails"/>
+				<xs:element name="GuestToolsList" type="GuestToolsList"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Max (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ParallelsVmDataStatistic">
+		<xs:annotation>
+			<xs:documentation>class=CVmDataStatistic;</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="VmDataSegments">
+					<xs:annotation>
+						<xs:documentation>class=CVmDataSegments;single_fixed=on;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VmDataSegment" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=CVmDataSegment;list=VmDataSegments;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Type" type="xs:integer" default="PDSS_UNKNOWN" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>type=PRL_DATA_STATISTIC_SEGMENTS;</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Capacity" type="xs:unsignedLong" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

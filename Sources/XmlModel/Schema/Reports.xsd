@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp2 (http://www.altova.com) by van (EMBRACE) -->
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Maxim (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ParallelsReports">
+		<xs:annotation>
+			<xs:documentation>class=CPrlReports;</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UTW7PreMigrationReport">
+					<xs:annotation>
+						<xs:documentation>class=CRptUTW7PreMigrationReport;single_fixed=on;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MigrationMethod" type="xs:string" minOccurs="0"/>
+							<xs:element name="SystemInstalledApplications">
+								<xs:annotation>
+									<xs:documentation>class=CRptSystemInstalledApplications;single_fixed=on;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Application" type="ApplicationType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>list=Applications;</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MigratedHostVersion" type="xs:string" minOccurs="0"/>
+							<xs:element name="AutologonState" type="xs:integer" minOccurs="0"/>
+							<xs:element name="BackupOption" type="xs:integer" minOccurs="0"/>
+							<xs:element name="TaskSteps" type="xs:string" minOccurs="0"/>
+							<xs:element name="Messages" type="MessagesType">
+								<xs:annotation>
+									<xs:documentation>single_fixed=on;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="UTW7PostMigrationReport">
+					<xs:annotation>
+						<xs:documentation>class=CRptUTW7PostMigrationReport;single_fixed=on;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MigratedDataSize" type="xs:unsignedLong" minOccurs="0"/>
+							<xs:element name="MigrationTime" type="xs:string" minOccurs="0"/>
+							<xs:element name="VmSize" type="xs:unsignedLong" minOccurs="0"/>
+							<xs:element name="AppDataToMigrate" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="AppNotMigrate" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="AppToMigrate" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="MigratedAppMap" type="xs:anyType" minOccurs="0"/>
+							<xs:element name="TaskSteps" type="xs:string" minOccurs="0"/>
+							<xs:element name="Messages" type="MessagesType">
+								<xs:annotation>
+									<xs:documentation>single_fixed=on;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TransporterReports" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRptTransporterReports;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PTDocsMigrationReport">
+								<xs:annotation>
+									<xs:documentation>class=CRptPTDocsMigrationReport;single_fixed=on;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VmPath" type="xs:string"/>
+										<xs:element name="VmName" type="xs:string"/>
+										<xs:element name="Actions">
+											<xs:annotation>
+												<xs:documentation>class=CRptPTActions;single_fixed=on;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Action" minOccurs="0" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>class=CRptPTAction;</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="NameId" type="xs:int" default="0"/>
+																<xs:element name="SourcePath" type="xs:string"/>
+																<xs:element name="TargetPath" type="xs:string" minOccurs="0"/>
+																<xs:element name="ReportReasonId" type="xs:int" default="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MigrationReport">
+								<xs:annotation>
+									<xs:documentation>class=CRptMigrationReport;single_fixed=on;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="OperationInfo">
+											<xs:annotation>
+												<xs:documentation>class=CRptOperationInfo;single_fixed=on;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Type" type="xs:string"/>
+													<xs:element name="Start" type="xs:dateTime" />
+													<xs:element name="End" type="xs:dateTime" />
+													<xs:element name="Result" type="xs:int" />
+													<xs:element name="VmUuid" type="xs:string"/>
+													<xs:element name="VmName" type="xs:string"/>
+													<xs:element name="DiskName" type="xs:string"/>
+													<xs:element name="Details" type="xs::string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="MigrationSettings">
+											<xs:annotation>
+												<xs:documentation>class=CRptMigrationSettings;single_fixed=on;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Method" type="xs:string"/>
+													<xs:element name="AutologonChoise" type="xs:string"/>
+													<xs:element name="IntegrationChoise" type="xs:string"/>
+													<xs:element name="DocsMigrationMode" type="xs:int" minOccurs="0"/>
+													<xs:element name="BrowserSettingsMigrationMode" type="xs:int" minOccurs="0"/>
+													<xs:element name="Mode" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="MigrationSource">
+											<xs:annotation>
+												<xs:documentation>class=CRptMigrationSource;single_fixed=on;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Os" type="xs:string" />
+													<xs:element name="AutologonState" type="xs:int" minOccurs="0"/>
+													<!-- TODO: account statistic must be reworked -->
+													<xs:element name="UsersCount" type="xs:int" />
+													<xs:element name="AdminsCount" type="xs:int" />
+													<xs:element name="EmptyPassCount" type="xs:int" />
+													<xs:element name="NeedInstallCd" type="xs:int" />
+													<xs:element name="PowerCablePlugged" type="xs:int" />
+													<xs:element name="FirewallEnabled" type="xs:int" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="SourceHardwareInfo">
+											<xs:annotation>
+												<xs:documentation>class=CRptSourceHardwareInfo;single_fixed=on;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="HddCount" type="xs:int" />
+													<xs:element name="DvdCount" type="xs:int" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<!-- TODO: destination info will be added soon -->
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MounterReport" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CRptMounterReport;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="FileName" type="xs:string"/>
+							<xs:element name="Start" type="xs:dateTime"/>
+							<xs:element name="End" type="xs:dateTime"/>
+							<xs:element name="Result" type="xs:int" />
+							<xs:element name="ObjectType" type="xs:int" />
+							<xs:element name="VendorType" type="xs:int" />
+							<xs:element name="ReadOnly" type="xs:boolean" />
+							<xs:element name="Disks">
+								<xs:annotation>
+									<xs:documentation>class=CRptDiskMountList;single_fixed=on;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Disk" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>class=CRptDiskMountInfo;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+												 	<xs:element name="Type" type="xs:int" />
+													<xs:element name="Size" type="xs:unsignedLong" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Volumes">
+								<xs:annotation>
+									<xs:documentation>class=CRptVolumeMountList;single_fixed=on;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Volume" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>class=CRptVolumeMountInfo;</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+												 	<xs:element name="FsType" type="xs:int" />
+													<xs:element name="Size" type="xs:unsignedLong" />
+													<xs:element name="MountResult" type="xs:int" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ApplicationType">
+		<xs:annotation>
+			<xs:documentation>class=CRptApplication;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessagesType">
+		<xs:annotation>
+			<xs:documentation>class=CRptMessages;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Message" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>method=Messages;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

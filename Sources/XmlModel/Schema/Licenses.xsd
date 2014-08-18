@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 sp1 (http://www.altova.com) by van (qqq) -->
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Max (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Licenses">
+		<xs:annotation>
+			<xs:documentation>class=CLicLicenses;</xs:documentation>
+			<xs:documentation source="setKeyListEx">header_fragment:
+	void setKeyList(QList&lt;QString&gt; value = QList&lt;QString&gt;(), QString path = QString());
+</xs:documentation>
+			<xs:documentation source="setKeyListEx_impl">unit_fragment:
+void CLicLicenses::setKeyList(QList&lt;QString&gt; value, QString path)
+{
+	QStringList lstKeyValues;
+	QStringList lstOldKeyValues;
+	bool bSetKeyDate = false;
+
+	if ( ! path.isEmpty() )
+	{
+		PRL_RESULT load_rc = loadFromFile(path);
+		if ( PRL_SUCCEEDED(load_rc) )
+		{
+			lstOldKeyValues = getKeys()-&gt;getKeyList();
+			bSetKeyDate = true;
+		}
+	}
+
+	getKeys()-&gt;setKeyList(value);
+
+	for(int i = 0; i &lt; getKeyDates()-&gt;m_lstKeyDateItems.size(); i++)
+	{
+		QString qsKey = getKeyDates()-&gt;m_lstKeyDateItems[i]-&gt;getKeyValue();
+		if ( ! getKeys()-&gt;getKeyList().contains(qsKey) )
+		{
+			delete getKeyDates()-&gt;m_lstKeyDateItems.takeAt(i);
+			i--;
+		}
+		else
+		{
+			lstKeyValues += getKeyDates()-&gt;m_lstKeyDateItems[i]-&gt;getKeyValue();
+		}
+	}
+
+	if ( ! bSetKeyDate )
+		return;
+
+	foreach(QString qsKey, getKeys()-&gt;getKeyList())
+	{
+		if ( ! lstKeyValues.contains(qsKey) &amp;&amp; ! lstOldKeyValues.contains(qsKey) )
+		{
+			getKeyDates()-&gt;m_lstKeyDateItems += new CLicKeyDateItem;
+
+			getKeyDates()-&gt;m_lstKeyDateItems.last()-&gt;setKeyValue(qsKey);
+			getKeyDates()-&gt;m_lstKeyDateItems.last()-&gt;setKeyDate(QDateTime::currentDateTime());
+		}
+	}
+}
+</xs:documentation>
+			<xs:documentation source="getInstallationTimeByKeyValue">header_fragment:
+	QDateTime getKeyDateByKeyValue(QString qsKeyValue) const;
+</xs:documentation>
+			<xs:documentation source="getInstallationTimeByKeyValue_impl">unit_fragment:
+QDateTime CLicLicenses::getKeyDateByKeyValue(QString qsKeyValue) const
+{
+	foreach(CLicKeyDateItem* pKeyDateItem, getKeyDates()-&gt;m_lstKeyDateItems)
+	{
+		if (qsKeyValue == pKeyDateItem-&gt;getKeyValue())
+		{
+			return pKeyDateItem-&gt;getKeyDate();
+		}
+	}
+
+	return QDateTime();
+}
+</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="User" type="xs:string"/>
+				<xs:element name="Company" type="xs:string"/>
+				<xs:element name="Keys">
+					<xs:annotation>
+						<xs:documentation>class=CLicKeysOld;method=KeysOld;</xs:documentation>
+						<xs:documentation source="friend CLicLicenses">header_fragment:
+	friend class CLicLicenses;
+</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Key" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>method=KeyList;private_setter=on;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="KeyDates">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=CLicKeyDatesOld;method=KeyDatesOld;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="KeyDateItem" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>list=KeyDateItems;class=CLicKeyDateItemOld;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="KeyValue" type="xs:string" minOccurs="0"/>
+										<xs:element name="KeyDate" type="xs:dateTime" default="QDateTime::fromString(XML_DEFAULT_DATE_TIME, XML_DATETIME_FORMAT)" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="EncKeys">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=CLicKeys;method=Keys;</xs:documentation>
+						<xs:documentation source="friend CLicLicenses">header_fragment:
+	friend class CLicLicenses;
+</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Key" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>method=KeyList;private_setter=on;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="EncKeyDates">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=CLicKeyDates;method=KeyDates;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EncKeyDateItem" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>list=KeyDateItems;class=CLicKeyDateItem;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="KeyValue" type="xs:string" minOccurs="0"/>
+										<xs:element name="KeyDate" type="xs:dateTime" default="QDateTime::fromString(XML_DEFAULT_DATE_TIME, XML_DATETIME_FORMAT)" minOccurs="0"/>
+										<xs:element name="ProductId" type="xs:string" minOccurs="0"/>
+										<xs:element name="ActivationStatus" type="xs:integer" default="PVE::LAS_UNKNOWN" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>type=PVE::LicenseActivationStatus;</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ConfirmationDate" type="xs:dateTime" default="QDateTime::fromString(XML_DEFAULT_DATE_TIME, XML_DATETIME_FORMAT)" minOccurs="0"/>
+										<xs:element name="ConfirmationId" type="xs:string" minOccurs="0"/>
+										<xs:element name="RegistrationStatus" type="xs:int" default="COMMON_NOT_INITIALIZED_INT_VALUE" minOccurs="0"/>
+										<xs:element name="RegistrationDate" type="xs:dateTime" default="QDateTime::fromString(XML_DEFAULT_DATE_TIME, XML_DATETIME_FORMAT)" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ActiveModes">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=CLicActiveModes;method=ActiveModes;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="LicModeItem" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>list=ActiveModeItems;class=CLicActiveModeItem;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ProductType" type="xs:integer" default="PAM_UNKNOWN" minOccurs="0"/>
+										<xs:element name="LicenseMode" type="xs:integer" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

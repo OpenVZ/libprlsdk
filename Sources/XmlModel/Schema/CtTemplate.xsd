@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="CtTemplateList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CtTemplate" type="CtTemplateType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CtTemplateType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="Type" type="xs:integer" default="PCT_TYPE_EZ_OS">
+				<xs:annotation>
+					<xs:documentation>type=PRL_CT_TEMPLATE_TYPE;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="xs:string"/>
+			<xs:element name="Version" type="xs:string"/>
+			<xs:element name="OsType" type="xs:integer"/>
+			<xs:element name="OsVersion" type="xs:integer"/>
+			<xs:element name="OsTemplate" type="xs:string"/>
+			<xs:element name="CpuMode" type="xs:integer" default="PCM_CPU_MODE_32">
+				<xs:annotation>
+					<xs:documentation>type=PRL_CPU_MODE;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Cached" type="xs:boolean" default="false"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

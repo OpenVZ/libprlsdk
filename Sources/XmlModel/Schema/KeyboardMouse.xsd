@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp2 (http://www.altova.com) by van (EMBRACE) -->
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by spinguin (SWsoft) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="KeyBindType">
+		<xs:annotation>
+			<xs:documentation>class=CKmKeyBind;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enable" type="xs:boolean" default="true"/>
+			<xs:element name="KeyCombination" type="KeyCombinationType" minOccurs="2" maxOccurs="2"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MouseShortcutType">
+		<xs:annotation>
+			<xs:documentation>class=CKmMouseShortcut;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enable" type="xs:boolean" default="true"/>
+			<xs:element name="MouseButton" type="xs:integer" default="PVE::MouseNoButton">
+				<xs:annotation>
+					<xs:documentation>type=PVE::MouseButtonsOption;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MouseButtonShortcut" type="xs:integer" default="PVE::MouseNoButton">
+				<xs:annotation>
+					<xs:documentation>type=PVE::MouseButtonsOption;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Delay" type="xs:int"/>
+			<xs:element name="KeyCombination" type="KeyCombinationType" minOccurs="0"/>
+			<xs:element name="Type" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ParallelsKeyboardMouse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="KeyboardShortcuts" type="KeyboardShortcutsType">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MouseShortcuts">
+					<xs:annotation>
+						<xs:documentation>class=CKmMouseShortcuts;single_fixed=on;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MouseShortcut" type="MouseShortcutType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>list=MouseShortcuts;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="KeyMappings" type="KeyMappingsType">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="System" type="SystemType">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="OsType" type="xs:integer" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="KeyboardShortcutType">
+		<xs:annotation>
+			<xs:documentation>class=CKmKeyboardShortcut;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enable" type="xs:boolean" default="true"/>
+			<xs:element name="Action" type="xs:integer" default="PVE::SwitchFullScreenMode">
+				<xs:annotation>
+					<xs:documentation>type=PVE::HotkeyActionCode;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="KeyCombination" type="KeyCombinationType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KeyboardShortcutsType">
+		<xs:annotation>
+			<xs:documentation>class=CKmKeyboardShortcuts;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enable" type="xs:boolean" default="true"/>
+			<xs:element name="KeyboardShortcut" type="KeyboardShortcutType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>list=KeyboardShortcuts;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KeyCombinationType">
+		<xs:annotation>
+			<xs:documentation>class=CKmKeyCombination;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UseAlt" type="xs:integer" default="PVE::HotkeyUseAltDisabled">
+				<xs:annotation>
+					<xs:documentation>type=PVE::HotkeyUseAltOption;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UseCtrl" type="xs:integer" default="PVE::HotkeyUseCtrlDisabled">
+				<xs:annotation>
+					<xs:documentation>type=PVE::HotkeyUseCtrlOption;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UseCmd" type="xs:integer" default="PVE::HotkeyUseCmdDisabled">
+				<xs:annotation>
+					<xs:documentation>type=PVE::HotkeyUseCmdOption;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UseShift" type="xs:integer" default="PVE::HotkeyUseShiftDisabled">
+				<xs:annotation>
+					<xs:documentation>type=PVE::HotkeyUseShiftOption;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomKey" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KeyMappingsType">
+		<xs:annotation>
+			<xs:documentation>class=CKmKeyMappings;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enable" type="xs:boolean" default="true"/>
+			<xs:element name="KeyBind" type="KeyBindType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>list=KeyBinds;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SystemType">
+		<xs:annotation>
+			<xs:documentation>class=CKmSystem;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EnableKeyboardShortcuts" type="xs:boolean" default="true"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

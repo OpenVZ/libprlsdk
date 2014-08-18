@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Max (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ParallelsUserInformation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserInfoList" type="UserInfoListType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SessionInfoListType">
+		<xs:sequence>
+			<xs:element name="SessionInfo" type="SessionInfoType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SessionInfoType">
+		<xs:sequence>
+			<xs:element name="ClientId" type="xs:string" minOccurs="0"/>
+			<xs:element name="ClientName" type="xs:string" minOccurs="0"/>
+			<xs:element name="ClientModel" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UserInfoListType">
+		<xs:sequence>
+			<xs:element name="UserInfo" type="UserInfoType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UserInfoType">
+		<xs:sequence>
+			<xs:element name="Uuid" type="xs:string"/>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="SessionCount" type="xs:integer"/>
+			<xs:element name="DefaultVmFolder" type="xs:string"/>
+			<xs:element name="ChangeServerSettings" type="xs:boolean"/>
+			<xs:element name="SessionInfoList" type="SessionInfoListType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

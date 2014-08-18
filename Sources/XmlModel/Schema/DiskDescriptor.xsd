@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Parallels_disk_image">
+		<xs:annotation>
+			<xs:documentation>class=CDiskXML;</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Disk_Parameters" type="Parameters">
+					<xs:annotation>
+						<xs:documentation>method=Parameters;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="StorageData" type="StorageData"/>
+				<xs:element name="Snapshots" type="Snapshots"/>
+			</xs:sequence>
+			<xs:attribute name="Version" type="xs:string" default="1.0"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Disk parameters definition -->
+	<xs:complexType name="Parameters">
+		<xs:annotation>
+			<xs:documentation>class=ParametersNode;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Disk_size" type="xs:unsignedLong">
+				<xs:annotation>
+					<xs:documentation>method=Size;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Cylinders" type="xs:unsignedLong"/>
+			<xs:element name="Heads" type="xs:unsignedByte"/>
+			<xs:element name="Sectors" type="xs:unsignedByte"/>
+			<xs:element name="Padding" type="xs:unsignedLong" default="0"/>
+			<xs:element name="Encryption" type="Encryption"/>
+			<xs:element name="Miscellaneous" type="Misc">
+				<xs:annotation>
+					<xs:documentation>method=UserData;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Storage data definition -->
+	<xs:complexType name="StorageData">
+		<xs:sequence>
+			<xs:element name="Storage" type="Storage" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Storage definition -->
+	<xs:complexType name="Storage">
+		<xs:annotation>
+			<xs:documentation>class=StorageNode;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Start" type="xs:unsignedLong"/>
+			<xs:element name="End" type="xs:unsignedLong"/>
+			<xs:element name="BlockSize" type="xs:unsignedInt"/>
+			<xs:element name="Image" type="Image"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Image definition -->
+	<xs:complexType name="Image">
+		<xs:annotation>
+			<xs:documentation>class=ImageNode;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="GUID" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>default=Uuid::createUuid().toString();</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Type" type="xs:string"/>
+			<xs:element name="File" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Snapshots definition -->
+	<xs:complexType name="Snapshots">
+		<xs:sequence>
+			<xs:element name="Shot" type="Shot" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Single snapshot element-->
+	<xs:complexType name="Shot">
+		<xs:annotation>
+			<xs:documentation>class=ShotNode;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="GUID" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>default=Uuid::createUuid().toString();</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ParentGUID" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>default=Uuid::createUuid().toString();</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Operation" default=""/>
+	</xs:complexType>
+	<!-- Encryption node-->
+	<xs:complexType name="Encryption">
+		<xs:annotation>
+			<xs:documentation>class=EncryptionNode;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Engine" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>default=Uuid::createUuid().toString();</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Data" type="xs:string" default=""/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Misc">
+		<xs:annotation>
+			<xs:documentation>class=MiscNode;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

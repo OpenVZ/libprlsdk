@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+		<file>sdk_err_strings.qm</file>
+</qresource>
+</RCC>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Max (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ParallelsUpdaterConfig">
+		<xs:annotation>
+			<xs:documentation>Parallels Updater configuration.</xs:documentation>
+			<xs:documentation>class=CUpdaterConfig;</xs:documentation>
+			<xs:documentation source="post class info">post_class_info:
+extern const QString UPDATER_CONFIG_FILE_NAME;
+extern const QString PARALLELS_SERVER;
+</xs:documentation>
+			<xs:documentation source="globals">unit_fragment:
+#include "Build/Current.ver"
+#include "Build/Current-locale.ver"
+const QString DEFAULT_UPDATES_URL = "";
+const QString PARALLELS_BUY_LINK = "";
+const QString PARALLELS_SERVER = "Parallels Server";
+
+extern const QString UPDATER_CONFIG_FILE_NAME = ".parallels_updater.xml";
+</xs:documentation>
+			<xs:documentation source="Init constructor">header_fragment:
+    CUpdaterConfig(QString s) { InitLists(); fromString(s); }</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AutomaticUpdate">
+					<xs:annotation>
+						<xs:documentation>class=CAutomaticUpdate;single_fixed=on;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UpdateEnabled" type="xs:boolean"/>
+							<xs:element name="UpdatePeriod" type="xs:integer">
+							</xs:element>
+							<xs:element name="NotifyUser" type="xs:boolean" default="true"/>
+							<xs:element name="DownloadEnabled" type="xs:boolean"/>
+							<xs:element name="InstallEnabled" type="xs:boolean"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="UpdateUrl" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>default=DEFAULT_UPDATES_URL;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RemindPeriod" type="xs:integer"/>
+				<xs:element name="BuyLink" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>default=PARALLELS_BUY_LINK;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DownloadPath" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>default=ParallelsDirs::getDispatcherConfigDir();</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ParallelsUpdates">
+					<xs:annotation>
+						<xs:documentation>method=Updates;single_fixed=on;extern=XmlModel/Updater/CUpdates.h;</xs:documentation>
+						<xs:documentation>class=CUpdates;method=Updates;single_fixed=on;</xs:documentation>
+						<xs:documentation source="Product">header_fragment:
+	// Get updating products
+	const QList&lt;CUpdProduct* &gt;* getUpdProducts() const
+		{ return &amp;m_lstProduct; }
+	// Add a updating product to the list
+	void addProduct( CUpdProduct* ); 
+	// Get a product by its name
+	CUpdProduct* getProductByName( const QString&amp; qsName ) const;
+</xs:documentation>
+						<xs:documentation source="Product_impl">unit_fragment:
+void CUpdates::addProduct( CUpdProduct* pProduct )
+{
+	m_lstProduct.append( pProduct );
+}
+
+CUpdProduct* CUpdates::getProductByName( const QString&amp; qsName ) const
+{
+	 for ( int i = 0; i &lt; m_lstProduct.size(); ++i) 
+	 {
+		 CUpdProduct* pProduct = m_lstProduct.at( i );
+		 if  ( pProduct-&gt;getName() == qsName )
+			 return pProduct;
+	 }
+	 return 0;
+}
+</xs:documentation>
+						<xs:documentation source="getUpdateByUuid">header_fragment:
+	CUpdate* getUpdateByUuid( const QString&amp; qsUuid ) const;
+</xs:documentation>
+						<xs:documentation source="getUpdateByUuid_impl">unit_fragment:
+CUpdate* CUpdates::getUpdateByUuid( const QString&amp; qsUuid ) const
+{
+	 for ( int i = 0; i &lt; m_lstProduct.size(); ++i) 
+	 {
+		 CUpdate* pUpdate = m_lstProduct.at( i )-&gt;getUpdateByUuid(qsUuid);
+		 if  ( pUpdate )
+			 return pUpdate;
+	 }
+	 return 0;
+}
+</xs:documentation>
+						<xs:documentation source="Init constructor">header_fragment:
+    CUpdates(QString s) { InitLists(); fromString(s); }</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="external"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

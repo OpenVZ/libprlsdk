@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Max Y. (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="DHCPServerType">
+		<xs:annotation>
+			<xs:documentation>include=&lt;QtNetwork&gt;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enabled" type="xs:boolean"/>
+			<xs:element name="IPScopeStart" type="xs:string" default="QHostAddress(XML_DEFAULT_IP_ADDRESS)">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IPScopeEnd" type="xs:string" default="QHostAddress(XML_DEFAULT_IP_ADDRESS)">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IPReservations">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CIPReservations;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IPReservation" type="IPReservation" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>class=CIPReservation;</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IPReservation">
+		<xs:annotation>
+			<xs:documentation>include=&lt;QtNetwork&gt;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="HostName" type="xs:string" minOccurs="0"/>
+			<xs:element name="IPAddress" type="xs:string" default="QHostAddress(XML_DEFAULT_IP_ADDRESS)">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MacAddress" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VLANMapping">
+		<xs:sequence>
+			<xs:element name="InterfaceName" type="xs:string"/>
+			<xs:element name="VLANTagsList">
+				<xs:annotation>
+					<xs:documentation>class=CVLANTagsList;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="VLANTag" type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IPAddressMapping">
+		<xs:annotation>
+			<xs:documentation>include=&lt;QtNetwork&gt;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="InterfaceName" type="xs:string"/>
+			<xs:element name="IPAddressList">
+				<xs:annotation>
+					<xs:documentation>class=CIPAddressList;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IPAddress" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VZNetConfig">
+		<xs:sequence>
+			<xs:element name="VLANList">
+				<xs:annotation>
+					<xs:documentation>class=CVLANList;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="VLANMapping" type="VLANMapping" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>class=CVLANMapping;</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="IPAddressMappingList">
+				<xs:annotation>
+					<xs:documentation>class=CIPAddressMappingList;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IPAddressMapping" type="IPAddressMapping" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>class=CIPAddressMapping;</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HostOnlyNetworkParams">
+		<xs:annotation>
+			<xs:documentation/>
+			<xs:documentation source="Customize DHCP v6 server">header_fragment:
+	virtual void CustomInit()
+	{
+		getDHCPv6Server()-&gt;setExtRootTagName("DHCPv6Server");
+		getDHCPv6Server()-&gt;setIPScopeStart( QHostAddress(XML_DEFAULT_IP6_ADDRESS) );
+		getDHCPv6Server()-&gt;setIPScopeEnd( QHostAddress(XML_DEFAULT_IP6_ADDRESS) );
+	}
+
+
+	void setDHCPv6Server(CDHCPServer* pDHCPv6Server)
+	{
+		if (pDHCPv6Server)
+			pDHCPv6Server-&gt;setExtRootTagName("DHCPv6Server");
+		setDHCPv6ServerOrig(pDHCPv6Server);
+	}
+	CDHCPServer* getDHCPv6Server() const
+	{
+		return getDHCPv6ServerOrig();
+	}
+</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="HostIPAddress" type="xs:string" default="QHostAddress(XML_DEFAULT_IP_ADDRESS)">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DhcpIPAddress" type="xs:string" default="QHostAddress(XML_DEFAULT_IP_ADDRESS)">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IPNetMask" type="xs:string" default="QHostAddress(XML_DEFAULT_SUBNET_MASK)">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HostIP6Address" type="xs:string" default="QHostAddress(XML_DEFAULT_IP6_ADDRESS)" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DhcpIP6Address" type="xs:string" default="QHostAddress(XML_DEFAULT_IP6_ADDRESS)" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IP6NetMask" type="xs:string" default="QHostAddress(XML_DEFAULT_IP6_MASK)" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ParallelsAdapter" type="ParallelsAdapterType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CParallelsAdapter;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DHCPServer" type="DHCPServerType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CDHCPServer;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DHCPv6Server">
+				<xs:annotation>
+					<xs:documentation source="annot">single_fixed=on;class=CDHCPServer;extern=CDHCPServer.h;method=DHCPv6ServerOrig;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="extern"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NATServer" type="NATServerType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CNATServer;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OffmgmtService">
+		<xs:annotation>
+			<xs:documentation>class=COffmgmtService;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="Port" type="xs:unsignedShort" default="0"/>
+			<xs:element name="UsedByDefault" type="xs:boolean" default="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ParallelsNetworkConfig">
+		<xs:annotation>
+			<xs:documentation>class=CParallelsNetworkConfig;</xs:documentation>
+			<xs:documentation source="Init constructor">header_fragment:
+    CParallelsNetworkConfig(QString s) { InitLists(); fromString(s); }</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SystemFlags" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Mischelaneous runtime parameters (analog SFGetXXX in vm_app)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="IPv6Enabled" type="xs:boolean" default="true" minOccurs="0"/>
+				<xs:element name="VirtualNetworks">
+					<xs:annotation>
+						<xs:documentation>class=CVirtualNetworks;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VirtualNetwork" type="VirtualNetworkType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=CVirtualNetwork;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VZNetworkConfig" type="VZNetConfig" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>class=CVZNetworkConfig;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="OffmgmtServices">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=COffmgmtServices;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OffmgmtService" type="OffmgmtService" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="NetworkClassesConfig">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=CNetworkClassesConfig;</xs:documentation>
+						<xs:documentation source="isClassConfigured">header_fragment:
+bool isClassConfigured(unsigned int nClassId)
+{
+	foreach(CNetworkClass *pClass, m_lstNetworkClasses)
+		if (nClassId == pClass-&gt;getClassId())
+			return true;
+	return false;
+}
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NetworkClasses" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>list=NetworkClasses;class=CNetworkClass;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ClassId" type="xs:integer" minOccurs="0"/>
+										<xs:element name="Network" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>method=NetworkList;</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="NetworkShapingConfig">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=CNetworkShapingConfig;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Enabled" type="xs:boolean" default="false"/>
+							<xs:element name="DeviceBandwidth" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>list=DevicesBandwidth;class=CDeviceBandwidth;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Device" type="xs:string"/>
+										<xs:element name="Bandwidth" type="xs:integer" default="0" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NetworkShaping" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=CNetworkShaping;</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Device" type="xs:string"/>
+										<xs:element name="ClassId" type="xs:integer" default="0" minOccurs="0"/>
+										<xs:element name="TotalRate" type="xs:integer" default="0" minOccurs="0"/>
+										<xs:element name="Rate" type="xs:integer" default="0" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PrivateNetworks">
+					<xs:annotation>
+						<xs:documentation>single_fixed=on;class=CPrivateNetworks;</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PrivateNetwork" type="PrivateNetworkType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>class=CPrivateNetwork;</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ParallelsAdapterType">
+		<xs:annotation>
+			<xs:documentation>include=&lt;QtNetwork&gt;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enabled" type="xs:boolean" default="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>true is default for compatibility with old configuration without this parameter</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="PrlAdapterIndex" type="xs:int" default="PAI_GENERATE_INDEX"/>
+			<xs:element name="HiddenAdapter" type="xs:boolean" default="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>TRUE if adapter should be hidden from Mac OS NetworkPrefs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VZVirtualNetworkParams">
+		<xs:sequence>
+			<xs:element name="BridgeName" type="xs:string"/>
+			<xs:element name="MasterInterface" type="xs:string"/>
+			<xs:element name="SlaveInterfaces" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>class=CSlaveInterfaces;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="InterfaceName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PortForwardEntry">
+		<xs:annotation>
+			<xs:documentation>include=&lt;QtNetwork&gt;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RuleName" type="xs:string"/>
+			<xs:element name="IncomingPort" type="xs:unsignedShort"/>
+			<xs:element name="RedirectIp" type="xs:string" default='QHostAddress("0.0.0.0")'>
+				<xs:annotation>
+					<xs:documentation>type=QHostAddress;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RedirectPort" type="xs:unsignedShort"/>
+			<xs:element name="RedirectVm" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NATPortForwarding">
+		<xs:sequence>
+			<xs:element name="TCP">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CTCPForwardsList;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ForwardEntry" type="PortForwardEntry" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>class=CPortForwardEntry;</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="UDP">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CUDPForwardsList;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ForwardEntry" type="PortForwardEntry" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>class=CPortForwardEntry;</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NATServerType">
+		<xs:annotation>
+			<xs:documentation>include=&lt;QtNetwork&gt;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enabled" type="xs:boolean"/>
+			<xs:element name="PortForwarding" type="NATPortForwarding">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CPortForwarding;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IdleConnectionTimeoutSecs" type="xs:unsignedInt" default="7440" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>According to rfc5382, default connection idle time should be 2 hours 4 mins</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UseIPFilter" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Use IP-Filter instead of BSD Sockets</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VirtualNetworkType">
+		<xs:annotation>
+			<xs:documentation source="setBridgedToDefaultAdapter">header_fragment:
+    void setBridgedToDefaultAdapter() { m_qsBoundCardMac="FF:FF:FF:FF:FF:FF"; }
+</xs:documentation>
+			<xs:documentation source="isBridgedToDefaultAdapter">header_fragment:
+    bool isBridgedToDefaultAdapter() const { return 0 == QString::compare(m_qsBoundCardMac, "FF:FF:FF:FF:FF:FF", Qt::CaseInsensitive); }
+</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Uuid" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>default=Uuid::createUuid().toString(); Need for update virtual network config.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NetworkID" type="xs:string"/>
+			<xs:element name="Description" type="xs:string"/>
+			<xs:element name="Enabled" type="xs:boolean" default="true"/>
+			<xs:element name="NetworkType" type="xs:integer" default="PVN_HOST_ONLY">
+				<xs:annotation>
+					<xs:documentation>type=PRL_NET_VIRTUAL_NETWORK_TYPE;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BoundCardMac" type="xs:string"/>
+			<xs:element name="VLANTag" type="xs:unsignedShort" default="PRL_INVALID_VLAN_TAG"/>
+			<xs:element name="HostOnlyNetwork" type="HostOnlyNetworkParams">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;class=CHostOnlyNetwork;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VZVirtualNetwork" type="VZVirtualNetworkParams" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>class=CVZVirtualNetwork;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PrivateNetworkType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="NetworkID" type="xs:integer" default="PRL_PRIVNET_GENERATE_ID"/>
+			<xs:element name="Global" type="xs:boolean" default="false" minOccurs="0"/>
+			<xs:element name="NetAddress" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>method=NetAddresses; Format "1.2.3.4/255.255.0.0"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

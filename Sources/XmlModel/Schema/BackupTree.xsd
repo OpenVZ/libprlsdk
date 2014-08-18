@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="BackupTree">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="VmItem" type="VmItemType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="VmItemType">
+		<xs:sequence>
+			<xs:element name="VmType" type="xs:integer" default="PVBT_VM" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>type=PRL_VM_BACKUP_TYPE</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Uuid" type="xs:string"/>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="BackupItem" type="BackupItemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BackupItemType">
+		<xs:sequence>
+			<xs:element name="Uuid" type="xs:string"/>
+			<xs:element name="Id" type="xs:string"/>
+			<xs:element name="Host" type="xs:string"/>
+			<xs:element name="ServerUuid" type="xs:string"/>
+			<xs:element name="DateTime" type="xs:dateTime"/>
+			<xs:element name="Creator" type="xs:string"/>
+			<xs:element name="Size" type="xs:unsignedLong"/>
+			<xs:element name="Type" type="xs:string"/>
+			<xs:element name="Description" type="xs:string"/>
+			<xs:element name="TibFileList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PartialBackupItem" type="PartialBackupItemType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="OriginalSize" type="xs:unsignedLong" default="0" minOccurs="0"/>
+			<xs:element name="BundlePermissions" type="xs:integer" default="0" minOccurs="0"/>
+			<xs:element name="BackupDisks" type="BackupDisksType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartialBackupItemType">
+		<xs:sequence>
+			<xs:element name="Number" type="xs:unsignedInt"/>
+			<xs:element name="Id" type="xs:string"/>
+			<xs:element name="Host" type="xs:string"/>
+			<xs:element name="ServerUuid" type="xs:string"/>
+			<xs:element name="DateTime" type="xs:dateTime"/>
+			<xs:element name="Creator" type="xs:string"/>
+			<xs:element name="Size" type="xs:unsignedLong"/>
+			<xs:element name="Type" type="xs:string"/>
+			<xs:element name="Description" type="xs:string"/>
+			<xs:element name="TibFileList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="OriginalSize" type="xs:unsignedLong" default="0" minOccurs="0"/>
+			<xs:element name="BundlePermissions" type="xs:integer" default="0" minOccurs="0"/>
+			<xs:element name="BackupDisks" type="BackupDisksType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BackupDiskType">
+		<xs:annotation>
+			<xs:documentation>class=CBackupDisk;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="OriginalPath" type="xs:string"/>
+			<xs:element name="Size" type="xs:unsignedLong"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BackupDisksType">
+		<xs:annotation>
+			<xs:documentation>class=CBackupDisks;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BackupDisk" type="BackupDiskType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>list=BackupDisks;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

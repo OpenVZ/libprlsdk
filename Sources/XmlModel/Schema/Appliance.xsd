@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Maxim (Parallels) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ParallelsAppliance">
+		<xs:annotation>
+			<xs:documentation>class=CAppliance;</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplianceId" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>default=Uuid::createUuid().toString();</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ApplianceName" type="xs:string"/>
+				<xs:element name="ApplianceDescription" type="xs:string" maxOccurs="unbounded"/>
+				<xs:element name="ApplianceVersion" type="xs:string"/>
+				<xs:element name="PackageURL" type="xs:anyURI"/>
+				<xs:element name="PackedSize" type="xs:unsignedLong"/>
+				<xs:element name="UnpackedSize" type="xs:unsignedLong"/>
+				<xs:element name="PackageCRC" type="xs:integer" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Unused, stand for compatibility with PD5-Update3</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PackageMd5" type="xs:string" minOccurs="0"/>
+				<xs:element name="Login" type="xs:string" minOccurs="0"/>
+				<xs:element name="Password" type="xs:string" minOccurs="0"/>
+				<xs:element name="SupportedVersions" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="DownloadPath" type="xs:string" minOccurs="0"/>
+				<xs:element name="DownloadStatus" type="xs:integer" default="PADS_NOT_STARTED" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>type=PRL_APPLIANCE_DOWNLOAD_STATUS;</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DownloadedSize" type="xs:unsignedLong" default="0" minOccurs="0"/>
+				<xs:element name="ApplianceOsVer" type="xs:integer" minOccurs="0"/>
+				<xs:element name="Type" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
