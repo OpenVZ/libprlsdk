@@ -1,0 +1,25 @@
+Parallels SDK
+=============
+
+Parallels Virtualization SDK is a development kit used to create and integrate custom software solutions with Parallels Cloud Server. The SDK provides cross-platform ANSI C and
+Python APIs.
+
+Documetation for commercial version of SDK is available here:
+
+- [Parallels_Virtualization_SDK_Programmers_Guide.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_Virtualization_SDK_Programmers_Guide.pdf)
+- [Parallels_C_API_Reference.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_C_API_Reference.pdf)
+- [Parallels_Python_API_Reference.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_Python_API_Reference.pdf)
+
+How to install
+--------------
+To build the SDK run:
+
+```bash
+cd parallels-sdk/Sources
+./Gen.py
+cd SDK
+qmake
+make -f Makefile64
+make install
+```
+
