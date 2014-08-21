@@ -10,6 +10,8 @@ Documetation for commercial version of SDK is available here:
 - [Parallels_C_API_Reference.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_C_API_Reference.pdf)
 - [Parallels_Python_API_Reference.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_Python_API_Reference.pdf)
 
+Trial version of Paralles Cloud Server can be downloaded here [http://sp.parallels.com/en/products/pcs/](http://sp.parallels.com/en/products/pcs/).
+
 How to install
 --------------
 To build the SDK run:
