@@ -75,9 +75,9 @@ import GenApiVer
 GenApiVer.gen_sdk_api_ver(cfg.getint('sdk', 'major'))
 
 
-ver = "%d.%d.%d" % (cfg.getint('SumerBM', 'version_major'),
-		cfg.getint('SumerBM', 'version_minor'),
-		cfg.getint('SumerBM', 'version_patch'))
+ver = "%d.%d.%d" % (cfg.getint('sdk', 'major'),
+		cfg.getint('sdk', 'minor'),
+		cfg.getint('sdk', 'version_patch'))
 parallels_sdk_pc = """prefix=%(prefix)s
 exec_prefix=${prefix}
 includedir=${prefix}/include
