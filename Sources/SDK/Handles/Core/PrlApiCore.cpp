@@ -62,6 +62,8 @@
 PRL_UINT32 g_SdkSequenceNum = 0;
 static PRL_UINT32 s_SdkVersion = PARALLELS_API_VER;
 static PRL_APPLICATION_MODE s_SdkAppMode = PAM_SERVER;
+static QMutex apiRefCountLock;
+static long apiRefCount = 0;
 void (*g_fpInitRemoteDevices)() = 0;
 
 
@@ -122,6 +124,12 @@ INSTALL_LOGGING_QT_MSG_HANDLER(PrlApiHandler)
  */
 static PRL_RESULT InitApi(PRL_UINT32 version, PRL_APPLICATION_MODE nAppMode, PRL_UINT32 nFlags)
 {
+    QMutexLocker _lock(&apiRefCountLock);
+
+    apiRefCount++;
+    if (apiRefCount > 1)
+        return PRL_ERR_SUCCESS;
+
 	// API version check
 	if ( (version & ~0xE0000000) > PARALLELS_API_VER ) {
 		return PRL_ERR_API_INCOMPATIBLE;
@@ -197,6 +205,12 @@ PRL_METHOD( PrlApi_InitEx ) (
 
 PRL_METHOD( PrlApi_Deinit ) ()
 {
+    QMutexLocker _lock(&apiRefCountLock);
+
+    apiRefCount--;
+    if (apiRefCount > 0)
+        return PRL_ERR_SUCCESS;
+
 	// Logging API calls for the possibility of debug trace
 	LOG_MESSAGE( DBG_DEBUG, "%s ()",
 		__FUNCTION__
