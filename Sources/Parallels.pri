@@ -65,10 +65,6 @@ x86only {
 	CONFIG -= x86_64
 }
 
-x86_64 {
-	MAKEFILE = Makefile64
-}
-
 # These macro are the only way of the platform definition
 # in our project - please, make use of them and only them (!)
 win32:DEFINES     += "_WIN_=1"

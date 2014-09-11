@@ -59,23 +59,15 @@ isEqual(TEMPLATE, subdirs) | isEqual(TEMPLATE, vcsubdirs) {
 			SUBDIRS += $$LIBTARGET
 			_staticlib {
 				eval($${LIBTARGET}.file = $$PROJ_FILE)
-				x86_64: {
-					eval($${LIBTARGET}.makefile = Makefile64)
-				} else {
-					eval($${LIBTARGET}.makefile = Makefile)
+			    eval($${LIBTARGET}.makefile = Makefile)
 				}
 			}
 			_sharedlib {
 				eval($${LIBTARGET}.file = $$dirname(PROJ_FILE)/build.target)
-				x86_64: {
-					eval($${LIBTARGET}.makefile = Makefile64_$$LIBTARGET)
-				}else {
-					eval($${LIBTARGET}.makefile = Makefile_$$LIBTARGET)
-				}
+				eval($${LIBTARGET}.makefile = Makefile_$$LIBTARGET)
 			}
 		}
 		eval($${TARGET}.depends *= $$LIBTARGET)
-	}
 } else {
 	# INCLUDEPATH += $$PROJ_DIR
 	# QMAKE_LIBDIR += $$PROJ_DIR

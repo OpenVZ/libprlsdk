@@ -534,8 +534,10 @@ bool SDKParser::ParseFunctionArgs(const QString& qsFuncName, const QString& qsAr
 
 		Arg arg;
 		arg.type = qsArg.mid(idx, re2.matchedLength());
-		if ( arg.type == "PRL_VOID" )
+		if ( arg.type == "PRL_VOID" || arg.type == "void" ) {
+			pos += re.matchedLength();
 			continue;	// means no arguments
+		}
 
 		arg.name = qsArg.mid(idx + re2.matchedLength())
 						.remove(",").remove(")").trimmed();

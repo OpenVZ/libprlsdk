@@ -22,11 +22,7 @@
 # Schaffhausen, Switzerland; http://www.parallels.com/.
 #
 
-x86_64 | linux-*-64 {
-	mkfile = Makefile64_$$TARGET
-} else {
-	mkfile = Makefile_$$TARGET
-}
+mkfile = Makefile_$$TARGET
 
 isEmpty(NON_SUBDIRS) {
 	# Will overwrite TEMPLATE in project file 

@@ -111,17 +111,10 @@ if '__main__' == __name__:
 		if not os.path.isfile(python_header):
 			print 'Path doesnt exist: "%s"' % python_header
 			continue
-		if os.path.isfile('Makefile64'):
-			check_retcode(BuildUtil.os_exec('%s -f Makefile64 distclean' % make_cmd))
-		elif os.path.isfile('Makefile'):
-			check_retcode(BuildUtil.os_exec('%s distclean' % make_cmd))
+		check_retcode(BuildUtil.os_exec('%s distclean' % make_cmd))
 		generate_pri(python_path, py_ver, lflags)
 		check_retcode(BuildUtil.os_exec('qmake'))
-		if os.path.isfile('Makefile64'):
-			mkfile_arg = '-f Makefile64'
-		else:
-			mkfile_arg = ''
-		check_retcode(BuildUtil.os_exec('%s %s %s' % (make_cmd, mkfile_arg, build_type)))
+		check_retcode(BuildUtil.os_exec('%s %s' % (make_cmd, build_type)))
 
 	os.chdir(cwd)
 

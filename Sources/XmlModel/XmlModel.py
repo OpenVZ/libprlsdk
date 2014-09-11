@@ -164,14 +164,10 @@ def build_xsd2src():
     if os_exec('%s -o Makefile xsd2src.pro' % qmake_cmd, True):
         raise RuntimeError('qmake xsd2src.pro failed')
 
-    makefile_arg = ''
-    if not os.path.exists('Makefile'):
-        makefile_arg = '-f Makefile64'
-
     if sys.platform == 'win32':
         ret = os_exec('nmake debug', True)
     else:
-        ret = os_exec('make %s debug' % makefile_arg, True)
+        ret = os_exec('make debug', True)
     if ret:
         raise RuntimeError('xsd2src utility build failed')
 

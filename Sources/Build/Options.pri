@@ -48,11 +48,7 @@ defineTest(addSubdirs) {
     for(dep, deps) {
         eval ($${name}.depends += $$dep)
     }
-    x86_64:{
-        eval($${name}.makefile = Makefile64_$$name)
-    } else {
-        eval($${name}.makefile = Makefile_$$name)
-    }
+    eval($${name}.makefile = Makefile_$$name)
     export ($${name}.file)
     export ($${name}.depends)
     export ($${name}.makefile)
@@ -70,11 +66,7 @@ defineTest(addSubdirsDir) {
     for(dep, deps) {
         eval ($${name}.depends += $$dep)
     }
-    x86_64:{
-        eval($${name}.makefile = Makefile64_$$name)
-    } else {
-        eval($${name}.makefile = Makefile_$$name)
-    }
+    eval($${name}.makefile = Makefile_$$name)
     export ($${name}.subdir)
     export ($${name}.depends)
     export ($${name}.makefile)

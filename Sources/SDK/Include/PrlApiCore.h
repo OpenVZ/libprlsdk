@@ -128,6 +128,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - operation completed successfully.
    See Also
    PrlApi_Init                                                  */
+
 PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 PrlApi_Deinit, (void) );
 
