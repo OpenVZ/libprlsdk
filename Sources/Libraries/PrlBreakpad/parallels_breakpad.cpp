@@ -218,7 +218,7 @@ google_breakpad::ExceptionHandler* ParallelsBreakpad::CREATE_CRASH_HANDLER (
         }
 
         //
-        // Create biiiiig cmd line buffer
+        // Create big cmd line buffer
         //
         g_cmdLineSz = PATH_MAX * 2;
         g_cmdLine = reinterpret_cast<bp_char_t*>(
