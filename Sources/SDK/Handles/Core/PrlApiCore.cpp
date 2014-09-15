@@ -233,7 +233,7 @@ PRL_METHOD( PrlApi_GetVersion ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (version=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (version=%p)",
 		__FUNCTION__,
 		version
 		);
@@ -253,7 +253,7 @@ PRL_METHOD( PrlApi_GetAppMode ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (app_mode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (app_mode=%p)",
 		__FUNCTION__,
 		app_mode
 		);
@@ -277,7 +277,7 @@ PRL_METHOD( PrlApi_GetResultDescription ) (
 {
 	// Logging API calls for the possibility of debug trace
 	LOG_MESSAGE( DBG_DEBUG, "%s (result=%.8X, bIsBriefMessage=%.8X, "\
-		"bFormated=%.8X, sErrString=%.8X, pnErrStringBufLength=%.8X",
+		"bFormated=%.8X, sErrString=%p, pnErrStringBufLength=%p",
 		__FUNCTION__,
 		nErrCode,
 		bIsBriefMessage,
@@ -301,7 +301,7 @@ PRL_METHOD( PrlApi_GetMessageType ) (
 									 PRL_MESSAGE_TYPE_ENUM_PTR pnMsgType
 									 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (nErrCode=%.8X, pnMsgType=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (nErrCode=%.8X, pnMsgType=%p",
 		__FUNCTION__,
 		nErrCode,
 		pnMsgType
@@ -320,7 +320,7 @@ PRL_METHOD( PrlApi_MsgCanBeIgnored ) (
 									  PRL_BOOL_PTR pbCanBeIgnored
 									  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (nErrCode=%.8X, pbCanBeIgnored=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (nErrCode=%.8X, pbCanBeIgnored=%p",
 		__FUNCTION__,
 		nErrCode,
 		pbCanBeIgnored
@@ -339,7 +339,7 @@ PRL_METHOD( PrlHandle_AddRef ) (
 								)
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p)",
 		__FUNCTION__,
 		handle
 		);
@@ -363,7 +363,7 @@ PRL_METHOD( PrlHandle_Free) (
 							 )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p)",
 		__FUNCTION__,
 		handle
 		);
@@ -395,7 +395,7 @@ PRL_METHOD( PrlHandle_GetType ) (
 								 )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X type=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p type=%p)",
 		__FUNCTION__,
 		handle,
 		type
@@ -456,7 +456,7 @@ PRL_METHOD( PrlHandle_FromString ) (
 		PRL_CONST_STR sXml
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hHandle=%.8X, sXml=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hHandle=%p, sXml=%s)",
 		__FUNCTION__,
 		hHandle,
 		sXml
@@ -477,7 +477,7 @@ PRL_METHOD( PrlHandle_ToString ) (
 		PRL_VOID_PTR_PTR ppXml
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hHandle=%.8X, ppXml=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hHandle=%p, ppXml=%p)",
 		__FUNCTION__,
 		hHandle,
 		ppXml
@@ -503,7 +503,7 @@ PRL_METHOD( PrlApi_CreateStringsList ) (
 										PRL_HANDLE_PTR phStringsList
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (phStringsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (phStringsList=%p)",
 		__FUNCTION__,
 		phStringsList
 		);
@@ -526,7 +526,7 @@ PRL_METHOD( PrlStrList_GetItemsCount ) (
 										PRL_UINT32_PTR pnItemsCount
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%.8X, pnItemsCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%p, pnItemsCount=%p)",
 		__FUNCTION__,
 		hStringsList,
 		pnItemsCount
@@ -546,7 +546,7 @@ PRL_METHOD( PrlStrList_AddItem ) (
 								  PRL_CONST_STR sItem
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%.8X, sItem=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%p, sItem=%s)",
 		__FUNCTION__,
 		hStringsList,
 		sItem
@@ -568,7 +568,7 @@ PRL_METHOD( PrlStrList_GetItem ) (
 								  PRL_UINT32_PTR pnItemBufSize
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%.8X, nItemIndex=%.8X, sItemBuf=%.8X, pnItemBufSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%p, nItemIndex=%.8X, sItemBuf=%p, pnItemBufSize=%p)",
 		__FUNCTION__,
 		hStringsList,
 		nItemIndex,
@@ -590,7 +590,7 @@ PRL_METHOD( PrlStrList_RemoveItem ) (
 									 PRL_UINT32 nItemIndex
 									 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%.8X, nItemIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hStringsList=%p, nItemIndex=%.8X)",
 		__FUNCTION__,
 		hStringsList,
 		nItemIndex
@@ -609,7 +609,7 @@ PRL_METHOD( PrlApi_CreateHandlesList ) (
 										PRL_HANDLE_PTR phHandlesList
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (phHandlesList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (phHandlesList=%p)",
 		__FUNCTION__,
 		phHandlesList
 		);
@@ -632,7 +632,7 @@ PRL_METHOD( PrlHndlList_GetItemsCount ) (
 	PRL_UINT32_PTR pnItemsCount
 	)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%.8X, pnItemsCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%p, pnItemsCount=%p)",
 		__FUNCTION__,
 		hHandlesList,
 		pnItemsCount
@@ -652,7 +652,7 @@ PRL_METHOD( PrlHndlList_AddItem ) (
 								   PRL_HANDLE hItem
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%.8X, hItem=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%p, hItem=%p)",
 		__FUNCTION__,
 		hHandlesList,
 		hItem
@@ -675,7 +675,7 @@ PRL_METHOD( PrlHndlList_GetItem ) (
 								   PRL_HANDLE_PTR phItem
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%.8X, nItemIndex=%.8X, phItem=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%p, nItemIndex=%.8X, phItem=%p)",
 		__FUNCTION__,
 		hHandlesList,
 		nItemIndex,
@@ -696,7 +696,7 @@ PRL_METHOD( PrlHndlList_RemoveItem ) (
 									  PRL_UINT32 nItemIndex
 									  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%.8X, nItemIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hHandlesList=%p, nItemIndex=%.8X)",
 		__FUNCTION__,
 		hHandlesList,
 		nItemIndex
@@ -716,7 +716,7 @@ PRL_METHOD( PrlApi_CreateOpTypeList ) (
 										PRL_SIZE nTypeSize
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (phOpTypeList=%.8X, nTypeSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (phOpTypeList=%p, nTypeSize=%.8X)",
 		__FUNCTION__,
 		phOpTypeList,
 		nTypeSize
@@ -749,7 +749,7 @@ PRL_METHOD( PrlOpTypeList_GetItemsCount ) (
 										PRL_UINT32_PTR pnItemsCount
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%.8X, pnItemsCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%p, pnItemsCount=%p)",
 		__FUNCTION__,
 		hOpTypeList,
 		pnItemsCount
@@ -769,7 +769,7 @@ PRL_METHOD( PrlOpTypeList_AddItem ) (
 								  PRL_CONST_VOID_PTR pnItem
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%.8X, pnItem=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%p, pnItem=%p)",
 		__FUNCTION__,
 		hOpTypeList,
 		pnItem
@@ -790,7 +790,7 @@ PRL_METHOD( PrlOpTypeList_GetItem ) (
 								  PRL_VOID_PTR pnItem
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%.8X, nItemIndex=%.8X, pnItem=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%p, nItemIndex=%.8X, pnItem=%p)",
 		__FUNCTION__,
 		hOpTypeList,
 		nItemIndex,
@@ -811,7 +811,7 @@ PRL_METHOD( PrlOpTypeList_RemoveItem ) (
 									 PRL_UINT32 nItemIndex
 									 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%.8X, nItemIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%p, nItemIndex=%.8X)",
 		__FUNCTION__,
 		hOpTypeList,
 		nItemIndex
@@ -831,7 +831,7 @@ PRL_METHOD( PrlOpTypeList_GetTypeSize ) (
 									 PRL_SIZE_PTR pnTypeSize
 									 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%.8X, pnTypeSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hOpTypeList=%p, pnTypeSize=%p)",
 		__FUNCTION__,
 		hOpTypeList,
 		pnTypeSize
@@ -866,7 +866,7 @@ PRL_METHOD( PrlJob_Wait ) (
 						   )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p)",
 	__FUNCTION__,
 	hJob
 	);
@@ -900,7 +900,7 @@ PRL_ASYNC_METHOD( PrlJob_Cancel ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_JOB_CANCEL)
 		// Logging API calls for the possibility of debug trace
-		LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X)",
+		LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p)",
 		__FUNCTION__,
 		hJob
 		);
@@ -914,7 +914,7 @@ PRL_METHOD( PrlJob_GetStatus ) (
 								)
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X status=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p status=%p)",
 		__FUNCTION__,
 		hJob,
 		status
@@ -938,7 +938,7 @@ PRL_METHOD( PrlJob_GetProgress ) (
 								  )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X percentage=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p percentage=%p)",
 		__FUNCTION__,
 		hJob,
 		percentage
@@ -962,14 +962,13 @@ PRL_METHOD( PrlJob_GetRetCode ) (
 								 )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X retcode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p retcode=%p)",
 		__FUNCTION__,
 		hJob,
 		retcode
 		);
 
 	SYNC_CHECK_API_INITIALIZED
-
 	// We always have to ensure input parameters validity
 	if ( PRL_WRONG_HANDLE(hJob, PHT_JOB) || PRL_WRONG_PTR(retcode) )
 		return PRL_ERR_INVALID_ARG;
@@ -987,7 +986,7 @@ PRL_METHOD( PrlJob_GetDataPtr) (
 								)
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X data_ptr=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p data_ptr=%p)",
 		__FUNCTION__,
 		hJob,
 		data_ptr
@@ -1014,7 +1013,7 @@ PRL_METHOD ( PrlJob_GetResult ) (
 	SYNC_CHECK_API_INITIALIZED
 
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X handle=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p handle=%p)",
 		__FUNCTION__,
 		hJob,
 		handle
@@ -1035,7 +1034,7 @@ PRL_METHOD( PrlJob_GetError ) (
 							   PRL_HANDLE_PTR phError
 							   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X phError=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p phError=%p)",
 		__FUNCTION__,
 		hJob,
 		phError
@@ -1056,7 +1055,7 @@ PRL_METHOD( PrlJob_GetOpCode ) (
 								PRL_JOB_OPERATION_CODE_PTR pnJobOpCode
 								)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X pnJobType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p pnJobType=%p)",
 		__FUNCTION__,
 		hJob,
 		pnJobOpCode
@@ -1077,7 +1076,7 @@ PRL_METHOD( PrlJob_IsRequestWasSent ) (
 							   PRL_BOOL_PTR pbIsRequestWasSent
 							   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%.8X pbIsRequestWasSent=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hJob=%p pbIsRequestWasSent=%p)",
 		__FUNCTION__,
 		hJob,
 		pbIsRequestWasSent
@@ -1101,7 +1100,7 @@ PRL_METHOD( PrlResult_GetParamsCount ) (
 	SYNC_CHECK_API_INITIALIZED
 
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%.8X pCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%p pCount=%p)",
 		__FUNCTION__,
 		hResult,
 		pCount
@@ -1125,7 +1124,7 @@ PRL_METHOD( PrlResult_GetParamByIndex ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%.8X nIndex=%.8X, phParam=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%p nIndex=%.8X, phParam=%p)",
 		__FUNCTION__,
 		hResult,
 		nIndex,
@@ -1147,7 +1146,7 @@ PRL_METHOD( PrlResult_GetParam ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%.8X pHandle=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%p pHandle=%p)",
 		__FUNCTION__,
 		hResult,
 		pHandle
@@ -1170,7 +1169,7 @@ PRL_METHOD(PrlResult_GetParamByIndexAsString) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%.8X, nIndex=%.8X, sParamBuf=%.8X, pnParamBufSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%p, nIndex=%.8X, sParamBuf=%p, pnParamBufSize=%p)",
 		__FUNCTION__,
 		hResult,
 		nIndex,
@@ -1194,7 +1193,7 @@ PRL_METHOD(PrlResult_GetParamAsString) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%.8X, sParamBuf=%.8X, pnParamBufSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hResult=%p, sParamBuf=%p, pnParamBufSize=%p)",
 		__FUNCTION__,
 		hResult,
 		sParamBuf,
@@ -1215,7 +1214,7 @@ PRL_METHOD( PrlEvent_GetType ) (
 								)
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X type=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p type=%p)",
 		__FUNCTION__,
 		hEvent,
 		type
@@ -1239,7 +1238,7 @@ PRL_METHOD( PrlEvent_GetDataPtr ) (
 								   )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X data_ptr=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p data_ptr=%p)",
 		__FUNCTION__,
 		hEvent,
 		data_ptr
@@ -1263,7 +1262,7 @@ PRL_METHOD( PrlEvent_GetServer) (
 								 )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X server=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p server=%p)",
 		__FUNCTION__,
 		hEvent,
 		server
@@ -1287,7 +1286,7 @@ PRL_METHOD( PrlEvent_GetVm) (
 							 )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X pVm=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p pVm=%p)",
 		__FUNCTION__,
 		hEvent,
 		pVm
@@ -1311,7 +1310,7 @@ PRL_METHOD( PrlEvent_GetJob) (
 							  )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X pJob=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p pJob=%p)",
 		__FUNCTION__,
 		hEvent,
 		pJob
@@ -1338,7 +1337,7 @@ PRL_METHOD( PrlEvent_GetParamsCount ) (
 									   PRL_UINT32_PTR pnParamsCount
 									   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X pnParamsCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p pnParamsCount=%p)",
 		__FUNCTION__,
 		hEvent,
 		pnParamsCount
@@ -1360,7 +1359,7 @@ PRL_METHOD( PrlEvent_GetParam ) (
 								 PRL_HANDLE_PTR phEventParam
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X phEventParam=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p phEventParam=%p)",
 		__FUNCTION__,
 		hEvent,
 		phEventParam
@@ -1382,7 +1381,7 @@ PRL_METHOD( PrlEvent_GetParamByName ) (
 									   PRL_HANDLE_PTR phEventParam
 									   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X sParamName=%.8X, phEventParam=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p sParamName=%s, phEventParam=%p)",
 		__FUNCTION__,
 		hEvent,
 		sParamName,
@@ -1404,7 +1403,7 @@ PRL_METHOD( PrlEvent_GetErrCode ) (
 								   PRL_RESULT_PTR pnErrCode
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X pnErrCode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p pnErrCode=%p)",
 		__FUNCTION__,
 		hEvent,
 		pnErrCode
@@ -1428,7 +1427,7 @@ PRL_METHOD( PrlEvent_GetErrString ) (
 									 PRL_UINT32_PTR pnErrStringBufLength
 									 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X, sErrString=%.8X, pnErrStringBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p, sErrString=%p, pnErrStringBufLength=%p)",
 		__FUNCTION__,
 		hEvent,
 		sErrString,
@@ -1450,7 +1449,7 @@ PRL_METHOD( PrlEvent_CanBeIgnored ) (
 									 PRL_BOOL_PTR pbCanBeIgnored
 									 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X pbCanBeIgnored=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p pbCanBeIgnored=%p)",
 		__FUNCTION__,
 		hEvent,
 		pbCanBeIgnored
@@ -1471,7 +1470,7 @@ PRL_METHOD( PrlEvent_IsAnswerRequired ) (
 	PRL_BOOL_PTR pbIsAnswerRequired
 	)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X pbIsAnswerRequired=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p pbIsAnswerRequired=%p)",
 		__FUNCTION__,
 		hEvent,
 		pbIsAnswerRequired
@@ -1492,7 +1491,7 @@ PRL_METHOD( PrlEvent_GetIssuerType ) (
 									  PRL_EVENT_ISSUER_TYPE_PTR pnIssuerType
 									  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X pnIssuerType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p pnIssuerType=%p)",
 		__FUNCTION__,
 		hEvent,
 		pnIssuerType
@@ -1514,7 +1513,7 @@ PRL_METHOD( PrlEvent_GetIssuerId ) (
 									PRL_UINT32_PTR pnIssuerIdBufLength
 									)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X, sIssuerId=%.8X, pnIssuerIdBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p, sIssuerId=%p, pnIssuerIdBufLength=%p)",
 		__FUNCTION__,
 		hEvent,
 		sIssuerId,
@@ -1537,7 +1536,7 @@ PRL_METHOD( PrlEvent_CreateAnswerEvent ) (
 	PRL_RESULT nAnswer
 	)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X, phEvent=%.8X, nAnswer=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p, phEvent=%p, nAnswer=%.8X)",
 		__FUNCTION__,
 		hEvent,
 		phEvent,
@@ -1559,7 +1558,7 @@ PRL_METHOD( PrlEvent_FromString ) (
 								   PRL_CONST_STR sEvent
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%.8X sEvent=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEvent=%p sEvent=%s)",
 		__FUNCTION__,
 		hEvent,
 		sEvent
@@ -1581,7 +1580,7 @@ PRL_METHOD( PrlEvtPrm_GetName ) (
 								 PRL_UINT32_PTR pnParamNameBufLength
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X sParamName=%.8X, pnParamNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p sParamName=%p, pnParamNameBufLength=%p)",
 		__FUNCTION__,
 		hEventParam,
 		sParamName,
@@ -1603,7 +1602,7 @@ PRL_METHOD( PrlEvtPrm_GetType ) (
 								 PRL_PARAM_FIELD_DATA_TYPE_PTR pnParamType
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X pnParamType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p pnParamType=%p)",
 		__FUNCTION__,
 		hEventParam,
 		pnParamType
@@ -1625,7 +1624,7 @@ PRL_METHOD( PrlEvtPrm_ToString ) (
 								  PRL_UINT32_PTR pnParamValueBufLength
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X sParamValue=%.8X pnParamValueBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p sParamValue=%p pnParamValueBufLength=%p)",
 		__FUNCTION__,
 		hEventParam,
 		sParamValue,
@@ -1648,7 +1647,7 @@ PRL_METHOD( PrlEvtPrm_ToCData ) (
 								 PRL_UINT32_PTR pnParamValueBufLength
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X sParamValue=%.8X pnParamValueBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p sParamValue=%p pnParamValueBufLength=%p)",
 		__FUNCTION__,
 		hEventParam,
 		sParamValue,
@@ -1671,7 +1670,7 @@ PRL_METHOD( PrlEvtPrm_ToUint32 ) (
 								  PRL_UINT32_PTR pnParamValue
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X pnParamValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p pnParamValue=%p)",
 		__FUNCTION__,
 		hEventParam,
 		pnParamValue
@@ -1692,7 +1691,7 @@ PRL_METHOD( PrlEvtPrm_ToInt32 ) (
 								 PRL_INT32_PTR pnParamValue
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X pnParamValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p pnParamValue=%p)",
 		__FUNCTION__,
 		hEventParam,
 		pnParamValue
@@ -1713,7 +1712,7 @@ PRL_METHOD( PrlEvtPrm_ToUint64 ) (
 								  PRL_UINT64_PTR pnParamValue
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X pnParamValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p pnParamValue=%p)",
 		__FUNCTION__,
 		hEventParam,
 		pnParamValue
@@ -1734,7 +1733,7 @@ PRL_METHOD( PrlEvtPrm_ToInt64 ) (
 								 PRL_INT64_PTR pnParamValue
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X pnParamValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p pnParamValue=%p)",
 		__FUNCTION__,
 		hEventParam,
 		pnParamValue
@@ -1755,7 +1754,7 @@ PRL_METHOD( PrlEvtPrm_ToBoolean ) (
 								   PRL_BOOL_PTR pbParamValue
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X phParamValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p phParamValue=%p)",
 		__FUNCTION__,
 		hEventParam,
 		pbParamValue
@@ -1776,7 +1775,7 @@ PRL_METHOD( PrlEvtPrm_ToHandle ) (
 								  PRL_HANDLE_PTR phParamValue
 								  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X phParamValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p phParamValue=%p)",
 		__FUNCTION__,
 		hEventParam,
 		phParamValue
@@ -1798,7 +1797,7 @@ PRL_METHOD( PrlEvtPrm_GetBuffer ) (
 		PRL_UINT32_PTR pnParamValueBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%.8X pParamValue=%.8X, pnParamValueBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEventParam=%p pParamValue=%p, pnParamValueBufLength=%p)",
 		__FUNCTION__,
 		hEventParam,
 		pParamValue,
@@ -1894,9 +1893,9 @@ PRL_ASYNC_METHOD( PrlApi_SendPackedProblemReport ) (
 		)
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_API_SEND_PACKED_PROBLEM_REPORT)
-		LOG_MESSAGE( DBG_DEBUG, "%s (hProblemReport=%.8X, bUseProxy=%.8X, sProxyHost=%.8X, nProxyPort=%.8X, "\
-			"sProxyUserLogin=%.8X, sProxyUserPasswd=%.8X, nProblemSendTimeout=%.8X, nReserved=%.8X), "\
-			"handler=%.8X, pUserData=%.8X",
+		LOG_MESSAGE( DBG_DEBUG, "%s (hProblemReport=%p, bUseProxy=%.8X, sProxyHost=%s, nProxyPort=%.8X, "\
+			"sProxyUserLogin=%s, sProxyUserPasswd=%p, nProblemSendTimeout=%.8X, nReserved=%.8X), "\
+			"handler=%p, pUserData=%p",
 		__FUNCTION__,
 		hProblemReport,
 		bUseProxy,
@@ -2127,7 +2126,7 @@ PRL_METHOD( PrlBuffer_Free ) (
 							  PRL_VOID_PTR buffer
 							  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (buffer=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (buffer=%p)",
 		__FUNCTION__,
 		buffer
 		);
@@ -2144,7 +2143,7 @@ PRL_METHOD( PrlDbg_GetHandlesNum) (
 								   PRL_HANDLE_TYPE type
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handles_num=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handles_num=%p)",
 		__FUNCTION__,
 		handles_num
 		);
@@ -2204,7 +2203,7 @@ PRL_METHOD( PrlHandle_GetPackageId ) (
 								)
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hObj=%.8X id=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hObj=%p id=%p)",
 		__FUNCTION__,
 		hObj,
 		id
@@ -2228,7 +2227,7 @@ PRL_METHOD( PrlApi_GetCrashDumpsPath ) (
 		PRL_UINT32_PTR pnPathBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (sPath=%.8X, pnPathBufLength)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (sPath=%p, pnPathBufLength=%p)",
 		__FUNCTION__,
 		sPath,
 		pnPathBufLength
@@ -2244,7 +2243,7 @@ PRL_METHOD( PrlApi_InitCrashHandler ) (
 		PRL_CONST_STR sCrashDumpFileSuffix
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (sCrashDumpFileSuffix=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (sCrashDumpFileSuffix=%s)",
 		__FUNCTION__,
 		sCrashDumpFileSuffix
 		);
@@ -2302,9 +2301,9 @@ PRL_ASYNC_METHOD( PrlApi_SendProblemReport ) (
 		)
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_API_SEND_PROBLEM_REPORT)
-		LOG_MESSAGE( DBG_DEBUG, "%s (sProblemReport=%.8X, bUseProxy=%.8X, sProxyHost=%.8X, nProxyPort=%.8X, "\
-			"sProxyUserLogin=%.8X, sProxyUserPasswd=%.8X, nProblemSendTimeout=%.8X, nReserved=%.8X), "\
-			"handler=%.8X, pUserData=%.8X",
+		LOG_MESSAGE( DBG_DEBUG, "%s (sProblemReport=%s, bUseProxy=%.8X, sProxyHost=%s, nProxyPort=%.8X, "\
+			"sProxyUserLogin=%s, sProxyUserPasswd=%p, nProblemSendTimeout=%.8X, nReserved=%.8X), "\
+			"handler=%p, pUserData=%p",
 		__FUNCTION__,
 		sProblemReport,
 		bUseProxy,
