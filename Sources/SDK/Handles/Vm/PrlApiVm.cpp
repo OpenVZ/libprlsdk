@@ -167,7 +167,7 @@ PRL_METHOD( PrlApi_GetSupportedOsesTypes ) (
 										PRL_HANDLE_PTR phOsesTypesList
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (nHostOsType=%.8X, phOsesTypesList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (nHostOsType=%.8X, phOsesTypesList=%p)",
 		__FUNCTION__,
 		nHostOsType,
 		phOsesTypesList
@@ -187,7 +187,7 @@ PRL_METHOD( PrlApi_GetSupportedOsesVersions ) (
 										PRL_HANDLE_PTR phGuestsList
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (nHostOsType=%.8X, nGuestOsType=%.8X, phGuestsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (nHostOsType=%.8X, nGuestOsType=%.8X, phGuestsList=%p)",
 		__FUNCTION__,
 		nHostOsType,
 		nGuestOsType,
@@ -207,7 +207,7 @@ PRL_METHOD( PrlApi_GetDefaultOsVersion ) (
 										PRL_UINT16_PTR pnOsVersion
 										)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (nGuestOsType=%.8X, pnOsVersion=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (nGuestOsType=%.8X, pnOsVersion=%p)",
 		__FUNCTION__,
 		nGuestOsType,
 		pnOsVersion
@@ -259,7 +259,7 @@ PRL_ASYNC_METHOD( PrlSrv_RegisterVmEx ) (
 									   PRL_UINT32 nFlags
 									   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%.8X, strVmDirPath=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%p, strVmDirPath=%s, nFlags=%.8X)",
 		__FUNCTION__,
 		hServer,
 		strVmDirPath,
@@ -316,7 +316,7 @@ PRL_ASYNC_METHOD( PrlSrv_Register3rdPartyVm ) (
 									   PRL_UINT32 nFlags
 									   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%.8X, strVmConfigPath=%.8X, strVmRootDirPath=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%p, strVmConfigPath=%s, strVmRootDirPath=%s, nFlags=%.8X)",
 		__FUNCTION__,
 		hServer,
 		strVmConfigPath,
@@ -495,7 +495,7 @@ PRL_ASYNC_METHOD( PrlVm_ChangeSid ) (
 					   PRL_UINT32 nFlags
 							   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nFlags=%.8X)",
 		__FUNCTION__,
 		hVm,
 		nFlags
@@ -515,7 +515,7 @@ PRL_ASYNC_METHOD( PrlVm_ResetUptime) (
 					   PRL_UINT32 nFlags
 							   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nFlags=%.8X)",
 		__FUNCTION__,
 		hVm,
 		nFlags
@@ -577,7 +577,7 @@ PRL_ASYNC_METHOD( PrlVm_StartVncServer ) (
 		PRL_UINT32 nReserved
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nReserved=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nReserved=%.8X)",
 		__FUNCTION__,
 		hVm,
 		nReserved
@@ -597,7 +597,7 @@ PRL_ASYNC_METHOD( PrlVm_StopVncServer ) (
 		PRL_UINT32 nReserved
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nReserved=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nReserved=%.8X)",
 		__FUNCTION__,
 		hVm,
 		nReserved
@@ -617,7 +617,7 @@ PRL_ASYNC_METHOD( PrlVm_Lock ) (
 		PRL_UINT32 nReserved
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nReserved=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nReserved=%.8X)",
 		__FUNCTION__,
 		hVm,
 		nReserved
@@ -637,7 +637,7 @@ PRL_ASYNC_METHOD( PrlVm_Unlock ) (
 		PRL_UINT32 nReserved
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nReserved=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nReserved=%.8X)",
 		__FUNCTION__,
 		hVm,
 		nReserved
@@ -1057,7 +1057,7 @@ PRL_ASYNC_METHOD( PrlVm_InitiateDevStateNotifications ) (
 								)
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_INITIATE_DEV_STATE_NOTIFICATIONS)
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p)",
 		__FUNCTION__,
 		hVm
 		);
@@ -1083,7 +1083,7 @@ PRL_ASYNC_METHOD( PrlVm_UpdateSecurity ) (
 								)
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_UPDATE_SECURITY)
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X hAccessRights=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p hAccessRights=%p)",
 		__FUNCTION__,
 		hVm,
 		hAccessRights
@@ -1108,7 +1108,7 @@ PRL_ASYNC_METHOD( PrlVm_ValidateConfig ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_VALIDATE_CONFIG)
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nSection=%d)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nSection=%d)",
 	__FUNCTION__,
 	hVm,
 	nSection
@@ -1143,7 +1143,7 @@ PRL_ASYNC_METHOD( PrlVm_Authorise ) (
 					  PRL_UINT32 nFlags
 					  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, sPassword=%.8X, nFlags=%.8x)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sPassword=%p, nFlags=%.8x)",
 		__FUNCTION__,
 		hVm,
 		sPassword,
@@ -1177,7 +1177,7 @@ PRL_ASYNC_METHOD( PrlVm_ChangePassword ) (
 					  PRL_UINT32 nFlags
 					  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, sOldPassword=%.8X, sNewPassword=%.8X nFlags=%.8x)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sOldPassword=%p, sNewPassword=%p nFlags=%.8x)",
 		__FUNCTION__,
 		hVm,
 		sOldPassword,
@@ -1212,7 +1212,7 @@ PRL_ASYNC_METHOD( PrlVm_Encrypt ) (
 					  PRL_UINT32 nFlags
 					  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, sPassword=%.8X, sCipherPluginUuid=%.8X, nFlags=%.8x)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sPassword=%p, sCipherPluginUuid=%s, nFlags=%.8x)",
 		__FUNCTION__,
 		hVm,
 		sPassword,
@@ -1245,7 +1245,7 @@ PRL_ASYNC_METHOD( PrlVm_Decrypt ) (
 					  PRL_UINT32 nFlags
 					  )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, sPassword=%.8X, nFlags=%.8x)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sPassword=%p, nFlags=%.8x)",
 		__FUNCTION__,
 		hVm,
 		sPassword,
@@ -1260,7 +1260,7 @@ PRL_METHOD( PrlVm_GetQuestions ) (
 		PRL_HANDLE_PTR pQuestionsList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pQuestionsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pQuestionsList=%p)",
 		__FUNCTION__,
 		hVm,
 		pQuestionsList
@@ -1300,7 +1300,7 @@ PRL_METHOD( PrlVm_CreateEvent ) (
 		PRL_HANDLE_PTR phEvent
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, phEvent=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, phEvent=%p)",
 		__FUNCTION__,
 		hVm,
 		phEvent
@@ -1325,7 +1325,7 @@ PRL_METHOD( PrlVmInfo_GetState) (
 		VIRTUAL_MACHINE_STATE_PTR pVmState
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pVmState=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pVmState=%p)",
 		__FUNCTION__,
 		handle,
 		pVmState
@@ -1344,7 +1344,7 @@ PRL_METHOD( PrlVmInfo_GetAdditionState) (
 								 VIRTUAL_MACHINE_ADDITION_STATE_PTR pVmState
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pVmState=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pVmState=%p)",
 		__FUNCTION__,
 		handle,
 		pVmState
@@ -1363,7 +1363,7 @@ PRL_METHOD( PrlVmInfo_GetAccessRights ) (
 		PRL_HANDLE_PTR phVmAcl
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmInfo=%.8X, phVmAcl=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmInfo=%p, phVmAcl=%p)",
 		__FUNCTION__,
 		hVmInfo,
 		phVmAcl
@@ -1382,7 +1382,7 @@ PRL_METHOD( PrlVmInfo_IsInvalid) (
 								 PRL_BOOL_PTR pbIsInvalid
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pbVmIsInvalid=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pbVmIsInvalid=%p)",
 		__FUNCTION__,
 		handle,
 		pbIsInvalid
@@ -1402,7 +1402,7 @@ PRL_METHOD( PrlVmInfo_IsInvalidEx) (
 								 PRL_RESULT_PTR pnInvalidReason
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pbVmIsInvalid=%.8X, pnInvalidReason=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pbVmIsInvalid=%p, pnInvalidReason=%p)",
 		__FUNCTION__,
 		handle,
 		pbIsInvalid,
@@ -1421,7 +1421,7 @@ PRL_METHOD( PrlVmInfo_IsVmWaitingForAnswer) (
 								 PRL_BOOL_PTR pbIsVmWaitingForAnswer
 								 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pbIsVmWaitingForAnswer=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pbIsVmWaitingForAnswer=%p)",
 		__FUNCTION__,
 		handle,
 		pbIsVmWaitingForAnswer
@@ -1440,7 +1440,7 @@ PRL_METHOD( PrlVmInfo_IsVncServerStarted ) (
 		PRL_BOOL_PTR pbIsVncServerStarted
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pbIsVncServerStarted=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pbIsVncServerStarted=%p)",
 		__FUNCTION__,
 		handle,
 		pbIsVncServerStarted
@@ -1507,7 +1507,7 @@ PRL_METHOD( PrlVm_GetConfig ) (
 		PRL_HANDLE_PTR phVmCfg
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, phVmCfg=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, phVmCfg=%p)",
 		__FUNCTION__,
 		hVm,
 		phVmCfg
@@ -1527,7 +1527,7 @@ PRL_METHOD( PrlVmCfg_IsOfflineManagementEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -1548,7 +1548,7 @@ PRL_METHOD( PrlVmCfg_SetOfflineManagementEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -1568,7 +1568,7 @@ PRL_METHOD( PrlVmCfg_SetToolsAutoUpdateEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -1588,7 +1588,7 @@ PRL_METHOD( PrlVmCfg_IsToolsAutoUpdateEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -1609,7 +1609,7 @@ PRL_METHOD( PrlVmCfg_GetConfirmationsList ) (
 	PRL_HANDLE_PTR phConfirmList
 	)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phConfirmList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phConfirmList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phConfirmList
@@ -1630,7 +1630,7 @@ PRL_METHOD( PrlVmCfg_SetConfirmationsList ) (
 	PRL_HANDLE hConfirmList
 	)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, hConfirmList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, hConfirmList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		hConfirmList
@@ -1653,7 +1653,7 @@ PRL_METHOD( PrlVmCfg_IsAutoCompressEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -1675,7 +1675,7 @@ PRL_METHOD( PrlVmCfg_SetAutoCompressEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -1696,7 +1696,7 @@ PRL_METHOD( PrlVmCfg_GetAutoCompressInterval ) (
 		PRL_UINT32_PTR pnInterval
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnInterval=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnInterval=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnInterval
@@ -1718,7 +1718,7 @@ PRL_METHOD( PrlVmCfg_SetAutoCompressInterval ) (
 		PRL_UINT32 nInterval
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nInterval=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nInterval=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nInterval
@@ -1739,7 +1739,7 @@ PRL_METHOD( PrlVmCfg_GetFreeDiskSpaceRatio ) (
 		PRL_DOUBLE_PTR pdFreeDiskSpaceRatio
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pdFreeDiskSpaceRatio=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pdFreeDiskSpaceRatio=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pdFreeDiskSpaceRatio
@@ -1761,7 +1761,7 @@ PRL_METHOD( PrlVmCfg_SetFreeDiskSpaceRatio ) (
 		PRL_DOUBLE dFreeDiskSpaceRatio
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, dFreeDiskSpaceRatio=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, dFreeDiskSpaceRatio=%f)",
 		__FUNCTION__,
 		hVmCfg,
 		dFreeDiskSpaceRatio
@@ -1802,7 +1802,7 @@ PRL_METHOD( PrlVmCfg_GetConfigValidity ) (
 								 )
 {
 	// Logging API calls for the possibility of debug trace
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X pnErrCode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p pnErrCode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnErrCode
@@ -1824,7 +1824,7 @@ PRL_METHOD( PrlVmCfg_GetName) (
 		PRL_UINT32_PTR pnVmNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmName=%.8X, pnVmNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmName=%s, pnVmNameBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmName,
@@ -1848,7 +1848,7 @@ PRL_METHOD( PrlVmCfg_SetName) (
 		PRL_CONST_STR sNewVmName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmName=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmName
@@ -1872,7 +1872,7 @@ PRL_METHOD( PrlVmCfg_GetHostname) (
 		PRL_UINT32_PTR pnVmHostnameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmHostname=%.8X, pnVmHostnameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmHostname=%s, pnVmHostnameBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmHostname,
@@ -1896,7 +1896,7 @@ PRL_METHOD( PrlVmCfg_SetHostname) (
 		PRL_CONST_STR sNewVmHostname
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmHostname=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmHostname=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmHostname
@@ -1919,7 +1919,7 @@ PRL_METHOD( PrlVmCfg_GetUuid) (
 		PRL_UINT32_PTR pnVmUuidBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmUuid=%.8X, pnVmUuidBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmUuid=%s, pnVmUuidBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmUuid,
@@ -1961,7 +1961,7 @@ PRL_METHOD( PrlVmCfg_SetUuid) (
 		PRL_CONST_STR sNewVmUuid
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmUuid=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmUuid=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmUuid
@@ -1985,7 +1985,7 @@ PRL_METHOD( PrlVmCfg_GetLinkedVmUuid) (
 		PRL_UINT32_PTR pnVmUuidBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmUuid=%.8X, pnVmUuidBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmUuid=%s, pnVmUuidBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmUuid,
@@ -2008,7 +2008,7 @@ PRL_METHOD( PrlVmCfg_GetOsType ) (
 		PRL_UINT32_PTR pnVmOsType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmOsType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmOsType=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmOsType
@@ -2030,7 +2030,7 @@ PRL_METHOD( PrlVmCfg_GetOsVersion ) (
 		PRL_UINT32_PTR pnVmOsVersion
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmOsVersion=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmOsVersion=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmOsVersion
@@ -2052,7 +2052,7 @@ PRL_METHOD( PrlVmCfg_SetOsVersion ) (
 		PRL_UINT32 nVmOsVersion
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmOsVersion=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmOsVersion=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmOsVersion
@@ -2073,7 +2073,7 @@ PRL_METHOD( PrlVmCfg_GetRamSize ) (
 		PRL_UINT32_PTR pnVmRamSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmRamSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmRamSize=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmRamSize
@@ -2095,7 +2095,7 @@ PRL_METHOD( PrlVmCfg_SetRamSize ) (
 		PRL_UINT32 nVmRamSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmRamSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmRamSize=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmRamSize
@@ -2117,7 +2117,7 @@ PRL_METHOD( PrlVmCfg_GetVideoRamSize ) (
 		PRL_UINT32_PTR pnVmVideoRamSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmVideoRamSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmVideoRamSize=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmVideoRamSize
@@ -2139,7 +2139,7 @@ PRL_METHOD( PrlVmCfg_SetVideoRamSize ) (
 		PRL_UINT32 nVmVideoRamSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmVideoRamSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmVideoRamSize=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmVideoRamSize
@@ -2163,7 +2163,7 @@ PRL_METHOD( PrlVmCfg_GetHostMemQuotaMin ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnHostMemQuotaMin=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnHostMemQuotaMin=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnHostMemQuotaMin
@@ -2185,7 +2185,7 @@ PRL_METHOD( PrlVmCfg_SetHostMemQuotaMin ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nHostMemQuotaMin=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaMin=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nHostMemQuotaMin
@@ -2206,7 +2206,7 @@ PRL_METHOD( PrlVmCfg_GetHostMemQuotaMax ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnHostMemQuotaMax=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnHostMemQuotaMax=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnHostMemQuotaMax
@@ -2228,7 +2228,7 @@ PRL_METHOD( PrlVmCfg_SetHostMemQuotaMax ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nHostMemQuotaMax=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaMax=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nHostMemQuotaMax
@@ -2249,7 +2249,7 @@ PRL_METHOD( PrlVmCfg_GetHostMemQuotaPriority ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnHostMemQuotaPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnHostMemQuotaPriority=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnHostMemQuotaPriority
@@ -2271,7 +2271,7 @@ PRL_METHOD( PrlVmCfg_SetHostMemQuotaPriority ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nHostMemQuotaPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaPriority=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nHostMemQuotaPriority
@@ -2292,7 +2292,7 @@ PRL_METHOD( PrlVmCfg_IsHostMemAutoQuota ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbHostMemAutoQuota=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbHostMemAutoQuota=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbHostMemAutoQuota
@@ -2314,7 +2314,7 @@ PRL_METHOD( PrlVmCfg_SetHostMemAutoQuota ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bHostMemAutoQuota=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bHostMemAutoQuota=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bHostMemAutoQuota
@@ -2335,7 +2335,7 @@ PRL_METHOD( PrlVmCfg_GetMaxBalloonSize ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnMaxBalloonSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnMaxBalloonSize=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnMaxBalloonSize
@@ -2357,7 +2357,7 @@ PRL_METHOD( PrlVmCfg_SetMaxBalloonSize ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nHostMemQuotaMax=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaMax=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nMaxBalloonSize
@@ -2376,7 +2376,7 @@ PRL_METHOD( PrlVmCfg_GetCpuCount ) (
 		PRL_UINT32_PTR pnVmCpuCount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmCpuCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmCpuCount=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmCpuCount
@@ -2398,7 +2398,7 @@ PRL_METHOD( PrlVmCfg_SetCpuCount ) (
 		PRL_UINT32 nVmCpuCount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuCount=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmCpuCount
@@ -2419,7 +2419,7 @@ PRL_METHOD( PrlVmCfg_GetCpuMode ) (
 		PRL_CPU_MODE_PTR pnVmCpuMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmCpuMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmCpuMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmCpuMode
@@ -2441,7 +2441,7 @@ PRL_METHOD( PrlVmCfg_SetCpuMode ) (
 		PRL_CPU_MODE nVmCpuMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmCpuMode
@@ -2462,7 +2462,7 @@ PRL_METHOD( PrlVmCfg_GetCpuAccelLevel ) (
 		PRL_VM_ACCELERATION_LEVEL_PTR pnVmCpuAccelLevel
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmCpuAccelLevel=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmCpuAccelLevel=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmCpuAccelLevel
@@ -2484,7 +2484,7 @@ PRL_METHOD( PrlVmCfg_SetCpuAccelLevel ) (
 		PRL_VM_ACCELERATION_LEVEL nVmCpuAccelLevel
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuAccelLevel=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuAccelLevel=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmCpuAccelLevel
@@ -2505,7 +2505,7 @@ PRL_METHOD( PrlVmCfg_IsCpuVtxEnabled ) (
 		PRL_BOOL_PTR pbVmCpuVtxEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmCpuVtxEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmCpuVtxEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmCpuVtxEnabled
@@ -2527,7 +2527,7 @@ PRL_METHOD( PrlVmCfg_IsCpuHotplugEnabled ) (
 		PRL_BOOL_PTR pbVmCpuHotplugEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmCpuHotplugEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmCpuHotplugEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmCpuHotplugEnabled
@@ -2549,7 +2549,7 @@ PRL_METHOD( PrlVmCfg_SetCpuHotplugEnabled ) (
 		PRL_BOOL bVmCpuHotplugEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmCpuHotplugEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmCpuHotplugEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmCpuHotplugEnabled
@@ -2570,7 +2570,7 @@ PRL_METHOD( PrlVmCfg_Get3DAccelerationMode ) (
 		PRL_VIDEO_3D_ACCELERATION_PTR pn3DAccelerationMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pn3DAccelerationMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pn3DAccelerationMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pn3DAccelerationMode
@@ -2592,7 +2592,7 @@ PRL_METHOD( PrlVmCfg_Set3DAccelerationMode ) (
 		PRL_VIDEO_3D_ACCELERATION n3DAccelerationMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, n3DAccelerationMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, n3DAccelerationMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		n3DAccelerationMode
@@ -2613,7 +2613,7 @@ PRL_METHOD( PrlVmCfg_IsVerticalSynchronizationEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -2634,7 +2634,7 @@ PRL_METHOD( PrlVmCfg_SetVerticalSynchronizationEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -2654,7 +2654,7 @@ PRL_METHOD( PrlVmCfg_IsHighResolutionEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -2675,7 +2675,7 @@ PRL_METHOD( PrlVmCfg_SetHighResolutionEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -2697,7 +2697,7 @@ PRL_METHOD( PrlVmCfg_IsAdaptiveHypervisorEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -2719,7 +2719,7 @@ PRL_METHOD( PrlVmCfg_SetAdaptiveHypervisorEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -2740,7 +2740,7 @@ PRL_METHOD( PrlVmCfg_IsSwitchOffWindowsLogoEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -2762,7 +2762,7 @@ PRL_METHOD( PrlVmCfg_SetSwitchOffWindowsLogoEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -2783,7 +2783,7 @@ PRL_METHOD( PrlVmCfg_IsLongerBatteryLifeEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -2805,7 +2805,7 @@ PRL_METHOD( PrlVmCfg_SetLongerBatteryLifeEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -2826,7 +2826,7 @@ PRL_METHOD( PrlVmCfg_IsBatteryStatusEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -2848,7 +2848,7 @@ PRL_METHOD( PrlVmCfg_SetBatteryStatusEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -2869,7 +2869,7 @@ PRL_METHOD( PrlVmCfg_IsNestedVirtualizationEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -2891,7 +2891,7 @@ PRL_METHOD( PrlVmCfg_SetNestedVirtualizationEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -2912,7 +2912,7 @@ PRL_METHOD( PrlVmCfg_IsPMUVirtualizationEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -2934,7 +2934,7 @@ PRL_METHOD( PrlVmCfg_SetPMUVirtualizationEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -2955,7 +2955,7 @@ PRL_METHOD( PrlVmCfg_IsLockGuestOnSuspendEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -2977,7 +2977,7 @@ PRL_METHOD( PrlVmCfg_SetLockGuestOnSuspendEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -2998,7 +2998,7 @@ PRL_METHOD( PrlVmCfg_IsIsolatedVmEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -3020,7 +3020,7 @@ PRL_METHOD( PrlVmCfg_SetIsolatedVmEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -3040,7 +3040,7 @@ PRL_METHOD( PrlVmCfg_GetServerUuid) (
 		PRL_UINT32_PTR pnServerUuidBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sServerUuid=%.8X, pnServerUuidBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sServerUuid=%s, pnServerUuidBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sServerUuid,
@@ -3065,7 +3065,7 @@ PRL_METHOD( PrlVmCfg_GetServerHost) (
 		PRL_UINT32_PTR pnServerHostBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sServerHost=%.8X, pnServerHostBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sServerHost=%p, pnServerHostBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sServerHost,
@@ -3090,7 +3090,7 @@ PRL_METHOD( PrlVmCfg_GetHomePath) (
 		PRL_UINT32_PTR pnHomePathBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sHomePath=%.8X, pnHomePathBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sHomePath=%p, pnHomePathBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sHomePath,
@@ -3114,7 +3114,7 @@ PRL_METHOD( PrlVmCfg_GetLocation) (
 		PRL_VM_LOCATION_PTR pnVmLocation
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmLocation=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmLocation=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmLocation
@@ -3138,7 +3138,7 @@ PRL_METHOD( PrlVmCfg_GetIcon) (
 		PRL_UINT32_PTR pnVmIconBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmIcon=%.8X, pnVmIconBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmIcon=%p, pnVmIconBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmIcon,
@@ -3162,7 +3162,7 @@ PRL_METHOD( PrlVmCfg_SetIcon) (
 		PRL_CONST_STR sNewVmIcon
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmIcon=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmIcon=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmIcon
@@ -3186,7 +3186,7 @@ PRL_METHOD( PrlVmCfg_GetDescription) (
 		PRL_UINT32_PTR pnVmDescriptionBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmDescription=%.8X, pnVmDescriptionBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmDescription=%p, pnVmDescriptionBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmDescription,
@@ -3210,7 +3210,7 @@ PRL_METHOD( PrlVmCfg_SetDescription) (
 		PRL_CONST_STR sNewVmDescription
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmDescription=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmDescription=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmDescription
@@ -3232,7 +3232,7 @@ PRL_METHOD( PrlVmCfg_IsTemplate ) (
 		PRL_BOOL_PTR pbVmIsTemplate
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmIsTemplate=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmIsTemplate=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmIsTemplate
@@ -3254,7 +3254,7 @@ PRL_METHOD( PrlVmCfg_SetTemplateSign ) (
 		PRL_BOOL bVmIsTemplate
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmIsTemplate=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmIsTemplate=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmIsTemplate
@@ -3276,7 +3276,7 @@ PRL_METHOD( PrlVmCfg_GetCustomProperty) (
 								   PRL_UINT32_PTR pnVmCustomPropertyBufLength
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmCustomProperty=%.8X, pnVmCustomPropertyBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmCustomProperty=%p, pnVmCustomPropertyBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmCustomProperty,
@@ -3299,7 +3299,7 @@ PRL_METHOD( PrlVmCfg_SetCustomProperty) (
 								   PRL_CONST_STR sNewVmCustomProperty
 								   )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmCustomProperty=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmCustomProperty=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmCustomProperty
@@ -3321,7 +3321,7 @@ PRL_METHOD( PrlVmCfg_GetAutoStart ) (
 		PRL_VM_AUTOSTART_OPTION_PTR pnVmAutoStart
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmAutoStart=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmAutoStart=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmAutoStart
@@ -3343,7 +3343,7 @@ PRL_METHOD( PrlVmCfg_SetAutoStart ) (
 		PRL_VM_AUTOSTART_OPTION nVmAutoStart
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmAutoStart=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmAutoStart=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmAutoStart
@@ -3364,7 +3364,7 @@ PRL_METHOD( PrlVmCfg_GetAutoStartDelay ) (
 		PRL_UINT32_PTR pnVmAutoStartDelay
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmAutoStartDelay=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmAutoStartDelay=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmAutoStartDelay
@@ -3386,7 +3386,7 @@ PRL_METHOD( PrlVmCfg_SetAutoStartDelay ) (
 		PRL_UINT32 nVmAutoStartDelay
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmAutoStartDelay=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmAutoStartDelay=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmAutoStartDelay
@@ -3407,7 +3407,7 @@ PRL_METHOD( PrlVmCfg_GetStartLoginMode ) (
 		PRL_VM_START_LOGIN_MODE_PTR pnVmStartLoginMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmStartLoginMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmStartLoginMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmStartLoginMode
@@ -3429,7 +3429,7 @@ PRL_METHOD( PrlVmCfg_SetStartLoginMode ) (
 		PRL_VM_START_LOGIN_MODE nVmStartLoginMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmStartLoginMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmStartLoginMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmStartLoginMode
@@ -3451,7 +3451,7 @@ PRL_METHOD( PrlVmCfg_GetStartUserLogin) (
 		PRL_UINT32_PTR pnStartUserLoginBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sStartUserLogin=%.8X, pnStartUserLoginBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sStartUserLogin=%p, pnStartUserLoginBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sStartUserLogin,
@@ -3476,7 +3476,7 @@ PRL_METHOD( PrlVmCfg_SetStartUserCreds) (
 		PRL_CONST_STR sPassword
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sStartUserLogin=%.8X, sPassword=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sStartUserLogin=%s, sPassword=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sStartUserLogin,
@@ -3499,7 +3499,7 @@ PRL_METHOD( PrlVmCfg_GetAutoStop ) (
 		PRL_VM_AUTOSTOP_OPTION_PTR pnVmAutoStop
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmAutoStop=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmAutoStop=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmAutoStop
@@ -3521,7 +3521,7 @@ PRL_METHOD( PrlVmCfg_SetAutoStop ) (
 		PRL_VM_AUTOSTOP_OPTION nVmAutoStop
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmAutoStop=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmAutoStop=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmAutoStop
@@ -3542,7 +3542,7 @@ PRL_METHOD( PrlVmCfg_GetActionOnWindowClose ) (
 		PRL_VM_ACTION_ON_WINDOW_CLOSE_PTR pnActionOnWindowClose
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnActionOnWindowClose=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnActionOnWindowClose=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnActionOnWindowClose
@@ -3564,7 +3564,7 @@ PRL_METHOD( PrlVmCfg_SetActionOnWindowClose ) (
 		PRL_VM_ACTION_ON_WINDOW_CLOSE nActionOnWindowClose
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nActionOnWindowClose=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nActionOnWindowClose=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nActionOnWindowClose
@@ -3585,7 +3585,7 @@ PRL_METHOD( PrlVmCfg_GetActionOnStopMode ) (
 		PRL_VM_ACTION_ON_STOP_PTR pnMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnMode
@@ -3606,7 +3606,7 @@ PRL_METHOD( PrlVmCfg_SetActionOnStopMode ) (
 		PRL_VM_ACTION_ON_STOP nMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nMode
@@ -3626,7 +3626,7 @@ PRL_METHOD( PrlVmCfg_GetWindowMode ) (
 		PRL_VM_WINDOW_MODE_PTR pnVmWindowMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmWindowMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmWindowMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmWindowMode
@@ -3648,7 +3648,7 @@ PRL_METHOD( PrlVmCfg_SetWindowMode ) (
 		PRL_VM_WINDOW_MODE nVmWindowMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmWindowMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmWindowMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmWindowMode
@@ -3671,7 +3671,7 @@ PRL_METHOD( PrlVmCfg_IsStartInDetachedWindowEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, pbEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, pbEnable=%p)",
 		__FUNCTION__,
 		hVm,
 		pbEnable
@@ -3693,7 +3693,7 @@ PRL_METHOD( PrlVmCfg_SetStartInDetachedWindowEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, bEnable=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, bEnable=%.8X)",
 		__FUNCTION__,
 		hVm,
 		bEnable
@@ -3712,7 +3712,7 @@ PRL_METHOD( PrlVmCfg_IsLockInFullScreenMode ) (
                 PRL_BOOL_PTR pbValue
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbValue=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbValue
@@ -3733,7 +3733,7 @@ PRL_METHOD( PrlVmCfg_SetLockInFullScreenMode ) (
                PRL_BOOL bValue
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bValue=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bValue=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bValue
@@ -3755,7 +3755,7 @@ PRL_METHOD( PrlVmCfg_GetLastModifiedDate) (
 		PRL_UINT32_PTR pnVmLastModifiedDateBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmLastModifiedDate=%.8X, pnVmLastModifiedDateBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmLastModifiedDate=%p, pnVmLastModifiedDateBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmLastModifiedDate,
@@ -3780,7 +3780,7 @@ PRL_METHOD( PrlVmCfg_GetLastModifierName) (
 		PRL_UINT32_PTR pnVmLastModifierNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmLastModifierName=%.8X, pnVmLastModifierNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmLastModifierName=%p, pnVmLastModifierNameBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmLastModifierName,
@@ -3804,7 +3804,7 @@ PRL_METHOD( PrlVmCfg_GetUptimeStartDate) (
 		PRL_UINT32_PTR pnVmUptimeStartDateBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmUptimeStartDate=%.8X, pnVmUptimeStartDateBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmUptimeStartDate=%p, pnVmUptimeStartDateBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmUptimeStartDate,
@@ -3827,7 +3827,7 @@ PRL_METHOD( PrlVmCfg_GetUptime) (
 		PRL_UINT64_PTR pnVmUptime
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmUptime=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmUptime=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmUptime
@@ -3850,7 +3850,7 @@ PRL_METHOD( PrlVmCfg_GetAccessRights ) (
 		PRL_HANDLE_PTR phVmAcl
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phVmAcl=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phVmAcl=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phVmAcl
@@ -3873,7 +3873,7 @@ PRL_METHOD( PrlVmCfg_IsGuestSharingEnabled ) (
 		PRL_BOOL_PTR pbVmGuestSharingEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmGuestSharingEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmGuestSharingEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmGuestSharingEnabled
@@ -3895,7 +3895,7 @@ PRL_METHOD( PrlVmCfg_SetGuestSharingEnabled ) (
 		PRL_BOOL bVmGuestSharingEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmGuestSharingEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmGuestSharingEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmGuestSharingEnabled
@@ -3916,7 +3916,7 @@ PRL_METHOD( PrlVmCfg_IsGuestSharingAutoMount ) (
 		PRL_BOOL_PTR pbVmGuestSharingAutoMount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmGuestSharingAutoMount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmGuestSharingAutoMount=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmGuestSharingAutoMount
@@ -3938,7 +3938,7 @@ PRL_METHOD( PrlVmCfg_SetGuestSharingAutoMount ) (
 		PRL_BOOL bVmGuestSharingAutoMount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmGuestSharingAutoMount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmGuestSharingAutoMount=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmGuestSharingAutoMount
@@ -3959,7 +3959,7 @@ PRL_METHOD( PrlVmCfg_IsGuestSharingEnableSpotlight ) (
 		PRL_BOOL_PTR pbVmGuestSharingEnableSpotlight
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmGuestSharingEnableSpotlight=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmGuestSharingEnableSpotlight=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmGuestSharingEnableSpotlight
@@ -3981,7 +3981,7 @@ PRL_METHOD( PrlVmCfg_SetGuestSharingEnableSpotlight ) (
 		PRL_BOOL bVmGuestSharingEnableSpotlight
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmGuestSharingEnableSpotlight=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmGuestSharingEnableSpotlight=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmGuestSharingEnableSpotlight
@@ -4002,7 +4002,7 @@ PRL_METHOD( PrlVmCfg_IsHostSharingEnabled ) (
 		PRL_BOOL_PTR pbVmHostSharingEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmHostSharingEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmHostSharingEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmHostSharingEnabled
@@ -4024,7 +4024,7 @@ PRL_METHOD( PrlVmCfg_SetHostSharingEnabled ) (
 		PRL_BOOL bVmHostSharingEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmHostSharingEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmHostSharingEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmHostSharingEnabled
@@ -4045,7 +4045,7 @@ PRL_METHOD( PrlVmCfg_IsShareAllHostDisks ) (
 		PRL_BOOL_PTR pbShareAllHostDisks
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbShareAllHostDisks=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbShareAllHostDisks=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbShareAllHostDisks
@@ -4067,7 +4067,7 @@ PRL_METHOD( PrlVmCfg_SetShareAllHostDisks ) (
 		PRL_BOOL bShareAllHostDisks
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bShareAllHostDisks=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bShareAllHostDisks=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bShareAllHostDisks
@@ -4088,7 +4088,7 @@ PRL_METHOD( PrlVmCfg_IsShareUserHomeDir ) (
 		PRL_BOOL_PTR pbShareUserHomeDir
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbShareUserHomeDir=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbShareUserHomeDir=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbShareUserHomeDir
@@ -4110,7 +4110,7 @@ PRL_METHOD( PrlVmCfg_SetShareUserHomeDir ) (
 		PRL_BOOL bShareUserHomeDir
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bShareUserHomeDir=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bShareUserHomeDir=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bShareUserHomeDir
@@ -4131,7 +4131,7 @@ PRL_METHOD( PrlVmCfg_IsMapSharedFoldersOnLetters ) (
 		PRL_BOOL_PTR pbMapSharedFoldersOnLetters
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbMapSharedFoldersOnLetters=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbMapSharedFoldersOnLetters=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbMapSharedFoldersOnLetters
@@ -4153,7 +4153,7 @@ PRL_METHOD( PrlVmCfg_SetMapSharedFoldersOnLetters ) (
 		PRL_BOOL bMapSharedFoldersOnLetters
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bMapSharedFoldersOnLetters=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bMapSharedFoldersOnLetters=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bMapSharedFoldersOnLetters
@@ -4174,7 +4174,7 @@ PRL_METHOD( PrlVmCfg_GetVNCMode ) (
 		PRL_VM_REMOTE_DISPLAY_MODE_PTR pnVmRemoteDisplayMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmRemoteDisplayMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmRemoteDisplayMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmRemoteDisplayMode
@@ -4196,7 +4196,7 @@ PRL_METHOD( PrlVmCfg_SetVNCMode ) (
 		PRL_VM_REMOTE_DISPLAY_MODE nVmRemoteDisplayMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmRemoteDisplayMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmRemoteDisplayMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmRemoteDisplayMode
@@ -4218,7 +4218,7 @@ PRL_METHOD( PrlVmCfg_GetVNCPassword) (
 		PRL_UINT32_PTR pnVmRemoteDisplayPasswordBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmRemoteDisplayPassword=%.8X, pnVmRemoteDisplayPasswordBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmRemoteDisplayPassword=%p, pnVmRemoteDisplayPasswordBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmRemoteDisplayPassword,
@@ -4241,7 +4241,7 @@ PRL_METHOD( PrlVmCfg_SetVNCPassword) (
 		PRL_CONST_STR sNewVmRemoteDisplayPassword
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmRemoteDisplayPassword=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmRemoteDisplayPassword=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmRemoteDisplayPassword
@@ -4264,7 +4264,7 @@ PRL_METHOD( PrlVmCfg_GetVNCHostName) (
 		PRL_UINT32_PTR pnVmRemoteDisplayHostNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmRemoteDisplayHostName=%.8X, pnVmRemoteDisplayHostNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmRemoteDisplayHostName=%p, pnVmRemoteDisplayHostNameBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmRemoteDisplayHostName,
@@ -4287,7 +4287,7 @@ PRL_METHOD( PrlVmCfg_SetVNCHostName) (
 		PRL_CONST_STR sNewVmRemoteDisplayHostName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmRemoteDisplayHostName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmRemoteDisplayHostName=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmRemoteDisplayHostName
@@ -4309,7 +4309,7 @@ PRL_METHOD( PrlVmCfg_GetVNCPort ) (
 		PRL_UINT32_PTR pnVmRemoteDisplayPortNumber
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmRemoteDisplayPortNumber=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmRemoteDisplayPortNumber=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmRemoteDisplayPortNumber
@@ -4331,7 +4331,7 @@ PRL_METHOD( PrlVmCfg_SetVNCPort ) (
 		PRL_UINT32 nVmRemoteDisplayPortNumber
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmRemoteDisplayPortNumber=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmRemoteDisplayPortNumber=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmRemoteDisplayPortNumber
@@ -4352,7 +4352,7 @@ PRL_METHOD( PrlVmCfg_IsScrResEnabled ) (
 		PRL_BOOL_PTR pbVmScrResEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmScrResEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmScrResEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmScrResEnabled
@@ -4374,7 +4374,7 @@ PRL_METHOD( PrlVmCfg_SetScrResEnabled ) (
 		PRL_BOOL bVmScrResEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmScrResEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmScrResEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmScrResEnabled
@@ -4395,7 +4395,7 @@ PRL_METHOD( PrlVmCfg_IsDiskCacheWriteBack ) (
 		PRL_BOOL_PTR pbVmDiskCacheWriteBack
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmDiskCacheWriteBack=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmDiskCacheWriteBack=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmDiskCacheWriteBack
@@ -4417,7 +4417,7 @@ PRL_METHOD( PrlVmCfg_SetDiskCacheWriteBack ) (
 		PRL_BOOL bVmDiskCacheWriteBack
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmDiskCacheWriteBack=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmDiskCacheWriteBack=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmDiskCacheWriteBack
@@ -4438,7 +4438,7 @@ PRL_METHOD( PrlVmCfg_IsOsResInFullScrMode ) (
 		PRL_BOOL_PTR pbVmOsResInFullScrMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmOsResInFullScrMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmOsResInFullScrMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmOsResInFullScrMode
@@ -4460,7 +4460,7 @@ PRL_METHOD( PrlVmCfg_SetOsResInFullScrMode ) (
 		PRL_BOOL bVmOsResInFullScrMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmOsResInFullScrMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmOsResInFullScrMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmOsResInFullScrMode
@@ -4481,7 +4481,7 @@ PRL_METHOD( PrlVmCfg_IsCloseAppOnShutdown ) (
 		PRL_BOOL_PTR pbVmCloseAppOnShutdown
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmCloseAppOnShutdown=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmCloseAppOnShutdown=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmCloseAppOnShutdown
@@ -4503,7 +4503,7 @@ PRL_METHOD( PrlVmCfg_SetCloseAppOnShutdown ) (
 		PRL_BOOL bVmCloseAppOnShutdown
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmCloseAppOnShutdown=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmCloseAppOnShutdown=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmCloseAppOnShutdown
@@ -4525,7 +4525,7 @@ PRL_METHOD( PrlVmCfg_GetSystemFlags) (
 		PRL_UINT32_PTR pnVmSystemFlagsBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sVmSystemFlags=%.8X, pnVmSystemFlagsBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmSystemFlags=%p, pnVmSystemFlagsBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sVmSystemFlags,
@@ -4549,7 +4549,7 @@ PRL_METHOD( PrlVmCfg_SetSystemFlags) (
 		PRL_CONST_STR sNewVmSystemFlags
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewVmSystemFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmSystemFlags=%s)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewVmSystemFlags
@@ -4571,7 +4571,7 @@ PRL_METHOD( PrlVmCfg_IsDisableAPIC ) (
 		PRL_BOOL_PTR pbDisableAPIC
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbDisableAPIC=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbDisableAPIC=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbDisableAPIC
@@ -4593,7 +4593,7 @@ PRL_METHOD( PrlVmCfg_SetDisableAPICSign ) (
 		PRL_BOOL bDisableAPIC
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bDisableAPIC=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bDisableAPIC=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bDisableAPIC
@@ -4614,7 +4614,7 @@ PRL_METHOD( PrlVmCfg_IsDisableSpeaker ) (
 		PRL_BOOL_PTR pbDisableSpeaker
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbDisableSpeaker=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbDisableSpeaker=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbDisableSpeaker
@@ -4636,7 +4636,7 @@ PRL_METHOD( PrlVmCfg_SetDisableSpeakerSign ) (
 		PRL_BOOL bDisableSpeaker
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bDisableSpeaker=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bDisableSpeaker=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bDisableSpeaker
@@ -4657,7 +4657,7 @@ PRL_METHOD( PrlVmCfg_GetUndoDisksMode ) (
 		PRL_UNDO_DISKS_MODE_PTR pnUndoDisksMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnUndoDisksMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnUndoDisksMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnUndoDisksMode
@@ -4679,7 +4679,7 @@ PRL_METHOD( PrlVmCfg_SetUndoDisksMode ) (
 		PRL_UNDO_DISKS_MODE nUndoDisksMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nUndoDisksMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nUndoDisksMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nUndoDisksMode
@@ -4700,7 +4700,7 @@ PRL_METHOD( PrlVmCfg_GetForegroundPriority ) (
 		PRL_VM_PRIORITY_PTR pnVmForegroundPriority
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmForegroundPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmForegroundPriority=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmForegroundPriority
@@ -4722,7 +4722,7 @@ PRL_METHOD( PrlVmCfg_SetForegroundPriority ) (
 		PRL_VM_PRIORITY nVmForegroundPriority
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmForegroundPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmForegroundPriority=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmForegroundPriority
@@ -4743,7 +4743,7 @@ PRL_METHOD( PrlVmCfg_GetBackgroundPriority ) (
 		PRL_VM_PRIORITY_PTR pnVmBackgroundPriority
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmBackgroundPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmBackgroundPriority=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmBackgroundPriority
@@ -4765,7 +4765,7 @@ PRL_METHOD( PrlVmCfg_SetBackgroundPriority ) (
 		PRL_VM_PRIORITY nVmBackgroundPriority
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmBackgroundPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmBackgroundPriority=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmBackgroundPriority
@@ -4786,7 +4786,7 @@ PRL_METHOD( PrlVmCfg_IsUseDefaultAnswers ) (
 		PRL_BOOL_PTR pbUseDefaultAnswers
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbUseDefaultAnswers=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbUseDefaultAnswers=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbUseDefaultAnswers
@@ -4807,7 +4807,7 @@ PRL_METHOD( PrlVmCfg_SetUseDefaultAnswers ) (
 		PRL_BOOL bUseDefaultAnswers
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bUseDefaultAnswers=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bUseDefaultAnswers=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bUseDefaultAnswers
@@ -4827,7 +4827,7 @@ PRL_METHOD( PrlVmCfg_GetSearchDomains ) (
 		PRL_HANDLE_PTR phSearchDomainsList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phSearchDomainsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phSearchDomainsList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phSearchDomainsList
@@ -4847,7 +4847,7 @@ PRL_METHOD( PrlVmCfg_SetSearchDomains ) (
 		PRL_HANDLE hSearchDomainsList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, hSearchDomainsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, hSearchDomainsList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		hSearchDomainsList
@@ -4869,7 +4869,7 @@ PRL_METHOD( PrlVmCfg_GetDnsServers ) (
 		PRL_HANDLE_PTR phDnsServersList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phDnsServersList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phDnsServersList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phDnsServersList
@@ -4889,7 +4889,7 @@ PRL_METHOD( PrlVmCfg_SetDnsServers ) (
 		PRL_HANDLE hDnsServersList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, hDnsServersList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, hDnsServersList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		hDnsServersList
@@ -4941,7 +4941,7 @@ PRL_METHOD( PrlVmCfg_GetVmInfo ) (
 		PRL_HANDLE_PTR phVmInfo
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phVmInfo=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phVmInfo=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phVmInfo
@@ -4960,7 +4960,7 @@ PRL_METHOD( PrlVmCfg_IsEncrypted ) (
 		PRL_BOOL_PTR pbEncrypted
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEncrypted=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEncrypted=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEncrypted
@@ -4983,7 +4983,7 @@ PRL_METHOD( PrlVmCfg_GetCapabilitiesMask ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnCapMask=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnCapMask=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnCapMask
@@ -5005,7 +5005,7 @@ PRL_METHOD( PrlVmCfg_SetCapabilitiesMask ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nCapMask=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nCapMask=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nCapMask
@@ -5026,7 +5026,7 @@ PRL_METHOD( PrlVmCfg_GetNetfilterMode ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnMode=%.8X)", __FUNCTION__, hVmCfg, pnMode);
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnMode=%p)", __FUNCTION__, hVmCfg, pnMode);
 
 	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) || PRL_WRONG_PTR(pnMode))
 		return PRL_ERR_INVALID_ARG;
@@ -5043,7 +5043,7 @@ PRL_METHOD( PrlVmCfg_SetNetfilterMode ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nMode=%.8X)", __FUNCTION__, hVmCfg, nMode);
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nMode=%.8X)", __FUNCTION__, hVmCfg, nMode);
 
 	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
 		return PRL_ERR_INVALID_ARG;
@@ -5092,7 +5092,7 @@ PRL_METHOD( PrlVmCfg_GetProfile ) (
 		PRL_VIRTUAL_MACHINE_PROFILE_PTR pnVmProfile
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnVmProfile=%p)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmProfile=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnVmProfile
@@ -5114,7 +5114,7 @@ PRL_METHOD( PrlVmCfg_IsCustomProfile ) (
 		PRL_BOOL_PTR pbCustom
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbCustom=%p)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbCustom=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbCustom
@@ -5137,7 +5137,7 @@ PRL_METHOD( PrlVmCfg_SetProfile ) (
 		PRL_VIRTUAL_MACHINE_PROFILE nVmProfile
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmProfile=%d)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmProfile=%d)",
 		__FUNCTION__,
 		hVmCfg,
 		nVmProfile
@@ -5161,7 +5161,7 @@ PRL_METHOD( PrlVmCfg_IsHighAvailabilityEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -5182,7 +5182,7 @@ PRL_METHOD( PrlVmCfg_SetHighAvailabilityEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -5202,7 +5202,7 @@ PRL_METHOD( PrlVmCfg_GetHighAvailabilityPriority ) (
 		PRL_UINT32_PTR pnPriority
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnPriority=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnPriority
@@ -5223,7 +5223,7 @@ PRL_METHOD( PrlVmCfg_SetHighAvailabilityPriority ) (
 		PRL_UINT32 nPriority
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nPriority=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nPriority=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nPriority
@@ -5551,7 +5551,7 @@ PRL_METHOD( PrlApi_GetRecommendMinVmMem ) (
 		PRL_UINT32_PTR pnMinMemSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (nOsVersion=%.8X, pnMinMemSize=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (nOsVersion=%.8X, pnMinMemSize=%p",
 		__FUNCTION__,
 		nOsVersion,
 		pnMinMemSize
@@ -5579,7 +5579,7 @@ PRL_METHOD( PrlSrv_GetSupportedOses ) (
 		PRL_HANDLE_PTR phOsesMatrix
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%.8X, phOsesMatrix=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%p, phOsesMatrix=%p)",
 		__FUNCTION__,
 		hServer,
 		phOsesMatrix
@@ -5603,7 +5603,7 @@ PRL_ASYNC_METHOD( PrlSrv_InstallAppliance ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_INSTALL_APPLIANCE)
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%.8X, hAppCfg=%.8X, sVmParentPath=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%p, hAppCfg=%p, sVmParentPath=%s, nFlags=%.8X)",
 	__FUNCTION__,
 	hServer,
 	hAppCfg,
@@ -5623,7 +5623,7 @@ PRL_ASYNC_METHOD( PrlSrv_CancelInstallAppliance ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_INSTALL_APPLIANCE)
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%.8X, hAppCfg=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%p, hAppCfg=%p, nFlags=%.8X)",
 	__FUNCTION__,
 	hServer,
 	hAppCfg,
@@ -5644,7 +5644,7 @@ PRL_ASYNC_METHOD( PrlSrv_StopInstallAppliance ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_INSTALL_APPLIANCE)
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%.8X, hAppCfg=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hServer=%p, hAppCfg=%p, nFlags=%.8X)",
 	__FUNCTION__,
 	hServer,
 	hAppCfg,
@@ -5947,7 +5947,7 @@ PRL_ASYNC_METHOD( PrlVm_LoginInGuest ) (
 		PRL_UINT32 nFlags
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, sUserName=%.8X, sUserPassword=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sUserName=%s, sUserPassword=%p, nFlags=%.8X)",
 		__FUNCTION__,
 		hVm,
 		sUserName,
@@ -5966,7 +5966,7 @@ PRL_ASYNC_METHOD( PrlVm_AuthWithGuestSecurityDb ) (
 		PRL_UINT32 nFlags
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, sUserName=%.8X, sUserPassword=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sUserName=%s, sUserPassword=%p, nFlags=%.8X)",
 		__FUNCTION__,
 		hVm,
 		sUserName,
@@ -5983,7 +5983,7 @@ PRL_METHOD( PrlVmCfg_GetOfflineServices ) (
 		PRL_HANDLE_PTR phOfflineServicesList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phOfflineServicesList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phOfflineServicesList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phOfflineServicesList
@@ -6003,7 +6003,7 @@ PRL_METHOD( PrlVmCfg_SetOfflineServices ) (
 		PRL_HANDLE hOfflineServicesList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, hOfflineServicesList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, hOfflineServicesList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		hOfflineServicesList
@@ -6025,7 +6025,7 @@ PRL_ASYNC_METHOD( PrlVmGuest_Logout ) (
 		PRL_UINT32 nReserved
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%.8X, nReserved=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%p, nReserved=%.8X)",
 		__FUNCTION__,
 		hVmGuest,
 		nReserved
@@ -6046,7 +6046,7 @@ PRL_ASYNC_METHOD( PrlVmGuest_RunProgram ) (
 		PRL_FILE_DESC nStderr
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%.8X, sAppName=%.8X, hArgsList=%.8X, hEnvsList=%.8X, nFlags=%.8X, nStdin=%.8X, nStdout=%.8X, nStderr=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%p, sAppName=%s, hArgsList=%p, hEnvsList=%p, nFlags=%.8X, nStdin=%.8X, nStdout=%.8X, nStderr=%.8X)",
 		__FUNCTION__,
 		hVmGuest,
 		sAppName,
@@ -6067,7 +6067,7 @@ PRL_ASYNC_METHOD( PrlVmGuest_GetNetworkSettings ) (
 		PRL_UINT32 nReserved
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%.8X, nReserved=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%p, nReserved=%.8X)",
 		__FUNCTION__,
 		hVmGuest,
 		nReserved
@@ -6084,7 +6084,7 @@ PRL_ASYNC_METHOD( PrlVmGuest_SetUserPasswd ) (
 		PRL_UINT32 nFlags
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%.8X, sUserName=%.8X, sUserPasswd=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmGuest=%p, sUserName=%s, sUserPasswd=%p, nFlags=%.8X)",
 		__FUNCTION__,
 		hVmGuest,
 		sUserName,
@@ -6203,7 +6203,7 @@ PRL_METHOD( PrlVmCfg_GetDefaultVideoRamSize ) (
 		PRL_UINT32_PTR pnVideoRamSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (guestOsVersion=%.8X, hSrvConfig=%.8X, bIs3DSupportEnabled=%.8X, pnVideoRamSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (guestOsVersion=%.8X, hSrvConfig=%p, bIs3DSupportEnabled=%.8X, pnVideoRamSize=%p)",
 		__FUNCTION__,
 		guestOsVersion,
 		hSrvConfig,
@@ -6265,7 +6265,7 @@ PRL_METHOD( PrlVmCfg_CreateVmDev) (
 		PRL_HANDLE_PTR phVmDevice
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, device_type=%.8X, phVmDevice=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, device_type=%.8X, phVmDevice=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		device_type,
@@ -6286,7 +6286,7 @@ PRL_METHOD( PrlVmCfg_GetDevsCount ) (
 		PRL_UINT32_PTR vmdev_handles_count
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, vmdev_handles_count=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, vmdev_handles_count=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		vmdev_handles_count
@@ -6308,7 +6308,7 @@ PRL_METHOD( PrlVmCfg_GetAllDevices ) (
 		PRL_HANDLE_PTR phDevsList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phDevsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phDevsList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phDevsList
@@ -6557,7 +6557,7 @@ PRL_METHOD( PrlVmCfg_CreateShare) (
 		PRL_HANDLE_PTR phVmShare
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phVmShare=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phVmShare=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phVmShare
@@ -6577,7 +6577,7 @@ PRL_METHOD( PrlVmCfg_GetSharesCount) (
 		PRL_UINT32_PTR pnSharesCount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnSharesCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnSharesCount=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnSharesCount
@@ -6599,7 +6599,7 @@ PRL_METHOD( PrlVmCfg_GetShare) (
 		PRL_HANDLE_PTR phVmShare
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nShareIndex=%.8X, phVmShare=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nShareIndex=%.8X, phVmShare=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		nShareIndex,
@@ -6620,7 +6620,7 @@ PRL_METHOD( PrlVmCfg_IsUserDefinedSharedFoldersEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -6641,7 +6641,7 @@ PRL_METHOD( PrlVmCfg_SetUserDefinedSharedFoldersEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -6661,7 +6661,7 @@ PRL_METHOD( PrlVmCfg_IsSmartMountEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -6682,7 +6682,7 @@ PRL_METHOD( PrlVmCfg_SetSmartMountEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -6702,7 +6702,7 @@ PRL_METHOD( PrlVmCfg_IsSmartMountRemovableDrivesEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -6723,7 +6723,7 @@ PRL_METHOD( PrlVmCfg_SetSmartMountRemovableDrivesEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -6743,7 +6743,7 @@ PRL_METHOD( PrlVmCfg_IsSmartMountDVDsEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -6764,7 +6764,7 @@ PRL_METHOD( PrlVmCfg_SetSmartMountDVDsEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -6784,7 +6784,7 @@ PRL_METHOD( PrlVmCfg_IsSmartMountNetworkSharesEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -6805,7 +6805,7 @@ PRL_METHOD( PrlVmCfg_SetSmartMountNetworkSharesEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -6825,7 +6825,7 @@ PRL_METHOD( PrlVmCfg_IsSmartGuardEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -6846,7 +6846,7 @@ PRL_METHOD( PrlVmCfg_SetSmartGuardEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -6866,7 +6866,7 @@ PRL_METHOD( PrlVmCfg_IsSmartGuardNotifyBeforeCreation ) (
 		PRL_BOOL_PTR pbNotifyBeforeCreation
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbNotifyBeforeCreation=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbNotifyBeforeCreation=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbNotifyBeforeCreation
@@ -6887,7 +6887,7 @@ PRL_METHOD( PrlVmCfg_SetSmartGuardNotifyBeforeCreation ) (
 		PRL_BOOL bNotifyBeforeCreation
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bNotifyBeforeCreation=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bNotifyBeforeCreation=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bNotifyBeforeCreation
@@ -6907,7 +6907,7 @@ PRL_METHOD( PrlVmCfg_GetSmartGuardInterval ) (
 		PRL_UINT32_PTR pnInterval
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnInterval=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnInterval=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnInterval
@@ -6928,7 +6928,7 @@ PRL_METHOD( PrlVmCfg_SetSmartGuardInterval ) (
 		PRL_UINT32 nInterval
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nInterval=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nInterval=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nInterval
@@ -6948,7 +6948,7 @@ PRL_METHOD( PrlVmCfg_GetSmartGuardMaxSnapshotsCount ) (
 		PRL_UINT32_PTR pnMaxSnapshotsCount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnMaxSnapshotsCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnMaxSnapshotsCount=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnMaxSnapshotsCount
@@ -6969,7 +6969,7 @@ PRL_METHOD( PrlVmCfg_SetSmartGuardMaxSnapshotsCount ) (
 		PRL_UINT32 nMaxSnapshotsCount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nMaxSnapshotsCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nMaxSnapshotsCount=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nMaxSnapshotsCount
@@ -6989,7 +6989,7 @@ PRL_METHOD( PrlVmCfg_IsAllowSelectBootDevice ) (
 		PRL_BOOL_PTR pbAllowed
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbAllowed=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbAllowed=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbAllowed
@@ -7010,7 +7010,7 @@ PRL_METHOD( PrlVmCfg_SetAllowSelectBootDevice ) (
 		PRL_BOOL bAllowed
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bAllowed=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bAllowed=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bAllowed
@@ -7030,7 +7030,7 @@ PRL_METHOD( PrlVmCfg_IsEfiEnabled ) (
 		PRL_BOOL_PTR pbEfiEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEfiEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEfiEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEfiEnabled
@@ -7052,7 +7052,7 @@ PRL_METHOD( PrlVmCfg_SetEfiEnabled ) (
 		PRL_BOOL bEfiEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEfiEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEfiEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEfiEnabled
@@ -7074,7 +7074,7 @@ PRL_METHOD( PrlVmCfg_GetExternalBootDevice) (
 		PRL_UINT32_PTR pnSysNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sSysName=%.8X, pnSysNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sSysName=%p, pnSysNameBufLength=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sSysName,
@@ -7097,7 +7097,7 @@ PRL_METHOD( PrlVmCfg_SetExternalBootDevice) (
 		PRL_CONST_STR sNewSysName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, sNewSysName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewSysName=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		sNewSysName
@@ -7119,7 +7119,7 @@ PRL_METHOD( PrlVmCfg_IsSharedProfileEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7140,7 +7140,7 @@ PRL_METHOD( PrlVmCfg_SetSharedProfileEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7160,7 +7160,7 @@ PRL_METHOD( PrlVmCfg_IsUseDesktop ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7181,7 +7181,7 @@ PRL_METHOD( PrlVmCfg_SetUseDesktop ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7201,7 +7201,7 @@ PRL_METHOD( PrlVmCfg_IsUseDocuments ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7222,7 +7222,7 @@ PRL_METHOD( PrlVmCfg_SetUseDocuments ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7242,7 +7242,7 @@ PRL_METHOD( PrlVmCfg_IsUsePictures ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7263,7 +7263,7 @@ PRL_METHOD( PrlVmCfg_SetUsePictures ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7283,7 +7283,7 @@ PRL_METHOD( PrlVmCfg_IsUseMusic ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7304,7 +7304,7 @@ PRL_METHOD( PrlVmCfg_SetUseMusic ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7324,7 +7324,7 @@ PRL_METHOD( PrlVmCfg_IsUseDownloads ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7345,7 +7345,7 @@ PRL_METHOD( PrlVmCfg_SetUseDownloads ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7365,7 +7365,7 @@ PRL_METHOD( PrlVmCfg_IsUseMovies ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7386,7 +7386,7 @@ PRL_METHOD( PrlVmCfg_SetUseMovies ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7406,7 +7406,7 @@ PRL_METHOD( PrlVmCfg_GetOptimizeModifiersMode ) (
 		PRL_OPTIMIZE_MODIFIERS_MODE_PTR pnMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnMode=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnMode
@@ -7427,7 +7427,7 @@ PRL_METHOD( PrlVmCfg_SetOptimizeModifiersMode ) (
 		PRL_OPTIMIZE_MODIFIERS_MODE nMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nMode=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nMode
@@ -7447,7 +7447,7 @@ PRL_METHOD( PrlVmCfg_IsShareClipboard ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7468,7 +7468,7 @@ PRL_METHOD( PrlVmCfg_SetShareClipboard ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7488,7 +7488,7 @@ PRL_METHOD( PrlVmCfg_IsTimeSynchronizationEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7509,7 +7509,7 @@ PRL_METHOD( PrlVmCfg_SetTimeSynchronizationEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7529,7 +7529,7 @@ PRL_METHOD( PrlVmCfg_IsTimeSyncSmartModeEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbEnabled
@@ -7550,7 +7550,7 @@ PRL_METHOD( PrlVmCfg_SetTimeSyncSmartModeEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bEnabled
@@ -7570,7 +7570,7 @@ PRL_METHOD( PrlVmCfg_GetTimeSyncInterval ) (
 		PRL_UINT32_PTR pnTimeSyncInterval
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnTimeSyncInterval=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnTimeSyncInterval=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnTimeSyncInterval
@@ -7591,7 +7591,7 @@ PRL_METHOD( PrlVmCfg_SetTimeSyncInterval ) (
 		PRL_UINT32 nTimeSyncInterval
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nTimeSyncInterval=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nTimeSyncInterval=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		nTimeSyncInterval
@@ -7611,7 +7611,7 @@ PRL_METHOD( PrlVmCfg_CreateBootDev) (
 		PRL_HANDLE_PTR phVmBootDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phVmBootDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phVmBootDev=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phVmBootDev
@@ -7631,7 +7631,7 @@ PRL_METHOD( PrlVmCfg_GetBootDevCount) (
 		PRL_UINT32_PTR pnBootDevCount
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pnBootDevCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnBootDevCount=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pnBootDevCount
@@ -7653,7 +7653,7 @@ PRL_METHOD( PrlVmCfg_GetBootDev) (
 		PRL_HANDLE_PTR phVmBootDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nBootDevIndex=%.8X, phVmBootDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nBootDevIndex=%.8X, phVmBootDev=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		nBootDevIndex,
@@ -7674,7 +7674,7 @@ PRL_METHOD( PrlVmCfg_SetCpuUnits ) (
 		PRL_UINT32 nVmCpuUnits
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuUnits=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuUnits=%.8X)",
 			__FUNCTION__,
 			hVmCfg,
 			nVmCpuUnits
@@ -7695,7 +7695,7 @@ PRL_METHOD( PrlVmCfg_GetCpuUnits ) (
 		PRL_UINT32_PTR pnVmCpuUnits
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuUnits=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuUnits=%p)",
 			__FUNCTION__,
 			hVmCfg,
 			pnVmCpuUnits
@@ -7717,7 +7717,7 @@ PRL_METHOD( PrlVmCfg_SetCpuLimit ) (
 		PRL_UINT32 nVmCpuLimit
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuLimit=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuLimit=%.8X)",
 			__FUNCTION__,
 			hVmCfg,
 			nVmCpuLimit
@@ -7738,7 +7738,7 @@ PRL_METHOD( PrlVmCfg_GetCpuLimit ) (
 		PRL_UINT32_PTR pnVmCpuLimit
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuLimit=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmCpuLimit=%p)",
 			__FUNCTION__,
 			hVmCfg,
 			pnVmCpuLimit
@@ -7760,7 +7760,7 @@ PRL_METHOD( PrlVmCfg_SetCpuLimitEx ) (
 		PRL_CONST_CPULIMIT_DATA_PTR pVmCpuLimit
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuLimit=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pVmCpuLimit=%p)",
 			__FUNCTION__,
 			hVmCfg,
 			pVmCpuLimit
@@ -7786,7 +7786,7 @@ PRL_METHOD( PrlVmCfg_GetCpuLimitEx ) (
 		PRL_CPULIMIT_DATA_PTR pVmCpuLimit
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmCpuLimit=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuLimit=%p)",
 			__FUNCTION__,
 			hVmCfg,
 			pVmCpuLimit
@@ -7873,7 +7873,7 @@ PRL_METHOD( PrlVmCfg_SetIopsLimit ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmIoLimit=%u)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmIoLimit=%u)",
 			__FUNCTION__,
 			hVmCfg,
 			nVmIopsLimit
@@ -7918,7 +7918,7 @@ PRL_METHOD( PrlVmCfg_SetIoLimit ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmIoLimit=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pVmIoLimit=%p)",
 			__FUNCTION__,
 			hVmCfg,
 			pVmIoLimit
@@ -7943,7 +7943,7 @@ PRL_METHOD( PrlVmCfg_GetIoLimit ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, nVmIoLimit=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pVmIoLimit=%p)",
 			__FUNCTION__,
 			hVmCfg,
 			pVmIoLimit
@@ -7986,7 +7986,7 @@ PRL_ASYNC_METHOD( PrlVm_CreateUnattendedFloppy ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_CREATE_UNATTENDED_FLOPPY)
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%.8X, nGuestDistroType=%.8X, sUsername=%.8X, sCompanyName=%.8X, sSerialKey=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, nGuestDistroType=%.8X, sUsername=%s, sCompanyName=%s, sSerialKey=%s)",
 		__FUNCTION__,
 		hVm,
 		nGuestDistroType,
@@ -8071,7 +8071,7 @@ PRL_METHOD( PrlVmDev_Create) (
 		PRL_HANDLE_PTR phVmDevice
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (device_type=%.8X, phVmDevice=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (device_type=%.8X, phVmDevice=%p)",
 		__FUNCTION__,
 		device_type,
 		phVmDevice
@@ -8089,7 +8089,7 @@ PRL_ASYNC_METHOD( PrlVmDev_Connect ) (
 		PRL_HANDLE hVmDevice
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%p)",
 		__FUNCTION__,
 		hVmDevice
 		);
@@ -8102,7 +8102,7 @@ PRL_ASYNC_METHOD( PrlVmDev_Disconnect ) (
 		PRL_HANDLE hVmDevice
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%p)",
 		__FUNCTION__,
 		hVmDevice
 		);
@@ -8116,7 +8116,7 @@ PRL_ASYNC_METHOD( PrlVmDev_CreateImage ) (
 		PRL_BOOL bNonInteractiveMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%.8X, bRecreateIsAllowed=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%p, bRecreateIsAllowed=%.8X)",
 		__FUNCTION__,
 		hVmDevice,
 		bRecreateIsAllowed
@@ -8133,7 +8133,7 @@ PRL_ASYNC_METHOD( PrlVmDev_CopyImage ) (
 		PRL_UINT32 nFlags
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%.8X, sNewImageName=%.8X, sTargetPath=%.8X, nFlags=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%p, sNewImageName=%s, sTargetPath=%s, nFlags=%.8X)",
 		__FUNCTION__,
 		hVmDevice,
 		sNewImageName,
@@ -8162,7 +8162,7 @@ PRL_METHOD( PrlVmDev_GetIndex ) (
 		PRL_UINT32_PTR nIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%.8X, nIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%p, nIndex=%p)",
 		__FUNCTION__,
 		hVmDevice,
 		nIndex
@@ -8183,7 +8183,7 @@ PRL_METHOD( PrlVmDev_SetIndex ) (
 		PRL_UINT32 nIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nIndex=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nIndex
@@ -8203,7 +8203,7 @@ PRL_METHOD( PrlVmDev_Remove ) (
 		PRL_HANDLE hVmDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p)",
 		__FUNCTION__,
 		hVmDev
 		);
@@ -8222,7 +8222,7 @@ PRL_METHOD( PrlVmDev_GetType ) (
 		PRL_DEVICE_TYPE_PTR pnDeviceType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnDeviceType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnDeviceType=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnDeviceType
@@ -8242,7 +8242,7 @@ PRL_METHOD( PrlVmDev_IsConnected ) (
 		PRL_BOOL_PTR pbConnected
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbConnected=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbConnected=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbConnected
@@ -8263,7 +8263,7 @@ PRL_METHOD( PrlVmDev_SetConnected ) (
 		PRL_BOOL bConnected
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bConnected=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bConnected=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bConnected
@@ -8284,7 +8284,7 @@ PRL_METHOD( PrlVmDev_IsEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbEnabled
@@ -8305,7 +8305,7 @@ PRL_METHOD( PrlVmDev_SetEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bEnabled
@@ -8325,7 +8325,7 @@ PRL_METHOD( PrlVmDev_IsRemote ) (
 		PRL_BOOL_PTR pbRemote
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbRemote=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbRemote=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbRemote
@@ -8346,7 +8346,7 @@ PRL_METHOD( PrlVmDev_SetRemote ) (
 		PRL_BOOL bRemote
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bRemote=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bRemote=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bRemote
@@ -8366,7 +8366,7 @@ PRL_METHOD( PrlVmDev_GetEmulatedType ) (
 		PRL_VM_DEV_EMULATION_TYPE_PTR pnEmulatedType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnEmulatedType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnEmulatedType=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnEmulatedType
@@ -8386,7 +8386,7 @@ PRL_METHOD( PrlVmDev_SetEmulatedType ) (
 		PRL_VM_DEV_EMULATION_TYPE nEmulatedType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nEmulatedType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nEmulatedType=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nEmulatedType
@@ -8407,7 +8407,7 @@ PRL_METHOD( PrlVmDev_GetImagePath ) (
 		PRL_UINT32_PTR pnImagePathBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sImagePath=%.8X, pnImagePathBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sImagePath=%p, pnImagePathBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sImagePath,
@@ -8429,7 +8429,7 @@ PRL_METHOD( PrlVmDev_SetImagePath ) (
 		PRL_CONST_STR sNewImagePath
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewImagePath=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewImagePath=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewImagePath
@@ -8451,7 +8451,7 @@ PRL_METHOD( PrlVmDev_GetSysName ) (
 		PRL_UINT32_PTR pnSysNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sSysName=%.8X, pnSysNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sSysName=%p, pnSysNameBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sSysName,
@@ -8473,7 +8473,7 @@ PRL_METHOD( PrlVmDev_SetSysName ) (
 		PRL_CONST_STR sNewSysName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewSysName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewSysName=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewSysName
@@ -8495,7 +8495,7 @@ PRL_METHOD( PrlVmDev_GetFriendlyName ) (
 		PRL_UINT32_PTR pnFriendlyNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sFriendlyName=%.8X, pnFriendlyNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sFriendlyName=%p, pnFriendlyNameBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sFriendlyName,
@@ -8517,7 +8517,7 @@ PRL_METHOD( PrlVmDev_SetFriendlyName ) (
 		PRL_CONST_STR sNewFriendlyName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewFriendlyName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewFriendlyName=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewFriendlyName
@@ -8539,7 +8539,7 @@ PRL_METHOD( PrlVmDev_GetDescription ) (
 		PRL_UINT32_PTR pnDescriptionBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sDescription=%.8X, pnDescriptionBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sDescription=%p, pnDescriptionBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sDescription,
@@ -8561,7 +8561,7 @@ PRL_METHOD( PrlVmDev_SetDescription ) (
 		PRL_CONST_STR sNewDescription
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewDescription=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewDescription=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewDescription
@@ -8582,7 +8582,7 @@ PRL_METHOD( PrlVmDev_GetIfaceType ) (
 		PRL_MASS_STORAGE_INTERFACE_TYPE_PTR pnIfaceType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnIfaceType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnIfaceType=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnIfaceType
@@ -8602,7 +8602,7 @@ PRL_METHOD( PrlVmDev_SetIfaceType ) (
 		PRL_MASS_STORAGE_INTERFACE_TYPE nIfaceType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nIfaceType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nIfaceType=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nIfaceType
@@ -8622,7 +8622,7 @@ PRL_METHOD( PrlVmDev_GetSubType ) (
 		PRL_CLUSTERED_DEVICE_SUBTYPE_PTR pnSubType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnSubType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnSubType=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnSubType
@@ -8642,7 +8642,7 @@ PRL_METHOD( PrlVmDev_SetSubType ) (
 		PRL_CLUSTERED_DEVICE_SUBTYPE nSubType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nSubType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nSubType=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nSubType
@@ -8662,7 +8662,7 @@ PRL_METHOD( PrlVmDev_GetStackIndex ) (
 		PRL_UINT32_PTR nStackIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%.8X, nStackIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDevice=%p, nStackIndex=%p)",
 		__FUNCTION__,
 		hVmDevice,
 		nStackIndex
@@ -8683,7 +8683,7 @@ PRL_METHOD( PrlVmDev_SetStackIndex ) (
 		PRL_UINT32 nStackIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nStackIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nStackIndex=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nStackIndex
@@ -8702,7 +8702,7 @@ PRL_METHOD( PrlVmDev_SetDefaultStackIndex ) (
 		PRL_HANDLE hVmDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p)",
 		__FUNCTION__,
 		hVmDev
 		);
@@ -8723,7 +8723,7 @@ PRL_METHOD( PrlVmDev_GetOutputFile ) (
 		PRL_UINT32_PTR pnOutputFileBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sOutputFile=%.8X, pnOutputFileBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sOutputFile=%p, pnOutputFileBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sOutputFile,
@@ -8745,7 +8745,7 @@ PRL_METHOD( PrlVmDev_SetOutputFile ) (
 		PRL_CONST_STR sNewOutputFile
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewOutputFile=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewOutputFile=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewOutputFile
@@ -8765,7 +8765,7 @@ PRL_METHOD( PrlVmDevHd_GetDiskType ) (
 		PRL_HARD_DISK_INTERNAL_FORMAT_PTR pnDiskType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnDiskType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnDiskType=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnDiskType
@@ -8786,7 +8786,7 @@ PRL_METHOD( PrlVmDevHd_SetDiskType ) (
 		PRL_HARD_DISK_INTERNAL_FORMAT nDiskType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nDiskType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nDiskType=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nDiskType
@@ -8806,7 +8806,7 @@ PRL_METHOD( PrlVmDevHd_IsSplitted ) (
 		PRL_BOOL_PTR pbSplitted
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbSplitted=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbSplitted=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbSplitted
@@ -8827,7 +8827,7 @@ PRL_METHOD( PrlVmDevHd_SetSplitted ) (
 		PRL_BOOL bSplitted
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bSplitted=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bSplitted=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bSplitted
@@ -8847,7 +8847,7 @@ PRL_METHOD( PrlVmDevHd_GetDiskSize ) (
 		PRL_UINT32_PTR pnDiskSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnDiskSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnDiskSize=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnDiskSize
@@ -8868,7 +8868,7 @@ PRL_METHOD( PrlVmDevHd_SetDiskSize ) (
 		PRL_UINT32 nDiskSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nDiskSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nDiskSize=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nDiskSize
@@ -8888,7 +8888,7 @@ PRL_METHOD( PrlVmDevHd_GetSizeOnDisk ) (
 		PRL_UINT32_PTR pnOnDiskSize
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnOnDiskSize=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnOnDiskSize=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnOnDiskSize
@@ -8909,7 +8909,7 @@ PRL_METHOD( PrlVmDevHd_SetPassword ) (
 		PRL_CONST_STR sPassword
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sPassword=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sPassword=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sPassword
@@ -8929,7 +8929,7 @@ PRL_METHOD( PrlVmDevHd_IsEncrypted ) (
 		PRL_BOOL_PTR pbIsEncrypted
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbIsEncrypted=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbIsEncrypted=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbIsEncrypted
@@ -8949,7 +8949,7 @@ PRL_ASYNC_METHOD( PrlVmDevHd_CheckPassword ) (
 		PRL_UINT32 nFlags
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nFlags=%.8x)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nFlags=%.8x)",
 		__FUNCTION__,
 		hVmDev,
 		nFlags
@@ -8963,7 +8963,7 @@ PRL_METHOD( PrlVmDevHd_AddPartition ) (
 		PRL_HANDLE_PTR phPartition
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, phPartition=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, phPartition=%p)",
 		__FUNCTION__,
 		hVmDev,
 		phPartition
@@ -8984,7 +8984,7 @@ PRL_METHOD( PrlVmDevHd_GetPartitionsCount ) (
 		 PRL_UINT32_PTR pnPartitionsCount
 		 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnPartitionsCount=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnPartitionsCount=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnPartitionsCount
@@ -9006,7 +9006,7 @@ PRL_METHOD( PrlVmDevHd_GetPartition ) (
 		 PRL_HANDLE_PTR phPartition
 		 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nIndex=%.8X, phPartition=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nIndex=%.8X, phPartition=%p)",
 		__FUNCTION__,
 		hVmDev,
 		nIndex,
@@ -9059,7 +9059,7 @@ PRL_METHOD( PrlVmDevHd_SetStorageURL ) (
 		PRL_CONST_STR sURL
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sURL=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sURL=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sURL
@@ -9080,7 +9080,7 @@ PRL_METHOD( PrlVmDevHd_GetStorageURL ) (
 		PRL_UINT32_PTR pnURLBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sURL=%.8X, pnURLBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sURL=%p, pnURLBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sURL,
@@ -9131,7 +9131,7 @@ PRL_METHOD( PrlVmDevHdPart_Remove ) (
 		PRL_HANDLE hPartition
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hPartition=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hPartition=%p)",
 		__FUNCTION__,
 		hPartition
 		);
@@ -9151,7 +9151,7 @@ PRL_METHOD( PrlVmDevHdPart_GetSysName ) (
 		PRL_UINT32_PTR pnSysNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hPartition=%.8X, sSysName=%.8X, pnSysNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hPartition=%p, sSysName=%p, pnSysNameBufLength=%p)",
 		__FUNCTION__,
 		hPartition,
 		sSysName,
@@ -9173,7 +9173,7 @@ PRL_METHOD( PrlVmDevHdPart_SetSysName ) (
 		PRL_CONST_STR sSysName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hPartition=%.8X, sSysName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hPartition=%p, sSysName=%s)",
 		__FUNCTION__,
 		hPartition,
 		sSysName
@@ -9194,7 +9194,7 @@ PRL_METHOD( PrlVmDev_IsPassthrough ) (
 		PRL_BOOL_PTR pbPassthrough
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbPassthrough=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbPassthrough=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbPassthrough
@@ -9214,7 +9214,7 @@ PRL_METHOD( PrlVmDev_SetPassthrough ) (
 		PRL_BOOL bPassthrough
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bPassthrough=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bPassthrough=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bPassthrough
@@ -9234,7 +9234,7 @@ PRL_METHOD( PrlVmDevNet_GetBoundAdapterIndex ) (
 		PRL_INT32_PTR pnIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnIndex=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnIndex
@@ -9255,7 +9255,7 @@ PRL_METHOD( PrlVmDevNet_SetBoundAdapterIndex ) (
 		PRL_INT32 nIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nIndex=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nIndex
@@ -9276,7 +9276,7 @@ PRL_METHOD( PrlVmDevNet_GetBoundAdapterName ) (
 		PRL_UINT32_PTR pnBoundAdapterNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sBoundAdapterName=%.8X, pnBoundAdapterNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sBoundAdapterName=%p, pnBoundAdapterNameBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sBoundAdapterName,
@@ -9298,7 +9298,7 @@ PRL_METHOD( PrlVmDevNet_SetBoundAdapterName ) (
 		PRL_CONST_STR sNewBoundAdapterName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewBoundAdapterName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewBoundAdapterName=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewBoundAdapterName
@@ -9349,7 +9349,7 @@ PRL_METHOD( PrlVmDevNet_GetMacAddress ) (
 		PRL_UINT32_PTR pnMacAddressBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sMacAddress=%.8X, pnMacAddressBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sMacAddress=%p, pnMacAddressBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sMacAddress,
@@ -9387,7 +9387,7 @@ PRL_METHOD( PrlVmDevNet_SetMacAddress ) (
 		PRL_CONST_STR sNewMacAddress
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewMacAddress=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewMacAddress=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewMacAddress
@@ -9406,7 +9406,7 @@ PRL_METHOD( PrlVmDevNet_GenerateMacAddr ) (
 		PRL_HANDLE hVmDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p)",
 		__FUNCTION__,
 		hVmDev
 		);
@@ -9425,7 +9425,7 @@ PRL_METHOD( PrlVmDevNet_IsAutoApply ) (
 		PRL_BOOL_PTR pbAutoApply
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbAutoApply=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbAutoApply=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbAutoApply
@@ -9446,7 +9446,7 @@ PRL_METHOD( PrlVmDevNet_SetAutoApply ) (
 		PRL_BOOL bAutoApply
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bAutoApply=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bAutoApply=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bAutoApply
@@ -9467,7 +9467,7 @@ PRL_METHOD( PrlVmDevNet_GetDefaultGateway ) (
 		PRL_UINT32_PTR pnDefaultGatewayBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sDefaultGateway=%.8X, pnDefaultGatewayBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sDefaultGateway=%p, pnDefaultGatewayBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sDefaultGateway,
@@ -9489,7 +9489,7 @@ PRL_METHOD( PrlVmDevNet_SetDefaultGateway ) (
 		PRL_CONST_STR sNewDefaultGateway
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewDefaultGateway=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewDefaultGateway=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewDefaultGateway
@@ -9510,7 +9510,7 @@ PRL_METHOD( PrlVmDevNet_GetDefaultGatewayIPv6 ) (
 		PRL_UINT32_PTR pnDefaultGatewayBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sDefaultGateway=%.8X, pnDefaultGatewayBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sDefaultGateway=%p, pnDefaultGatewayBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sDefaultGateway,
@@ -9532,7 +9532,7 @@ PRL_METHOD( PrlVmDevNet_SetDefaultGatewayIPv6 ) (
 		PRL_CONST_STR sNewDefaultGateway
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewDefaultGateway=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewDefaultGateway=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewDefaultGateway
@@ -9553,7 +9553,7 @@ PRL_METHOD( PrlVmDevNet_GetVirtualNetworkId ) (
 		PRL_UINT32_PTR pnVirtualNetworkIdBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sVirtualNetworkId=%.8X, pnVirtualNetworkIdBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sVirtualNetworkId=%p, pnVirtualNetworkIdBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sVirtualNetworkId,
@@ -9575,7 +9575,7 @@ PRL_METHOD( PrlVmDevNet_SetVirtualNetworkId ) (
 		PRL_CONST_STR sNewVirtualNetworkId
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewVirtualNetworkId=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewVirtualNetworkId=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewVirtualNetworkId
@@ -9595,7 +9595,7 @@ PRL_METHOD( PrlVmDevNet_GetNetAddresses ) (
 		PRL_HANDLE_PTR phNetAddressesList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, phNetAddressesList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, phNetAddressesList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		phNetAddressesList
@@ -9615,7 +9615,7 @@ PRL_METHOD( PrlVmDevNet_SetNetAddresses ) (
 		PRL_HANDLE hNetAddressesList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, hNetAddressesList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, hNetAddressesList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		hNetAddressesList
@@ -9636,7 +9636,7 @@ PRL_METHOD( PrlVmDevNet_GetDnsServers ) (
 		PRL_HANDLE_PTR phDnsServersList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, phDnsServersList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, phDnsServersList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		phDnsServersList
@@ -9656,7 +9656,7 @@ PRL_METHOD( PrlVmDevNet_SetDnsServers ) (
 		PRL_HANDLE hDnsServersList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, hDnsServersList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, hDnsServersList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		hDnsServersList
@@ -9677,7 +9677,7 @@ PRL_METHOD( PrlVmDevNet_GetSearchDomains ) (
 		PRL_HANDLE_PTR phSearchDomainsList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, phSearchDomainsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, phSearchDomainsList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		phSearchDomainsList
@@ -9697,7 +9697,7 @@ PRL_METHOD( PrlVmDevNet_SetSearchDomains ) (
 		PRL_HANDLE hSearchDomainsList
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, hSearchDomainsList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, hSearchDomainsList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		hSearchDomainsList
@@ -9719,7 +9719,7 @@ PRL_METHOD( PrlVmDevNet_IsConfigureWithDhcp ) (
 		PRL_BOOL_PTR pbConfigureWithDhcp
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbConfigureWithDhcp=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbConfigureWithDhcp=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbConfigureWithDhcp
@@ -9740,7 +9740,7 @@ PRL_METHOD( PrlVmDevNet_SetConfigureWithDhcp ) (
 		PRL_BOOL bConfigureWithDhcp
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bConfigureWithDhcp=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bConfigureWithDhcp=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bConfigureWithDhcp
@@ -9761,7 +9761,7 @@ PRL_METHOD( PrlVmDevNet_IsConfigureWithDhcpIPv6 ) (
 		PRL_BOOL_PTR pbConfigureWithDhcp
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbConfigureWithDhcp=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbConfigureWithDhcp=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbConfigureWithDhcp
@@ -9782,7 +9782,7 @@ PRL_METHOD( PrlVmDevNet_SetConfigureWithDhcpIPv6 ) (
 		PRL_BOOL bConfigureWithDhcp
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bConfigureWithDhcp=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bConfigureWithDhcp=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bConfigureWithDhcp
@@ -9803,7 +9803,7 @@ PRL_METHOD( PrlVmDevNet_IsPktFilterPreventMacSpoof ) (
 		PRL_BOOL_PTR pbPktFilterPreventMacSpoof
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbPktFilterPreventMacSpoof=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbPktFilterPreventMacSpoof=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbPktFilterPreventMacSpoof
@@ -9824,7 +9824,7 @@ PRL_METHOD( PrlVmDevNet_SetPktFilterPreventMacSpoof ) (
 		PRL_BOOL bPktFilterPreventMacSpoof
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bPktFilterPreventMacSpoof =%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bPktFilterPreventMacSpoof =%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bPktFilterPreventMacSpoof
@@ -9844,7 +9844,7 @@ PRL_METHOD( PrlVmDevNet_IsPktFilterPreventPromisc ) (
 		PRL_BOOL_PTR pbPktFilterPreventPromisc
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbPktFilterPreventPromisc=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbPktFilterPreventPromisc=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbPktFilterPreventPromisc
@@ -9865,7 +9865,7 @@ PRL_METHOD( PrlVmDevNet_SetPktFilterPreventPromisc ) (
 		PRL_BOOL bPktFilterPreventPromisc
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bPktFilterPreventPromisc =%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bPktFilterPreventPromisc =%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bPktFilterPreventPromisc
@@ -9885,7 +9885,7 @@ PRL_METHOD( PrlVmDevNet_IsPktFilterPreventIpSpoof ) (
 		PRL_BOOL_PTR pbPktFilterPreventIpSpoof
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbPktFilterPreventIpSpoof=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbPktFilterPreventIpSpoof=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbPktFilterPreventIpSpoof
@@ -9906,7 +9906,7 @@ PRL_METHOD( PrlVmDevNet_SetPktFilterPreventIpSpoof ) (
 		PRL_BOOL bPktFilterPreventIpSpoof
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bPktFilterPreventIpSpoof =%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bPktFilterPreventIpSpoof =%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bPktFilterPreventIpSpoof
@@ -9957,7 +9957,7 @@ PRL_METHOD( PrlVmDevNet_IsFirewallEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pbEnabled
@@ -9979,7 +9979,7 @@ PRL_METHOD( PrlVmDevNet_SetFirewallEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		bEnabled
@@ -10001,7 +10001,7 @@ PRL_METHOD( PrlVmDevNet_GetFirewallDefaultPolicy ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnPolicy=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnPolicy=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnPolicy
@@ -10024,7 +10024,7 @@ PRL_METHOD( PrlVmDevNet_SetFirewallDefaultPolicy ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nPolicy=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nPolicy=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nPolicy
@@ -10044,7 +10044,7 @@ PRL_METHOD( PrlVmDevNet_GetFirewallRuleList ) (
 									PRL_HANDLE_PTR phRuleList
 									)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, phRuleList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, phRuleList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		phRuleList
@@ -10068,7 +10068,7 @@ PRL_METHOD( PrlVmDevNet_SetFirewallRuleList ) (
 									PRL_HANDLE hRuleList
 									)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, hRuleList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, hRuleList=%p)",
 		__FUNCTION__,
 		hVmDev,
 		hRuleList
@@ -10093,7 +10093,7 @@ PRL_METHOD( PrlFirewallRule_Create ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (phRule=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (phRule=%p)",
 		__FUNCTION__,
 		phRule
 	);
@@ -10111,7 +10111,7 @@ PRL_METHOD( PrlFirewallRule_GetLocalPort ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, pnPort=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, pnPort=%p)",
 		__FUNCTION__,
 		hRule,
 		pnPort
@@ -10133,7 +10133,7 @@ PRL_METHOD( PrlFirewallRule_SetLocalPort ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, nPort=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, nPort=%.8X)",
 		__FUNCTION__,
 		hRule,
 		nPort
@@ -10154,7 +10154,7 @@ PRL_METHOD( PrlFirewallRule_GetRemotePort ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, pnPort=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, pnPort=%p)",
 		__FUNCTION__,
 		hRule,
 		pnPort
@@ -10176,7 +10176,7 @@ PRL_METHOD( PrlFirewallRule_SetRemotePort ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, nPort=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, nPort=%.8X)",
 		__FUNCTION__,
 		hRule,
 		nPort
@@ -10198,7 +10198,7 @@ PRL_METHOD( PrlFirewallRule_GetProtocol ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, sProtocol=%.8X, pnBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, sProtocol=%p, pnBufLength=%p)",
 		__FUNCTION__,
 		hRule,
 		sProtocol,
@@ -10221,7 +10221,7 @@ PRL_METHOD( PrlFirewallRule_SetProtocol ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, sProtocol=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, sProtocol=%s)",
 		__FUNCTION__,
 		hRule,
 		sProtocol
@@ -10244,7 +10244,7 @@ PRL_METHOD( PrlFirewallRule_GetLocalNetAddress ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, sAddr=%.8X, pnBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, sAddr=%p, pnBufLength=%p)",
 		__FUNCTION__,
 		hRule,
 		sAddr,
@@ -10267,7 +10267,7 @@ PRL_METHOD( PrlFirewallRule_SetLocalNetAddress ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, sAddr=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, sAddr=%s)",
 		__FUNCTION__,
 		hRule,
 		sAddr
@@ -10290,7 +10290,7 @@ PRL_METHOD( PrlFirewallRule_GetRemoteNetAddress ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, sAddr=%.8X, pnBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, sAddr=%p, pnBufLength=%p)",
 		__FUNCTION__,
 		hRule,
 		sAddr,
@@ -10313,7 +10313,7 @@ PRL_METHOD( PrlFirewallRule_SetRemoteNetAddress ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%.8X, sAddr=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hRule=%p, sAddr=%s)",
 		__FUNCTION__,
 		hRule,
 		sAddr
@@ -10334,7 +10334,7 @@ PRL_METHOD( PrlVmDevUsb_GetAutoconnectOption ) (
 		PRL_USB_DEVICE_AUTO_CONNECT_OPTION_PTR pnAutoconnectOption
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnAutoconnectOption=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnAutoconnectOption=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnAutoconnectOption
@@ -10355,7 +10355,7 @@ PRL_METHOD( PrlVmDevUsb_SetAutoconnectOption ) (
 		PRL_USB_DEVICE_AUTO_CONNECT_OPTION nAutoconnectOption
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nAutoconnectOption=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nAutoconnectOption=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nAutoconnectOption
@@ -10376,7 +10376,7 @@ PRL_METHOD( PrlVmDevSound_GetOutputDev ) (
 		PRL_UINT32_PTR pnOutputDevBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sOutputDev=%.8X, pnOutputDevBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sOutputDev=%p, pnOutputDevBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sOutputDev,
@@ -10398,7 +10398,7 @@ PRL_METHOD( PrlVmDevSound_SetOutputDev ) (
 		PRL_CONST_STR sNewOutputDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewOutputDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewOutputDev=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewOutputDev
@@ -10420,7 +10420,7 @@ PRL_METHOD( PrlVmDevSound_GetMixerDev ) (
 		PRL_UINT32_PTR pnMixerDevBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sMixerDev=%.8X, pnMixerDevBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sMixerDev=%p, pnMixerDevBufLength=%p)",
 		__FUNCTION__,
 		hVmDev,
 		sMixerDev,
@@ -10442,7 +10442,7 @@ PRL_METHOD( PrlVmDevSound_SetMixerDev ) (
 		PRL_CONST_STR sNewMixerDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, sNewMixerDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sNewMixerDev=%s)",
 		__FUNCTION__,
 		hVmDev,
 		sNewMixerDev
@@ -10463,7 +10463,7 @@ PRL_METHOD( PrlVmDevSerial_GetSocketMode ) (
 		PRL_SERIAL_PORT_SOCKET_OPERATION_MODE_PTR pnSocketMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, pnSocketMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pnSocketMode=%p)",
 		__FUNCTION__,
 		hVmDev,
 		pnSocketMode
@@ -10483,7 +10483,7 @@ PRL_METHOD( PrlVmDevSerial_SetSocketMode ) (
 		PRL_SERIAL_PORT_SOCKET_OPERATION_MODE nSocketMode
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%.8X, nSocketMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nSocketMode=%.8X)",
 		__FUNCTION__,
 		hVmDev,
 		nSocketMode
@@ -10502,7 +10502,7 @@ PRL_METHOD( PrlShare_Remove ) (
 		PRL_HANDLE hVmShare
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p)",
 		__FUNCTION__,
 		hVmShare
 		);
@@ -10523,7 +10523,7 @@ PRL_METHOD( PrlShare_GetName) (
 		PRL_UINT32_PTR pnShareNameBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, sShareName=%.8X, pnShareNameBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, sShareName=%p, pnShareNameBufLength=%p)",
 		__FUNCTION__,
 		hVmShare,
 		sShareName,
@@ -10547,7 +10547,7 @@ PRL_METHOD( PrlShare_SetName) (
 		PRL_CONST_STR sNewShareName
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, sNewShareName=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, sNewShareName=%s)",
 		__FUNCTION__,
 		hVmShare,
 		sNewShareName
@@ -10571,7 +10571,7 @@ PRL_METHOD( PrlShare_GetPath) (
 		PRL_UINT32_PTR pnSharePathBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, sSharePath=%.8X, pnSharePathBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, sSharePath=%p, pnSharePathBufLength=%p)",
 		__FUNCTION__,
 		hVmShare,
 		sSharePath,
@@ -10595,7 +10595,7 @@ PRL_METHOD( PrlShare_SetPath) (
 		PRL_CONST_STR sNewSharePath
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, sNewSharePath=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, sNewSharePath=%s)",
 		__FUNCTION__,
 		hVmShare,
 		sNewSharePath
@@ -10619,7 +10619,7 @@ PRL_METHOD( PrlShare_GetDescription) (
 		PRL_UINT32_PTR pnShareDescriptionBufLength
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, sShareDescription=%.8X, pnShareDescriptionBufLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, sShareDescription=%p, pnShareDescriptionBufLength=%p)",
 		__FUNCTION__,
 		hVmShare,
 		sShareDescription,
@@ -10643,7 +10643,7 @@ PRL_METHOD( PrlShare_SetDescription) (
 		PRL_CONST_STR sNewShareDescription
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, sNewShareDescription=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, sNewShareDescription=%s)",
 		__FUNCTION__,
 		hVmShare,
 		sNewShareDescription
@@ -10666,7 +10666,7 @@ PRL_METHOD( PrlShare_IsEnabled ) (
 		PRL_BOOL_PTR pbEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, pbEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, pbEnabled=%p)",
 		__FUNCTION__,
 		hVmShare,
 		pbEnabled
@@ -10687,7 +10687,7 @@ PRL_METHOD( PrlShare_SetEnabled ) (
 		PRL_BOOL bEnabled
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, bEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, bEnabled=%.8X)",
 		__FUNCTION__,
 		hVmShare,
 		bEnabled
@@ -10707,7 +10707,7 @@ PRL_METHOD( PrlShare_IsReadOnly ) (
 		PRL_BOOL_PTR pbReadOnly
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, pbReadOnly=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, pbReadOnly=%p)",
 		__FUNCTION__,
 		hVmShare,
 		pbReadOnly
@@ -10728,7 +10728,7 @@ PRL_METHOD( PrlShare_SetReadOnly ) (
 		PRL_BOOL bReadOnly
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%.8X, bReadOnly=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmShare=%p, bReadOnly=%.8X)",
 		__FUNCTION__,
 		hVmShare,
 		bReadOnly
@@ -10747,7 +10747,7 @@ PRL_METHOD( PrlBootDev_Remove ) (
 		PRL_HANDLE hVmBootDev
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p)",
 		__FUNCTION__,
 		hVmBootDev
 		);
@@ -10766,7 +10766,7 @@ PRL_METHOD( PrlBootDev_GetType ) (
 		PRL_DEVICE_TYPE_PTR pnDevType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, pnDevType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, pnDevType=%p)",
 		__FUNCTION__,
 		hVmBootDev,
 		pnDevType
@@ -10786,7 +10786,7 @@ PRL_METHOD( PrlBootDev_SetType ) (
 		PRL_DEVICE_TYPE nDevType
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, nDevType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, nDevType=%.8X)",
 		__FUNCTION__,
 		hVmBootDev,
 		nDevType
@@ -10806,7 +10806,7 @@ PRL_METHOD( PrlBootDev_GetIndex ) (
 		PRL_UINT32_PTR pnDevIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, pnDevIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, pnDevIndex=%p)",
 		__FUNCTION__,
 		hVmBootDev,
 		pnDevIndex
@@ -10826,7 +10826,7 @@ PRL_METHOD( PrlBootDev_SetIndex ) (
 		PRL_UINT32 nDevIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, nDevIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, nDevIndex=%.8X)",
 		__FUNCTION__,
 		hVmBootDev,
 		nDevIndex
@@ -10846,7 +10846,7 @@ PRL_METHOD( PrlBootDev_GetSequenceIndex ) (
 		PRL_UINT32_PTR pnSequenceIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, pnSequenceIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, pnSequenceIndex=%p)",
 		__FUNCTION__,
 		hVmBootDev,
 		pnSequenceIndex
@@ -10866,7 +10866,7 @@ PRL_METHOD( PrlBootDev_SetSequenceIndex ) (
 		PRL_UINT32 nSequenceIndex
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, nSequenceIndex=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, nSequenceIndex=%.8X)",
 		__FUNCTION__,
 		hVmBootDev,
 		nSequenceIndex
@@ -10886,7 +10886,7 @@ PRL_METHOD( PrlBootDev_IsInUse ) (
 		PRL_BOOL_PTR pbInUse
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, pbInUse=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, pbInUse=%p)",
 		__FUNCTION__,
 		hVmBootDev,
 		pbInUse
@@ -10906,7 +10906,7 @@ PRL_METHOD( PrlBootDev_SetInUse ) (
 		PRL_BOOL bInUse
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%.8X, bInUse=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmBootDev=%p, bInUse=%.8X)",
 		__FUNCTION__,
 		hVmBootDev,
 		bInUse
@@ -10927,7 +10927,7 @@ PRL_METHOD( PrlFoundVmInfo_GetName ) (
 		 PRL_UINT32_PTR pnNameBufLength
 		 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, sName=%.8X, pnNameBufLength=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, sName=%p, pnNameBufLength=%p",
 		__FUNCTION__,
 		handle,
 		sName,
@@ -10947,7 +10947,7 @@ PRL_METHOD( PrlFoundVmInfo_IsOldConfig ) (
 		 PRL_BOOL_PTR pbOldVersion
 		 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pbOldVersion=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pbOldVersion=%p)",
 		__FUNCTION__,
 		handle,
 		pbOldVersion
@@ -10966,7 +10966,7 @@ PRL_METHOD( PrlFoundVmInfo_GetOSVersion ) (
 		PRL_UINT32_PTR pnOSVersion
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pnOSVersion=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pnOSVersion=%p)",
 		__FUNCTION__,
 		handle,
 		pnOSVersion
@@ -10986,7 +10986,7 @@ PRL_METHOD( PrlFoundVmInfo_GetConfigPath ) (
 		   PRL_UINT32_PTR pnPathBufLength
 		 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, sPath=%.8X, pnPathBufLength=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, sPath=%p, pnPathBufLength=%p",
 		__FUNCTION__,
 		handle,
 		sPath,
@@ -11006,7 +11006,7 @@ PRL_METHOD( PrlFoundVmInfo_IsTemplate ) (
 	PRL_BOOL_PTR pbIsTemplate
 	)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pbIsTemplate=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pbIsTemplate=%p)",
 		__FUNCTION__,
 		handle,
 		pbIsTemplate
@@ -11025,7 +11025,7 @@ PRL_METHOD( PrlVmToolsInfo_GetState) (
 		PRL_VM_TOOLS_STATE_PTR pVmToolsState
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, pVmToolsState=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, pVmToolsState=%p)",
 		__FUNCTION__,
 		handle,
 		pVmToolsState
@@ -11045,7 +11045,7 @@ PRL_METHOD( PrlVmToolsInfo_GetVersion ) (
 		 PRL_UINT32_PTR pnNameBufLength
 		 )
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%.8X, sName=%.8X, pnNameBufLength=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (handle=%p, sName=%p, pnNameBufLength=%p",
 		__FUNCTION__,
 		handle,
 		sName,
@@ -11066,7 +11066,7 @@ PRL_METHOD( PrlAcl_IsAllowed ) (
 		PRL_BOOL_PTR pbAllowed
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%.8X, nPermission=%.8X, pbAllowed=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%p, nPermission=%.8X, pbAllowed=%p",
 		__FUNCTION__,
 		hAcl,
 		nPermission,
@@ -11086,7 +11086,7 @@ PRL_METHOD( PrlAcl_GetAccessForOthers ) (
 		PRL_VM_ACCESS_FOR_OTHERS_PTR pnAccessForOthers
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%.8X, pnAccessForOthers=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%p, pnAccessForOthers=%p",
 		__FUNCTION__,
 		hAcl,
 		pnAccessForOthers
@@ -11105,7 +11105,7 @@ PRL_METHOD( PrlAcl_SetAccessForOthers ) (
 		PRL_VM_ACCESS_FOR_OTHERS nAccessForOthers
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%.8X, nAccessForOthers=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%p, nAccessForOthers=%.8X",
 		__FUNCTION__,
 		hAcl,
 		nAccessForOthers
@@ -11125,7 +11125,7 @@ PRL_METHOD( PrlAcl_GetOwnerName ) (
 				PRL_UINT32_PTR pnOwnerNameBufLength
 				)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%.8X, sOwnerNameBuf=%.8X, pnOwnerNameBufLength=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%p, sOwnerNameBuf=%p, pnOwnerNameBufLength=%p",
 		__FUNCTION__,
 		hAcl,
 		sOwnerNameBuf,
@@ -11145,7 +11145,7 @@ PRL_METHOD( PrlAcl_IsCurrentSessionOwner ) (
 		PRL_BOOL_PTR pbIsOwner
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%.8X, pbIsOwner=%.8X",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hAcl=%p, pbIsOwner=%p",
 		__FUNCTION__,
 		hAcl,
 		pbIsOwner
@@ -11164,7 +11164,7 @@ PRL_METHOD( PrlStat_GetVmDataStat) (
 		PRL_HANDLE_PTR phVmDataStat
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hStat=%.8X, phVmDataStat=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hStat=%p, phVmDataStat=%p)",
 		__FUNCTION__,
 		hStat,
 		phVmDataStat
@@ -11184,7 +11184,7 @@ PRL_METHOD( PrlStatVmData_GetSegmentCapacity) (
 		PRL_UINT64_PTR pnCapacity
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDataStat=%.8X, nSegment=%.8X, pnCapacity=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDataStat=%p, nSegment=%.8X, pnCapacity=%p)",
 		__FUNCTION__,
 		hVmDataStat,
 		nSegment,
@@ -11265,7 +11265,7 @@ PRL_METHOD( PrlOsesMatrix_GetSupportedOsesTypes ) (
 					PRL_HANDLE_PTR phOsesTypesList
 		)
 {
-	LOG_MESSAGE( DBG_INFO, "%s (hOsesMatrix=%.8X, phOsesTypesList=%.8X)",
+	LOG_MESSAGE( DBG_INFO, "%s (hOsesMatrix=%p, phOsesTypesList=%p)",
 		__FUNCTION__,
 		hOsesMatrix,
 		phOsesTypesList
@@ -11288,7 +11288,7 @@ PRL_METHOD( PrlOsesMatrix_GetSupportedOsesVersions ) (
 					PRL_HANDLE_PTR phGuestsList
 		)
 {
-	LOG_MESSAGE( DBG_INFO, "%s (hOsesMatrix=%.8X, nGuestOsType=%.2X, phGuestsList=%.8X)",
+	LOG_MESSAGE( DBG_INFO, "%s (hOsesMatrix=%p, nGuestOsType=%.2X, phGuestsList=%p)",
 		__FUNCTION__,
 		hOsesMatrix,
 		nGuestOsType,
@@ -11312,7 +11312,7 @@ PRL_METHOD( PrlOsesMatrix_GetDefaultOsVersion ) (
 					PRL_UINT16_PTR pnOsVersion
 		)
 {
-	LOG_MESSAGE( DBG_INFO, "%s (hOsesMatrix=%.8X, nGuestOsType=%.2X, pnOsVersion=%.8X)",
+	LOG_MESSAGE( DBG_INFO, "%s (hOsesMatrix=%p, nGuestOsType=%.2X, pnOsVersion=%p)",
 		__FUNCTION__,
 		hOsesMatrix,
 		nGuestOsType,
@@ -11334,7 +11334,7 @@ PRL_METHOD( PrlAppliance_Create) (
 		PRL_HANDLE_PTR phAppCfg
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (phAppCfg=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (phAppCfg=%p)",
 		__FUNCTION__,
 		phAppCfg
 		);
@@ -11459,7 +11459,7 @@ PRL_METHOD( PrlCtTemplate_GetName ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, sName=%.8X, pnNameLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, sName=%p, pnNameLength=%p)",
 		__FUNCTION__,
 		hTemplate,
 		sName,
@@ -11482,7 +11482,7 @@ PRL_METHOD( PrlCtTemplate_GetType ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, pType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, pType=%p)",
 		__FUNCTION__,
 		hTemplate,
 		pType
@@ -11505,7 +11505,7 @@ PRL_METHOD( PrlCtTemplate_GetDescription ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, sDescription=%.8X, pnDescriptionLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, sDescription=%p, pnDescriptionLength=%p)",
 		__FUNCTION__,
 		hTemplate,
 		sDescription,
@@ -11529,7 +11529,7 @@ PRL_METHOD( PrlCtTemplate_GetVersion ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, sVersion=%.8X, pnVersionLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, sVersion=%p, pnVersionLength=%p)",
 		__FUNCTION__,
 		hTemplate,
 		sVersion,
@@ -11552,7 +11552,7 @@ PRL_METHOD( PrlCtTemplate_GetOsType ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, pnOsType=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, pnOsType=%p)",
 		__FUNCTION__,
 		hTemplate,
 		pnOsType
@@ -11574,7 +11574,7 @@ PRL_METHOD( PrlCtTemplate_GetOsVersion ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, pnOsVersion=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, pnOsVersion=%p)",
 		__FUNCTION__,
 		hTemplate,
 		pnOsVersion
@@ -11596,7 +11596,7 @@ PRL_METHOD( PrlCtTemplate_GetCpuMode ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, pnCpuMode=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, pnCpuMode=%p)",
 		__FUNCTION__,
 		hTemplate,
 		pnCpuMode
@@ -11618,7 +11618,7 @@ PRL_METHOD( PrlCtTemplate_IsCached ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, pbCached=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, pbCached=%p)",
 		__FUNCTION__,
 		hTemplate,
 		pbCached
@@ -11655,7 +11655,7 @@ PRL_METHOD( PrlVmCfg_GetAppTemplateList ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, phAppList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, phAppList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		phAppList
@@ -11677,7 +11677,7 @@ PRL_METHOD( PrlVmCfg_SetAppTemplateList ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, hAppList=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, hAppList=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		hAppList
@@ -11725,7 +11725,7 @@ PRL_METHOD( PrlCtTemplate_GetOsTemplate ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%.8X, sOsTemplate=%.8X, pnOsTemplateLength=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hTemplate=%p, sOsTemplate=%p, pnOsTemplateLength=%p)",
 		__FUNCTION__,
 		hTemplate,
 		sOsTemplate,
@@ -11800,7 +11800,7 @@ PRL_METHOD( PrlVmCfg_IsRamHotplugEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, pbVmRamHotplugEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmRamHotplugEnabled=%p)",
 		__FUNCTION__,
 		hVmCfg,
 		pbVmRamHotplugEnabled
@@ -11822,7 +11822,7 @@ PRL_METHOD( PrlVmCfg_SetRamHotplugEnabled ) (
 {
 	SYNC_CHECK_API_INITIALIZED
 
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%.8X, bVmRamHotplugEnabled=%.8X)",
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bVmRamHotplugEnabled=%.8X)",
 		__FUNCTION__,
 		hVmCfg,
 		bVmRamHotplugEnabled
