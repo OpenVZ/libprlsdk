@@ -24,6 +24,8 @@
  * Schaffhausen, Switzerland; http://www.parallels.com/.
  */
 
+//#define FORCE_LOGGING_ON
+//#define FORCE_LOGGING_LEVEL DBG_DEBUG
 
 #include "Interfaces/ParallelsQt.h"
 #include "Libraries/PrlUuid/Uuid.h"
@@ -46,8 +48,6 @@
 #include <QCoreApplication>
 #include <QThread>
 
-//#define FORCE_LOGGING_ON
-//#define FORCE_LOGGING_LEVEL DBG_DEBUG
 #include "Libraries/Logging/Logging.h"
 
 #ifdef _WIN_
@@ -2571,7 +2571,7 @@ QString CPveControl::DspCmdSubscribePerfStats(const char *filter, const char *st
 
 QString CPveControl::DspCmdUnsubscribePerfStats(const char *strVmUUID)
 {
-    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdUnsubscribePerfStats(%s, %s)", strVmUUID);
+    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdUnsubscribePerfStats(%s)", strVmUUID);
 
 	return SendRequestToServer( CProtoSerializer::CreatePerfStatsProtoCommand(
                                     CProtoPerfStatsCommand::PSA_UNSUBSCRIBE,
