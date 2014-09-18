@@ -1,31 +1,19 @@
-# https://github.com/ligurio/trinity/blob/travis-ci/.travis.yml
-# https://github.com/protobuf-c/protobuf-c/blob/master/.travis.yml
+language: cpp
 
-language:
-    - c
-    - cpp
-
-compiler:
-    - gcc
-    - clang
+compiler: gcc
 
 before_install:
     - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install bash make
-
-before_script: "bash ./configure.sh"
+    - sudo apt-get install make g++ qt4-qmake libqt4-dev lib32z1-dev
 
 script:
-    - ( cd Sources && ./Gen.py && make -j2 )
-
-install:
-    - ( cd Sources && ./Gen.py && make -j2 )
+    - ( cd Sources && ./Gen.py; cd - )
+    - ( cd Sources/XmlModel/Utils/xsd2src/ && qmake-qt4 && make && cd - )
+    - ( cd Sources && ./Gen.py && cd SDK && qmake && make -f Makefile && sudo make install )
 
 notifications:
   email:
-    recipients:
-      - estetus@gmail.com
     on_success: change
     on_failure: always
