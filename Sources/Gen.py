@@ -83,10 +83,10 @@ exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib64
 
-Name: parallels-sdk
+Name: parallels-virtualization-open-sdk
 Description: The Virtualization SDK for Parallels Cloud Server
 Version: %(version)s
-Cflags: -I${includedir}/parallels-sdk
+Cflags: -I${includedir}/parallels-virtualization-open-sdk
 Libs: -L${libdir} -l:libprl_sdk.so.%(version)s
 """ % {'prefix': cfg.get('Build.cfg', 'install_prefix'),
 	'version': ver}
