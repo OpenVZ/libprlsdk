@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Parallels/parallels-sdk.png?branch=master)](https://travis-ci.org/Parallels/parallels-sdk)
+
 Parallels SDK
 =============
 
@@ -21,7 +23,7 @@ cd parallels-sdk/Sources
 ./Gen.py
 cd SDK
 qmake
-make -f Makefile64
+make
 make install
 ```
 
