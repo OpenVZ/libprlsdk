@@ -1,5 +1,5 @@
 Summary: Software Developing Kit for Parallels Cloud Server
-Name: parallels-sdk 
+Name: parallels-virtualization-open-sdk 
 Version: 7.0.0
 Release: 1%{?dist}
 
