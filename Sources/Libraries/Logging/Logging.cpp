@@ -412,7 +412,7 @@ int Logger::DefaultParseMessage(int lvl, const char* fmt, va_list args)
     if (group == DBG_GROUP_QT )
 		SPRINTF(ptr, "QT: ");
 
-    // Choosing the message pregix
+    // Choosing the message prefix
     switch ( level )
     {
         case DBG_FATAL:
