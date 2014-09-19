@@ -10,8 +10,8 @@ install:
 
 script:
     - ( cd Sources && ./Gen.py; cd - )
-    - ( cd Sources/XmlModel/Utils/xsd2src/ && qmake-qt4 && make && cd - )
-    - ( cd Sources && ./Gen.py && cd SDK && qmake && make -f Makefile && sudo make install )
+    - ( cd Sources/XmlModel/Utils/xsd2src/ && qmake-qt4 && make -j2 && cd - )
+    - ( cd Sources && ./Gen.py && cd SDK && qmake && make -j2 && sudo make install )
 
 notifications:
   email:
