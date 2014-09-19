@@ -6,7 +6,7 @@ Release: 1%{?dist}
 Group: Development/Libraries	
 License: LGPLv2+
 URL: https://github.com/Parallels/parallels-sdk
-Source: parallels-sdk-%{version}.tar.gz
+Source: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: make
@@ -23,6 +23,16 @@ Parallels Virtualization SDK is a development kit used to create and integrate
 custom software solutions with Parallels Cloud Server. The SDK provides cross-
 platform ANSI C and Python APIs.
 
+%package devel
+Summary: Libraries, includes to compile with the Parallels SDK library
+Group: Development/Libraries
+Requires: %{name}
+Requires: pkgconfig
+
+%description devel
+Include header files & development libraries for the Parallels Virtualization SDK library.
+
+
 %prep
 %setup -q
 
@@ -37,19 +47,24 @@ make %{?_smp_mflags} release
 
 
 %install
-cd Sources/SDK
-make install
-rm -rf %{buildroot}
+mkdir -p %{_libdir}
+install -m 0755 z-Build/Release/libprl_sdk.so.* %{_libdir}
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-
-%dir %{_bindir}
+%{_libdir}/libprl_sdk.so.*
 
 %doc
+
+%files devel
+%defattr(-, root, root)
+
+%{_libdir}/libprl_sdk.so.*
+%dir %{_includedir}/parallels-virtualization-open-sdk
+%{_includedir}/parallels-virtualization-open-sdk/*.h
 
 %changelog
 * Wed Sep 17 2014 Maxim Nestratov <mnestratov@parallels.com> - 7.0.0
