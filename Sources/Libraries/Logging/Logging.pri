@@ -29,4 +29,7 @@ include(../../../Sources/Build/qmake/staticlib.pri)
 # dependency from Libraries/Std can't be added thanks to cross-dependency
 
 win32: LIBS *= -lshell32 -lAdvapi32
+CONFIG(release, debug|release) {
+linux-*:QMAKE_CXXFLAGS += -O -Wno-unused-result
+}
 linux-*: LIBS += -lrt
