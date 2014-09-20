@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Parallels/parallels-sdk.png?branch=master)](https://travis-ci.org/Parallels/parallels-sdk)
+[![Build Status](https://travis-ci.org/CloudServer/parallels-sdk.svg?branch=master)](https://travis-ci.org/CloudServer/parallels-sdk)
 
 Parallels SDK
 =============
