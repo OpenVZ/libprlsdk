@@ -61,7 +61,7 @@ INSTALL_HEADERS = $$SRC_LEVEL/SDK/Include/Parallels.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiDeprecated.h
 
 headers.files = $${INSTALL_HEADERS}
-headers.path = $${PREFIX}/include/parallels-sdk
+headers.path = $${PREFIX}/include/parallels-virtualization-open-sdk
 INSTALLS += headers
 
 HEADERS += $${INSTALL_HEADERS} \
