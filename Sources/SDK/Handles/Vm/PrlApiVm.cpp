@@ -7826,7 +7826,7 @@ PRL_RESULT PrlVmCfg_GetCpuMask(
 		)
 {
 	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
-	    PRL_WRONG_PTR(sMask))
+	    PRL_WRONG_PTR(pnMaskBufLength))
 		return (PRL_ERR_INVALID_ARG);
 
 	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
