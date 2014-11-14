@@ -1635,4 +1635,12 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 		false,
 		PMT_CRITICAL
 		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_BACKUP_RESTORE_PROHIBIT_WHEN_ATTACHED,
+		tr( "Cannot restore the virtual machine from backup %1, because the backup is attached to a virtual machine." ),
+		tr( "Detach the backup before trying to restore the virtual machine again." ),
+		false,
+		PMT_CRITICAL
+		);
 }
