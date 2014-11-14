@@ -1643,4 +1643,12 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 		false,
 		PMT_CRITICAL
 		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_ATTACH_BACKUP_URL_CHANGE_PROHIBITED,
+		tr( "Changing parameters of attached backups is prohibited." ),
+		tr( "" ),
+		false,
+		PMT_CRITICAL
+		);
 }
