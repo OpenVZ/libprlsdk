@@ -31,6 +31,7 @@
 #include "PrlHandleHwNetAdapter.h"
 #include "PrlHandleHwGenericPciDevice.h"
 #include "PrlHandleStringsList.h"
+#include "PrlHandleCpuFeatures.h"
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module
@@ -450,3 +451,25 @@ PRL_RESULT PrlHandleSrvConfig::GetCpuFeatures(PRL_CPU_FEATURES_PTR pCpuFeatures)
 	pCpuFeatures->nEXT_0000000D_EAX = m_SrvConfig.getCpu()->getEXT_0000000D_EAX();
 	return (PRL_ERR_SUCCESS);
 }
+
+PRL_RESULT PrlHandleSrvConfig::GetCpuFeaturesEx(PRL_HANDLE_PTR phCpuFeatures)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	PrlHandleCpuFeatures *pFeatures = new PrlHandleCpuFeatures();
+	if (!pFeatures)
+		return (PRL_ERR_OUT_OF_MEMORY);
+
+	pFeatures->SetValue(PCFE_FEATURES, m_SrvConfig.getCpu()->getFEATURES());
+	pFeatures->SetValue(PCFE_EXT_FEATURES, m_SrvConfig.getCpu()->getEXT_FEATURES());
+	pFeatures->SetValue(PCFE_EXT_80000001_ECX, m_SrvConfig.getCpu()->getEXT_80000001_ECX());
+	pFeatures->SetValue(PCFE_EXT_80000001_EDX, m_SrvConfig.getCpu()->getEXT_80000001_EDX());
+	pFeatures->SetValue(PCFE_EXT_80000007_EDX, m_SrvConfig.getCpu()->getEXT_80000007_EDX());
+	pFeatures->SetValue(PCFE_EXT_80000008_EAX, m_SrvConfig.getCpu()->getEXT_80000008_EAX());
+	pFeatures->SetValue(PCFE_EXT_00000007_EBX, m_SrvConfig.getCpu()->getEXT_00000007_EBX());
+
+	*phCpuFeatures = pFeatures->GetHandle();
+
+	return (PRL_ERR_SUCCESS);
+}
+

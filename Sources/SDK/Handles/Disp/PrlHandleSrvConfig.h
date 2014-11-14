@@ -460,6 +460,15 @@ public:
 	 */
 	PRL_RESULT GetCpuFeatures(PRL_CPU_FEATURES_PTR pCpuFeatures);
 
+	/**
+	 * Returns the CPU features from server.
+	 * @param [out] a pointer to a variable that receives a handle of type PHT_CPU_FEATURES.
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_OUT_OF_MEMORY - not enough memory to instantiate new object.
+	 * * PRL_ERR_SUCCESS - function completed successfully.
+	 */
+	PRL_RESULT GetCpuFeaturesEx(PRL_HANDLE_PTR phCpuFeatures);
+
 public:
 	/**
 	 * Returns pointer to internal server config data synchronization object

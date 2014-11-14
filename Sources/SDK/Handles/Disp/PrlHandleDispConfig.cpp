@@ -28,7 +28,7 @@
 #include "PrlHandleDispNet.h"
 #include "PrlHandleOpTypeList.h"
 #include "PrlHandleUsbIdentity.h"
-#include "PrlHandleCpuFeaturesMask.h"
+#include "PrlHandleCpuFeatures.h"
 #include "XmlModel/DispConfig/CDispUser.h"
 
 #ifdef ENABLE_MALLOC_DEBUG
@@ -614,25 +614,56 @@ PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMask(PRL_CONST_CPU_FEATURES_MASK_P
 	return PRL_ERR_SUCCESS;
 }
 
-PRL_RESULT PrlHandleDispConfig::GetCpuFeaturesMaskEx(PRL_HANDLE_PTR phCpuFeaturesMask)
+PRL_RESULT PrlHandleDispConfig::GetCpuFeaturesMaskEx(PRL_HANDLE_PTR phCpuFeatures)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 
-	PrlHandleCpuFeaturesMask *pMask = new PrlHandleCpuFeaturesMask(PrlHandleDispConfigPtr(this));
-	if (!pMask)
+	PrlHandleCpuFeatures *pFeatures = new PrlHandleCpuFeatures();
+	if (!pFeatures)
 		return (PRL_ERR_OUT_OF_MEMORY);
 
-	*phCpuFeaturesMask = pMask->GetHandle();
+	pFeatures->SetValue(PCFE_FEATURES, m_DispConfig.getCpuPreferences()->getFEATURES_MASK());
+	pFeatures->SetValue(PCFE_EXT_FEATURES, m_DispConfig.getCpuPreferences()->getEXT_FEATURES_MASK());
+	pFeatures->SetValue(PCFE_EXT_80000001_ECX, m_DispConfig.getCpuPreferences()->getEXT_80000001_ECX_MASK());
+	pFeatures->SetValue(PCFE_EXT_80000001_EDX, m_DispConfig.getCpuPreferences()->getEXT_80000001_EDX_MASK());
+	pFeatures->SetValue(PCFE_EXT_80000007_EDX, m_DispConfig.getCpuPreferences()->getEXT_80000007_EDX_MASK());
+	pFeatures->SetValue(PCFE_EXT_80000008_EAX, m_DispConfig.getCpuPreferences()->getEXT_80000008_EAX());
+	pFeatures->SetValue(PCFE_EXT_00000007_EBX, m_DispConfig.getCpuPreferences()->getEXT_00000007_EBX_MASK());
+
+	*phCpuFeatures = pFeatures->GetHandle();
 
 	return (PRL_ERR_SUCCESS);
 }
 
-PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMaskEx(PRL_HANDLE hCpuFeaturesMask)
+PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMaskEx(PRL_HANDLE hCpuFeatures)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 
-	PrlHandleCpuFeaturesMaskPtr pMask = PRL_OBJECT_BY_HANDLE<PrlHandleCpuFeaturesMask>( hCpuFeaturesMask );
-	m_DispConfig.getCpuPreferences()->fromString(pMask->toString());
+	PrlHandleCpuFeaturesPtr pFeatures = PRL_OBJECT_BY_HANDLE<PrlHandleCpuFeatures>( hCpuFeatures );
+	PRL_UINT32 nMask;
+
+	pFeatures->GetValue(PCFE_FEATURES, &nMask);
+	m_DispConfig.getCpuPreferences()->setFEATURES_MASK(nMask);
+
+	pFeatures->GetValue(PCFE_EXT_FEATURES, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_FEATURES_MASK(nMask);
+
+	pFeatures->GetValue(PCFE_EXT_80000001_ECX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000001_ECX_MASK(nMask);
+
+	pFeatures->GetValue(PCFE_EXT_80000001_EDX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000001_EDX_MASK(nMask);
+
+	pFeatures->GetValue(PCFE_EXT_80000007_EDX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000007_EDX_MASK(nMask);
+
+	pFeatures->GetValue(PCFE_EXT_80000008_EAX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000008_EAX(nMask);
+
+	pFeatures->GetValue(PCFE_EXT_00000007_EBX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_00000007_EBX_MASK(nMask);
+
+	m_DispConfig.getCpuPreferences()->setCpuFeaturesMaskValid(PRL_TRUE);
 
 	return (PRL_ERR_SUCCESS);
 }

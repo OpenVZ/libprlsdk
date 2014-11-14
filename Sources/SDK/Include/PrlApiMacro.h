@@ -263,6 +263,7 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuCount ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuSpeed ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuMode ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuHvt ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuFeaturesEx ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetHostOsType ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetHostOsMajor ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetHostOsMinor ) \
@@ -399,8 +400,8 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsLogRotationEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetLogRotationEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetCpuFeaturesMaskEx ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetCpuFeaturesMaskEx ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCpuFeaturesMask_GetValue ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCpuFeaturesMask_SetValue ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCpuFeatures_GetValue ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCpuFeatures_SetValue ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVirtNet_Create ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVirtNet_GetNetworkId ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVirtNet_SetNetworkId ) \

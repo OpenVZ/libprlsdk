@@ -2928,6 +2928,23 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_CPU_FEATURES_PTR pCpuFeatures
 		) );
 
+/* Allows to get the CPU features from server.
+   Parameters
+   hSrvConfig     :  A handle of type PHT_SERVER_CONFIG.
+   phCpuFeatures  :  A pointer to a variable that receives a handle of type PHT_CPU_FEATURES.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed.
+
+   PRL_ERR_OUT_OF_MEMORY - not enough memory to instantiate new object.
+
+   PRL_ERR_SUCCESS - function completed successfully.*/
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlSrvCfg_GetCpuFeaturesEx, (
+		PRL_HANDLE hSrvConfig,
+		PRL_HANDLE_PTR phCpuFeatures
+		) );
 
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Host hardware info generic device operations
@@ -5607,28 +5624,29 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
 
 /* Allows to get the CPU features masks from dispatcher config.
-   Parameters
-   hHandle           :  A handle of type PHT_DISP_CONFIG.
-   phCpuFeaturesMask :  A pointer to a variable that receives a handle of type PHT_CPU_FEATURES_MASK.
+   hDispConfig   :  A handle of type PHT_DISP_CONFIG.
+   phCpuFeatures :  A pointer to a variable that receives a handle of type PHT_CPU_FEATURES.
    Returns
    PRL_RESULT. Possible values:
 
-   PRL_ERR_INVALID_ARG - invalid handle was passed.
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed.
+
+   PRL_ERR_OUT_OF_MEMORY - not enough memory to instantiate new object.
 
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispCfg_SetCpuFeaturesMaskEx */
 PRL_METHOD_DECL( PARALLELS_API_VER_5,
 			PrlDispCfg_GetCpuFeaturesMaskEx, (
-		PRL_HANDLE hSrvConfig,
-		PRL_HANDLE_PTR phCpuFeaturesMask
+		PRL_HANDLE hDispConfig,
+		PRL_HANDLE_PTR phCpuFeatures
 		) );
 
 /* Allows to set the CPU features masks. This masks will be saved at dispatcher config
    and will be used on VM start.
    Parameters
-   hHandle          :  A handle of type PHT_DISP_CONFIG.
-   hCpuFeaturesMask :  A handle of type PHT_CPU_FEATURES_MASK identifying the features mask.
+   hDispConfig  :  A handle of type PHT_DISP_CONFIG.
+   hCpuFeatures :  A handle of type PHT_CPU_FEATURES.
    Returns
    PRL_RESULT. Possible values:
 
@@ -5639,48 +5657,48 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
    PrlDispCfg_GetCpuFeaturesMaskEx */
 PRL_METHOD_DECL( PARALLELS_API_VER_5,
 			PrlDispCfg_SetCpuFeaturesMaskEx, (
-		PRL_HANDLE hSrvConfig,
-		PRL_HANDLE hCpuFeaturesMask
+		PRL_HANDLE hDispConfig,
+		PRL_HANDLE hCpuFeatures
 		) );
 
-/* Returns value of the specific features mask.
+/* Returns value of the specific cpu feature.
    Parameters
-   hCpuFeaturesMask :  A handle of type PHT_CPU_FEATURES_MASK identifying the features mask.
-   nId              :  Id of specific features mask.
-   pnMask           :  Pointer for storing result.
+   hCpuFeatures :  A handle of type PHT_CPU_FEATURES.
+   nId          :  Id of specific feature.
+   pnValue      :  Pointer for storing result.
    Returns
    PRL_RESULT. Possible values:
 
-   PRL_ERR_INVALID_ARG - invalid handle or null pointer or invalid features mask id was passed.
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer or invalid feature id was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
-   PrlCpuFeaturesMask_SetValue */
+   PrlCpuFeatures_SetValue */
 PRL_METHOD_DECL( PARALLELS_API_VER_5,
-			PrlCpuFeaturesMask_GetValue, (
-		PRL_HANDLE hCpuFeaturesMask,
-		PRL_CPU_FEATURES_MASK_EX nId,
-		PRL_UINT32_PTR pnMask
+			PrlCpuFeatures_GetValue, (
+		PRL_HANDLE hCpuFeatures,
+		PRL_CPU_FEATURES_EX nId,
+		PRL_UINT32_PTR pnValue
 		) );
 
-/* Sets value of the specific features mask.
+/* Sets value of the specific feature.
    Parameters
-   hCpuFeaturesMask :  A handle of type PHT_CPU_FEATURES_MASK identifying the features mask.
-   nId              :  Id of specific features mask.
-   nMask            :  Setting value.
+   hCpuFeatures :  A handle of type PHT_CPU_FEATURES.
+   nId          :  Id of specific feature.
+   nValue       :  Setting value.
    Returns
    PRL_RESULT. Possible values:
 
-   PRL_ERR_INVALID_ARG - invalid handle or invalid features mask id was passed.
+   PRL_ERR_INVALID_ARG - invalid handle or invalid feature id was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
-   PrlCpuFeaturesMask_GetValue */
+   PrlCpuFeatures_GetValue */
 PRL_METHOD_DECL( PARALLELS_API_VER_5,
-			PrlCpuFeaturesMask_SetValue, (
-		PRL_HANDLE hCpuFeaturesMask,
-		PRL_CPU_FEATURES_MASK_EX nId,
-		PRL_UINT32 nMask
+			PrlCpuFeatures_SetValue, (
+		PRL_HANDLE hCpuFeatures,
+		PRL_CPU_FEATURES_EX nId,
+		PRL_UINT32 nValue
 		) );
 
 ///////////////////////////////////////////////////////////////////////////////
