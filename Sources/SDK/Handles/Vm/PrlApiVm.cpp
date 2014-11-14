@@ -9031,7 +9031,7 @@ PRL_METHOD( PrlVmDevHd_SetMountPoint ) (
 	SYNC_CHECK_API_INITIALIZED
 
 	if (PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK) ||
-			PRL_WRONG_PTR(pnMountPointBufLength))
+			PRL_WRONG_PTR(sMountPoint))
 		return PRL_ERR_INVALID_ARG;
 
 	PrlHandleVmDeviceHardDrivePtr pDevice = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
