@@ -303,4 +303,16 @@
 #define PTN_GET_VM_CONFIG_PARAMS \
 	"nVmType, sConfigSample, nOsVersion"
 
+#define PTN_PRL_CPU_FEATURES_MASK \
+	"class CpuFeaturesMask:\n\n" \
+	"\tdef __init__(self):\n" \
+	"\t\tself.features = 0\n" \
+	"\t\tself.ext_features = 0\n" \
+	"\t\tself.ext_00000007_ebx = 0\n" \
+	"\t\tself.ext_80000001_ecx = 0\n" \
+	"\t\tself.ext_80000001_edx = 0\n" \
+	"\t\tself.ext_80000007_edx = 0\n" \
+	"\t\tself.ext_80000008_eax = 0\n" \
+	"\t\tself.isValid = 0\n\n"
+
 #endif	// PYTHON_TEMPLATES_H

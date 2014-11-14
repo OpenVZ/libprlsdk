@@ -199,6 +199,9 @@ bool PythonComposer::CompositePython()
 			   PTN_VM_IO_SEND_KEY_EVENT_EX
 			   PTN_VM_IO_DISPLAY_SET_CONFIGURATION;
 
+// CpuFeaturesMask class
+	content += PTN_PRL_CPU_FEATURES_MASK;
+
 // Handle to object
 	content += qsHandleToObject;
 

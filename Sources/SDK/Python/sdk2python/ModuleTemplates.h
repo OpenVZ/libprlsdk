@@ -503,4 +503,33 @@
 	"\t\t\tbreak;\n" \
 	MDL_END_SDK_PYTHON_FUNCTION
 
+#define MDL_PRL_SRV_SET_CPU_FEATURES \
+	"PrlDispCfg_SetCpuFeaturesMask"
+#define MDL_PRL_SRV_SET_CPU_FEATURES_IMPL \
+	"static PyObject* sdk_"MDL_PRL_SRV_SET_CPU_FEATURES"(PyObject* /*self*/, PyObject* args)\n" \
+	"{\n" \
+	"\tPRL_SDK_CHECK;\n" \
+	"\tdo {\n" \
+	"\t\tPRL_HANDLE	hSrvConfig = (PRL_HANDLE )0;\n" \
+	"\t\tPyObject* pInput = (PyObject* )0;\n\n" \
+	"\t\tif ( ! PyArg_ParseTuple( args, \"kO\", &hSrvConfig, &pInput ) )\n" \
+	"\t\t\tbreak;\n\n" \
+	"\t\tPRL_CPU_FEATURES_MASK Features;\n" \
+	"\t\tFeatures.nFEATURES_MASK = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"features\"));\n" \
+	"\t\tFeatures.nEXT_FEATURES_MASK = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"ext_features\"));\n" \
+	"\t\tFeatures.nEXT_00000007_EBX_MASK = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"ext_00000007_ebx\"));\n" \
+	"\t\tFeatures.nEXT_80000001_ECX_MASK = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"ext_80000001_ecx\"));\n" \
+	"\t\tFeatures.nEXT_80000001_EDX_MASK = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"ext_80000001_edx\"));\n" \
+	"\t\tFeatures.nEXT_80000007_EDX_MASK = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"ext_80000007_edx\"));\n" \
+	"\t\tFeatures.nEXT_80000008_EAX = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"ext_80000008_eax\"));\n" \
+	"\t\tFeatures.bIsValid = (PRL_UINT32 )PyInt_AsLong(PyObject_GetAttrString(pInput,\"isValid\"));\n\n" \
+	"\t\tPRL_RESULT prlResult = 0;\n" \
+	"\t\tPy_BEGIN_ALLOW_THREADS\n" \
+	"\t\tprlResult = "MDL_PRL_SRV_SET_CPU_FEATURES"(hSrvConfig, &Features);\n" \
+	"\t\tPy_END_ALLOW_THREADS\n" \
+	MDL_NEW_RETURN_LIST \
+	"\t\tif ( PyList_Append(ret_list, Py_BuildValue( \"k\", prlResult )) )\n" \
+	"\t\t\tbreak;\n" \
+	MDL_END_SDK_PYTHON_FUNCTION
+
 #endif	// MODULE_TEMPLATES_H
