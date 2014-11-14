@@ -117,6 +117,7 @@ PythonComposer::CustomClassInfo PythonComposer::s_CustomClassInfo[] =
 {"PluginInfo",   "",             "_Handle",    "",       "PHT_PLUGIN_INFO","",0,0,0,0},
 {"BackupResult", "",             "_Handle",    "",       "PHT_BACKUP_RESULT", "",0,0,0,0},
 {"NetworkShapingBandwidthEntry","","_Handle",  "",       "PHT_NETWORK_SHAPING_BANDWIDTH", "",0,0,0,0},
+{"CpuFeaturesMask",   "",        "_Handle",    "",       "PHT_CPU_FEATURES_MASK",  "",0,0,0,0}
 };
 
 
@@ -198,9 +199,6 @@ bool PythonComposer::CompositePython()
 			   PTN_VM_IO_SEND_KEY_EVENT
 			   PTN_VM_IO_SEND_KEY_EVENT_EX
 			   PTN_VM_IO_DISPLAY_SET_CONFIGURATION;
-
-// CpuFeaturesMask class
-	content += PTN_PRL_CPU_FEATURES_MASK;
 
 // Handle to object
 	content += qsHandleToObject;

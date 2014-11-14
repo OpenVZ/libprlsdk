@@ -397,7 +397,10 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsAllowMultiplePMC ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetAllowMultiplePMC ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsLogRotationEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetLogRotationEnabled ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetCpuFeaturesMask ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetCpuFeaturesMaskEx ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetCpuFeaturesMaskEx ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCpuFeaturesMask_GetValue ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCpuFeaturesMask_SetValue ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVirtNet_Create ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVirtNet_GetNetworkId ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVirtNet_SetNetworkId ) \

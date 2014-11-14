@@ -2349,4 +2349,41 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
         PRL_UINT32 nFlags
         ) );
 
+/* To get the CPU features masks from dispatcher config
+   hDispConfig :		A handle of type PHT_DISP_CONFIG.
+   pMasks:			[out] A pointer to masks of processor features
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlDispCfg_SetCpuFeaturesMask	*/
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlDispCfg_GetCpuFeaturesMask, (
+		PRL_HANDLE hDispConfig,
+		PRL_CPU_FEATURES_MASK_PTR pMasks
+		) );
+
+/* Allows to set the CPU features masks. This masks will save at dispatcher config
+   and will use on VM start.
+   Parameters
+   hDispConfig :		A handle of type PHT_DISP_CONFIG.
+   pMasks:			[in] A pointer to masks of processor features
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlDispCfg_GetCpuFeaturesMask */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlDispCfg_SetCpuFeaturesMask, (
+		PRL_HANDLE hDispConfig,
+		PRL_CONST_CPU_FEATURES_MASK_PTR pMasks
+		) );
+
 #endif //__PARALLELS_API_DEPRECATED_H__

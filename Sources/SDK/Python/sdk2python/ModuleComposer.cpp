@@ -169,12 +169,6 @@ void ModuleComposer::SdkPythonFunction(QString& content, const QString& qsFunc)
 		return;
 	}
 
-	if ( qsFunc == MDL_PRL_SRV_SET_CPU_FEATURES)
-	{
-		content += MDL_PRL_SRV_SET_CPU_FEATURES_IMPL;
-		return;
-	}
-
 	QString qsGenFunc;
 
 	qsGenFunc = QString(MDL_SDK_PYTHON_FUNCTION)
