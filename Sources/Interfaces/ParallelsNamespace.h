@@ -95,8 +95,10 @@
 #define MIGRATE_DISP_PROTO_V2	2
 /* hot migration was added */
 #define MIGRATE_DISP_PROTO_V3	3
+/* migration of external disks was added */
+#define MIGRATE_DISP_PROTO_V4	4
 /* current migrate protocol version */
-#define MIGRATE_DISP_PROTO_VERSION MIGRATE_DISP_PROTO_V3
+#define MIGRATE_DISP_PROTO_VERSION MIGRATE_DISP_PROTO_V4
 
 /* backup client-dispatcher and dispatcher-dispatcher protocol versions */
 /* RC version */
