@@ -1598,8 +1598,8 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ATTACH_BACKUP_CUSTOM_BACKUP_SERVER_NOT_SUPPORTED,
-		tr("Cannot attach backup located on a custom remote server."),
-		tr("Attaching backups from custom remote servers is not supported."),
+		tr("Cannot attach backup located on a remote server."),
+		tr("Attaching backups from remote servers is not supported."),
 		false,
 		PMT_CRITICAL
 		);
