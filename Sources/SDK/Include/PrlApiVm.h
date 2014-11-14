@@ -11934,6 +11934,50 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_BOOL bEnabled
 		) );
 
+/* Returns the auto compress flag of the specified virtual hard disk.
+   (for Virtuozzo Container only)
+   Parameters
+   hVmDev :      A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
+                 identifying the virtual hard disk.
+   pbEnabled :   [out] A pointer to a variable that
+                 receives the result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlVmDevHd_IsAutoCompressEnabled,		*/
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlVmDevHd_IsAutoCompressEnabled, (
+		PRL_HANDLE hVmDev,
+		PRL_BOOL_PTR pbEnabled
+		) );
+
+/* Sets the auto compress sign flag of the specified virtual hard disk.
+   (for Virtuozzo Container only)
+   Parameters
+   hVmDev :      A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
+                 identifying the virtual hard disk.
+   bEnabled :    Specify PRL_FALSE to disable auto compress
+
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlVmDevHd_GetMountPoint				*/
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlVmDevHd_SetAutoCompressEnabled, (
+		PRL_HANDLE hVmDev,
+		PRL_BOOL bEnabled
+		) );
+
 /* Removes the specified partition handle from the virtual hard
    disk list.
    Parameters
