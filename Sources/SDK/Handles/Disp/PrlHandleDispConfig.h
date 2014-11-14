@@ -607,6 +607,23 @@ public:
 	PRL_RESULT SetCpuFeaturesMask(PRL_CONST_CPU_FEATURES_MASK_PTR pMasks);
 
 	/**
+	 * Returns CPU features masks.
+	 * @param [out] a pointer to a variable that receives a handle of type PHT_CPU_FEATURES_MASK.
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_OUT_OF_MEMORY - not enough memory to instantiate new object.
+	 * * PRL_ERR_SUCCESS - function completed successfully.
+	 */
+	PRL_RESULT GetCpuFeaturesMaskEx(PRL_HANDLE_PTR phCpuFeaturesMask);
+
+	/**
+	 * Sets value of CPU features mask.
+	 * @param [in] a handle of type PHT_CPU_FEATURES_MASK identifying the features mask.
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - function completed successfully.
+	 */
+	PRL_RESULT SetCpuFeaturesMaskEx(PRL_HANDLE hCpuFeaturesMask);
+
+	/**
 	 * Gets log rotation enabled state.
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:

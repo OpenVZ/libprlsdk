@@ -60,6 +60,7 @@
 #include "PrlHandleUserProfile.h"
 #include "PrlHandleUserInfo.h"
 #include "PrlHandleOpTypeList.h"
+#include "PrlHandleCpuFeaturesMask.h"
 // breakpad includes
 #include "parallels_breakpad.h"
 
@@ -4380,6 +4381,94 @@ PRL_METHOD( PrlDispCfg_SetCpuFeaturesMask ) (PRL_HANDLE hDispConfig, PRL_CONST_C
 	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
 
 	return pDispConfig->SetCpuFeaturesMask(pMasks);
+}
+
+PRL_METHOD( PrlDispCfg_GetCpuFeaturesMaskEx ) (
+		PRL_HANDLE hSrvConfig,
+		PRL_HANDLE_PTR phCpuFeaturesMask
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hSrvConfig=%.8X, phCpuFeaturesMask=%.8X)",
+		__FUNCTION__,
+		hSrvConfig,
+		phCpuFeaturesMask
+	);
+
+	if (PRL_WRONG_HANDLE(hSrvConfig, PHT_DISP_CONFIG) || PRL_WRONG_PTR(phCpuFeaturesMask))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hSrvConfig );
+
+	return pDispConfig->GetCpuFeaturesMaskEx(phCpuFeaturesMask);
+}
+
+PRL_METHOD( PrlDispCfg_SetCpuFeaturesMaskEx ) (
+		PRL_HANDLE hSrvConfig,
+		PRL_HANDLE hCpuFeaturesMask
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hSrvConfig=%.8X, hCpuFeaturesMask=%.8X)",
+		__FUNCTION__,
+		hSrvConfig,
+		hCpuFeaturesMask
+	);
+
+	if (PRL_WRONG_HANDLE(hSrvConfig, PHT_DISP_CONFIG) || PRL_WRONG_HANDLE(hCpuFeaturesMask, PHT_CPU_FEATURES_MASK))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hSrvConfig );
+
+	return pDispConfig->SetCpuFeaturesMaskEx(hCpuFeaturesMask);
+}
+
+PRL_METHOD( PrlCpuFeaturesMask_GetValue ) (
+		PRL_HANDLE hCpuFeaturesMask,
+		PRL_CPU_FEATURES_MASK_EX nId,
+		PRL_UINT32_PTR pnMask
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hCpuFeaturesMask=%.8X, nId=%.8X, pnMask=%.8X)",
+		__FUNCTION__,
+		hCpuFeaturesMask,
+		nId,
+		pnMask
+	);
+
+	if (PRL_WRONG_HANDLE(hCpuFeaturesMask, PHT_CPU_FEATURES_MASK) || PRL_WRONG_PTR(pnMask))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleCpuFeaturesMaskPtr pCpuFeaturesMask = PRL_OBJECT_BY_HANDLE<PrlHandleCpuFeaturesMask>( hCpuFeaturesMask );
+
+	return pCpuFeaturesMask->GetValue(nId, pnMask);
+}
+
+PRL_METHOD( PrlCpuFeaturesMask_SetValue ) (
+		PRL_HANDLE hCpuFeaturesMask,
+		PRL_CPU_FEATURES_MASK_EX nId,
+		PRL_UINT32 nMask
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hCpuFeaturesMask=%.8X, nId=%.8X, nMask=%.8X)",
+		__FUNCTION__,
+		hCpuFeaturesMask,
+		nId,
+		nMask
+	);
+
+	if (PRL_WRONG_HANDLE(hCpuFeaturesMask, PHT_CPU_FEATURES_MASK))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleCpuFeaturesMaskPtr pCpuFeaturesMask = PRL_OBJECT_BY_HANDLE<PrlHandleCpuFeaturesMask>( hCpuFeaturesMask );
+
+	return pCpuFeaturesMask->SetValue(nId, nMask);
 }
 
 PRL_METHOD( PrlLic_IsValid) (

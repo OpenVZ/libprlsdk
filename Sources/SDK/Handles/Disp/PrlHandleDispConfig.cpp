@@ -28,6 +28,7 @@
 #include "PrlHandleDispNet.h"
 #include "PrlHandleOpTypeList.h"
 #include "PrlHandleUsbIdentity.h"
+#include "PrlHandleCpuFeaturesMask.h"
 #include "XmlModel/DispConfig/CDispUser.h"
 
 #ifdef ENABLE_MALLOC_DEBUG
@@ -611,6 +612,29 @@ PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMask(PRL_CONST_CPU_FEATURES_MASK_P
 	m_DispConfig.getCpuPreferences()->setEXT_0000000D_EAX_MASK(pMasks->nEXT_0000000D_EAX_MASK);
 	m_DispConfig.getCpuPreferences()->setCpuFeaturesMaskValid(pMasks->bIsValid);
 	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleDispConfig::GetCpuFeaturesMaskEx(PRL_HANDLE_PTR phCpuFeaturesMask)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	PrlHandleCpuFeaturesMask *pMask = new PrlHandleCpuFeaturesMask(PrlHandleDispConfigPtr(this));
+	if (!pMask)
+		return (PRL_ERR_OUT_OF_MEMORY);
+
+	*phCpuFeaturesMask = pMask->GetHandle();
+
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMaskEx(PRL_HANDLE hCpuFeaturesMask)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	PrlHandleCpuFeaturesMaskPtr pMask = PRL_OBJECT_BY_HANDLE<PrlHandleCpuFeaturesMask>( hCpuFeaturesMask );
+	m_DispConfig.getCpuPreferences()->fromString(pMask->toString());
+
+	return (PRL_ERR_SUCCESS);
 }
 
 PRL_RESULT PrlHandleDispConfig::IsLogRotationEnabled(PRL_BOOL_PTR pbEnabled)
