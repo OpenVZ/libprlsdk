@@ -2151,6 +2151,27 @@ PRL_METHOD( PrlSrvCfg_GetCpuFeaturesEx ) (
 	return pSrvConfig->GetCpuFeaturesEx(phCpuFeatures);
 }
 
+PRL_METHOD( PrlSrvCfg_GetCpuFeaturesMaskingCapabilities ) (
+		PRL_HANDLE hSrvConfig,
+		PRL_HANDLE_PTR phCpuFeatures
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hSrvConfig=%.8X, phCpuFeatures=%.8X)",
+		__FUNCTION__,
+		hSrvConfig,
+		phCpuFeatures
+	);
+
+	if (PRL_WRONG_HANDLE(hSrvConfig, PHT_SERVER_CONFIG) || PRL_WRONG_PTR(phCpuFeatures))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleSrvConfigPtr pSrvConfig = PRL_OBJECT_BY_HANDLE<PrlHandleSrvConfig>( hSrvConfig );
+
+	return pSrvConfig->GetCpuFeaturesMaskingCapabilities(phCpuFeatures);
+}
+
 static bool PRL_WRONG_GENERIC_DEVICE_HANDLE(PRL_HANDLE _handle)
 {
 	if (PRL_WRONG_HANDLE(_handle, PHT_HW_GENERIC_DEVICE) && PRL_WRONG_HANDLE(_handle, PHT_HW_NET_ADAPTER)

@@ -2946,6 +2946,24 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_HANDLE_PTR phCpuFeatures
 		) );
 
+/* Allows to get the CPU features masking capabilities from server
+   Parameters
+   hSrvConfig     :  A handle of type PHT_SERVER_CONFIG.
+   phCpuFeatures  :  A pointer to a variable that receives a handle of type PHT_CPU_FEATURES.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed.
+
+   PRL_ERR_OUT_OF_MEMORY - not enough memory to instantiate new object.
+
+   PRL_ERR_SUCCESS - function completed successfully.*/
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlSrvCfg_GetCpuFeaturesMaskingCapabilities, (
+		PRL_HANDLE hSrvConfig,
+		PRL_HANDLE_PTR phCpuFeatures
+		) );
+
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Host hardware info generic device operations
 ///////////////////////////////////////////////////////////////////////////////

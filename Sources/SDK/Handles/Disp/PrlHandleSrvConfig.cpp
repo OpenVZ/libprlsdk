@@ -452,6 +452,34 @@ PRL_RESULT PrlHandleSrvConfig::GetCpuFeatures(PRL_CPU_FEATURES_PTR pCpuFeatures)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleSrvConfig::GetCpuFeaturesMaskingCapabilities(PRL_HANDLE_PTR phCpuFeatures)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	PrlHandleCpuFeatures *pFeatures = new PrlHandleCpuFeatures();
+	if (!pFeatures)
+		return (PRL_ERR_OUT_OF_MEMORY);
+
+	pFeatures->SetValue(PCFE_FEATURES,
+			m_SrvConfig.getCpu()->getFEATURES_MASKING_CAP());
+	pFeatures->SetValue(PCFE_EXT_FEATURES,
+			m_SrvConfig.getCpu()->getEXT_FEATURES_MASKING_CAP());
+	pFeatures->SetValue(PCFE_EXT_80000001_ECX,
+			m_SrvConfig.getCpu()->getEXT_80000001_ECX_MASKING_CAP());
+	pFeatures->SetValue(PCFE_EXT_80000001_EDX,
+			m_SrvConfig.getCpu()->getEXT_80000001_EDX_MASKING_CAP());
+	pFeatures->SetValue(PCFE_EXT_80000007_EDX,
+			m_SrvConfig.getCpu()->getEXT_80000007_EDX_MASKING_CAP());
+	pFeatures->SetValue(PCFE_EXT_80000008_EAX,
+			m_SrvConfig.getCpu()->getEXT_80000008_EAX_MASKING_CAP());
+	pFeatures->SetValue(PCFE_EXT_00000007_EBX,
+			m_SrvConfig.getCpu()->getEXT_00000007_EBX_MASKING_CAP());
+
+	*phCpuFeatures = pFeatures->GetHandle();
+
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleSrvConfig::GetCpuFeaturesEx(PRL_HANDLE_PTR phCpuFeatures)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

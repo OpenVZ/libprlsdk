@@ -482,6 +482,13 @@ virtual PRL_DEVICE_TYPE getDeviceType() const { return PDE_SOUND_DEVICE; }
 							<xs:element name="EXT_80000008_EAX" type="xs:integer" minOccurs="0"/>
 							<xs:element name="EXT_00000007_EBX" type="xs:integer" minOccurs="0"/>
 							<xs:element name="EXT_0000000D_EAX" type="xs:integer" minOccurs="0"/>
+							<xs:element name="FEATURES_MASKING_CAP" type="xs:integer" minOccurs="0"/>
+							<xs:element name="EXT_FEATURES_MASKING_CAP" type="xs:integer" minOccurs="0"/>
+							<xs:element name="EXT_80000001_ECX_MASKING_CAP" type="xs:integer" minOccurs="0"/>
+							<xs:element name="EXT_80000001_EDX_MASKING_CAP" type="xs:integer" minOccurs="0"/>
+							<xs:element name="EXT_80000007_EDX_MASKING_CAP" type="xs:integer" minOccurs="0"/>
+							<xs:element name="EXT_80000008_EAX_MASKING_CAP" type="xs:integer" minOccurs="0"/>
+							<xs:element name="EXT_00000007_EBX_MASKING_CAP" type="xs:integer" minOccurs="0"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
