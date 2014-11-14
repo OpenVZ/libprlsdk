@@ -5679,6 +5679,24 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_HANDLE hCpuFeatures
 		) );
 
+/* Creates a new handle of type PHT_CPU_FEATURES.
+   Parameters
+   phCpuFeatures :  [out] A pointer to a variable that receives
+                    the handle.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - null pointer was passed.
+
+   PRL_ERR_OUT_OF_MEMORY - not enough memory to create the
+   handle.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlCpuFeatures_Create, (
+		PRL_HANDLE_PTR phCpuFeatures
+		) );
+
 /* Returns value of the specific cpu feature.
    Parameters
    hCpuFeatures :  A handle of type PHT_CPU_FEATURES.

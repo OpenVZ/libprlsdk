@@ -4467,6 +4467,28 @@ PRL_METHOD( PrlDispCfg_SetCpuFeaturesMaskEx ) (
 	return pDispConfig->SetCpuFeaturesMaskEx(hCpuFeatures);
 }
 
+PRL_METHOD( PrlCpuFeatures_Create ) (
+		PRL_HANDLE_PTR phCpuFeatures
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (phCpuFeatures=%.8X)",
+		__FUNCTION__,
+		phCpuFeatures
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_PTR(phCpuFeatures))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleCpuFeatures *pCpuFeatures = new PrlHandleCpuFeatures;
+	if (!pCpuFeatures)
+		return (PRL_ERR_OUT_OF_MEMORY);
+
+	*phCpuFeatures = pCpuFeatures->GetHandle();
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_METHOD( PrlCpuFeatures_GetValue ) (
 		PRL_HANDLE hCpuFeatures,
 		PRL_CPU_FEATURES_EX nId,

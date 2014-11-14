@@ -117,7 +117,8 @@ PythonComposer::CustomClassInfo PythonComposer::s_CustomClassInfo[] =
 {"PluginInfo",   "",             "_Handle",    "",       "PHT_PLUGIN_INFO","",0,0,0,0},
 {"BackupResult", "",             "_Handle",    "",       "PHT_BACKUP_RESULT", "",0,0,0,0},
 {"NetworkShapingBandwidthEntry","","_Handle",  "",       "PHT_NETWORK_SHAPING_BANDWIDTH", "",0,0,0,0},
-{"CpuFeatures",  "",             "_Handle",    "",       "PHT_CPU_FEATURES",  "",0,0,0,0},
+{"CpuFeatures",  "",             "_Handle",    "",       "PHT_CPU_FEATURES",  \
+			"call_sdk_function('PrlCpuFeatures_Create')",0,0,0,0},
 };
 
 
