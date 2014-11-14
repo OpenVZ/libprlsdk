@@ -25,7 +25,7 @@ PrlHandleCpuFeaturesMask::PrlHandleCpuFeaturesMask(const PrlHandleDispConfigPtr 
 	m_CpuPrefs.setCpuFeaturesMaskValid(PRL_TRUE);
 }
 
-QString PrlHandleCpuFeaturesMask::toString() const
+QString PrlHandleCpuFeaturesMask::toString()
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 

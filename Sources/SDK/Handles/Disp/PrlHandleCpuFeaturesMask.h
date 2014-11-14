@@ -41,7 +41,7 @@ public:
 	/**
 	 * Returns cpu features mask representation as XML string.
 	 */
-	QString toString() const;
+	QString toString();
 
 	/**
 	 * Returns value of the specific features mask.
