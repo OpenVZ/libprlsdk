@@ -237,10 +237,14 @@ void PrlHandleVm::IOStateChanged (  IOService::Channel::State s )
 		*state = IOS_DISABLED;
 		break;
 	}
-	if (s != IOService::Channel::Started)
+	if (s == IOService::Channel::Started)
 	{
-		CleanAllIOJobs();
+		foreach (PrlHandleSmartPtr<PrlHandleIOJob> j, GetRegisteredIOJobs()) {
+			j->StateChanged(s);
+		}
 	}
+	else
+		CleanAllIOJobs();
 
 	m_eventSource.NotifyListeners(event);
 	event->Release();

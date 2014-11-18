@@ -34,6 +34,7 @@
 #include <QSize>
 #include <QEvent>
 #include <QVector>
+#include <QTimer>
 
 #include "PrlHandleJob.h"
 #include "Libraries/IOService/src/Common/ExecChannel.h"
@@ -41,8 +42,10 @@
 /**
  * IO job handle object.
  */
-class PrlHandleIOJob : public PrlHandleJob
+class PrlHandleIOJob : public QObject, public PrlHandleJob
 {
+Q_OBJECT
+
 public:
 	/** IO job types for inner use */
 	enum IOJobType {
@@ -116,18 +119,29 @@ public:
 
 	/******************* Callbacks *******************************************/
 
+	void StateChanged(IOService::Channel::State state);
+
 	/** Screen captured callback */
 	void ResponseReceived ( const IOService::IOSendJob::Handle& h,
 							const SmartPtr<IOService::IOPackage>& p );
 
 private:
+	PRL_RESULT ProcessResult();
+
 	void HandleResponse ( const IOService::IOSendJob::Handle& h,
 						  const SmartPtr<IOService::IOPackage>& p );
 	IOService::Channel *GetIOChannel();
 
+private slots:
+	void Finalize();
 
 private:
-	QMutex m_mutex;
+	QTimer m_Timer;
+
+	PRL_RESULT m_Result;
+	PRL_JOB_STATUS m_JobStatus;
+
+	QMutex m_JobStatusMutex;
 
 	// Job type
 	IOJobType m_jobType;
@@ -154,18 +168,14 @@ private:
 	QString m_format;
 	int m_quality;
 	QSize m_thumbnail;
+
 	volatile bool m_capturingToFile;
 	volatile bool m_captureResult;
-
-	bool	m_bIsCopyPasteAnswered;
-	bool	m_bIsVmShutdownAnswered;
 
 	/**
 	 * Pointer to the object that contains additional error info
 	 */
 	PrlHandleVmEventPtr m_pError;
-
-	PRL_UINT32	m_uShutdownResult;
 };
 
 

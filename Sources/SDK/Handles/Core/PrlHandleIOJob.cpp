@@ -50,29 +50,86 @@
 
 /*****************************************************************************/
 
-namespace {
-PRL_JOB_OPERATION_CODE ConvertIOJobTypeToJobType(PrlHandleIOJob::IOJobType nIOJobType)
+namespace
 {
-	switch (nIOJobType)
-	{
-		case PrlHandleIOJob::IOConnectJob:				return (PJOC_VM_CONNECT_TO_VM);
-		case PrlHandleIOJob::IOSendJob:					return (PJOC_UNKNOWN);
+const quint32 g_minSleepMsecs = 10;
+const int g_ConnectJobTimeoutMsecs = 60000;
+
+struct Convert
+{
+
+static PRL_JOB_OPERATION_CODE toOpCode(PrlHandleIOJob::IOJobType nType)
+{
+	switch(nType) {
+		case PrlHandleIOJob::IOConnectJob:
+			return (PJOC_VM_CONNECT_TO_VM);
+		case PrlHandleIOJob::IOSendJob:
+			return (PJOC_UNKNOWN);
+		default:
+			return (PJOC_UNKNOWN);
 	}
-	return (PJOC_UNKNOWN);
 }
 
+static PRL_RESULT toResult(IOService::Channel::State state)
+{
+	switch(state) {
+		case IOService::Channel::Disabled:
+			return PRL_ERR_TIMEOUT;
+		case IOService::Channel::Stopped:
+			return PRL_ERR_IO_STOPPED;
+		case IOService::Channel::Started:
+			return PRL_ERR_SUCCESS;
+		case IOService::Channel::ConnectionTimeout:
+			return PRL_ERR_IO_CONNECTION_TIMEOUT;
+		case IOService::Channel::AuthenticationFailed:
+			return PRL_ERR_IO_AUTHENTICATION_FAILED;
+		case IOService::Channel::UnknownVMId:
+			return PRL_ERR_IO_UNKNOWN_VM_ID;
+		default:
+			return PRL_ERR_UNEXPECTED;
+	}
 }
+
+static PRL_RESULT toResult(IOService::IOSendJob::Result result)
+{
+	switch(result) {
+		case IOService::IOSendJob::Success:
+			return PRL_ERR_SUCCESS;
+		case IOService::IOSendJob::Fail:
+			return PRL_ERR_FAILURE;
+		case IOService::IOSendJob::InvalidJob:
+		case IOService::IOSendJob::InvalidPackage:
+			return PRL_ERR_INVALID_ARG;
+		case IOService::IOSendJob::Timeout:
+			return PRL_ERR_TIMEOUT;
+		case IOService::IOSendJob::SendPended:
+			return PRL_ERR_OPERATION_PENDING;
+		case IOService::IOSendJob::SendQueueIsFull:
+			return PRL_ERR_IO_SEND_QUEUE_IS_FULL;
+		default:
+			return PRL_ERR_UNEXPECTED;
+	}
+}
+
+};
+}// namespace
 
 PrlHandleIOJob::PrlHandleIOJob ( IOJobType type,
 		const SmartPtr<IOService::ExecChannel>& channel):
-	PrlHandleJob(ConvertIOJobTypeToJobType(type), true),
+	PrlHandleJob(Convert::toOpCode(type), true),
+	m_Result(PRL_ERR_OPERATION_PENDING),
+	m_JobStatus(PJS_RUNNING),
 	m_jobType( type ),
 	m_responseReceived( false ),
 	m_ioChannel( channel ),
-	m_quality(-1),
-	m_bIsVmShutdownAnswered( false ),
-	m_uShutdownResult( 0 )
+	m_quality(-1)
 {
+	if ( type == IOConnectJob ) {
+		m_Timer.setSingleShot(true);
+		m_Timer.start(g_ConnectJobTimeoutMsecs);
+
+		QObject::connect(&m_Timer, SIGNAL(timeout()), this, SLOT(Finalize()));
+	}
 }
 
 PrlHandleIOJob::~PrlHandleIOJob ()
@@ -85,45 +142,30 @@ IOService::Channel* PrlHandleIOJob::GetIOChannel ()
 
 PRL_RESULT PrlHandleIOJob::Wait(PRL_UINT32 timeout)
 {
-        const quint32 minSleep = 10;
-        quint32 iterations = timeout/minSleep;
-
 	if ( ! GetIOChannel() ) {
 		LOG_MESSAGE(DBG_FATAL, "IO job object (desktop) in invalid!");
 		return PRL_ERR_INVALID_ARG;
 	}
 
+	quint32 iterations = timeout/g_minSleepMsecs;
+
 	if ( m_jobType == IOConnectJob ) {
+		m_Timer.stop(); //use custom timeout instead of builtin one.
+
 		while ( iterations-- &&
 				GetIOChannel()->getState() == IOService::Channel::Disabled ) {
 			QCoreApplication::processEvents();
-			sleepMsecs( minSleep );
+			sleepMsecs( g_minSleepMsecs );
 		}
-		if ( GetIOChannel()->getState() == IOService::Channel::Disabled )
-			return PRL_ERR_TIMEOUT;
-		else if ( GetIOChannel()->getState() == IOService::Channel::Stopped )
-			return PRL_ERR_CANT_CONNECT_TO_DISPATCHER;
-		else
-			return PRL_ERR_SUCCESS;
+
+		return ProcessResult();
 	}
 	else if ( m_jobType == IOSendJob ) {
-		IOService::IOSendJob::Result res =
-			GetIOChannel()->waitForSend( m_ioJobHandle, timeout );
-
-		if ( res == IOService::IOSendJob::Success )
-			return PRL_ERR_SUCCESS;
-		else if ( res == IOService::IOSendJob::Fail ||
-				  res == IOService::IOSendJob::InvalidJob )
-			return PRL_ERR_INVALID_ARG;
-		else if ( res == IOService::IOSendJob::Timeout )
-			return PRL_ERR_TIMEOUT;
-	}
-	else {
-		LOG_MESSAGE(DBG_FATAL, "IO job type is wrong!");
-		return PRL_ERR_INVALID_ARG;
+		GetIOChannel()->waitForSend( m_ioJobHandle, timeout );
+		return ProcessResult();
 	}
 
-	return PRL_ERR_SUCCESS;
+	return m_Result;
 }
 
 PRL_HANDLE PrlHandleIOJob::Cancel()
@@ -139,31 +181,10 @@ PRL_RESULT PrlHandleIOJob::GetStatus( PRL_JOB_STATUS_PTR status )
 		return PRL_ERR_INVALID_ARG;
 	}
 
-	if ( m_jobType == IOConnectJob ) {
-		IOService::Channel::State st = GetIOChannel()->getState();
-		if ( st == IOService::Channel::Disabled )
-			*status = PJS_RUNNING;
-		else
-			*status = PJS_FINISHED;
+	QMutexLocker _lock(&m_JobStatusMutex);
+	*status = m_JobStatus;
 
-		return PRL_ERR_SUCCESS;
-	}
-	else if ( m_jobType == IOSendJob ) {
-		IOService::IOSendJob::Result res =
-			GetIOChannel()->getSendResult( m_ioJobHandle );
-
-		if ( res == IOService::IOSendJob::SendPended )
-			*status = PJS_RUNNING;
-		else
-			*status = PJS_FINISHED;
-
-		return PRL_ERR_SUCCESS;
-	}
-	else {
-		LOG_MESSAGE(DBG_FATAL, "IO job type is wrong!");
-		*status = PJS_UNKNOWN;
-		return PRL_ERR_INVALID_ARG;
-	}
+	return PRL_ERR_SUCCESS;
 }
 
 PRL_RESULT PrlHandleIOJob::GetProgress( PRL_UINT32_PTR percentage )
@@ -174,31 +195,13 @@ PRL_RESULT PrlHandleIOJob::GetProgress( PRL_UINT32_PTR percentage )
 		return PRL_ERR_INVALID_ARG;
 	}
 
-	if ( m_jobType == IOConnectJob ) {
-		IOService::Channel::State st = GetIOChannel()->getState();
-		if ( st == IOService::Channel::Disabled )
-			*percentage = 0;
-		else
-			*percentage = 100;
-
-		return PRL_ERR_SUCCESS;
-	}
-	else if ( m_jobType == IOSendJob ) {
-		IOService::IOSendJob::Result res =
-			GetIOChannel()->getSendResult( m_ioJobHandle );
-
-		if ( res == IOService::IOSendJob::SendPended )
-			*percentage = 0;
-		else
-			*percentage = 100;
-
-		return PRL_ERR_SUCCESS;
-	}
-	else {
-		LOG_MESSAGE(DBG_FATAL, "IO job type is wrong!");
+	QMutexLocker _lock(&m_JobStatusMutex);
+	if ( m_JobStatus == PJS_RUNNING )
 		*percentage = 0;
-		return PRL_ERR_INVALID_ARG;
-	}
+	else
+		*percentage = 100;
+
+	return PRL_ERR_SUCCESS;
 }
 
 PRL_RESULT PrlHandleIOJob::GetRetCode( PRL_RESULT_PTR retcode )
@@ -210,78 +213,10 @@ PRL_RESULT PrlHandleIOJob::GetRetCode( PRL_RESULT_PTR retcode )
 		return PRL_ERR_INVALID_ARG;
 	}
 
-	if ( m_jobType == IOConnectJob )
-	{
-		IOService::Channel::State st = GetIOChannel()->getState();
-		if ( st == IOService::Channel::Disabled )
-			*retcode = PRL_ERR_OPERATION_PENDING;
-		else if ( st == IOService::Channel::Started )
-			*retcode = PRL_ERR_SUCCESS;
-		else if ( st == IOService::Channel::Stopped )
-			*retcode = PRL_ERR_IO_STOPPED;
-		else if ( st == IOService::Channel::UnknownVMId )
-		{
-			*retcode = PRL_ERR_IO_UNKNOWN_VM_ID;
-			if (!m_pError.getHandle())
-			{
-				PrlHandleVmPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVm>( GetVmHandle() );
-				if ( pVm.getHandle() )
-				{
-					QMutexLocker _lock(pVm->GetSynchroObject());
-					CVmConfiguration &vmConfig = pVm->GetVmConfig();
-					CVmEvent vmEvent(
-									PET_VM_INF_UNINITIALIZED_EVENT_CODE,
-									vmConfig.getVmIdentification()->getVmUuid(),
-									PIE_VIRTUAL_MACHINE,
-									PRL_ERR_IO_UNKNOWN_VM_ID
-								);
-					vmEvent.addEventParameter(
-						new CVmEventParameter(
-								PVE::String,
-								vmConfig.getVmIdentification()->getVmName(),
-								EVT_PARAM_MESSAGE_PARAM_0)
-							);
-					m_pError = new PrlHandleVmEvent(pVm, &vmEvent);
-				}
-			}
-		}
-		else if ( st == IOService::Channel::ConnectionTimeout )
-			*retcode = PRL_ERR_IO_CONNECTION_TIMEOUT;
-		else if ( st == IOService::Channel::AuthenticationFailed )
-			*retcode = PRL_ERR_IO_AUTHENTICATION_FAILED;
-		else
-			*retcode = PRL_ERR_UNEXPECTED;
+	QMutexLocker _lock(&m_JobStatusMutex);
+	*retcode = m_Result;
 
-		return PRL_ERR_SUCCESS;
-	}
-	else if ( m_jobType == IOSendJob )
-	{
-		IOService::IOSendJob::Result res =
-			GetIOChannel()->getSendResult( m_ioJobHandle );
-
-		if ( res == IOService::IOSendJob::SendPended )
-			*retcode = PRL_ERR_OPERATION_PENDING;
-		else if ( res == IOService::IOSendJob::Success )
-			*retcode = PRL_ERR_SUCCESS;
-		else if ( res == IOService::IOSendJob::Fail )
-			*retcode = PRL_ERR_FAILURE;
-		else if ( res == IOService::IOSendJob::InvalidJob )
-			*retcode = PRL_ERR_INVALID_ARG;
-		else if ( res == IOService::IOSendJob::InvalidPackage )
-			*retcode = PRL_ERR_INVALID_ARG;
-		else if ( res == IOService::IOSendJob::SendQueueIsFull )
-			*retcode = PRL_ERR_IO_SEND_QUEUE_IS_FULL;
-		else
-			*retcode = PRL_ERR_UNEXPECTED;
-
-		return PRL_ERR_SUCCESS;
-	}
-	else
-	{
-		LOG_MESSAGE(DBG_FATAL, "IO job type is wrong!");
-		*retcode = PRL_ERR_INVALID_PARAM;
-		return PRL_ERR_INVALID_ARG;
-	}
+	return PRL_ERR_SUCCESS;
 }
 
 PRL_RESULT PrlHandleIOJob::GetDataPtr( PRL_VOID_PTR pOuterPtr,
@@ -304,7 +239,7 @@ PRL_RESULT PrlHandleIOJob::GetResult( PRL_HANDLE_PTR )
 
 PRL_RESULT PrlHandleIOJob::GetError( PRL_HANDLE_PTR phError )
 {
-	QMutexLocker _lock(&m_mutex);
+	QMutexLocker _lock(&m_JobStatusMutex);
 	if (m_pError.getHandle())
 	{
 		m_pError->AddRef();
@@ -316,7 +251,7 @@ PRL_RESULT PrlHandleIOJob::GetError( PRL_HANDLE_PTR phError )
 
 void PrlHandleIOJob::RegisterRequest ( const IOService::IOSendJob::Handle& h )
 {
-	QMutexLocker locker( &m_mutex );
+	QMutexLocker locker( &m_JobStatusMutex );
 
 	m_ioJobHandle = h;
 
@@ -332,6 +267,33 @@ void PrlHandleIOJob::RegisterRequest ( const IOService::IOSendJob::Handle& h )
 	HandleResponse( h, p );
 }
 
+void PrlHandleIOJob::StateChanged(IOService::Channel::State state)
+{
+	if ( m_jobType != PrlHandleIOJob::IOConnectJob )
+		return;
+
+	if ( state == IOService::Channel::Disabled )
+		return;
+
+	m_Timer.stop();
+	Finalize();
+}
+
+void PrlHandleIOJob::Finalize()
+{
+	ProcessResult();
+
+	PrlHandleVmPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVm>( GetVmHandle() );
+	if ( ! pVm )
+		return;
+
+	pVm->eventSource()->NotifyListeners(this);
+
+	PrlHandleServerPtr pSrv = pVm->GetServer();
+	if ( pSrv )
+		pSrv->eventSource()->NotifyListeners(this);
+}
+
 void PrlHandleIOJob::ResponseReceived (
     const IOService::IOSendJob::Handle& h,
 	const SmartPtr<IOService::IOPackage>& p )
@@ -341,7 +303,7 @@ void PrlHandleIOJob::ResponseReceived (
 		 p->header.type != PET_IO_TOOLS_VM_SHUTDOWN )
 		return;
 
-	QMutexLocker locker( &m_mutex );
+	QMutexLocker locker( &m_JobStatusMutex );
 
 	if ( m_responseReceived )
 		return;
@@ -360,6 +322,45 @@ void PrlHandleIOJob::ResponseReceived (
 	m_responseReceived = true;
 
 	HandleResponse( h, p );
+}
+
+PRL_RESULT PrlHandleIOJob::ProcessResult()
+{
+	QMutexLocker _lock(&m_JobStatusMutex);
+	m_JobStatus = PJS_FINISHED;
+
+	if ( m_jobType == IOConnectJob ) {
+		m_Result = Convert::toResult( GetIOChannel()->getState() );
+
+		if ( m_Result != PRL_ERR_IO_UNKNOWN_VM_ID )
+			return m_Result;
+
+		if (! m_pError.getHandle() ) {
+			PrlHandleVmPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVm>( GetVmHandle() );
+			if ( pVm.getHandle() ) {
+				QMutexLocker _lock(pVm->GetSynchroObject());
+				CVmConfiguration &vmConfig = pVm->GetVmConfig();
+				CVmEvent vmEvent(
+							PET_VM_INF_UNINITIALIZED_EVENT_CODE,
+							vmConfig.getVmIdentification()->getVmUuid(),
+							PIE_VIRTUAL_MACHINE,
+							PRL_ERR_IO_UNKNOWN_VM_ID
+						);
+				vmEvent.addEventParameter(
+					new CVmEventParameter(
+							PVE::String,
+							vmConfig.getVmIdentification()->getVmName(),
+							EVT_PARAM_MESSAGE_PARAM_0)
+						);
+				m_pError = new PrlHandleVmEvent(pVm, &vmEvent);
+			}
+		}
+	}
+	else if ( m_jobType == IOSendJob ) {
+		m_Result = Convert::toResult( GetIOChannel()->getSendResult( m_ioJobHandle ) );
+	}
+
+	return m_Result;
 }
 
 void PrlHandleIOJob::HandleResponse (
