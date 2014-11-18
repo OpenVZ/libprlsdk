@@ -83,6 +83,9 @@ public:
     /** Returns current desktop state */
     Channel::State getState () const;
 
+    /** Sets desktop state */
+    virtual void setState ( Channel::State st);
+
    /**
      * Returns send result.
      * @see IOClient::getSendResult
@@ -135,8 +138,6 @@ protected:
 	Channel ( IOClientInterface *ioClient );
 
 
-    /** Sets desktop state */
-    virtual void setState ( Channel::State st);
     QReadWriteLock &getLock() { return m_rwLock; }
     QReadWriteLock &getLock() const { return m_rwLock; }
 
@@ -171,6 +172,18 @@ public slots:
      */
     IOSendJob::Result waitForSend ( const IOSendJob::Handle&,
                                     quint32 timeout = UINT_MAX ) const;
+
+signals:
+    /** Emits when desktop changes its state. */
+    void onStateChange ( IOService::Channel::State );
+
+    /**
+     * Same as above, but with _this_ pointer as first signal argument.
+     * @note If you are using several desktops which are connected
+     *       to a single slot, #QObject::sender will not work for
+     *       many threads. Use signal with _this_ argument.
+     */
+    void onStateChange ( Channel*, IOService::Channel::State );
 
 protected:
     IOClientInterface* m_ioClient;

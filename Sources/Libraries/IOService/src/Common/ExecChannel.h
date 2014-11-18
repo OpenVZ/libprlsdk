@@ -97,9 +97,6 @@ signals:
 	void onResponsePackageReceived ( IOSendJob::Handle,
 			const SmartPtr<IOPackage> );
 
-	/** Emits when desktop changes its state. */
-	void onStateChange ( IOService::Channel::State );
-
 private:
 	QString m_sessionId;
 	QString m_vmId;

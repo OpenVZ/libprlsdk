@@ -100,6 +100,9 @@ void Channel::setState ( Channel::State state )
 	m_rwLock.lockForWrite();
 	m_state = state;
 	m_rwLock.unlock();
+
+	emit onStateChange( this, m_state );
+	emit onStateChange( m_state );
 }
 
 void Channel::enable ()
