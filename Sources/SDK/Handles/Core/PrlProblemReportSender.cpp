@@ -134,10 +134,14 @@ void PrlProblemReportSender::concreteRun()
 		m_pProblemReport = new PrlHandleProblemReport(
 						PrlHandleProblemReport::CreateReportData(PRS_NEW_PACKED));
 
-		PRL_RESULT r = m_pProblemReport->fromString(m_sProblemReport.toUtf8());
-		if (PRL_SUCCEEDED(r))
-			r = m_pProblemReport->Pack();
+		if (PRL_FAILED( m_pProblemReport->fromString(m_sProblemReport.toUtf8()) ))
+		{
+			m_pSendReportJob->SetReturnCode(PRL_ERR_INVALID_ARG);
+			notifyWithUserCallback(m_pSendReportJob->GetHandle());
+			return;
+		}
 
+		PRL_RESULT r = m_pProblemReport->Pack();
 		if (PRL_FAILED(r))
 		{
 			m_pSendReportJob->SetReturnCode(r);
