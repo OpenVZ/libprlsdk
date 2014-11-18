@@ -1366,6 +1366,7 @@ CProtoVmMigrateCommand::CProtoVmMigrateCommand(
 	const QString &sTargetServerHostname,
 	quint32 nTargetServerPort,
 	const QString &sTargetServerSessionUuid,
+	const QString &sTargetVmName,
 	const QString &sTargetVmHomePath,
 	quint32 nMigrationFlags,
 	quint32 nReservedFlags,
@@ -1377,12 +1378,14 @@ CProtoVmMigrateCommand::CProtoVmMigrateCommand(
 	SetStringParamValue( sTargetServerHostname, EVT_PARAM_MIGRATE_CMD_TARGET_SERVER_HOSTNAME);
 	SetUnsignedIntParamValue( nTargetServerPort, EVT_PARAM_MIGRATE_CMD_TARGET_SERVER_PORT);
 	SetStringParamValue( sTargetServerSessionUuid, EVT_PARAM_MIGRATE_CMD_TARGET_SERVER_SESSION_UUID );
+	SetStringParamValue( sTargetVmName, EVT_PARAM_MIGRATE_CMD_TARGET_VM_NAME );
 	SetStringParamValue( sTargetVmHomePath, EVT_PARAM_MIGRATE_CMD_TARGET_VM_HOME_PATH );
 	SetUnsignedIntParamValue( nReservedFlags, EVT_PARAM_MIGRATE_CMD_RESERVED_FLAGS);
 }
 
 bool CProtoVmMigrateCommand::IsValid()
 {
+	/* Skip EVT_PARAM_MIGRATE_CMD_TARGET_VM_NAME check in order to preserve backward compatibility. */
 	return (CheckWhetherParamPresents(EVT_PARAM_MIGRATE_CMD_TARGET_SERVER_HOSTNAME, PVE::String) &&
 			CheckWhetherParamPresents(EVT_PARAM_MIGRATE_CMD_TARGET_SERVER_PORT, PVE::UnsignedInt) &&
 			CheckWhetherParamPresents(EVT_PARAM_MIGRATE_CMD_TARGET_SERVER_SESSION_UUID, PVE::String) &&
@@ -1409,6 +1412,11 @@ quint32 CProtoVmMigrateCommand::GetTargetServerPort()
 QString CProtoVmMigrateCommand::GetTargetServerSessionUuid()
 {
 	return (GetStringParamValue(EVT_PARAM_MIGRATE_CMD_TARGET_SERVER_SESSION_UUID));
+}
+
+QString CProtoVmMigrateCommand::GetTargetServerVmName()
+{
+	return (GetStringParamValue(EVT_PARAM_MIGRATE_CMD_TARGET_VM_NAME));
 }
 
 QString CProtoVmMigrateCommand::GetTargetServerVmHomePath()

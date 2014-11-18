@@ -1982,6 +1982,7 @@ public:
 #define EVT_PARAM_MIGRATE_CMD_VM_CONFIG				"migrate_cmd_vm_config"
 #define EVT_PARAM_MIGRATE_CMD_VM_RUNTIME_CONFIG				"migrate_cmd_vm_runtime_config"
 #define EVT_PARAM_MIGRATE_CMD_HOST_HARDWARE_INFO		"migrate_cmd_host_hardware_info"
+#define EVT_PARAM_MIGRATE_CMD_TARGET_VM_NAME			"migrate_cmd_target_vm_name"
 #define EVT_PARAM_MIGRATE_CMD_TARGET_VM_HOME_PATH		"migrate_cmd_target_vm_home_path"
 #define EVT_PARAM_MIGRATE_CMD_SHARED_FILE_NAME			"migrate_cmd_shared_file_name"
 #define EVT_PARAM_MIGRATE_CMD_SHARED_FILE_NAMES_EXTRA		"migrate_cmd_shared_file_names_extra"

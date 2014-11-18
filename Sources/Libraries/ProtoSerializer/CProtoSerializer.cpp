@@ -624,6 +624,7 @@ CProtoCommandPtr CProtoSerializer::CreateVmMigrateProtoCommand(
 		const QString &sTargetServerHostname,
 		quint32 nTargetServerPort,
 		const QString &sTargetServerSessionUuid,
+		const QString &sTargetVmName,
 		const QString &sTargetVmHomePath,
 		quint32 nMigrationFlags,
 		quint32 nReservedFlags,
@@ -631,7 +632,7 @@ CProtoCommandPtr CProtoSerializer::CreateVmMigrateProtoCommand(
 	)
 {
 	return CProtoCommandPtr(new CProtoVmMigrateCommand(sVmUuid, sTargetServerHostname, nTargetServerPort,
-														sTargetServerSessionUuid, sTargetVmHomePath,
+														sTargetServerSessionUuid, sTargetVmName, sTargetVmHomePath,
 														nMigrationFlags, nReservedFlags, bForceOperation));
 }
 

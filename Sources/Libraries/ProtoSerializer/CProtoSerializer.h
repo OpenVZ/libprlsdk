@@ -589,6 +589,7 @@ public:
 	 * @param target server hostname
 	 * @param target server port
 	 * @param target server session UUID
+	 * @param target server VM name
 	 * @param target server VM home path
 	 * @param VM migration flags
 	 * @param reserved flags
@@ -599,6 +600,7 @@ public:
 		const QString &sTargetServerHostname,
 		quint32 nTargetServerPort,
 		const QString &sTargetServerSessionUuid,
+		const QString &sTargetVmName,
 		const QString &sTargetVmHomePath,
 		quint32 nMigrationFlags,
 		quint32 nReservedFlags,
