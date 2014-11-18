@@ -129,15 +129,21 @@ void PrlProblemReportSender::concreteRun()
 	}
 	else
 	{
-		CProblemReport _report;
-		_report.fromString(m_sProblemReport);
-		if (PRL_FAILED(_report.m_uiRcInit))
+		CProblemReportUtils::CorrectNonPrintableSymbols(m_sProblemReport);
+
+		m_pProblemReport = new PrlHandleProblemReport(
+						PrlHandleProblemReport::CreateReportData(PRS_NEW_PACKED));
+
+		PRL_RESULT r = m_pProblemReport->fromString(m_sProblemReport.toUtf8());
+		if (PRL_SUCCEEDED(r))
+			r = m_pProblemReport->Pack();
+
+		if (PRL_FAILED(r))
 		{
-			m_pSendReportJob->SetReturnCode(PRL_ERR_INVALID_ARG);
+			m_pSendReportJob->SetReturnCode(r);
 			notifyWithUserCallback(m_pSendReportJob->GetHandle());
 			return;
 		}
-		CProblemReportUtils::CorrectNonPrintableSymbols(m_sProblemReport);
 	}
 
 // Configure proxy settings
@@ -196,9 +202,7 @@ void PrlProblemReportSender::concreteRun()
 										 Qt::DirectConnection ))
 	_lock.unlock();
 
-	QByteArray data = m_pProblemReport.isValid()
-						 ? m_pProblemReport->GetBinaryData()
-						 : m_sProblemReport.toUtf8();
+	QByteArray data = m_pProblemReport->GetBinaryData();
 
 	_lock.relock();
 	m_pPRSender->setData( data );

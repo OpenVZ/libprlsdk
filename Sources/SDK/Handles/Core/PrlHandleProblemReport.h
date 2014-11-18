@@ -112,6 +112,15 @@ public://API helpers
 	 *		- PPRF_ADD_SERVER_PART - add server part to problem report
 	 */
 	PRL_HANDLE Assembly(PRL_UINT32 nFlags);
+
+	/**
+	 * Create an archive with all collected data.
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_INVALID_ARG - report object is not initialized or cannot be packed
+	 * * PRL_ERR_FAILURE - failed to pack report archive
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT Pack() const;
 };
 
 typedef PrlHandleSmartPtr<PrlHandleProblemReport> PrlHandleProblemReportPtr;

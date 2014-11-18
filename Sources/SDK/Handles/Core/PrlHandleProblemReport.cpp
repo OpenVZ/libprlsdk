@@ -90,6 +90,17 @@ PRL_HANDLE PrlHandleProblemReport::Assembly(PRL_UINT32 nFlags)
 	return (pAssemblyReportJob->GetHandle());
 }
 
+PRL_RESULT PrlHandleProblemReport::Pack() const
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	CPackedProblemReport *pReport = dynamic_cast<CPackedProblemReport *>(m_pProblemReport.getImpl());
+	if (!pReport)
+		return PRL_ERR_INVALID_ARG;
+
+	return (pReport->packReport());
+}
+
 PRL_RESULT PrlHandleProblemReport::GetArchiveFileName(PRL_STR sArchiveFileName, PRL_UINT32_PTR pnBufLength)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
