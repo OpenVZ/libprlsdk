@@ -1876,6 +1876,97 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL force_operation
 		) );
 
+/* Migrates an existing virtual machine to another host. To get
+   the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Parameters
+   hVm :               A handle of type PHT_VIRTUAL_MACHINE
+                       identifying the virtual machine.
+   hTargetServer :     A handle of type PHT_SERVER identifying
+                       the target Parallels Service.
+   target_name :       Target VM name (i.e. what name will be
+                       given to VM on target system). Specify empty
+                       string to preserve VM name from source system.
+   target_home_path :  Target VM home path (i.e. where VM will be
+                       placed on target system). Empty string
+                       accounts as default VM directory path
+   migration_flags :   Flags that specify migration type and etc.
+                       Acceptable flags\: PVMT_COLD_MIGRATION,
+                       PVMT_WARM_MIGRATION, PVMT_HOT_MIGRATION,
+                       PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY,
+                       PVMSL_HIGH_SECURITY
+   reserved_flags :    Reserved parameter for further purposes
+   force_operation :   Specifies to process VM migration action
+                       without asking any additional questions
+                       from the Parallels Service side
+                       (non\-interactive clients should use this
+                       option).
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+						   PrlVm_MigrateWithRename, (
+		PRL_HANDLE hVm,
+		PRL_HANDLE hTargetServer,
+		PRL_CONST_STR target_name,
+		PRL_CONST_STR target_home_path,
+		PRL_UINT32 migration_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation
+		) );
+
+/* Migrates an existing virtual machine to another host.
+   This is an extended version of PrlVm_MigrateWithRename function that allows to
+   initiate VM migration process without active connection to target
+   Parallels Service.
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Parameters
+   hVm :               A handle of type PHT_VIRTUAL_MACHINE
+                       identifying the virtual machine.
+   target_host :       The name of the target host machine.
+   target_port :       The port number on the target host.
+   target_session_id : The target Parallels Service session ID. This ID can be
+                       retrieved with PrlLoginResponse_GetSessionUuid from the
+					   response of the login request.
+   target_home_path :  Target VM home path (i.e. where VM will be
+                       placed on target system). Empty string accounts
+					   as default VM directory path
+   migration_flags :   Flags that specify migration type and etc. Acceptable flags:
+                       PVMT_COLD_MIGRATION, PVMT_WARM_MIGRATION, PVMT_HOT_MIGRATION,
+					   PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   reserved_flags :    Reserved parameter for further purposes
+   force_operation :   Specifies to process VM migration action without asking
+                       any additional questions from the Parallels Service side
+                       (non-interactive clients should use this option).
+
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+						   PrlVm_MigrateWithRenameEx, (
+		PRL_HANDLE hVm,
+		PRL_CONST_STR target_host,
+		PRL_UINT32 target_port,
+		PRL_CONST_STR target_session_id,
+		PRL_CONST_STR target_name,
+		PRL_CONST_STR target_home_path,
+		PRL_UINT32 migration_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation
+		) );
+
 /* Cancels the migration operation that was started with
    PrlVm_Migrate or PrlVm_MigrateEx. To get the return code from
    the PHT_JOB object, use the PrlJob_GetRetCode function.

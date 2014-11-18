@@ -532,6 +532,7 @@ public://Protocol methods
 	 * @param target server hostname
 	 * @param target server port
 	 * @param target server session UUID
+	 * @param target server VM name
 	 * @param target server VM home path
 	 * @param VM migration type
 	 * @return id of performed asynchronous request
@@ -540,6 +541,7 @@ public://Protocol methods
 		const char *strTargetServerHostname,
 		quint32 nTargetServerPort,
 		const char *strTargetServerSessionUuid,
+		const char *sTargetVmName,
 		const char *strTargetVmHomePath,
 		quint32 nMigrationFlags,
 		quint32 nReservedFlags,

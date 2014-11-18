@@ -452,6 +452,7 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdDirVmMigrate(
 		PRL_CONST_STR sTargetServerHostname,
 		PRL_UINT32 nTargetServerPort,
 		PRL_CONST_STR sTargetServerSessionUuid,
+		PRL_CONST_STR sTargetVmName,
 		PRL_CONST_STR sTargetVmHomePath,
 		PRL_UINT32 nMigrationFlags,
 		PRL_UINT32 nReservedFlags,
@@ -460,7 +461,7 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdDirVmMigrate(
 {
 	QString job_uuid = m_pPveControl->DspCmdDirVmMigrate(sVmUuid, sTargetServerHostname,
 														nTargetServerPort, sTargetServerSessionUuid,
-														sTargetVmHomePath, nMigrationFlags,
+														sTargetVmName, sTargetVmHomePath, nMigrationFlags,
 														nReservedFlags, bForceOperation);
 
 	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,

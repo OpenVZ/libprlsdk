@@ -293,6 +293,7 @@ public:
 	 * Migrates VM
 	 *
 	 * @param pointer to the target server object
+	 * @param target server VM name
 	 * @param target server VM home path
 	 * @param VM migration flags
 	 * @param reserved flags
@@ -301,6 +302,7 @@ public:
 	 */
 	PrlHandleJobPtr Migrate(
 		PrlHandleServerPtr pTargetServer,
+		PRL_CONST_STR sTargetVmName,
 		PRL_CONST_STR sTargetVmHomePath,
 		PRL_UINT32 nMigrationFlags,
 		PRL_UINT32 nReservedFlags,
@@ -312,6 +314,7 @@ public:
 	 * @param target server hostname
 	 * @param target server port
 	 * @param target server session UUID
+	 * @param target server VM name
 	 * @param target server VM home path
 	 * @param VM migration flags
 	 * @param reserved flags
@@ -322,6 +325,7 @@ public:
 		PRL_CONST_STR sTargetServerHostname,
 		PRL_UINT32 nTargetServerPort,
 		PRL_CONST_STR sTargetServerSessionUuid,
+		PRL_CONST_STR sTargetVmName,
 		PRL_CONST_STR sTargetVmHomePath,
 		PRL_UINT32 nMigrationFlags,
 		PRL_UINT32 nReservedFlags,

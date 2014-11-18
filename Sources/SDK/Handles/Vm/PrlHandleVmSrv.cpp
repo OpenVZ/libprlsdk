@@ -488,6 +488,7 @@ PrlHandleJobPtr PrlHandleVmSrv::Clone(PRL_CONST_STR new_vm_name, PRL_CONST_STR n
 
 PrlHandleJobPtr PrlHandleVmSrv::Migrate(
 	PrlHandleServerPtr pTargetServer,
+	PRL_CONST_STR sTargetVmName,
 	PRL_CONST_STR sTargetVmHomePath,
 	PRL_UINT32 nMigrationFlags,
 	PRL_UINT32 nReservedFlags,
@@ -496,7 +497,7 @@ PrlHandleJobPtr PrlHandleVmSrv::Migrate(
 	return (Migrate(pTargetServer->GetRemoteHost().toUtf8().constData(),
 					pTargetServer->GetManagePort(),
 					pTargetServer->GetSessionUuid().toUtf8().constData(),
-					sTargetVmHomePath,
+					sTargetVmName, sTargetVmHomePath,
 					nMigrationFlags, nReservedFlags, bForceOperation));
 }
 
@@ -504,6 +505,7 @@ PrlHandleJobPtr PrlHandleVmSrv::Migrate(
 	PRL_CONST_STR sTargetServerHostname,
 	PRL_UINT32 nTargetServerPort,
 	PRL_CONST_STR sTargetServerSessionUuid,
+	PRL_CONST_STR sTargetVmName,
 	PRL_CONST_STR sTargetVmHomePath,
 	PRL_UINT32 nMigrationFlags,
 	PRL_UINT32 nReservedFlags,
@@ -521,7 +523,7 @@ PrlHandleJobPtr PrlHandleVmSrv::Migrate(
 		sTargetHostname = QHostInfo::localHostName();
 	}
 	return (m_pServerVm->DspCmdDirVmMigrate(GET_VM_UUID, sTargetHostname.toUtf8().constData(), nTargetServerPort,
-											sTargetServerSessionUuid, sTargetVmHomePath,
+											sTargetServerSessionUuid, sTargetVmName, sTargetVmHomePath,
 											nMigrationFlags, nReservedFlags, bForceOperation));
 }
 

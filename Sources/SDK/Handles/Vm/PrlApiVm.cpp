@@ -5665,16 +5665,17 @@ PRL_ASYNC_METHOD( PrlVm_DropSuspendedState ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_DropSuspendedState, (hVm))
 }
 
-PRL_HANDLE PrlVm_Migrate_Impl(PRL_HANDLE hVm, PRL_HANDLE hTargetServer, PRL_CONST_STR target_home_path,
+PRL_HANDLE PrlVm_Migrate_Impl(PRL_HANDLE hVm, PRL_HANDLE hTargetServer,
+									   PRL_CONST_STR target_name, PRL_CONST_STR target_home_path,
 									   PRL_UINT32 migration_flags, PRL_UINT32 reserved_flags,
 									   PRL_BOOL force_operation)
 {
 	if ( PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE) || PRL_WRONG_HANDLE(hTargetServer, PHT_SERVER)
-		|| PRL_WRONG_PTR(target_home_path)	)
+		|| PRL_WRONG_PTR(target_name) || PRL_WRONG_PTR(target_home_path)	)
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_MIGRATE))
 		PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
 	PrlHandleServerPtr pTargetServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>(hTargetServer);
-	PrlHandleJobPtr pJob = pVm->Migrate(pTargetServer, target_home_path, migration_flags, reserved_flags,
+	PrlHandleJobPtr pJob = pVm->Migrate(pTargetServer, target_name, target_home_path, migration_flags, reserved_flags,
 		force_operation);
 	if (!pJob)
 		RETURN_RES(PRL_INVALID_HANDLE)
@@ -5691,8 +5692,9 @@ PRL_ASYNC_METHOD( PrlVm_Migrate) (
 		PRL_BOOL force_operation
 		)
 {
+	PRL_CONST_STR target_name = "";
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_MIGRATE)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Migrate, (hVm, hTargetServer, target_home_path, migration_flags,\
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Migrate, (hVm, hTargetServer, target_name, target_home_path, migration_flags, \
 							reserved_flags, force_operation))
 }
 
@@ -5700,16 +5702,18 @@ PRL_HANDLE PrlVm_MigrateEx_Impl(PRL_HANDLE hVm,
 										 PRL_CONST_STR target_host,
 										 PRL_UINT32 target_port,
 										 PRL_CONST_STR target_session_id,
+										 PRL_CONST_STR target_name,
 										 PRL_CONST_STR target_home_path,
 										 PRL_UINT32 migration_flags,
 										 PRL_UINT32 reserved_flags,
 										 PRL_BOOL force_operation)
 {
 	if ( PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE) || PRL_WRONG_PTR(target_host) ||
-		PRL_WRONG_PTR(target_session_id) || PRL_WRONG_PTR(target_home_path) )
+		PRL_WRONG_PTR(target_session_id) || PRL_WRONG_PTR(target_name) || PRL_WRONG_PTR(target_home_path))
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_MIGRATE))
 		PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
-	PrlHandleJobPtr pJob = pVm->Migrate(target_host, target_port, target_session_id, target_home_path,
+	PrlHandleJobPtr pJob = pVm->Migrate(target_host, target_port, target_session_id,
+		target_name, target_home_path,
 		migration_flags, reserved_flags, force_operation);
 	if (!pJob)
 		RETURN_RES(PRL_INVALID_HANDLE)
@@ -5728,9 +5732,42 @@ PRL_ASYNC_METHOD( PrlVm_MigrateEx ) (
 		PRL_BOOL force_operation
 		)
 {
+	PRL_CONST_STR target_name = "";
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_MIGRATE)
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_MigrateEx, (hVm, target_host, target_port, target_session_id,
-							target_home_path, migration_flags, reserved_flags, force_operation))
+							target_name, target_home_path, migration_flags, reserved_flags, force_operation))
+}
+
+PRL_ASYNC_METHOD(PrlVm_MigrateWithRename) (
+		PRL_HANDLE hVm,
+		PRL_HANDLE hTargetServer,
+		PRL_CONST_STR target_name,
+		PRL_CONST_STR target_home_path,
+		PRL_UINT32 migration_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation
+		)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_MIGRATE)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Migrate, (hVm, hTargetServer, target_name, target_home_path, migration_flags, \
+							reserved_flags, force_operation))
+}
+
+PRL_ASYNC_METHOD( PrlVm_MigrateWithRenameEx ) (
+		PRL_HANDLE hVm,
+		PRL_CONST_STR target_host,
+		PRL_UINT32 target_port,
+		PRL_CONST_STR target_session_id,
+		PRL_CONST_STR target_name,
+		PRL_CONST_STR target_home_path,
+		PRL_UINT32 migration_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation
+		)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_MIGRATE)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_MigrateEx, (hVm, target_host, target_port, target_session_id,
+							target_name, target_home_path, migration_flags, reserved_flags, force_operation))
 }
 
 PRL_ASYNC_METHOD( PrlVm_MigrateCancel) (

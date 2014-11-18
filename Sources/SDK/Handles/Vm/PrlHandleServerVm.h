@@ -424,6 +424,7 @@ public:
 	 * @param target server hostname
 	 * @param target server port
 	 * @param target server session UUID
+	 * @param target VM name
 	 * @param target VM home path
 	 * @param VM migration flags
 	 * @param reserved flags
@@ -435,6 +436,7 @@ public:
 			PRL_CONST_STR sTargetServerHostname,
 			PRL_UINT32 nTargetServerPort,
 			PRL_CONST_STR sTargetServerSessionUuid,
+			PRL_CONST_STR sTargetVmName,
 			PRL_CONST_STR sTargetVmHomePath,
 			PRL_UINT32 nMigrationFlags,
 			PRL_UINT32 nReservedFlags,
