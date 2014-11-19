@@ -11132,4 +11132,28 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_NO_BINARY,
+		tr( "Cannot find the cpufeatures binary." ),
+		tr( "Install the cpufeatures package to change CPU features mask." ),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_INCORRECT_MASK,
+		tr( "Cannot mask unmaskable CPU features." ),
+		tr( "Consult 'prlsrvctl info --full' output for list of unmaskable CPU features." ),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_POOLS_MANAGMENT,
+		tr( "Cannot change CPU features mask when using cpupools features management." ),
+		tr( "" ),
+		false,
+		PMT_CRITICAL
+		);
 }

@@ -982,4 +982,7 @@
 // Attach backup as a block device errors
 /* +++ ALIGNED VALUE TO 54000 +++ */
 
+// Changing host CPU features errors
+/* +++ ALIGNED VALUE TO 54100 +++ */
+
 #endif // __PARALLELS_API_PRIVATE_ERRORS_VALUES_H__
