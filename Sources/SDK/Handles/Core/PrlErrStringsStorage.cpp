@@ -11156,4 +11156,12 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_RUNNING_VM_OR_CT,
+		tr( "Cannot change the CPU features mask, as there are virtual machines or containers currently running on the server." ),
+		tr( "Stop all virtual machines and containers before changing CPU features mask." ),
+		false,
+		PMT_CRITICAL
+		);
 }
