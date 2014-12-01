@@ -188,6 +188,7 @@ SOURCES += \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleUserProfile.h \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleUserInfo.h \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleDispConfig.h \
+		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleCpuPool.h \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleLicense.h \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleRunningTask.h \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleUsbIdentity.h \
@@ -266,6 +267,7 @@ SOURCES += \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleUserProfile.cpp \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleUserInfo.cpp \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleDispConfig.cpp \
+		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleCpuPool.cpp \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleLicense.cpp \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleRunningTask.cpp \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleUsbIdentity.cpp \

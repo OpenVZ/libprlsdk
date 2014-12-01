@@ -1439,6 +1439,24 @@ public://Protocol methods
 	 */
 	QString DspCmdGetVmConfigById(PRL_CONST_STR sSearchId, PRL_UINT32 nFlags);
 
+	/**
+	 * Get CPU pools list
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdGetCPUPoolsList();
+
+	/**
+	 * Move to another cpu pool
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdMoveToCPUPool(PRL_CONST_STR strPoolName);
+
+	/**
+	 * Recalculate cpu pool features
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdRecalculateCPUPool(PRL_CONST_STR strPoolName);
+
 private:
 	/**
 	 * Checks connection status

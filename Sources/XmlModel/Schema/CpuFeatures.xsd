@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="CpuFeaturesRoot">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CpuPool" type="CpuPoolType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CpuFeaturesType">
+		<xs:annotation>
+			<xs:documentation>class=CCpuFeatures;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FEATURES" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EXT_FEATURES" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EXT_80000001_ECX" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EXT_80000001_EDX" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EXT_80000007_EDX" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EXT_80000008_EAX" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EXT_00000007_EBX" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EXT_0000000D_EAX" type="xs:integer" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CpuPoolInfoType">
+		<xs:annotation>
+			<xs:documentation>class=CCpuPoolInfo;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="Vendor" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CpuPoolType">
+		<xs:annotation>
+			<xs:documentation>class=CCpuPool;</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CpuPoolInfo" type="CpuPoolInfoType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CpuMask" type="CpuFeaturesType">
+				<xs:annotation>
+					<xs:documentation>single_fixed=on;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

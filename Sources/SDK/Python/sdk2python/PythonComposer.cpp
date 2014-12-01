@@ -119,6 +119,7 @@ PythonComposer::CustomClassInfo PythonComposer::s_CustomClassInfo[] =
 {"NetworkShapingBandwidthEntry","","_Handle",  "",       "PHT_NETWORK_SHAPING_BANDWIDTH", "",0,0,0,0},
 {"CpuFeatures",  "",             "_Handle",    "",       "PHT_CPU_FEATURES",  \
 			"call_sdk_function('PrlCpuFeatures_Create')",0,0,0,0},
+{"CPUPool",      "",             "_Handle",    "",       "PHT_CPU_POOL",   "",0,0,0,0},
 };
 
 

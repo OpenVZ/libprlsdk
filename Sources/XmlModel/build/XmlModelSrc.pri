@@ -51,6 +51,7 @@ include(../VmDirectory/VmDirectory.pri)
 	include(../DiskDescriptor/DiskDescriptor.pri)
 	include(../VmDataStatistic/VmDataStatistic.pri)
 	include(../InterfaceInfo/InterfaceInfo.pri)
+	include(../CpuFeatures/CpuFeatures.pri)
 }
 
 HEADERS += $$GEN_HEADERS

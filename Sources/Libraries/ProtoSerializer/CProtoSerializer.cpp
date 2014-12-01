@@ -415,6 +415,7 @@ CProtoCommandPtr CProtoSerializer::ParseCommand(PVE::IDispatcherCommands nCmdIde
 		case PVE::DspCmdGetIPPrivateNetworksList:
 		case PVE::DspCmdRefreshPlugins:
 		case PVE::DspCmdGetVmConfigById:
+		case PVE::DspCmdGetCPUPoolsList:
 			pCommand = static_cast<CProtoCommand *>(new CProtoCommandWithoutParams(nCmdIdentifier));
 		break;
 
@@ -462,6 +463,8 @@ CProtoCommandPtr CProtoSerializer::ParseCommand(PVE::IDispatcherCommands nCmdIde
 		case PVE::DspCmdGetPluginsList:
 		case PVE::DspCmdGetDiskFreeSpace:
 		case PVE::DspCmdCtlLicenseChange:
+		case PVE::DspCmdMoveToCPUPool:
+		case PVE::DspCmdRecalculateCPUPool:
 			pCommand = static_cast<CProtoCommand *>(new CProtoCommandWithOneStrParam(nCmdIdentifier));
 		break;
 

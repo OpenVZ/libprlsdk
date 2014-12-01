@@ -29,6 +29,7 @@
 #include "PrlHandleVm.h"
 #include "PrlContextSwitcher.h"
 #include "PrlHandleProblemReportBase.h"
+#include "PrlHandleCpuPool.h"
 
 #include "XmlModel/Messaging/CVmBinaryEventParameter.h"
 
@@ -557,4 +558,30 @@ PrlHandleJobPtr PrlHandleServer::DspCmdSendProblemReport(PRL_CONST_STR sVmUuid, 
     return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob(
                            PrlHandleServerPtr(this), job_uuid,
                            PJOC_VM_SEND_PROBLEM_REPORT)));
+}
+
+PrlHandleJobPtr PrlHandleServer::GetCPUPoolsList()
+{
+    QString job_uuid = m_pPveControl->DspCmdGetCPUPoolsList();
+
+    return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_SRV_CPU_POOLS_LIST_POOLS)));
+}
+
+PrlHandleJobPtr PrlHandleServer::MoveToCPUPool(PRL_HANDLE hCpuPool)
+{
+    PrlHandleCpuPool *pCpuPool = PRL_OBJECT_BY_HANDLE<PrlHandleCpuPool>(hCpuPool);
+    QString job_uuid = m_pPveControl->DspCmdMoveToCPUPool(QSTR2UTF8(pCpuPool->GetName()));
+
+    return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_SRV_CPU_POOLS_MOVE)));
+}
+
+PrlHandleJobPtr PrlHandleServer::RecalculateCPUPool(PRL_HANDLE hCpuPool)
+{
+    PrlHandleCpuPool *pCpuPool = PRL_OBJECT_BY_HANDLE<PrlHandleCpuPool>(hCpuPool);
+    QString job_uuid = m_pPveControl->DspCmdRecalculateCPUPool(QSTR2UTF8(pCpuPool->GetName()));
+
+    return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_SRV_CPU_POOLS_RECALCULATE)));
 }

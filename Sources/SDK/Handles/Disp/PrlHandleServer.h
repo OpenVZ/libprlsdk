@@ -232,6 +232,21 @@ public://VM operations calls
     PrlHandleJobPtr DspCmdSendProblemReport(PRL_CONST_STR sVmUuid,
         PRL_HANDLE hProblemReport, PRL_UINT32 nFlags);
 
+	/**
+	 * Get CPU pools list
+	 */
+	PrlHandleJobPtr GetCPUPoolsList();
+
+	/**
+	 * Move server to a different cpu pool
+	 */
+	PrlHandleJobPtr MoveToCPUPool(PRL_HANDLE hCpuPool);
+
+	/**
+	 * Recalculates cpu pool features
+	 */
+	PrlHandleJobPtr RecalculateCPUPool(PRL_HANDLE hCpuPool);
+
 protected:
 	/// Flag to determine which connection is used: local or remote
 	bool m_isConnectionLocal;

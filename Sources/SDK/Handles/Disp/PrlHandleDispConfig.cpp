@@ -30,6 +30,7 @@
 #include "PrlHandleUsbIdentity.h"
 #include "PrlHandleCpuFeatures.h"
 #include "XmlModel/DispConfig/CDispUser.h"
+#include "PrlHandleCpuPool.h"
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module
@@ -726,4 +727,44 @@ PRL_RESULT PrlHandleDispConfig::SetHostId(PRL_CONST_STR sHostId)
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	m_DispConfig.getWorkspacePreferences()->setHostId(UTF8_2QSTR(sHostId));
 	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleDispConfig::GetCpuPool(PRL_HANDLE_PTR phCpuPool)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS;
+
+	if (m_DispConfig.getCpuPoolInfo()->getName().isEmpty()) {
+		*phCpuPool = PRL_INVALID_HANDLE;
+		return (PRL_ERR_SUCCESS);
+	}
+
+	CCpuPool cpuPool;
+	CCpuFeatures *cpuFeatures = new CCpuFeatures();
+	if (!cpuFeatures)
+		return (PRL_ERR_OUT_OF_MEMORY);
+	cpuPool.setCpuMask(cpuFeatures);
+
+	CDispCpuPreferences *prefs = m_DispConfig.getCpuPreferences();
+	cpuFeatures->setFEATURES(prefs->getFEATURES_MASK());
+	cpuFeatures->setEXT_FEATURES(prefs->getEXT_FEATURES_MASK());
+	cpuFeatures->setEXT_80000001_ECX(prefs->getEXT_80000001_ECX_MASK());
+	cpuFeatures->setEXT_80000001_EDX(prefs->getEXT_80000001_EDX_MASK());
+	cpuFeatures->setEXT_80000001_EDX(prefs->getEXT_80000001_EDX_MASK());
+	cpuFeatures->setEXT_80000007_EDX(prefs->getEXT_80000007_EDX_MASK());
+	cpuFeatures->setEXT_80000008_EAX(prefs->getEXT_80000008_EAX());
+	cpuFeatures->setEXT_00000007_EBX(prefs->getEXT_00000007_EBX_MASK());
+	cpuFeatures->setEXT_0000000D_EAX(prefs->getEXT_0000000D_EAX_MASK());
+
+
+	CCpuPoolInfo *poolInfo = new CCpuPoolInfo(m_DispConfig.getCpuPoolInfo());
+	if (!poolInfo)
+		return (PRL_ERR_OUT_OF_MEMORY);
+	cpuPool.setCpuPoolInfo(poolInfo);
+
+	PrlHandleCpuPool *pCpuPoolHandle = new PrlHandleCpuPool(cpuPool);
+	if (!pCpuPoolHandle)
+		return (PRL_ERR_OUT_OF_MEMORY);
+
+	*phCpuPool = pCpuPoolHandle->GetHandle();
+	return (PRL_ERR_SUCCESS);
 }

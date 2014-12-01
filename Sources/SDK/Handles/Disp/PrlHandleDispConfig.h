@@ -707,6 +707,15 @@ public:
 	 */
 	PRL_RESULT SetHostId(PRL_CONST_STR sHostId);
 
+	/**
+	* Obtains a handle to cpu pool information
+	* @param [out]	A pointer to a variable that receives the handle.
+					The type of the handle is PHT_CPU_POOL
+	* @return PRL_RESULT. Possible values:
+	* PRL_ERR_SUCCESS - operation completed successfully
+	*/
+	PRL_RESULT GetCpuPool(PRL_HANDLE_PTR phCpuPool);
+
 private:
 	/// DispConfig object
 	CDispCommonPreferences m_DispConfig;

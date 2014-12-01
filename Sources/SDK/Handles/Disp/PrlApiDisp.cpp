@@ -61,6 +61,8 @@
 #include "PrlHandleUserInfo.h"
 #include "PrlHandleOpTypeList.h"
 #include "PrlHandleCpuFeatures.h"
+#include "PrlHandleCpuPool.h"
+
 // breakpad includes
 #include "parallels_breakpad.h"
 
@@ -3802,6 +3804,28 @@ PRL_METHOD( PrlDispCfg_GetConfirmationsList ) (
 	return (pDispConfig->GetConfirmationsList(phConfirmList));
 }
 
+PRL_METHOD( PrlDispCfg_GetCpuPool ) (
+	PRL_HANDLE hDispConfig,
+	PRL_HANDLE_PTR phCpuPool
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, phCpuPool=%.8X)",
+		__FUNCTION__,
+		hDispConfig,
+		phCpuPool
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) ||
+		PRL_WRONG_PTR(phCpuPool))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->GetCpuPool(phCpuPool));
+}
+
 PRL_METHOD( PrlDispCfg_SetConfirmationsList ) (
 	PRL_HANDLE hDispConfig,
 	PRL_HANDLE hConfirmList
@@ -5224,3 +5248,131 @@ PRL_METHOD( PrlBackupResult_GetBackupUuid ) (
 	return (pBackupResult->GetBackupUuid(sBackupUuid, pnBackupUuidBufLength));
 }
 
+PRL_METHOD( PrlCPUPool_GetName) (
+	PRL_HANDLE hCpuPool,
+	PRL_STR sBuf,
+	PRL_UINT32_PTR pnBufLength
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hCpuPool=%.8X, sBuf=%.8X, pnBufLength=%.8X)",
+		__FUNCTION__,
+		hCpuPool,
+		sBuf,
+		pnBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hCpuPool, PHT_CPU_POOL) ||
+		PRL_WRONG_PTR(pnBufLength))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleCpuPoolPtr pCpuPool = PRL_OBJECT_BY_HANDLE<PrlHandleCpuPool>( hCpuPool );
+
+	return (pCpuPool->GetName(sBuf, pnBufLength));
+}
+
+PRL_METHOD( PrlCPUPool_GetVendor) (
+	PRL_HANDLE hCpuPool,
+	PRL_STR sBuf,
+	PRL_UINT32_PTR pnBufLength
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hCpuPool=%.8X, sBuf=%.8X, pnBufLength=%.8X)",
+		__FUNCTION__,
+		hCpuPool,
+		sBuf,
+		pnBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hCpuPool, PHT_CPU_POOL) ||
+		PRL_WRONG_PTR(pnBufLength))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleCpuPoolPtr pCpuPool = PRL_OBJECT_BY_HANDLE<PrlHandleCpuPool>( hCpuPool );
+
+	return (pCpuPool->GetVendor(sBuf, pnBufLength));
+}
+
+PRL_METHOD( PrlCPUPool_GetCpuFeaturesMask ) (
+	PRL_HANDLE hCpuPool,
+	PRL_HANDLE_PTR phCpuFeatures
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hCpuPool=%.8X, phCpuFeatures=%.8X)",
+		__FUNCTION__,
+		hCpuPool,
+		phCpuFeatures
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hCpuPool, PHT_CPU_POOL) ||
+		PRL_WRONG_PTR(phCpuFeatures))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleCpuPoolPtr pCpuPool = PRL_OBJECT_BY_HANDLE<PrlHandleCpuPool>( hCpuPool );
+
+	return (pCpuPool->GetCpuFeaturesMask(phCpuFeatures));
+}
+
+PRL_HANDLE PrlSrv_GetCPUPoolsList_Impl(PRL_HANDLE hServer)
+{
+	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) )
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CPU_POOLS_LIST_POOLS))
+	PrlHandleServerPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>( hServer );
+	PrlHandleJobPtr pJob = pServer->GetCPUPoolsList();
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_GetCPUPoolsList ) (
+	PRL_HANDLE hServer
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_LIST_POOLS);
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_GetCPUPoolsList, (hServer))
+}
+
+PRL_HANDLE PrlSrv_MoveToCPUPool_Impl(PRL_HANDLE hServer, PRL_HANDLE hCpuPool)
+{
+	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) || PRL_WRONG_HANDLE(hCpuPool, PHT_CPU_POOL) )
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CPU_POOLS_MOVE))
+	PrlHandleServerPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>( hServer );
+	PrlHandleJobPtr pJob = pServer->MoveToCPUPool(hCpuPool);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_MoveToCPUPool ) (
+	PRL_HANDLE hServer,
+	PRL_HANDLE hCpuPool
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_MOVE);
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_MoveToCPUPool , (hServer, hCpuPool))
+}
+
+PRL_HANDLE PrlSrv_RecalculateCPUPool_Impl(PRL_HANDLE hServer, PRL_HANDLE hCpuPool)
+{
+	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) || PRL_WRONG_HANDLE(hCpuPool, PHT_CPU_POOL) )
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CPU_POOLS_RECALCULATE))
+	PrlHandleServerPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>( hServer );
+	PrlHandleJobPtr pJob = pServer->RecalculateCPUPool(hCpuPool);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_RecalculateCPUPool ) (
+	PRL_HANDLE hServer,
+	PRL_HANDLE hCpuPool
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_RECALCULATE);
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_RecalculateCPUPool, (hServer, hCpuPool))
+}

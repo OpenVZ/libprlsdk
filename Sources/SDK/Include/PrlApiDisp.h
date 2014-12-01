@@ -6704,6 +6704,196 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnBackupUuidBufLength
 		) );
 
+/* Obtains a handle to cpu pool information
+
+Parameters
+
+   Parameters
+   hDispConfig :   A handle of type PHT_DISP_CONFIG.
+   phCpuPool :     [out] A pointer to a variable that receives the handle.
+		   The type of the handle is PHT_CPU_POOL. If node is
+		   not in cpu pool handle will be PRL_INVALID_HANDLE
+
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlDispCfg_GetCpuPool, (
+		PRL_HANDLE hDispConfig,
+		PRL_HANDLE_PTR phCpuPool
+		) );
+
+
+/* \Returns the name of the pool
+   Parameters
+   hCpuPool :          A handle of type PHT_CPU_POOL
+   sBuf :            [out] Pointer to a buffer that receives
+                          the pool vendor (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnBufLength :  [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this value to zero to receive the
+                          required size. [out] The required
+                          \output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlCPUPool_GetVendor, (
+		PRL_HANDLE hCpuPool,
+		PRL_STR sBuf,
+		PRL_UINT32_PTR pnBufLength
+		) );
+
+/* \Returns the vendor of the pool
+   Parameters
+   hCpuPool :          A handle of type PHT_CPU_POOL
+   sBuf :            [out] Pointer to a buffer that receives
+                          the pool name (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnBufLength :  [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this value to zero to receive the
+                          required size. [out] The required
+                          \output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlCPUPool_GetName, (
+		PRL_HANDLE hCpuPool,
+		PRL_STR sBuf,
+		PRL_UINT32_PTR pnBufLength
+		) );
+
+/* Obtains a handle to cpu pool information
+
+Parameters
+
+   Parameters
+   hCpuPool :          A handle of type PHT_CPU_POOL
+   ph :                [out] A pointer to a variable that receives the handle.
+                     The type of the handle is PHT_CPU_FEATURES
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_OUT_OF_MEMORY - not enough memory to instantiate new object.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlCPUPool_GetCpuFeaturesMask, (
+		PRL_HANDLE hCpuPool,
+		PRL_HANDLE_PTR phCpuFeatures
+		) );
+
+/* Obtains a list of handles of type PHT_CPU_POOL
+   containing information about all existing cpu pools.
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   To get the results from the PHT_JOB object:
+
+   Use the PrlJob_GetResult function to obtain a handle to the
+   PHT_RESULT object.
+
+   Use the PrlResult_GetParamByIndex function to obtain a handle
+   of type PHT_CPU_POOL containing the information about
+   a cpu pool.
+   Parameters
+   hServer :  A handle of type PHT_SERVER identifying the
+              Parallels Service.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                  */
+
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlSrv_GetCPUPoolsList, (
+		PRL_HANDLE hServer
+		) );
+
+/* Moves server to a different cpu pool
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   Parameters
+   hServer :  A handle of type PHT_SERVER identifying the
+              Parallels Service.
+   hCpuPool : A handle of type PHT_CPU_POOL, defines
+              the pool where server should be moved.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                  */
+
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlSrv_MoveToCPUPool, (
+		PRL_HANDLE hServer,
+		PRL_HANDLE hCpuPool
+		) );
+
+/* Recalculates features in pool
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   Parameters
+   hServer :  A handle of type PHT_SERVER identifying the
+              Parallels Service.
+   hCpuPool : A handle of type PHT_CPU_POOL, defines
+              the pool where features should be recalculated.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                  */
+
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlSrv_RecalculateCPUPool, (
+		PRL_HANDLE hServer,
+		PRL_HANDLE hCpuPool
+		) );
 
 #ifdef _WIN_
     #pragma pack(pop, save_api_pack)

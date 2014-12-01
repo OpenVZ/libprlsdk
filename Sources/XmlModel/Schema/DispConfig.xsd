@@ -337,6 +337,12 @@ public:
 					<xs:documentation>single_fixed=on;</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="CpuPoolInfo" type="CpuPoolInfoType">
+				<xs:annotation>
+					<xs:documentation>class=CCpuPoolInfo;extern=XmlModel/CpuFeatures/CCpuPoolInfo.h;single_fixed=on;</xs:documentation>
+				</xs:annotation>
+				<xs:complexType/>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="CompressionLevel" type="xs:integer"/>

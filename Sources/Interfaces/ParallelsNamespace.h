@@ -1407,6 +1407,9 @@ public:
 			DspCmdVmSetProtection		= DspClientToDispatcherCommandRangeStart + 176,
 			DspCmdVmRemoveProtection	= DspClientToDispatcherCommandRangeStart + 177,
 
+			DspCmdGetCPUPoolsList		= DspClientToDispatcherCommandRangeStart + 178,
+			DspCmdMoveToCPUPool		= DspClientToDispatcherCommandRangeStart + 179,
+			DspCmdRecalculateCPUPool	= DspClientToDispatcherCommandRangeStart + 180,
 			DspClientToDispatcherCommandRangeEnd = 2999,
 
 

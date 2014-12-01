@@ -267,6 +267,9 @@ const char* PVE::DispatcherCommandToString( unsigned int cmd )
 		CASE_DISPATCHER_COMMAND( DspCmdVmSetProtection )
 		CASE_DISPATCHER_COMMAND( DspCmdVmRemoveProtection )
 		CASE_DISPATCHER_COMMAND( DspCmdCtlVmCollectGuestUsage )
+		CASE_DISPATCHER_COMMAND( DspCmdGetCPUPoolsList )
+		CASE_DISPATCHER_COMMAND( DspCmdMoveToCPUPool )
+		CASE_DISPATCHER_COMMAND( DspCmdRecalculateCPUPool )
 	}
 	return "Unknown";
 }

@@ -46,6 +46,7 @@
 #include "PrlHandleIPPrivNet.h"
 #include "PrlHandlePluginInfo.h"
 #include "PrlHandleBackupResult.h"
+#include "PrlHandleCpuPool.h"
 
 #include "PrlHandleServer.h"
 #include "PrlHandleServerJob.h"
@@ -437,6 +438,7 @@ PRL_HANDLE PrlHandleResult::ResultAsHandle()
 		case PVE::DspCmdGetCtTemplateList:
 		case PVE::DspCmdGetIPPrivateNetworksList:
 		case PVE::DspCmdGetPluginsList:
+		case PVE::DspCmdGetCPUPoolsList:
 		default:
 		break;
 	}
@@ -822,6 +824,15 @@ PRL_RESULT PrlHandleResult::GetParamByIndex(PRL_UINT32 nIndex, PRL_HANDLE_PTR ph
 			return PRL_ERR_OUT_OF_MEMORY;
 
 		*phParam = pBackupResult->GetHandle();
+	}
+	else if (m_Result.getOpCode() == PVE::DspCmdGetCPUPoolsList)
+	{
+		QString sCpuPool = m_Result.GetParamToken(nIndex);
+		PrlHandleCpuPool* pCpuPool = new PrlHandleCpuPool(sCpuPool);
+		if ( !pCpuPool )
+			return PRL_ERR_OUT_OF_MEMORY;
+
+		*phParam = pCpuPool->GetHandle();
 	}
 	else
 	{

@@ -2917,3 +2917,35 @@ QString CPveControl::DspCmdGetVmConfigById(PRL_CONST_STR sSearchId, PRL_UINT32 n
 
 	return SendRequestToServer(pRequest);
 }
+
+QString CPveControl::DspCmdGetCPUPoolsList()
+{
+    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdGetCPUPoolsList()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithoutParams(
+									PVE::DspCmdGetCPUPoolsList);
+
+	return SendRequestToServer(pRequest);
+}
+
+QString CPveControl::DspCmdMoveToCPUPool(PRL_CONST_STR strPoolName)
+{
+    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdMoveToCPUPool()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithOneStrParam(
+									PVE::DspCmdMoveToCPUPool,
+									strPoolName);
+
+	return SendRequestToServer(pRequest);
+}
+
+QString CPveControl::DspCmdRecalculateCPUPool(PRL_CONST_STR strPoolName)
+{
+    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdRecalculateCPUPool()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithOneStrParam(
+									PVE::DspCmdRecalculateCPUPool,
+									strPoolName);
+
+	return SendRequestToServer(pRequest);
+}

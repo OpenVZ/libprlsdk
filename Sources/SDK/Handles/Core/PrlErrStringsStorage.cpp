@@ -11159,8 +11159,32 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CPUFEATURES_RUNNING_VM_OR_CT,
-		tr( "Cannot change the CPU features mask, as there are virtual machines or containers currently running on the server." ),
-		tr( "Stop all virtual machines and containers before changing CPU features mask." ),
+		tr( "Cannot complete the operation as there are virtual machines or Containers currently running on the server." ),
+		tr( "Stop all virtual machines and Containers and try again." ),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_NOT_IN_POOLS,
+		tr( "Cannot complete the operation as the server is not in CPU pools." ),
+		tr( "Add the server to CPU pools and try again." ),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_DEFAULT_POOL_ARG,
+		tr( "The operation cannot be applied to a default CPU pool." ),
+		tr( "Use a custom CPU pool." ),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_INCOMPATIBLE_NODE,
+		tr( "The server is incompatible with the CPU pool." ),
+		tr( "" ),
 		false,
 		PMT_CRITICAL
 		);
