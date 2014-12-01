@@ -31,6 +31,7 @@
 #include "PrlHandleBase.h"
 #include "XmlModel/DispConfig/CDispCommonPreferences.h"
 #include "XmlModel/NetworkConfig/CParallelsNetworkConfig.h"
+#include "PrlHandleCpuFeatures.h"
 
 #define SYNCHRO_PARENT_DISP_CONFIG QMutexLocker _lock(m_pDispCfg->GetSynchroObject());
 
@@ -717,6 +718,9 @@ public:
 	PRL_RESULT GetCpuPool(PRL_HANDLE_PTR phCpuPool);
 
 private:
+
+	PRL_RESULT SetCpuFeaturesMaskExImpl(const PrlHandleCpuFeatures &pFeatures);
+
 	/// DispConfig object
 	CDispCommonPreferences m_DispConfig;
 	CParallelsNetworkConfig m_NetworkConfig;

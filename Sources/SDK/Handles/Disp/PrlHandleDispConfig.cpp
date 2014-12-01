@@ -600,19 +600,70 @@ PRL_RESULT PrlHandleDispConfig::GetCpuFeaturesMask(PRL_CPU_FEATURES_MASK_PTR pMa
 	return PRL_ERR_SUCCESS;
 }
 
+PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMaskExImpl(const PrlHandleCpuFeatures &features)
+{
+	PRL_UINT32 nMask;
+
+	features.GetValue(PCFE_FEATURES, &nMask);
+	m_DispConfig.getCpuPreferences()->setFEATURES_MASK(nMask);
+
+	features.GetValue(PCFE_EXT_FEATURES, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_FEATURES_MASK(nMask);
+
+	features.GetValue(PCFE_EXT_80000001_ECX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000001_ECX_MASK(nMask);
+
+	features.GetValue(PCFE_EXT_80000001_EDX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000001_EDX_MASK(nMask);
+
+	features.GetValue(PCFE_EXT_80000007_EDX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000007_EDX_MASK(nMask);
+
+	features.GetValue(PCFE_EXT_80000008_EAX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_80000008_EAX(nMask);
+
+	features.GetValue(PCFE_EXT_00000007_EBX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_00000007_EBX_MASK(nMask);
+
+	features.GetValue(PCFE_EXT_0000000D_EAX, &nMask);
+	m_DispConfig.getCpuPreferences()->setEXT_0000000D_EAX_MASK(nMask);
+
+	m_DispConfig.getCpuPreferences()->setCpuFeaturesMaskValid(PRL_TRUE);
+
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMask(PRL_CONST_CPU_FEATURES_MASK_PTR pMasks)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_DispConfig.getCpuPreferences()->setFEATURES_MASK(pMasks->nFEATURES_MASK);
-	m_DispConfig.getCpuPreferences()->setEXT_FEATURES_MASK(pMasks->nEXT_FEATURES_MASK);
-	m_DispConfig.getCpuPreferences()->setEXT_80000001_ECX_MASK(pMasks->nEXT_80000001_ECX_MASK);
-	m_DispConfig.getCpuPreferences()->setEXT_80000001_EDX_MASK(pMasks->nEXT_80000001_EDX_MASK);
-	m_DispConfig.getCpuPreferences()->setEXT_80000007_EDX_MASK(pMasks->nEXT_80000007_EDX_MASK);
-	m_DispConfig.getCpuPreferences()->setEXT_80000008_EAX(pMasks->nEXT_80000008_EAX);
-	m_DispConfig.getCpuPreferences()->setEXT_00000007_EBX_MASK(pMasks->nEXT_00000007_EBX_MASK);
-	m_DispConfig.getCpuPreferences()->setEXT_0000000D_EAX_MASK(pMasks->nEXT_0000000D_EAX_MASK);
-	m_DispConfig.getCpuPreferences()->setCpuFeaturesMaskValid(pMasks->bIsValid);
-	return PRL_ERR_SUCCESS;
+
+	PRL_CPU_FEATURES_MASK masks = *pMasks;
+	if (!masks.bIsValid) {
+		masks.nFEATURES_MASK = 0xFFFFFFFF;
+		masks.nEXT_FEATURES_MASK = 0xFFFFFFFF;
+		masks.nEXT_80000001_ECX_MASK = 0xFFFFFFFF;
+		masks.nEXT_80000001_EDX_MASK = 0xFFFFFFFF;
+		masks.nEXT_80000007_EDX_MASK = 0xFFFFFFFF;
+		masks.nEXT_80000008_EAX = 0xFFFFFFFF;
+		masks.nEXT_00000007_EBX_MASK = 0xFFFFFFFF;
+	}
+
+	PrlHandleCpuFeatures *pFeatures = new PrlHandleCpuFeatures();
+	if (!pFeatures)
+		return (PRL_ERR_OUT_OF_MEMORY);
+
+	pFeatures->SetValue(PCFE_FEATURES, masks.nFEATURES_MASK);
+	pFeatures->SetValue(PCFE_EXT_FEATURES, masks.nEXT_FEATURES_MASK);
+	pFeatures->SetValue(PCFE_EXT_80000001_ECX, masks.nEXT_80000001_ECX_MASK);
+	pFeatures->SetValue(PCFE_EXT_80000001_EDX, masks.nEXT_80000001_EDX_MASK);
+	pFeatures->SetValue(PCFE_EXT_80000007_EDX, masks.nEXT_80000007_EDX_MASK);
+	pFeatures->SetValue(PCFE_EXT_80000008_EAX, masks.nEXT_80000008_EAX);
+	pFeatures->SetValue(PCFE_EXT_00000007_EBX, masks.nEXT_00000007_EBX_MASK);
+
+	PRL_RESULT r = SetCpuFeaturesMaskExImpl(*pFeatures);
+
+	pFeatures->Release();
+	return r;
 }
 
 PRL_RESULT PrlHandleDispConfig::GetCpuFeaturesMaskEx(PRL_HANDLE_PTR phCpuFeatures)
@@ -642,35 +693,8 @@ PRL_RESULT PrlHandleDispConfig::SetCpuFeaturesMaskEx(PRL_HANDLE hCpuFeatures)
 	SYNCHRO_INTERNAL_DATA_ACCESS
 
 	PrlHandleCpuFeaturesPtr pFeatures = PRL_OBJECT_BY_HANDLE<PrlHandleCpuFeatures>( hCpuFeatures );
-	PRL_UINT32 nMask;
 
-	pFeatures->GetValue(PCFE_FEATURES, &nMask);
-	m_DispConfig.getCpuPreferences()->setFEATURES_MASK(nMask);
-
-	pFeatures->GetValue(PCFE_EXT_FEATURES, &nMask);
-	m_DispConfig.getCpuPreferences()->setEXT_FEATURES_MASK(nMask);
-
-	pFeatures->GetValue(PCFE_EXT_80000001_ECX, &nMask);
-	m_DispConfig.getCpuPreferences()->setEXT_80000001_ECX_MASK(nMask);
-
-	pFeatures->GetValue(PCFE_EXT_80000001_EDX, &nMask);
-	m_DispConfig.getCpuPreferences()->setEXT_80000001_EDX_MASK(nMask);
-
-	pFeatures->GetValue(PCFE_EXT_80000007_EDX, &nMask);
-	m_DispConfig.getCpuPreferences()->setEXT_80000007_EDX_MASK(nMask);
-
-	pFeatures->GetValue(PCFE_EXT_80000008_EAX, &nMask);
-	m_DispConfig.getCpuPreferences()->setEXT_80000008_EAX(nMask);
-
-	pFeatures->GetValue(PCFE_EXT_00000007_EBX, &nMask);
-	m_DispConfig.getCpuPreferences()->setEXT_00000007_EBX_MASK(nMask);
-
-	pFeatures->GetValue(PCFE_EXT_0000000D_EAX, &nMask);
-	m_DispConfig.getCpuPreferences()->setEXT_0000000D_EAX_MASK(nMask);
-
-	m_DispConfig.getCpuPreferences()->setCpuFeaturesMaskValid(PRL_TRUE);
-
-	return (PRL_ERR_SUCCESS);
+	return SetCpuFeaturesMaskExImpl(*pFeatures);
 }
 
 PRL_RESULT PrlHandleDispConfig::IsLogRotationEnabled(PRL_BOOL_PTR pbEnabled)
