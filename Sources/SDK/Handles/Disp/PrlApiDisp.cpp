@@ -277,37 +277,6 @@ PRL_ASYNC_METHOD( PrlSrv_SendProblemReport ) (
     CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_SendProblemReport, (hServer, hProblemReport, nFlags))
 }
 
-namespace {
-//Search servers mech necessary helpers
-/** Search servers mech operating data structure */
-struct PrlSearchServerInfo
-{
-	/** Pointer to callback */
-	PRL_EVENT_HANDLER_PTR m_pCallback;
-	/** Pointer to user data */
-	void *m_pUserData;
-};
-/** Callback that processing found server info */
-void OnParallelsServerFound(const QString &sVmEvent, const QString &sServerHost, void *pUserData)
-{
-	PrlSearchServerInfo *pInfo = static_cast<PrlSearchServerInfo *>(pUserData);
-	if (pInfo && pInfo->m_pCallback)
-	{
-		PrlHandleServerInfo *pServerInfo = new PrlHandleServerInfo(sVmEvent, sServerHost);
-		if (pServerInfo)
-			pInfo->m_pCallback(pServerInfo->GetHandle(), pInfo->m_pUserData);
-		else
-			WRITE_TRACE(DBG_FATAL, "Not enough memory to instantiate server info object!");
-	}
-}
-/** Callback that calling when search servers thread finishing it work */
-void OnCompleteServersSearchThreadWork(void *pUserData)
-{
-	delete static_cast<PrlSearchServerInfo *>(pUserData);
-}
-
-}
-
 PRL_HANDLE PrlSrv_LoginLocal_Impl(PRL_HANDLE hServer, PRL_CONST_STR sPrevSessionUuid, PRL_UINT32 port,
 					PRL_SECURITY_LEVEL security_level, PRL_UINT32 flags)
 {
