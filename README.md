@@ -8,9 +8,9 @@ Python APIs.
 
 Documetation for commercial version of SDK is available here:
 
-- [Parallels_Virtualization_SDK_Programmers_Guide.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_Virtualization_SDK_Programmers_Guide.pdf)
-- [Parallels_C_API_Reference.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_C_API_Reference.pdf)
-- [Parallels_Python_API_Reference.pdf](http://download.parallels.com/doc/pcs/pdf/Parallels_Python_API_Reference.pdf)
+- [Parallels Virtualization SDK Programmers Guide.pdf](http://download.cloudserver.parallels.com/doc/pcs/en_us/parallels/6/current/pdf/Parallels_Virtualization_SDK_Programmers_Guide.pdf)
+- [Parallels C API Reference.pdf](http://download.cloudserver.parallels.com/doc/pcs/en_us/parallels/6/current/pdf/Parallels_C_API_Reference.pdf)
+- [Parallels Python API Reference.pdf](http://download.cloudserver.parallels.com/doc/pcs/en_us/parallels/6/current/pdf/Parallels_Python_API_Reference.pdf)
 
 Trial version of Paralles Cloud Server can be downloaded here [http://sp.parallels.com/en/products/pcs/](http://sp.parallels.com/en/products/pcs/).
 
