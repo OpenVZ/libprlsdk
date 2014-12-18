@@ -815,14 +815,14 @@ struct StackIndexLimit
 			if (!hdd)
 				continue;
 			PRL_MASS_STORAGE_INTERFACE_TYPE iface = hdd->getInterfaceType();
-			if (m_windowsBootPreference.at(iface) < m_windowsBootPreference.at(m_iface))
+			if (m_windowsBootPreference.value(iface) < m_windowsBootPreference.value(m_iface))
 				continue;
 			unsigned stackIndex = hdd->getStackIndex();
 			if (iface == m_iface)
 			{
 				m_stackIndex = qMax(stackIndex, m_stackIndex);
 			}
-			else if (m_windowsBootPreference.at(iface) > m_windowsBootPreference.at(m_iface))
+			else if (m_windowsBootPreference.value(iface) > m_windowsBootPreference.value(m_iface))
 			{
 				m_iface = iface;
 				m_stackIndex = stackIndex;
@@ -835,8 +835,8 @@ struct StackIndexLimit
 	{
 		if (!m_active)
 			return true;
-		return m_windowsBootPreference.at(static_cast<PRL_MASS_STORAGE_INTERFACE_TYPE>(iface))
-			>= m_windowsBootPreference.at(m_iface);
+		return m_windowsBootPreference.value(static_cast<PRL_MASS_STORAGE_INTERFACE_TYPE>(iface))
+			>= m_windowsBootPreference.value(m_iface);
 	}
 
 	int getStackIndex(uint iface, QList<uint>& indices) const
@@ -861,7 +861,7 @@ private:
 	PRL_MASS_STORAGE_INTERFACE_TYPE m_iface;
 	unsigned int m_stackIndex;
 	bool m_active;
-	std::map<PRL_MASS_STORAGE_INTERFACE_TYPE, int> m_windowsBootPreference;
+	QMap<PRL_MASS_STORAGE_INTERFACE_TYPE, int> m_windowsBootPreference;
 };
 
 bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmConfiguration& cfg,
