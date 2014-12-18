@@ -775,6 +775,95 @@ bool PrlHandleVmDefaultConfig::AddDefaultFloppy( CVmConfiguration& cfg, PRL_HAND
 	return true;
 }
 
+/**
+ * Limits placed upon IDA/SATA/SCSI interfaces and positions for attached backup
+ *
+ * There could be cases when we would need to limit the amount of available
+ * interfaces and indices. One case is attaching a backup as virtual disk
+ * to a Windows VM. There we need to take into account the positions of already
+ * existing bootable HDDs and place the newly attached backup after the "last"
+ * bootable HDD, according to the Windows boot preference order (IDE->SATA->SCSI).
+ */
+struct StackIndexLimit
+{
+	StackIndexLimit(const CVmConfiguration& vm, PRL_DEVICE_TYPE devType)
+		: m_iface(PMS_IDE_DEVICE), m_stackIndex(0),
+		  m_active(false)
+	{
+		/* boot preference order for Windows VMs: IDE->SATA->SCSI */
+		m_windowsBootPreference[PMS_UNKNOWN_DEVICE] = -1;
+		m_windowsBootPreference[PMS_IDE_DEVICE] = 0;
+		m_windowsBootPreference[PMS_SATA_DEVICE] = 1;
+		m_windowsBootPreference[PMS_SCSI_DEVICE] = 2;
+		/* we're only interested in backups, attached to a Windows VM */
+		if (devType != PDE_ATTACHED_BACKUP_DISK)
+			return;
+		if (vm.getVmType() != PVT_VM
+			|| vm.getVmSettings()->getVmCommonOptions()->getOsType() != PVS_GUEST_TYPE_WINDOWS)
+			return;
+		/* find the last bootable HDD, according to Windows boot preference
+		 * order: IDE->SATA->SCSI, i.e. if Windows sees several clones of the same
+		 * disk during the boot (e.g. backup of the Windows system disk was
+		 * attached to the same VM), then it first tries to boot from the disk,
+		 * connected to IDE interface, then tries SATA, and in the end SCSI. */
+		foreach(const CVmStartupOptions::CVmBootDevice *dev,
+			vm.getVmSettings()->getVmStartupOptions()->getBootDeviceList())
+		{
+			if (dev->deviceType != PDE_HARD_DISK || !dev->inUseStatus)
+				continue;
+			const CVmHardDisk *hdd = findDiskByIndex(vm.getVmHardwareList()->m_lstHardDisks, dev->deviceIndex);
+			if (!hdd)
+				continue;
+			PRL_MASS_STORAGE_INTERFACE_TYPE iface = hdd->getInterfaceType();
+			if (m_windowsBootPreference.at(iface) < m_windowsBootPreference.at(m_iface))
+				continue;
+			unsigned stackIndex = hdd->getStackIndex();
+			if (iface == m_iface)
+			{
+				m_stackIndex = qMax(stackIndex, m_stackIndex);
+			}
+			else if (m_windowsBootPreference.at(iface) > m_windowsBootPreference.at(m_iface))
+			{
+				m_iface = iface;
+				m_stackIndex = stackIndex;
+			}
+			m_active = true;
+		}
+	}
+
+	bool hasFreeStackIndices(uint iface) const
+	{
+		if (!m_active)
+			return true;
+		return m_windowsBootPreference.at(static_cast<PRL_MASS_STORAGE_INTERFACE_TYPE>(iface))
+			>= m_windowsBootPreference.at(m_iface);
+	}
+
+	int getStackIndex(uint iface, QList<uint>& indices) const
+	{
+		if (!m_active || static_cast<PRL_MASS_STORAGE_INTERFACE_TYPE>(iface) != m_iface)
+			return indices.first();
+		QList<uint>::const_iterator p = std::find_if(indices.begin(), indices.end(),
+			std::bind2nd(std::greater<uint>(), m_stackIndex));
+		return p == indices.end() ? -1 : *p;
+	}
+
+private:
+	const CVmHardDisk *findDiskByIndex(QList<CVmHardDisk* >& list, unsigned int index) const
+	{
+		foreach(const CVmHardDisk *hdd, list)
+			if (hdd->getIndex() == index)
+				return hdd;
+		return NULL;
+	}
+
+private:
+	PRL_MASS_STORAGE_INTERFACE_TYPE m_iface;
+	unsigned int m_stackIndex;
+	bool m_active;
+	std::map<PRL_MASS_STORAGE_INTERFACE_TYPE, int> m_windowsBootPreference;
+};
+
 bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmConfiguration& cfg,
 																	PRL_DEVICE_TYPE devType,
 																	int & interfaceSlot,
@@ -790,11 +879,12 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 		bTryAddToIde = true;
 	}
 
-	interfaceSlot = GetFreeStackIndex( cfg, interfaceType, devType );
+	StackIndexLimit limit(cfg, devType);
+	interfaceSlot = GetFreeStackIndex( cfg, interfaceType, devType, &limit );
 	if ( interfaceSlot < 0 )
 	{
 		interfaceType = PMS_SCSI_DEVICE;
-		interfaceSlot = GetFreeStackIndex( cfg, interfaceType,devType );
+		interfaceSlot = GetFreeStackIndex( cfg, interfaceType,devType, &limit );
 		if ( interfaceSlot < 0 )
 		{
 			if( bTryAddToIde )
@@ -803,7 +893,7 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 					return false;
 
 				interfaceType = PMS_IDE_DEVICE;
-				interfaceSlot = GetFreeStackIndex( cfg, interfaceType,devType );
+				interfaceSlot = GetFreeStackIndex( cfg, interfaceType,devType, &limit );
 				if ( interfaceSlot < 0 )
 					return false;
 			}
@@ -884,7 +974,8 @@ bool PrlHandleVmDefaultConfig::AddDefaultCdRom( CVmConfiguration& cfg, PRL_HANDL
 }
 
 
-bool PrlHandleVmDefaultConfig::AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice )
+bool PrlHandleVmDefaultConfig::AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_DEVICE_TYPE devType,
+	PRL_HANDLE_PTR phDevice )
 {
 	CVmHardDisk* hdd = new CVmHardDisk();
 
@@ -895,7 +986,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_H
 
 	PRL_MASS_STORAGE_INTERFACE_TYPE interfaceType = PMS_IDE_DEVICE;
 	int interfaceSlot = -1;
-	if( !calculateInterfaceParamsForHddCdrom( cfg, PDE_HARD_DISK, interfaceSlot, interfaceType ) )
+	if( !calculateInterfaceParamsForHddCdrom( cfg, devType, interfaceSlot, interfaceType ) )
 	{
 		delete hdd;
 		return false;
@@ -1238,8 +1329,9 @@ bool PrlHandleVmDefaultConfig::AddDefaultDevice( CVmConfiguration& cfg,
 		case PDE_OPTICAL_DISK:
 			return AddDefaultCdRom( cfg, phDevice );
 
+		case PDE_ATTACHED_BACKUP_DISK:
 		case PDE_HARD_DISK:
-			return AddDefaultHardDisk( cfg, phDevice );
+			return AddDefaultHardDisk( cfg, devType, phDevice );
 
 		case PDE_GENERIC_NETWORK_ADAPTER:
 			return AddDefaultNetwork( cfg, phDevice );
@@ -1343,8 +1435,12 @@ QString PrlHandleVmDefaultConfig::GetDeviceId( PRL_HANDLE hDevice )
 
 int PrlHandleVmDefaultConfig::GetFreeStackIndex( const CVmConfiguration& cfg,
 												 uint interfaceType,
-												 uint devType ) const
+												 uint devType,
+												 StackIndexLimit *limit) const
 {
+	if (limit && !limit->hasFreeStackIndices(interfaceType))
+		return -1;
+
 	QList<uint> lstFreeSlots;
 
 	// Fill free stack indexes list
@@ -1382,6 +1478,12 @@ int PrlHandleVmDefaultConfig::GetFreeStackIndex( const CVmConfiguration& cfg,
 		if ( (uint)scsi->getInterfaceType() == interfaceType )
 			lstFreeSlots.removeAll( scsi->getStackIndex() );
 
+	// scsi slot 7 used by scsi controller
+	if ( interfaceType == PMS_SCSI_DEVICE &&
+		( ( devType == PDE_OPTICAL_DISK ) || ( devType == PDE_HARD_DISK )
+			|| ( devType == PDE_ATTACHED_BACKUP_DISK ) ) )
+		lstFreeSlots.removeAll(7);
+
 	if ( lstFreeSlots.isEmpty() )
 		return -1;
 
@@ -1393,21 +1495,7 @@ int PrlHandleVmDefaultConfig::GetFreeStackIndex( const CVmConfiguration& cfg,
 			return 1; // IDE 0:1
 	}
 
-	if ( interfaceType == PMS_SCSI_DEVICE &&
-		( ( devType == PDE_OPTICAL_DISK ) || ( devType == PDE_HARD_DISK ) ) )
-	{
-		// scsi slot 7 used by scsi controller
-		int iSlot = lstFreeSlots.takeFirst();
-		if( iSlot != 7 )
-			return iSlot;
-
-		if( lstFreeSlots.isEmpty() )
-			return -1;
-		else
-			return lstFreeSlots.takeFirst();
-	}
-
-	return lstFreeSlots.first();
+	return limit ? limit->getStackIndex(interfaceType, lstFreeSlots) : lstFreeSlots.first();
 }
 
 

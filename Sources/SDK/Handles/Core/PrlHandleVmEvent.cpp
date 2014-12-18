@@ -435,6 +435,8 @@ QString PrlHandleVmEvent::GetDeviceClass( PRL_DEVICE_TYPE type )
 		result = QObject::tr("Video Adapter");
 	else if( type == PDE_GENERIC_SCSI_DEVICE )
 		result = QObject::tr("Generic SCSI");
+	else if( type == PDE_ATTACHED_BACKUP_DISK )
+		result = QObject::tr("Attached Backup");
 
 	return result;
 }

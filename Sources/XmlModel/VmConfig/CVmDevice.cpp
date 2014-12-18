@@ -472,6 +472,7 @@ CVmDevice * CVmDevice::getDeviceInstanceFromString( const QString & strDevice )
 			pDevToReturn = new CVmFloppyDisk( );
 			break;
 
+		case PDE_ATTACHED_BACKUP_DISK:
 		case PDE_HARD_DISK:
 			pDevToReturn = new CVmHardDisk( );
 			break;

@@ -34,6 +34,7 @@
 
 class CVmConfiguration;
 class CHostHardwareInfo;
+struct StackIndexLimit;
 
 /**
  * Implements generation of Virtual Machine default settings and devices.
@@ -181,8 +182,10 @@ private:
 	 * Adds default hard disk to the VM configuration.
 	 *
 	 * @param cfg - configuration to add device
+	 * @param devType - specific type of hard disk
 	 */
-	bool AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice = 0 );
+	bool AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_DEVICE_TYPE devType,
+		PRL_HANDLE_PTR phDevice = 0 );
 
 	/**
 	 * @brief Adds default sound device to the VM configuration.
@@ -370,10 +373,12 @@ private:
 	 * @param Configuration to search in
 	 * @param Interface type to check for free indexes
 	 * @param Device type to check for free indexes
+	 * @param Limits placed on iface and index
 	 */
 	int GetFreeStackIndex( const CVmConfiguration& cfg,
 						   uint interfaceType,
-						   uint devType ) const;
+						   uint devType,
+						   StackIndexLimit *limit) const;
 
 	/**
 	* Get the interface slot for hdd \ cdrom.
