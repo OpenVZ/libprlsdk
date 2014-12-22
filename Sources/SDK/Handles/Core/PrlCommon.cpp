@@ -287,11 +287,11 @@ void QMainThread::InitSignals()
 
 	int ret = sigaction(SIGCHLD, NULL, &_prev_handler);
 	if (ret == -1)
-		WRITE_TRACE(DBG_FATAL, "An error %d occured on sigaction() system call\n", errno);
+		WRITE_TRACE(DBG_FATAL, "An error %d occurred on sigaction() system call\n", errno);
 	_prev_handler.sa_flags |= SA_RESTART;
 	ret = sigaction(SIGCHLD, &_prev_handler, NULL);
 	if (ret == -1)
-		WRITE_TRACE(DBG_FATAL, "An error %d occured on sigaction() system call\n", errno);
+		WRITE_TRACE(DBG_FATAL, "An error %d occurred on sigaction() system call\n", errno);
 	//***********************************************
 #endif
 }

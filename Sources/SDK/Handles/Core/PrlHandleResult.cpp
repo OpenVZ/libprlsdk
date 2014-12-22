@@ -340,7 +340,7 @@ PRL_HANDLE PrlHandleResult::ResultAsHandle()
 
 			PRL_RESULT rc = pVm->fromString(str.toUtf8().data());
 			if ( PRL_FAILED(rc) )
-				WRITE_TRACE(DBG_FATAL, "An error occured on VM parsing: %.8X '%s'", rc, PRL_RESULT_TO_STRING(rc));
+				WRITE_TRACE(DBG_FATAL, "An error occurred on VM parsing: %.8X '%s'", rc, PRL_RESULT_TO_STRING(rc));
 
 			res_handle = pVm->GetHandle();
 		}
@@ -714,7 +714,7 @@ PRL_RESULT PrlHandleResult::GetParamByIndex(PRL_UINT32 nIndex, PRL_HANDLE_PTR ph
 
 			PRL_RESULT rc = pVm->fromString(str.toUtf8().data());
 			if ( PRL_FAILED(rc) )
-				WRITE_TRACE(DBG_FATAL, "An error occured on VM parsing: %.8X '%s'", rc, PRL_RESULT_TO_STRING(rc));
+				WRITE_TRACE(DBG_FATAL, "An error occurred on VM parsing: %.8X '%s'", rc, PRL_RESULT_TO_STRING(rc));
 
 			*phParam = pVm->GetHandle();
 		}

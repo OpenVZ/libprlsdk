@@ -6689,7 +6689,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_RESIZE_FAILED,
 		tr("Failed to resize the virtual hard disk."),
-		tr("An internal error occured while resizing the disk."),
+		tr("An internal error occurred while resizing the disk."),
 		false,
 		PMT_CRITICAL
 		);
@@ -11039,7 +11039,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BUSE_INTERNAL_ERROR,
-		tr( "An internal error has occured on the BUSE filesystem." ),
+		tr( "An internal error has occurred on the BUSE filesystem." ),
 		tr( "Operation on the BUSE filesystem failed due to an internal error." ),
 		false,
 		PMT_CRITICAL

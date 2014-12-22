@@ -1542,7 +1542,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BUSE_INTERNAL_ERROR,
-		tr( "An internal error has occured on the BUSE filesystem." ),
+		tr( "An internal error has occurred on the BUSE filesystem." ),
 		tr( "Operation on the BUSE filesystem failed due to an internal error." ),
 		false,
 		PMT_CRITICAL
