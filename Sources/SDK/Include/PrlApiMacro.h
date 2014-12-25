@@ -263,6 +263,7 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuCount ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuSpeed ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuMode ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuHvt ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuFeatures ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuFeaturesEx ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetCpuFeaturesMaskingCapabilities ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrvCfg_GetHostOsType ) \

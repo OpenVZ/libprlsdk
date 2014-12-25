@@ -2386,17 +2386,4 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_CONST_CPU_FEATURES_MASK_PTR pMasks
 		) );
 
-/* To get the CPU features from server
-   hSrvConfig :			A handle of type PRL_HANDLE.
-   pMasks:			[out] A pointer structure with processor features set
-   Returns
-   PRL_RESULT. Possible values:
-   PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed.
-   PRL_ERR_SUCCESS - function completed successfully. */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
-			PrlSrvCfg_GetCpuFeatures, (
-		PRL_HANDLE hSrvConfig,
-		PRL_CPU_FEATURES_PTR pCpuFeatures
-		) );
-
 #endif //__PARALLELS_API_DEPRECATED_H__
