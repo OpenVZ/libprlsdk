@@ -27,8 +27,8 @@
 
 """
 
-@copyright: Copyright (c) 2005-2007 Parallels Software International, Inc. All Rights Reserved; U{http://www.parallels.com}
-@organization: Parallels Software International
+@copyright: Copyright (c) 2005-2014 Parallels IP Holdings GmbH, Inc. All Rights Reserved; U{http://www.parallels.com}
+@organization: Parallels IP Holdings GmbH
 @contact: U{http://www.parallels.com}
 G{packagetree}
 G{importgraph}

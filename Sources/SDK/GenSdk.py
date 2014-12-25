@@ -95,7 +95,7 @@ STRINGIFY_CONSTS_TMPL = """/////////////////////////////////////////////////////
 ///
 /// @author maximk
 ///
-/// Copyright (c) 2005-2007 Parallels Software International, Inc.
+/// Copyright (c) 1999-2014 Parallels IP Holdings GmbH.
 /// All rights reserved.
 /// http://www.parallels.com
 ///

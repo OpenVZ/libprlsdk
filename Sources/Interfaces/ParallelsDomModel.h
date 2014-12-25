@@ -760,7 +760,7 @@ public:
 //#define XML_DOC_VERSION_DATA						"version=\"1.0\" encoding=\"ISO-8859-1\""
 #define XML_DOC_VERSION_DATA						"version=\"1.0\" encoding=\"UTF-8\""
 
-#define XML_DEFAULT_PROBLEM_REP_PREAMBLE			QT_TRANSLATE_NOOP("QObject", "This is a Parallels problem report. Please send this file to Parallels Software International Inc. mailto:reports@parallels.com")
+#define XML_DEFAULT_PROBLEM_REP_PREAMBLE			QT_TRANSLATE_NOOP("QObject", "This is a Parallels problem report. Please send this file to Parallels IP Holdings GmbH. mailto:reports@parallels.com")
 
 /**
  * Virtual Machine configuration XML model

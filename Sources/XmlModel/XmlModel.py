@@ -26,8 +26,8 @@
 #
 
 """
-@copyright: Copyright (c) 2005-2007 Parallels Software International, Inc. All Rights Reserved; U{http://www.parallels.com}
-@organization: Parallels Software International
+@copyright: Copyright (c) 1999-2014 Parallels IP Holdings GmbH. All Rights Reserved; U{http://www.parallels.com}
+@organization: Parallels IP Holdings GmbH
 @contact: U{http://www.parallels.com}
 G{classtree BuildLin}
 G{packagetree}

@@ -720,7 +720,7 @@ class AddHandle:
 ///
 /// This file is the part of parallels public sdk library
 ///
-/// Copyright (c) 2005-2011 Parallels Software International, Inc.
+/// Copyright (c) 1999-2014 Parallels IP Holdings GmbH.
 /// All rights reserved.
 /// http://www.parallels.com
 ///
@@ -790,7 +790,7 @@ typedef PrlHandleSmartPtr<%s> %sPtr;
 ///
 /// This file is the part of parallels public sdk library
 ///
-/// Copyright (c) 2005-2011 Parallels Software International, Inc.
+/// Copyright (c) 1999-2014 Parallels IP Holdings GmbH.
 /// All rights reserved.
 /// http://www.parallels.com
 ///
