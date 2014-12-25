@@ -167,12 +167,6 @@ namespace OpenSSL
 		 */
 		l2 = i2d_SSL_SESSION(session, &bad_asn);
 
-		/*
-		 * I'm not understand this code, it was previously found in
-		 * SocketClient_p and may be possibly guard something from
-		 * change. From my point of view - it is weird. But i left it
-		 * unchanged.
-		 */
 		if (l1 != l2) {
 			free(asn);
 			return false;

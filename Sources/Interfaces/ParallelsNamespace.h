@@ -1501,8 +1501,6 @@ public:
 	 * Every Webservice method returns response structure. For example,
 	 * method "DspCmdUserLogin" returns _DspCmdUserLoginResponse structure.
 	 * Here we must enumerate all fields of each response structure.
-	 *
-	 * If you need to add/modify/remove any response structure, please ask Ilya@
 	 */
 	enum IDspMethodsArgs
 	{

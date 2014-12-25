@@ -80,7 +80,6 @@ typedef int __declspec("SAL_nokernel") __declspec("SAL_nodriver") __prefast_flag
  *
  * NOTE: these types are also defined in winnt.h and ntdef.h; we are lucky that
  * MSVC doesn't complain about duplicate typedefs if they are compatible
- * FIXME: stop following this MS braindamage and switch to standard C types
  */
 
 typedef	int				BOOL;

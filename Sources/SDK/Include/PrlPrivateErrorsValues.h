@@ -847,7 +847,6 @@
 // Dispatcher 'locked' error codes
 /* +++ ALIGNED VALUE TO 38100 +++ */
 
-// Sentillion  errors
 /* +++ ALIGNED VALUE TO 39000 +++ */
 
 // Unattended ISO errors

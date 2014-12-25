@@ -54,7 +54,6 @@
 namespace CProblemReportUtils
 {
 /**
-* Contact maximk@ if you want access this server directly.
 * The server that runs on that machine is actually a script:
 *   Build/CrashServer/CrashServer.py
 */
