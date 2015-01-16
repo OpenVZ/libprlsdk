@@ -135,6 +135,9 @@ bool SDKParser::Parse()
 	if ( ! ParseEnums() )
 		return false;
 
+	if ( ! ParseSessionConsts() )
+		return false;
+
 	if ( ! ParseOses() )
 		return false;
 
@@ -274,6 +277,16 @@ QString SDKParser::GetTypeFormat(const QString& qsType) const
 const QStringList& SDKParser::GetEnums() const
 {
 	return m_lstEnums;
+}
+
+QStringList SDKParser::GetSessionNames() const
+{
+	return m_mapSessionUuids.keys();
+}
+
+QString SDKParser::GetSessionValue(const QString& qsSessionName) const
+{
+	return m_mapSessionUuids.value(qsSessionName);
 }
 
 const QStringList& SDKParser::GetOsVersions() const
@@ -682,6 +695,35 @@ bool SDKParser::ParseEnums()
 		WriteLineInLog(qsEnumType);
 
 		pos += re.matchedLength();
+	}
+
+	return true;
+}
+
+#define WHOLE_UUID_PN	"\"\\b\\w+-\\w+-\\w+-\\w+-\\w+\\b\""
+
+bool SDKParser::ParseSessionConsts()
+{
+	WriteLineInLog("\n###################################");
+	WriteLineInLog(  "########## PARSE SESSIONS ###########");
+	WriteLineInLog(  "###################################\n");
+
+	QRegExp re("\\#\\s*define\\s+("WHOLE_WORD_PN")\\s+("WHOLE_UUID_PN")");
+
+	int pos = 0;
+	while((pos = re.indexIn(m_qsPrlEnums, pos)) != -1)
+	{
+		WriteLineInLog(QString("%1 %2").arg(re.cap(1), re.cap(2)));
+
+		m_mapSessionUuids.insert(re.cap(1), re.cap(2));
+
+		pos += re.matchedLength();
+	}
+
+	if ( m_mapSessionUuids.isEmpty() )
+	{
+		m_qsErrorMessage = "Session constants not found!";
+		return false;
 	}
 
 	return true;

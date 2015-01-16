@@ -143,6 +143,8 @@
 	MDL_ADD_MODULE
 #define MDL_REGISTER_CONSTANT \
 	"\tPyModule_AddIntConstant( module, \"%1\", %2 );\n"
+#define MDL_REGISTER_STRING_CONSTANT \
+	"\tPyModule_AddStringConstant( module, \"%1\", %2 );\n"
 #define MDL_INIT_SCAN_CODES \
 	"\tPyObject* scan_codes = Py_BuildValue(\"{}\");\n" \
 	"\tPyModule_AddObject( module, \"ScanCodesList\", scan_codes );\n\n"
