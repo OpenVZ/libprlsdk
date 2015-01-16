@@ -83,6 +83,9 @@ public:
 	const QStringList& GetEnums() const;
 	const QStringList& GetOsVersions() const;
 
+	QStringList GetSessionNames() const;
+	QString GetSessionValue(const QString& qsSessionName) const;
+
 	QStringList GetScanCodeNames() const;
 	QString GetScanCodeValue(const QString& qsScanCodeName) const;
 	QString GetShortScanCodeName(const QString& qsScanCodeName) const;
@@ -108,6 +111,7 @@ private:
 	bool ParseFunctionArgs();
 	bool ParseFunctionArgs(const QString& qsFuncName, const QString& qsArgs, bool bAsync);
 	bool ParseEnums();
+	bool ParseSessionConsts();
 	bool ParseOses();
 	bool ParseKeys();
 	bool ParseErrors();
@@ -131,6 +135,8 @@ private:
 	QString			m_qsPrlEnums;
 	QStringList		m_lstEnums;
 	QStringList		m_lstEnumTypes;
+
+	QMap<QString, QString>		m_mapSessionUuids;
 
 	QString			m_qsPrlOses;
 	QStringList		m_lstOsVersions;

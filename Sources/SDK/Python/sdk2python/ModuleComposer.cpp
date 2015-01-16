@@ -294,6 +294,14 @@ void ModuleComposer::RegisterConstants(QString& content)
 	}
 	content += "\n";
 
+// Register Sessions
+	foreach(QString qsSession, m_sdk_parser.GetSessionNames())
+	{
+		content += QString(MDL_REGISTER_STRING_CONSTANT).
+				arg(qsSession, m_sdk_parser.GetSessionValue(qsSession));
+	}
+	content += "\n";
+
 // Register OS versions
 	foreach(QString qsConst, m_sdk_parser.GetOsVersions())
 	{
