@@ -25,7 +25,7 @@ cfg.readfp(open('Build/Build.cfg'))
 
 try:
 	fd = open('Build/Build.pri', 'w')
-except IOErrore:
+except IOError:
 	print 'Failed to open "Build/Build.pri"'
 	sys.exit(1)
 
