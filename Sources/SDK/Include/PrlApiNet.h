@@ -1012,6 +1012,55 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_CONST_STR sHostIPAddress
 		) );
 
+/* \Returns the host IPv6 address of the specified virtual network.
+   Parameters
+   hVirtNet :             A handle of type PHT_VIRTUAL_NETWORK
+                          identifying the virtual network.
+   sHostIPAddress :       [out] A pointer to a buffer that receives
+                          the result (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnHostIPAddressBufLength : [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this parameter's value to zero to
+                          receive the required size. [out] The
+                          required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_GetHostIP6Address, (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sHostIPAddress,
+		PRL_UINT32_PTR pnHostIPAddressBufLength
+		) );
+
+/* Sets the specified virtual network host IPv6 address.
+   Parameters
+   hVirtNet :     A handle of type PHT_VIRTUAL_NETWORK
+                  identifying the virtual network.
+   sHostIPAddress :   The value to set. The value must be a a UTF\-8
+                  encoded, null\-terminated string.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_SetHostIP6Address, (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sHostIPAddress
+		) );
+
 /* \Returns the DCHP IP address of the specified virtual network.
    Parameters
    hVirtNet :             A handle of type PHT_VIRTUAL_NETWORK
@@ -1061,6 +1110,55 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_CONST_STR sDhcpIPAddress
 		) );
 
+/* \Returns the DCHP IPv6 address of the specified virtual network.
+   Parameters
+   hVirtNet :             A handle of type PHT_VIRTUAL_NETWORK
+                          identifying the virtual network.
+   sDhcpIPAddress :           [out] A pointer to a buffer that receives
+                          the result (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnDhcpIPAddressBufLength : [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this parameter's value to zero to
+                          receive the required size. [out] The
+                          required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_GetDhcpIP6Address, (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sDhcpIPAddress,
+		PRL_UINT32_PTR pnDhcpIPAddressBufLength
+		) );
+
+/* Sets the specified virtual network DHCP IPv6 address.
+   Parameters
+   hVirtNet :     A handle of type PHT_VIRTUAL_NETWORK
+                  identifying the virtual network.
+   sDhcpIPAddress :   The value to set. The value must be a a UTF\-8
+                  encoded, null\-terminated string.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_SetDhcpIP6Address, (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sDhcpIPAddress
+		) );
+
 /* \Returns the IP net mask of the specified virtual network.
    Parameters
    hVirtNet :             A handle of type PHT_VIRTUAL_NETWORK
@@ -1106,6 +1204,55 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.             */
 PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 PrlVirtNet_SetIPNetMask, (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sIPNetMask
+		) );
+
+/* \Returns the IPv6 net mask of the specified virtual network.
+   Parameters
+   hVirtNet :             A handle of type PHT_VIRTUAL_NETWORK
+                          identifying the virtual network.
+   sIPNetMask :           [out] A pointer to a buffer that receives
+                          the result (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnIPNetMaskBufLength : [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this parameter's value to zero to
+                          receive the required size. [out] The
+                          required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_GetIP6NetMask, (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sIPNetMask,
+		PRL_UINT32_PTR pnIPNetMaskBufLength
+		) );
+
+/* Sets the specified virtual network IPv6 net mask.
+   Parameters
+   hVirtNet :     A handle of type PHT_VIRTUAL_NETWORK
+                  identifying the virtual network.
+   sIPNetMask :   The value to set. The value must be a a UTF\-8
+                  encoded, null\-terminated string.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_SetIP6NetMask, (
 		PRL_HANDLE hVirtNet,
 		PRL_CONST_STR sIPNetMask
 		) );
@@ -1248,6 +1395,104 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_CONST_STR sIPScopeEnd
 		) );
 
+/* \Returns the DHCP start IPv6 address of the specified virtual network.
+   Parameters
+   hVirtNet :             A handle of type PHT_VIRTUAL_NETWORK
+                          identifying the virtual network.
+   sIPScopeStart :           [out] A pointer to a buffer that receives
+                          the result (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnIPScopeStartBufLength : [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this parameter's value to zero to
+                          receive the required size. [out] The
+                          required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_GetIP6ScopeStart, (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sIPScopeStart,
+		PRL_UINT32_PTR pnIPScopeStartBufLength
+		) );
+
+/* Sets the specified virtual network DHCP start IPv6 address.
+   Parameters
+   hVirtNet :     A handle of type PHT_VIRTUAL_NETWORK
+                  identifying the virtual network.
+   sIPScopeStart :   The value to set. The value must be a a UTF\-8
+                  encoded, null\-terminated string.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_SetIP6ScopeStart, (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sIPScopeStart
+		) );
+
+/* \Returns the DHCP end IPv6 address of the specified virtual network.
+   Parameters
+   hVirtNet :             A handle of type PHT_VIRTUAL_NETWORK
+                          identifying the virtual network.
+   sIPScopeEnd :           [out] A pointer to a buffer that receives
+                          the result (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnIPScopeEndBufLength : [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this parameter's value to zero to
+                          receive the required size. [out] The
+                          required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_GetIP6ScopeEnd, (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sIPScopeEnd,
+		PRL_UINT32_PTR pnIPScopeEndBufLength
+		) );
+
+/* Sets the specified virtual network DHCP end IPv6 address.
+   Parameters
+   hVirtNet :     A handle of type PHT_VIRTUAL_NETWORK
+                  identifying the virtual network.
+   sIPScopeEnd :   The value to set. The value must be a a UTF\-8
+                  encoded, null\-terminated string.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_SetIP6ScopeEnd, (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sIPScopeEnd
+		) );
+
 /* Determines whether the specified virtual network is
    enabled or disabled.
    Parameters
@@ -1368,6 +1613,48 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.          */
 PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 PrlVirtNet_SetDHCPServerEnabled, (
+		PRL_HANDLE hVirtNet,
+		PRL_BOOL bEnabled
+		) );
+
+/* Determines whether the specified virtual network DHCPv6 server is
+   enabled or disabled.
+   Parameters
+   hVirtNet :   A handle of type PHT_VIRTUAL_NETWORK identifying
+                the virtual network.
+   pbEnabled :  [out] A pointer to a variable that receives the
+                \result. PRL_TRUE indicates that the DHCP server is
+                enabled. PRL_FALSE indicates that the DHCP server is
+                disabled.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.          */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_IsDHCP6ServerEnabled, (
+		PRL_HANDLE hVirtNet,
+		PRL_BOOL_PTR pbEnabled
+		) );
+
+/* Allows to enable or disable a specified virtual network
+   DHCPv6 server.
+   Parameters
+   hVirtNet :  A handle of type PHT_VIRTUAL_NETWORK identifying
+               the virual network.
+   bEnabled :  A boolean value indicating the type of action to
+               perform. PRL_TRUE will enable the DHCP server.
+               PRL_FALSE will disable it.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.          */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				 PrlVirtNet_SetDHCP6ServerEnabled, (
 		PRL_HANDLE hVirtNet,
 		PRL_BOOL bEnabled
 		) );

@@ -170,6 +170,23 @@ PRL_RESULT PrlHandleVirtNet::SetHostIPAddress(PRL_CONST_STR sHostIPAddress)
 	return PRL_ERR_SUCCESS;
 }
 
+PRL_RESULT PrlHandleVirtNet::GetHostIP6Address(PRL_STR sHostIPAddress, PRL_UINT32_PTR pnHostIPAddressBufLength)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	return CopyStringValue(m_VirtualNetwork.getHostOnlyNetwork()->getHostIP6Address().toString(),
+							sHostIPAddress, pnHostIPAddressBufLength);
+}
+
+PRL_RESULT PrlHandleVirtNet::SetHostIP6Address(PRL_CONST_STR sHostIPAddress)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	QHostAddress addr;
+	if (!addr.setAddress(UTF8_2QSTR(sHostIPAddress)))
+		return PRL_ERR_INVALID_ARG;
+	m_VirtualNetwork.getHostOnlyNetwork()->setHostIP6Address(addr);
+	return PRL_ERR_SUCCESS;
+}
+
 PRL_RESULT PrlHandleVirtNet::GetDhcpIPAddress(PRL_STR sDhcpIPAddress, PRL_UINT32_PTR pnDhcpIPAddressBufLength)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
@@ -184,6 +201,23 @@ PRL_RESULT PrlHandleVirtNet::SetDhcpIPAddress(PRL_CONST_STR sDhcpIPAddress)
 	if (!addr.setAddress(UTF8_2QSTR(sDhcpIPAddress)))
 		return PRL_ERR_INVALID_ARG;
 	m_VirtualNetwork.getHostOnlyNetwork()->setDhcpIPAddress(addr);
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVirtNet::GetDhcpIP6Address(PRL_STR sDhcpIPAddress, PRL_UINT32_PTR pnDhcpIPAddressBufLength)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	return CopyStringValue(m_VirtualNetwork.getHostOnlyNetwork()->getDhcpIP6Address().toString(),
+							sDhcpIPAddress, pnDhcpIPAddressBufLength);
+}
+
+PRL_RESULT PrlHandleVirtNet::SetDhcpIP6Address(PRL_CONST_STR sDhcpIPAddress)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	QHostAddress addr;
+	if (!addr.setAddress(UTF8_2QSTR(sDhcpIPAddress)))
+		return PRL_ERR_INVALID_ARG;
+	m_VirtualNetwork.getHostOnlyNetwork()->setDhcpIP6Address(addr);
 	return PRL_ERR_SUCCESS;
 }
 
@@ -207,6 +241,23 @@ PRL_RESULT PrlHandleVirtNet::SetIPNetMask(PRL_CONST_STR sIPNetMask)
 	if (!addr.setAddress(mask))
 		return PRL_ERR_INVALID_ARG;
 	m_VirtualNetwork.getHostOnlyNetwork()->setIPNetMask(addr);
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVirtNet::GetIP6NetMask(PRL_STR sIPNetMask, PRL_UINT32_PTR pnIPNetMaskBufLength)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	return CopyStringValue(m_VirtualNetwork.getHostOnlyNetwork()->getIP6NetMask().toString(),
+							sIPNetMask, pnIPNetMaskBufLength);
+}
+
+PRL_RESULT PrlHandleVirtNet::SetIP6NetMask(PRL_CONST_STR sIPNetMask)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	QHostAddress addr;
+	if (!addr.setAddress(sIPNetMask))
+		return PRL_ERR_INVALID_ARG;
+	m_VirtualNetwork.getHostOnlyNetwork()->setIP6NetMask(addr);
 	return PRL_ERR_SUCCESS;
 }
 
@@ -258,6 +309,40 @@ PRL_RESULT PrlHandleVirtNet::SetIPScopeEnd(PRL_CONST_STR sIPScopeEnd)
 	return PRL_ERR_SUCCESS;
 }
 
+PRL_RESULT PrlHandleVirtNet::GetIP6ScopeStart(PRL_STR sIPScopeStart, PRL_UINT32_PTR pnIPScopeStartBufLength)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	return CopyStringValue(m_VirtualNetwork.getHostOnlyNetwork()->getDHCPv6Server()->getIPScopeStart().toString(),
+							sIPScopeStart, pnIPScopeStartBufLength);
+}
+
+PRL_RESULT PrlHandleVirtNet::SetIP6ScopeStart(PRL_CONST_STR sIPScopeStart)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	QHostAddress addr;
+	if (!addr.setAddress(UTF8_2QSTR(sIPScopeStart)))
+		return PRL_ERR_INVALID_ARG;
+	m_VirtualNetwork.getHostOnlyNetwork()->getDHCPv6Server()->setIPScopeStart(addr);
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVirtNet::GetIP6ScopeEnd(PRL_STR sIPScopeEnd, PRL_UINT32_PTR pnIPScopeEndBufLength)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	return CopyStringValue(m_VirtualNetwork.getHostOnlyNetwork()->getDHCPv6Server()->getIPScopeEnd().toString(),
+							sIPScopeEnd, pnIPScopeEndBufLength);
+}
+
+PRL_RESULT PrlHandleVirtNet::SetIP6ScopeEnd(PRL_CONST_STR sIPScopeEnd)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	QHostAddress addr;
+	if (!addr.setAddress(UTF8_2QSTR(sIPScopeEnd)))
+		return PRL_ERR_INVALID_ARG;
+	m_VirtualNetwork.getHostOnlyNetwork()->getDHCPv6Server()->setIPScopeEnd(addr);
+	return PRL_ERR_SUCCESS;
+}
+
 PRL_RESULT PrlHandleVirtNet::IsEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
@@ -297,6 +382,20 @@ PRL_RESULT PrlHandleVirtNet::SetDHCPServerEnabled(PRL_BOOL bEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	m_VirtualNetwork.getHostOnlyNetwork()->getDHCPServer()->setEnabled((bool )bEnabled);
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVirtNet::IsDHCP6ServerEnabled(PRL_BOOL_PTR pbEnabled)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pbEnabled = PRL_BOOL(m_VirtualNetwork.getHostOnlyNetwork()->getDHCPv6Server()->isEnabled());
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVirtNet::SetDHCP6ServerEnabled(PRL_BOOL bEnabled)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VirtualNetwork.getHostOnlyNetwork()->getDHCPv6Server()->setEnabled((bool )bEnabled);
 	return PRL_ERR_SUCCESS;
 }
 

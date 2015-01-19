@@ -770,6 +770,52 @@ PRL_METHOD( PrlVirtNet_SetHostIPAddress ) (
 	return pVirtNet->SetHostIPAddress(sHostIPAddress);
 }
 
+PRL_METHOD( PrlVirtNet_GetHostIP6Address ) (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sHostIPAddress,
+		PRL_UINT32_PTR pnHostIPAddressBufLength
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sHostIPAddress=%.8X, pnHostIPAddressBufLength=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sHostIPAddress,
+		pnHostIPAddressBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(pnHostIPAddressBufLength))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->GetHostIP6Address(sHostIPAddress, pnHostIPAddressBufLength);
+}
+
+PRL_METHOD( PrlVirtNet_SetHostIP6Address ) (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sHostIPAddress
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sHostIPAddress=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sHostIPAddress
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(sHostIPAddress))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->SetHostIP6Address(sHostIPAddress);
+}
+
 PRL_METHOD( PrlVirtNet_GetDhcpIPAddress ) (
 		PRL_HANDLE hVirtNet,
 		PRL_STR sDhcpIPAddress,
@@ -816,6 +862,52 @@ PRL_METHOD( PrlVirtNet_SetDhcpIPAddress ) (
 	return pVirtNet->SetDhcpIPAddress(sDhcpIPAddress);
 }
 
+PRL_METHOD( PrlVirtNet_GetDhcpIP6Address ) (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sDhcpIPAddress,
+		PRL_UINT32_PTR pnDhcpIPAddressBufLength
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sDhcpIPAddress=%.8X, pnDhcpIPAddressBufLength=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sDhcpIPAddress,
+		pnDhcpIPAddressBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(pnDhcpIPAddressBufLength))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->GetDhcpIP6Address(sDhcpIPAddress, pnDhcpIPAddressBufLength);
+}
+
+PRL_METHOD( PrlVirtNet_SetDhcpIP6Address ) (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sDhcpIPAddress
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sDhcpIPAddress=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sDhcpIPAddress
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(sDhcpIPAddress))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->SetDhcpIP6Address(sDhcpIPAddress);
+}
+
 PRL_METHOD( PrlVirtNet_GetIPNetMask ) (
 		PRL_HANDLE hVirtNet,
 		PRL_STR sIPNetMask,
@@ -860,6 +952,52 @@ PRL_METHOD( PrlVirtNet_SetIPNetMask ) (
 	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
 
 	return pVirtNet->SetIPNetMask(sIPNetMask);
+}
+
+PRL_METHOD( PrlVirtNet_GetIP6NetMask ) (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sIPNetMask,
+		PRL_UINT32_PTR pnIPNetMaskBufLength
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sIPNetMask=%.8X, pnIPNetMaskBufLength=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sIPNetMask,
+		pnIPNetMaskBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(pnIPNetMaskBufLength))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->GetIP6NetMask(sIPNetMask, pnIPNetMaskBufLength);
+}
+
+PRL_METHOD( PrlVirtNet_SetIP6NetMask ) (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sIPNetMask
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sIPNetMask=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sIPNetMask
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(sIPNetMask))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->SetIP6NetMask(sIPNetMask);
 }
 
 PRL_METHOD( PrlVirtNet_GetVlanTag ) (
@@ -997,6 +1135,98 @@ PRL_METHOD( PrlVirtNet_SetIPScopeEnd ) (
 	return pVirtNet->SetIPScopeEnd(sIPScopeEnd);
 }
 
+PRL_METHOD( PrlVirtNet_GetIP6ScopeStart ) (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sIPScopeStart,
+		PRL_UINT32_PTR pnIPScopeStartBufLength
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sIPScopeStart=%.8X, pnIPScopeStartBufLength=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sIPScopeStart,
+		pnIPScopeStartBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(pnIPScopeStartBufLength))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->GetIP6ScopeStart(sIPScopeStart, pnIPScopeStartBufLength);
+}
+
+PRL_METHOD( PrlVirtNet_SetIP6ScopeStart ) (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sIPScopeStart
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sIPScopeStart=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sIPScopeStart
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(sIPScopeStart))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->SetIP6ScopeStart(sIPScopeStart);
+}
+
+PRL_METHOD( PrlVirtNet_GetIP6ScopeEnd ) (
+		PRL_HANDLE hVirtNet,
+		PRL_STR sIPScopeEnd,
+		PRL_UINT32_PTR pnIPScopeEndBufLength
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sIPScopeEnd=%.8X, pnIPScopeEndBufLength=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sIPScopeEnd,
+		pnIPScopeEndBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(pnIPScopeEndBufLength))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->GetIP6ScopeEnd(sIPScopeEnd, pnIPScopeEndBufLength);
+}
+
+PRL_METHOD( PrlVirtNet_SetIP6ScopeEnd ) (
+		PRL_HANDLE hVirtNet,
+		PRL_CONST_STR sIPScopeEnd
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, sIPScopeEnd=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		sIPScopeEnd
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) ||
+			PRL_WRONG_PTR(sIPScopeEnd))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>( hVirtNet );
+
+	return pVirtNet->SetIP6ScopeEnd(sIPScopeEnd);
+}
+
 PRL_METHOD( PrlVirtNet_IsEnabled ) (
 									PRL_HANDLE hVirtNet,
 									PRL_BOOL_PTR pbEnabled
@@ -1115,6 +1345,46 @@ PRL_METHOD( PrlVirtNet_SetDHCPServerEnabled ) (
 
 	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>(hVirtNet);
 	return (pVirtNet->SetDHCPServerEnabled(bEnabled));
+}
+
+PRL_METHOD( PrlVirtNet_IsDHCP6ServerEnabled ) (
+									PRL_HANDLE hVirtNet,
+									PRL_BOOL_PTR pbEnabled
+									)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, pbEnabled=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		pbEnabled
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK) || PRL_WRONG_PTR(pbEnabled))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>(hVirtNet);
+	return (pVirtNet->IsDHCP6ServerEnabled(pbEnabled));
+}
+
+PRL_METHOD( PrlVirtNet_SetDHCP6ServerEnabled ) (
+									 PRL_HANDLE hVirtNet,
+									 PRL_BOOL bEnabled
+									 )
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVirtNet=%.8X, bEnabled=%.8X)",
+		__FUNCTION__,
+		hVirtNet,
+		bEnabled
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVirtNet, PHT_VIRTUAL_NETWORK))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>(hVirtNet);
+	return (pVirtNet->SetDHCP6ServerEnabled(bEnabled));
 }
 
 PRL_METHOD( PrlVirtNet_IsNATServerEnabled ) (
