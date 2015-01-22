@@ -134,6 +134,16 @@ public:
 	PRL_RESULT SetHostIPAddress(PRL_CONST_STR sHostIPAddress);
 
 	/**
+	 * Get virtual network host IPv6 address
+	 */
+	PRL_RESULT GetHostIP6Address(PRL_STR sHostIPAddress, PRL_UINT32_PTR pnHostIPAddressBufLength);
+
+	/**
+	 * Set virtual network host IPv6 address
+	 */
+	PRL_RESULT SetHostIP6Address(PRL_CONST_STR sHostIPAddress);
+
+	/**
 	 * Get virtual network DHCP IP address
 	 */
 	PRL_RESULT GetDhcpIPAddress(PRL_STR sDhcpIPAddress, PRL_UINT32_PTR pnDhcpIPAddressBufLength);
@@ -144,6 +154,16 @@ public:
 	PRL_RESULT SetDhcpIPAddress(PRL_CONST_STR sDhcpIPAddress);
 
 	/**
+	 * Get virtual network DHCP IPv6 address
+	 */
+	PRL_RESULT GetDhcpIP6Address(PRL_STR sDhcpIPAddress, PRL_UINT32_PTR pnDhcpIPAddressBufLength);
+
+	/**
+	 * Set virtual network DHCP IPv6 address
+	 */
+	PRL_RESULT SetDhcpIP6Address(PRL_CONST_STR sDhcpIPAddress);
+
+	/**
 	 * Get virtual network IP net mask
 	 */
 	PRL_RESULT GetIPNetMask(PRL_STR sIPNetMask, PRL_UINT32_PTR pnIPNetMaskBufLength);
@@ -152,6 +172,16 @@ public:
 	 * Set virtual network IP net mask
 	 */
 	PRL_RESULT SetIPNetMask(PRL_CONST_STR sIPNetMask);
+
+	/**
+	 * Get virtual network IPv6 net mask
+	 */
+	PRL_RESULT GetIP6NetMask(PRL_STR sIPNetMask, PRL_UINT32_PTR pnIPNetMaskBufLength);
+
+	/**
+	 * Set virtual network IPv6 net mask
+	 */
+	PRL_RESULT SetIP6NetMask(PRL_CONST_STR sIPNetMask);
 
 	/**
 	 * Get VLAN tag
@@ -184,6 +214,26 @@ public:
 	PRL_RESULT SetIPScopeEnd(PRL_CONST_STR sIPScopeEnd);
 
 	/**
+	 * Get virtual network DHCP start IPv6 address
+	 */
+	PRL_RESULT GetIP6ScopeStart(PRL_STR sIPScopeStart, PRL_UINT32_PTR pnIPScopeStartBufLength);
+
+	/**
+	 * Set virtual network DHCP start IPv6 address
+	 */
+	PRL_RESULT SetIP6ScopeStart(PRL_CONST_STR sIPScopeStart);
+
+	/**
+	 * Get virtual network DHCP end IPv6 address
+	 */
+	PRL_RESULT GetIP6ScopeEnd(PRL_STR sIPScopeEnd, PRL_UINT32_PTR pnIPScopeEndBufLength);
+
+	/**
+	 * Set virtual network DHCP end IPv6 address
+	 */
+	PRL_RESULT SetIP6ScopeEnd(PRL_CONST_STR sIPScopeEnd);
+
+	/**
 	 * Get virtual network enabled or disabled
 	 */
 	PRL_RESULT IsEnabled(PRL_BOOL_PTR pbEnabled);
@@ -212,6 +262,16 @@ public:
 	 * Set virtual network DHCP server enabled or disabled
 	 */
 	PRL_RESULT SetDHCPServerEnabled(PRL_BOOL bEnabled);
+
+	/**
+	 * Get virtual network DHCPv6 server enabled or disabled
+	 */
+	PRL_RESULT IsDHCP6ServerEnabled(PRL_BOOL_PTR pbEnabled);
+
+	/**
+	 * Set virtual network DHCPv6 server enabled or disabled
+	 */
+	PRL_RESULT SetDHCP6ServerEnabled(PRL_BOOL bEnabled);
 
 	/**
 	 * Get virtual network NAT server enabled or disabled
