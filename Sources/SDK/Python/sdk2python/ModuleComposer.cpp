@@ -288,6 +288,15 @@ void ModuleComposer::RegisterConstants(QString& content)
 // Register enums
 	foreach(QString qsConst, m_sdk_parser.GetEnums())
 	{
+		// workaround for
+		// http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2004/n1719.pdf
+		// paragraph 2.2.2
+		if (qsConst.startsWith("PJS_"))
+		{
+			content += QString(MDL_REGISTER_SIGNED_INT_CONSTANT).arg(qsConst, qsConst);
+			continue;
+		}
+
 		content += QString(MDL_REGISTER_CONSTANT).arg(qsConst, qsConst);
 		if (qsConst == "PKE_RELEASE")
 			content += QString(MDL_REGISTER_CONSTANT).arg(MDL_PKE_CLICK, "0xFF");
