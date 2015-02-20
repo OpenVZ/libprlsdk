@@ -1,11 +1,12 @@
 Summary: Software Developing Kit for Parallels Cloud Server
-Name: parallels-virtualization-open-sdk 
-Version: 7.0.0
+Name: libprlsdk
+Obsoletes: parallels-virtualization-open-sdk, parallels-virtualization-sdk
+Version: 7.0.1
 Release: 1%{?dist}
 
-Group: Development/Libraries	
+Group: Development/Libraries
 License: LGPLv2+
-URL: https://github.com/Parallels/parallels-sdk
+URL: https://github.com/cloudserver/parallels-sdk
 Source: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -16,6 +17,7 @@ BuildRequires: python
 BuildRequires: python-devel
 BuildRequires: qt4-devel
 BuildRequires: qt4
+ExclusiveArch: x86_64
 
 
 %description
@@ -63,8 +65,8 @@ rm -rf %{buildroot}
 %defattr(-, root, root)
 
 %{_libdir}/libprl_sdk.so.*
-%dir %{_includedir}/parallels-virtualization-open-sdk
-%{_includedir}/parallels-virtualization-open-sdk/*.h
+%dir %{_includedir}/prlsdk
+%{_includedir}/prlsdk/*.h
 
 %changelog
 * Wed Sep 17 2014 Maxim Nestratov <mnestratov@parallels.com> - 7.0.0
