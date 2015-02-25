@@ -41,6 +41,7 @@ fd.write( '\n' )
 fd.write( '# SDK library versions\n' )
 fd.write( 'SDK_VER_MAJ = "%s"\n' % cfg.getint('sdk', 'major'))
 fd.write( 'SDK_VER_MIN = "%s"\n' % cfg.getint('sdk', 'minor'))
+fd.write( 'SDK_VER_PAT = "%s"\n' % cfg.getint('sdk', 'version_patch'))
 
 fd.write('PREFIX = "%s"' % cfg.get('Build.cfg', 'install_prefix'))
 

@@ -1,7 +1,7 @@
 Summary: Software Developing Kit for Parallels Cloud Server
 Name: libprlsdk
 Obsoletes: parallels-virtualization-open-sdk, parallels-virtualization-sdk
-Version: 7.0.1
+Version: 7.0.2
 Release: 1%{?dist}
 
 Group: Development/Libraries
