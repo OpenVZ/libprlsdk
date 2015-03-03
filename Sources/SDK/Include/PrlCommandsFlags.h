@@ -224,11 +224,13 @@ typedef PRL_VM_START_MODE* PRL_VM_START_MODE_PTR;
 /* VM normal-mode start flags:
 	PSM_VM_START_IGNORE_HA_CLUSTER : do not register VM on HA cluster in any case
 					(for server mode only)
+	PNSF_CT_SKIP_ARPDETECT : Ct specific parameter
 */
 typedef enum _PRL_VM_NORMAL_START_FLAGS
 {
 //	PNSF_VM_START_IGNORE_HA_CLUSTER          = 1<<(PACF_MAX+1), This flag is unused
 	PNSF_VM_START_WAIT			= 1<<(PACF_MAX+2),
+	PNSF_CT_SKIP_ARPDETECT			= 1<<(PACF_MAX+3),
 } PRL_VM_NORMAL_START_FLAGS;
 typedef PRL_VM_NORMAL_START_FLAGS* PRL_VM_NORMAL_START_FLAGS_PTR;
 
