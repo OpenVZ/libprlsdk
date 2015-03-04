@@ -78,6 +78,8 @@
 
 //Guest OS CPU usage in percents (modulated to 100%)
 #define PRL_GUEST_CPU_USAGE_PTRN			"guest.cpu.usage"
+#define PRL_GUEST_CPU_TIME_PTRN				"guest.cpu.time"
+#define PRL_HOST_CPU_TIME_PTRN				"host.cpu.time"
 
 //Guest OS RAM usage in megabytes
 #define PRL_GUEST_RAM_USAGE_PTRN			"guest.ram.usage"
