@@ -56,6 +56,38 @@ using namespace IOService;
 class CResult;
 class CVmEvent;
 
+namespace IODisplay
+{
+struct Unit
+{
+	Unit( const SmartPtr<IOService::ExecChannel>& channel );
+
+	bool IsConnected () const;
+
+private:
+	SmartPtr<IOService::ExecChannel> m_ioExecChannel;
+};
+
+struct Connection
+{
+	Connection ( const Unit& display, const PrlHandleIOJob* ioJobPtr );
+
+	PRL_RESULT Attach ( PrlHandleJob **const ioJobPtr );
+
+	bool IsAttached ();
+
+	void Detach ();
+
+	void SetState ( IOService::Channel::State state );
+
+private:
+	QMutex m_mutex;
+
+	std::vector<Unit> m_attachments;
+	PrlHandleSmartPtr<PrlHandleIOJob> m_ioJob;
+};
+
+} // namespace IODisplay
 
 /**
  * Virtual machine handle.
@@ -86,9 +118,14 @@ public:
 	PRL_RESULT VmConnect ( PrlHandleJob **const pJob );
 
 	/**
-	 * Disconnects from Vm desktop.
+	 * Disconnects from Vm desktop gracefully.
 	 */
 	PRL_RESULT VmDisconnect ();
+
+	/**
+	 * Force disconnect from Vm desktop.
+	 */
+	PRL_RESULT VmDisconnectForcibly ();
 
 	IOService::Channel* GetIOChannel ();
 	SmartPtr<IOService::ExecChannel> GetChannel ();
@@ -217,8 +254,10 @@ protected:
 
 	PrlHandleServerStatPtr m_pServerStat;
 	PrlHandleServerVmPtr m_pServerVm;
-	bool m_bStartInProgress;    // true if start operation is in progress
+	bool m_bStartInProgress;    // true if VM start operation is in progress
 	CVmConfiguration m_VmConfig;
+
+	SmartPtr<IODisplay::Connection> m_ioConnection;
 };
 
 
