@@ -37,7 +37,7 @@ Sources/SDK/Python/parse_log.txt
 Sources/SDK/Python/prlsdkapi.py
 
 # Build routine
-Makefile*
+Makefile_*
 Sources/Build/Build.pri
 Sources/Build/Current-gen.ver
 Sources/SDK/Python/PrlPython.pri
