@@ -693,6 +693,14 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_CT_MIGRATE_EXTERNAL_PROCESS,
+		tr("You cannot live migrate a Container with an external process."),
+		tr("The Container you are trying to live migrate has an external process running. Make sure there are no open prlctl enter sessions or running prlctl exec processes and try again."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_COMMON_SERVER_PREFS_WERE_CHANGED,
 		tr("The server configuration cannot be saved due to a user activity conflict. Your changes will be discarded."),
 		tr("Another user saved the configuration while you were editing it. Try to edit the configuration again."),
