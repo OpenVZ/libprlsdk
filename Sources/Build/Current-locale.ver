@@ -40,10 +40,10 @@
 #endif
 
 #ifndef CRASH_REPORT_SERVER_BASE
-       #define CRASH_REPORT_SERVER_BASE "report.my.com"
+       #define CRASH_REPORT_SERVER_BASE "ps6.report.parallels.com"
 #endif
 
 #ifndef CEP_REPORT_SERVER_BASE
-       #define CEP_REPORT_SERVER_BASE "cepreport.my.com"
+       #define CEP_REPORT_SERVER_BASE "ps6.cepreport.parallels.com"
 #endif
 
