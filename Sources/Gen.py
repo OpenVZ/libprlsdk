@@ -23,6 +23,14 @@ if file_path == '':
 cfg = ConfigParser.ConfigParser()
 cfg.readfp(open('Build/Build.cfg'))
 
+fd = open('../Makefile.version')
+versionfile = fd.read().strip().split('.')
+cfg.add_section('sdk')
+cfg.set('sdk', 'major', versionfile[0])
+cfg.set('sdk', 'minor', versionfile[1])
+cfg.set('sdk', 'version_patch', versionfile[2])
+fd.close()
+
 try:
 	fd = open('Build/Build.pri', 'w')
 except IOError:
