@@ -2767,14 +2767,14 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="Enabled" type="xs:boolean" default="true"/>
-									<xs:element name="UseDesktop" type="xs:boolean" default="true"/>
-									<xs:element name="UseDocuments" type="xs:boolean" default="true"/>
-									<xs:element name="UsePictures" type="xs:boolean" default="true"/>
-									<xs:element name="UseMusic" type="xs:boolean" default="true"/>
-									<xs:element name="UseMovies" type="xs:boolean" default="true" minOccurs="0"/>
-									<xs:element name="UseDownloads" type="xs:boolean" default="true" minOccurs="0"/>
-									<xs:element name="UseTrashBin" type="xs:boolean" default="true" minOccurs="0"/>
+									<xs:element name="Enabled" type="xs:boolean" default="false"/>
+									<xs:element name="UseDesktop" type="xs:boolean" default="false"/>
+									<xs:element name="UseDocuments" type="xs:boolean" default="false"/>
+									<xs:element name="UsePictures" type="xs:boolean" default="false"/>
+									<xs:element name="UseMusic" type="xs:boolean" default="false"/>
+									<xs:element name="UseMovies" type="xs:boolean" default="false" minOccurs="0"/>
+									<xs:element name="UseDownloads" type="xs:boolean" default="false" minOccurs="0"/>
+									<xs:element name="UseTrashBin" type="xs:boolean" default="false" minOccurs="0"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -2784,12 +2784,12 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="FromWinToMac" type="xs:boolean" default="true" minOccurs="0">
+									<xs:element name="FromWinToMac" type="xs:boolean" default="false" minOccurs="0">
 										<xs:annotation>
 											<xs:documentation>method=WinToMac;</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="FromMacToWin" type="xs:boolean" default="true" minOccurs="0">
+									<xs:element name="FromMacToWin" type="xs:boolean" default="false" minOccurs="0">
 										<xs:annotation>
 											<xs:documentation>method=MacToWin;</xs:documentation>
 										</xs:annotation>
@@ -2863,7 +2863,7 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="Enabled" type="xs:boolean" default="true">
+									<xs:element name="Enabled" type="xs:boolean" default="false">
 										<xs:annotation>
 											<xs:documentation/>
 											<xs:documentation source="patch on">patch:</xs:documentation>
@@ -2879,7 +2879,7 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="Enabled" type="xs:boolean" default="true">
+									<xs:element name="Enabled" type="xs:boolean" default="false">
 										<xs:annotation>
 											<xs:documentation/>
 											<xs:documentation source="patch on">patch:</xs:documentation>
@@ -2944,7 +2944,7 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="Enabled" type="xs:boolean" default="(ParallelsDirs::getAppExecuteMode() == PAM_SERVER ? false : true)"/>
+									<xs:element name="Enabled" type="xs:boolean" default="false"/>
 									<xs:element name="SyncInterval" type="xs:integer" default="60">
 										<xs:annotation>
 											<xs:documentation/>
@@ -2996,7 +2996,7 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="Enabled" type="xs:boolean" default="(ParallelsDirs::getAppExecuteMode() == PAM_SERVER ? false : true)"/>
+									<xs:element name="Enabled" type="xs:boolean" default="false"/>
 									<xs:element name="UseExternalDisks" type="xs:boolean" default="true" minOccurs="0"/>
 									<xs:element name="UseDVDs" type="xs:boolean" default="true" minOccurs="0"/>
 									<xs:element name="UseConnectedServers" type="xs:boolean" default="true" minOccurs="0"/>
@@ -3105,7 +3105,7 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Enabled" type="xs:boolean" default="(ParallelsDirs::getAppExecuteMode() == PAM_SERVER ? false : true)"/>
+						<xs:element name="Enabled" type="xs:boolean" default="false"/>
 						<xs:element name="Period" type="xs:integer" default="24*60*60">
 							<xs:annotation>
 								<xs:documentation>In seconds</xs:documentation>
@@ -3198,7 +3198,7 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Enabled" type="xs:boolean" default="true">
+						<xs:element name="Enabled" type="xs:boolean" default="false">
 							<xs:annotation>
 								<xs:documentation/>
 								<xs:documentation source="patch on">patch:</xs:documentation>
@@ -3333,9 +3333,9 @@ void CVmHostSharing::addSharedFolder(CVmSharedFolder* item)
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Enabled" type="xs:boolean" default="true"/>
-						<xs:element name="ShareAllMacDisks" type="xs:boolean" default="true"/>
-						<xs:element name="ShareUserHomeDir" type="xs:boolean" default="true"/>
+						<xs:element name="Enabled" type="xs:boolean" default="false"/>
+						<xs:element name="ShareAllMacDisks" type="xs:boolean" default="false"/>
+						<xs:element name="ShareUserHomeDir" type="xs:boolean" default="false"/>
 						<xs:element name="MapSharedFoldersOnLetters" type="xs:boolean" default="true">
 							<xs:annotation>
 								<xs:documentation/>
@@ -3344,14 +3344,14 @@ void CVmHostSharing::addSharedFolder(CVmSharedFolder* item)
 						</xs:element>
 						<xs:element name="UserDefinedFoldersEnabled" type="xs:boolean" default="false" minOccurs="0"/>
 						<xs:element name="SetExecBitForFiles" type="xs:boolean" minOccurs="0"/>
-						<xs:element name="VirtualLinks" type="xs:boolean" default="true" minOccurs="0"/>
+						<xs:element name="VirtualLinks" type="xs:boolean" default="false" minOccurs="0"/>
 						<xs:element name="EnableDos8dot3Names" type="xs:boolean" default="true" minOccurs="0"/>
 						<xs:element name="SharedFolder" type="SharedFolderType" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>list=SharedFolders;</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="SharedCloud" type="xs:boolean" default="true" minOccurs="0"/>
+						<xs:element name="SharedCloud" type="xs:boolean" default="false" minOccurs="0"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
