@@ -2080,6 +2080,39 @@ PRL_METHOD( PrlNetworkShapingEntry_GetRate ) (
 	return pEntry->GetRate(pnRate);
 }
 
+PRL_METHOD( PrlNetworkShapingEntry_SetRateMPU ) (
+			PRL_HANDLE hNetworkShapingEntry,
+			PRL_INT32 nRateMPU
+			)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	if ( PRL_WRONG_HANDLE(hNetworkShapingEntry, PHT_NETWORK_SHAPING))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleNetworkShapingPtr pEntry = PRL_OBJECT_BY_HANDLE<PrlHandleNetworkShaping>(hNetworkShapingEntry);
+
+	pEntry->SetRateMPU(nRateMPU);
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_METHOD( PrlNetworkShapingEntry_GetRateMPU ) (
+			PRL_HANDLE hNetworkShapingEntry,
+			PRL_INT32_PTR pnRateMPU
+			)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	if ( PRL_WRONG_HANDLE(hNetworkShapingEntry, PHT_NETWORK_SHAPING) ||
+		PRL_WRONG_PTR(pnRateMPU) )
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleNetworkShapingPtr pEntry = PRL_OBJECT_BY_HANDLE<PrlHandleNetworkShaping>(hNetworkShapingEntry);
+
+	*pnRateMPU = pEntry->GetRateMPU();
+	return PRL_ERR_SUCCESS;
+}
+
 PRL_METHOD( PrlNetworkShapingConfig_IsEnabled ) (
 		PRL_HANDLE hConfig,
 		PRL_BOOL_PTR pbEnabled

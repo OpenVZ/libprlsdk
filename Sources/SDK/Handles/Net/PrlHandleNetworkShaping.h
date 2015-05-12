@@ -68,6 +68,8 @@ public:
 	PRL_RESULT SetTotalRate(PRL_UINT32 nTotalRate);
 	PRL_RESULT GetRate(PRL_UINT32_PTR pnRate);
 	PRL_RESULT SetRate(PRL_UINT32 nRate);
+	PRL_INT32 GetRateMPU() const;
+	void SetRateMPU(PRL_INT32 nRateMPU);
 
 private:
 	CNetworkShaping m_NetworkShaping;

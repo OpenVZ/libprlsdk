@@ -126,3 +126,15 @@ PRL_RESULT PrlHandleNetworkShaping::SetRate(PRL_UINT32 nRate)
 	m_NetworkShaping.setRate(nRate);
 	return PRL_ERR_SUCCESS;
 }
+
+PRL_INT32 PrlHandleNetworkShaping::GetRateMPU() const
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	return m_NetworkShaping.getRateMPU();
+}
+
+void PrlHandleNetworkShaping::SetRateMPU(PRL_INT32 pnRateMPU)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_NetworkShaping.setRateMPU(pnRateMPU);
+}
