@@ -2207,6 +2207,16 @@ typedef enum _PRL_ONLINE_COMPACT_MODE
 } PRL_ONLINE_COMPACT_MODE;
 typedef PRL_ONLINE_COMPACT_MODE* PRL_ONLINE_COMPACT_MODE_PTR;
 
+/**
+ * Special values of network packet MPU for packet rate limitation.
+ */
+typedef enum _PRL_NETWORK_RATE_MPU
+{
+	NRM_DISABLED		= -1,
+	NRM_ENABLED			= 0 // default MPU
+} PRL_NETWORK_RATE_MPU;
+typedef PRL_NETWORK_RATE_MPU* PRL_NETWORK_RATE_MPU_PTR;
+
 #include "PrlCommandsFlags.h"
 
 #endif // __PARALLELS_API_ENUMS_H__
