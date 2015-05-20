@@ -74,12 +74,23 @@
 //Classful network traffic counting info. Result parameter provides
 //as binary buffer contains structure PRL_STAT_NET_TRAFFIC. See
 //PrlIOStructs.h for more info
-#define PRL_NET_CLASSFUL_TRAFFIC_PTRN		"net.classful.traffic"
+#define PRL_NET_CLASSFUL_TRAFFIC_PTRN			"net.classful.traffic"
 
 //Guest OS CPU usage in percents (modulated to 100%)
 #define PRL_GUEST_CPU_USAGE_PTRN			"guest.cpu.usage"
+
+// sum of guest time change from last query(delta) for every vcpu averaged on
+// host cpu number
+// for CT - in microseconds
+// for VM - in TSC
 #define PRL_GUEST_CPU_TIME_PTRN				"guest.cpu.time"
+// host time change from last query
+// for CT - in microseconds
+// for VM - in TSC
 #define PRL_HOST_CPU_TIME_PTRN				"host.cpu.time"
+
+// per vcpu statistics in nanosecs
+#define PRL_GUEST_VCPU_TIME_PTRN			"guest.vcpu#.time"
 
 //Guest OS RAM usage in megabytes
 #define PRL_GUEST_RAM_USAGE_PTRN			"guest.ram.usage"
