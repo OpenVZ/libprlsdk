@@ -1341,7 +1341,7 @@ bool CVmHardDisk::operator==( const CVmHardDisk&amp; cVmHardDisk )
 					<xs:documentation>type=quint64;</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="EnvId" type="xs:integer" default="0" minOccurs="0"/>
+			<xs:element name="CtId" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="InUse" type="xs:boolean"/>

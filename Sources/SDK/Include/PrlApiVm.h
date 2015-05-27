@@ -10442,7 +10442,15 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
                         identifying the virtual machine configuration.
-   pnEnvId:		[out] Container id
+   sCtId      :            [out] A pointer to a buffer that
+                           receives the result (a UTF\-8 encoded,
+                           null\-terminated string).
+   pnCtIdBufLength :       [in] The size of the output buffer (in
+                           bytes). Set the buffer pointer to null
+                           and this parameter's value to zero to
+                           receive the required size. [out] The
+                           required output buffer size.
+ 
    Returns
    PRL_RESULT. Possible values are:
 
@@ -10455,10 +10463,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 
    PRL_ERR_SUCCESS - function completed successfully.             */
 
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
-                                 PrlVmCfg_GetEnvId, (
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+                                 PrlVmCfg_GetCtId, (
                 PRL_HANDLE hVmCfg,
-                PRL_UINT32_PTR pnEnvId
+		PRL_STR sCtId,
+		PRL_UINT32_PTR pnCtIdBufLength
                 ) );
 
 

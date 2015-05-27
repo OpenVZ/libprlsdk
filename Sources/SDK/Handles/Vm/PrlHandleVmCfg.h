@@ -76,7 +76,7 @@ public:
 	/**
 	 * Returns Envid
 	 */
-	PRL_UINT32 GetEnvId();
+	PRL_UINT32 GetCtId(PRL_STR sBuf, PRL_UINT32_PTR pBufLength);
 
 	/**
 	 * Helper method that lets to update security info configuration part from security info string representation

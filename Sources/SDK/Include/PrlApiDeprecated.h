@@ -2385,5 +2385,27 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_HANDLE hDispConfig,
 		PRL_CONST_CPU_FEATURES_MASK_PTR pMasks
 		) );
+/* \Returns the Container id of the specified
+   virtual machine.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   pnEnvId:             [out] Container id
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_GetEnvId, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnEnvId
+		) );	
 
 #endif //__PARALLELS_API_DEPRECATED_H__

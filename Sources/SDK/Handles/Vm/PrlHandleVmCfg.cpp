@@ -212,12 +212,11 @@ QString PrlHandleVmCfg::GetUuid()
 	return (m_VmConfig.getVmIdentification()->getVmUuid());
 }
 
-PRL_UINT32 PrlHandleVmCfg::GetEnvId()
+PRL_UINT32 PrlHandleVmCfg::GetCtId(PRL_STR sBuf, PRL_UINT32_PTR pnBufLength)
 {
-	SYNCHRO_INTERNAL_DATA_ACCESS
-	return (m_VmConfig.getVmIdentification()->getEnvId());
+        SYNCHRO_INTERNAL_DATA_ACCESS
+        return CopyStringValue(m_VmConfig.getVmIdentification()->getCtId(), sBuf, pnBufLength);
 }
-
 
 /************************************VM devices operations**********************************************************/
 

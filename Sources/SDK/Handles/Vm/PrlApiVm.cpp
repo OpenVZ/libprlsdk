@@ -1942,19 +1942,35 @@ PRL_METHOD( PrlVmCfg_GetEnvId) (
 		PRL_UINT32_PTR pnEnvId
 		)
 {
+	PRL_UNUSED_PARAM(hVmCfg);
 
 	SYNC_CHECK_API_INITIALIZED
-
 	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
 			PRL_WRONG_PTR(pnEnvId))
 		return (PRL_ERR_INVALID_ARG);
 
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
-
-	*pnEnvId = pVm->GetEnvId();
+	*pnEnvId = 0;
 
 	return PRL_ERR_SUCCESS;
 }
+
+PRL_METHOD( PrlVmCfg_GetCtId) (
+		PRL_HANDLE hVmCfg,
+		PRL_STR sCtId, 
+		PRL_UINT32_PTR pnCtIdBufLength
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnCtIdBufLength))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetCtId(sCtId, pnCtIdBufLength);
+}
+
 
 PRL_METHOD( PrlVmCfg_SetUuid) (
 		PRL_HANDLE hVmCfg,

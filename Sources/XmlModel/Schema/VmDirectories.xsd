@@ -183,7 +183,7 @@ QString CVmDirectories::getCatalogueFileName() const
 			</xs:element>
 			<xs:element name="LockedSign" type="xs:boolean" default="false" minOccurs="0"/>
 			<xs:element name="VmConfigCheckSum" type="xs:string" minOccurs="0"/>
-			<xs:element name="EnvId" type="xs:integer" default="0" minOccurs="0"/>
+			<xs:element name="CtId" type="xs:string" minOccurs="0"/>
 			<xs:element name="VmType" type="xs:integer" default="PVT_VM" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>type=PRL_VM_TYPE;no_save=on;</xs:documentation>
