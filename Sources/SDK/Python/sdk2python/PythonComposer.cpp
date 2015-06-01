@@ -197,8 +197,7 @@ bool PythonComposer::CompositePython()
 
 // VmIO class
 	content += PTN_PRL_IO_DISPLAY_SCREEN_SIZE;
-	content += PTN_VM_IO_CLASS
-			   PTN_VM_IO_SEND_KEY_EVENT
+	content += PTN_VM_IO_SEND_KEY_EVENT
 			   PTN_VM_IO_SEND_KEY_EVENT_EX
 			   PTN_VM_IO_DISPLAY_SET_CONFIGURATION;
 

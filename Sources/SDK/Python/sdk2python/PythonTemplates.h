@@ -262,8 +262,6 @@
 	"\tdef to_list(self):\n" \
 	"\t\treturn [self.width, self.height, self.depth, self.lineBytes, self.display, self.displayX, self.displayY]\n\n"
 
-#define PTN_VM_IO_CLASS \
-	"class VmIO(_VmIOMouse,_VmIOKeyboard,_VmIODisplay):\n\n"
 #define PTN_VM_IO_SEND_KEY_EVENT \
 	"\tdef send_key_event(self, hVm, key_list, ev = consts.PKE_CLICK, delay = 250):\n" \
 	"\t\tif ev == consts.PKE_CLICK:\n" \
