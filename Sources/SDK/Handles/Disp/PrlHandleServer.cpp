@@ -178,7 +178,7 @@ void PrlHandleServer::FinalizeAllTransportConnections()
 	{
 		PrlHandleVmPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVm>(hVm);
 		if (pVm)
-			pVm->VmDisconnect();
+			pVm->VmDisconnectForcibly();
 	}
 	foreach(PRL_HANDLE hServer, _servers)
 	{

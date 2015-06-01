@@ -67,6 +67,76 @@
     #define new new(nothrow)
 #endif
 
+namespace IODisplay
+{
+Unit::Unit( const SmartPtr<IOService::ExecChannel>& channel ):
+	m_ioExecChannel( channel )
+{
+}
+
+bool Unit::IsConnected () const
+{
+	return m_ioExecChannel.isValid() && m_ioExecChannel->isValid();
+}
+
+Connection::Connection ( const Unit& display, const PrlHandleIOJob* ioJobPtr ):
+	m_ioJob ( PRL_OBJECT_BY_HANDLE<PrlHandleIOJob>( ioJobPtr->GetHandle() ) )
+{
+	m_attachments.push_back(display);
+}
+
+PRL_RESULT Connection::Attach ( PrlHandleJob **const ioJobPtr )
+{
+	QMutexLocker l( &m_mutex );
+
+	if ( m_attachments.empty() )
+		return PRL_ERR_UNINITIALIZED;
+
+	Unit a = m_attachments.front();
+	m_attachments.push_back(a);
+
+	if ( m_ioJob.isValid() ) {
+		m_ioJob->AddRef();
+		*ioJobPtr = m_ioJob.getHandle();
+
+		return PRL_ERR_SUCCESS;
+	}
+
+	return PRL_ERR_VM_ALREADY_CONNECTED;
+}
+
+bool Connection::IsAttached ()
+{
+	QMutexLocker l( &m_mutex );
+
+	if ( m_attachments.empty() )
+		return false;
+
+	return m_ioJob.isValid() || m_attachments.front().IsConnected();
+}
+
+void Connection::Detach ()
+{
+	QMutexLocker l( &m_mutex );
+
+	if ( !m_attachments.empty() )
+		m_attachments.pop_back();
+}
+
+void Connection::SetState ( IOService::Channel::State state )
+{
+	QMutexLocker l( &m_mutex );
+
+	if ( m_ioJob.isValid() ) {
+		m_ioJob->StateChanged(state);
+		m_ioJob = PrlHandleSmartPtr<PrlHandleIOJob>();
+	}
+
+	if ( state != IOService::Channel::Started )
+		m_attachments.clear();
+}
+
+} // namespace IODisplay
 
 PrlHandleVm::PrlHandleVm ( const PrlHandleServerPtr& server ) :
 	PrlHandleBase( PHT_VIRTUAL_MACHINE ),
@@ -82,20 +152,21 @@ PrlHandleVm::PrlHandleVm ( const PrlHandleServerPtr& server ) :
 
 PrlHandleVm::~PrlHandleVm ()
 {
-	VmDisconnect();
+	VmDisconnectForcibly();
 	m_pServerVm->UnregisterVm(m_VmConfig.getVmIdentification()->getVmUuid(), GetHandle());
 }
 
 
 PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 {
-	if ( m_ioExecChannel.isValid() && m_ioExecChannel->isValid() ) {
-		LOG_MESSAGE(DBG_WARNING, "PrlHandleVm::ConnectToIOChannel: channel is already exists!");
-		return PRL_ERR_VM_ALREADY_CONNECTED;
-	}
+	QWriteLocker locker( &m_ioJobsListRWLock );
 
+	if ( m_ioConnection.isValid() )
+		return m_ioConnection->Attach(pJob);
+
+	// Inconsistent state: Connection is down by some reason.
 	if ( m_ioExecChannel.isValid() )
-		VmDisconnect();
+		VmDisconnectForcibly();
 
 	QString vmId = m_VmConfig.getVmIdentification()->getVmUuid();
 
@@ -172,7 +243,10 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 		PrlHandleIOJob::IOConnectJob,
 		SmartPtr<IOService::ExecChannel>(m_ioExecChannel) );
 	ioJob->SetVmHandle(GetHandle());
-	RegisterIOJob(ioJob);
+
+	m_ioConnection = SmartPtr<IODisplay::Connection>(
+		new IODisplay::Connection( IODisplay::Unit(m_ioExecChannel), ioJob ) );
+
 	*pJob = ioJob;
 
 	return PRL_ERR_SUCCESS;
@@ -180,6 +254,21 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 
 PRL_RESULT PrlHandleVm::VmDisconnect ()
 {
+	if ( ! m_ioConnection.isValid() )
+		return PRL_ERR_SUCCESS;
+
+	m_ioConnection->Detach();
+
+	if ( ! m_ioConnection->IsAttached() )
+		return VmDisconnectForcibly();
+
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVm::VmDisconnectForcibly ()
+{
+	m_ioConnection.reset();
+
 	m_bStartInProgress = false;
 
 	if ( m_ioExecChannel.isValid() ) {
@@ -237,14 +326,15 @@ void PrlHandleVm::IOStateChanged (  IOService::Channel::State s )
 		*state = IOS_DISABLED;
 		break;
 	}
-	if (s == IOService::Channel::Started)
+
+	if ( m_ioConnection.isValid() )
+		m_ioConnection->SetState(s);
+
+	if ( s != IOService::Channel::Started )
 	{
-		foreach (PrlHandleSmartPtr<PrlHandleIOJob> j, GetRegisteredIOJobs()) {
-			j->StateChanged(s);
-		}
-	}
-	else
+		m_ioConnection.reset();
 		CleanAllIOJobs();
+	}
 
 	m_eventSource.NotifyListeners(event);
 	event->Release();

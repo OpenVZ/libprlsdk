@@ -40,4 +40,5 @@ public:
 
 	virtual PRL_RESULT VmConnect(PrlHandleJob **const pJob) = 0;
 	virtual PRL_RESULT VmDisconnect() = 0;
+	virtual PRL_RESULT VmDisconnectForcibly() = 0;
 };
