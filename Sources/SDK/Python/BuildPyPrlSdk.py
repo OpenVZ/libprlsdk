@@ -28,7 +28,6 @@ import sys
 __full_file_path__ = os.path.split( os.path.abspath(__file__) )[0]
 sys.path.append(os.path.join(__full_file_path__, '../../Build'))
 import BuildUtil
-import BuildConfig
 
 make_cmd = 'make'
 if sys.platform == 'win32':
@@ -80,7 +79,7 @@ if '__main__' == __name__:
 	cwd = os.getcwd()
 	os.chdir(__full_file_path__)
 
-	for py_ver in BuildConfig.supported_python_vers:
+	for py_ver in ["python2.7"]:
 		print '\nBuilding binding for %s\n' % py_ver
 		lflags = None
 		if 'linux2' == sys.platform:
