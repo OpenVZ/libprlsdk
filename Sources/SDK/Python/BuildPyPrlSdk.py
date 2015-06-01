@@ -110,6 +110,7 @@ if '__main__' == __name__:
 		if not os.path.isfile(python_header):
 			print 'Path doesnt exist: "%s"' % python_header
 			continue
+		check_retcode(BuildUtil.os_exec('qmake'))
 		check_retcode(BuildUtil.os_exec('%s distclean' % make_cmd))
 		generate_pri(python_path, py_ver, lflags)
 		check_retcode(BuildUtil.os_exec('qmake'))
