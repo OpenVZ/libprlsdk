@@ -30,20 +30,6 @@
 #include "PrlIOStructs.h"
 
 /**
- * Client can use this method to understand where it executed: on HostOS or on GuestOS (inside VM ).
- *
- * @param bool result: 1 - on GuestOS (inside VM) / 0 - on HostOS
- * @return PRL_RESULT. Possible values:
- * PRL_ERR_INVALID_ARG				- non valid (NULL) pointer to result
- * PRL_ERR_SUCCESS					- operation successfully completed
- */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
-				 PrlApi_IsGuestOs, (
-					 PRL_BOOL_PTR result
-					 ) );
-
-
-/**
  * Client can use this method to set user profile XML representation to user profile SDK object
  * This method must be eliminated at Release stage
  *
@@ -1627,34 +1613,6 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hDispCfg,
 		PRL_UINT32 nDispNetIndex,
 		PRL_HANDLE_PTR phDispNet
-		) );
-
-/**
-@brief Sends Parallels Tools utility command
-
-Parameters
-unnamed_param :[in] hVm Handle to VM
-unnamed_param :[in] command Command identifier
-unnamed_param :[in] flags Set of 32 bit-flags that can be used to control command
-behavior
-unnamed_param :[in] data Pointer on data that must be sent with command. Can be 0
-when <i>dataSize</i> is 0.
-unnamed_param :[in] dataSize Size of data (in bytes) pointed by data pointer
-
-Returns
-PRL_RESULT. Possible values:
-- PRL_ERR_INVALID_ARG - when on of the passed arguments is invalid
-- PRL_ERR_UNINITIALIZED - when API is not initialized
-- PRL_ERR_FAILURE - when failed to send command to VM
-- PRL_ERR_SUCCESS - when everything is ok and the sun is shining bright =)
-*/
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
-				 PrlTools_SendUtilityCommand, (
-		PRL_HANDLE hVm,
-		PRL_UINT32 command,
-		PRL_UINT32 flags,
-		PRL_CONST_VOID_PTR data,
-		PRL_UINT32 dataSize
 		) );
 
 /* Set path to log location for SDK library module.
