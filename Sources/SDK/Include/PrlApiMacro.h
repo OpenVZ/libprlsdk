@@ -1143,5 +1143,9 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlHandle_FromString ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlHandle_ToString ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlEvent_FromString ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlApi_SwitchConsoleLogging ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetHighAvailabilityEnabled ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_IsHighAvailabilityEnabled ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetHighAvailabilityPriority ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetHighAvailabilityPriority ) \
 
 #endif // PRL_SDK_WRAP_FOR_EACH
