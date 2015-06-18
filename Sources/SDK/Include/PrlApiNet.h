@@ -2525,7 +2525,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 			identifying the shaping entry.
    nRateMPU:	An integer value indicating packet MPU. Packets with size
 			lower than MPU will be threated as those of size MPU.
-			May be a number below MTU or special values:
+			May be a number lower than MTU or one of the special values:
 			NRM_DISABLED or NRM_ENABLED (for default value).
 
    Returns
@@ -2548,7 +2548,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 			identifying the network shaping entry.
    pnRateMPU:	[out] A pointer to a variable that receives the
 			\return value. May be a number lower than MPU or
-			on of the special values:
+			one of the special values:
 			NRM_DISABLED or NRM_ENABLED (for default value).
 
    Returns
