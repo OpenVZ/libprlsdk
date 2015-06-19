@@ -97,5 +97,15 @@
 #define PRL_GUEST_RAM_CACHED_PTRN			"guest.ram.cached"
 #define PRL_WS_RECLAIMABLE_PTRN				"ws.reclaimable"
 
+// Mounted filesystems statistics
+// Filesystem device name, as it is seen inside guest
+#define PRL_GUEST_FS_NAME_PTRN				"guest.fs#.name"
+// Total size of a filesystem (KiB)
+#define PRL_GUEST_FS_TOTAL_SPACE_PTRN			"guest.fs#.total"
+// Amount of free space on a filesystem (KiB)
+#define PRL_GUEST_FS_FREE_SPACE_PTRN			"guest.fs#.free"
+// Disk indices (see PRL_HARD_DISK_IFACE_MASK enumeration)
+#define PRL_GUEST_FS_DISK_INDEX_PTRN			"guest.fs#.disk.#"
+
 #endif
 
