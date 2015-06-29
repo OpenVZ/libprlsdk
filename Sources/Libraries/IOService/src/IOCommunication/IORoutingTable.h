@@ -204,7 +204,7 @@ private:
 
 public:
     /** Static null table */
-    static IORoutingTable NullTable;
+    static IORoutingTable __attribute__((visibility("hidden"))) NullTable;
 
 private:
     mutable QReadWriteLock m_rwLock;
