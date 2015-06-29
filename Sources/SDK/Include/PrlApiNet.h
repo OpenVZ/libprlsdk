@@ -2535,7 +2535,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
 						PrlNetworkShapingEntry_SetRateMPU, (
 
 		PRL_HANDLE pNetworkShapingEntry,
@@ -2558,7 +2558,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
 						PrlNetworkShapingEntry_GetRateMPU, (
 
 		PRL_HANDLE pNetworkShapingEntry,
