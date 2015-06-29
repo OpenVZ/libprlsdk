@@ -308,6 +308,7 @@ bool isClassConfigured(unsigned int nClassId)
 										<xs:element name="ClassId" type="xs:integer" default="0" minOccurs="0"/>
 										<xs:element name="TotalRate" type="xs:integer" default="0" minOccurs="0"/>
 										<xs:element name="Rate" type="xs:integer" default="0" minOccurs="0"/>
+										<xs:element name="RateMPU" type="xs:integer" default="0" minOccurs="0"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>

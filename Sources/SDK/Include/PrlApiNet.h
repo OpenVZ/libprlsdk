@@ -2519,6 +2519,51 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnRate
 		) );
 
+/* Allows to enable and disable packet rate limiting by setting MPU.
+   Parameters
+   hNetworkShapingEntry: A handle of type PHT_NERWORK_SHAPING
+			identifying the shaping entry.
+   nRateMPU:	An integer value indicating packet MPU. Packets with size
+			lower than MPU will be threated as those of size MPU.
+			May be a number lower than MTU or one of the special values:
+			NRM_DISABLED or NRM_ENABLED (for default value).
+
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+						PrlNetworkShapingEntry_SetRateMPU, (
+
+		PRL_HANDLE pNetworkShapingEntry,
+		PRL_INT32 nRateMPU
+		) );
+
+/* Returns MPU size for packet rate limitation.
+   Parameters
+   pNetworkShapingEntry: A handle of type PHT_NETWORK_SHAPING
+			identifying the network shaping entry.
+   pnRateMPU:	[out] A pointer to a variable that receives the
+			\return value. May be a number lower than MPU or
+			one of the special values:
+			NRM_DISABLED or NRM_ENABLED (for default value).
+
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+						PrlNetworkShapingEntry_GetRateMPU, (
+
+		PRL_HANDLE pNetworkShapingEntry,
+		PRL_INT32_PTR pnRateMPU
+		) );
 
 /* Determines whether the network shaping is enabled or disabled.
    Parameters

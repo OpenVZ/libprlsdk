@@ -179,6 +179,8 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlNetworkShapingEntry_SetDevice ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlNetworkShapingEntry_GetDevice) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlNetworkShapingEntry_SetRate ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlNetworkShapingEntry_GetRate ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlNetworkShapingEntry_SetRateMPU ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlNetworkShapingEntry_GetRateMPU ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_UpdateNetworkShapingConfig ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_GetNetworkShapingConfig ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlNetworkShapingConfig_IsEnabled ) \
