@@ -79,7 +79,7 @@ if '__main__' == __name__:
 	cwd = os.getcwd()
 	os.chdir(__full_file_path__)
 
-	for py_ver in ["python2.7"]:
+	for py_ver in ["python2.6", "python2.7"]:
 		print '\nBuilding binding for %s\n' % py_ver
 		lflags = None
 		if 'linux2' == sys.platform:
