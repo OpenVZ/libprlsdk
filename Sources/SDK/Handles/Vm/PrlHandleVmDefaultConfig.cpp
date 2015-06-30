@@ -25,6 +25,7 @@
  */
 
 
+#include <algorithm>
 #include "PrlHandleVmDefaultConfig.h"
 
 #include "PrlHandleSrvConfig.h"
