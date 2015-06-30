@@ -30,6 +30,6 @@ include(../../../Sources/Build/qmake/staticlib.pri)
 
 win32: LIBS *= -lshell32 -lAdvapi32
 CONFIG(release, debug|release) {
-linux-*:QMAKE_CXXFLAGS += -O -Wno-unused-result
+linux-*:QMAKE_CXXFLAGS += -O
 }
 linux-*: LIBS += -lrt

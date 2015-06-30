@@ -673,7 +673,7 @@ static void log_write(const char *msg, int length)
 	if (fd < 0)
 		return;
 
-	write(fd, msg, length);
+	if(write(fd, msg, length)) {}
 }
 
 void Logger::PutMessage(const char* const msg, int length)
@@ -682,7 +682,7 @@ void Logger::PutMessage(const char* const msg, int length)
 
 #ifndef EXTERNALLY_AVAILABLE_BUILD
 	if (g_d()->is_console_enabled)
-		write(STDERR_FILENO, msg, length);
+		if(write(STDERR_FILENO, msg, length)) {}
 #endif
 }
 
@@ -832,7 +832,7 @@ void Logger::ResetLogFile( Logger::LOG_RESET_REASON reason /* = LRR_RESTART */ )
 
 	char buf[256];
 
-#define FPUTS(fd, str)	write(fd, (str), (int)strlen(str))
+#define FPUTS(fd, str)	if(write(fd, (str), (int)strlen(str))) {}
 #define	FPRINTF(fd, ...)	do {							\
 	sprintf(buf, __VA_ARGS__);								\
 	FPUTS(fd, buf);											\
