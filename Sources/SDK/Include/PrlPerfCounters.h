@@ -95,6 +95,16 @@
 //Guest OS RAM usage in megabytes
 #define PRL_GUEST_RAM_USAGE_PTRN			"guest.ram.usage"
 #define PRL_GUEST_RAM_CACHED_PTRN			"guest.ram.cached"
+#define PRL_GUEST_RAM_TOTAL_PTRN			"guest.ram.total"
+
+//Guest OS virtual memory stats in counts
+#define PRL_GUEST_RAM_SWAP_IN				"guest.ram.swap_in"
+#define PRL_GUEST_RAM_SWAP_OUT				"guest.ram.swap_out"
+#define PRL_GUEST_RAM_MINOR_FAULT			"guest.ram.minor_fault"
+#define PRL_GUEST_RAM_MAJOR_FAULT			"guest.ram.major_fault"
+//Guest OS balloon sizes in megabytes
+#define PRL_GUEST_RAM_BALLOON_ACTUAL			"guest.ram.balloon_actual"
+
 #define PRL_WS_RECLAIMABLE_PTRN				"ws.reclaimable"
 
 // Mounted filesystems statistics
