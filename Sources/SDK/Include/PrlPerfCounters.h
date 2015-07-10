@@ -114,7 +114,7 @@
 #define PRL_GUEST_FS_TOTAL_SPACE_PTRN			"guest.fs#.total"
 // Amount of free space on a filesystem (KiB)
 #define PRL_GUEST_FS_FREE_SPACE_PTRN			"guest.fs#.free"
-// Disk indices (see PRL_HARD_DISK_IFACE_MASK enumeration)
+// Disk indices (see PrlVmDev_GetIndex() API function)
 #define PRL_GUEST_FS_DISK_INDEX_PTRN			"guest.fs#.disk.#"
 
 #endif
