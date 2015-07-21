@@ -2096,13 +2096,14 @@ QString CPveControl::DspCmdDirInstallGuestOS(const char *strUserName,
 	return SendRequestToServer(pRequest);
 }
 
-QString CPveControl::DspCmdVmGetConfig(const char *strVmUUID)
+QString CPveControl::DspCmdVmGetConfig(const char *strVmUUID, quint32 nFlags)
 {
     LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdVmGetConfig()");
 
 
 	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoBasicVmCommand(PVE::DspCmdVmGetConfig,
-													UTF8_2QSTR(strVmUUID));
+													UTF8_2QSTR(strVmUUID),
+													nFlags);
 
 	return SendRequestToServer(pRequest);
 }

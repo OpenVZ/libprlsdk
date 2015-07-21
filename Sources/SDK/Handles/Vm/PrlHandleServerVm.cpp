@@ -519,9 +519,9 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdGetVmToolsInfo(PRL_CONST_STR sVmUuid)
 							PJOC_VM_GET_TOOLS_STATE)));
 }
 
-PrlHandleJobPtr PrlHandleServerVm::DspCmdVmGetConfig(PRL_CONST_STR sVmUuid)
+PrlHandleJobPtr PrlHandleServerVm::DspCmdVmGetConfig(PRL_CONST_STR sVmUuid, PRL_UINT32 nFlags)
 {
-	QString job_uuid = m_pPveControl->DspCmdVmGetConfig(sVmUuid);
+	QString job_uuid = m_pPveControl->DspCmdVmGetConfig(sVmUuid, nFlags);
 
 	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
 							PJOC_VM_REFRESH_CONFIG)));

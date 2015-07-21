@@ -267,7 +267,7 @@ public:
 	/**
 	 * Sends update VM configuration request
 	 */
-	PrlHandleJobPtr RefreshConfig();
+	PrlHandleJobPtr RefreshConfig(PRL_UINT32 nFlags);
 	/**
 	 * Sends request of VM guest system resources usage statistics
 	 */

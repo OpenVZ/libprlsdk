@@ -1052,7 +1052,7 @@ public://Protocol methods
 	 * @param VM UUID
 	 * @return id of performed asynchronous request
 	 */
-	QString DspCmdVmGetConfig(const char *strVmUUID);
+	QString DspCmdVmGetConfig(const char *strVmUUID, quint32 nFlags);
 
 	/* Requect for default Vm configuration
 	 * @return id of performed asynchronous request
