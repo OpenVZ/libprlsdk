@@ -445,12 +445,12 @@ PrlHandleJobPtr PrlHandleVmSrv::ResizeDiskImage(const QString &diskImage, PRL_UI
 	return ( m_pServerVm->DspCmdVmResizeDiskImage(GET_VM_UUID, diskImage, nNewSize, nFlags) );
 }
 
-PrlHandleJobPtr PrlHandleVmSrv::RefreshConfig()
+PrlHandleJobPtr PrlHandleVmSrv::RefreshConfig(PRL_UINT32 nFlags)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	CHECK_SERVER
 	CHECK_IDENTIFICATION
-	return (m_pServerVm->DspCmdVmGetConfig(GET_VM_UUID));
+	return (m_pServerVm->DspCmdVmGetConfig(GET_VM_UUID, nFlags));
 }
 
 PrlHandleJobPtr PrlHandleVmSrv::GetStatistics(PRL_UINT32 nFlags)

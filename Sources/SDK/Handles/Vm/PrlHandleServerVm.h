@@ -491,9 +491,10 @@ public:
 	/**
 	 * Updates VM configuration
 	 * @param VM uuid
+	 * @param nFlags
 	 * @return pointer to generated job instance
 	 */
-	PrlHandleJobPtr DspCmdVmGetConfig(PRL_CONST_STR sVmUuid);
+	PrlHandleJobPtr DspCmdVmGetConfig(PRL_CONST_STR sVmUuid, PRL_UINT32 nFlags);
 
 	/**
 	 * Perfroms request to VM process on opening guest OS user session
