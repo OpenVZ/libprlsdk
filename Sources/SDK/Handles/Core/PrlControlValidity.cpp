@@ -73,12 +73,12 @@ void PrlControlValidity::UnregisterInstance(PRL_HANDLE h)
 		while (_instance_it != _data_it.value().end())
 		{
 			if (h == *_instance_it)
-				_data_it.value().erase(_instance_it++);
+				_instance_it = _data_it.value().erase(_instance_it);
 			else
 				++_instance_it;
 		}
 		if (!_data_it.value().size())
-			g_ControlValidityMap.erase(_data_it++);
+			_data_it = g_ControlValidityMap.erase(_data_it);
 		else
 			++_data_it;
 	}
