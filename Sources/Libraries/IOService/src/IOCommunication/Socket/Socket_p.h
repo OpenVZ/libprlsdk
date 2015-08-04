@@ -275,7 +275,7 @@ public:
 
     IOSendJob::Result stopWriteThread ();
 
-    bool sendDetachRequestAndPauseWriting ();
+    bool sendDetachRequestAndPauseWriting (bool detachBothSides);
     bool sendDetachResponseAndPauseWriting ();
     void continueWriting ();
 

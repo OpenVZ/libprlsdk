@@ -182,6 +182,9 @@ public:
      *                    for Unix it does not matter, pass 0.
      * @param additionalPkg just an additional package, which can be
      *                      send to other side with this detached client.
+     * @param detachBothSides true indicates that both sides of the connection
+     *                        must be detached, while false indicates that only
+     *                        the server side must be detached (default)
      *
      * @return true if detaching starts, false if detaching failed.
      *
@@ -191,7 +194,8 @@ public:
     virtual bool detachClient ( const IOSender::Handle& cliHandle,
                                 int specificArg,
                                 const SmartPtr<IOPackage>& additionalPkg =
-                                    IOPackage::Null );
+                                    IOPackage::Null,
+                                bool detachBothSides = false );
 
     /**
      * Attach detached client.

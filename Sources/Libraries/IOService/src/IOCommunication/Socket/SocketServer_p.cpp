@@ -201,7 +201,8 @@ bool SocketServerPrivate::clientProtocolVersion (
 bool SocketServerPrivate::detachClient (
     const IOSender::Handle& h,
     int specificArg,
-    const SmartPtr<IOPackage>& additionalPkg )
+    const SmartPtr<IOPackage>& additionalPkg,
+    bool detachBothSides )
 {
     QMutexLocker locker( &m_eventMutex );
 
@@ -216,7 +217,7 @@ bool SocketServerPrivate::detachClient (
     // Unlock
     locker.unlock();
 
-    return client->srv_detachClient( specificArg, additionalPkg );
+    return client->srv_detachClient( specificArg, additionalPkg, detachBothSides );
 }
 
 bool SocketServerPrivate::attachClient (
@@ -464,6 +465,10 @@ bool SocketServerPrivate::createAndStartNewSockClient (
 	IOCredentials credentialsCopy( m_localCredentials );
 	locker.unlock();
 
+	SocketClientContext ctx = Cli_ServerContext;
+	if (detachedState.get() && !detachedState->m_server)
+		ctx = Cli_ClientContext;
+
         // Create client in direct mode
         try { client = SmartPtr<SocketClientPrivate>(
                        new SocketClientPrivate( m_impl->getJobManager(),
@@ -474,7 +479,7 @@ bool SocketServerPrivate::createAndStartNewSockClient (
                                                 m_impl->remotePortNumber(),
                                                 IOSender::InvalidHandle, //proxy handle
 
-                                                Cli_ServerContext,
+                                                ctx,
                                                 m_impl, // rcv/snd listener
                                                 this,   // state listener
                                                 cliHandle,

@@ -143,9 +143,10 @@ bool IOServer::clientProtocolVersion (
 bool IOServer::detachClient (
     const IOSender::Handle& cliHandle,
     int specificArg,
-    const SmartPtr<IOPackage>& additionalPkg )
+    const SmartPtr<IOPackage>& additionalPkg,
+    bool detachBothSides )
 {
-    return m_sockImpl->detachClient(cliHandle, specificArg, additionalPkg);
+    return m_sockImpl->detachClient(cliHandle, specificArg, additionalPkg, detachBothSides);
 }
 
 bool IOServer::attachClient ( IOCommunication::DetachedClient cli )

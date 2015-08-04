@@ -179,6 +179,26 @@ public:
 	 */
 	void setLimitErrorLogging(bool bLimitErrorLogging);
 
+signals:
+	/**
+	 * Emited from client thread when this client had been detached by
+	 * #detachClient call.
+	 *
+	 * @see #sendDetachedClient
+	 * @see #detachClient
+	 * @see #attachClient
+	 */
+	void onDetachClient(IOSender::Handle, const IOCommunication::DetachedClient);
+
+	/**
+	 * Same as above, but 'this' is a first argument.
+	 * Is used to avoid using of 'QObject::sender()' in multithreaded slots.
+	 * @note: Signal is emited _not_ from a main thread.
+	 *        So be careful when connecting to this signal via DirectConnection.
+	 */
+	void onDetachClient (IOClientInterface*, IOSender::Handle,
+		const IOCommunication::DetachedClient);
+
 private:
     // Disable copy constructor and alignment operator
     Q_DISABLE_COPY(IOClient)
@@ -217,6 +237,9 @@ private:
                                   const IOSender::Handle&,
                                   IOSender::State oldState,
                                   IOSender::State newState );
+    virtual void srv_onDetachClient ( SocketClientPrivate*,
+                                      const IOSender::Handle&,
+                                      const IOCommunication::DetachedClient& );
 
 private:
     friend class SocketClientPrivate;
