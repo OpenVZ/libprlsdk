@@ -1034,7 +1034,7 @@ IOSendJob::Result SocketWriteThread::write (
         if ( unixfd != 0 && *unixfd >= 0 ) {
             cmsg.head.cmsg_level = SOL_SOCKET;
             cmsg.head.cmsg_type = SCM_RIGHTS;
-            cmsg.head.cmsg_len = sizeof(cmsg);
+            cmsg.head.cmsg_len = CMSG_LEN(sizeof(int));
             *(int *)CMSG_DATA(&cmsg.head) = *unixfd;
             msg.msg_control = (caddr_t)&cmsg;
             msg.msg_controllen = sizeof(cmsg);
