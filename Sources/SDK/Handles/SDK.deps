@@ -39,7 +39,5 @@ include($$LIBS_LEVEL/ProblemReportUtils/ProblemReportUtils.pri)
 include($$LIBS_LEVEL/PrlDataSerializer/PrlDataSerializer.pri)
 include($$LIBS_LEVEL/ProtoSerializer/ProtoSerializer.pri)
 include($$LIBS_LEVEL/PrlCommonUtilsBase/PrlCommonUtilsBase.pri)
-include($$EXT_LEVEL/google-breakpad/google-breakpad.pri)
-include($$LIBS_LEVEL/PrlBreakpad/PrlBreakpad.pri)
 include($$LIBS_LEVEL/ContextSwitcher/ContextSwitcher.pri)
 

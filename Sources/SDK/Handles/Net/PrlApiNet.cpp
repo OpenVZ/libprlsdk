@@ -47,8 +47,6 @@
 #include "PrlHandleNetworkShapingBandwidth.h"
 #include "PrlHandleNetworkShapingConfig.h"
 #include "PrlHandleIPPrivNet.h"
-// breakpad includes
-#include "parallels_breakpad.h"
 
 #include "Build/Current.ver"
 

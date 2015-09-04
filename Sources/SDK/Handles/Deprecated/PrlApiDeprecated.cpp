@@ -45,8 +45,6 @@
 #include "PrlHandleLicense.h"
 #include "PrlHandleUserProfile.h"
 #include "HandleInterface/HandleAdapter.h"
-// breakpad includes
-#include "parallels_breakpad.h"
 
 #include "Build/Current.ver"
 

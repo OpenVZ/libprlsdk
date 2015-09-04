@@ -42,8 +42,6 @@
 #include "PrlHandleSystemStatisticsDisk.h"
 #include "PrlHandleSystemStatisticsDiskPart.h"
 #include "PrlHandleSystemStatisticsProc.h"
-// breakpad includes
-#include "parallels_breakpad.h"
 
 #include "Build/Current.ver"
 
