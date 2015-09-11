@@ -48,6 +48,7 @@ class QByteArray;
 #define PR_PACKED_REP_APP_CONFIG					"AppConfig.xml"
 #define PR_PACKED_REP_NET_CONFIG					"NetConfig.xml"
 #define PR_PACKED_REP_CURRENT_VM					"CurrentVm.xml"
+#define PR_PACKED_REP_CURRENT_VM_DOMAIN					"CurrentVmDomain.xml"
 #define PR_PACKED_REP_ADVANCED_VM_INFO				"AdvancedVmInfo.xml"
 #define PR_PACKED_REP_MONITOR_DATA					"MonitorData.txt"
 #define PR_PACKED_REP_PERFORMANCE_COUNTERS			"PerformanceCounters.txt"
@@ -166,6 +167,8 @@ public:
 
 	virtual void setVmConfig(QString value = QString());
 
+	virtual void setVmDomain(QString value = QString());
+
 	virtual void setVmUpdaterInfo(QString value = QString());
 
 	virtual void setGuestOs(QString value = QString());
@@ -191,6 +194,8 @@ public:
 	int fromBaseReport( const QString & strBaseReport );
 
 	QString getVmConfigFromArchive() const;
+
+	QString getVmDomainFromArchive() const;
 
 	bool isValid() const;
 

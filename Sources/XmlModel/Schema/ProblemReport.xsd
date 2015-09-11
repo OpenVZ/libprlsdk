@@ -356,6 +356,12 @@ void CRepScreenShots::appendScreenshot(CRepScreenShot * pScr)
 						<xs:documentation>method=VmConfig;virtual=on</xs:documentation>
 					</xs:annotation>
 				</xs:element>
+				<xs:element name="CurrentVmDomain" type="xs:anyType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>condition:!getVmDomain().isEmpty()</xs:documentation>
+						<xs:documentation>method=VmDomain;virtual=on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 				<xs:element name="VzReport" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>class=CRepVzReport;</xs:documentation>
