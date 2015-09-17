@@ -66,7 +66,6 @@
 
 #include "PrlHandleSrvConfig.h"
 #include "PrlHandleVmInfo.h"
-#include "parallels_breakpad.h"
 
 #include "Build/Current.ver"
 

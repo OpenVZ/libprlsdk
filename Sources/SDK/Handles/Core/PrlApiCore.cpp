@@ -46,8 +46,6 @@
 #include "PrlHandleServerDisp.h"
 #include "PrlHandleVmCfg.h"
 
-// breakpad includes
-#include "parallels_breakpad.h"
 #include "PrlErrStringsStorage.h"
 #include "HandleInterface/GetHandleInterface.h"
 
@@ -2243,19 +2241,9 @@ PRL_METHOD( PrlApi_InitCrashHandler ) (
 		PRL_CONST_STR sCrashDumpFileSuffix
 		)
 {
-	LOG_MESSAGE( DBG_DEBUG, "%s (sCrashDumpFileSuffix=%s)",
-		__FUNCTION__,
-		sCrashDumpFileSuffix
-		);
-	// Create breakpad handler
-	google_breakpad::ExceptionHandler* h =
-		ParallelsBreakpad::CREATE_CRASH_HANDLER(
-			sCrashDumpFileSuffix,
-			ParallelsBreakpad::GenFilenameCallback,
-			ParallelsBreakpad::MinidumpCallback,
-			ParallelsBreakpad::FilterCallback);
-
-	return (h == NULL ? PRL_ERR_FAILURE : PRL_ERR_SUCCESS);
+	LOG_MESSAGE(DBG_WARNING, "%s is depricated, crash dump generation was removed", __FUNCTION__);
+	Q_UNUSED(sCrashDumpFileSuffix);
+	return PRL_ERR_SUCCESS;
 }
 
 PRL_HANDLE PrlApi_SendProblemReport_Impl(

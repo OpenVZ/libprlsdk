@@ -63,9 +63,6 @@
 #include "PrlHandleCpuFeatures.h"
 #include "PrlHandleCpuPool.h"
 
-// breakpad includes
-#include "parallels_breakpad.h"
-
 #include "Build/Current.ver"
 
 #include "PrlContextSwitcher.h"
