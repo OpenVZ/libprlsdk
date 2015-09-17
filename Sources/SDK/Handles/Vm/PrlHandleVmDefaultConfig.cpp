@@ -993,6 +993,13 @@ bool PrlHandleVmDefaultConfig::AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_D
 		return false;
 	}
 
+	// Windows can use KVM UEFI only with IDE HDD #PSBM-37908
+	if (GetOsType(cfg) == PVS_GUEST_TYPE_WINDOWS
+		&& cfg.getVmSettings()->getVmStartupOptions()->getBios()->isEfiEnabled())
+	{
+		interfaceType = PMS_IDE_DEVICE;
+	}
+
 	int hddSize = GetDefaultHddSize( cfg );
 
 	hdd->setIndex( devIdx );
