@@ -2105,6 +2105,7 @@ CCtResource *CCtSettings::getResource(PRL_CT_RESOURCE id)
 									<xs:documentation>method=CtResources;</xs:documentation>
 								</xs:annotation>
 							</xs:element>
+							<xs:element name="RawParam" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
