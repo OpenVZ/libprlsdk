@@ -1000,6 +1000,11 @@ bool PrlHandleVmDefaultConfig::AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_D
 		interfaceType = PMS_IDE_DEVICE;
 	}
 
+	// QEMU 2.1.2 has limited support for SATA
+	// for example SATA is not migratable #PSBM-39909
+	if (interfaceType == PMS_SATA_DEVICE)
+		interfaceType = PMS_IDE_DEVICE;
+
 	int hddSize = GetDefaultHddSize( cfg );
 
 	hdd->setIndex( devIdx );
