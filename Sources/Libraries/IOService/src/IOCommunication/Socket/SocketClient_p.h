@@ -80,7 +80,8 @@ public:
                                      const SmartPtr<IOPackage>& );
 
     bool srv_detachClient ( int specificArg,
-                            const SmartPtr<IOPackage>& additionalPkg );
+                            const SmartPtr<IOPackage>& additionalPkg,
+			    bool detachBothSides);
 
 	void setLimitErrorLogging(bool bLimitErrorLogging);
 
@@ -154,6 +155,7 @@ private:
                                                     SmartPtr<IOPackage>&,
                                                     quint32 msecsTimeout );
 
+	bool getDetachedSocket(int& sock, char *errBuff, size_t ErrBuffSize);
 	//
 	// SocketWriteListenerInterface
     //

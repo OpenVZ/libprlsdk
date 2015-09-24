@@ -48,6 +48,12 @@ using namespace IOService;
         if ( m_ctx != Cli_ClientContext ) err_op;                       \
     } while (0);
 
+#define CHECK_CLI_OR_SRV_CTX(err_op)                                           \
+    do {                                                                       \
+        Q_ASSERT(m_ctx == Cli_ServerContext || m_ctx == Cli_ClientContext);    \
+        if ( m_ctx != Cli_ServerContext && m_ctx != Cli_ClientContext) err_op; \
+    } while (0);
+
 #define CHECK_CURRENT_THR(err_op)                                       \
     do {                                                                \
         Q_ASSERT(QThread::currentThread() == this);                     \
@@ -183,17 +189,24 @@ SocketClientPrivate::SocketClientPrivate (
 
     // Client context
     if ( m_ctx == Cli_ClientContext ) {
-        // Must be invalid for client context
-        Q_ASSERT( ! m_srvCtx.m_clientState.isValid() );
-        Q_ASSERT( Uuid(m_currConnectionUuid).isNull() );
-
+	// Only one value can be valid
+	Q_ASSERT( m_srvCtx.m_clientState.isValid() ^ Uuid(m_currConnectionUuid).isNull() );
         // Direct connection
         if ( m_senderConnMode == IOSender::DirectConnectionMode ) {
             // Check proxy handle
             Q_ASSERT(m_proxySessionHandle == IOSender::InvalidHandle);
 
-            INIT_IO_LOG(QString("IO client ctx [read thr] (sender %1): ").
-                        arg(m_senderType));
+            // Init IO log with client state or handle
+            if ( m_srvCtx.m_clientState.isValid() ) {
+                INIT_IO_LOG(QString("IO client ctx [read thr] (cli_state %1, sender %2): ").
+                            arg(QString().sprintf("%p", m_srvCtx.m_clientState->m_state)).
+                            arg(m_senderType));
+            }
+            else {
+                INIT_IO_LOG(QString("IO client ctx [read thr] (sender %1): ").
+                            arg(m_senderType));
+            }
+
         }
     }
     // Server context
@@ -210,15 +223,17 @@ SocketClientPrivate::SocketClientPrivate (
             Q_ASSERT( m_srvCtx.m_clientState.isValid() ^ (m_sockHandle != -1) );
 
             // Init IO log with client state or handle
-            if ( m_srvCtx.m_clientState.isValid() )
+            if ( m_srvCtx.m_clientState.isValid() ) {
                 INIT_IO_LOG(QString("IO server ctx [read thr] (cli_state %1, sender %2): ").
                             arg(QString().sprintf("%p",
                                                   m_srvCtx.m_clientState->m_state)).
                             arg(m_senderType));
-            else
+            }
+            else {
                 INIT_IO_LOG(QString("IO server ctx [read thr] (handle %1, sender %2): ").
                             arg(m_sockHandle).
                             arg(m_senderType));
+            }
         }
         else
             Q_ASSERT(false);
@@ -279,7 +294,7 @@ IOSender::Error SocketClientPrivate::error () const
 bool SocketClientPrivate::srv_getAttachingAdditionalPkg (
     SmartPtr<IOPackage>& additionalPkg  ) const
 {
-    CHECK_SRV_CTX(return false);
+    CHECK_CLI_OR_SRV_CTX(return false);
     CHECK_CURRENT_THR(return false);
 
     QMutexLocker locker( &m_eventMutex );
@@ -378,7 +393,7 @@ IOSender::State SocketClientPrivate::waitForConnection (
 
 IOCommunication::DetachedClient SocketClientPrivate::srv_doDetach ( int sock )
 {
-    CHECK_SRV_CTX(IOCommunication::DetachedClient());
+    CHECK_CLI_OR_SRV_CTX(IOCommunication::DetachedClient());
     CHECK_CURRENT_THR(IOCommunication::DetachedClient());
 
     const size_t ErrBuffSize = 256;
@@ -484,14 +499,15 @@ IOCommunication::DetachedClient SocketClientPrivate::srv_doDetach ( int sock )
 
 bool SocketClientPrivate::srv_detachClient (
     int specificArg,
-    const SmartPtr<IOPackage>& additionalPkg )
+    const SmartPtr<IOPackage>& additionalPkg,
+    bool detachBothSides )
 {
     CHECK_SRV_CTX(return false);
 
     // Lock
     QMutexLocker locker( &m_eventMutex );
 
-    bool sendRes = m_writeThread.sendDetachRequestAndPauseWriting();
+    bool sendRes = m_writeThread.sendDetachRequestAndPauseWriting(detachBothSides);
     if ( ! sendRes ) {
         WRITE_TRACE(DBG_FATAL,
                     IO_LOG("Sending detach request and pausing are failed."));
@@ -1966,6 +1982,7 @@ void SocketClientPrivate::doJob ()
     // Zero some flags
     bool cli_doSSLRehandshake = false;
     bool srv_detaching = false;
+    bool cli_detach = false;
 
     // Zero SSL read state
     m_remainToRead = 0;
@@ -2066,24 +2083,8 @@ void SocketClientPrivate::doJob ()
         if ( m_senderConnMode == IOSender::DirectConnectionMode ) {
             // Client attaching
             if ( m_srvCtx.m_clientState.isValid() ) {
-#ifdef _WIN_
-                DetachedClientState* state = reinterpret_cast<DetachedClientState*>(
-                                              m_srvCtx.m_clientState->m_state);
-                sockHandle = ::WSASocket( FROM_PROTOCOL_INFO,
-                                          FROM_PROTOCOL_INFO,
-                                          FROM_PROTOCOL_INFO,
-                                          &state->header.clientSocket, 0,
-                                          WSA_FLAG_OVERLAPPED );
-                if ( sockHandle == INVALID_SOCKET ) {
-                    WRITE_TRACE(DBG_FATAL,
-                                IO_LOG("Can't create socket from saved client "
-                                       "state (native error: %s)"),
-                                native_strerror(errBuff, ErrBuffSize) );
-                    goto cleanup_and_disconnect;
-                }
-#else
-                sockHandle = m_srvCtx.m_clientState->takeSocketHandle();
-#endif
+            	if (!getDetachedSocket(sockHandle, errBuff, ErrBuffSize))
+            		goto cleanup_and_disconnect;
             }
             else
                 Q_ASSERT(sockHandle != -1);
@@ -2108,23 +2109,28 @@ void SocketClientPrivate::doJob ()
     else if ( m_ctx == Cli_ClientContext ) {
         // Client context, direct mode
         if ( m_senderConnMode == IOSender::DirectConnectionMode ) {
-            // Try to connect if not already connected
-            if ( sockHandle == -1 ) {
-                bool res = false;
-
-                // Trying to connect
-                res = connectToHost( sockHandle, m_connTimeout );
-                if ( ! res ) {
-                    // All logging made from previous call
-                    goto cleanup_and_disconnect;
-                }
+		// Client attaching
+		if ( m_srvCtx.m_clientState.isValid() ) {
+			if (!getDetachedSocket(sockHandle, errBuff, ErrBuffSize))
+				goto cleanup_and_disconnect;
+		} else {
+			// Try to connect if not already connected
+			if ( sockHandle == -1 ) {
+				bool res = false;
+				// Trying to connect
+				res = connectToHost( sockHandle, m_connTimeout );
+				if ( ! res ) {
+					// All logging made from previous call
+					goto cleanup_and_disconnect;
+				}
+			}
+			// Sock handle is already inited
+			else {
+				// Nothing to do
+			}
 
 		IOSRV_ETRACE(ETRACE_IOS_EVENT_CLI_CONNECT);
-            }
-            // Sock handle is already inited
-            else {
-                // Nothing to do
-            }
+		}
         }
         // Client context, proxy mode
         else {
@@ -2280,7 +2286,25 @@ void SocketClientPrivate::doJob ()
     // Client context
     else if ( m_ctx == Cli_ClientContext ) {
         bool handshaked = false;
-
+        if ( m_srvCtx.m_clientState.isValid() ) {
+            // Set our handshaked state
+            handshaked = srv_setHandshakeFromState();
+            if ( ! handshaked ) {
+        	    WRITE_TRACE(DBG_FATAL, IO_LOG("Handshake from state is wrong! "
+        			    "Connection will be closed!"));
+        	    goto cleanup_and_disconnect;
+            }
+            // Add SSL session and rehandshake
+            handshaked = srv_addSSLSessionFromStateAndRehandshake(
+                                           sockHandle,
+                                           m_srvCtx.m_attachingAdditionalPkg,
+                                           msecsToWait );
+            if ( ! handshaked ) {
+                WRITE_TRACE(DBG_FATAL, IO_LOG("SSL session is wrong!"));
+                goto cleanup_and_disconnect;
+            }
+        }
+        else {
 	//------------------------------------------------------------
 	// Send
 	//------------------------------------------------------------
@@ -2318,6 +2342,7 @@ void SocketClientPrivate::doJob ()
         }
 
 	IOSRV_ETRACE(ETRACE_IOS_EVENT_CLI_SEND_HS_SSL);
+        }
     }
     else
         Q_ASSERT(false);
@@ -2418,6 +2443,18 @@ void SocketClientPrivate::doJob ()
                 WRITE_TRACE(DBG_FATAL,
                             IO_LOG("Sending detach response and pausing "
                                    "are failed. Stop connection."));
+                goto cleanup_and_disconnect;
+            }
+
+            if (cli_detach) {
+                IOCommunication::DetachedClient detached = srv_doDetach(sockHandle);
+                if (!detached.isValid())
+                    WRITE_TRACE(DBG_FATAL,IO_LOG("Can't create detached state! Close connecion"));
+                else {
+                    CALLBACK_MARK;
+                    m_rcvSndListener->srv_onDetachClient(this, m_peerConnectionUuid, detached);
+                    WARN_IF_CALLBACK_TOOK_MUCH_TIME;
+                }
                 goto cleanup_and_disconnect;
             }
 
@@ -2622,7 +2659,8 @@ void SocketClientPrivate::doJob ()
         if ( p->header.type != IOCommunicationMngPackage::HeartBeat &&
              ( (m_ctx == Cli_ClientContext &&
 		p->header.type != IOCommunicationMngPackage::DetachClientRequest &&
-		p->header.type != IOCommunicationMngPackage::AttachClient) ||
+		p->header.type != IOCommunicationMngPackage::AttachClient &&
+        	p->header.type != IOCommunicationMngPackage::DetachBothSidesRequest) ||
                (m_ctx == Cli_ServerContext && p->header.type !=
                 IOCommunicationMngPackage::DetachClientResponse) ) ) {
 
@@ -2680,6 +2718,18 @@ void SocketClientPrivate::doJob ()
                                    "Running in not client context!"));
             else
                 cli_doSSLRehandshake = true;
+        }
+        else if ( p->header.type ==
+                  IOCommunicationMngPackage::DetachBothSidesRequest ) {
+            if ( m_ctx != Cli_ClientContext )
+                WRITE_TRACE(DBG_FATAL,
+                            IO_LOG("Error: received client management package! "
+                                   "Running in not client context!"));
+            else {
+                cli_doSSLRehandshake = true;
+                cli_detach = true;
+                m_srvCtx.m_isDetaching = true;
+            }
         }
         else if ( p->header.type ==
                   IOCommunicationMngPackage::DetachClientResponse ) {
@@ -2802,7 +2852,7 @@ cleanup_and_disconnect:
     if ( sockHandle != -1 ) {
         // Do graceful shutdown if not in detaching state
         // and we were successfully connected
-        if ( ! srv_detaching && oldState == IOSender::Connected )
+        if ( ! srv_detaching && !cli_detach && oldState == IOSender::Connected )
             __gracefulShutdown(sockHandle,
                                IOCommunication::IOGracefulShutdownTimeout);
         ::closesocket(sockHandle);
@@ -2818,7 +2868,7 @@ cleanup_and_disconnect:
     if ( sockHandle != -1 ) {
         // Do graceful shutdown if not in detaching state
         // and we were successfully connected
-        if ( ! srv_detaching && oldState == IOSender::Connected )
+        if ( ! srv_detaching && !cli_detach && oldState == IOSender::Connected )
             __gracefulShutdown(sockHandle,
                                IOCommunication::IOGracefulShutdownTimeout);
         ::close(sockHandle);
@@ -3427,7 +3477,7 @@ IOSendJob::Result SocketClientPrivate::writeData ( int sock,
 
 bool SocketClientPrivate::srv_setHandshakeFromState ()
 {
-    CHECK_SRV_CTX(return false);
+    CHECK_CLI_OR_SRV_CTX(return false);
 
     Q_ASSERT(m_srvCtx.m_clientState.isValid());
 
@@ -3520,39 +3570,44 @@ bool SocketClientPrivate::srv_addSSLSessionFromStateAndRehandshake (
     SmartPtr<IOPackage>& additionalPkg,
     quint32 msecsTimeout )
 {
-    CHECK_SRV_CTX(return false);
+    CHECK_CLI_OR_SRV_CTX(return false);
 
     Q_ASSERT(m_srvCtx.m_clientState.isValid());
 
-    const size_t ErrBuffSize = 256;
-    char errBuff[ ErrBuffSize ];
-
-    additionalPkg = SmartPtr<IOPackage>();
-
     DetachedClientState* state =
         reinterpret_cast<DetachedClientState*>(m_srvCtx.m_clientState->m_state);
+    additionalPkg = SmartPtr<IOPackage>();
 
-    SSL_SESSION* sslSession = 0;
-    const unsigned char* pSession = reinterpret_cast<const unsigned char*>(
-                                             state->data.sslSession.getImpl());
-    sslSession = d2i_SSL_SESSION( &sslSession, &pSession,
-                                  state->header.sslSessionSize );
+    if (m_ctx == Cli_ServerContext) {
+	    const size_t ErrBuffSize = 256;
+	    char errBuff[ ErrBuffSize ];
+	    SSL_SESSION* sslSession = 0;
+	    const unsigned char* pSession = reinterpret_cast<const unsigned char*>(
+	                                             state->data.sslSession.getImpl());
+	    sslSession = d2i_SSL_SESSION( &sslSession, &pSession,
+	                                  state->header.sslSessionSize );
+	    if ( sslSession == 0 ) {
+	        ERR_error_string_n( ERR_get_error(), errBuff, ErrBuffSize );
+	        WRITE_TRACE(DBG_FATAL,
+	                    IO_LOG("SSL error: can't create SSL_SESSION from ANSI "
+	                           "(SSL error: %s)"), errBuff);
+	        return false;
+	    }
 
-    if ( sslSession == 0 ) {
-        ERR_error_string_n( ERR_get_error(), errBuff, ErrBuffSize );
-        WRITE_TRACE(DBG_FATAL,
-                    IO_LOG("SSL error: can't create SSL_SESSION from ANSI "
-                           "(SSL error: %s)"), errBuff);
-        return false;
+	    // Add session to server context
+	    int res = SSL_CTX_add_session(m_sslHelper->GetServerSSLContext(), sslSession);
+	    SSL_SESSION_free(sslSession);
+
+	    if ( res != 1 ) {
+	        WRITE_TRACE(DBG_FATAL, IO_LOG("SSL error: can't add SSL_SESSION"));
+	        return false;
+	    }
     }
-
-    // Add session to server context
-    int res = SSL_CTX_add_session(m_sslHelper->GetServerSSLContext(), sslSession);
-    SSL_SESSION_free(sslSession);
-
-    if ( res != 1 ) {
-        WRITE_TRACE(DBG_FATAL, IO_LOG("SSL error: can't add SSL_SESSION"));
-        return false;
+    else if (m_ctx == Cli_ClientContext) {
+	    if (!cli_sslSetSession(reinterpret_cast<unsigned char*>(state->data.sslSession.get()), state->header.sslSessionSize)) {
+		    WRITE_TRACE(DBG_FATAL, IO_LOG("SSL error: can't set client's SSL session"));
+		    return false;
+	    }
     }
 
     // Do SSL rehandshake after session addition
@@ -3602,6 +3657,33 @@ void SocketClientPrivate::onWriteIsFinishedWithErrors ( SocketWriteThread* )
     //
     QMutexLocker locker( &m_eventMutex );
     __finalizeThread();
+}
+
+bool SocketClientPrivate::getDetachedSocket(int& sock, char *errBuff, size_t ErrBuffSize)
+{
+	int sockHandle;
+#ifdef _WIN_
+	DetachedClientState* state = reinterpret_cast<DetachedClientState*>(
+								  m_srvCtx.m_clientState->m_state);
+	sockHandle = ::WSASocket( FROM_PROTOCOL_INFO,
+							  FROM_PROTOCOL_INFO,
+							  FROM_PROTOCOL_INFO,
+							  &state->header.clientSocket, 0,
+							  WSA_FLAG_OVERLAPPED );
+	if ( sockHandle == INVALID_SOCKET ) {
+		WRITE_TRACE(DBG_FATAL,
+					IO_LOG("Can't create socket from saved client "
+						   "state (native error: %s)"),
+					native_strerror(errBuff, ErrBuffSize) );
+		return false;
+	}
+#else
+	Q_UNUSED(errBuff)
+	Q_UNUSED(ErrBuffSize)
+	sockHandle = m_srvCtx.m_clientState->takeSocketHandle();
+#endif
+	sock = sockHandle;
+	return true;
 }
 
 /*****************************************************************************/

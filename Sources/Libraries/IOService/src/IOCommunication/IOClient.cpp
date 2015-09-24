@@ -213,6 +213,14 @@ void IOClient::onStateChanged ( SocketClientPrivate*,
     emit IOClientInterface::onStateChanged( newState );
 }
 
+void IOClient::srv_onDetachClient ( SocketClientPrivate*,
+                                    const IOSender::Handle& h,
+                                    const IOCommunication::DetachedClient& s )
+{
+    emit onDetachClient( h, s );
+    emit onDetachClient( this, h, s );
+}
+
 /*****************************************************************************/
 
 void IOClient::setLimitErrorLogging(bool bLimitErrorLogging)

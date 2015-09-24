@@ -484,9 +484,10 @@ int IOCommunication::SocketHandlePrivate::takeSocketHandle ()
 
 /*****************************************************************************/
 
-IOCommunication::DetachedClientPrivate::DetachedClientPrivate ( void* state ) :
+IOCommunication::DetachedClientPrivate::DetachedClientPrivate ( void* state, bool server) :
     m_state(state),
-    m_attached(false)
+    m_attached(false),
+    m_server(server)
 {
     Q_ASSERT(m_state);
 }

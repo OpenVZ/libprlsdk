@@ -354,14 +354,15 @@ bool IOServerPool::clientProtocolVersion (
 
 bool IOServerPool::detachClient ( const IOSender::Handle& h,
                                   int specificArg,
-                                  const SmartPtr<IOPackage>& additionalPkg )
+                                  const SmartPtr<IOPackage>& additionalPkg,
+                                  bool detachBothSides )
 {
     const SmartPtr<IOServerInterface> server = m_imp->getServer(h);
     if (0 == server.get())
     {
         return false;
     }
-    return server->detachClient(h, specificArg, additionalPkg);
+    return server->detachClient(h, specificArg, additionalPkg, detachBothSides);
 }
 
 bool IOServerPool::disconnectClient ( const IOSender::Handle& h )

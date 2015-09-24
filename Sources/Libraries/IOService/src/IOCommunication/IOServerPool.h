@@ -86,7 +86,8 @@ public:
     virtual bool detachClient ( const IOSender::Handle& cliHandle,
                                 int specificArg,
                                 const SmartPtr<IOPackage>& additionalPkg =
-                                    IOPackage::Null );
+                                    IOPackage::Null,
+                                bool detachBothSides = false );
 
     virtual bool disconnectClient ( const IOSender::Handle& );
 

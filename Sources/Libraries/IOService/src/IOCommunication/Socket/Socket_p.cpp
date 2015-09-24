@@ -1971,12 +1971,12 @@ void SocketWriteThread::doJob ()
         m_wrListener->onWriteIsFinishedWithErrors( this );
 }
 
-bool SocketWriteThread::sendDetachRequestAndPauseWriting ()
+bool SocketWriteThread::sendDetachRequestAndPauseWriting (bool detachBothSides)
 {
     // Send and pause writing. Thread will be in detaching state.
     return sendAndPauseWriting( IOPackage::createInstance(
-                         IOCommunicationMngPackage::DetachClientRequest, 0),
-                                true );
+    	detachBothSides ? IOCommunicationMngPackage::DetachBothSidesRequest
+    		: IOCommunicationMngPackage::DetachClientRequest, 0), true );
 }
 
 bool SocketWriteThread::sendDetachResponseAndPauseWriting ()

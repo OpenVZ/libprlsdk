@@ -596,6 +596,8 @@ namespace IOService {
             DetachClientResponse = B+8, /**< Package to server to sync
                                              detaching */
             HeartBeat            = B+9, /**< Package to keep connection alive */
+            DetachBothSidesRequest = B+10, /**< Package to client to detach both
+                                             sides of the connection */
 
             // Useless for now
 #undef B
@@ -673,9 +675,10 @@ namespace IOService {
         {
             void* m_state;
             mutable qint32 m_attached;
+            bool m_server;
 
             /** Constructor */
-            DetachedClientPrivate ( void* );
+            DetachedClientPrivate ( void* , bool server = true);
             /** Destructor */
             ~DetachedClientPrivate ();
 

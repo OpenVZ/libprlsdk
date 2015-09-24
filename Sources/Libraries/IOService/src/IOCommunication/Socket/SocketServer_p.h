@@ -80,7 +80,8 @@ public:
                                  IOCommunication::ProtocolVersion& ) const;
     bool detachClient ( const IOSender::Handle& cliHandle,
                         int specificArg,
-                        const SmartPtr<IOPackage>& additionalPkg );
+                        const SmartPtr<IOPackage>& additionalPkg,
+			bool detachBothSides);
 
     bool attachClient ( IOCommunication::DetachedClient );
 
