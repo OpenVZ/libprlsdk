@@ -20,11 +20,7 @@ How to install
 To build the SDK run:
 
 ```bash
-cd parallels-sdk/Sources
-./Gen.py
-cd SDK
-qmake
 make
-make install
+sudo make install
 ```
 
