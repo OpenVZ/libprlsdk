@@ -101,6 +101,8 @@ PRL_CLUSTERED_DEVICE_SUBTYPE syncScsiDevicesSubType(CVmConfiguration* pVmConfigN
 
 PRL_CLUSTERED_DEVICE_SUBTYPE getDefaultScsiSubTypeByOsVersion(unsigned int nOsVersion)
 {
+	if (PVS_GUEST_VIRTIO_SUPPORTED(nOsVersion))
+		return PCD_VIRTIO_SCSI;
 	if (PVS_GUEST_SCSI_LSI_SPI_SUPPORTED(nOsVersion))
 		return PCD_LSI_SPI;
 	if (PVS_GUEST_SCSI_LSI_SAS_SUPPORTED(nOsVersion))

@@ -872,11 +872,17 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 {
 	bool bTryAddToIde = false;
 	interfaceType = PMS_IDE_DEVICE;
+	unsigned int v = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
 	if ( CHardDiskHelper::isSataSupportedForVmConfig( cfg.getVmSettings()->getVmCommonOptions()->getOsType(),
-														cfg.getVmSettings()->getVmCommonOptions()->getOsVersion(),
+														v,
 														cfg.getVmHardwareList()->getChipset()->getType() ) )
 	{
 		interfaceType = PMS_SATA_DEVICE;
+		bTryAddToIde = true;
+	}
+	if (PVS_GUEST_VIRTIO_SUPPORTED(v))
+	{
+		interfaceType = PMS_SCSI_DEVICE;
 		bTryAddToIde = true;
 	}
 
@@ -890,7 +896,7 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 		{
 			if( bTryAddToIde )
 			{
-				if ( IS_VALID_MACOS_VERSION(cfg.getVmSettings()->getVmCommonOptions()->getOsVersion()) )
+				if ( IS_VALID_MACOS_VERSION(v) )
 					return false;
 
 				interfaceType = PMS_IDE_DEVICE;
@@ -953,10 +959,13 @@ bool PrlHandleVmDefaultConfig::AddDefaultCdRom( CVmConfiguration& cfg, PRL_HANDL
 
 	if (cdrom->getInterfaceType() == PMS_SCSI_DEVICE)
 	{
-		if (PVS_GUEST_SCSI_LSI_SPI_SUPPORTED(cfg.getVmSettings()->getVmCommonOptions()->getOsVersion()))
+		unsigned int v = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
+		if (PVS_GUEST_SCSI_LSI_SPI_SUPPORTED(v))
 			cdrom->setSubType(PCD_LSI_SPI);
-		if (PVS_GUEST_SCSI_LSI_SAS_SUPPORTED(cfg.getVmSettings()->getVmCommonOptions()->getOsVersion()))
+		if (PVS_GUEST_SCSI_LSI_SAS_SUPPORTED(v))
 			cdrom->setSubType(PCD_LSI_SAS);
+		if (PVS_GUEST_VIRTIO_SUPPORTED(v))
+			cdrom->setSubType(PCD_VIRTIO_SCSI);
 	}
 
 	cfg.getVmHardwareList()->addOpticalDisk( cdrom );
@@ -1027,10 +1036,13 @@ bool PrlHandleVmDefaultConfig::AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_D
 
 	if (hdd->getInterfaceType() == PMS_SCSI_DEVICE)
 	{
-		if (PVS_GUEST_SCSI_LSI_SPI_SUPPORTED(cfg.getVmSettings()->getVmCommonOptions()->getOsVersion()))
+		unsigned int v = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
+		if (PVS_GUEST_SCSI_LSI_SPI_SUPPORTED(v))
 			hdd->setSubType(PCD_LSI_SPI);
-		if (PVS_GUEST_SCSI_LSI_SAS_SUPPORTED(cfg.getVmSettings()->getVmCommonOptions()->getOsVersion()))
+		if (PVS_GUEST_SCSI_LSI_SAS_SUPPORTED(v))
 			hdd->setSubType(PCD_LSI_SAS);
+		if (PVS_GUEST_VIRTIO_SUPPORTED(v))
+			hdd->setSubType(PCD_VIRTIO_SCSI);
 	}
 
 	cfg.getVmHardwareList()->addHardDisk( hdd );
