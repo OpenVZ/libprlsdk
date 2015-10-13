@@ -1541,7 +1541,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_REMOTE_DISPLAY_WRONG_PORT_NUMBER,
 		tr("The port number is invalid."),
-		tr("The port number must be greater than zero. Enter a valid number and try again."),
+		tr("The port number must be greater than 5899. Enter a valid number and try again."),
 		false,
 		PMT_WARNING
 		);
