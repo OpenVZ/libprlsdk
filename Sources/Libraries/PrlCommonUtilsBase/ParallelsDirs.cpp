@@ -917,6 +917,33 @@ QString ParallelsDirs::getFddToolsImage( PRL_APPLICATION_MODE mode, unsigned int
 		return "";
 }
 
+static const char* getShortWinVersion(unsigned int osVersion_)
+{
+	switch (osVersion_)
+	{
+	case PVS_GUEST_VER_WIN_2003:
+		return "2003";
+	case PVS_GUEST_VER_WIN_2008:
+		return "2008";
+	case PVS_GUEST_VER_WIN_WINDOWS7:
+		return "7";
+	case PVS_GUEST_VER_WIN_WINDOWS8:
+		return "8";
+	case PVS_GUEST_VER_WIN_WINDOWS8_1:
+		return "8_1";
+	case PVS_GUEST_VER_WIN_2012:
+		return "2012";
+	}
+	return "";
+}
+
+QString ParallelsDirs::getWindowsUnattendedFloppy(unsigned int osVersion_)
+{
+	PRL_ASSERT(IS_WINDOWS(osVersion_));
+
+	return QString("/usr/share/virtuozzo/floppy_win%1.vfd").arg(getShortWinVersion(osVersion_));
+}
+
 QString ParallelsDirs::getLinReconfigImage(PRL_APPLICATION_MODE mode)
 {
 	Q_UNUSED(mode);

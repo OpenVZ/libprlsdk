@@ -36,9 +36,10 @@
 
 static inline int PVS_GUEST_VIRTIO_SUPPORTED(unsigned int nVersion)
 {
-	return (   IS_LINUX(nVersion)
-			&& nVersion != PVS_GUEST_VER_LIN_KRNL_24
-			&& nVersion != PVS_GUEST_VER_LIN_RHLES3 );
+	return ((IS_WINDOWS(nVersion) && nVersion >= PVS_GUEST_VER_WIN_VISTA) ||
+			(IS_LINUX(nVersion)
+			 && nVersion != PVS_GUEST_VER_LIN_KRNL_24
+			 && nVersion != PVS_GUEST_VER_LIN_RHLES3 ));
 }
 
 static inline int PVS_GUEST_E1000_SUPPORTED(unsigned int nVersion)

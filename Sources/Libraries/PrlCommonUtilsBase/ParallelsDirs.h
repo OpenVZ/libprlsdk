@@ -138,6 +138,8 @@ public:
 	// get full path to .iso with Parallels Tools
 	static QString getToolsFileName(unsigned int uGuestOsType);
 
+	// get full path to .iso with unattended floppy drivers
+	static QString getWindowsUnattendedFloppy(unsigned int osVersion_);
 	// get reconfiguration image path
 	static QString getLinReconfigImage(PRL_APPLICATION_MODE mode);
 
