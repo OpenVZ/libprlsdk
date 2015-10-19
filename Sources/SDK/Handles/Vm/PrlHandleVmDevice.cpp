@@ -427,6 +427,8 @@ static PRL_UINT32 GetMaxPossibleIndexValue( PRL_MASS_STORAGE_INTERFACE_TYPE nIfa
 		case PMS_IDE_DEVICE: return 4;
 		case PMS_SCSI_DEVICE: return 16;
 		case PMS_SATA_DEVICE: return 6;
+		case PMS_VIRTIO_BLOCK_DEVICE:
+			return 16;
 		default:
 			PRL_ASSERT(false);
 			return 0;
