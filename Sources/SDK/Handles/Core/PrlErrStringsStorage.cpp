@@ -6892,6 +6892,13 @@ void PrlErrStringsStorage::Initialize()
 		PMT_QUESTION
 		);
 
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_VM_NAME_IS_TOO_LONG,
+		tr("The specified virtual machine name is too long."),
+		tr("The virtual machine name must not exceed %1 characters."),
+		false,
+		PMT_CRITICAL
+		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CT_IS_RUNNING,
