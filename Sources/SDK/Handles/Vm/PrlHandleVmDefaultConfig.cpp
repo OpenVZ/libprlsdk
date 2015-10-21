@@ -727,26 +727,44 @@ bool PrlHandleVmDefaultConfig::AddDefaultFloppy( CVmConfiguration& cfg, PRL_HAND
 
 	uint devIdx = GetUnusedDeviceIndex<CVmFloppyDisk >(cfg.getVmHardwareList()->m_lstFloppyDisks);
 
-	uint osType = GetOsType( cfg );
+	unsigned int t = GetOsType(cfg);
+	unsigned int v = GetOsVersion(cfg);
 	// Set default floppy image path
 	QString systemName;
-	if ( osType == PVS_GUEST_TYPE_OS2 )
-		systemName = ParallelsDirs::getFddToolsImageBaseName( osType );
+	if (t == PVS_GUEST_TYPE_OS2)
+	{
+		systemName = ParallelsDirs::getFddToolsImageBaseName(t);
+	}
+	else if (IS_WINDOWS(v))
+	{
+		systemName = ParallelsDirs::getWindowsUnattendedFloppy(v);
+		QFileInfo f(systemName);
+		if (!f.exists())
+		{
+			WRITE_TRACE(DBG_FATAL, "Unable to find necessary file "
+					"for Windows guest installation: '%s'",
+					QSTR2UTF8(systemName));
+			return false;
+		}
+	}
 	else
-		systemName = GetDefaultImageName( strImagePatternFdd, devIdx );
+	{
+		systemName = GetDefaultImageName(strImagePatternFdd, devIdx);
+	}
 
 	QString friendlyName = systemName;
 
-	PVE::DeviceConnectedState connectState =
-			(osType == PVS_GUEST_TYPE_MSDOS ) || (osType == PVS_GUEST_TYPE_OS2)
-										?
-							  PVE::DeviceConnected
-										:
-							  PVE::DeviceDisconnected;
-
-	if ( IsServerPresent() && ( osType != PVS_GUEST_TYPE_OS2 ))
+	PVE::DeviceConnectedState connectState = PVE::DeviceDisconnected;
+	if ((t == PVS_GUEST_TYPE_MSDOS) ||
+		(t == PVS_GUEST_TYPE_OS2) ||
+		IS_WINDOWS(v))
 	{
-		if ( m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.size() )
+		connectState = PVE::DeviceConnected;
+	}
+
+	if (IsServerPresent() && (t != PVS_GUEST_TYPE_OS2))
+	{
+		if (m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.size())
 		{
 			friendlyName = m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.value(0)->getDeviceName();
 			systemName = m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.value(0)->getDeviceId();
@@ -754,14 +772,14 @@ bool PrlHandleVmDefaultConfig::AddDefaultFloppy( CVmConfiguration& cfg, PRL_HAND
 		}
 	}
 
-	floppy->setIndex( devIdx );
-	floppy->setEmulatedType( emulType );
-	floppy->setEnabled( PVE::DeviceEnabled );
-	floppy->setConnected( connectState );
-	floppy->setUserFriendlyName( friendlyName );
-	floppy->setSystemName( systemName );
+	floppy->setIndex(devIdx);
+	floppy->setEmulatedType(emulType);
+	floppy->setEnabled(PVE::DeviceEnabled);
+	floppy->setConnected(connectState);
+	floppy->setUserFriendlyName(friendlyName);
+	floppy->setSystemName(systemName);
 
-	cfg.getVmHardwareList()->addFloppyDisk( floppy );
+	cfg.getVmHardwareList()->addFloppyDisk(floppy);
 
 	SortDeviceListByIndex<CVmFloppyDisk >(cfg.getVmHardwareList()->m_lstFloppyDisks);
 
