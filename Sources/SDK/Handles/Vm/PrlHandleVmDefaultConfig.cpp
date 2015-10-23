@@ -891,13 +891,7 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 	bool bTryAddToIde = false;
 	interfaceType = PMS_IDE_DEVICE;
 	unsigned int v = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
-	if ( CHardDiskHelper::isSataSupportedForVmConfig( cfg.getVmSettings()->getVmCommonOptions()->getOsType(),
-														v,
-														cfg.getVmHardwareList()->getChipset()->getType() ) )
-	{
-		interfaceType = PMS_SATA_DEVICE;
-		bTryAddToIde = true;
-	}
+
 	if (PVS_GUEST_VIRTIO_SUPPORTED(v))
 	{
 		interfaceType = PMS_SCSI_DEVICE;
@@ -1019,18 +1013,6 @@ bool PrlHandleVmDefaultConfig::AddDefaultHardDisk ( CVmConfiguration& cfg, PRL_D
 		delete hdd;
 		return false;
 	}
-
-	// Windows can use KVM UEFI only with IDE HDD #PSBM-37908
-	if (GetOsType(cfg) == PVS_GUEST_TYPE_WINDOWS
-		&& cfg.getVmSettings()->getVmStartupOptions()->getBios()->isEfiEnabled())
-	{
-		interfaceType = PMS_IDE_DEVICE;
-	}
-
-	// QEMU 2.1.2 has limited support for SATA
-	// for example SATA is not migratable #PSBM-39909
-	if (interfaceType == PMS_SATA_DEVICE)
-		interfaceType = PMS_IDE_DEVICE;
 
 	int hddSize = GetDefaultHddSize( cfg );
 
