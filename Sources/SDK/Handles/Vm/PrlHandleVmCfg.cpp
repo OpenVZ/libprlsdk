@@ -1498,6 +1498,8 @@ PRL_RESULT PrlHandleVmCfg::SetIoLimit(PRL_CONST_IOLIMIT_DATA_PTR pVmIoLimit)
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	CVmIoLimit *pIoLimit = new CVmIoLimit(pVmIoLimit->type, pVmIoLimit->value);
 	m_VmConfig.getVmSettings()->getVmRuntimeOptions()->setIoLimit(pIoLimit);
+	foreach (CVmHardDisk *d, m_VmConfig.getVmHardwareList()->m_lstHardDisks)
+		d->setIoLimit(new CVmIoLimit(pVmIoLimit->type, pVmIoLimit->value));
 	return (PRL_ERR_SUCCESS);
 }
 
@@ -1519,6 +1521,8 @@ PRL_RESULT PrlHandleVmCfg::SetIopsLimit(PRL_UINT32 nVmIopsLimit)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	m_VmConfig.getVmSettings()->getVmRuntimeOptions()->setIopsLimit(nVmIopsLimit);
+	foreach (CVmHardDisk *d, m_VmConfig.getVmHardwareList()->m_lstHardDisks)
+		d->setIopsLimit(nVmIopsLimit);
 	return (PRL_ERR_SUCCESS);
 }
 
