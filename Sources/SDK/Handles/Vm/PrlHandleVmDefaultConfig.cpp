@@ -892,7 +892,9 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 	interfaceType = PMS_IDE_DEVICE;
 	unsigned int v = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
 
-	if (PVS_GUEST_VIRTIO_SUPPORTED(v))
+	// For Windows guest CD drive must be connected to IDE bus during
+	// guest installation (#PSBM-40949)
+	if (PVS_GUEST_VIRTIO_SUPPORTED(v) && !(IS_WINDOWS(v) && devType == PDE_OPTICAL_DISK))
 	{
 		interfaceType = PMS_SCSI_DEVICE;
 		bTryAddToIde = true;
