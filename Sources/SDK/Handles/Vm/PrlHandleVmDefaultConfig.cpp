@@ -931,25 +931,6 @@ bool PrlHandleVmDefaultConfig::AddDefaultCdRom( CVmConfiguration& cfg, PRL_HANDL
 	CVmOpticalDisk* cdrom = new CVmOpticalDisk();
 
 	PVE::CdromEmulatedType emulType = PVE::CdRomImage;
-	QString friendlyName, systemName;
-	PVE::DevicePassthroughMode passthroughMode = PVE::PassthroughEnabled;
-
-	if ( IsServerPresent() )
-	{
-		if ( m_pSrvConfig->GetSrvConfig().m_lstOpticalDisks.size() )
-		{
-			// add default dvd #270598
-			friendlyName = PRL_DVD_DEFAULT_DEVICE_NAME;
-			systemName =
-				m_pSrvConfig->GetSrvConfig().m_lstOpticalDisks.value(0)->getDeviceId();
-			emulType = PVE::RealCdRom;
-		}
-
-		// Set passthrough mode
-		PRL_HOST_OS_TYPE hostOsType = m_pSrvConfig->GetSrvConfig().getOsVersion()->getOsType();
-		passthroughMode = hostOsType == PHO_MAC ? PVE::PassthroughEnabled
-												: PVE::PassthroughDisabled;
-	}
 
 	// Set interface slot
 	PRL_MASS_STORAGE_INTERFACE_TYPE interfaceType = PMS_IDE_DEVICE;
@@ -967,9 +948,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultCdRom( CVmConfiguration& cfg, PRL_HANDL
 	cdrom->setInterfaceType( interfaceType );
 	cdrom->setStackIndex( interfaceSlot );
 	cdrom->setRemote( false );
-	cdrom->setPassthrough( passthroughMode );
-	cdrom->setUserFriendlyName( friendlyName );
-	cdrom->setSystemName( systemName );
+	cdrom->setPassthrough(PVE::PassthroughDisabled);
 
 	if (cdrom->getInterfaceType() == PMS_SCSI_DEVICE)
 	{
