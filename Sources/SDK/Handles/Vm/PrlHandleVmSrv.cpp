@@ -613,7 +613,7 @@ PrlHandleJobPtr PrlHandleVmSrv::VmGuestRunProgram(const QString &sVmGuestUuid, P
 	CHECK_SERVER;
 	CHECK_IDENTIFICATION;
 	QString sSessionUuid = sVmGuestUuid;
-	if (m_VmConfig.getVmType() == PVT_CT && m_ioExecChannel.isValid())
+	if (m_ioExecChannel.isValid())
 		sSessionUuid = m_ioExecChannel->getHandle();
 	return (m_pServerVm->DspCmdVmGuestRunProgram(GET_VM_UUID, sSessionUuid.toUtf8().constData(), sProgramName,
 												lstArgs, lstEnvs, nFlags, nStdin, nStdout, nStderr));
