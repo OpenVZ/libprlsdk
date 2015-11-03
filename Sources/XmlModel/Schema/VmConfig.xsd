@@ -1305,6 +1305,14 @@ bool CVmHardDisk::operator==( const CVmHardDisk&amp; cVmHardDisk )
 			</xs:element>
 			<xs:element name="AutoCompressEnabled" type="xs:boolean" default="true" minOccurs="0"/>
 			<xs:element name="StorageURL" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="IoLimit" type="CVmIoLimit" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>class=CVmIoLimit</xs:documentation>
+				</xs:annotation>
+				<xs:complexType/>
+			</xs:element>
+			<xs:element name="IopsLimit" type="xs:integer" default="0" minOccurs="0"/>
+			<xs:element name="TargetDeviceName" type="xs:string" default="0" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Height" type="xs:integer"/>
