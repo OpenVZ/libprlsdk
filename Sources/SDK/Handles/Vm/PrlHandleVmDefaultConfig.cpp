@@ -534,6 +534,8 @@ void PrlHandleVmDefaultConfig::SetupUsbControllerDefaults ( CVmConfiguration& cf
 		|| IS_LINUX(osVersion)
 		|| (osVersion >= PVS_GUEST_VER_WIN_WINDOWS8 && osVersion < PVS_GUEST_VER_WIN_OTHER))
 	{
+		cfg.getVmSettings()->getUsbController()->setUhcEnabled(false);
+		cfg.getVmSettings()->getUsbController()->setEhcEnabled(false);
 		cfg.getVmSettings()->getUsbController()->setXhcEnabled(true);
 	}
 
