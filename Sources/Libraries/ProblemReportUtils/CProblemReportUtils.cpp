@@ -464,7 +464,7 @@ void fillDesktopProblemReportOnDisconnectServer( CProblemReport & cReport,
 	// try to load updater config file to xml
 
 	QString strDispConfigDir = ParallelsDirs::getDispatcherConfigDir();
-	QFile _vm_config_file(strDispConfigDir+"/"+UPDATER_CONFIG_FILE_NAME);
+	QFile _vm_config_file(strDispConfigDir+"/.parallels_updater.xml");
 	CUpdaterConfig UpdaterConfig(&_vm_config_file);
 	if (UpdaterConfig.m_uiRcInit == PRL_ERR_SUCCESS)
 	{

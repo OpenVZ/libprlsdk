@@ -5,21 +5,14 @@
 		<xs:annotation>
 			<xs:documentation>Parallels Updater configuration.</xs:documentation>
 			<xs:documentation>class=CUpdaterConfig;</xs:documentation>
-			<xs:documentation source="post class info">post_class_info:
-extern const QString UPDATER_CONFIG_FILE_NAME;
-extern const QString PARALLELS_SERVER;
-</xs:documentation>
-			<xs:documentation source="globals">unit_fragment:
-#include "Build/Current.ver"
-#include "Build/Current-locale.ver"
-const QString DEFAULT_UPDATES_URL = "";
-const QString PARALLELS_BUY_LINK = "";
-const QString PARALLELS_SERVER = "Parallels Server";
-
-extern const QString UPDATER_CONFIG_FILE_NAME = ".parallels_updater.xml";
-</xs:documentation>
 			<xs:documentation source="Init constructor">header_fragment:
     CUpdaterConfig(QString s) { InitLists(); fromString(s); }</xs:documentation>
+                        <xs:documentation source="globals">unit_fragment:
+#include "Build/Current.ver"
+#include "Build/Current-locale.ver"
+static const QString DEFAULT_UPDATES_URL = "";
+static const QString PARALLELS_BUY_LINK = "";
+</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
