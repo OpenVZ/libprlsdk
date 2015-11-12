@@ -3230,6 +3230,26 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 					  PRL_UINT32 nFlags
 					  ) );
 
+/* Begin the Parallels Tools installation process. The machine must be
+   registered with the Parallels Service to perform this operation.
+   Parameters
+   handle :  A handle of type PHT_VIRTUAL_MACHINE identifying the
+             virtual machine.
+   Returns
+   PRL_HANDLE to job that describing async operation result
+   (PRL_INVALID_HANDLE means not enough memory to instantiate
+   async job represents object handle). Operation return code
+   can be extracted with @ref PrlJob_GetRetCode() call. Possible
+   values: PRL_ERR_INVALID_ARG - non valid PHT_VIRTUAL_MACHINE
+   handle was passed PRL_ERR_UNINITIALIZED - unexpected error:
+   uninitialized with Parallels Service connection or non identified VM
+   object                                                         */
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+						   PrlVm_InstallTools, (
+					  PRL_HANDLE hVm
+					  ) );
+
+
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Functions specific for the optimization of virtual hard disk
 ///////////////////////////////////////////////////////////////////////////////

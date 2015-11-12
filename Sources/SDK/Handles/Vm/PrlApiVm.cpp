@@ -946,6 +946,19 @@ PRL_ASYNC_METHOD( PrlVm_Reset ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Reset, (hVm))
 }
 
+PRL_HANDLE PrlVm_InstallTools_Impl(PRL_HANDLE hVm)
+{
+	ONE_HANDLE_VM_METH_IMPLEMENTATION(InstallTools, PJOC_VM_INSTALL_TOOLS)
+}
+
+PRL_ASYNC_METHOD( PrlVm_InstallTools ) (
+					   PRL_HANDLE hVm
+							   )
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_INSTALL_TOOLS)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_InstallTools, (hVm))
+}
+
 PRL_HANDLE PrlVm_BeginEdit_Impl(PRL_HANDLE hVm)
 {
 	ONE_HANDLE_VM_METH_IMPLEMENTATION(BeginEdit, PJOC_VM_BEGIN_EDIT)

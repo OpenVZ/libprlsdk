@@ -792,6 +792,7 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_CreateUnattendedCd ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_InitiateDevStateNotifications ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_ValidateConfig ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_UpdateSecurity ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_InstallTools ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_GetToolsState ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_IsEncrypted ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDev_Create ) \
