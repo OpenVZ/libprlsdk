@@ -61,10 +61,10 @@ const IOCommunication::ProtocolVersion IOService::IOProtocolVersion =
 };
 
 /** Defined loopback (localhost) addr. */
-const QString IOService::LoopbackAddr("A40B1FAE-EBF5-4FA7-A748-40388FCFF47D");
+const char IOService::LoopbackAddr[] = "A40B1FAE-EBF5-4FA7-A748-40388FCFF47D";
 
 /** Defined any (wildcard) addr. */
-const QString IOService::AnyAddr("");
+const char IOService::AnyAddr[] = "";
 
 /*****************************************************************************/
 

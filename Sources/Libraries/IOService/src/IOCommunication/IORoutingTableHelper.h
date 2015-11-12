@@ -40,13 +40,7 @@ public:
     static const char* SSLName;
     static const char* PlainName;
 
-    static const IORoutingTable& GetServerRoutingTable ( PRL_SECURITY_LEVEL );
-    static const IORoutingTable& GetClientRoutingTable ( PRL_SECURITY_LEVEL );
-
-private:
-    static QMutex m_mutex;
-    static QHash<PRL_SECURITY_LEVEL, IORoutingTable*> m_serverTables;
-    static QHash<PRL_SECURITY_LEVEL, IORoutingTable*> m_clientTables;
+    static const IORoutingTable GetClientRoutingTable ( PRL_SECURITY_LEVEL );
 };
 
 } //namespace IOService

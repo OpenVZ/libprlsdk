@@ -23,194 +23,98 @@
  * Schaffhausen, Switzerland; http://www.parallels.com/.
  */
 
-
 #include "IORoutingTableHelper.h"
+#include <boost/mpl/pair.hpp>
+#include <boost/mpl/vector.hpp>
+#include <boost/mpl/for_each.hpp>
+#include <boost/mpl/integral_c.hpp>
 
 using namespace IOService;
 
+namespace
+{
+namespace mpl = boost::mpl;
+
+///////////////////////////////////////////////////////////////////////////////
+// struct Visitor
+
+struct Visitor
+{
+	Visitor(): m_result
+		(IORoutingTable::PlainRoute, IORoutingTable::RequiredRoute)
+	{
+	}
+
+	template<IOPackage::Type I>
+	void operator()(const mpl::integral_c<IOPackage::Type, I>& )
+	{
+		bool x = m_result.addRoute(I, IORoutingTable::SSLRoute,
+				IORoutingTable::RequiredRoute);
+		Q_ASSERT(x);
+		Q_UNUSED(x);
+	}
+	template<IOPackage::Type A, IOPackage::Type B>
+	void operator()(const mpl::pair<
+				mpl::integral_c<IOPackage::Type, A>,
+				mpl::integral_c<IOPackage::Type, B> >& )
+	{
+		bool x = m_result.addRoute(A, B, IORoutingTable::SSLRoute,
+				IORoutingTable::RequiredRoute);
+		Q_ASSERT(x);
+		Q_UNUSED(x);
+	}
+	const IORoutingTable& getResult() const
+	{
+		return m_result;
+	}
+
+private:
+	IORoutingTable m_result;
+};
+typedef mpl::vector<
+		mpl::integral_c<IOPackage::Type, PET_IO_CLI_KEYBOARD_SCANCODE>,
+		mpl::integral_c<IOPackage::Type, PET_IO_CLI_TOOLS_CLIPBOARD_DATA>,
+		mpl::integral_c<IOPackage::Type, PET_IO_CLI_AUTHENTICATE_SESSION>,
+		mpl::integral_c<IOPackage::Type, PET_IO_CLI_ATTACH_TO_VM>,
+		mpl::pair<
+			mpl::integral_c<IOPackage::Type, PVE::DspClientToVmCommandRangeStart>,
+			mpl::integral_c<IOPackage::Type, PVE::DspClientToVmCommandRangeEnd> >,
+		mpl::pair<
+			mpl::integral_c<IOPackage::Type, PVE::DspClientToDispatcherCommandRangeStart>,
+			mpl::integral_c<IOPackage::Type, PVE::DspClientToDispatcherCommandRangeEnd> >,
+		mpl::pair<
+			mpl::integral_c<IOPackage::Type, PVE::DspVmToClientCommandRangeStart>,
+			mpl::integral_c<IOPackage::Type, PVE::DspVmToClientCommandRangeEnd> >,
+		mpl::pair<
+			mpl::integral_c<IOPackage::Type, PVE::DspCtlCommandRangeStart>,
+			mpl::integral_c<IOPackage::Type, PVE::DspCtlCommandRangeEnd> >,
+		mpl::pair<
+			mpl::integral_c<IOPackage::Type, PVE::DspWsCommandRangeStart>,
+			mpl::integral_c<IOPackage::Type, PVE::DspWsCommandRangeEnd> >,
+		mpl::pair<
+			mpl::integral_c<IOPackage::Type, PVE::DispToDispRangeStart>,
+			mpl::integral_c<IOPackage::Type, PVE::DispToDispRangeEnd> >
+	>::type normalRouteList_type;
+
+} // namespace
+
 /*****************************************************************************/
 
-QMutex IORoutingTableHelper::m_mutex;
-QHash<PRL_SECURITY_LEVEL, IORoutingTable*>
-   IORoutingTableHelper::m_serverTables;
-QHash<PRL_SECURITY_LEVEL, IORoutingTable*>
-   IORoutingTableHelper::m_clientTables;
-
-/*****************************************************************************/
-
-const IORoutingTable& IORoutingTableHelper::GetServerRoutingTable (
-    PRL_SECURITY_LEVEL security )
+const IORoutingTable IORoutingTableHelper::GetClientRoutingTable (
+    PRL_SECURITY_LEVEL security)
 {
-    QMutexLocker locker( &m_mutex );
-    if ( m_serverTables.contains(security) )
-        return *m_serverTables[security];
-
-    IORoutingTable* table = 0;
-
-    switch ( security ) {
-    case PSL_LOW_SECURITY: {
-        table = new IORoutingTable( IORoutingTable::PlainRoute,
-                                    IORoutingTable::OptionalRoute,
-                                    // Additional route
-                                    QList<IORoutingTable::RouteName>() <<
-                                        IORoutingTable::SSLRoute );
-        break;
-    }
-    case PSL_NORMAL_SECURITY: {
-        table = new IORoutingTable( IORoutingTable::PlainRoute,
-                                    IORoutingTable::OptionalRoute );
-        bool res = false;
-        // IO routes
-        res = table->addRoute( PET_IO_CLI_KEYBOARD_SCANCODE,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res = table->addRoute( PET_IO_CLI_TOOLS_CLIPBOARD_DATA,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res = table->addRoute( PET_IO_CLI_AUTHENTICATE_SESSION,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res = table->addRoute( PET_IO_CLI_ATTACH_TO_VM,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        // Management routes
-        res= table->addRoute( PVE::DspClientToVmCommandRangeStart,
-                              PVE::DspClientToVmCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspClientToDispatcherCommandRangeStart,
-                              PVE::DspClientToDispatcherCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspVmToClientCommandRangeStart,
-                              PVE::DspVmToClientCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspCtlCommandRangeStart,
-                              PVE::DspCtlCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspWsCommandRangeStart,
-                              PVE::DspWsCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DispToDispRangeStart,
-                              PVE::DispToDispRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-		(void)res;
-        break;
-    }
-    case PSL_HIGH_SECURITY: {
-        table = new IORoutingTable( IORoutingTable::SSLRoute,
-                                    IORoutingTable::RequiredRoute );
-        break;
-    }
-    default : {
-        // Unreachable line
-        Q_ASSERT(0);
-    }}
-
-    Q_ASSERT(table);
-    m_serverTables[security] = table;
-
-    return *table;
-}
-
-const IORoutingTable& IORoutingTableHelper::GetClientRoutingTable (
-    PRL_SECURITY_LEVEL security )
-{
-    QMutexLocker locker( &m_mutex );
-    if ( m_clientTables.contains(security) )
-        return *m_clientTables[security];
-
-    IORoutingTable* table = 0;
-
-    switch ( security ) {
-    case PSL_LOW_SECURITY: {
-        table = new IORoutingTable( IORoutingTable::PlainRoute,
-                                    IORoutingTable::RequiredRoute );
-        break;
-    }
-    case PSL_NORMAL_SECURITY: {
-        table = new IORoutingTable( IORoutingTable::PlainRoute,
-                                    IORoutingTable::RequiredRoute );
-        bool res = false;
-        // IO routes
-        res = table->addRoute( PET_IO_CLI_KEYBOARD_SCANCODE,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res = table->addRoute( PET_IO_CLI_TOOLS_CLIPBOARD_DATA,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res = table->addRoute( PET_IO_CLI_AUTHENTICATE_SESSION,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res = table->addRoute( PET_IO_CLI_ATTACH_TO_VM,
-                               IORoutingTable::SSLRoute,
-                               IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        // Management routes
-        res= table->addRoute( PVE::DspClientToVmCommandRangeStart,
-                              PVE::DspClientToVmCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspClientToDispatcherCommandRangeStart,
-                              PVE::DspClientToDispatcherCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspVmToClientCommandRangeStart,
-                              PVE::DspVmToClientCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspCtlCommandRangeStart,
-                              PVE::DspCtlCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DspWsCommandRangeStart,
-                              PVE::DspWsCommandRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-        res= table->addRoute( PVE::DispToDispRangeStart,
-                              PVE::DispToDispRangeEnd,
-                              IORoutingTable::SSLRoute,
-                              IORoutingTable::RequiredRoute );
-        Q_ASSERT(res);
-		(void)res;
-        break;
-    }
-    case PSL_HIGH_SECURITY: {
-        table = new IORoutingTable( IORoutingTable::SSLRoute,
-                                    IORoutingTable::RequiredRoute );
-        break;
-    }
-    default : {
-        // Unreachable line
-        Q_ASSERT(0);
-    }}
-
-    Q_ASSERT(table);
-    m_clientTables[security] = table;
-
-    return *table;
+	if (PSL_HIGH_SECURITY == security)
+	{
+		return IORoutingTable(IORoutingTable::SSLRoute,
+			IORoutingTable::RequiredRoute);
+	}
+	Visitor v;
+	if (PSL_NORMAL_SECURITY == security)
+		mpl::for_each<normalRouteList_type>(boost::ref(v));
+	else
+		Q_ASSERT(PSL_LOW_SECURITY == security);
+	
+	return v.getResult();
 }
 
 /*****************************************************************************/

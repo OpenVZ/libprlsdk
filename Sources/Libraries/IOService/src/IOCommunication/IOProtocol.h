@@ -747,13 +747,13 @@ namespace IOService {
      * Default loopback (localhost) addr for client and server.
      * (actually, just an string with a single \s character.)
      */
-    extern const QString LoopbackAddr;
+    extern const char LoopbackAddr[];
 
     /**
      * Any (wildcard) addr for server.
      * (actually, just an empty string.)
      */
-    extern const QString AnyAddr;
+    extern const char AnyAddr[];
 
 /**
  * IO protocol features table:
