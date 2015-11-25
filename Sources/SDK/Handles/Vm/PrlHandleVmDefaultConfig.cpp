@@ -628,6 +628,9 @@ void PrlHandleVmDefaultConfig::SetupSoundDefaults( uint osVersion, DeviceList& d
 
 void PrlHandleVmDefaultConfig::SetupParallelPortDefaults( uint osVersion, DeviceList& devList )
 {
+	if ( PrlGetApiAppMode() == PAM_SERVER )
+		return;
+
 	switch( PVS_GET_GUEST_TYPE(osVersion) )
 	{
 		case PVS_GUEST_TYPE_LINUX:
