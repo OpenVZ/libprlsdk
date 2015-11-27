@@ -31,8 +31,6 @@
 #include "Libraries/HostUtils/PrlMiscellaneous.h"
 #include "XmlModel/DispConfig/CDispatcherConfig.h"
 
-#include <QApplication>
-
 using namespace PrlMiscellaneous;
 
 namespace {

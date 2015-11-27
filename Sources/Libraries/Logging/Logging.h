@@ -133,7 +133,7 @@
  * BEWARE: For Qt users only.
  * Often used to forward all Qt messages to this logging system.
  * You should use this macros after all includes in cpp, but before
- * 'main' function, in which QApplication is declared.
+ * 'main' function, in which QCoreApplication is declared.
  * @code
  * #include <QObject>
  * #include <some_header.h>
@@ -143,7 +143,7 @@
  *
  * int main ( int argc, cahr** argv )
  * {
- * QApplication app(argc, argv);
+ * QCoreApplication app(argc, argv);
  * return app.exec();
  * }
  *

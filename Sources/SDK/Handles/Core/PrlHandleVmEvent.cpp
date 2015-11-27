@@ -33,7 +33,32 @@
 
 #include "XmlModel/Messaging/CVmEventParameter.h"
 
-#include <QTextDocument> // for Qt::escape()
+namespace
+{
+
+/* Stolen from QString sources. */
+QString toHtmlEscaped(const QString &s)
+{
+	QString rich;
+	const int len = s.length();
+	rich.reserve(int(len * 1.1));
+	for (int i = 0; i < len; ++i) {
+		if (s.at(i) == QLatin1Char('<'))
+			rich += QLatin1String("&lt;");
+		else if (s.at(i) == QLatin1Char('>'))
+			rich += QLatin1String("&gt;");
+		else if (s.at(i) == QLatin1Char('&'))
+			rich += QLatin1String("&amp;");
+		else if (s.at(i) == QLatin1Char('"'))
+			rich += QLatin1String("&quot;");
+		else
+			rich += s.at(i);
+																    }
+	rich.squeeze();
+	return rich;
+}
+
+} // namespace
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module
@@ -236,7 +261,7 @@ QString& PrlHandleVmEvent::ReplaceParams(QString &result, CVmEvent &event)
         if (prm_no < rp_MAP_SIZE)
             prm_value = params_map[prm_no].second ;
 
-        result.replace(param_re.pos(1), param.length()+1, Qt::escape( prm_value ) ) ;
+        result.replace(param_re.pos(1), param.length()+1, toHtmlEscaped(prm_value)) ;
     }
 
     return result ;

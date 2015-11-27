@@ -28,7 +28,6 @@ include($$LEVEL/Sources/Parallels.pri)
 TEMPLATE	= app
 TARGET		= sdk2python
 
-QT			-= gui
 QT			+= xml
 
 CONFIG		+= console exceptions

@@ -29,7 +29,6 @@
 
 #include <QtCore/QtCore>
 #include <QtXml/QtXml>
-#include <QtGui/QtGui>
 #include <QtNetwork/QtNetwork>
 
 #	if defined( _OBJC_OBJC_H_ )

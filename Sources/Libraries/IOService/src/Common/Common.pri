@@ -24,7 +24,7 @@
 
 LIBTARGET = IOCommon
 PROJ_FILE = $$PWD/Common.pro
-QTCONFIG = core network gui
+QTCONFIG = core network
 !include(../../../../../Sources/Build/qmake/staticlib.pri): error(include error)
 
 INCLUDEPATH *= $$PWD

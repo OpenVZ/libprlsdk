@@ -27,7 +27,6 @@
 #include <QTimer>
 #include <QMetaType>
 
-#include <QApplication>
 #include <QTranslator>
 
 #include "Build/Current.ver"
@@ -370,25 +369,12 @@ void QMainThread::run()
 		char* argv[] = { app.data() };
 
 		WRITE_TRACE( DBG_DEBUG, "Starting SDK Library QCoreApplication Event Loop." );
-		if ( (m_nFlags & PAIF_USE_GRAPHIC_MODE) != 0 &&
-			 PrlMiscellaneous::PrlIsInteractiveSession() )
-		{
-			QApplication a(argc, argv);
-			InitSdkParts();
-			PrlSdkStatusWriter().SetInitStatus(true);
-			QCoreApplication::exec();
-			PrlSdkStatusWriter().SetInitStatus(false);
-			DeinitSdkParts();
-		}
-		else
-		{
-			QCoreApplication a(argc, argv);
-			InitSdkParts();
-			PrlSdkStatusWriter().SetInitStatus(true);
-			QCoreApplication::exec();
-			PrlSdkStatusWriter().SetInitStatus(false);
-			DeinitSdkParts();
-		}
+		QCoreApplication a(argc, argv);
+		InitSdkParts();
+		PrlSdkStatusWriter().SetInitStatus(true);
+		QCoreApplication::exec();
+		PrlSdkStatusWriter().SetInitStatus(false);
+		DeinitSdkParts();
 	}
 	else
 	{

@@ -25,7 +25,6 @@
 TEMPLATE = app
 CONFIG += console
 QT += xml network
-QT -= gui
 
 include(genxml.deps)
 

@@ -26,7 +26,6 @@ TEMPLATE = app
 TARGET = parsexml
 CONFIG += console
 QT += xml network
-QT -= gui
 
 LEVEL = ../../../..
 include($$LEVEL/Sources/Parallels.pri)
