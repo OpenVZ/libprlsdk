@@ -32,7 +32,6 @@ include($$LIBS_LEVEL/Logging/Logging.pri)
 win32: LIBS += -lAdvapi32 -lNetapi32 -lSecur32 -lKernel32
 
 linux-* {
-	CONFIG += x11lib
 	PCS_API = $$PWD/../../../External/PCS/api
 	INCLUDEPATH *= $$PCS_API
 	LIBS += -ldl

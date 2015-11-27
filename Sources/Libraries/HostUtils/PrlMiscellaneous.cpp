@@ -30,9 +30,7 @@
 
 #include <QObject>
 
-#ifdef _LIN_
-#include <X11/Xlib.h>
-#elif defined(_WIN_)
+#if defined(_WIN_)
 #define WINDOWS_LEAN_AND_MEAN
 #include <windows.h>
 #endif
@@ -52,27 +50,7 @@ namespace PrlMiscellaneous
 
 bool PrlIsInteractiveSession()
 {
-#ifdef _LIN_
-	Display *pDisplay = XOpenDisplay(NULL);
-	if (pDisplay)
-	{
-		XCloseDisplay(pDisplay);
-		return (true);
-	}
-	else
-		return (false);
-#elif defined(_WIN_)
-	HDESK hDesktop = OpenInputDesktop(0, FALSE, 0);
-	if (hDesktop)
-	{
-		CloseDesktop(hDesktop);
-		return (true);
-	}
-	else
-		return (false);
-#else
 	return (false);
-#endif
 }
 
 #ifndef _WIN_
