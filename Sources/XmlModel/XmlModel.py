@@ -208,6 +208,7 @@ def main():
         ('VmDataStatistic', 'VmDataStatistic', '--properties', ''),
         ('InterfaceInfo', 'InterfaceInfo', '', ''),
         ('CpuFeatures', 'CpuFeatures', '--properties --merge', ''),
+        ('VtInfo', 'VtInfo', '', ''),
     )
 
     schemas2build = []

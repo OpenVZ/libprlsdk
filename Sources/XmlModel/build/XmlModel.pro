@@ -29,6 +29,9 @@ include(../XmlModel.pri)
 
 INCLUDEPATH += ./ParallelsObjects
 
-linux-*:QMAKE_CXXFLAGS_RELEASE += -fno-strict-aliasing
+linux-* {
+	QMAKE_CXXFLAGS_RELEASE += -fno-strict-aliasing
+	QMAKE_LFLAGS += -Wl,--whole-archive
+}
 
 include(XmlModelSrc.pri)
