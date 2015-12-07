@@ -37,6 +37,7 @@ CVmStorageDevice::CVmStorageDevice()
 CVmStorageDevice::CVmStorageDevice( const CVmStorageDevice& rhs )
  : CVmClusteredDevice( rhs )
 {
+	setTargetDeviceName(rhs.getTargetDeviceName());
 }
 
 CVmStorageDevice::~CVmStorageDevice()
@@ -48,6 +49,7 @@ CVmStorageDevice& CVmStorageDevice::operator=( const CVmStorageDevice& rhs )
 	if ( this != &rhs )
 	{
 		CVmClusteredDevice::operator=( rhs );
+		setTargetDeviceName(rhs.getTargetDeviceName());
 	}
 	return *this;
 }
@@ -55,4 +57,24 @@ CVmStorageDevice& CVmStorageDevice::operator=( const CVmStorageDevice& rhs )
 bool CVmStorageDevice::operator==( const CVmStorageDevice& cVmStorageDevice )
 {
 	return CVmClusteredDevice::operator==( cVmStorageDevice );
+}
+
+void CVmStorageDevice::setTargetDeviceName(QString value)
+{
+	bool bValueChanged = (m_qsTargetDeviceName != value);
+	m_qsTargetDeviceName = value;
+	if (isSignalsEnabled() && bValueChanged)
+	{
+		emit signalTargetDeviceNameChanged(value, getObjectId());
+	}
+}
+
+void CVmStorageDevice::slotChangeTargetDeviceName(QString value)
+{
+	setTargetDeviceName(value);
+}
+
+QString CVmStorageDevice::getTargetDeviceName() const
+{
+	return m_qsTargetDeviceName;
 }

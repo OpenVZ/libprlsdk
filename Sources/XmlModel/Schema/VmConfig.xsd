@@ -130,6 +130,11 @@ bool CVmOpticalDisk::operator==( const CVmOpticalDisk&amp; cVmOpticalDisk )
 					<xs:documentation>method=Description;method_base_class=CVmDevice;</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="TargetDeviceName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>method_base_class=CVmStorageDevice;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ChangeDateTime" type="xs:dateTime" fixed="read_only_for_merge">
@@ -287,6 +292,11 @@ bool CVmFloppyDisk::operator==( const CVmFloppyDisk&amp; cVmFloppyDisk )
 			<xs:element name="DeviceDescription" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>method=Description;method_base_class=CVmDevice;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TargetDeviceName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>method_base_class=CVmStorageDevice;</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -1312,7 +1322,11 @@ bool CVmHardDisk::operator==( const CVmHardDisk&amp; cVmHardDisk )
 				<xs:complexType/>
 			</xs:element>
 			<xs:element name="IopsLimit" type="xs:integer" default="0" minOccurs="0"/>
-			<xs:element name="TargetDeviceName" type="xs:string" default="0" minOccurs="0"/>
+			<xs:element name="TargetDeviceName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>method_base_class=CVmStorageDevice;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Height" type="xs:integer"/>

@@ -36,6 +36,7 @@
  */
 class CVmStorageDevice : public CVmClusteredDevice
 {
+	Q_OBJECT
 public:
 	// Standard class constructor
 	CVmStorageDevice();
@@ -49,6 +50,17 @@ public:
 
 	virtual bool operator==( const CVmStorageDevice& cVmStorageDevice );
 
+	void setTargetDeviceName(QString value = QString());
+	QString getTargetDeviceName() const;
+
+protected:
+	QString m_qsTargetDeviceName;
+
+signals:
+	void signalTargetDeviceNameChanged(QString value, QString object_id = QString());
+
+private slots:
+	void slotChangeTargetDeviceName(QString value);
 };
 
 
