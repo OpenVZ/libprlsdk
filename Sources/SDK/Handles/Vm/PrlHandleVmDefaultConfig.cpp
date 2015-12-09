@@ -348,11 +348,12 @@ void PrlHandleVmDefaultConfig::SetupBootingOptionsDefaults( CVmConfiguration& cf
 	startupOpts->setAutoStart( (PRL_VM_AUTOSTART_OPTION)DEFAULT_AUTOSTART );
 	startupOpts->setWindowMode( PWM_DEFAULT_WINDOW_MODE );
 
-	if ( GetOsVersion( cfg ) == PVS_GUEST_VER_WIN_2012 )
-	{
-		// Set EFI BIOS as default for Windows-2012 (#PSBM-16282)
-		startupOpts->getBios()->setType(PBT_EFI);
-	}
+	// FIXME enable it when #PSBM-42171 will be fixed
+	//if ( GetOsVersion( cfg ) == PVS_GUEST_VER_WIN_2012 )
+	//{
+	//	// Set EFI BIOS as default for Windows-2012 (#PSBM-16282)
+	//	startupOpts->getBios()->setType(PBT_EFI);
+	//}
 
 	// Setup booting order
 	QList<CVmStartupOptions::CVmBootDevice*> bootDeviceList;
