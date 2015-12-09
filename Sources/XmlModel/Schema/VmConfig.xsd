@@ -1384,6 +1384,9 @@ bool CVmHardDisk::operator==( const CVmHardDisk&amp; cVmHardDisk )
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element ref="RAM"/>
+			<xs:element ref="MaxRAM" type="xs:integer" minOccurs="0"/>
+			<xs:element ref="MaxNumaRAM" type="xs:integer" minOccurs="0"/>
+			<xs:element ref="MaxSlots" type="xs:integer" minOccurs="0"/>
 			<xs:element name="EnableHotplug" type="xs:boolean" default="false" minOccurs="0"/>
 			<xs:element name="HostMemQuotaMin" type="xs:integer" minOccurs="0">
 				<xs:annotation>
@@ -2299,6 +2302,21 @@ bool CVmParallelPort::operator==( const CVmParallelPort&amp; cVmParallelPort )
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="MaxRAM" type="xs:integer" default="XML_DEFAULT_MAXRAM_SIZE">
+		<xs:annotation>
+			<xs:documentation>method=MaxRamSize;</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="MaxNumaRAM" type="xs:integer" default="XML_DEFAULT_MAXNUMARAM_SIZE">
+		<xs:annotation>
+			<xs:documentation>method=MaxNumaRamSize;</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="MaxSlots" type="xs:integer" default="XML_DEFAULT_MAXRAM_SLOTS">
+		<xs:annotation>
+			<xs:documentation>method=MaxSlots;</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="RAM" type="xs:integer" default="XML_DEFAULT_RAM_SIZE">
 		<xs:annotation>
 			<xs:documentation>method=RamSize;</xs:documentation>
