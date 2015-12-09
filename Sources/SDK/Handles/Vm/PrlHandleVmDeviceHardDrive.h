@@ -259,6 +259,20 @@ public://SDK API helpers set
 	 */
 	PRL_RESULT SetStorageURL(PRL_CONST_STR sURL);
 
+	/**
+	 * Return disk serial number
+	 *
+	 * @param [out] buffer for storing result
+	 * @param [out] buffer size (on in - how much symbols can be placed into buffer;
+	 *                           on out - how much were placed actually)
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_INVALID_ARG - incorrect passed buffer size (NULL size)
+	 * PRL_ERR_BUFFER_OVERRUN - not enough buffer to completely storing result
+	 * (in this case the buffer will contain only a part of the serial number)
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetSerialNumber(PRL_STR sSerialNumber, PRL_UINT32_PTR pnSerialNumberBufLength);
+
 public://Async operations
 	/**
 	 * Performs async request to remote side to check HDD
