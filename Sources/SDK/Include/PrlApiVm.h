@@ -12097,6 +12097,36 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_BOOL bEnabled
 		) );
 
+/*
+   Return disk serial number.
+
+   Parameters
+   hVmDev :         A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
+                    identifying the virtual hard disk.
+   sSerialNumber :  [out] A pointer to a buffer that receives the result (a UTF\-8 encoded,
+                    null\-terminated string).
+   pnSerialNumberBufLength : [in] The size of the output buffer (in bytes). Set the buffer pointer to null
+                    and this parameter's value to zero to receive the required size.
+                    [out] The required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmDevHd_GetSerialNumber, (
+		PRL_HANDLE hVmDev,
+		PRL_STR sSerialNumber,
+		PRL_UINT32_PTR pnSerialNumberBufLength
+		));
+
 /* Removes the specified partition handle from the virtual hard
    disk list.
    Parameters

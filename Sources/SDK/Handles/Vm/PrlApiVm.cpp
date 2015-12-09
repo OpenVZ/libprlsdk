@@ -9205,6 +9205,28 @@ PRL_METHOD( PrlVmDevHd_IsAutoCompressEnabled ) (
 	return pDevice->IsAutoCompressEnabled(pbEnabled);
 }
 
+PRL_METHOD( PrlVmDevHd_GetSerialNumber ) (
+		PRL_HANDLE hVmDev,
+		PRL_STR sSerialNumber,
+		PRL_UINT32_PTR pnSerialNumberBufLength
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sSerialNumber=%p, pnSerialNumberBufLength=%p)",
+		__FUNCTION__,
+		hVmDev,
+		sSerialNumber,
+		pnSerialNumberBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK) ||
+			PRL_WRONG_PTR(pnSerialNumberBufLength))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmDeviceHardDrivePtr pDevice = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
+	return (pDevice->GetSerialNumber(sSerialNumber, pnSerialNumberBufLength));
+}
 
 PRL_METHOD( PrlVmDevHdPart_Remove ) (
 		PRL_HANDLE hPartition

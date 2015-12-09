@@ -89,6 +89,16 @@ unsigned int getBitsCount(char *p, unsigned int size);
  * Returns currency sign ($, €, ect), based on currency ID (USD, EUR, etc)
  */
 QString currencySign( const QString& currencyId );
+
+/** Convert number to base26 ('a' - 'z') representation */
+QString toBase26(uint value_);
+
+/** Convert base26 ('a' - 'z') representation to number */
+uint fromBase26(const QString& value_);
+
+/** Generate a serial number suitable for HDD */
+QString generateDiskSerialNumber();
+
 }
 
 
