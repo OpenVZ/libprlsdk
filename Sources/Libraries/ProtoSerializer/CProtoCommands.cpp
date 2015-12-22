@@ -633,12 +633,15 @@ QStringList CProtoStartSearchConfigCommand::GetSearchDirs()
 CProtoVmCloneCommand::CProtoVmCloneCommand(
 	const QString &sVmUuid,
 	const QString &sVmName,
+	const QString &sNewVmUuid,
 	const QString &sVmHomePath,
 	PRL_UINT32 nFlags
 )
 : CProtoBasicVmCommand(PVE::DspCmdDirVmClone, sVmUuid, false, nFlags)
 {
 	SetStringParamValue( sVmName, EVT_PARAM_VM_CLONE_CMD_VM_NAME);
+	if (!sNewVmUuid.isEmpty())
+		SetStringParamValue( sNewVmUuid, EVT_PARAM_VM_CLONE_CMD_VM_UUID);
 	SetUnsignedIntParamValue( quint32(nFlags & PCVF_CLONE_TO_TEMPLATE), EVT_PARAM_VM_CLONE_CMD_CREATE_TEMPLATE );
 	SetStringParamValue( sVmHomePath, EVT_PARAM_VM_CREATE_CMD_VM_HOME_PATH );
 }
@@ -664,6 +667,11 @@ QString CProtoVmCloneCommand::GetVmHomePath()
 bool CProtoVmCloneCommand::IsCreateTemplate()
 {
 	return ((bool)GetUnsignedIntParamValue(EVT_PARAM_VM_CLONE_CMD_CREATE_TEMPLATE));
+}
+
+QString CProtoVmCloneCommand::GetNewVmUuid()
+{
+	return (GetStringParamValue(EVT_PARAM_VM_CLONE_CMD_VM_UUID));
 }
 
 //+++++++++++++++++++++++++++++++++++++++Basic VM command class implementation+++++++++++++++++++++++++++++++++++++++

@@ -1742,6 +1742,61 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bCreateTemplate
 		) );
 
+
+/* Clones an existing virtual machine. The function creates an
+   exact copy of the specified virtual machine on the same
+   host using the specified new name and location. In order to
+   perform a clone operation, the original machine must be
+   registered with the Parallels Service. A clone can be created as a
+   virtual machine or as a template. To create a template, set
+   the nFlags parameter to PACF_CLONEVM_TO_TEMPLATE value. The function
+   can also be used to create new virtual machines from
+   templates. In order to that, the hVm parameter must contain a
+   handle to a template, the name and the path parameters must
+   be set to desired values, and the bCreateTemplate parameter
+   must be set to PRL_FALSE.
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Parameters
+   hVm :               A handle of type PHT_VIRTUAL_MACHINE
+                       identifying the virtual machine.
+   new_vm_name :       The name to use for the new virtual
+                       machine.
+   new_vm_uuid :       The uuid to use for the new virtual
+                       machine.
+   new_vm_root_path :  Name and path of the directory where the
+                       new virtual machine should be created. To
+                       create the machine in a default directory,
+                       pass an empty string.
+   nFlags :           Clone flags (PCVF_CLONE_TO_TEMPLATE, PCVF_CHANGE_SID,
+                   PCVF_LINKED_CLONE, PCVF_IMPORT_BOOT_CAMP).
+                                  Also PACF_NON_INTERACTIVE_MODE can be used to specify non
+                                  interactive session working mode (remote side won't ask
+                                  questions during operation progress in this case).
+                                  Please note that clone operation can take
+                                  it's own exclusive lock of virtual machine (in change SID or
+                                  linked clone modes) - so VM shouldn't be exclusively locked
+                                  with PrlVm_Lock call before clone operation performed.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
+		PrlVm_CloneWithUuid, (
+			PRL_HANDLE hVm,
+			PRL_CONST_STR new_vm_name,
+			PRL_CONST_STR new_vm_uuid,
+			PRL_CONST_STR new_vm_root_path,
+			PRL_UINT32 nFlags
+			) );
+
+
 /* Migrates an existing virtual machine to another host. To get
    the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:

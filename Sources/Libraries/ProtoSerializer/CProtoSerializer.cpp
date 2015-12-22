@@ -150,11 +150,13 @@ CProtoCommandPtr CProtoSerializer::CreateSrvCreateUnattendedCdProtoCommand(
 CProtoCommandPtr CProtoSerializer::CreateVmCloneProtoCommand(
 	const QString &sVmUuid,
 	const QString &sVmName,
+	const QString &sNewVmUuid,
 	const QString &sVmHomePath,
 	PRL_UINT32 nFlags
 )
 {
-	return (CProtoCommandPtr(new CProtoVmCloneCommand(sVmUuid, sVmName, sVmHomePath, nFlags)));
+	return (CProtoCommandPtr(new CProtoVmCloneCommand(sVmUuid, sVmName,
+					sNewVmUuid, sVmHomePath, nFlags)));
 }
 
 CProtoCommandPtr CProtoSerializer::CreateImageCreateProtoCommand(

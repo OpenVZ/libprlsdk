@@ -523,6 +523,7 @@ public://Protocol methods
 	 */
 	QString DspCmdDirVmClone(const char *strVmUuid,
 		const char *strVmName,
+		const char *strNewVmUuid,
 		const char *strVmHomePath,
 		PRL_UINT32 nFlags);
 

@@ -1866,17 +1866,20 @@ QString CPveControl::DspCmdSendProblemReport(const QString& report,
 
 
 QString CPveControl::DspCmdDirVmClone(const char *strVmUuid,
-                                      const char *strVmName,
-                                      const char *strVmHomePath,
-					PRL_UINT32 nFlags)
+		const char *strVmName,
+		const char *strNewVmUuid,
+		const char *strVmHomePath,
+		PRL_UINT32 nFlags)
 {
-    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdDirVmClone()");
+	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdDirVmClone()");
 
 
-	CProtoCommandPtr pRequest = CProtoSerializer::CreateVmCloneProtoCommand(UTF8_2QSTR(strVmUuid),
-													UTF8_2QSTR(strVmName),
-													UTF8_2QSTR(strVmHomePath),
-													nFlags);
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateVmCloneProtoCommand(
+			UTF8_2QSTR(strVmUuid),
+			UTF8_2QSTR(strVmName),
+			UTF8_2QSTR(strNewVmUuid),
+			UTF8_2QSTR(strVmHomePath),
+			nFlags);
 
 	return SendRequestToServer(pRequest);
 }

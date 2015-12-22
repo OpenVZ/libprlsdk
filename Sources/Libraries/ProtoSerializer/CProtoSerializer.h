@@ -398,15 +398,18 @@ public:
 	 * Generates protocol DspCmdDirVmClone command
 	 * @param VM UUID
 	 * @param new VM name
+	 * @param new VM uuid
 	 * @param path to VM home
 	 * @param clone flags (PACF_CLONEVM_TO_TEMPLATE, PACF_CLONEVM_CHANGE_SID)
 	 */
 	static CProtoCommandPtr CreateVmCloneProtoCommand(
 		const QString &sVmUuid,
 		const QString &sVmName,
+		const QString &sNewVmUuid,
 		const QString &sVmHomePath,
 		PRL_UINT32 nFlags
 	);
+
 	/**
 	 * Generates protocol DspCmdDirCreateImage command
 	 * @param VM UUID
