@@ -33,7 +33,9 @@
 #include <QDir>
 #include <QFileInfo>
 #include <prlcommon/Std/PrlAssert.h>
-
+#include <boost/filesystem/path.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/variant/variant.hpp>
 
 CVmDevice::CVmDevice()
 {
@@ -300,114 +302,191 @@ QString CVmDevice::getDescription() const
 
 //////////////////////////////////////////////////////////////////////////////
 
-void CVmDevice::setRelativeSystemName(const QString & strVmDirectory)
-{
-	if (getSystemName().isEmpty())
-		return;
+namespace {
+namespace Path {
+namespace Flavor {
 
-	PRL_DEVICE_TYPE type = getDeviceType();
-	switch(type)
+//////////////////////////////////////////////////////////////////////////////
+// struct Absolute
+
+struct Absolute
+{
+	static QString convert(const QString& home_, const QString& path_)
+	{
+		boost::filesystem::path p(path_.toStdString());
+		return QDir::cleanPath(QString::fromStdString(
+			boost::filesystem::absolute(p,
+				QDir::cleanPath(home_).toStdString()).string()));
+	}
+};
+
+//////////////////////////////////////////////////////////////////////////////
+// struct Relative
+
+struct Relative
+{
+	static QString convert(const QString& home_, const QString& path_)
+	{
+		namespace fs = boost::filesystem;
+		fs::path h(QDir::cleanPath(home_).toStdString());
+		fs::path p(QDir::cleanPath(path_).toStdString());
+		std::pair<fs::path::const_iterator, fs::path::const_iterator> i =
+			std::mismatch(h.begin(), h.end(), p.begin());
+		if (i.first == h.end() && i.second != p.begin())
+		{
+			fs::path x;
+			while (i.second != p.end())
+			{
+				x /= *i.second;
+				++i.second;
+			}
+			return QString::fromStdString(x.string());
+		}
+		return path_;
+	}
+};
+
+} // namespace Flavor
+
+namespace Mode {
+
+//////////////////////////////////////////////////////////////////////////////
+// struct Both
+
+struct Both
+{
+	explicit Both(CVmDevice& device_) : m_device(&device_)
+	{
+	}
+
+	void operator()(const QString& path_) const
+	{
+		m_device->setSystemName(path_);
+		m_device->setUserFriendlyName(path_);
+	}
+
+private:
+	CVmDevice *m_device;
+};
+
+//////////////////////////////////////////////////////////////////////////////
+// struct System
+
+struct System
+{
+	explicit System(CVmDevice& device_) : m_device(&device_)
+	{
+	}
+
+	void operator()(const QString& path_) const
+	{
+		m_device->setSystemName(path_);
+	}
+
+private:
+	CVmDevice *m_device;
+};
+
+} // namespace Mode
+
+typedef boost::variant<boost::blank, Mode::Both, Mode::System> mode_type;
+
+mode_type getMode(CVmDevice& device_)
+{
+	uint e = device_.getEmulatedType();
+	switch (device_.getDeviceType())
 	{
 		case PDE_FLOPPY_DISK:
-		case PDE_HARD_DISK:
 		case PDE_OPTICAL_DISK:
 		case PDE_PARALLEL_PORT:
 		case PDE_SERIAL_PORT:
+			if (e == PDT_USE_IMAGE_FILE || e == PDT_USE_OUTPUT_FILE)
+				return Mode::Both(device_);
+			break;
+		case PDE_HARD_DISK:
 		{
-			// #127869
-			bool bIsRealOrBootcampHdd =
-				(type == PDE_HARD_DISK)
-				&& ( getEmulatedType() == PDT_USE_REAL_HDD || getEmulatedType() == PDT_USE_BOOTCAMP);
-			if (
-					( bIsRealOrBootcampHdd
-					|| getEmulatedType() == PDT_USE_IMAGE_FILE
-					|| getEmulatedType() == PDT_USE_OUTPUT_FILE
-					)
-					&& ! isRemote()
-				)
+			if (e == PDT_USE_REAL_HDD || e == PDT_USE_BOOTCAMP)
 			{
-				if(/*getSystemName().contains(strVmDirectory) &&*/
-							QDir(strVmDirectory).exists() &&
-							QFileInfo(getSystemName()).isAbsolute() &&
-							( bIsRealOrBootcampHdd	|| QFileInfo(getUserFriendlyName()).isAbsolute()
-							)
-					)
-				{
-					QString strImageDir = QFileInfo(getSystemName()).dir().absolutePath();
-					Qt::CaseSensitivity caseSens = Qt::CaseSensitive;
-#ifndef _LIN_
-					caseSens = Qt::CaseInsensitive;
-#endif
-					QString sRelativePath = getSystemName();
-
-					if (strImageDir.startsWith(strVmDirectory,caseSens))
-					{
-						sRelativePath.remove(strVmDirectory);
-						while (sRelativePath.startsWith('/') || sRelativePath.startsWith('\\'))
-							sRelativePath.remove(0, 1);
-					}
-
-					setSystemName( sRelativePath );
-					if( !bIsRealOrBootcampHdd )
-						setUserFriendlyName(getSystemName());
-				}
+				return Mode::System(device_);
+			}
+			else if (e == PDT_USE_IMAGE_FILE || e == PDT_USE_OUTPUT_FILE)
+			{
+				return Mode::Both(device_);
 			}
 			break;
 		}
 		default:
 			break;
 	}
+	return boost::blank();
 }
 
-QString CVmDevice::RevertToInitialSystemName(const QString & strVmDirectory)
+//////////////////////////////////////////////////////////////////////////////
+// struct Visitor
+
+template<class T>
+struct Visitor : public boost::static_visitor<void>
+{
+	Visitor(CVmDevice& device_, const QString& home_, const QString& path_)
+		: boost::static_visitor<void>(), m_device(&device_),
+		  m_home(home_), m_path(path_)
+	{
+	}
+
+	void operator()(const boost::blank&) const
+	{
+	}
+
+	void operator()(const Mode::System& mode_) const
+	{
+		mode_(T::convert(m_home, m_path));
+	}
+
+	void operator()(const Mode::Both& mode_) const;
+
+private:
+	CVmDevice *m_device;
+	QString m_home;
+	QString m_path;
+};
+
+template<>
+void Visitor<Flavor::Absolute>::operator()(const Mode::Both& mode_) const
+{
+	if (!QFileInfo(m_device->getUserFriendlyName()).isAbsolute())
+		mode_(Flavor::Absolute::convert(m_home, m_path));
+}
+
+template<>
+void Visitor<Flavor::Relative>::operator()(const Mode::Both& mode_) const
+{
+	if (QFileInfo(m_device->getUserFriendlyName()).isAbsolute())
+		mode_(Flavor::Relative::convert(m_home, m_path));
+}
+
+} // namespace Path
+} // anonymous namespace
+
+void CVmDevice::setRelativeSystemName(const QString& strVmDirectory)
+{
+	QString s = getSystemName();
+	if (s.isEmpty() || !QFileInfo(s).isAbsolute())
+		return;
+	if (!QDir(strVmDirectory).exists() || isRemote())
+		return;
+	Path::mode_type m = Path::getMode(*this);
+	boost::apply_visitor(Path::Visitor<Path::Flavor::Relative>(*this, strVmDirectory, s), m);
+}
+
+QString CVmDevice::RevertToInitialSystemName(const QString& strVmDirectory)
 {
 	if (getSystemName().isEmpty() || getUserFriendlyName().isEmpty())
-		return "";
-
-	PRL_DEVICE_TYPE type = getDeviceType();
-	switch(type)
-	{
-		case PDE_FLOPPY_DISK:
-		case PDE_HARD_DISK:
-		case PDE_OPTICAL_DISK:
-		case PDE_PARALLEL_PORT:
-		case PDE_SERIAL_PORT:
-		{
-			// #127869
-			bool bIsRealOrBootcampHdd =
-					(type == PDE_HARD_DISK)
-					&& ( getEmulatedType() == PDT_USE_REAL_HDD || getEmulatedType() == PDT_USE_BOOTCAMP);
-
-			if (
-					( bIsRealOrBootcampHdd
-					|| getEmulatedType() == PDT_USE_IMAGE_FILE
-					|| getEmulatedType() == PDT_USE_OUTPUT_FILE
-					)
-					&& ! isRemote()
-				)
-			{
-				if( !strVmDirectory.isEmpty()
-					&& !QFileInfo(getSystemName()).isAbsolute()
-					&& ( bIsRealOrBootcampHdd || !QFileInfo(getUserFriendlyName()).isAbsolute() )
-					)
-				{
-					QString strTemp;
-					if (getSystemName().startsWith("../"))
-						strTemp = QFileInfo(strVmDirectory).absolutePath()
-							+ "/" + getSystemName().remove("../");
-					else
-						strTemp = strVmDirectory + "/" + getSystemName();
-
-					setSystemName(strTemp);
-					if(!bIsRealOrBootcampHdd)
-						setUserFriendlyName(getSystemName());
-				}
-			}
-			break;
-		}
-		default:
-			break;
-	}
+		return QString();
+	QString s = getSystemName();
+	if (QFileInfo(s).isAbsolute() || strVmDirectory.isEmpty() || isRemote())
+		return s;
+	Path::mode_type m = Path::getMode(*this);
+	boost::apply_visitor(Path::Visitor<Path::Flavor::Absolute>(*this, strVmDirectory, s), m);
 	return getSystemName();
 }
 
