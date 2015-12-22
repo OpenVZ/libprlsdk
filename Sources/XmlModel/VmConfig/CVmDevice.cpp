@@ -399,7 +399,6 @@ mode_type getMode(CVmDevice& device_)
 		case PDE_FLOPPY_DISK:
 		case PDE_OPTICAL_DISK:
 		case PDE_PARALLEL_PORT:
-		case PDE_SERIAL_PORT:
 			if (e == PDT_USE_IMAGE_FILE || e == PDT_USE_OUTPUT_FILE)
 				return Mode::Both(device_);
 			break;
@@ -415,6 +414,13 @@ mode_type getMode(CVmDevice& device_)
 			}
 			break;
 		}
+		case PDE_SERIAL_PORT:
+			if (e == PDT_USE_IMAGE_FILE || e == PDT_USE_OUTPUT_FILE
+				|| e == PDT_USE_SERIAL_PORT_SOCKET_MODE)
+			{
+				return Mode::Both(device_);
+			}
+			break;
 		default:
 			break;
 	}
