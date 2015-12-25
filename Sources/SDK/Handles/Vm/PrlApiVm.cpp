@@ -348,16 +348,22 @@ PRL_ASYNC_METHOD( PrlSrv_GetVmListEx ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_GetVmList, (hServer, nFlags))
 }
 
-PRL_HANDLE PrlVm_CloneEx_Impl(PRL_HANDLE hVm, PRL_CONST_STR new_vm_name, PRL_CONST_STR new_vm_config_path,
+PRL_HANDLE PrlVm_Clone_Impl(PRL_HANDLE hVm,
+		PRL_CONST_STR new_vm_name,
+		PRL_CONST_STR new_vm_uuid,
+		PRL_CONST_STR new_vm_config_path,
 		PRL_UINT32 nFlags)
 {
-	if ( PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE) || PRL_WRONG_PTR(new_vm_name) || PRL_WRONG_PTR(new_vm_config_path) )
+	if ( PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE) ||
+			PRL_WRONG_PTR(new_vm_name) ||
+			PRL_WRONG_PTR(new_vm_uuid) ||
+			PRL_WRONG_PTR(new_vm_config_path) )
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_CLONE))
-		PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
-	PrlHandleJobPtr pJob = pVm->Clone(new_vm_name, new_vm_config_path, nFlags);
+	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
+	PrlHandleJobPtr pJob = pVm->Clone(new_vm_name, new_vm_uuid, new_vm_config_path, nFlags);
 	if (!pJob)
 		RETURN_RES(PRL_INVALID_HANDLE)
-		pJob->SetVmHandle(hVm);
+	pJob->SetVmHandle(hVm);
 	RETURN_RES(pJob->GetHandle())
 }
 
@@ -368,8 +374,7 @@ PRL_ASYNC_METHOD( PrlVm_CloneEx ) (
 		PRL_UINT32 nFlags
 		)
 {
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_CLONE)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_CloneEx, (hVm, new_vm_name, new_vm_config_path, nFlags))
+	return PrlVm_Clone_Impl(hVm, new_vm_name, "", new_vm_config_path, nFlags);
 }
 
 PRL_HANDLE PrlVm_Delete_Impl(PRL_HANDLE hVm,PRL_HANDLE hDevicesList)
@@ -429,21 +434,6 @@ PRL_ASYNC_METHOD( PrlVm_GetPackedProblemReport ) (
 		CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_GetPackedProblemReport, (hVm,nFlags))
 }
 
-PRL_HANDLE PrlVm_Clone_Impl(PRL_HANDLE hVm, PRL_CONST_STR new_vm_name, PRL_CONST_STR new_vm_config_path, PRL_BOOL bCreateTemplate)
-{
-	if ( PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE) || PRL_WRONG_PTR(new_vm_name) || PRL_WRONG_PTR(new_vm_config_path) )
-		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_CLONE))
-		PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
-	PRL_UINT32 nFlags = 0;
-	if (bCreateTemplate)
-		nFlags |= PCVF_CLONE_TO_TEMPLATE;
-	PrlHandleJobPtr pJob = pVm->Clone(new_vm_name, new_vm_config_path, nFlags);
-	if (!pJob)
-		RETURN_RES(PRL_INVALID_HANDLE)
-		pJob->SetVmHandle(hVm);
-	RETURN_RES(pJob->GetHandle())
-}
-
 PRL_ASYNC_METHOD( PrlVm_Clone ) (
 		PRL_HANDLE hVm,
 		PRL_CONST_STR new_vm_name,
@@ -451,8 +441,20 @@ PRL_ASYNC_METHOD( PrlVm_Clone ) (
 		PRL_BOOL bCreateTemplate
 		)
 {
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_CLONE)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Clone, (hVm, new_vm_name, new_vm_config_path, bCreateTemplate))
+	return PrlVm_Clone_Impl(hVm, new_vm_name, "", new_vm_config_path,
+			bCreateTemplate ? PCVF_CLONE_TO_TEMPLATE : 0);
+}
+
+PRL_ASYNC_METHOD( PrlVm_CloneWithUuid ) (
+		PRL_HANDLE hVm,
+		PRL_CONST_STR new_vm_name,
+		PRL_CONST_STR new_vm_uuid,
+		PRL_CONST_STR new_vm_config_path,
+		PRL_UINT32 nFlags
+		)
+{
+	return PrlVm_Clone_Impl(hVm, new_vm_name, new_vm_uuid,
+			new_vm_config_path, nFlags);
 }
 
 PRL_HANDLE PrlVm_GenerateVmDevFilename_Impl(

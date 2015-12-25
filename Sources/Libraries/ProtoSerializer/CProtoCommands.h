@@ -653,6 +653,7 @@ public:
 	CProtoVmCloneCommand(
 		const QString &sVmUuid,
 		const QString &sVmName,
+		const QString &sNewVmUuid,
 		const QString &sVmHomePath,
 		PRL_UINT32 nFlags
 	);
@@ -666,6 +667,8 @@ public:
 	bool IsChangeSID();
 	/** Returns path to clone new vm*/
 	QString GetVmHomePath();
+	/** Returns new VM UUID */
+	QString GetNewVmUuid();
 };
 
 /**

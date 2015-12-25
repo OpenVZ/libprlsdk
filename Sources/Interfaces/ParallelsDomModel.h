@@ -1809,6 +1809,7 @@ public:
 #define EVT_PARAM_VM_CLONE_CMD_VM_NAME			"vm_clone_cmd_vm_name"
 #define EVT_PARAM_VM_CLONE_CMD_CREATE_TEMPLATE	"vm_clone_cmd_create_template"
 #define EVT_PARAM_VM_CLONE_CMD_CHANGE_SID	"vm_clone_cmd_change_sid"
+#define EVT_PARAM_VM_CLONE_CMD_VM_UUID		"vm_clone_cmd_vm_uuid"
 ////////////////////////////////////////////////////////////////////////////////
 #define EVT_PARAM_VM_START_EX_CMD_START_MODE				"vm_start_ex_cmd_start_mode"
 #define EVT_PARAM_VM_START_EX_CMD_RESERVED					"vm_start_ex_cmd_reserved_parameter"

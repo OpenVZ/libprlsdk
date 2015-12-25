@@ -477,13 +477,21 @@ PrlHandleJobPtr PrlHandleVmSrv::Restore()
 	return (m_pServerVm->DspCmdDirRestoreVm(GET_VM_UUID));
 }
 
-PrlHandleJobPtr PrlHandleVmSrv::Clone(PRL_CONST_STR new_vm_name, PRL_CONST_STR new_vm_config_path, PRL_UINT32 nFlags)
+PrlHandleJobPtr PrlHandleVmSrv::Clone(
+		PRL_CONST_STR new_vm_name,
+		PRL_CONST_STR new_vm_uuid,
+		PRL_CONST_STR new_vm_config_path,
+		PRL_UINT32 nFlags)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	CHECK_SERVER
 	CHECK_IDENTIFICATION
-	return (m_pServerVm->DspCmdDirVmClone(m_VmConfig.getVmIdentification()->getVmUuid().toUtf8().data(),
-				new_vm_name, new_vm_config_path, nFlags));
+	return (m_pServerVm->DspCmdDirVmClone(
+			m_VmConfig.getVmIdentification()->getVmUuid().toUtf8().data(),
+			new_vm_name,
+			new_vm_uuid,
+			new_vm_config_path,
+			nFlags));
 }
 
 PrlHandleJobPtr PrlHandleVmSrv::Migrate(

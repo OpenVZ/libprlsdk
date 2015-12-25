@@ -414,6 +414,7 @@ public:
 	PrlHandleJobPtr DspCmdDirVmClone(
 			PRL_CONST_STR sVmUuid,
 			PRL_CONST_STR sNewVmName,
+			PRL_CONST_STR sNewVmUuid,
 			PRL_CONST_STR sNewVmConfigPath,
 			PRL_UINT32 nFlags
 	);

@@ -284,11 +284,16 @@ public:
 	 * Clones VM
 	 *
 	 * @param new VM name
+	 * @param new VM uuid
 	 * @param path to new VM configuration
 	 * @param clone flags (PACF_CLONEVM_TO_TEMPLATE, PACF_CLONEVM_CHANGE_SID)
 	 * return pointer to job object
 	 */
-	PrlHandleJobPtr Clone(PRL_CONST_STR new_vm_name, PRL_CONST_STR new_vm_config_path, PRL_UINT32 nFlags);
+	PrlHandleJobPtr Clone(
+		PRL_CONST_STR new_vm_name,
+		PRL_CONST_STR new_vm_uuid,
+		PRL_CONST_STR new_vm_config_path,
+		PRL_UINT32 nFlags);
 	/**
 	 * Migrates VM
 	 *

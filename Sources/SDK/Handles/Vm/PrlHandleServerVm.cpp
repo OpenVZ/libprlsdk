@@ -438,10 +438,14 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmUpdateSnapshotData(PRL_CONST_STR sVmU
 		PJOC_VM_UPDATE_SNAPSHOT_DATA)));
 }
 
-PrlHandleJobPtr PrlHandleServerVm::DspCmdDirVmClone(PRL_CONST_STR sVmUuid, PRL_CONST_STR sNewVmName,
-		PRL_CONST_STR sNewVmConfigPath, PRL_UINT32 nFlags)
+PrlHandleJobPtr PrlHandleServerVm::DspCmdDirVmClone(
+		PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sNewVmName,
+		PRL_CONST_STR sNewVmUuid,
+		PRL_CONST_STR sNewVmConfigPath,
+		PRL_UINT32 nFlags)
 {
-	QString job_uuid = m_pPveControl->DspCmdDirVmClone(sVmUuid, sNewVmName, sNewVmConfigPath, nFlags);
+	QString job_uuid = m_pPveControl->DspCmdDirVmClone(sVmUuid, sNewVmName, sNewVmUuid, sNewVmConfigPath, nFlags);
 
 	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
 							PJOC_VM_CLONE)));
