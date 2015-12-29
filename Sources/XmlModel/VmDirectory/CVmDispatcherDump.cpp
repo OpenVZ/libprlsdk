@@ -31,7 +31,7 @@
 #include "CVmDispatcherDump.h"
 #include "ParallelsDomModel.h"
 
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Logging/Logging.h>
 
 #ifdef Q_OS_WIN32
 #include <process.h>

@@ -29,9 +29,9 @@
 
 #include "SDK/Include/Parallels.h"
 
-#include "Libraries/PrlCommonUtilsBase/PrlStringifyConsts.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/Logging/Logging.h>
 
 #include "PrlCommon.h"
 #include "PrlHandleStringsList.h"

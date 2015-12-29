@@ -30,7 +30,7 @@
 #include "PrlHandleSrvConfig.h"
 #include "PrlHandleHwNetAdapter.h"
 
-#include "Libraries/PrlCommonUtilsBase/NetworkUtils.h"
+#include <prlcommon/PrlCommonUtilsBase/NetworkUtils.h>
 
 PrlHandleVirtNet::PrlHandleVirtNet()
 : PrlHandleBase(PHT_VIRTUAL_NETWORK)

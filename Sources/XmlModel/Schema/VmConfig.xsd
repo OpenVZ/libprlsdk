@@ -1579,7 +1579,7 @@ void CVmGenericNetworkAdapter::setConfigureWithDhcpIPv6Ex(bool value)
     bool isVenetDevice() const { return (PNA_ROUTED == (PRL_NET_ADAPTER_EMULATED_TYPE)CVmDevice::getEmulatedType()); }
 </xs:documentation>
 			<xs:documentation source="include host utils">unit_fragment:
-#include "Libraries/HostUtils/HostUtils.h"</xs:documentation>
+#include &lt;prlcommon/HostUtils/HostUtils.h&gt;</xs:documentation>
 			<xs:documentation source="post read: drop DHCP flag">post_read_fragment:
     if ( isConfigureWithDhcp() )
     {   //if exist v4 ip - set v4 dhcp to false
@@ -3034,7 +3034,7 @@ bool CVmCommonOptions::operator==( const CVmCommonOptions&amp; cVmCommonOptions)
 						<xs:element name="SharedVolumes" block="restriction">
 							<xs:annotation>
 								<xs:documentation>single_fixed=on;class=CVmSharedVolumes;</xs:documentation>
-								<xs:documentation>include="Libraries/PrlCommonUtilsBase/ParallelsDirs.h";</xs:documentation>
+								<xs:documentation>include=&lt;prlcommon/PrlCommonUtilsBase/ParallelsDirs.h&gt;;</xs:documentation>
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>

@@ -37,7 +37,7 @@
 #include "PrlCommon.h"
 #include "BuiltinEventSource.h"
 
-#include "Libraries/Std/SmartPtr.h"
+#include <prlcommon/Std/SmartPtr.h>
 
 /**
  * Notification thread

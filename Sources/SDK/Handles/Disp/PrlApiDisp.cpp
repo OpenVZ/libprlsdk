@@ -30,9 +30,9 @@
 #include "Interfaces/ParallelsSdk.h"
 #include "SDK/Include/Parallels.h"
 
-#include "Libraries/PrlCommonUtilsBase/PrlStringifyConsts.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/Logging/Logging.h>
 
 #include "PrlCommon.h"
 #include "PrlHandleServer.h"
@@ -455,9 +455,7 @@ PRL_METHOD( PrlSrv_HasRestriction ) (
 	if (PRL_WRONG_HANDLE(hServer, PHT_SERVER) || PRL_WRONG_PTR(pbHasRestriction))
 		return (PRL_ERR_INVALID_ARG);
 
-	PrlHandleServerDispPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerDisp>( hServer );
-
-	return pServer->HasRestriction(nRestrictionKey, pbHasRestriction);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_METHOD( PrlSrv_GetRestrictionInfo ) (
@@ -476,9 +474,7 @@ PRL_METHOD( PrlSrv_GetRestrictionInfo ) (
 	if (PRL_WRONG_HANDLE(hServer, PHT_SERVER) || PRL_WRONG_PTR(phEvtParam))
 		return (PRL_ERR_INVALID_ARG);
 
-	PrlHandleServerDispPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerDisp>( hServer );
-
-	return pServer->GetRestrictionInfo(nRestrictionKey, phEvtParam);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_HANDLE PrlSrv_DisableConfirmationMode_Impl(PRL_HANDLE hServer,

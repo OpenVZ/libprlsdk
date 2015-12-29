@@ -29,7 +29,7 @@
 
 #include <QString>
 
-#include "Libraries/Std/SmartPtr.h"
+#include <prlcommon/Std/SmartPtr.h>
 #include "XmlModel/ProblemReport/CProblemReport.h"
 #include "SDK/Include/PrlErrors.h"
 

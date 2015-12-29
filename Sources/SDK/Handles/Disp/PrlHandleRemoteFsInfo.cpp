@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleRemoteFsInfo.h"
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Logging/Logging.h>
 #include "PrlHandleRemoteFsEntry.h"
 
 #ifdef ENABLE_MALLOC_DEBUG

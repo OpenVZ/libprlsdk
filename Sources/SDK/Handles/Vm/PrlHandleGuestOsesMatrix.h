@@ -28,7 +28,7 @@
 #define __PARALLELS_HANDLE_GUEST_OSES_MATRIX_H__
 
 #include "PrlHandleBase.h"
-#include "Libraries/PrlCommonUtilsBase/CGuestOsesHelper.h"
+#include <prlcommon/PrlCommonUtilsBase/CGuestOsesHelper.h>
 #include "XmlModel/Messaging/CVmEvent.h"
 
 /**

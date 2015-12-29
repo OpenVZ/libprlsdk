@@ -29,14 +29,14 @@
 
 
 #include "SDK/Include/Parallels.h"
-#include "Libraries/PrlCommonUtilsBase/PrlStringifyConsts.h"
-#include "Libraries/IOService/src/IOCommunication/IOProtocol.h"
+#include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
+#include <prlcommon/IOService/IOCommunication/IOProtocol.h>
 
 #include <QMutex>
 #include <QString>
 #include <QMap>
 
-#include "Libraries/Std/SmartPtr.h"
+#include <prlcommon/Std/SmartPtr.h>
 
 //For preventing deprecated warnings
 #ifdef _WIN_

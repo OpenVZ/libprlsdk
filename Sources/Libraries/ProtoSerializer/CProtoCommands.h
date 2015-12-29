@@ -31,7 +31,7 @@
 #include <QString>
 #include <QStringList>
 #include "Interfaces/ParallelsNamespace.h"
-#include "Libraries/Std/SmartPtr.h"
+#include <prlcommon/Std/SmartPtr.h>
 #include "XmlModel/Messaging/CVmEvent.h"
 #include "XmlModel/Messaging/CResult.h"
 

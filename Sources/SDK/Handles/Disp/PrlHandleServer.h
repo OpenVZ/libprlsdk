@@ -32,7 +32,7 @@
 #include "PrlQuestionsList.h"
 #include "PrlHandleHandlesList.h"
 
-#include "Libraries/PrlCommonUtilsBase/CFeaturesMatrix.h"
+#include <prlcommon/PrlCommonUtilsBase/CFeaturesMatrix.h>
 #include "PrlHandleGuestOsesMatrix.h"
 
 

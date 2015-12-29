@@ -28,10 +28,10 @@
 #include "XmlModel/VmConfig/CVmConfiguration.h"
 #include "XmlModel/VmConfig/CVmGenericNetworkAdapter.h"
 #include <time.h>
-#include "Libraries/HostUtils/HostUtils.h"
-#include "Libraries/PrlCommonUtilsBase/netutils.h"
+#include <prlcommon/HostUtils/HostUtils.h>
+#include <prlcommon/PrlCommonUtilsBase/netutils.h>
 #include "PrlHandleStringsList.h"
-#include "Libraries/PrlCommonUtilsBase/NetworkUtils.h"
+#include <prlcommon/PrlCommonUtilsBase/NetworkUtils.h>
 #include "PrlHandleFirewallRule.h"
 #include <QHostAddress>
 

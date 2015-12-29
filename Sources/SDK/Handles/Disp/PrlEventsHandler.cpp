@@ -34,10 +34,10 @@
 #include "XmlModel/Messaging/CVmEvent.h"
 #include "XmlModel/Messaging/CVmBinaryEventParameter.h"
 
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/PrlUuid/Uuid.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/HostUtils/HostUtils.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/PrlUuid/Uuid.h>
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/HostUtils/HostUtils.h>
 
 #include "PrlHandleVmCfg.h"
 #include "PrlFileDescriptorsMech.h"

@@ -33,7 +33,7 @@
 #include <QByteArray>
 #include <QBuffer>
 #include <QDataStream>
-#include "Libraries/Std/SmartPtr.h"
+#include <prlcommon/Std/SmartPtr.h>
 
 /**
   * VM event parameter child class that storing event parameter value as binary raw data and provides it outside

@@ -27,9 +27,9 @@
 
 #include "CProtoCommands.h"
 #include "XmlModel/Messaging/CVmEventParameterList.h"
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/PrlUuid/Uuid.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/PrlUuid/Uuid.h>
+#include <prlcommon/Std/PrlAssert.h>
 
 
 // By adding this interface we enable allocations tracing in the module

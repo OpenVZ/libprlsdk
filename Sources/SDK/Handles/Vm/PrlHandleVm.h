@@ -34,7 +34,7 @@
 #include <QReadWriteLock>
 #include <QHash>
 
-#include "Libraries/IOService/src/Common/ExecChannel.h"
+#include <prlcommon/IOService/Common/ExecChannel.h>
 #include "XmlModel/VmConfig/CVmConfiguration.h"
 
 #include "BuiltinEventSource.h"

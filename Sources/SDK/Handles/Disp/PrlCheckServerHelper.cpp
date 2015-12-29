@@ -25,8 +25,8 @@
 
 
 #include "PrlCheckServerHelper.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/IOService/src/IOCommunication/IORoutingTableHelper.h"
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/IOService/IOCommunication/IORoutingTableHelper.h>
 
 PrlCheckServerHelper::PrlCheckServerHelper ( const QString& host,
                                              PRL_UINT16 port,

@@ -44,7 +44,7 @@
 #include "Build/Current-locale.ver"
 #include "Interfaces/ParallelsQt.h"
 #include "Interfaces/ParallelsNamespace.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 #include "CProblemReportUtils.h"
 
 #include <QHttp>
@@ -56,11 +56,11 @@
 #include "XmlModel/VmConfig/CVmConfiguration.h"
 #include "XmlModel/HostHardwareInfo/CHostHardwareInfo.h"
 #include "XmlModel/KeyboardMouse/ParallelsKeyboardMouse.h"
-#include "Libraries/PrlCommonUtilsBase/StringUtils.h"
+#include <prlcommon/PrlCommonUtilsBase/StringUtils.h>
 #include "CPackedProblemReport.h"
-#include "Libraries/PrlCommonUtilsBase/CSimpleFileHelper.h"
-#include "Libraries/HostUtils/HostUtils.h"
-#include "Libraries/PrlCommonUtilsBase/ParallelsDirs.h"
+#include <prlcommon/PrlCommonUtilsBase/CSimpleFileHelper.h>
+#include <prlcommon/HostUtils/HostUtils.h>
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 
 #ifdef _WIN_
 #include "Libraries/WmiWrap/WmiWrap.h"

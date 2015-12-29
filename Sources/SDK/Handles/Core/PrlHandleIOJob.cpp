@@ -32,11 +32,11 @@
 #include "PrlHandleBase.h"
 #include "PrlHandleVm.h"
 #include "PrlHandleVmEvent.h"
-#include "Libraries/IOService/src/IOCommunication/IOSendJob.h"
+#include <prlcommon/IOService/IOCommunication/IOSendJob.h>
 
 #include "SDK/Include/PrlIOStructs.h"
 
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Logging/Logging.h>
 
 /*****************************************************************************/
 

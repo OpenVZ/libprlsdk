@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include <Libraries/Std/SmartPtr.h>
+#include <prlcommon/Std/SmartPtr.h>
 #include <SDK/Include/PrlTypes.h>
 #include <SDK/Include/PrlEnums.h>
 

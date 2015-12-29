@@ -134,22 +134,6 @@ public:
 	PRL_RESULT IsNonInteractiveSession(PRL_BOOL_PTR pbNonInteractive);
 
 	/**
-	 * Returns restriction status.
-	 *
-	 * @param [out] restriction status
-	 * @return PRL_RESULT
-	 */
-	PRL_RESULT HasRestriction(PRL_LICENSE_RESTRICTION_KEY nRestrictionKey, PRL_BOOL_PTR pbHasRestriction);
-
-	/**
-	 * Returns restriction info.
-	 *
-	 * @param [out] restriction info if has
-	 * @return PRL_RESULT
-	 */
-	PRL_RESULT GetRestrictionInfo(PRL_LICENSE_RESTRICTION_KEY nRestrictionKey, PRL_HANDLE_PTR phEvtParam);
-
-	/**
 	* Enable confirmation mode for session.
 	*
 	* @return pointer to the class that abstracts the job process

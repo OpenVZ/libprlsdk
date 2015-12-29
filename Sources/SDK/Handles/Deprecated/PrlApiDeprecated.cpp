@@ -29,9 +29,9 @@
 
 #include "SDK/Include/Parallels.h"
 
-#include "Libraries/PrlCommonUtilsBase/PrlStringifyConsts.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/Logging/Logging.h>
 
 #include "PrlCommon.h"
 #include "PrlHandleResult.h"
@@ -1480,7 +1480,7 @@ PRL_METHOD( PrlApi_SetLogPath ) ( PRL_CONST_STR sLogPath )
 	PRL_APPLICATION_MODE nAppMode = ParallelsDirs::getAppExecuteMode();
 	if (nAppMode != PAM_UNKNOWN)
 	{
-		ParallelsDirs::setClientLogPathByAppMode(nAppMode);
+		ParallelsDirs::setLogPath(QSTR2UTF8(ParallelsDirs::getClientLogPath()));
 		return PRL_ERR_SUCCESS;
 	}
 

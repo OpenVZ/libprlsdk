@@ -28,19 +28,19 @@
 //#define FORCE_LOGGING_LEVEL DBG_DEBUG
 
 #include "Interfaces/ParallelsQt.h"
-#include "Libraries/PrlUuid/Uuid.h"
+#include <prlcommon/PrlUuid/Uuid.h>
 #include "PveControl.h"
 #include "ParallelsNamespace.h"
 #include "XmlModel/Messaging/CResult.h"
 #include "XmlModel/Messaging/CVmEvent.h"
 #include "XmlModel/Messaging/CVmEventParameter.h"
 #include "XmlModel/Messaging/CVmBinaryEventParameter.h"
-#include "Libraries/Std/SmartPtr.h"
-#include "Libraries/IOService/src/IOCommunication/IORoutingTableHelper.h"
-#include "Libraries/IOService/src/IOCommunication/IOSSLInterface.h"
+#include <prlcommon/Std/SmartPtr.h>
+#include <prlcommon/IOService/IOCommunication/IORoutingTableHelper.h>
+#include <prlcommon/IOService/IOCommunication/IOSSLInterface.h>
 #include "PrlHandleLoginHelperJob.h"
 #include "PrlHandleLoginLocalHelperJob.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 #include "PrlCommon.h"
 
 #include <QFile>
@@ -48,7 +48,7 @@
 #include <QCoreApplication>
 #include <QThread>
 
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Logging/Logging.h>
 
 #ifdef _WIN_
 #include <windows.h>

@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include <Libraries/IOService/src/IOCommunication/IOProtocol.h>
+#include <prlcommon/IOService/IOCommunication/IOProtocol.h>
 #include <SDK/Include/PrlTypes.h>
 #include <SDK/Include/PrlEnums.h>
 #include <SDK/Include/PrlIOStructs.h>

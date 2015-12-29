@@ -28,7 +28,7 @@
 #define PRLCHECKSERVERHELPER_H
 
 #include "PrlHandleLocalJob.h"
-#include "Libraries/IOService/src/IOCommunication/IOClient.h"
+#include <prlcommon/IOService/IOCommunication/IOClient.h>
 
 using namespace IOService;
 

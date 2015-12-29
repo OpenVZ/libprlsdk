@@ -30,6 +30,6 @@
 #define __PARALLELS_LOGGING_H__
 
 #include <Interfaces/ParallelsQt.h>
-#include <Libraries/Logging/Logging.h>
+#include <prlcommon/Logging/Logging.h>
 
 #endif // __PARALLELS_LOGGING_H__
