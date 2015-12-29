@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "Libraries/PrlCommonUtilsBase/CGuestOsesHelper.h"
+#include <prlcommon/PrlCommonUtilsBase/CGuestOsesHelper.h>
 
 /**
  * Opaque type list abstraction object.

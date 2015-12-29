@@ -28,7 +28,7 @@
 #include "PrlCommon.h"
 #include "PrlHandleVm.h"
 
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 
 #include <QReadWriteLock>
 #include <QMap>

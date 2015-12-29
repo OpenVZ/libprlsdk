@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleVmGuest.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 #include "PrlHandleStringsList.h"
 
 PrlHandleVmGuest::PrlHandleVmGuest( const PrlHandleVmPtr &pVm, const QString &sVmGuestUuid )

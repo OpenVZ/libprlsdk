@@ -38,9 +38,9 @@
 #include <QFuture>
 
 #include "CProblemReportUtils.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 #include "Interfaces/ParallelsQt.h"
-#include "Libraries/PrlCommonUtilsBase/StringUtils.h"
+#include <prlcommon/PrlCommonUtilsBase/StringUtils.h>
 
 class CInstalledSoftwareCollectorPrivate : public QObject
 {

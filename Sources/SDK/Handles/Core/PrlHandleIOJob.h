@@ -37,7 +37,7 @@
 #include <QTimer>
 
 #include "PrlHandleJob.h"
-#include "Libraries/IOService/src/Common/ExecChannel.h"
+#include <prlcommon/IOService/Common/ExecChannel.h>
 
 /**
  * IO job handle object.

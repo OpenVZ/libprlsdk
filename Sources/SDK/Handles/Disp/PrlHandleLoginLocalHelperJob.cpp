@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleLoginLocalHelperJob.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 
 #ifdef _WIN_
 #include <windows.h>

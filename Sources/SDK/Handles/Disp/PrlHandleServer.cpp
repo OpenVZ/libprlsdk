@@ -33,9 +33,9 @@
 
 #include "XmlModel/Messaging/CVmBinaryEventParameter.h"
 
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/PrlUuid/Uuid.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/PrlUuid/Uuid.h>
+#include <prlcommon/Std/PrlAssert.h>
 
 #ifdef _WIN_
 #include <windows.h>

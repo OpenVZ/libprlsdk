@@ -24,7 +24,7 @@
  */
 
 
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 
 #include "PrlHandleServerJob.h"
 #include "PrlHandleLoginLocalHelperJob.h"
@@ -218,41 +218,6 @@ PRL_RESULT PrlHandleServerDisp::IsNonInteractiveSession(PRL_BOOL_PTR pbNonIntera
 {
 	QMutexLocker _lock(&m_MembersMutex);
 	*pbNonInteractive = m_bNonInteractiveSession;
-	return PRL_ERR_SUCCESS;
-}
-
-PRL_RESULT PrlHandleServerDisp::HasRestriction(PRL_LICENSE_RESTRICTION_KEY nRestrictionKey, PRL_BOOL_PTR pbHasRestriction)
-{
-	QMutexLocker _lock(&m_MembersMutex);
-
-	const char* keyAsStr = PRL_LICENSE_RESTR_KEY_TO_STRING(nRestrictionKey);
-	QString qsParamName = MAKE_EVT_PARAM_SESSION_RESTRICT_KEY(keyAsStr);
-	*pbHasRestriction =	m_evtRestriction.getEventParameter(qsParamName) ? PRL_TRUE : PRL_FALSE;
-
-	return PRL_ERR_SUCCESS;
-}
-
-PRL_RESULT PrlHandleServerDisp::GetRestrictionInfo(PRL_LICENSE_RESTRICTION_KEY nRestrictionKey, PRL_HANDLE_PTR phEvtParam)
-{
-	QMutexLocker _lock(&m_MembersMutex);
-
-	const char* keyAsStr = PRL_LICENSE_RESTR_KEY_TO_STRING(nRestrictionKey);
-	QString qsParamName = MAKE_EVT_PARAM_SESSION_RESTRICT_KEY(keyAsStr);
-	CVmEventParameter* param = m_evtRestriction.getEventParameter(qsParamName);
-	if ( ! param )
-		return PRL_ERR_NO_DATA;
-
-	CVmEventParameter* new_param = new CVmEventParameter();
-	if ( ! new_param )
-		return PRL_ERR_OUT_OF_MEMORY;
-	new_param->fromString(param->toString());
-
-	PrlHandleEventParam* pEvtParam = new PrlHandleEventParam(new_param);
-	if ( ! pEvtParam )
-		return PRL_ERR_OUT_OF_MEMORY;
-
-	*phEvtParam = pEvtParam->GetHandle();
-
 	return PRL_ERR_SUCCESS;
 }
 

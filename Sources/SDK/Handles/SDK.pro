@@ -46,6 +46,8 @@ TRANSLATIONS += sdk_err_strings_cs.ts\
 # Hide all exported symbols on Unix (Windows like behaviour)
 unix:QMAKE_CXXFLAGS += -fvisibility=hidden
 
+LIBS += -lprlcommon
+
 libsdk_only {
 	# set up rpath to qt libs
 	QMAKE_RPATHDIR =

@@ -47,9 +47,9 @@
 #include "XmlModel/Messaging/CVmBinaryEventParameter.h"
 #include "PrlHandleVm.h"
 #include "PrlHandleServer.h"
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/Std/SmartPtr.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/Std/SmartPtr.h>
+#include <prlcommon/Std/PrlAssert.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

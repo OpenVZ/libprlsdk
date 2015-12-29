@@ -31,16 +31,16 @@
 #include "PrlHandleVm.h"
 #include "XmlModel/Messaging/CVmEvent.h"
 
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/HostUtils/HostUtils.h"
-#include "Libraries/PrlCommonUtilsBase/CommandConvHelper.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/HostUtils/HostUtils.h>
+#include <prlcommon/PrlCommonUtilsBase/CommandConvHelper.h>
 
 #include <map>
 #include <new>
 #include <QHash>
 
-#include "Libraries/PrlUuid/Uuid.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/PrlUuid/Uuid.h>
+#include <prlcommon/Std/PrlAssert.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

@@ -27,7 +27,7 @@
 #include "PrlHandleEvent.h"
 #include "PrlHandleServer.h"
 #include "PrlHandleVm.h"
-#include "Libraries/Std/AtomicOps.h"
+#include <prlcommon/Std/AtomicOps.h>
 
 PrlHandleEvent::PrlHandleEvent( const PrlHandleServerPtr &pServer, PRL_EVENT_TYPE eType,
 		PRL_UINT64 eId )

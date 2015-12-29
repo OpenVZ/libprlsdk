@@ -36,10 +36,10 @@
 #include <QHostInfo>
 #include <map>
 
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/PrlUuid/Uuid.h"
-#include "Libraries/PrlCommonUtilsBase/countof.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/PrlUuid/Uuid.h>
+#include <prlcommon/PrlCommonUtilsBase/countof.h>
+#include <prlcommon/Std/PrlAssert.h>
 
 #include "XmlModel/Messaging/CResult.h"
 #include "XmlModel/Messaging/CVmEvent.h"

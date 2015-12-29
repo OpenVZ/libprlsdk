@@ -227,7 +227,7 @@ private:
    CTemporaryCatalogue  m_temporaryCatalogue;
 public:
 </xs:documentation>
-			<xs:documentation source="VmDirectoryItem_impl">include=&lt;Libraries/PrlUuid/Uuid.h&gt;</xs:documentation>
+			<xs:documentation source="VmDirectoryItem_impl">include=&lt;prlcommon/PrlUuid/Uuid.h&gt;</xs:documentation>
 			<xs:documentation source="TemporaryCatalogue_impl">unit_fragment:
 CVmDirectory::CTemporaryCatalogue* CVmDirectory::getTemporaryCatalogue()
 {

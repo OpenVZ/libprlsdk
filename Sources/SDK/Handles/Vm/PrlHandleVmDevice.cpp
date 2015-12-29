@@ -41,7 +41,7 @@
 #include "PrlHandleVmDeviceDisplay.h"
 #include "PrlHandleVmDeviceGenericPci.h"
 #include "PrlHandleVmDeviceGenericScsi.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 
 #define CHECK_VM(job_type)\
 	if (!m_pVm)\

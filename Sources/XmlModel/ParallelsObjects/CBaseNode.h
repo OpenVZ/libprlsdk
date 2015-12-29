@@ -38,11 +38,11 @@
 #include "Interfaces/ParallelsNamespace.h"
 #include "SDK/Include/PrlEnums.h"
 #include "SDK/Include/PrlErrors.h"
-#include "Libraries/PrlUuid/Uuid.h"
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/PrlCommonUtilsBase/ParallelsDirs.h"
-#include "Libraries/PrlDataSerializer/CPrlOpaqueTypeDataSerializer.h"
-#include "Libraries/PrlDataSerializer/CPrlStringDataSerializer.h"
+#include <prlcommon/PrlUuid/Uuid.h>
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlDataSerializer/CPrlOpaqueTypeDataSerializer.h>
+#include <prlcommon/PrlDataSerializer/CPrlStringDataSerializer.h>
 // For compatibility
 	#include <vector>
 //////

@@ -32,7 +32,7 @@
 #include "CVmHardware.h"
 #include <QDir>
 #include <QFileInfo>
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 
 
 CVmDevice::CVmDevice()

@@ -30,8 +30,8 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL DBG_DEBUG
 
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/Std/AtomicOps.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/Std/AtomicOps.h>
 
 #include "Build/Current.ver"
 

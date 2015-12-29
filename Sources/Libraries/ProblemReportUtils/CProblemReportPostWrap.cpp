@@ -38,7 +38,7 @@
 
 #include <Interfaces/ParallelsQt.h>
 #include "SDK/Include/PrlErrors.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 #include "Libraries/ProblemReportUtils/CProblemReportUtils.h"
 
 #define PRL_LOOKUP_REPORT_HOST_TIMEOUT 30*1000 // 30 seconds

@@ -29,8 +29,8 @@
 #include <QTextStream>
 #include "CSystemStatistics.h"
 
-#include "Libraries/PrlDataSerializer/CPrlOpaqueTypeDataSerializer.h"
-#include "Libraries/PrlDataSerializer/CPrlStringDataSerializer.h"
+#include <prlcommon/PrlDataSerializer/CPrlOpaqueTypeDataSerializer.h>
+#include <prlcommon/PrlDataSerializer/CPrlStringDataSerializer.h>
 
 // By adding this interface we enable allocations tracing in the module
 #include "Interfaces/Debug.h"

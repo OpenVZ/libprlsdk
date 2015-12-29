@@ -48,11 +48,11 @@
 #include "XmlModel/VmConfig/CVmSoundInputs.h"
 #include "XmlModel/VmConfig/CVmSoundOutputs.h"
 #include "XmlModel/HostHardwareInfo/CHostHardwareInfo.h"
-#include "Libraries/Std/PrlTime.h"
+#include <prlcommon/Std/PrlTime.h>
 #include "Interfaces/ParallelsSdk.h"
-#include "Libraries/PrlCommonUtilsBase/ParallelsDirs.h"
-#include "Libraries/PrlCommonUtilsBase/CHardDiskHelper.h"
-#include "Libraries/HostUtils/HostUtils.h"
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/CHardDiskHelper.h>
+#include <prlcommon/HostUtils/HostUtils.h>
 
 
 #define STR_BUF_LENGTH 1024

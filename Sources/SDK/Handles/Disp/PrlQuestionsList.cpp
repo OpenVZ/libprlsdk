@@ -26,7 +26,7 @@
 
 #include "PrlQuestionsList.h"
 #include "PrlHandleVmEvent.h"
-#include "Libraries/Std/PrlAssert.h"
+#include <prlcommon/Std/PrlAssert.h>
 
 PrlQuestionsList::PrlQuestionsList()
 : m_QuestionsListMutex(QMutex::Recursive)

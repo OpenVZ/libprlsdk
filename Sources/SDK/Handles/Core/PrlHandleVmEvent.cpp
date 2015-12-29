@@ -29,7 +29,7 @@
 #include "PrlHandleServerJob.h"
 #include "PrlHandleEventParam.h"
 #include "PrlErrStringsStorage.h"
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Logging/Logging.h>
 
 #include "XmlModel/Messaging/CVmEventParameter.h"
 

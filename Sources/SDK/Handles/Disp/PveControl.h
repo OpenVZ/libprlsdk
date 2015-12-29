@@ -33,8 +33,8 @@
 #include <QObject>
 #include <QStringList>
 #include "Interfaces/ParallelsNamespace.h"
-#include "Libraries/Std/SmartPtr.h"
-#include "Libraries/IOService/src/IOCommunication/IOClient.h"
+#include <prlcommon/Std/SmartPtr.h>
+#include <prlcommon/IOService/IOCommunication/IOClient.h>
 #include "Libraries/ProtoSerializer/CProtoSerializer.h"
 #include "SDK/Include/PrlIOStructs.h"
 #include "PrlHandleBase.h"

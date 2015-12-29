@@ -29,7 +29,7 @@
 #define CProtoSerializer_H
 
 #include "Libraries/ProtoSerializer/CProtoCommands.h"
-#include "Libraries/IOService/src/IOCommunication/IOProtocol.h"
+#include <prlcommon/IOService/IOCommunication/IOProtocol.h>
 
 namespace Parallels
 {

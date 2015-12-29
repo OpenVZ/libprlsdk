@@ -31,9 +31,9 @@
 
 #include "Build/Current.ver"
 
-#include "Libraries/Logging/Logging.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/PrlCommonUtilsBase/ParallelsDirs.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 
 #include "SDK/Include/PrlTypes.h"
 #include "SDK/Include/PrlEnums.h"
@@ -43,8 +43,8 @@
 #include "PrlContextSwitcher.h"
 #include "PrlHandleServer.h"
 
-#include "Libraries/HostUtils/PrlMiscellaneous.h"
-#include "Libraries/PrlCommonUtilsBase/CGuestOsesHelper.h"
+#include <prlcommon/HostUtils/PrlMiscellaneous.h>
+#include <prlcommon/PrlCommonUtilsBase/CGuestOsesHelper.h>
 
 #include "PrlFileDescriptorsMech.h"
 

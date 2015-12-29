@@ -27,7 +27,7 @@
 #include "PrlHandleIOEvent.h"
 #include "PrlHandleVm.h"
 
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Logging/Logging.h>
 #include <stdlib.h>
 
 PRL_VOID PrlHandleIOEvent::AllocData(PRL_UINT32 size)

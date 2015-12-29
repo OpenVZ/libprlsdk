@@ -35,11 +35,11 @@
 #include "PrlHandleVmEvent.h"
 #include "PrlHandleVm.h"
 
-#include "Libraries/PrlCommonUtilsBase/CUrlParser.h"
+#include <prlcommon/PrlCommonUtilsBase/CUrlParser.h>
 #include "Libraries/ProblemReportUtils/CProblemReportUtils.h"
 #include "Libraries/ProblemReportUtils/CProblemReportPostWrap.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/Logging/Logging.h>
 
 #ifdef _WIN_
 #ifndef QT_NO_OPENSSL

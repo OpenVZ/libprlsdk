@@ -27,8 +27,8 @@
 
 #include "PrlProblemReportAssembler.h"
 #include "Libraries/ProblemReportUtils/CProblemReportUtils.h"
-#include "Libraries/Std/PrlAssert.h"
-#include "Libraries/HostUtils/PrlMiscellaneous.h"
+#include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/HostUtils/PrlMiscellaneous.h>
 #include "XmlModel/DispConfig/CDispatcherConfig.h"
 
 using namespace PrlMiscellaneous;

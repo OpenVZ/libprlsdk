@@ -27,9 +27,9 @@
 
 
 #include "CVmBinaryEventParameter.h"
-#include "Libraries/Logging/Logging.h"
+#include <prlcommon/Logging/Logging.h>
 
-#include "Libraries/PrlDataSerializer/CPrlOpaqueTypeDataSerializer.h"
+#include <prlcommon/PrlDataSerializer/CPrlOpaqueTypeDataSerializer.h>
 
 CVmBinaryEventParameter::CVmBinaryEventParameter()
 {
