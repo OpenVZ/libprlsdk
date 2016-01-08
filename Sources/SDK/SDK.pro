@@ -22,6 +22,10 @@
 # Schaffhausen, Switzerland; http://www.parallels.com/.
 #
 
+!exists('/usr/include/prlcommon') {
+	error(Please install libprlcommon-devel package)
+}
+
 TEMPLATE = subdirs
 
 LEVEL = ../..
