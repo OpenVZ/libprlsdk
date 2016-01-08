@@ -101,8 +101,8 @@ public:
 	void setDescription(QString value = QString());
 	QString getDescription() const;
 
-	void setRelativeSystemName( const QString & strVmDirectory, bool bShadowVm = false );
-	QString RevertToInitialSystemName(const QString & strVmDirectory );
+	void setRelativeSystemName(const QString& strVmDirectory);
+	QString RevertToInitialSystemName(const QString& strVmDirectory);
 
 	static CVmDevice * getDeviceInstanceFromString( const QString & strDevice );
 

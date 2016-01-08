@@ -300,7 +300,7 @@ QString CVmDevice::getDescription() const
 
 //////////////////////////////////////////////////////////////////////////////
 
-void CVmDevice::setRelativeSystemName( const QString & strVmDirectory, bool bShadowVm)
+void CVmDevice::setRelativeSystemName(const QString & strVmDirectory)
 {
 	if (getSystemName().isEmpty())
 		return;
@@ -345,19 +345,6 @@ void CVmDevice::setRelativeSystemName( const QString & strVmDirectory, bool bSha
 						sRelativePath.remove(strVmDirectory);
 						while (sRelativePath.startsWith('/') || sRelativePath.startsWith('\\'))
 							sRelativePath.remove(0, 1);
-					}
-					else if (bShadowVm)
-					{
-						// NOTE: VM bundle is sub directory of native VM
-						//       and it lays in native VM bundle
-						QString qsShadowVmDir = QFileInfo(strVmDirectory).absolutePath();
-						if (strImageDir.startsWith(qsShadowVmDir,caseSens))
-						{
-							sRelativePath.remove(qsShadowVmDir);
-							while (sRelativePath.startsWith('/') || sRelativePath.startsWith('\\'))
-								sRelativePath.remove(0, 1);
-							sRelativePath = "../" + sRelativePath;
-						}
 					}
 
 					setSystemName( sRelativePath );
