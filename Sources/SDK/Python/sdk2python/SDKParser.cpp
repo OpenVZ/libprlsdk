@@ -27,7 +27,7 @@
 #include "SDKParser.h"
 #include <QtXml>
 #include "ModuleTemplates.h"
-#include "Interfaces/ParallelsQt.h"
+#include <prlcommon/Interfaces/ParallelsQt.h>
 
 
 #define PRL_API_MACRO_H			"PrlApiMacro.h"

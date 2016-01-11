@@ -32,7 +32,7 @@
 #include <QList>
 
 #include <prlcommon/Logging/Logging.h>
-#include <Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/ParallelsQt.h>
 
 #include <CVmConfiguration.h>
 #include <CVmDirectories.h>

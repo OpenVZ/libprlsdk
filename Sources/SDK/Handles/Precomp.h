@@ -35,8 +35,8 @@
 #		define OBJC_BOOL_DEFINED
 #	endif // _OBC_OBJC_H_
 
-#include <Interfaces/ParallelsNamespace.h>
-#include <Interfaces/ParallelsDomModel.h>
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
+#include <prlcommon/Interfaces/ParallelsDomModel.h>
 #include <SDK/Include/Parallels.h>
 #include <SDK/Wrappers/SdkWrap/SdkHandleWrap.h>
 

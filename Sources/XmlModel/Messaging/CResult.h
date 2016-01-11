@@ -32,7 +32,7 @@
 #include <QHash>
 #include <QEvent>
 
-#include "ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 
 class CVmEvent;
 

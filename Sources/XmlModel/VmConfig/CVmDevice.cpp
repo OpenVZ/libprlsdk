@@ -28,7 +28,7 @@
 
 #include <QTextStream>
 
-#include "ParallelsDomModel.h"
+#include <prlcommon/Interfaces/ParallelsDomModel.h>
 #include "CVmHardware.h"
 #include <QDir>
 #include <QFileInfo>

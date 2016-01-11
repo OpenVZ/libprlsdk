@@ -27,7 +27,7 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL	DBG_DEBUG
 
-#include "Interfaces/ParallelsSdk.h"
+#include <prlcommon/Interfaces/ParallelsSdk.h>
 #include "SDK/Include/Parallels.h"
 
 #include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>

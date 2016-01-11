@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleLoginHelperJob.h"
-#include "Interfaces/ParallelsQt.h"
+#include <prlcommon/Interfaces/ParallelsQt.h>
 #include "SDK/Wrappers/SdkWrap/SdkHandleWrap.h"
 #include "Libraries/ProtoSerializer/CProtoSerializer.h"
 

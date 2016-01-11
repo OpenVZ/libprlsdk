@@ -33,9 +33,9 @@
 #include <QtXml>
 
 #include "Build/Current.ver"
-#include "Interfaces/ParallelsDomModel.h"
-#include "Interfaces/ParallelsQt.h"
-#include "Interfaces/ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsDomModel.h>
+#include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include "SDK/Include/PrlEnums.h"
 #include "SDK/Include/PrlErrors.h"
 #include <prlcommon/PrlUuid/Uuid.h>

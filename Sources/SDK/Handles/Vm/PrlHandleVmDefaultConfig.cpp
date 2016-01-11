@@ -49,7 +49,7 @@
 #include "XmlModel/VmConfig/CVmSoundOutputs.h"
 #include "XmlModel/HostHardwareInfo/CHostHardwareInfo.h"
 #include <prlcommon/Std/PrlTime.h>
-#include "Interfaces/ParallelsSdk.h"
+#include <prlcommon/Interfaces/ParallelsSdk.h>
 #include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 #include <prlcommon/PrlCommonUtilsBase/CHardDiskHelper.h>
 #include <prlcommon/HostUtils/HostUtils.h>

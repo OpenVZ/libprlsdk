@@ -32,8 +32,8 @@
 #include <QList>
 #include <QDomDocument>
 
-#include "ParallelsDomModel.h"
-#include "ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsDomModel.h>
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include <prlcommon/PrlDataSerializer/CPrlDataSerializer.h>
 #include <SDK/Include/PrlIOStructs.h>
 #include "XmlModel/VmDataStatistic/CVmDataStatistic.h"

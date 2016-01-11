@@ -36,7 +36,7 @@
 #include <QStringList>
 
 #include "CProblemReportUtils_common.h"
-#include "Interfaces/ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include "Build/Current.ver"
 #include "Build/Current-locale.ver"
