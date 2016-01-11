@@ -32,7 +32,7 @@
 #include <QMutex>
 #include <QObject>
 #include <QStringList>
-#include "Interfaces/ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include <prlcommon/Std/SmartPtr.h>
 #include <prlcommon/IOService/IOCommunication/IOClient.h>
 #include "Libraries/ProtoSerializer/CProtoSerializer.h"

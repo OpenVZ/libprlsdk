@@ -29,7 +29,7 @@
 #include <QVariant>
 
 #include "CVmStartupOptions.h"
-#include "ParallelsDomModel.h"
+#include <prlcommon/Interfaces/ParallelsDomModel.h>
 
 // By adding this interface we enable allocations tracing in the module
 #include "Interfaces/Debug.h"

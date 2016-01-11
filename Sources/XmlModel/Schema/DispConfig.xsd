@@ -445,7 +445,7 @@ public:
 	<xs:element name="IoServerConnectorPort" type="xs:integer"/>
 	<xs:complexType name="ProxyPreferencesType">
 		<xs:annotation>
-			<xs:documentation>single_fixed=on;class=CDispProxyPreferences;include="include="Interfaces/ParallelsNamespace.h";include=&lt;Build/Current-locale.ver&gt;</xs:documentation>
+			<xs:documentation>single_fixed=on;class=CDispProxyPreferences;include="include=&lt;prlcommon/Interfaces/ParallelsNamespace.h&gt;;include=&lt;Build/Current-locale.ver&gt;</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="ProxyEnabled" type="xs:boolean" default="false" minOccurs="0"/>

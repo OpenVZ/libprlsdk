@@ -25,7 +25,7 @@
  */
 
 
-#include "Interfaces/ParallelsSdk.h"
+#include <prlcommon/Interfaces/ParallelsSdk.h>
 #include "XmlModel/VmConfig/CVmConfiguration.h"
 
 namespace CXmlModelHelper

@@ -27,7 +27,7 @@
 
 
 #include "CVmEventParameterList.h"
-#include "Interfaces/ParallelsDomModel.h"
+#include <prlcommon/Interfaces/ParallelsDomModel.h>
 
 
 CVmEventParameterList::CVmEventParameterList()

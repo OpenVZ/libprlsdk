@@ -39,7 +39,7 @@
 
 #include "CProblemReportUtils.h"
 #include <prlcommon/Std/PrlAssert.h>
-#include "Interfaces/ParallelsQt.h"
+#include <prlcommon/Interfaces/ParallelsQt.h>
 #include <prlcommon/PrlCommonUtilsBase/StringUtils.h>
 
 class CInstalledSoftwareCollectorPrivate : public QObject

@@ -42,8 +42,8 @@
 
 #include "Build/Current.ver"
 #include "Build/Current-locale.ver"
-#include "Interfaces/ParallelsQt.h"
-#include "Interfaces/ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include "CProblemReportUtils.h"
 

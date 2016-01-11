@@ -27,10 +27,10 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL DBG_DEBUG
 
-#include "Interfaces/ParallelsQt.h"
+#include <prlcommon/Interfaces/ParallelsQt.h>
 #include <prlcommon/PrlUuid/Uuid.h>
 #include "PveControl.h"
-#include "ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include "XmlModel/Messaging/CResult.h"
 #include "XmlModel/Messaging/CVmEvent.h"
 #include "XmlModel/Messaging/CVmEventParameter.h"

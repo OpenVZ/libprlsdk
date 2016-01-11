@@ -31,8 +31,8 @@
 
 #include <QDomDocument>
 #include <QDomElement>
-#include "ParallelsDomModel.h"
-#include "ParallelsNamespace.h"
+#include <prlcommon/Interfaces/ParallelsDomModel.h>
+#include <prlcommon/Interfaces/ParallelsNamespace.h>
 
 #include "XmlModel/ParallelsObjects/CBaseNode.h"
 
