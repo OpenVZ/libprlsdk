@@ -46,7 +46,14 @@ TRANSLATIONS += sdk_err_strings_cs.ts\
 # Hide all exported symbols on Unix (Windows like behaviour)
 unix:QMAKE_CXXFLAGS += -fvisibility=hidden
 
-LIBS += -lprl_xml_model -lprlcommon -lboost_filesystem-mt -lboost_system-mt
+# Distribution specific boost dependency - we want to link with
+# multithreaded version where possible
+BOOST_FILESYSTEM = -lboost_filesystem
+exists(/usr/lib64/libboost_filesystem-mt*) : BOOST_FILESYSTEM = -lboost_filesystem-mt
+BOOST_SYSTEM = -lboost_system
+exists(/usr/lib64/libboost_system-mt*) : BOOST_SYSTEM = -lboost_system-mt
+
+LIBS += -lprl_xml_model -lprlcommon $${BOOST_FILESYSTEM} $${BOOST_SYSTEM}
 
 libsdk_only {
 	# set up rpath to qt libs
