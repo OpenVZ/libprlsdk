@@ -28,7 +28,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/CtTemplate/CtTemplate.h"
+#include <prlxmlmodel/CtTemplate/CtTemplate.h>
 
 
 /**

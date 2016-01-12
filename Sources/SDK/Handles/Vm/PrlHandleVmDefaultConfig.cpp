@@ -43,11 +43,11 @@
 #include "PrlHandleVmDeviceDisplay.h"
 #include "ConfigDefaults.h"
 
-#include "XmlModel/ParallelsObjects/CXmlModelHelper.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/VmConfig/CVmSoundInputs.h"
-#include "XmlModel/VmConfig/CVmSoundOutputs.h"
-#include "XmlModel/HostHardwareInfo/CHostHardwareInfo.h"
+#include <prlxmlmodel/ParallelsObjects/CXmlModelHelper.h>
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/VmConfig/CVmSoundInputs.h>
+#include <prlxmlmodel/VmConfig/CVmSoundOutputs.h>
+#include <prlxmlmodel/HostHardwareInfo/CHostHardwareInfo.h>
 #include <prlcommon/Std/PrlTime.h>
 #include <prlcommon/Interfaces/ParallelsSdk.h>
 #include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>

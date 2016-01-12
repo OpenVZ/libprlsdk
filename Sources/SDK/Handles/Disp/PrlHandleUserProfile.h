@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/DispConfig/CDispUser.h"
+#include <prlxmlmodel/DispConfig/CDispUser.h>
 
 /**
  * Handle object represents user profile

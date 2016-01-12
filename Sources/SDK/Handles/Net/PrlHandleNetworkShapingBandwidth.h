@@ -28,7 +28,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/NetworkConfig/CDeviceBandwidth.h"
+#include <prlxmlmodel/NetworkConfig/CDeviceBandwidth.h>
 
 /**
  * Handle object represents virtual network

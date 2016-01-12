@@ -224,7 +224,6 @@ SOURCES += \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVmToolsInfo.h \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleGuestOsesMatrix.h \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleCtTemplate.h \
-		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleApplianceConfig.h \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVmDefaultConfig.h \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleRemoteCommand.h \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleIORemoteCommand.h \
@@ -302,7 +301,6 @@ SOURCES += \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVmToolsInfo.cpp \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleGuestOsesMatrix.cpp \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleCtTemplate.cpp \
-		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleApplianceConfig.cpp \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVmDefaultConfig.cpp \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlRunProgramInGuestJob.cpp \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlFileDescriptorsMech.cpp \

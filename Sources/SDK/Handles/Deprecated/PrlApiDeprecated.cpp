@@ -30,6 +30,7 @@
 #include "SDK/Include/Parallels.h"
 
 #include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/Logging/Logging.h>
 

@@ -28,4 +28,3 @@ PROJ_FILE = $$PWD/ProtoSerializer.pro
 
 INCLUDEPATH *= $$PWD
 
-include($$SRC_LEVEL/XmlModel/XmlModel.pri)

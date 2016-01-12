@@ -25,8 +25,8 @@
 
 
 #include "PrlHandleVmDeviceNetAdapter.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/VmConfig/CVmGenericNetworkAdapter.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/VmConfig/CVmGenericNetworkAdapter.h>
 #include <time.h>
 #include <prlcommon/HostUtils/HostUtils.h>
 #include <prlcommon/PrlCommonUtilsBase/netutils.h>

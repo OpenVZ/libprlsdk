@@ -28,7 +28,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/VmConfig/CVmNetFirewallRule.h"
+#include <prlxmlmodel/VmConfig/CVmNetFirewallRule.h>
 
 
 /**

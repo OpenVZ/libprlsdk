@@ -24,7 +24,7 @@
  */
 
 
-#include "XmlModel/VmConfig/CVmConfiguration.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
 
 #include "PrlHandleStringsList.h"
 #include "PrlHandleDispNet.h"

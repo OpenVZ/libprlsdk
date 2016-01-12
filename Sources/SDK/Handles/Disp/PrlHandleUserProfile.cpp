@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleUserProfile.h"
-#include "XmlModel/DispConfig/CDispUser.h"
+#include <prlxmlmodel/DispConfig/CDispUser.h>
 
 PrlHandleUserProfile::PrlHandleUserProfile(const QString& sUserProfile)
 : PrlHandleBase(PHT_USER_PROFILE), m_UserProfile(sUserProfile)

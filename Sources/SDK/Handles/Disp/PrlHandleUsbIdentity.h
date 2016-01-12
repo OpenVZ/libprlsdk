@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/DispConfig/CDispUsbIdentity.h"
+#include <prlxmlmodel/DispConfig/CDispUsbIdentity.h>
 
 
 /**

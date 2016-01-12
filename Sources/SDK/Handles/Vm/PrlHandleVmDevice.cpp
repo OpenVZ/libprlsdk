@@ -27,8 +27,8 @@
 #include "PrlHandleVmCfg.h"
 #include "PrlHandleVmDevice.h"
 #include "PrlHandleServer.h"
-#include "XmlModel/VmConfig/CVmMassStorageDevice.h"
-#include "XmlModel/VmConfig/CVmPort.h"
+#include <prlxmlmodel/VmConfig/CVmMassStorageDevice.h>
+#include <prlxmlmodel/VmConfig/CVmPort.h>
 #include "PrlControlValidity.h"
 #include "PrlHandleVmDeviceFloppy.h"
 #include "PrlHandleVmDeviceHardDrive.h"

@@ -25,7 +25,8 @@
 
 
 #include "PrlHandleServerInfo.h"
-#include "XmlModel/Messaging/CVmEventParameter.h"
+#include <prlcommon/Logging/Logging.h>
+#include <prlxmlmodel/Messaging/CVmEventParameter.h>
 
 PrlHandleServerInfo::PrlHandleServerInfo( const QString &sVmEvent, const QString &sServerHost)
 : PrlHandleBase(PHT_SERVER_INFO), m_evtServerInfo( sVmEvent ), m_sServerHost(sServerHost)

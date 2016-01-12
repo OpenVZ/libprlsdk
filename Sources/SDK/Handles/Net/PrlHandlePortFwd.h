@@ -27,7 +27,7 @@
 #define __PARALLELS_HANDLE_PORT_FWD_H__
 
 #include "PrlHandleBase.h"
-#include "XmlModel/NetworkConfig/CPortForwardEntry.h"
+#include <prlxmlmodel/NetworkConfig/CPortForwardEntry.h>
 
 
 /**

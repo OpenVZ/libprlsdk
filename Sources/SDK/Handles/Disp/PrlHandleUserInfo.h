@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/UserInformation/ParallelsUserInformation.h"
+#include <prlxmlmodel/UserInformation/ParallelsUserInformation.h>
 
 
 /**

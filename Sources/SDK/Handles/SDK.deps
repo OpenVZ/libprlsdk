@@ -33,7 +33,6 @@ include(../../Build/qmake/build_target.pri)
 target.path = $${PREFIX}/lib64
 INSTALLS += target
 
-include($$SRC_LEVEL/XmlModel/XmlModel.pri)
 include($$LIBS_LEVEL/ProblemReportUtils/ProblemReportUtils.pri)
 include($$LIBS_LEVEL/ProtoSerializer/ProtoSerializer.pri)
 include($$LIBS_LEVEL/ContextSwitcher/ContextSwitcher.pri)

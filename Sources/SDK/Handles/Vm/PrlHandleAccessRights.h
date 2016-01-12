@@ -28,7 +28,7 @@
 #define __PARALLELS_HANDLE_ACCESS_RIGHTS_H__
 
 #include "PrlHandleBase.h"
-#include "XmlModel/VmConfig/CVmSecurity.h"
+#include <prlxmlmodel/VmConfig/CVmSecurity.h>
 
 /**
  * Wrapper for access rights set.

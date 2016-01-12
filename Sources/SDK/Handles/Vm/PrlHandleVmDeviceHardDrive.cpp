@@ -26,8 +26,8 @@
 
 #include "PrlHandleVmCfg.h"
 #include "PrlHandleVmDeviceHardDrive.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/VmConfig/CVmHardDisk.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/VmConfig/CVmHardDisk.h>
 #include "PrlHandleVmDeviceHdPart.h"
 
 #ifdef ENABLE_MALLOC_DEBUG

@@ -144,10 +144,6 @@ if opts.pysdk:
 	fd.close()
 
 
-xmlmodel_py = os.path.join(file_path, 'XmlModel', 'XmlModel.py')
-subprocess.check_call(['python', xmlmodel_py, '--force', '--qmake="qmake-qt4"'])
-
-
 sys.path.append(os.path.join(file_path, 'SDK'))
 import GenApiVer
 

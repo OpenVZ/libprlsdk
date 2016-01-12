@@ -27,7 +27,7 @@
 #ifndef __PARALLELS_HANDLE_DISP_NET_H__
 #define __PARALLELS_HANDLE_DISP_NET_H__
 
-#include "XmlModel/DispConfig/CDispNetAdapter.h"
+#include <prlxmlmodel/DispConfig/CDispNetAdapter.h>
 
 #include "PrlHandleDispConfig.h"
 #include "PrlControlValidity.h"

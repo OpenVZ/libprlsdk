@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleHwGenericDevice.h"
-#include "XmlModel/HostHardwareInfo/CHwGenericDevice.h"
+#include <prlxmlmodel/HostHardwareInfo/CHwGenericDevice.h>
 
 #define CHECK_DEVICE_OBJECT\
 	if (!m_pHwGenericDevice)\

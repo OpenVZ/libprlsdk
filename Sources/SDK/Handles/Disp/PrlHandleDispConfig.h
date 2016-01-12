@@ -29,8 +29,8 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/DispConfig/CDispCommonPreferences.h"
-#include "XmlModel/NetworkConfig/CParallelsNetworkConfig.h"
+#include <prlxmlmodel/DispConfig/CDispCommonPreferences.h>
+#include <prlxmlmodel/NetworkConfig/CParallelsNetworkConfig.h>
 #include "PrlHandleCpuFeatures.h"
 
 #define SYNCHRO_PARENT_DISP_CONFIG QMutexLocker _lock(m_pDispCfg->GetSynchroObject());

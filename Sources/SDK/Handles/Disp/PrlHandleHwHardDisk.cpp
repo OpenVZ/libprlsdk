@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleHwHardDisk.h"
-#include "XmlModel/HostHardwareInfo/CHwHardDisk.h"
+#include <prlxmlmodel/HostHardwareInfo/CHwHardDisk.h>
 #include "PrlHandleHwHddPart.h"
 
 #ifdef ENABLE_MALLOC_DEBUG

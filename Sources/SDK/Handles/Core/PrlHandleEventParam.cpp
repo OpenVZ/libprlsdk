@@ -24,7 +24,7 @@
  */
 
 
-#include "XmlModel/VmConfig/CVmSecurity.h"
+#include <prlxmlmodel/VmConfig/CVmSecurity.h>
 #include "PrlHandleDispConfig.h"
 #include "PrlHandleVmDeviceFloppy.h"
 #include "PrlHandleVmDeviceHardDrive.h"
@@ -43,8 +43,8 @@
 #include "PrlHandleLicense.h"
 
 #include "PrlHandleEventParam.h"
-#include "XmlModel/Messaging/CVmEventParameter.h"
-#include "XmlModel/Messaging/CVmBinaryEventParameter.h"
+#include <prlxmlmodel/Messaging/CVmEventParameter.h>
+#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
 #include "PrlHandleVm.h"
 #include "PrlHandleServer.h"
 #include <prlcommon/Logging/Logging.h>

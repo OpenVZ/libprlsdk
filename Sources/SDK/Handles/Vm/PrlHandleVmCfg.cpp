@@ -25,7 +25,7 @@
 
 
 #include <prlcommon/PrlCommonUtilsBase/StringUtils.h>
-#include "XmlModel/ParallelsObjects/CVmProfileHelper.h"
+#include <prlxmlmodel/ParallelsObjects/CVmProfileHelper.h>
 
 #include "PrlHandleVmCfg.h"
 #include "PrlHandleSrvConfig.h"

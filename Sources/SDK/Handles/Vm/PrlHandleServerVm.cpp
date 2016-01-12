@@ -24,10 +24,9 @@
  */
 
 
-#include "XmlModel/VmConfig/CVmConfiguration.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
 #include "PrlHandleServerJob.h"
 #include "PrlHandleStringsList.h"
-#include "PrlHandleApplianceConfig.h"
 #include "PrlHandleVm.h"
 #include "PrlRunProgramInGuestJob.h"
 #include "PrlHandleServerVm.h"
@@ -119,17 +118,6 @@ PrlHandleJobPtr PrlHandleServerVm::StartSearchVms(PRL_HANDLE hStringsList)
 
 	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
 							PJOC_SRV_START_SEARCH_VMS)));
-}
-
-PrlHandleJobPtr PrlHandleServerVm::InstallAppliance(PRL_HANDLE hAppCfg, PRL_CONST_STR sVmParentPath, PRL_UINT32 nFlags)
-{
-	PrlHandleApplianceConfigPtr pAppCfg = PRL_OBJECT_BY_HANDLE<PrlHandleApplianceConfig>( hAppCfg );
-	pAppCfg->SetDownloadPath(sVmParentPath);
-
-	QString job_uuid = m_pPveControl->DspCmdInstallAppliance(QSTR2UTF8(pAppCfg->toString()), nFlags);
-
-    return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
-							PJOC_SRV_INSTALL_APPLIANCE )));
 }
 
 PrlHandleJobPtr PrlHandleServerVm::DspCmdCreateVmBackup(
