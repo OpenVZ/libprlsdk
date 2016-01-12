@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleRunningTask.h"
-#include "XmlModel/Messaging/CVmEventParameter.h"
+#include <prlxmlmodel/Messaging/CVmEventParameter.h>
 
 PrlHandleRunningTask::PrlHandleRunningTask( CVmEvent *e  )
 : PrlHandleBase(PHT_RUNNING_TASK), m_evt( e )

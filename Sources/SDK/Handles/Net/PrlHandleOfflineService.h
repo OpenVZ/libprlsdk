@@ -28,7 +28,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/NetworkConfig/COffmgmtService.h"
+#include <prlxmlmodel/NetworkConfig/COffmgmtService.h>
 
 
 /**

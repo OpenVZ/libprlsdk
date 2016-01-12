@@ -25,8 +25,8 @@
 
 
 #include "PrlHandleVmDeviceFloppy.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/VmConfig/CVmFloppyDisk.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/VmConfig/CVmFloppyDisk.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleHwHddPart.h"
-#include "XmlModel/HostHardwareInfo/CHwHardDisk.h"
+#include <prlxmlmodel/HostHardwareInfo/CHwHardDisk.h>
 
 #define CHECK_HARD_DISK_PARTITION_OBJECT\
 	if (!m_pHwHddPart)\

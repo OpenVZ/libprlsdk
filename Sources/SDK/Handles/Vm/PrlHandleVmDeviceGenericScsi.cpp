@@ -25,8 +25,8 @@
 
 
 #include "PrlHandleVmDeviceGenericScsi.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/VmConfig/CVmGenericScsiDevice.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/VmConfig/CVmGenericScsiDevice.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

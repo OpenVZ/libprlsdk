@@ -29,7 +29,7 @@
 #include "Libraries/ProblemReportUtils/CProblemReportUtils.h"
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/HostUtils/PrlMiscellaneous.h>
-#include "XmlModel/DispConfig/CDispatcherConfig.h"
+#include <prlxmlmodel/DispConfig/CDispatcherConfig.h>
 
 using namespace PrlMiscellaneous;
 
@@ -84,10 +84,6 @@ void PrlProblemReportAssembler::concreteRun()
 	{
 		CProblemReportUtils::addClientInformation( GET_LOCKED_REPORT_REFERENCE, PrlGetApiAppMode() );
 		CHECK_JOB_WAS_CANCELLED
-
-		CProblemReportUtils::addKeyboardMouseProfiles( GET_LOCKED_REPORT_REFERENCE );
-		CHECK_JOB_WAS_CANCELLED
-
 	} // if (PPRF_ADD_CLIENT_PART & m_nFlags)
 
 	//Pack report if necessary

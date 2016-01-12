@@ -29,7 +29,7 @@
 
 #include "PrlHandleBase.h"
 #include <prlcommon/PrlCommonUtilsBase/CGuestOsesHelper.h>
-#include "XmlModel/Messaging/CVmEvent.h"
+#include <prlxmlmodel/Messaging/CVmEvent.h>
 
 /**
  * Handle which wrapping guest OSes matrix object received from remote side.

@@ -25,8 +25,8 @@
 
 
 #include "PrlHandleVmDeviceUsbPort.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/VmConfig/CVmUsbDevice.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/VmConfig/CVmUsbDevice.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

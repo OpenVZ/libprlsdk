@@ -28,7 +28,7 @@
 #define __PARALLELS_HANDLE_FOUND_VM_INFO_H__
 
 #include "PrlHandleBase.h"
-#include "XmlModel/Messaging/CVmEvent.h"
+#include <prlxmlmodel/Messaging/CVmEvent.h>
 
 /**
  * Found virtual machine information (name, OS version and etc.) handle. Using as result of search VM operation

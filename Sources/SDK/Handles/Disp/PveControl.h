@@ -34,6 +34,7 @@
 #include <QStringList>
 #include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include <prlcommon/Std/SmartPtr.h>
+#include <prlcommon/Logging/Logging.h>
 #include <prlcommon/IOService/IOCommunication/IOClient.h>
 #include "Libraries/ProtoSerializer/CProtoSerializer.h"
 #include "SDK/Include/PrlIOStructs.h"

@@ -28,7 +28,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/VmConfig/CVmNetworkRate.h"
+#include <prlxmlmodel/VmConfig/CVmNetworkRate.h>
 
 
 /**

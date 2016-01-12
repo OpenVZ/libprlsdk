@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleVmToolsInfo.h"
-#include "XmlModel/Messaging/CVmEventParameter.h"
+#include <prlxmlmodel/Messaging/CVmEventParameter.h>
 
 PrlHandleVmToolsInfo::PrlHandleVmToolsInfo( CVmEvent *e )
 : PrlHandleBase(PHT_VM_TOOLS_INFO), m_VmEvent(e)

@@ -24,6 +24,7 @@
 
 TEMPLATE = lib
 CONFIG += staticlib
+QTCONFIG = core xml
 
 include(ProtoSerializer.pri)
 

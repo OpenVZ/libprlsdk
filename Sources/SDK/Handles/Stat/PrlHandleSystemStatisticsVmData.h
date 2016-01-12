@@ -27,7 +27,7 @@
 #ifndef __PARALLELS_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__
 #define __PARALLELS_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__
 
-#include "XmlModel/VmDataStatistic/CVmDataStatistic.h"
+#include <prlxmlmodel/VmDataStatistic/CVmDataStatistic.h>
 #include "PrlHandleSystemStatistics.h"
 
 /**

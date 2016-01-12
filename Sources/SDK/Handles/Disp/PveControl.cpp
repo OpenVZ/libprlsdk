@@ -31,11 +31,12 @@
 #include <prlcommon/PrlUuid/Uuid.h>
 #include "PveControl.h"
 #include <prlcommon/Interfaces/ParallelsNamespace.h>
-#include "XmlModel/Messaging/CResult.h"
-#include "XmlModel/Messaging/CVmEvent.h"
-#include "XmlModel/Messaging/CVmEventParameter.h"
-#include "XmlModel/Messaging/CVmBinaryEventParameter.h"
+#include <prlxmlmodel/Messaging/CResult.h>
+#include <prlxmlmodel/Messaging/CVmEvent.h>
+#include <prlxmlmodel/Messaging/CVmEventParameter.h>
+#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
 #include <prlcommon/Std/SmartPtr.h>
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 #include <prlcommon/IOService/IOCommunication/IORoutingTableHelper.h>
 #include <prlcommon/IOService/IOCommunication/IOSSLInterface.h>
 #include "PrlHandleLoginHelperJob.h"
@@ -47,8 +48,6 @@
 #include <QTextStream>
 #include <QCoreApplication>
 #include <QThread>
-
-#include <prlcommon/Logging/Logging.h>
 
 #ifdef _WIN_
 #include <windows.h>

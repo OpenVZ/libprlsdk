@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleSrvConfig.h"
-#include "XmlModel/HostHardwareInfo/CHwMemorySettings.h"
+#include <prlxmlmodel/HostHardwareInfo/CHwMemorySettings.h>
 #include "PrlHandleHwGenericDevice.h"
 #include "PrlHandleHwHardDisk.h"
 #include "PrlHandleHwNetAdapter.h"

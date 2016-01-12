@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleHwGenericPciDevice.h"
-#include "XmlModel/HostHardwareInfo/CHwGenericPciDevice.h"
+#include <prlxmlmodel/HostHardwareInfo/CHwGenericPciDevice.h>
 
 #define CHECK_GENERIC_PCI_OBJECT\
 	if (!m_pHwGenericPciDevice)\

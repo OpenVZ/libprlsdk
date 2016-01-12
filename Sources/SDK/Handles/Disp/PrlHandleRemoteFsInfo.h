@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/HostHardwareInfo/CHwFileSystemInfo.h"
+#include <prlxmlmodel/HostHardwareInfo/CHwFileSystemInfo.h>
 
 #define SYNCHRO_PARENT_FS_INFO QMutexLocker _lock(m_pFsInfo->GetSynchroObject());
 

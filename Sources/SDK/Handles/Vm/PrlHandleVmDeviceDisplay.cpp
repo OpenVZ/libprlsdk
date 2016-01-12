@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleVmDeviceDisplay.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
 
 
 #ifdef ENABLE_MALLOC_DEBUG

@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/HostHardwareInfo/CHostHardwareInfo.h"
+#include <prlxmlmodel/HostHardwareInfo/CHostHardwareInfo.h>
 
 #define SYNCHRO_PARENT_SRV_CONFIG QMutexLocker _lock(m_pSrvConfig->GetSynchroObject());
 

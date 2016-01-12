@@ -45,6 +45,7 @@
 
 #include "CInstalledSoftwareCollector.h"
 #include <prlcommon/HostUtils/HostUtils.h>
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 
 #ifdef _WIN_
 #include "Libraries/WmiWrap/WmiWrap.h"

@@ -113,14 +113,6 @@ public:
 	PrlHandleJobPtr StartSearchVms(PRL_HANDLE hStringsList);
 
 	/**
-	* install appliance from download service
-	* @param PRL_HANDLE hAppCfg - appliance config
-	* @param PRL_CONST_STR sVmParentPath - VM parent path
-	* @return pointer to generated job instance
-	*/
-	PrlHandleJobPtr InstallAppliance( PRL_HANDLE hAppCfg, PRL_CONST_STR sVmParentPath, PRL_UINT32 nFlags );
-
-	/**
 	 * Performs backup VM request to the server
 	 * @param VM UUID
 	 * @param target server hostname

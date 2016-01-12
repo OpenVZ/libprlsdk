@@ -39,11 +39,12 @@
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/PrlUuid/Uuid.h>
 #include <prlcommon/PrlCommonUtilsBase/countof.h>
+#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 #include <prlcommon/Std/PrlAssert.h>
 
-#include "XmlModel/Messaging/CResult.h"
-#include "XmlModel/Messaging/CVmEvent.h"
-#include "XmlModel/Messaging/CVmEventParameter.h"
+#include <prlxmlmodel/Messaging/CResult.h>
+#include <prlxmlmodel/Messaging/CVmEvent.h>
+#include <prlxmlmodel/Messaging/CVmEventParameter.h>
 
 #include "PrlHandleVm.h"
 #include "PrlHandleIOEvent.h"

@@ -34,7 +34,7 @@
 #include "PrlHandleProblemReportBase.h"
 #include "PrlHandleServerDisp.h"
 
-#include "XmlModel/HostHardwareInfo/GenericPciDevices.h"
+#include <prlxmlmodel/HostHardwareInfo/GenericPciDevices.h>
 
 #include "PrlHandleDispConfig.h"
 #include "PrlHandleUserProfile.h"

@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/HostHardwareInfo/CSystemStatistics.h"
+#include <prlxmlmodel/HostHardwareInfo/CSystemStatistics.h>
 #include <QDataStream>
 
 #define SYNCHRO_PARENT_SYSTEM_STATISTICS QMutexLocker _lock(m_pSysStat->GetSynchroObject());

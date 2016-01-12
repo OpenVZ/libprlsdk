@@ -29,7 +29,7 @@
 #include "PrlHandleOpTypeList.h"
 #include "PrlHandleUsbIdentity.h"
 #include "PrlHandleCpuFeatures.h"
-#include "XmlModel/DispConfig/CDispUser.h"
+#include <prlxmlmodel/DispConfig/CDispUser.h>
 #include "PrlHandleCpuPool.h"
 
 #ifdef ENABLE_MALLOC_DEBUG

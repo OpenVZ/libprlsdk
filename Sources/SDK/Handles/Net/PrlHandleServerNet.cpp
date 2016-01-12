@@ -24,7 +24,7 @@
  */
 
 
-#include "XmlModel/NetworkConfig/CNetworkClassesConfig.h"
+#include <prlxmlmodel/NetworkConfig/CNetworkClassesConfig.h>
 
 #include "PrlHandleServerJob.h"
 #include "PrlHandleVirtNet.h"

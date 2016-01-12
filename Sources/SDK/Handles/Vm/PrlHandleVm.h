@@ -35,7 +35,7 @@
 #include <QHash>
 
 #include <prlcommon/IOService/Common/ExecChannel.h>
-#include "XmlModel/VmConfig/CVmConfiguration.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
 
 #include "BuiltinEventSource.h"
 #include "PrlHandleBase.h"

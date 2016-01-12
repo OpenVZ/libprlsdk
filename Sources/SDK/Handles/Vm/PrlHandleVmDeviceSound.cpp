@@ -25,10 +25,10 @@
 
 
 #include "PrlHandleVmDeviceSound.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/VmConfig/CVmSoundDevice.h"
-#include "XmlModel/VmConfig/CVmSoundInputs.h"
-#include "XmlModel/VmConfig/CVmSoundOutputs.h"
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/VmConfig/CVmSoundDevice.h>
+#include <prlxmlmodel/VmConfig/CVmSoundInputs.h>
+#include <prlxmlmodel/VmConfig/CVmSoundOutputs.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

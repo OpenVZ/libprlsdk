@@ -28,7 +28,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/NetworkConfig/CPrivateNetwork.h"
+#include <prlxmlmodel/NetworkConfig/CPrivateNetwork.h>
 
 
 /**

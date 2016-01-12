@@ -28,7 +28,7 @@
  */
 
 
-#include "XmlModel/ProblemReport/CProblemReport.h"
+#include <prlxmlmodel/ProblemReport/CProblemReport.h>
 #include "PrlHandleProblemReportBase.h"
 #include "PrlHandleLocalJob.h"
 

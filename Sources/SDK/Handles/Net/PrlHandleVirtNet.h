@@ -28,7 +28,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/NetworkConfig/CVirtualNetwork.h"
+#include <prlxmlmodel/NetworkConfig/CVirtualNetwork.h>
 
 
 /**

@@ -60,7 +60,6 @@
 #include "PrlHandleSystemStatisticsVmData.h"
 #include "PrlHandleVmDefaultConfig.h"
 #include "PrlHandleVmGuest.h"
-#include "PrlHandleApplianceConfig.h"
 #include "PrlHandleCtTemplate.h"
 #include "PrlHandleFirewallRule.h"
 
@@ -5346,14 +5345,12 @@ PRL_HANDLE PrlSrv_InstallAppliance_Impl(PRL_HANDLE hServer,
 												 PRL_CONST_STR sVmParentPath,
 												 PRL_UINT32 nFlags)
 {
+	PRL_UNUSED_PARAM(nFlags);
+	PRL_UNUSED_PARAM(sVmParentPath);
 	if (PRL_WRONG_HANDLE(hServer, PHT_SERVER) || PRL_WRONG_HANDLE(hAppCfg, PHT_APPLIANCE_CONFIG))
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_INSTALL_APPLIANCE));
 
-	PrlHandleServerVmPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerVm>( hServer );
-	PrlHandleJobPtr pJob = pServer->InstallAppliance(hAppCfg, sVmParentPath, nFlags);
-	if (!pJob)
-		RETURN_RES(PRL_INVALID_HANDLE);
-	RETURN_RES(pJob->GetHandle())
+	RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_UNIMPLEMENTED, PJOC_SRV_INSTALL_APPLIANCE));
 }
 
 PRL_HANDLE PrlVm_LoginInGuest_Impl(PRL_HANDLE hVm, PRL_CONST_STR sUserName,
@@ -11447,7 +11444,7 @@ PRL_METHOD( PrlAppliance_Create) (
 	if ( PRL_WRONG_PTR(phAppCfg) )
 		return PRL_ERR_INVALID_ARG;
 
-	return PrlHandleApplianceConfig::Create(phAppCfg);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_METHOD( PrlVmCfg_SetVmType ) (

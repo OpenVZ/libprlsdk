@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include "XmlModel/Messaging/CVmEvent.h"
+#include <prlxmlmodel/Messaging/CVmEvent.h>
 
 
 /**

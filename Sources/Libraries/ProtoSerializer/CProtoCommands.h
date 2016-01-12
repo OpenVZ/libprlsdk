@@ -32,8 +32,8 @@
 #include <QStringList>
 #include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include <prlcommon/Std/SmartPtr.h>
-#include "XmlModel/Messaging/CVmEvent.h"
-#include "XmlModel/Messaging/CResult.h"
+#include <prlxmlmodel/Messaging/CVmEvent.h>
+#include <prlxmlmodel/Messaging/CResult.h>
 
 namespace Parallels
 {

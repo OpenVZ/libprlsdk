@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleHwNetAdapter.h"
-#include "XmlModel/HostHardwareInfo/CHwNetAdapter.h"
+#include <prlxmlmodel/HostHardwareInfo/CHwNetAdapter.h>
 #include "PrlHandleStringsList.h"
 
 #define CHECK_NET_ADAPTER_OBJECT\

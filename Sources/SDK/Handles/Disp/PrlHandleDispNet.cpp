@@ -25,8 +25,8 @@
 
 
 #include "PrlHandleDispNet.h"
-#include "XmlModel/DispConfig/CDispNetAdapter.h"
-#include "XmlModel/DispConfig/CDispDhcpPreferences.h"
+#include <prlxmlmodel/DispConfig/CDispNetAdapter.h>
+#include <prlxmlmodel/DispConfig/CDispDhcpPreferences.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

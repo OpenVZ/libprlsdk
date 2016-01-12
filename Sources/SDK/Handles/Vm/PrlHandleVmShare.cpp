@@ -25,8 +25,8 @@
 
 
 #include "PrlHandleVmShare.h"
-#include "XmlModel/VmConfig/CVmHostSharing.h"
-#include "XmlModel/VmConfig/CVmSharedFolder.h"
+#include <prlxmlmodel/VmConfig/CVmHostSharing.h>
+#include <prlxmlmodel/VmConfig/CVmSharedFolder.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

@@ -51,11 +51,9 @@
 #include <QtNetwork/QHttpRequestHeader>
 
 #include "CInstalledSoftwareCollector.h"
-#include "XmlModel/DispConfig/CDispatcherConfig.h"
-#include "XmlModel/Updater/CUpdaterConfig.h"
-#include "XmlModel/VmConfig/CVmConfiguration.h"
-#include "XmlModel/HostHardwareInfo/CHostHardwareInfo.h"
-#include "XmlModel/KeyboardMouse/ParallelsKeyboardMouse.h"
+#include <prlxmlmodel/DispConfig/CDispatcherConfig.h>
+#include <prlxmlmodel/VmConfig/CVmConfiguration.h>
+#include <prlxmlmodel/HostHardwareInfo/CHostHardwareInfo.h>
 #include <prlcommon/PrlCommonUtilsBase/StringUtils.h>
 #include "CPackedProblemReport.h"
 #include <prlcommon/PrlCommonUtilsBase/CSimpleFileHelper.h>
@@ -460,17 +458,6 @@ void fillDesktopProblemReportOnDisconnectServer( CProblemReport & cReport,
 	}
 
 
-
-	// try to load updater config file to xml
-
-	QString strDispConfigDir = ParallelsDirs::getDispatcherConfigDir();
-	QFile _vm_config_file(strDispConfigDir+"/.parallels_updater.xml");
-	CUpdaterConfig UpdaterConfig(&_vm_config_file);
-	if (UpdaterConfig.m_uiRcInit == PRL_ERR_SUCCESS)
-	{
-		cReport.setVmUpdaterInfo( UpdaterConfig.toString() );
-	}
-
 	/**
 	* add common log files
 	*/
@@ -586,30 +573,6 @@ void fillCrashDump( CProblemReport & cReport, const QString & DumpPath )
 QString getHostInfo()
 {
 	return ( QString() );
-}
-
-void addKeyboardMouseProfiles( CProblemReport & cReport )
-{
-	QString path = ParallelsDirs::getCallerUserPreferencesDir() + "/";
-	QDir dir( path );
-	QStringList filters;
-	filters << QString("*.") + PROFILE_EXTENSION;
-	QStringList profiles = dir.entryList(filters, QDir::Files);
-
-	QString qsProfilesData;
-	KeyboardMouseProfiles * pProfiles = new KeyboardMouseProfiles;
-
-	foreach( QString kbdFile, profiles )
-	{
-		QFile file(path + kbdFile);
-		ParallelsKeyboardMouse * profile = new ParallelsKeyboardMouse;
-		if ( PRL_FAILED( profile->loadFromFile(path + kbdFile) ) )
-			continue;
-
-		pProfiles->m_lstKeyboardMouseProfile += profile;
-	}
-
-	cReport.setKeyboardMouseProfiles( pProfiles );
 }
 
 QString loadAppSwitcherPackagesInfo()

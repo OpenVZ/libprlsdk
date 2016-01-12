@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleVmBootDev.h"
-#include "XmlModel/VmConfig/CVmStartupOptions.h"
+#include <prlxmlmodel/VmConfig/CVmStartupOptions.h>
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module

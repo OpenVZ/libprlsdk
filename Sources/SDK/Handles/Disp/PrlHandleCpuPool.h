@@ -29,7 +29,7 @@
 
 #include "PrlHandleBase.h"
 #include "PrlHandleCpuFeatures.h"
-#include "XmlModel/CpuFeatures/CCpuPool.h"
+#include <prlxmlmodel/CpuFeatures/CCpuPool.h>
 
 /**
  * Handle object represents cpu pool info

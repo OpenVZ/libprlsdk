@@ -26,7 +26,7 @@
 
 
 #include "CProtoCommands.h"
-#include "XmlModel/Messaging/CVmEventParameterList.h"
+#include <prlxmlmodel/Messaging/CVmEventParameterList.h>
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/PrlUuid/Uuid.h>
 #include <prlcommon/Std/PrlAssert.h>
