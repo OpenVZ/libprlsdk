@@ -18,8 +18,9 @@ Trial version of Virtuozzo can be downloaded here [http://www.odin.com/products/
 How to install
 --------------
 
-SDK depends on [libprlcommon](https://src.openvz.org/scm/ovz/libprlcommon.git) library.
-One needs to install it in order to build SDK.
+SDK depends on [libprlcommon](https://src.openvz.org/scm/ovz/libprlcommon.git) and
+[libprlxmlmodel](https://src.openvz.org/scm/ovz/libprlxmlmodel.git) libraries.
+One needs to install them in order to build SDK.
 
 To build the SDK run:
 
