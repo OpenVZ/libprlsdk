@@ -1179,7 +1179,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultNetwork ( CVmConfiguration& cfg, PRL_HA
 	SortDeviceListByIndex<CVmGenericNetworkAdapter >(cfg.getVmHardwareList()->m_lstNetworkAdapters);
 
 	unsigned int nVersion = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
-	if (PVS_GUEST_VIRTIO_SUPPORTED(nVersion))
+	if (nVersion == 0 || PVS_GUEST_VIRTIO_SUPPORTED(nVersion))
 	{
 		network->setAdapterType(PNT_VIRTIO);
 	}
