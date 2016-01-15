@@ -502,6 +502,21 @@ public:
 	*/
 	PRL_RESULT EnablePlugins(PRL_BOOL bEnablePluginsSupport);
 
+	/**
+	* Gets VM CPU limit type
+	* @param [out] Pointer to a variable that receives the result.
+	* @return PRL_RESULT. Possible values:
+	* * PRL_ERR_SUCCESS - operation completed successfully
+	*/
+	PRL_RESULT GetVmCpuLimitType(PRL_UINT32_PTR pnVmCpuLimitType);
+
+	/**
+	* Sets VM CPU limit type
+	* @param [in] setting value
+	* @return PRL_RESULT. Possible values:
+	* * PRL_ERR_SUCCESS - operation completed successfully
+	*/
+	PRL_RESULT SetVmCpuLimitType(PRL_UINT32 nVmCpuLimitType);
 
 	/**
 	 * Gets default log level

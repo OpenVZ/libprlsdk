@@ -395,6 +395,8 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetDefaultEncryptionPluginId ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetDefaultEncryptionPluginId ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_ArePluginsEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_EnablePlugins ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetVmCpuLimitType ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetVmCpuLimitType ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsVerboseLogEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetVerboseLogEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsAllowMultiplePMC ) \

@@ -4171,6 +4171,49 @@ PRL_METHOD( PrlDispCfg_EnablePlugins ) (
 	return (pDispConfig->EnablePlugins(bEnablePluginsSupport));
 }
 
+PRL_METHOD( PrlDispCfg_GetVmCpuLimitType ) (
+	PRL_HANDLE hDispConfig,
+	PRL_UINT32_PTR pnVmCpuLimitType
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, pnVmCpuLimitType=%.8X)",
+		__FUNCTION__,
+		hDispConfig,
+		pnVmCpuLimitType
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) ||
+		PRL_WRONG_PTR(pnVmCpuLimitType))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->GetVmCpuLimitType(pnVmCpuLimitType));
+}
+
+PRL_METHOD( PrlDispCfg_SetVmCpuLimitType ) (
+	PRL_HANDLE hDispConfig,
+	PRL_UINT32 nVmCpuLimitType
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, nVmCpuLimitType=%u)",
+		__FUNCTION__,
+		hDispConfig,
+		nVmCpuLimitType
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->SetVmCpuLimitType(nVmCpuLimitType));
+}
+
 PRL_METHOD( PrlDispCfg_GetDefaultEncryptionPluginId ) (
 	PRL_HANDLE hDispConfig,
 	PRL_STR sDefaultPluginId,
