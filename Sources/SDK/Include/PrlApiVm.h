@@ -6613,6 +6613,49 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32 nMaxBalloonSize
 		) );
 
+/* Returns the minimum memory limit which is guaranteed for
+   the virtual machine, in percent of guest RAM.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   pMemGuaranteeSize :  [out] A pointer to a structure that receives
+                        the result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the memory information is not available in
+   the virtual machine configuration.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmCfg_GetMemGuaranteeSize, (
+		PRL_HANDLE hVmCfg,
+		PRL_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize
+		) );
+
+/* Sets the minimum memory limit which is guaranteed for
+   the virtual machine, in percent of guest RAM.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   pMemGuaranteeSize :  The memory size structure to set, value and
+                        type.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmCfg_SetMemGuaranteeSize, (
+		PRL_HANDLE hVmCfg,
+		PRL_CONST_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize
+		) );
+
 /* Determines the number of CPUs in the virtual machine.
    Parameters
    hVmCfg :        A handle of type PHT_VM_CONFIGURATION

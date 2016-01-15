@@ -2414,6 +2414,50 @@ PRL_METHOD( PrlVmCfg_SetMaxBalloonSize ) (
 	return pVm->SetMaxBalloonSize(nMaxBalloonSize);
 }
 
+PRL_METHOD( PrlVmCfg_GetMemGuaranteeSize ) (
+		PRL_HANDLE hVmCfg,
+		PRL_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pMemGuaranteeSize=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pMemGuaranteeSize
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pMemGuaranteeSize))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetMemGuaranteeSize(pMemGuaranteeSize);
+}
+
+PRL_METHOD( PrlVmCfg_SetMemGuaranteeSize ) (
+		PRL_HANDLE hVmCfg,
+		PRL_CONST_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pMemGuaranteeSize=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pMemGuaranteeSize
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pMemGuaranteeSize))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetMemGuaranteeSize(pMemGuaranteeSize);
+}
+
 PRL_METHOD( PrlVmCfg_GetCpuCount ) (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnVmCpuCount

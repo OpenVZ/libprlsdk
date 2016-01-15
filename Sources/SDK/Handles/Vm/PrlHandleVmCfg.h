@@ -1072,6 +1072,23 @@ public:
 	PRL_RESULT SetMaxBalloonSize(PRL_UINT32 nMaxBalloonSize);
 
 	/**
+	 * Returns VM Memory Guarantee size structure
+	 * @param [out] structure for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_NO_DATA - VM configuration do not has necessary data
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetMemGuaranteeSize(PRL_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize);
+
+	/**
+	 * Sets VM Memory Guarantee Size structure
+	 * @param setting structure
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetMemGuaranteeSize(PRL_CONST_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize);
+
+	/**
 	 * Returns VM CPU count
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:
