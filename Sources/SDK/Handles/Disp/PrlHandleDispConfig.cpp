@@ -480,6 +480,22 @@ PRL_RESULT PrlHandleDispConfig::EnablePlugins(PRL_BOOL bEnablePluginsSupport)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleDispConfig::GetVmCpuLimitType(PRL_UINT32_PTR pnVmCpuLimitType)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	if (pnVmCpuLimitType == NULL)
+		return (PRL_ERR_INVALID_ARG);
+	*pnVmCpuLimitType = m_DispConfig.getWorkspacePreferences()->getVmGuestCpuLimitType();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleDispConfig::SetVmCpuLimitType(PRL_UINT32 nVmCpuLimitType)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_DispConfig.getWorkspacePreferences()->setVmGuestCpuLimitType(nVmCpuLimitType);
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleDispConfig::IsVerboseLogEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

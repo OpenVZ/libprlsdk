@@ -1539,6 +1539,12 @@ typedef enum _PRL_CPULIMIT_TYPE
 	PRL_CPULIMIT_PERCENTS_TO_MHZ= 4, // The limit in % convert to Mhz
 } PRL_CPULIMIT_TYPE;
 
+typedef enum _PRL_VM_CPULIMIT_TYPE
+{
+	PRL_VM_CPULIMIT_FULL = 0,
+	PRL_VM_CPULIMIT_GUEST = 1
+} PRL_VM_CPULIMIT_TYPE;
+
 /**
  * constant for unlimited CPU number
  */

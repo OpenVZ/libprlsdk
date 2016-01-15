@@ -5420,6 +5420,43 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
 		PRL_BOOL bEnablePluginsSupport
 		) );
 
+/* %VM_ONLY%
+
+   \Returns VM CPU limit type.
+   Parameters
+   hDispConfig :                A handle of type PHT_DISP_CONFIG.
+   pnVmCpuLimitType :           [out] Pointer to a buffer that receives
+                                Vm CPU limit type
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_4,
+				 PrlDispCfg_GetVmCpuLimitType,  (
+		PRL_HANDLE hDispConfig,
+		PRL_UINT32_PTR pnVmCpuLimitType
+		) );
+
+/* %VM_ONLY%
+
+   Parameters
+   hDispConfig :                A handle of type PHT_DISP_CONFIG.
+   nVmCpuLimitType:             [in] VM CPU limit type value
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+
+PRL_METHOD_DECL( PARALLELS_API_VER_4,
+				 PrlDispCfg_SetVmCpuLimitType,  (
+		PRL_HANDLE hDispConfig,
+		PRL_UINT32 nVmCpuLimitType
+		) );
+
 /* \Returns default encryption plugin Id.
    Parameters
    hDispConfig :                A handle of type PHT_DISP_CONFIG.
