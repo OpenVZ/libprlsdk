@@ -574,6 +574,7 @@ bool SDKParser::ParseFunctionArgs(const QString& qsFuncName, const QString& qsAr
 			|| QRegExp("PRL_CHS").indexIn(arg.type) != -1
 			|| QRegExp("PRL_CPULIMIT_DATA").indexIn(arg.type) != -1
 			|| QRegExp("PRL_IOLIMIT_DATA").indexIn(arg.type) != -1
+			|| QRegExp("PRL_MEMGUARANTEE_DATA").indexIn(arg.type) != -1
 			|| QRegExp("PRL_PROXY_HOST_INFO").indexIn(arg.type) != -1
 			|| QRegExp("PRL_PROXY_CLIENT_INFO").indexIn(arg.type) != -1
 			|| (arg.type != "PRL_CONST_STR_PTR" && QRegExp("_CONST_\\w+_PTR").indexIn(arg.type) != -1)
