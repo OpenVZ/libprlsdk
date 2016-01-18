@@ -1929,3 +1929,217 @@ PRL_ASYNC_METHOD( PrlVm_SendProblemReport ) (
     CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_SendProblemReport, (hVm, hProblemReport, nFlags))
 }
 
+PRL_METHOD( PrlVmCfg_GetHostMemQuotaMin ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnHostMemQuotaMin
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnHostMemQuotaMin=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnHostMemQuotaMin
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnHostMemQuotaMin))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetHostMemQuotaMin(pnHostMemQuotaMin);
+}
+
+PRL_METHOD( PrlVmCfg_SetHostMemQuotaMin ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nHostMemQuotaMin
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaMin=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nHostMemQuotaMin
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetHostMemQuotaMin(nHostMemQuotaMin);
+}
+
+PRL_METHOD( PrlVmCfg_GetHostMemQuotaMax ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnHostMemQuotaMax
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnHostMemQuotaMax=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnHostMemQuotaMax
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnHostMemQuotaMax))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetHostMemQuotaMax(pnHostMemQuotaMax);
+}
+
+PRL_METHOD( PrlVmCfg_SetHostMemQuotaMax ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nHostMemQuotaMax
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaMax=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nHostMemQuotaMax
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetHostMemQuotaMax(nHostMemQuotaMax);
+}
+
+PRL_METHOD( PrlVmCfg_GetHostMemQuotaPriority ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnHostMemQuotaPriority
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnHostMemQuotaPriority=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnHostMemQuotaPriority
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnHostMemQuotaPriority))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetHostMemQuotaPriority(pnHostMemQuotaPriority);
+}
+
+PRL_METHOD( PrlVmCfg_SetHostMemQuotaPriority ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nHostMemQuotaPriority
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaPriority=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nHostMemQuotaPriority
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetHostMemQuotaPriority(nHostMemQuotaPriority);
+}
+
+PRL_METHOD( PrlVmCfg_IsHostMemAutoQuota ) (
+		PRL_HANDLE hVmCfg,
+		PRL_BOOL_PTR pbHostMemAutoQuota
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbHostMemAutoQuota=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pbHostMemAutoQuota
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pbHostMemAutoQuota))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->IsHostMemAutoQuota(pbHostMemAutoQuota);
+}
+
+PRL_METHOD( PrlVmCfg_SetHostMemAutoQuota ) (
+		PRL_HANDLE hVmCfg,
+		PRL_BOOL bHostMemAutoQuota
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, bHostMemAutoQuota=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		bHostMemAutoQuota
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetHostMemAutoQuota(bHostMemAutoQuota);
+}
+
+PRL_METHOD( PrlVmCfg_GetMaxBalloonSize ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnMaxBalloonSize
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnMaxBalloonSize=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnMaxBalloonSize
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnMaxBalloonSize))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetMaxBalloonSize(pnMaxBalloonSize);
+}
+
+PRL_METHOD( PrlVmCfg_SetMaxBalloonSize ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nMaxBalloonSize
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nHostMemQuotaMax=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nMaxBalloonSize
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetMaxBalloonSize(nMaxBalloonSize);
+}

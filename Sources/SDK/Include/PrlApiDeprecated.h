@@ -2366,4 +2366,219 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnEnvId
 		) );	
 
+/* \Returns the minimal size of the host's memory (RAM) consumption
+   by the virtual machine, in megabytes.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   pnHostMemQuotaMin :  [out] A pointer to a variable that receives
+                        the \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the memory information is not available in
+   the virtual machine configuration.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_GetHostMemQuotaMin, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnHostMemQuotaMin
+		) );
+
+/* Sets the minimal size of the host's memory (RAM) consumption
+   by the virtual machine.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   nHostMemQuotaMin :   The minimal RAM size to set, in megabytes.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_SetHostMemQuotaMin, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nHostMemQuotaMin
+		) );
+
+/* \Returns the maximal size of the host's memory (RAM) consumption
+   by the virtual machine, in megabytes.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   pnHostMemQuotaMax :  [out] A pointer to a variable that receives
+                        the \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the memory information is not available in
+   the virtual machine configuration.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_GetHostMemQuotaMax, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnHostMemQuotaMax
+		) );
+
+/* Sets the maximal size of the host's memory (RAM) consumption
+   by the virtual machine.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   nHostMemQuotaMax :   The maximal RAM size to set, in megabytes.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_SetHostMemQuotaMax, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nHostMemQuotaMax
+		) );
+
+/* \Returns the relative priority of the virtual machine in host's
+   memory (RAM) distribution mechanism.
+   Parameters
+   hVmCfg :                  A handle of type PHT_VM_CONFIGURATION
+                             identifying the virtual machine
+                             configuration.
+   pnHostMemQuotaPriority :  [out] A pointer to a variable that
+                             receives the \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the memory information is not available in
+   the virtual machine configuration.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_GetHostMemQuotaPriority, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnHostMemQuotaPriority
+		) );
+
+/* Sets the relative priority of the virtual machine in host's
+   memory (RAM) distribution mechanism.
+   Parameters
+   hVmCfg :                A handle of type PHT_VM_CONFIGURATION
+                           identifying the virtual machine
+                           configuration.
+   nHostMemQuotaPriority : The priority to set.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_SetHostMemQuotaPriority, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nHostMemQuotaPriority
+		) );
+
+/* Determines whether the automatic calculation of the host's memory
+   (RAM) consumption parameters enabled for the virtual machine.
+   Parameters
+   hVmCfg :              A handle of type PHT_VM_CONFIGURATION
+                         identifying the virtual machine configuration.
+   pbHostMemAutoQuota :  [out] A pointer to a variable that receives
+                         the \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the memory information is not available in
+   the virtual machine configuration.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_IsHostMemAutoQuota, (
+		PRL_HANDLE hVmCfg,
+		PRL_BOOL_PTR pbHostMemAutoQuota
+		) );
+
+/* Enables or disables the automatic calculation of the host's memory
+   (RAM) consumption parameters for the virtual machine.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   bHostMemAutoQuota :  The value to set. Specify PRL_TRUE to enable
+                        the automatic calculation or PRL_FALSE to
+                        disable it.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_SetHostMemAutoQuota, (
+		PRL_HANDLE hVmCfg,
+		PRL_BOOL bHostMemAutoQuota
+		) );
+
+
+/* Returns the maximum memory limit which can be locked by balloon
+   in the virtual machine, in percent of guest RAM.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   pnMaxBalloonSize :  [out] A pointer to a variable that receives
+                        the result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the memory information is not available in
+   the virtual machine configuration.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_GetMaxBalloonSize, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnMaxBalloonSize
+		) );
+
+/* Sets the maximum memory limit which can be locked by balloon
+   in the virtual machine, in percent of guest RAM.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   nMaxBalloonSize :   The maximum balloon size to set, in percent.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_3,
+			PrlVmCfg_SetMaxBalloonSize, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nMaxBalloonSize
+		) );
+
 #endif //__PARALLELS_API_DEPRECATED_H__
