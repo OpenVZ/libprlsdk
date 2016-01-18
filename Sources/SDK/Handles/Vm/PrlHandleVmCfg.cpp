@@ -1180,6 +1180,37 @@ PRL_RESULT PrlHandleVmCfg::SetMaxBalloonSize(PRL_UINT32 nMaxBalloonSize)
 	return PRL_ERR_SUCCESS;
 }
 
+PRL_RESULT PrlHandleVmCfg::GetMemGuaranteeSize(PRL_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	pMemGuaranteeSize->type =
+		m_VmConfig.getVmHardwareList()->getMemory()->getMemGuaranteeType();
+	pMemGuaranteeSize->value =
+		m_VmConfig.getVmHardwareList()->getMemory()->getMemGuarantee();
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVmCfg::SetMemGuaranteeSize(PRL_CONST_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	switch(pMemGuaranteeSize->type)
+	{
+	case PRL_MEMGUARANTEE_AUTO:
+		m_VmConfig.getVmHardwareList()->getMemory()->setMemGuarantee(0);
+		break;
+	case PRL_MEMGUARANTEE_PERCENTS:
+		m_VmConfig.getVmHardwareList()->getMemory()->setMemGuarantee(pMemGuaranteeSize->value);
+		break;
+	default:
+		return PRL_ERR_INVALID_MEMORY_GUARANTEE;
+	}
+
+	m_VmConfig.getVmHardwareList()->getMemory()->setMemGuaranteeType(pMemGuaranteeSize->type);
+
+	return PRL_ERR_SUCCESS;
+}
+
 PRL_RESULT PrlHandleVmCfg::GetCpuCount(PRL_UINT32_PTR pnVmCpuCount)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
