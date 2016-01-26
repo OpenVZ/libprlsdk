@@ -5258,9 +5258,22 @@ PRL_HANDLE PrlVmGuest_SetUserPasswd_Impl(PRL_HANDLE hVmGuest, PRL_CONST_STR sUse
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_GUEST_SET_USER_PASSWD))
 	PrlHandleVmGuestPtr pVmGuest = PRL_OBJECT_BY_HANDLE<PrlHandleVmGuest>(hVmGuest);
 	PrlHandleJobPtr pJob = pVmGuest->SetUserPasswd(sUserName, sUserPasswd, nFlags);
+ 	if (!pJob)
+ 		RETURN_RES(PRL_INVALID_HANDLE)
+	pJob->SetVmHandle(pVmGuest->GetVmHandle());
+ 	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_HANDLE PrlVm_SetUserPasswd_Impl(PRL_HANDLE hVm, PRL_CONST_STR sUserName,
+							PRL_CONST_STR sUserPasswd, PRL_UINT32 nFlags)
+{
+	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_GUEST_SET_USER_PASSWD))
+	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
+	PrlHandleJobPtr pJob = pVm->VmGuestSetUserPasswd(QString(), sUserName, sUserPasswd, nFlags);
 	if (!pJob)
 		RETURN_RES(PRL_INVALID_HANDLE)
-	pJob->SetVmHandle(pVmGuest->GetVmHandle());
+	pJob->SetVmHandle(hVm);
 	RETURN_RES(pJob->GetHandle())
 }
 
@@ -6001,6 +6014,25 @@ PRL_ASYNC_METHOD( PrlVmGuest_SetUserPasswd ) (
 
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_GUEST_SET_USER_PASSWD)
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVmGuest_SetUserPasswd, (hVmGuest, sUserName, sUserPasswd, nFlags))
+}
+
+PRL_ASYNC_METHOD( PrlVm_SetUserPasswd ) (
+		PRL_HANDLE hVm,
+		PRL_CONST_STR sUserName,
+		PRL_CONST_STR sUserPasswd,
+		PRL_UINT32 nFlags
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sUserName=%s, sUserPasswd=%p, nFlags=%.8X)",
+		__FUNCTION__,
+		hVm,
+		sUserName,
+		sUserPasswd,
+		nFlags
+		);
+
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_GUEST_SET_USER_PASSWD)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_SetUserPasswd, (hVm, sUserName, sUserPasswd, nFlags))
 }
 
 PRL_METHOD( PrlVmCfg_SetDefaultConfig ) (

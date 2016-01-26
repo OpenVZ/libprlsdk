@@ -739,7 +739,7 @@ bool PythonComposer::AddArgDefaultValue(const QString& qsFunc, int nArgIndex, QS
 			qsMethArg += " = 0";	// reserved flags
 	}
 
-	IF_FUNC_IS( "PrlVmGuest_SetUserPasswd" )
+	IF_FUNC_IS( "PrlVm_SetUserPasswd" )
 	{
 		if (nArgIndex == 3)
 			qsMethArg += " = 0";	// reserved flags

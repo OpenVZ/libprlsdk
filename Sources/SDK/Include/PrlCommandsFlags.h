@@ -539,7 +539,7 @@ typedef enum _PRL_SRV_SHUTDOWN_FLAGS
 typedef PRL_SRV_SHUTDOWN_FLAGS* PRL_SRV_SHUTDOWN_FLAGS_PTR;
 
 /**
-* PrlVmGuest_SetUserPasswd flags
+* PrlVm_SetUserPasswd flags
 */
 typedef enum _PRL_SET_USERPASSWD_FLAGS
 {
