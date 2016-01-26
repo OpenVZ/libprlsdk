@@ -13470,6 +13470,34 @@
 	</symbol>
 	<symbol>
 		<type>method</type>
+		<name>PrlVm_SetUserPasswd</name>
+		<shortcomment>Change the password of a guest operating system user.</shortcomment>
+		<longcomment>
+			<line_1/>
+			<line_2/>
+			<line_3/>
+			<line_4/>
+			<line_5/>
+			<line_6/>
+			<line_7/>
+			<line_8/>
+			<line_9/>
+			<line_10/>
+			<line_11/>
+			<line_12/>
+			<line_13/>
+			<line_14/>
+			<line_15/>
+			<line_16/>
+			<line_17/>
+			<line_18/>
+			<line_19/>
+			<line_20/>
+		</longcomment>
+		<group>Vm</group>
+	</symbol>
+	<symbol>
+		<type>method</type>
 		<name>PrlVm_BeginEdit</name>
 		<shortcomment>Mark the beginning of the virtual machine configuration changes operation.</shortcomment>
 		<longcomment>
@@ -22992,34 +23020,6 @@
 		<type>method</type>
 		<name>PrlVmGuest_RunProgram</name>
 		<shortcomment>Execute a program in a virtual machine.</shortcomment>
-		<longcomment>
-			<line_1/>
-			<line_2/>
-			<line_3/>
-			<line_4/>
-			<line_5/>
-			<line_6/>
-			<line_7/>
-			<line_8/>
-			<line_9/>
-			<line_10/>
-			<line_11/>
-			<line_12/>
-			<line_13/>
-			<line_14/>
-			<line_15/>
-			<line_16/>
-			<line_17/>
-			<line_18/>
-			<line_19/>
-			<line_20/>
-		</longcomment>
-		<group>VmGuest</group>
-	</symbol>
-	<symbol>
-		<type>method</type>
-		<name>PrlVmGuest_SetUserPasswd</name>
-		<shortcomment>Change the password of a guest operating system user.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>

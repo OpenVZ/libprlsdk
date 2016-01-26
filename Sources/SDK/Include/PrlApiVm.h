@@ -3591,6 +3591,40 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 
+/* Allows to change the password of a guest operating system
+   user.
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Parameters
+   hVm :          A handle of type PHT_VIRTUAL_MACHINE
+                  identifying the virtual machine.
+   sUserName :    Guest operating system user name. Can be null
+                  or empty string when setting the administrator
+                  password.
+   sUserPasswd :  New password. Can be null when setting an empty
+                  password.
+   nFlags :       Bitset of flags - from enum PRL_SET_USERPASSWD_FLAGS
+
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.
+
+*/
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
+						   PrlVm_SetUserPasswd, (
+		PRL_HANDLE hVm,
+		PRL_CONST_STR sUserName,
+		PRL_CONST_STR sUserPasswd,
+		PRL_UINT32 nFlags
+		) );
+
+
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Virtual machine guest OS session operations set
 ///////////////////////////////////////////////////////////////////////////////
@@ -3744,45 +3778,6 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 						   PrlVmGuest_GetNetworkSettings, (
 		PRL_HANDLE hVmGuest,
 		PRL_UINT32 nReserved
-		) );
-
-/* Allows to change the password of a guest operating system
-   user. Prior to calling this function, a handle to a user
-   session in a virtual machine must be obtained using the
-   PrlVm_LoginInGuest function.
-
-   To get the return code from the PHT_JOB object, use the
-   PrlJob_GetRetCode function. Possible values are:
-
-   PRL_ERR_INVALID_ARG - invalid handle was passed.
-
-   PRL_ERR_SUCCESS - function completed successfully.
-   Parameters
-   hVmGuest :     A handle of type PHT_VM_GUEST_SESSION
-                  identifying the user session in a virtual
-                  machine. The handle is obtained using the
-                  PrlVm_LoginInGuest function.
-   sUserName :    Guest operating system user name. Can be null
-                  or empty string when setting the administrator
-                  password.
-   sUserPasswd :  New password. Can be null when setting an empty
-                  password.
-   nFlags :       Bitset of flags - from enum PRL_SET_USERPASSWD_FLAGS
-
-   Returns
-   A handle of type PHT_JOB containing the results of this
-   asynchronous operation or PRL_INVALID_HANDLE if there's not
-   enough memory to instantiate the job object.
-
-
-   See Also
-   PrlVm_LoginInGuest                                             */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
-						   PrlVmGuest_SetUserPasswd, (
-		PRL_HANDLE hVmGuest,
-		PRL_CONST_STR sUserName,
-		PRL_CONST_STR sUserPasswd,
-		PRL_UINT32 nFlags
 		) );
 
 
