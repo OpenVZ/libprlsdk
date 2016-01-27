@@ -768,7 +768,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultFloppy( CVmConfiguration& cfg, PRL_HAND
 		connectState = PVE::DeviceConnected;
 	}
 
-	if (IsServerPresent() && (t != PVS_GUEST_TYPE_OS2))
+	if (IsServerPresent() && (t != PVS_GUEST_TYPE_OS2) && !IS_WINDOWS(v))
 	{
 		if (m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.size())
 		{
