@@ -429,6 +429,8 @@ private:
 	static uint CalculateDefaultMacRamSize( uint uiHostRam );
 
 private:
+	QString getDefaultBridgedNetwork();
+
 	/**
 	 *	Pointer to the server hardware configuration
 	 */
