@@ -31,6 +31,10 @@
 #include "PrlHandleSrvConfig.h"
 #include "PrlHandleHwGenericDevice.h"
 
+#include "PrlHandleServerNet.h"
+#include "PrlHandleVirtNet.h"
+#include "PrlHandleResult.h"
+
 #include "PrlHandleVmDeviceFloppy.h"
 #include "PrlHandleVmDeviceOpticalDisk.h"
 #include "PrlHandleVmDeviceHardDrive.h"
@@ -56,6 +60,7 @@
 
 
 #define STR_BUF_LENGTH 1024
+enum {JOB_WAIT_TIMEOUT = 5 * 1000};
 
 using namespace CXmlModelHelper;
 
@@ -1151,6 +1156,69 @@ bool PrlHandleVmDefaultConfig::AddDefaultUsb ( CVmConfiguration& cfg, PRL_HANDLE
 	return true;
 }
 
+QString PrlHandleVmDefaultConfig::getDefaultBridgedNetwork()
+{
+	PrlHandleServerNetPtr pServer =
+		PRL_OBJECT_BY_HANDLE<PrlHandleServerNet>(m_pVm->GetServer()->GetHandle());
+	PrlHandleJobPtr pJob = pServer->GetVirtualNetworkList(0);
+	PRL_RESULT res = pJob->Wait(JOB_WAIT_TIMEOUT);
+	if (PRL_FAILED(res))
+		return QString();
+
+	PRL_RESULT retcode;
+	res = pJob->GetRetCode(&retcode);
+	if (PRL_FAILED(res) || PRL_FAILED(retcode))
+		return QString();
+
+	PRL_HANDLE hResult;
+	res = pJob->GetResult(&hResult);
+	if (PRL_FAILED(res))
+		return QString();
+
+	PrlHandleResultPtr pResult = PRL_OBJECT_BY_HANDLE<PrlHandleResult>(hResult);
+	PRL_UINT32 count;
+   	res = pResult->GetParamsCount(&count);
+	if (PRL_FAILED(res))
+		return QString();
+
+	for (PRL_UINT32 i = 0; i < count; ++i) {
+		PRL_HANDLE pParam;
+		res = pResult->GetParamByIndex(i, &pParam);
+		if (PRL_FAILED(res))
+			return QString();
+
+		PrlHandleVirtNetPtr pVirtNet = PRL_OBJECT_BY_HANDLE<PrlHandleVirtNet>(pParam);
+
+		PRL_NET_VIRTUAL_NETWORK_TYPE type;
+		res = pVirtNet->GetNetworkType(&type);
+		if (PRL_FAILED(res))
+			return QString();
+
+		if (type != PVN_BRIDGED_ETHERNET)
+			continue;
+
+		PRL_BOOL bEnabled;
+		res = pVirtNet->IsEnabled(&bEnabled);
+		if (PRL_FAILED(res))
+			return QString();
+
+		if (!bEnabled)
+			continue;
+
+		PRL_UINT32 bufLength = 0;
+		res = pVirtNet->GetNetworkId(NULL, &bufLength);
+		if (PRL_FAILED(res))
+			return QString();
+
+		char buf[bufLength];
+		res = pVirtNet->GetNetworkId(buf, &bufLength);
+		if (PRL_FAILED(res))
+			return QString();
+
+		return buf;
+	}
+	return QString();
+}
 
 bool PrlHandleVmDefaultConfig::AddDefaultNetwork ( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice )
 {
@@ -1173,6 +1241,8 @@ bool PrlHandleVmDefaultConfig::AddDefaultNetwork ( CVmConfiguration& cfg, PRL_HA
 	network->setBoundAdapterName( QObject::tr( DEFAULT_NETWORK_ADAPTER_NAME ) );
 	network->setSystemName( systemName );
 	network->setUserFriendlyName( friendlyName );
+	if (network->getEmulatedType() == PNA_BRIDGED_ETHERNET)
+		network->setVirtualNetworkID(getDefaultBridgedNetwork());
 
 	cfg.getVmHardwareList()->addNetworkAdapter( network );
 
