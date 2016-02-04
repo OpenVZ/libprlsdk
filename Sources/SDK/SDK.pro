@@ -22,13 +22,19 @@
 # Schaffhausen, Switzerland; http://www.parallels.com/.
 #
 
-!exists('/usr/include/prlcommon') {
-	error(Please install libprlcommon-devel package)
-}
-
 TEMPLATE = subdirs
 
 LEVEL = ../..
 include($$LEVEL/Sources/Build/Options.pri)
 include($$LEVEL/Sources/Parallels.pri)
 include($$SRC_LEVEL/SDK/Handles/SDK.deps)
+
+CHECK_INC_PATH='/usr/include'
+!isEmpty(LOCAL_DEPS_INCLUDE) {
+    CHECK_INC_PATH=$$LOCAL_DEPS_INCLUDE
+}
+
+!exists($$CHECK_INC_PATH/prlcommon) {
+	error(Please install libprlcommon-devel package)
+}
+
