@@ -30,6 +30,14 @@ linux-*-64 {
 	CONFIG += no_fixpath
 }
 
+# Pick up build dependencies from non-system locations
+!isEmpty(ENABLE_LOCAL_DEPS) {
+    message($$LOCAL_DEPS_LIBS)
+    QMAKE_INCDIR += $$LOCAL_DEPS_INCLUDE
+    QMAKE_LIBDIR += $$LOCAL_DEPS_LIBS
+    QMAKE_LFLAGS += -Wl,-rpath-link=$$LOCAL_DEPS_LIBS
+}
+
 !include(Build/qmake/paths.pri): error(Unable to include qmake/paths.pri)
 
 isEqual(TEMPLATE, subdirs) {
