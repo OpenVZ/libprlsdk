@@ -6626,6 +6626,13 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
+		PRL_ERR_BRIDGE_NOT_FOUND_FOR_NETWORK_ADAPTER,
+		tr("Could not find a bridge for network adapter \"%1\"."),
+		tr("Please make sure the bridge is created."),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
 		GUI_QUESTION_REMOVE_BACKUP,
 		tr("Are you sure you want to delete the selected backup?"),
 		tr("This operation is irreversible."),
