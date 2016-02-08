@@ -1572,14 +1572,6 @@ int PrlHandleVmDefaultConfig::GetFreeStackIndex( const CVmConfiguration& cfg,
 	if ( lstFreeSlots.isEmpty() )
 		return -1;
 
-	// Try to set a predefined value for CD-ROM (IDE 0:1)
-	if ( interfaceType == PMS_IDE_DEVICE &&
-		 devType == PDE_OPTICAL_DISK )
-	{
-		if ( lstFreeSlots.contains( 1 ) )
-			return 1; // IDE 0:1
-	}
-
 	return limit ? limit->getStackIndex(interfaceType, lstFreeSlots) : lstFreeSlots.first();
 }
 
