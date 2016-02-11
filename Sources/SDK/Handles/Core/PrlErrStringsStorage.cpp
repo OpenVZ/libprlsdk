@@ -6908,6 +6908,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NEED_MORE_MEMORY_TO_ENABLE_HOTPLUG,
+		tr("Cannot enable memory hot-plugging support."),
+		tr("The VM must have at least 1GB of RAM."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_CT_IS_RUNNING,
 		tr("Unable to complete the operation."),
 		tr("This operation cannot be completed because the Container is running."),
