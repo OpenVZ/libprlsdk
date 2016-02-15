@@ -11210,4 +11210,11 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VCMMD_NO_CONNECTION,
+		tr( "Cannot connect to memory management service." ),
+		tr( "Check vcmmd service status" ),
+		false,
+		PMT_CRITICAL
+		);
 }
