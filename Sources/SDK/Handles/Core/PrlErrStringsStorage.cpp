@@ -6909,8 +6909,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NEED_MORE_MEMORY_TO_ENABLE_HOTPLUG,
-		tr("Cannot enable memory hot-plugging support."),
-		tr("The VM must have at least 1GB of RAM."),
+		tr("Cannot change memory parameter."),
+		tr("The VM must have at least 1GB of RAM when hotplug is on."),
 		false,
 		PMT_CRITICAL
 		);
@@ -11207,6 +11207,13 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_CPUFEATURES_INCOMPATIBLE_NODE,
 		tr( "The server is incompatible with the CPU pool." ),
 		tr( "" ),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VCMMD_NO_CONNECTION,
+		tr( "Cannot connect to memory management service." ),
+		tr( "Check vcmmd service status" ),
 		false,
 		PMT_CRITICAL
 		);
