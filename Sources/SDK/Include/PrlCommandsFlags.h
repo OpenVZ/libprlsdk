@@ -423,6 +423,7 @@ typedef enum _PRL_DELETE_SNAPSHOT_FLAGS
 {
 	PDSF_SKIP_SPACE_CHECK   = 1<<(PACF_MAX+1), /* skip space check */
 	PDSF_BACKUP		= 1 << (PACF_MAX+2), // internal flag
+	PDSF_BACKUP_MAP		= 1 << (PACF_MAX+3), // internal flag
 } PRL_DELETE_SNAPSHOT_FLAGS;
 
 /* copy of CT templates functionality flags set
@@ -574,5 +575,21 @@ typedef enum _PRL_VIRTUAL_NETWORK_FLAGS
 	PRL_USE_VNET_NAME_FOR_BRIDGE_NAME		= 1 << (PACF_MAX+1),
 } PRL_VIRTUAL_NETWORK_FLAGS;
 typedef PRL_VIRTUAL_NETWORK_FLAGS* PRL_VIRTUAL_NETWORK_FLAGS_PTR;
+
+/*
+ * PrlVm_BeginBackup flags.
+ */
+typedef enum _PRL_BEGIN_VM_BACKUP_FLAGS
+{
+	PBMBF_CREATE_MAP	= 1 << (PACF_MAX+1), /* Create a disk map */
+} PRL_BEGIN_VM_BACKUP_FLAGS;
+
+/*
+ * PrlVmBackup_Commit / PrlVmBackup_Rollback flags.
+ */
+typedef enum _PRL_END_VM_BACKUP_FLAGS
+{
+	PEMBF_FAILURE_CLEANUP	= 1 << (PACF_MAX+1), /* Perform failure specific clean-up */
+} PRL_END_VM_BACKUP_FLAGS;
 
 #endif // __PARALLELS_API_COMMANDS_FLAGS_H__
