@@ -339,6 +339,255 @@ typedef PRL_CHS* PRL_CHS_PTR;
     #pragma pack(pop, save_api_pack)
 #endif
 
+/* This function can be used to create a new virtual disk
+   locally without being connected to the Virtuozzo Service. The
+   function creates a new virtual disk and obtains a handle of
+   type PHT_VIRTUAL_DISK identifying the new disk. The handle
+   can then be used to perform other operations on the disk if
+   necessary (see other functions from this group). If you would
+   like to create a new virtual disk on a remote host, use the
+   PrlDisk_CreateDisk function.
+   Parameters
+   pHandle :      [out] A handle of type PHT_VIRTUAL_DISK
+                  identifying the new virtual disk. You must
+                  always free the handle using the PrlDisk_Free
+                  function when the handle is no longer needed.
+                  Failure to do so will result in memory leak.
+   pDiskName :    Disk name in UTF\-8 format.
+   pParams :      Disk configuration parameters.
+   pCallback :    A pointer to a callback function or NULL
+                  pointer. This parameter allows to call the
+                  function asynchronously. If this parameter
+                  contains a pointer to a user\-implemented
+                  callback function, the PrlDisk_CreateDisk
+                  function will return immediately and the
+                  operation will continue in the background
+                  thread. The background thread will be calling
+                  the callback function passing the operation
+                  progress information to it. See
+                  PRL_DISK_CALLBACK for more information. Using a
+                  callback might be helpful when the disk
+                  creation is expected to take a long time. For
+                  \example, you may want to use a callback when
+                  you are creating a large disk and allocating
+                  all space for it right away.<p />If this
+                  parameter contains a NULL pointer, the function
+                  will be called synchronously.
+   pAdditional :  A pointer to a buffer containing user\-defined
+                  data to pass to the callback function.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlDisk_CreateDisk
+
+   PrlDisk_Free                                                   */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				PrlDisk_CreateDisk_Local, (
+	// Handle to receive data
+	PRL_HANDLE_PTR pHandle,
+	// File name
+	PRL_CONST_STR pDiskName,
+	// Parameters for image
+	PRL_CONST_DISK_PARAMETERS_PTR pParams,
+	// Callback for long procedures of image creation
+	const PRL_DISK_CALLBACK pCallback,
+	// Additional parameter (any type) for image class
+	PRL_CONST_VOID_PTR pAdditional) );
+
+/* Obtains a handle of type PHT_VIRTUAL_DISK identifying an
+   existing virtual disk on a local machine. Use this function
+   when you want to view or modify the configuration of an
+   existing virtual disk. Once you obtain the disk handle, use
+   its functions to perform the desired disk manipulations. This
+   function can be used locally without a Virtuozzo Service
+   connection.
+   Parameters
+   pHandle :           [out] A handle of type PHT_VIRTUAL_DISK
+                       identifying the virtual disk. You must
+                       always free the handle using the
+                       PrlDisk_Free function when the handle is
+                       no longer needed. Failure to do so will
+                       \result in memory leak.
+   pDiskName :         The disk name for which to obtain the
+                       handle, in UTF\-8 format. Disk name is the
+                       same as the bundle name (Mac) or the
+                       directory name (Windows, Linux) containing
+                       the virtual disk files.
+   OpenFlags :         Disk open parameters. See <link PRL_DISK Macros>
+                       for available options.
+   pAdditionalFlags :  Additional flags (not currently used).
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlDisk_OpenDisk
+
+   PrlDisk_Free                                                         */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				PrlDisk_OpenDisk_Local, (
+	// Handle to receive data
+	PRL_HANDLE_PTR pHandle,
+	// File name
+	PRL_CONST_STR pDiskName,
+	// Open flags
+	const PRL_DISK_OPEN_FLAGS OpenFlags,
+	// Additional flags to image
+	PRL_CONST_VOID_PTR pAdditionalFlags) );
+
+/* Waits for the background thread to finish executing before
+   returning control to the client. Use this function with any
+   of the PHT_VIRTUAL_DISK disk functions that can be executed
+   asynchronously. When a function is called asynchronously, it
+   \returns immediately. The actual task that was initiated by
+   the call is performed in the background thread. By calling
+   the PrlDisk_WaitForCompletion function, you will suspend the
+   main thread execution until the background thread is finished
+   processing the task.
+   Parameters
+   Handle :  A handle of type PHT_VIRTUAL_DISK identifying the
+             virtual disk.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				PrlDisk_WaitForCompletion, (
+		// Disk handle
+		const PRL_HANDLE Handle) );
+
+/* Reverts a virtual disk to the specified snapshot.
+   Parameters
+   Handle :          A handle of type PHT_VIRTUAL_DISK
+                     identifying the virtual disk.
+   pDirectoryName :  Directory name. This parameter is not
+                     currently used.
+   pUid :            The universally unique ID (UUID) assigned to
+                     the disk. Use the PrlDisk_GetSnapshotsTree
+                     function to obtain the snapshot tree with
+                     UUIDs of individual snapshots.
+   pCallback :       A pointer to a callback function or NULL
+                     pointer. If the parameter contains a valid
+                     pointer to the callback, the function will
+                     be called asynchronously. If it contains a
+                     NULL pointer, the function will be called
+                     synchronously.
+   pParameter :      A pointer to a buffer containing
+                     user\-defined data to pass to the callback
+                     function.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlDisk_CreateState
+
+   PrlDisk_DeleteState
+
+   PrlDisk_GetSnapshotsTree                                       */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				PrlDisk_SwitchToState, (
+		// Disk handle
+		const PRL_HANDLE Handle,
+		// Pointer to parameter name in UTF8
+		PRL_CONST_STR pDirectoryName,
+		// UID of the state
+		PRL_CONST_GUID_PTR pUid,
+		// Callback
+		const PRL_STATES_CALLBACK pCallback,
+		// Parameter to callback
+		PRL_VOID_PTR pParameter) );
+
+/* Writes data to the specified virtual disk.
+   Parameters
+   Handle :         A handle of type PHT_VIRTUAL_DISK identifying
+                    the virtual disk.
+   pBlock :         A pointer to the sector/page\-aligned data to
+                    write (depends on the host operating system).
+   uiSize :         Size of the data to write.
+   uiBlockOffset :  Offset of the block on the disk, in sectors.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlDisk_Read                                                   */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				PrlDisk_Write, (
+		// Disk handle
+		const PRL_HANDLE Handle,
+		// Block to write
+		PRL_CONST_VOID_PTR pBlock,
+		// Size of block
+		const PRL_UINT32 uiSize,
+		// Offset of block (in sectors)
+		const PRL_UINT64 uiBlockOffset) );
+
+/* Reads data from the specified virtual disk.
+   Parameters
+   Handle :         A handle of type PHT_VIRTUAL_DISK identifying
+                    the virtual disk.
+   pBlock :         A pointer to sector/page\-aligned data to
+                    read (depends on the host operating system).
+   uiSize :         The size of the data to read.
+   uiBlockOffset :  Offset of the block on the disk, in sectors.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlDisk_Write                                                  */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				PrlDisk_Read, (
+		// Disk handle
+		const PRL_HANDLE Handle,
+		// Block to write
+		PRL_VOID_PTR pBlock,
+		// Size of block
+		const PRL_UINT32 uiSize,
+		// Offset of block (in sectors)
+		const PRL_UINT64 uiBlockOffset) );
+
+/* Obtains the information about the specified virtual disk.
+   Parameters
+   Handle :           A handle of type PHT_VIRTUAL_DISK
+                      identifying the virtual disk.
+   pDiskParameters :  [out] A pointer to a buffer that receives
+                      the disk information.
+   BufferSize :       [in] The size of the output buffer (in
+                      bytes). Set the buffer pointer to null and
+                      this parameter's value to zero to receive
+                      the required size. [out] The required
+                      \output buffer size.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				PrlDisk_GetDiskInfo, (
+		// Disk handle
+		const PRL_HANDLE Handle,
+		// Pointer to memory, that receive parameters
+		PRL_DISK_PARAMETERS_PTR pDiskParameters,
+		// Parameter value buffer size
+		PRL_UINT32_PTR BufferSize) );
+
 #ifdef __cplusplus
 }
 #endif

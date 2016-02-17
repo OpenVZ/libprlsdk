@@ -1146,5 +1146,13 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetHighAvailabilityEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_IsHighAvailabilityEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetHighAvailabilityPriority ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetHighAvailabilityPriority ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDisk_CreateDisk_Local ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDisk_OpenDisk_Local ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDisk_WaitForCompletion ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDisk_SwitchToState ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDisk_Write ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDisk_Read ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDisk_GetDiskInfo ) \
+
 
 #endif // PRL_SDK_WRAP_FOR_EACH

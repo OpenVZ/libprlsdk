@@ -33,7 +33,8 @@ INCLUDEPATH +=	$$SRC_LEVEL/SDK/Handles \
 		$$PWD/Net \
 		$$PWD/Disp \
 		$$PWD/Vm \
-		$$PWD/Deprecated
+		$$PWD/Deprecated \
+		$$PWD/Disk
 
 INSTALL_HEADERS = $$SRC_LEVEL/SDK/Include/Parallels.h \
 	$$SRC_LEVEL/SDK/Include/PrlApi.h \
@@ -153,6 +154,8 @@ SOURCES += \
 	\
 	$$SRC_LEVEL/SDK/Handles/Vm/PrlApiVm.cpp \
 	$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVm.cpp \
+	\
+	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskSDK.cpp
 
 	HEADERS += \
 		$$SRC_LEVEL/SDK/Handles/Stat/PrlHandleServerStat.h \
