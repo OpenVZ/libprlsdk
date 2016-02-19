@@ -13,3 +13,6 @@ install: all
 
 clean:
 	cd Sources/SDK && $(MAKE) $@
+
+distclean:
+	cd Sources/SDK && $(MAKE) $@
