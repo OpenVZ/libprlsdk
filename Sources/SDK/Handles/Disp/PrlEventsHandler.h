@@ -160,7 +160,7 @@ public slots:
 
 private:
 	/** Notification thread removal mutex*/
-	QMutex m_NotificationThreadRemovalMutex;
+	QMutex m_Mutex;
 };
 
 #endif // __PARALLELS_EVENTS_HANDLER_H__
