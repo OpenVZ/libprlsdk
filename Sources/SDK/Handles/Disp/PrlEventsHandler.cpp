@@ -201,7 +201,8 @@ void CVmNotifier::Notify ( PrlHandleVmPtr pVm, PrlHandleBasePtr pEvent )
  */
 CEventsHandler::CEventsHandler(PRL_HANDLE hServer)
 :	m_ServerHandle(hServer),
-	m_NotificationThread( new CNotificationThread )
+	m_NotificationThread( new CNotificationThread ),
+	m_NotificationThreadRemovalMutex()
 {
 	// Start notification thread
 	m_NotificationThread->start();
@@ -225,12 +226,16 @@ bool CEventsHandler::isStarted() const
 
 void CEventsHandler::FinalizeWork()
 {
+	QMutexLocker locker(&m_NotificationThreadRemovalMutex);
+
 	SmartPtr<CNotificationThread> pNotificationThread = m_NotificationThread;
 	if (pNotificationThread.getImpl())
 	{
 		PrlHandleServer::RegisterThreadToDeleteFinMech(pNotificationThread);
 		m_NotificationThread = SmartPtr<CNotificationThread>(0);
 	}
+
+	locker.unlock();
 }
 
 /**
@@ -400,6 +405,8 @@ void CEventsHandler::RegisterNotification( PrlHandleServerPtr pServer, PrlHandle
 
 void CEventsHandler::StopNotificationThread()
 {
+	QMutexLocker locker(&m_NotificationThreadRemovalMutex);
+
 	// Deferred thread clean
 	SmartPtr<CNotificationThread> pNotificationThread = m_NotificationThread;
 	if (pNotificationThread.getImpl())
@@ -407,4 +414,6 @@ void CEventsHandler::StopNotificationThread()
 		PrlHandleServer::RegisterThreadToDelete(pNotificationThread);
 		m_NotificationThread = SmartPtr<CNotificationThread>(0);
 	}
+
+	locker.unlock();
 }

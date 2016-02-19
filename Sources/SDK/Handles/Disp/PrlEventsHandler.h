@@ -157,6 +157,10 @@ public slots:
 	 * directly from common finalization mech
 	 */
 	void FinalizeWork();
+
+private:
+	/** Notification thread removal mutex*/
+	QMutex m_NotificationThreadRemovalMutex;
 };
 
 #endif // __PARALLELS_EVENTS_HANDLER_H__
