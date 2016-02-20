@@ -548,7 +548,7 @@ QString CPveControl::SendRequestToServer(const SmartPtr<IOPackage> &pPackage)
 	{
 		QString strUuid = (Uuid::createUuid()).toString();
 		PostFailedResult(strUuid, PVE::DispatcherCommandToString(pPackage->header.type),
-				PRL_ERR_NOT_CONNECTED_TO_DISPATCHER);
+				PRL_ERR_NOT_CONNECTED_TO_DISPATCHER, QStringList(m_ioClient->remoteHostName()));
 		return strUuid;
 	}
 
@@ -557,7 +557,8 @@ QString CPveControl::SendRequestToServer(const SmartPtr<IOPackage> &pPackage)
 	if (hJob == IOSendJob::InvalidHandle)
 	{
 		QString strUuid = (Uuid::createUuid()).toString();
-		PostFailedResult(strUuid, "SendRequestToServer", PRL_ERR_NOT_CONNECTED_TO_DISPATCHER);
+		PostFailedResult(strUuid, "SendRequestToServer", PRL_ERR_NOT_CONNECTED_TO_DISPATCHER,
+				QStringList(m_ioClient->remoteHostName()));
 		return strUuid;
 	}
 	if (IOSendJob::SendQueueIsFull == m_ioClient->getSendResult(hJob))
