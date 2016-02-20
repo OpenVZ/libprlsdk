@@ -105,8 +105,6 @@
 //Guest OS balloon sizes in megabytes
 #define PRL_GUEST_RAM_BALLOON_ACTUAL			"guest.ram.balloon_actual"
 
-#define PRL_WS_RECLAIMABLE_PTRN				"ws.reclaimable"
-
 // Mounted filesystems statistics
 // Filesystem device name, as it is seen inside guest
 #define PRL_GUEST_FS_NAME_PTRN				"guest.fs#.name"
