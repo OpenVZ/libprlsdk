@@ -108,7 +108,9 @@ HEADERS += $${INSTALL_HEADERS} \
 	$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleLoginHelperJob.h \
 	$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleLoginLocalHelperJob.h \
 	\
-	$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVm.h
+	$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVm.h \
+	\
+	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskMap.h
 
 
 SOURCES += \
@@ -155,7 +157,8 @@ SOURCES += \
 	$$SRC_LEVEL/SDK/Handles/Vm/PrlApiVm.cpp \
 	$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVm.cpp \
 	\
-	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskSDK.cpp
+	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskSDK.cpp \
+	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskMap.cpp
 
 	HEADERS += \
 		$$SRC_LEVEL/SDK/Handles/Stat/PrlHandleServerStat.h \

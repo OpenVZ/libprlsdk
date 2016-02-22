@@ -588,6 +588,51 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		// Parameter value buffer size
 		PRL_UINT32_PTR BufferSize) );
 
+/*	Reports the number of significant bits in the map.
+	Parameters
+	hMap :			A handle of type PHT_VIRTUAL_DISK_MAP identifying
+					the changes map.
+	phSize :		A pointer to a variable which receives the
+					result.
+	Returns
+	PRL_RESULT. */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlDiskMap_GetSize, (
+		PRL_HANDLE hMap,
+		PRL_UINT32_PTR pnSize) );
+
+/*	Reports the size (in bytes) of a block mapped by a single bit
+	in the map.
+	Parameters
+	hMap :			A handle of type PHT_VIRTUAL_DISK_MAP identifying
+					the changes map.
+	phSize :		A pointer to a variable which receives the
+					result.
+	Returns
+	PRL_RESULT. */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlDiskMap_GetGranularity, (
+		PRL_HANDLE hMap,
+		PRL_UINT32_PTR pnSize) );
+
+/*	Returns bits from the blocks map.
+	Parameters
+	hMap :			A handle of type PHT_VIRTUAL_DISK_MAP identifying
+					the changes map.
+	pBuffer :		A pointer to a store.
+	pnCapacity :	A pointer to a variable holding the size
+					of the buffer and receiving the number of
+					bytes actually written.
+	Returns
+	PRL_RESULT. */
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlDiskMap_Read, (
+		PRL_HANDLE hMap,
+		PRL_VOID_PTR pBuffer,
+		PRL_UINT32_PTR pnCapacity) );
+
+
+
 #ifdef __cplusplus
 }
 #endif

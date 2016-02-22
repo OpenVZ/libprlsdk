@@ -228,3 +228,76 @@ PRL_METHOD(PrlDisk_GetDiskInfo) (
 	return PRL_ERR_UNIMPLEMENTED;
 }
 
+/**
+ * Reports the number of significant bits in the map.
+ *
+ * @param Map handle.
+ * @param Pointer to a variable which receives the map size.
+ *
+ * @return Error code in PRL_RESULT format
+ */
+PRL_METHOD(PrlDiskMap_GetSize) (
+		// Map handle
+		PRL_HANDLE hMap,
+		// Pointer to a variable which receives the map size
+		PRL_UINT32_PTR pnSize)
+{
+	if (PRL_WRONG_HANDLE(hMap, PHT_VIRTUAL_DISK_MAP))
+		return PRL_ERR_INVALID_ARG;
+
+	if (PRL_WRONG_PTR(pnSize))
+		return PRL_ERR_INVALID_ARG;
+
+	return PRL_ERR_UNIMPLEMENTED;
+}
+
+/**
+ * Reports the size (in bytes) of a block mapped by a single bit
+ * in the map.
+ *
+ * @param Map handle.
+ * @param Pointer to a variable which receives the map block size.
+ *
+ * @return Error code in PRL_RESULT format
+ */
+PRL_METHOD(PrlDiskMap_GetGranularity) (
+		// Map handle
+		PRL_HANDLE hMap,
+		// Pointer to a variable which receives the map block size
+		PRL_UINT32_PTR pnSize)
+{
+	if (PRL_WRONG_HANDLE(hMap, PHT_VIRTUAL_DISK_MAP))
+		return PRL_ERR_INVALID_ARG;
+
+	if (PRL_WRONG_PTR(pnSize))
+		return PRL_ERR_INVALID_ARG;
+
+	return PRL_ERR_UNIMPLEMENTED;
+}
+
+/**
+ * Returns bits from the changes map.
+ *
+ * @param Map handle.
+ * @param Pointer to a store.
+ * @param Pointer to a variable holding the size of the store.
+ *
+ * @return Error code in PRL_RESULT format
+ */
+PRL_METHOD(PrlDiskMap_Read) (
+		// Map handle
+		PRL_HANDLE hMap,
+		// Pointer to a store
+		PRL_VOID_PTR /*pBuffer*/,
+		// Pointer to a variable holding the size of the store
+		PRL_UINT32_PTR pnCapacity)
+{
+	if (PRL_WRONG_HANDLE(hMap, PHT_VIRTUAL_DISK_MAP))
+		return PRL_ERR_INVALID_ARG;
+
+	if (PRL_WRONG_PTR(pnCapacity))
+		return PRL_ERR_INVALID_ARG;
+
+	return PRL_ERR_UNIMPLEMENTED;
+}
+
