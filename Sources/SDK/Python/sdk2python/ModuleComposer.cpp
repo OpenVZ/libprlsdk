@@ -169,6 +169,18 @@ void ModuleComposer::SdkPythonFunction(QString& content, const QString& qsFunc)
 		return;
 	}
 
+	if ( qsFunc == MDL_PRL_GET_MEMGUARANTEE_SIZE)
+	{
+		content += MDL_PRL_GET_MEMGUARANTEE_SIZE_IMPL;
+		return;
+	}
+
+	if ( qsFunc == MDL_PRL_SET_MEMGUARANTEE_SIZE)
+	{
+		content += MDL_PRL_SET_MEMGUARANTEE_SIZE_IMPL;
+		return;
+	}
+
 	QString qsGenFunc;
 
 	qsGenFunc = QString(MDL_SDK_PYTHON_FUNCTION)

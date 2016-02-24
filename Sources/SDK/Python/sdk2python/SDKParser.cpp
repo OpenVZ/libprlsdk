@@ -459,7 +459,9 @@ bool SDKParser::ParseAllFunctions()
 		<< MDL_PRL_REPORT_SEND
 		<< MDL_PRL_API_SEND_PROBLEM_REPORT
 		<< MDL_PRL_API_SEND_PACKED_PROBLEM_REPORT
-		<< MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG;
+		<< MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG
+		<< MDL_PRL_GET_MEMGUARANTEE_SIZE
+		<< MDL_PRL_SET_MEMGUARANTEE_SIZE;
 
 	foreach(QString qsNonStdFunc, m_lstNonStdFuncs)
 	{
@@ -574,7 +576,6 @@ bool SDKParser::ParseFunctionArgs(const QString& qsFuncName, const QString& qsAr
 			|| QRegExp("PRL_CHS").indexIn(arg.type) != -1
 			|| QRegExp("PRL_CPULIMIT_DATA").indexIn(arg.type) != -1
 			|| QRegExp("PRL_IOLIMIT_DATA").indexIn(arg.type) != -1
-			|| QRegExp("PRL_MEMGUARANTEE_DATA").indexIn(arg.type) != -1
 			|| QRegExp("PRL_PROXY_HOST_INFO").indexIn(arg.type) != -1
 			|| QRegExp("PRL_PROXY_CLIENT_INFO").indexIn(arg.type) != -1
 			|| (arg.type != "PRL_CONST_STR_PTR" && QRegExp("_CONST_\\w+_PTR").indexIn(arg.type) != -1)

@@ -301,4 +301,7 @@
 #define PTN_GET_VM_CONFIG_PARAMS \
 	"nVmType, sConfigSample, nOsVersion"
 
+#define PTN_MEMGUARANTEE_SIZE_PARAMS \
+	"nType, nValue"
+
 #endif	// PYTHON_TEMPLATES_H

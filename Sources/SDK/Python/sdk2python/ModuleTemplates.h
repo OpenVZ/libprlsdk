@@ -507,4 +507,59 @@
 	"\t\t\tbreak;\n" \
 	MDL_END_SDK_PYTHON_FUNCTION
 
+#define MDL_PRL_GET_MEMGUARANTEE_SIZE \
+	"PrlVmCfg_GetMemGuaranteeSize"
+#define MDL_PRL_GET_MEMGUARANTEE_SIZE_IMPL ""\
+"static PyObject* sdk_"MDL_PRL_GET_MEMGUARANTEE_SIZE"(PyObject* /*self*/, PyObject* args)"\
+"{\n"\
+"	PRL_SDK_CHECK;\n"\
+"	do {\n"\
+"		PRL_HANDLE hVm;\n"\
+"\n"\
+"		if (!PyArg_ParseTuple(args, \"k:"MDL_PRL_GET_MEMGUARANTEE_SIZE"\" , &hVm))\n"\
+"			break;\n"\
+"\n"\
+"		PRL_MEMGUARANTEE_DATA data;\n"\
+"		PRL_RESULT prlResult;\n"\
+"\n"\
+"		Py_BEGIN_ALLOW_THREADS\n"\
+"		prlResult = "MDL_PRL_GET_MEMGUARANTEE_SIZE"(hVm, &data);\n"\
+"		Py_END_ALLOW_THREADS\n"\
+		MDL_NEW_RETURN_LIST \
+"		if (PyList_Append(ret_list, Py_BuildValue(\"k\", prlResult)))\n"\
+"			break;\n"\
+"		if (PyList_Append(ret_list, Py_BuildValue(\"I\", data.type)))\n"\
+"			break;\n"\
+"		if (PyList_Append(ret_list, Py_BuildValue(\"I\", data.value)))\n"\
+"			break;\n"\
+		MDL_END_SDK_PYTHON_FUNCTION
+
+#define MDL_PRL_SET_MEMGUARANTEE_SIZE \
+	"PrlVmCfg_SetMemGuaranteeSize"
+#define MDL_PRL_SET_MEMGUARANTEE_SIZE_IMPL \
+"static PyObject* sdk_"MDL_PRL_SET_MEMGUARANTEE_SIZE"(PyObject* /*self*/, PyObject* args)\n" \
+"{\n" \
+"	PRL_SDK_CHECK;\n" \
+"	do {\n" \
+"		PRL_HANDLE hVm;\n" \
+"		PRL_MEMGUARANTEE_TYPE nType;\n" \
+"		PRL_UINT32 nValue;\n" \
+"\n"\
+"		if (!PyArg_ParseTuple(args, \"kII:"MDL_PRL_SET_MEMGUARANTEE_SIZE"\" ,\n" \
+"				&hVm, &nType, &nValue))\n" \
+"			break;\n" \
+"\n"\
+"		PRL_MEMGUARANTEE_DATA data;\n" \
+"		data.type = nType;\n" \
+"		data.value = nValue;\n" \
+"		PRL_RESULT prlResult;\n" \
+"\n"\
+"		Py_BEGIN_ALLOW_THREADS\n" \
+"		prlResult = "MDL_PRL_SET_MEMGUARANTEE_SIZE"(hVm, &data);\n" \
+"		Py_END_ALLOW_THREADS\n" \
+		MDL_NEW_RETURN_LIST \
+"		if (PyList_Append(ret_list, Py_BuildValue(\"k\", prlResult)))\n" \
+"			break;\n" \
+		MDL_END_SDK_PYTHON_FUNCTION
+
 #endif	// MODULE_TEMPLATES_H

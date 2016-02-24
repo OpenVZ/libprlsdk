@@ -369,6 +369,11 @@ bool PythonComposer::AddMethod(QString& content, const QString& qsFunc, bool bHa
 				qsFuncArg = PTN_GET_VM_CONFIG_PARAMS;
 				qsMethArg = PTN_GET_VM_CONFIG_PARAMS;
 			}
+			else if (arg.type == "PRL_CONST_MEMGUARANTEE_DATA_PTR")
+			{
+				qsFuncArg = PTN_MEMGUARANTEE_SIZE_PARAMS;
+				qsMethArg = PTN_MEMGUARANTEE_SIZE_PARAMS;
+			}
 
 			qsMethArgs += ", " + qsMethArg;
 			qsFuncArgs += (qsFuncArgs.isEmpty() ? "" : ", ") + qsFuncArg;
