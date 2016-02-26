@@ -3142,10 +3142,10 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_HARD_DISK_IMAGE_IS_NOT_EXIST,
-		tr("The image file \"%1\" used by hard disk %2 does not exist. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, hard disk %2 will not be connected at the virtual machine startup."),
+		tr("The image file \"%1\" used by hard disk %2 does not exist."),
+		tr("Hard disk %2 will not be connected at the virtual machine startup."),
 		true,
-		PMT_QUESTION
+		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
