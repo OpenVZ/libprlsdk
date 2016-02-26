@@ -508,6 +508,23 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		// Parameter to callback
 		PRL_VOID_PTR pParameter) );
 
+/* Frees the PHT_VIRTUAL_DISK handle. This function must be
+   called to free the PHT_VIRTUAL_DISK handle when it is no
+   loner needed. Failure to do so will result in a memory leak.
+   Parameters
+   Handle :  A handle of type PHT_VIRTUAL_DISK identifying the
+             virtual disk.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - operation completed successfully.          */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+                                PrlDisk_Free, (
+                // Disk handle
+                const PRL_HANDLE Handle) );
+
 /* Writes data to the specified virtual disk.
    Parameters
    Handle :         A handle of type PHT_VIRTUAL_DISK identifying
