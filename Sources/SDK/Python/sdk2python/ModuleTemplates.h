@@ -564,4 +564,92 @@
 "			break;\n" \
 		MDL_END_SDK_PYTHON_FUNCTION
 
+#define MDL_PRL_GUID_CONV_IMPL \
+"static int generateGuid(PRL_GUID *guid, char *buf, size_t len)\n" \
+"{\n" \
+"	int ret = snprintf(buf, len, \"%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x\",\n" \
+"			guid->Data1,\n" \
+"			guid->Data2,\n" \
+"			guid->Data3,\n" \
+"			guid->Data4[0],\n" \
+"			guid->Data4[1],\n" \
+"			guid->Data4[2],\n" \
+"			guid->Data4[3],\n" \
+"			guid->Data4[4],\n" \
+"			guid->Data4[5],\n" \
+"			guid->Data4[6],\n" \
+"			guid->Data4[7]);\n" \
+"	if (ret < 0 || ret >= (ssize_t)len)\n" \
+"		return -1;\n" \
+"	return 0;\n" \
+"}\n" \
+"\n"
+
+#define MDL_PRL_DISK_GET_DISK_INFO \
+	"PrlDisk_GetDiskInfo"
+#define MDL_PRL_DISK_GET_DISK_INFO_IMPL \
+"static PyObject* sdk_"MDL_PRL_DISK_GET_DISK_INFO"(PyObject* /*self*/, PyObject* args)\n" \
+"{\n" \
+"	PRL_SDK_CHECK;\n" \
+"	do {\n" \
+"		PRL_HANDLE	hDisk = (PRL_HANDLE )0;\n" \
+"		PyObject *info = NULL;\n" \
+"		if ( ! PyArg_ParseTuple( args, \"kO:"MDL_PRL_DISK_GET_DISK_INFO"\" , &hDisk, &info) )\n" \
+"			break;\n" \
+"		if (info == NULL)\n"\
+"			break;\n" \
+"\n" \
+"		PRL_DISK_PARAMETERS_PTR disk_params = NULL;\n" \
+"		PRL_UINT32 size = 0;\n" \
+"		PRL_RESULT prlResult;\n" \
+"		Py_BEGIN_ALLOW_THREADS\n" \
+"		prlResult = "MDL_PRL_DISK_GET_DISK_INFO"(hDisk, disk_params, &size);\n" \
+"		Py_END_ALLOW_THREADS\n" \
+"\n" \
+"		char *buf = new char[size];\n" \
+"		memset(buf, 0, size);\n" \
+"		disk_params = (PRL_DISK_PARAMETERS_PTR) buf;\n" \
+"		Py_BEGIN_ALLOW_THREADS\n" \
+"		prlResult = "MDL_PRL_DISK_GET_DISK_INFO"(hDisk, disk_params, &size);\n" \
+"		Py_END_ALLOW_THREADS\n" \
+"\n" \
+"		if ( PyObject_SetAttrString(info, \"heads\", Py_BuildValue(\"i\", disk_params->m_Heads)))\n" \
+"			break;\n" \
+"		if ( PyObject_SetAttrString(info, \"cylinders\", Py_BuildValue(\"i\", disk_params->m_Cylinders)))\n" \
+"			break;\n" \
+"		if ( PyObject_SetAttrString(info, \"sectors\", Py_BuildValue(\"i\", disk_params->m_Sectors)))\n" \
+"			break;\n" \
+"		if ( PyObject_SetAttrString(info, \"sizeInSectors\", Py_BuildValue(\"L\", disk_params->m_SizeInSectors)))\n" \
+"			break;\n" \
+"		if ( PyObject_SetAttrString(info, \"blockSize\", Py_BuildValue(\"i\", disk_params->m_BlockSize)))\n" \
+"			break;\n" \
+"		if ( PyObject_SetAttrString(info, \"parts\", Py_BuildValue(\"i\", disk_params->m_Parts)))\n" \
+"			break;\n" \
+"\n" \
+"		PyObject *storages = PyList_New(0);\n" \
+"		int i;\n" \
+"		for (i=0; i < (int) disk_params->m_Parts; ++i) {\n" \
+"			if( PyList_Append(storages, Py_BuildValue(\"s\", disk_params->m_Storages[i].pFileName)))\n" \
+"				break;\n" \
+"		}\n" \
+"		if (i < (int) disk_params->m_Parts)\n" \
+"			break;\n" \
+"		if ( PyObject_SetAttrString(info, \"storages\", storages))\n" \
+"			break;\n" \
+"\n" \
+"		char guid[37];\n" \
+"		generateGuid(&disk_params->Uid, guid, sizeof(guid));\n" \
+"		if ( PyObject_SetAttrString(info, \"uid\", Py_BuildValue(\"s\", guid)))\n" \
+"			break;\n" \
+"		if ( PyObject_SetAttrString(info, \"name\", Py_BuildValue(\"s\", disk_params->Name)))\n" \
+"			break;\n" \
+"		delete[] buf;\n" \
+"\n" \
+MDL_NEW_RETURN_LIST \
+"		if ( PyList_Append(ret_list, Py_BuildValue( \"k\", prlResult )) )\n" \
+"			break;\n" \
+"		if ( PyList_Append(ret_list, info) )\n" \
+"			break;\n" \
+MDL_END_SDK_PYTHON_FUNCTION
+
 #endif	// MODULE_TEMPLATES_H

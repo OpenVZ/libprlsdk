@@ -187,6 +187,13 @@ void ModuleComposer::SdkPythonFunction(QString& content, const QString& qsFunc)
 		return;
 	}
 
+	if ( qsFunc == MDL_PRL_DISK_GET_DISK_INFO)
+	{
+		content += MDL_PRL_GUID_CONV_IMPL;
+		content += MDL_PRL_DISK_GET_DISK_INFO_IMPL;
+		return;
+	}
+
 	QString qsGenFunc;
 
 	qsGenFunc = QString(MDL_SDK_PYTHON_FUNCTION)

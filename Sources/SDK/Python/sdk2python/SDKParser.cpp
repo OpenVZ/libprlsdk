@@ -441,9 +441,6 @@ bool SDKParser::ParseAllFunctions()
 
 		pos += re.matchedLength();
 
-		if (qsFunc.startsWith("PrlDisk_"))
-			continue;
-
 		m_lstAllFunctions += qsFunc;
 		WriteLineInLog(qsFunc);
 	}
@@ -465,7 +462,8 @@ bool SDKParser::ParseAllFunctions()
 		<< MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG
 		<< MDL_PRL_GET_MEMGUARANTEE_SIZE
 		<< MDL_PRL_SET_MEMGUARANTEE_SIZE
-		<< MDL_PRL_DISK_MAP_READ;
+		<< MDL_PRL_DISK_MAP_READ
+		<< MDL_PRL_DISK_GET_DISK_INFO;
 
 	foreach(QString qsNonStdFunc, m_lstNonStdFuncs)
 	{
