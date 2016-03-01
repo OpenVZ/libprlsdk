@@ -375,19 +375,21 @@
 
 #define MDL_PRL_REPORT_GET_DATA \
 	"PrlReport_GetData"
-#define MDL_PRL_REPORT_GET_DATA_IMPL \
-	"static PyObject* sdk_"MDL_PRL_REPORT_GET_DATA"(PyObject* /*self*/, PyObject* args)\n" \
+#define MDL_PRL_DISK_MAP_READ \
+	"PrlDiskMap_Read"
+#define MDL_PRL_GENERIC_GET_DATA_IMPL(SDK_FUNCTION) \
+	"static PyObject* sdk_"SDK_FUNCTION"(PyObject* /*self*/, PyObject* args)\n" \
 	"{\n" \
 	"\tPRL_SDK_CHECK;\n" \
 	"\tdo {\n" \
-	"\t\tPRL_HANDLE	hReport = (PRL_HANDLE )0;\n" \
-	"\t\tif ( ! PyArg_ParseTuple( args, \"k:"MDL_PRL_REPORT_GET_DATA"\" , &hReport ) )\n" \
+	"\t\tPRL_HANDLE	hHandle = (PRL_HANDLE )0;\n" \
+	"\t\tif ( ! PyArg_ParseTuple( args, \"k:"SDK_FUNCTION"\" , &hHandle ) )\n" \
 	"\t\t\tbreak;\n\n" \
 	"\t\tPyObject* pBufObj = NULL;\n" \
 	"\t\tPRL_UINT32 nBufLength = 0;\n" \
 	"\t\tPRL_RESULT prlResult;\n" \
 	"\t\tPy_BEGIN_ALLOW_THREADS\n" \
-	"\t\tprlResult = PrlReport_GetData(hReport, NULL, &nBufLength);\n" \
+	"\t\tprlResult = "SDK_FUNCTION"(hHandle, NULL, &nBufLength);\n" \
 	"\t\tPy_END_ALLOW_THREADS\n" \
 	"\t\tif (PRL_SUCCEEDED(prlResult))\n" \
 	"\t\t{\n" \
@@ -403,7 +405,7 @@
 	"\t\t\tif ( PyObject_AsWriteBuffer(pBufObj, &pBuf, &nBufSize) )\n" \
 	"\t\t\t\treturn NULL;\n" \
 	"\t\t\tPy_BEGIN_ALLOW_THREADS\n" \
-	"\t\t\tprlResult = PrlReport_GetData(hReport, pBuf, &nBufLength);\n" \
+	"\t\t\tprlResult = "SDK_FUNCTION"(hHandle, pBuf, &nBufLength);\n" \
 	"\t\t\tPy_END_ALLOW_THREADS\n" \
 	"\t\t}\n\n" \
 	MDL_NEW_RETURN_LIST \

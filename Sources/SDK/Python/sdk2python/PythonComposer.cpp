@@ -120,6 +120,7 @@ PythonComposer::CustomClassInfo PythonComposer::s_CustomClassInfo[] =
 {"CpuFeatures",  "",             "_Handle",    "",       "PHT_CPU_FEATURES",  \
 			"call_sdk_function('PrlCpuFeatures_Create')",0,0,0,0},
 {"CPUPool",      "",             "_Handle",    "",       "PHT_CPU_POOL",   "",0,0,0,0},
+{"DiskMap",      "",             "_Handle",    "",       "PHT_VIRTUAL_DISK_MAP",   "",0,0,0,0},
 };
 
 

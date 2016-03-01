@@ -153,7 +153,7 @@ void ModuleComposer::SdkPythonFunction(QString& content, const QString& qsFunc)
 
 	if ( qsFunc == MDL_PRL_REPORT_GET_DATA )
 	{
-		content += MDL_PRL_REPORT_GET_DATA_IMPL;
+		content += MDL_PRL_GENERIC_GET_DATA_IMPL(MDL_PRL_REPORT_GET_DATA);
 		return;
 	}
 
@@ -178,6 +178,12 @@ void ModuleComposer::SdkPythonFunction(QString& content, const QString& qsFunc)
 	if ( qsFunc == MDL_PRL_SET_MEMGUARANTEE_SIZE)
 	{
 		content += MDL_PRL_SET_MEMGUARANTEE_SIZE_IMPL;
+		return;
+	}
+
+	if ( qsFunc == MDL_PRL_DISK_MAP_READ )
+	{
+		content += MDL_PRL_GENERIC_GET_DATA_IMPL(MDL_PRL_DISK_MAP_READ);
 		return;
 	}
 

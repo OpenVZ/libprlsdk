@@ -36,6 +36,7 @@
 #define PRL_API_VM_H			"PrlApiVm.h"
 #define PRL_API_NET_H			"PrlApiNet.h"
 #define PRL_API_STAT_H			"PrlApiStat.h"
+#define PRL_DISK_H				"PrlDisk.h"
 #define PRL_ENUMS_H				"PrlEnums.h"
 #define PRL_COMMANDS_FLAGS_H	"PrlCommandsFlags.h"
 #define PRL_OSES_H				"PrlOses.h"
@@ -47,6 +48,7 @@ SDKParser::SDKParser(const QString& qsSdkIncludeDir, const QString& qsDocFile)
 : m_qsSdkIncludeDir(qsSdkIncludeDir),
   m_lstSources( QList<QString* >()
 				<< &m_qsPrlApiMacro
+				<< &m_qsPrlApi
 				<< &m_qsPrlApi
 				<< &m_qsPrlApi
 				<< &m_qsPrlApi
@@ -99,6 +101,7 @@ bool SDKParser::Init()
 		<< QString(PRL_API_VM_H)
 		<< QString(PRL_API_NET_H)
 		<< QString(PRL_API_STAT_H)
+		<< QString(PRL_DISK_H)
 		<< QString(PRL_ENUMS_H)
 		<< QString(PRL_COMMANDS_FLAGS_H)
 		<< QString(PRL_OSES_H)
@@ -461,7 +464,8 @@ bool SDKParser::ParseAllFunctions()
 		<< MDL_PRL_API_SEND_PACKED_PROBLEM_REPORT
 		<< MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG
 		<< MDL_PRL_GET_MEMGUARANTEE_SIZE
-		<< MDL_PRL_SET_MEMGUARANTEE_SIZE;
+		<< MDL_PRL_SET_MEMGUARANTEE_SIZE
+		<< MDL_PRL_DISK_MAP_READ;
 
 	foreach(QString qsNonStdFunc, m_lstNonStdFuncs)
 	{
