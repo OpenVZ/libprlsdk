@@ -2498,7 +2498,6 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE_PTR phVmCfg
 		) );
 
-
 /* Obtains a handle of type PHT_SYSTEM_STATISTICS containing the
    virtual machine resource usage information, including CPU(s),
    memory, disk drives, processes, user session, system uptime,
@@ -14798,52 +14797,6 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_HANDLE_PTR phAppCfg
 		) );
 
-
-///////////////////////////////////////////////////////////////////////////////
-/// @section VM data statistic functionality.
-///////////////////////////////////////////////////////////////////////////////
-
-/* Obtains a handle of type PHT_SYSTEM_STATISTICS_VM_DATA
-   containing the specified system VM data statistic.
-   Parameters
-   hStat :         A handle of type PHT_SYSTEM_STATISTICS.
-   phVmDataStat :  [out] A pointer to a variable that receives
-                   the handle.
-   Returns
-   PRL_RESULT. Possible values:
-
-   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
-   passed.
-
-   PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
-				 PrlStat_GetVmDataStat, (
-		PRL_HANDLE hStat,
-		PRL_HANDLE_PTR phVmDataStat
-		) );
-
-/* \Returns VM data segment capacity in bytes.
-   Parameters
-   hVmDataStat :  A handle of type PHT_SYSTEM_STATISTICS_VM_DATA
-                  identifying the system process.
-   nSegment :     Segment id defined in PRL_DATA_STATISTIC_SEGMENTS enum.
-   pnCapacity :   [out] A pointer to a variable that receives the
-                  \result.
-   Returns
-   PRL_RESULT. Possible values:
-
-   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
-   passed.
-
-   PRL_ERR_NO_DATA - no data for given segment.
-
-   PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
-				 PrlStatVmData_GetSegmentCapacity, (
-				PRL_HANDLE hVmDataStat,
-				PRL_DATA_STATISTIC_SEGMENTS nSegment,
-				PRL_UINT64_PTR pnCapacity
-				) );
 
 /////////////////////////////////////////////////////////////////////////////////
 /// @section Functions specific for the Parallels Containers Templates.

@@ -2620,4 +2620,1003 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT32 nFlags
 		) );
 
+/* \Returns the Parallels Service uptime in seconds.
+   Parameters
+   hStat :     A handle of type PHT_SYSTEM_STATISTICS.
+   pnUptime :  [out] A pointer to a variable that receives the
+               \result (Parallels Service uptime in seconds).
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.          */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetDispUptime, (
+		PRL_HANDLE hStat,
+		PRL_UINT64_PTR pnUptime
+		) );
+
+/* \Returns total swap size in bytes.
+   Parameters
+   hStat :   A handle of type PHT_SYSTEM_STATISTICS.
+   pnSize :  [out] A pointer to a variable that receives the
+             \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetTotalSwapSize, (
+		PRL_HANDLE hStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* \Returns the size of swap space currently in use (in bytes).
+   Parameters
+   hStat :   A handle of type PHT_SYSTEM_STATISTICS.
+   pnSize :  [out] A pointer to a variable that receives the
+             \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetUsageSwapSize, (
+		PRL_HANDLE hStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* \Returns free swap size in bytes.
+   Parameters
+   hStat :   A handle of type PHT_SYSTEM_STATISTICS.
+   pnSize :  [out] A pointer to a variable that receives the result
+             (free swap size in bytes.)
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.               */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetFreeSwapSize, (
+		PRL_HANDLE hStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+///////////////////////////////////////////////////////////////////////////////
+/// @section Net iface statistics processing functionality.
+///////////////////////////////////////////////////////////////////////////////
+
+/* Determines the number of objects of type
+   PHT_SYSTEM_STATISTICS_IFACE contained in the specified
+   PHT_SYSTEM_STATISTICS object. Each network interface will
+   have its own PHT_SYSTEM_STATISTICS_IFACE object instance.
+   Parameters
+   hStat :    A handle of type PHT_SYSTEM_STATISTICS.
+   pnCount :  [out] A pointer to a variable that receives the
+              \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlStat_GetIfaceStat                                       */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetIfacesStatsCount, (
+		PRL_HANDLE hStat,
+		PRL_UINT32_PTR pnCount
+		) );
+
+/* Obtains a handle of type PHT_SYSTEM_STATISTICS_IFACE
+   containing the specified network interface statistics.
+   Parameters
+   hStat :        A handle of type PHT_SYSTEM_STATISTICS.
+   nIndex :       A numeric index identifying the network
+                  statistics object instance (beginning with 0).
+                  To get the number of instances, use the
+                  PrlStat_GetIfacesStatsCount function.
+   phIfaceStat :  [out] A pointer to a variable that receives the
+                  handle.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.d            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetIfaceStat, (
+		PRL_HANDLE hStat,
+		PRL_UINT32 nIndex,
+		PRL_HANDLE_PTR phIfaceStat
+		) );
+
+/* \Returns the network interface system name.
+   Parameters
+   hIfaceStat :             A handle of type of
+                            PHT_SYSTEM_STATISTICS_IFACE
+                            identifying the network interface.
+   sSystemName :            [out] A pointer to a buffer that
+                            receives the result (a UTF\-8
+                            encoded, null\-terminated string).
+   pnSystemNameBufLength :  [in] The size of the output buffer
+                            (in bytes). Set the buffer pointer to
+                            null and this parameter's value to
+                            zero to receive the required size.
+                            [out] The required output buffer
+                            size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatIface_GetSystemName, (
+		PRL_HANDLE hIfaceStat,
+		PRL_STR	sSystemName,
+		PRL_UINT32_PTR pnSystemNameBufLength
+		) );
+
+/* \Returns the total number of bytes the network interface has
+   received since the Parallels Service was last started.
+   Parameters
+   hIfaceStat :  A handle of type of PHT_SYSTEM_STATISTICS_IFACE
+                 identifying the network interface.
+   pnDataSize :  [out] A pointer to a variable that receives the
+                 \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatIface_GetInDataSize, (
+		PRL_HANDLE hIfaceStat,
+		PRL_UINT64_PTR pnDataSize
+		) );
+
+/* \Returns the total number of bytes the network interface has
+   sent since the Parallels Service was last started.
+   Parameters
+   hIfaceStat :  A handle of type of PHT_SYSTEM_STATISTICS_IFACE
+                 identifying the network interface.
+   pnDataSize :  [out] A pointer to a variable that receives the
+                 \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatIface_GetOutDataSize, (
+		PRL_HANDLE hIfaceStat,
+		PRL_UINT64_PTR pnDataSize
+		) );
+
+/* \Returns the total number of packets the network interface
+   has received since the Parallels Service was last started.
+   Parameters
+   hIfaceStat :   A handle of type of PHT_SYSTEM_STATISTICS_IFACE
+                  identifying the network interface.
+   pnPkgsCount :  [out] A pointer to a variable that receives the
+                  \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatIface_GetInPkgsCount, (
+		PRL_HANDLE hIfaceStat,
+		PRL_UINT64_PTR pnPkgsCount
+		) );
+
+/* \Returns the total number of packets the network interface
+   has sent since the Parallels Service was last started.
+   Parameters
+   hIfaceStat :   A handle of type of PHT_SYSTEM_STATISTICS_IFACE
+                  identifying the network interface.
+   pnPkgsCount :  [out] A pointer to a variable that receives the
+                  \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatIface_GetOutPkgsCount, (
+		PRL_HANDLE hIfaceStat,
+		PRL_UINT64_PTR pnPkgsCount
+		) );
+
+///////////////////////////////////////////////////////////////////////////////
+/// @section User session statistics processing functionality.
+///////////////////////////////////////////////////////////////////////////////
+
+/* Determines the number of handles of type
+   PHT_SYSTEM_STATISTICS_USER_SESSION contained in the specified
+   PHT_SYSTEM_STATISTICS object. Each user session will have its
+   own PHT_SYSTEM_STATISTICS_USER_SESSION object instance.
+   Parameters
+   hStat :    A handle of type PHT_SYSTEM_STATISTICS.
+   pnCount :  [out] A pointer to a variable that receives the
+              \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlStat_GetUserStat                                           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetUsersStatsCount, (
+		PRL_HANDLE hStat,
+		PRL_UINT32_PTR pnCount
+		) );
+
+/* Obtains a handle of type PHT_SYSTEM_STATISTICS_USER_SESSION
+   containing the specified user session statistics.
+   Parameters
+   hStat :       A handle of type PHT_SYSTEM_STATISTICS.
+   nIndex :      A numeric index identifying the user session
+                 statistics object instance (beginning with 0).
+                 To determine the number of instances, use the
+                 PrlStat_GetUsersStatsCount function.
+   phUserStat :  [out] A pointer to a variable that receives the
+                 handle.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.d           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetUserStat, (
+		PRL_HANDLE hStat,
+		PRL_UINT32 nIndex,
+		PRL_HANDLE_PTR phUserStat
+		) );
+
+/* \Returns session user name.
+   Parameters
+   hUserStat :            A handle of type
+                          PHT_SYSTEM_STATISTICS_USER_SESSION
+                          identifying the user session.
+   sUserName :            [out] A pointer to a buffer that
+                          receives the result (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnUserNameBufLength :  [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this parameter's value to zero to
+                          receive the required size. [out] The
+                          required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatUser_GetUserName, (
+		PRL_HANDLE hUserStat,
+		PRL_STR	sUserName,
+		PRL_UINT32_PTR pnUserNameBufLength
+		) );
+
+/* \Returns the name of the host system service that created the
+   session.
+   Parameters
+   hUserStat :               A handle of type
+                             PHT_SYSTEM_STATISTICS_USER_SESSION
+                             identifying the user session.
+   sServiceName :            [out] A pointer to a buffer that
+                             receives the result (a UTF\-8
+                             encoded, null\-terminated string).
+   pnServiceNameBufLength :  [in] The size of the output buffer
+                             (in bytes). Set the buffer pointer
+                             to null and this parameter's value
+                             to zero to receive the required
+                             size. [out] The required output
+                             buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatUser_GetServiceName, (
+		PRL_HANDLE hUserStat,
+		PRL_STR	sServiceName,
+		PRL_UINT32_PTR pnServiceNameBufLength
+		) );
+
+/* \Returns the host name of the client machine from which the
+   session was initiated.
+   Parameters
+   hUserStat :            A handle of type
+                          PHT_SYSTEM_STATISTICS_USER_SESSION
+                          identifying the user session.
+   sHostName :            [out] A pointer to a buffer that
+                          receives the result (a UTF\-8 encoded,
+                          null\-terminated string).
+   pnHostNameBufLength :  [in] The size of the output buffer (in
+                          bytes). Set the buffer pointer to null
+                          and this parameter's value to zero to
+                          receive the required size. [out] The
+                          required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatUser_GetHostName, (
+		PRL_HANDLE hUserStat,
+		PRL_STR	sHostName,
+		PRL_UINT32_PTR pnHostNameBufLength
+		) );
+
+/* \Returns session duration, in seconds.
+   Parameters
+   hUserStat :  A handle of type
+                PHT_SYSTEM_STATISTICS_USER_SESSION identifying
+                the user session.
+   pnTime :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatUser_GetSessionTime, (
+		PRL_HANDLE hUserStat,
+		PRL_UINT64_PTR pnTime
+		) );
+
+///////////////////////////////////////////////////////////////////////////////
+/// @section Disk statistics processing functionality.
+///////////////////////////////////////////////////////////////////////////////
+
+/* Determines the number of handles of type
+   PHT_SYSTEM_STATISTICS_DISK contained in the specified
+   PHT_SYSTEM_STATISTICS object. Each available disk drive in
+   the system will have its own PHT_SYSTEM_STATISTICS_DISK
+   object instance.
+   Parameters
+   hStat :    A handle of type PHT_SYSTEM_STATISTICS.
+   pnCount :  [out] A pointer to a variable that receives the
+              \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlStat_GetDiskStat                                        */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetDisksStatsCount, (
+		PRL_HANDLE hStat,
+		PRL_UINT32_PTR pnCount
+		) );
+
+/* Obtains a handle of type PHT_SYSTEM_STATISTICS_DISK
+   containing the specified disk statistics.
+   Parameters
+   hStat :       A handle of type PHT_SYSTEM_STATISTICS.
+   nIndex :      A numeric index identifying the disk statistics
+                 object instance (beginning with 0). To get the
+                 number of instances, use the
+                 PrlStat_GetDisksStatsCount function.
+   phDiskStat :  [out] A pointer to a variable that receives the
+                 handle.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.d           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetDiskStat, (
+		PRL_HANDLE hStat,
+		PRL_UINT32 nIndex,
+		PRL_HANDLE_PTR phDiskStat
+		) );
+
+/* \Returns the disk device name.
+   Parameters
+   hDiskStat :              A handle of type
+                            PHT_SYSTEM_STATISTICS_DISK
+                            identifying the disk.
+   sSystemName :            [out] A pointer to a buffer that
+                            receives the disk name (a UTF\-8
+                            encoded, null\-terminated string).
+   pnSystemNameBufLength :  [in] The size of the output buffer
+                            (in bytes). Set the buffer pointer to
+                            null and this parameter's value to
+                            zero to receive the required size.
+                            [out] The required output buffer
+                            size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDisk_GetSystemName, (
+		PRL_HANDLE hDiskStat,
+		PRL_STR	sSystemName,
+		PRL_UINT32_PTR pnSystemNameBufLength
+		) );
+
+/* \Returns the size of the used space on the specified disk, in
+   bytes.
+   Parameters
+   hDiskStat :  A handle of type PHT_SYSTEM_STATISTICS_DISK
+                identifying the disk.
+   pnSize :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDisk_GetUsageDiskSpace, (
+		PRL_HANDLE hDiskStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* \Returns free disk space, in bytes.
+   Parameters
+   hDiskStat :  A handle of type PHT_SYSTEM_STATISTICS_DISK
+                identifying the disk.
+   pnSize :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDisk_GetFreeDiskSpace, (
+		PRL_HANDLE hDiskStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* Determines the number of the handles of type
+   PHT_SYSTEM_STATISTICS_DISK_PARTITION contained in the
+   specified PHT_SYSTEM_STATISTICS_DISK object. Each available
+   partition will have its own
+   PHT_SYSTEM_STATISTICS_DISK_PARTITION object instance.
+   Parameters
+   hDiskStat :  A handle of type PHT_SYSTEM_STATISTICS_DISK identifying the disk.  pnCount :    [out] A pointer to a variable that receives the \result.  Returns PRL_RESULT. Possible values: 
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlStatDisk_GetPartStat                                      */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDisk_GetPartsStatsCount, (
+		PRL_HANDLE hDiskStat,
+		PRL_UINT32_PTR pnCount
+		) );
+
+/* Obtains a handle of type PHT_SYSTEM_STATISTICS_DISK_PARTITION
+   containing the specified disk partition statistics.
+   Parameters
+   hDiskStat :   A handle of type PHT_SYSTEM_STATISTICS_DISK
+                 identifying the disk.
+   nIndex :      A numeric index identifying the
+                 PHT_SYSTEM_STATISTICS_DISK_PARTITION object
+                 instance (beginning with 0). To obtain the
+                 number of instances, use the PrlStatDisk_GetPartsStatsCount
+                 function.
+   phPartStat :  [out] A pointer to a variable that receives the
+                 handle.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.                        */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDisk_GetPartStat, (
+		PRL_HANDLE hDiskStat,
+		PRL_UINT32 nIndex,
+		PRL_HANDLE_PTR phPartStat
+		) );
+
+///////////////////////////////////////////////////////////////////////////////
+/// @section Disk partition statistics processing functionality.
+///////////////////////////////////////////////////////////////////////////////
+
+/* \Returns disk partition device name.
+   Parameters
+   hPartStat :              A handle of type
+                            PHT_SYSTEM_STATISTICS_DISK_PARTITION
+                            identifying the disk partition.
+   sSystemName :            [out] A pointer to a buffer that
+                            receives the partition name (a UTF\-8
+                            encoded, null\-terminated string).
+   pnSystemNameBufLength :  [in] The size of the output buffer
+                            (in bytes). Set the buffer pointer to
+                            null and this parameter's value to
+                            zero to receive the required size.
+                            [out] The required output buffer
+                            size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDiskPart_GetSystemName, (
+		PRL_HANDLE hPartStat,
+		PRL_STR	sSystemName,
+		PRL_UINT32_PTR pnSystemNameBufLength
+		) );
+
+/* \Returns the size of the used space on the specified disk
+   partition, in bytes.
+   Parameters
+   hPartStat :  A handle of type
+                PHT_SYSTEM_STATISTICS_DISK_PARTITION identifying
+                the disk partition.
+   pnSize :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDiskPart_GetUsageDiskSpace, (
+		PRL_HANDLE hPartStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* \Returns the size of the free space on the specified disk
+   partition, in bytes.
+   Parameters
+   hPartStat :  A handle of type
+                PHT_SYSTEM_STATISTICS_DISK_PARTITION identifying
+                the disk partition.
+   pnSize :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatDiskPart_GetFreeDiskSpace, (
+		PRL_HANDLE hPartStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+///////////////////////////////////////////////////////////////////////////////
+/// @section Process statistics processing functionality.
+///////////////////////////////////////////////////////////////////////////////
+
+/* Determines the number of handles of type
+   PHT_SYSTEM_STATISTICS_PROCESS contained in the specified
+   PHT_SYSTEM_STATISTICS object. Each system process will have
+   its own PHT_SYSTEM_STATISTICS_PROCESS object instance.
+   Parameters
+   hStat :    A handle of type PHT_SYSTEM_STATISTICS.
+   pnCount :  [out] A pointer to a variable that receives the
+              \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlStat_GetProcStat                                         */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetProcsStatsCount, (
+		PRL_HANDLE hStat,
+		PRL_UINT32_PTR pnCount
+		) );
+
+/* Obtains a handle of type PHT_SYSTEM_STATISTICS_PROCESS
+   containing the specified system process statistics.
+   Parameters
+   hStat :       A handle of type PHT_SYSTEM_STATISTICS.
+   nIndex :      A numeric index identifying the system process
+                 statistics object instance (beginning with 0).
+                 To determine the number of instances, use the
+                 PrlStat_GetProcsStatsCount function.
+   phProcStat :  [out] A pointer to a variable that receives the
+                 handle.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStat_GetProcStat, (
+		PRL_HANDLE hStat,
+		PRL_UINT32 nIndex,
+		PRL_HANDLE_PTR phProcStat
+		) );
+
+/* \Returns the process command name.
+   Parameters
+   hProcStat :               A handle of type
+                             PHT_SYSTEM_STATISTICS_PROCESS
+                             identifying the system process.
+   sCommandName :            [out] A pointer to a buffer that
+                             receives the result (a UTF\-8
+                             encoded, null\-terminated string).
+   pnCommandNameBufLength :  [in] The size of the output buffer
+                             (in bytes). Set the buffer pointer
+                             to null and this parameter's value
+                             to zero to receive the required
+                             size. [out] The required output
+                             buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetCommandName, (
+		PRL_HANDLE hProcStat,
+		PRL_STR	sCommandName,
+		PRL_UINT32_PTR pnCommandNameBufLength
+		) );
+
+/* \Returns process system id.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnId :       [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetId, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT32_PTR pnId
+		) );
+
+/* \Returns process owner user name.
+   Parameters
+   hProcStat :             A handle of type
+                           PHT_SYSTEM_STATISTICS_PROCESS
+                           identifying the system process.
+   sOwnerName :            [out] A pointer to a buffer that
+                           receives the result (a UTF\-8 encoded,
+                           null\-terminated string).
+   pnOwnerNameBufLength :  [in] The size of the output buffer (in
+                           bytes). Set the buffer pointer to null
+                           and this parameter's value to zero to
+                           receive the required size. [out] The
+                           required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetOwnerUserName, (
+		PRL_HANDLE hProcStat,
+		PRL_STR	sOwnerName,
+		PRL_UINT32_PTR pnOwnerNameBufLength
+		) );
+
+/* \Returns total memory usage size in bytes.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnSize :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetTotalMemUsage, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* \Returns real memory usage size in bytes.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnSize :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetRealMemUsage, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* \Returns virtual memory usage size in bytes.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnSize :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetVirtMemUsage, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT64_PTR pnSize
+		) );
+
+/* \Returns start time of the process, in seconds (number of
+   seconds since January 1, 1601 (UTC)).
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnTime :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetStartTime, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT64_PTR pnTime
+		) );
+
+/* \Returns total running time of the process, in seconds.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnTime :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetTotalTime, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT64_PTR pnTime
+		) );
+
+/* \Returns user running time of the process, in seconds.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnTime :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetUserTime, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT64_PTR pnTime
+		) );
+
+/* \Returns system running time of the process, in seconds.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnTime :     [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetSystemTime, (
+		PRL_HANDLE hProcStat,
+		PRL_UINT64_PTR pnTime
+		) );
+
+/* \Returns process state.
+   Parameters
+   hProcStat :  A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                identifying the system process.
+   pnState :    [out] A pointer to a variable that receives the
+                \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetState, (
+		PRL_HANDLE hProcStat,
+		PRL_PROCESS_STATE_TYPE_PTR pnState
+		) );
+
+/* \Returns process CPU usage in percents.
+   Parameters
+   hProcStat :   A handle of type PHT_SYSTEM_STATISTICS_PROCESS
+                 identifying the system process.
+   pnPercents :  [out] A pointer to a variable that receives the
+                 \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_1,
+				 PrlStatProc_GetCpuUsage, (
+				PRL_HANDLE hProcStat,
+				PRL_UINT32_PTR pnPercents
+				) );
+
+///////////////////////////////////////////////////////////////////////////////
+/// @section VM data statistic functionality.
+///////////////////////////////////////////////////////////////////////////////
+
+/* Obtains a handle of type PHT_SYSTEM_STATISTICS_VM_DATA
+   containing the specified system VM data statistic.
+   Parameters
+   hStat :         A handle of type PHT_SYSTEM_STATISTICS.
+   phVmDataStat :  [out] A pointer to a variable that receives
+                   the handle.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.           */
+PRL_METHOD_DECL( PARALLELS_API_VER_4,
+				 PrlStat_GetVmDataStat, (
+		PRL_HANDLE hStat,
+		PRL_HANDLE_PTR phVmDataStat
+		) );
+
+/* \Returns VM data segment capacity in bytes.
+   Parameters
+   hVmDataStat :  A handle of type PHT_SYSTEM_STATISTICS_VM_DATA
+                  identifying the system process.
+   nSegment :     Segment id defined in PRL_DATA_STATISTIC_SEGMENTS enum.
+   pnCapacity :   [out] A pointer to a variable that receives the
+                  \result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - no data for given segment.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_4,
+				 PrlStatVmData_GetSegmentCapacity, (
+				PRL_HANDLE hVmDataStat,
+				PRL_DATA_STATISTIC_SEGMENTS nSegment,
+				PRL_UINT64_PTR pnCapacity
+				) );
+
 #endif //__PARALLELS_API_DEPRECATED_H__

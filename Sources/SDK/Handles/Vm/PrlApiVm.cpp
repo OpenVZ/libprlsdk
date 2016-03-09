@@ -11120,49 +11120,6 @@ PRL_METHOD( PrlAcl_IsCurrentSessionOwner ) (
 	return (pAccessRights->IsCurrentSessionOwner(pbIsOwner));
 }
 
-PRL_METHOD( PrlStat_GetVmDataStat) (
-		PRL_HANDLE hStat,
-		PRL_HANDLE_PTR phVmDataStat
-		)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hStat=%p, phVmDataStat=%p)",
-		__FUNCTION__,
-		hStat,
-		phVmDataStat
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	if ( PRL_WRONG_HANDLE(hStat, PHT_SYSTEM_STATISTICS) || PRL_WRONG_PTR(phVmDataStat) )
-		return (PRL_ERR_INVALID_ARG);
-	PrlHandleSystemStatisticsPtr pSystemStatistics = PRL_OBJECT_BY_HANDLE<PrlHandleSystemStatistics>( hStat );
-	return (pSystemStatistics->GetVmDataStat(phVmDataStat));
-}
-
-PRL_METHOD( PrlStatVmData_GetSegmentCapacity) (
-		PRL_HANDLE hVmDataStat,
-		PRL_DATA_STATISTIC_SEGMENTS nSegment,
-		PRL_UINT64_PTR pnCapacity
-		)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDataStat=%p, nSegment=%.8X, pnCapacity=%p)",
-		__FUNCTION__,
-		hVmDataStat,
-		nSegment,
-		pnCapacity
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	if ( PRL_WRONG_HANDLE(hVmDataStat, PHT_SYSTEM_STATISTICS_VM_DATA)
-		|| (nSegment <= PDSS_UNKNOWN || nSegment > PDSS_VM_FULL_SPACE)
-		|| PRL_WRONG_PTR(pnCapacity) )
-		return (PRL_ERR_INVALID_ARG);
-
-	PrlHandleSystemStatisticsVmDataPtr pSystemStatisticsVmData = PRL_OBJECT_BY_HANDLE<PrlHandleSystemStatisticsVmData>( hVmDataStat );
-	return (pSystemStatisticsVmData->GetSegmentCapacity(nSegment, pnCapacity));
-}
-
 PRL_ASYNC_METHOD( PrlVm_Compact ) (
 	PRL_HANDLE hVm,
 	PRL_UINT32 uMask,
