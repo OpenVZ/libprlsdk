@@ -26,9 +26,29 @@
 #include "SDK/Include/Parallels.h"
 #include "SDK/Include/PrlErrors.h"
 #include "PrlHandleBase.h"
+#include "PrlHandleDisk.h"
+
 
 /**
- * Method let to create disk and return handle
+ * Free allocated disk handle
+ *
+ * @param Parallels handle value
+ *
+ * @return Error code in PRL_RESULT format
+ */
+PRL_METHOD( PrlDisk_Free ) (
+		// Handle
+		PRL_HANDLE Handle)
+{
+	if ( PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK) )
+		return PRL_ERR_INVALID_ARG;
+
+	// Just free it
+	return PrlHandle_Free(Handle);
+};
+
+/**
+ * Create disk and return handle
  * This function can be used locally, without dispatcher connection
  *
  * @param Receive disk handle
@@ -51,17 +71,36 @@ PRL_METHOD(PrlDisk_CreateDisk_Local) (
 	// Additional parameter (any type) for image class
 	PRL_CONST_VOID_PTR pAdditional)
 {
-	Q_UNUSED(pParams)
-	Q_UNUSED(pCallback)
-	Q_UNUSED(pAdditional)
+	PRL_RESULT retVal = PRL_ERR_INVALID_ARG;
+	// Pointer to disk
+	PrlHandleDisk* pDisk = NULL;
 
-	if (PRL_WRONG_PTR(pHandle) || PRL_WRONG_PTR(pDiskName))
-		return PRL_ERR_INVALID_ARG;
-	return PRL_ERR_UNIMPLEMENTED;
+	// Check parameters
+	if (PRL_WRONG_PTR(pHandle) ||
+		PRL_WRONG_PTR(pDiskName) ||
+		PRL_WRONG_PTR(pParams))
+		return retVal;
+
+	// Create default disk class
+	pDisk = new (std::nothrow) PrlHandleDisk(true);
+
+	if (!pDisk)
+		return PRL_ERR_OUT_OF_MEMORY;
+
+	retVal = pDisk->CreateDisk(pDiskName, pParams, pCallback, pAdditional);
+
+	if (PRL_FAILED(retVal))
+	{
+		pDisk->Release();
+		return retVal;
+	}
+
+	*pHandle = pDisk->GetHandle();
+	return retVal;
 }
 
 /**
- * Method let to open disk and return handle
+ * Open disk and return handle
  * This function can be used locally, without dispatcher connection
  *
  * @param Receive disk handle
@@ -80,12 +119,37 @@ PRL_METHOD(PrlDisk_OpenDisk_Local) (
 	// Additional flags to image
 	PRL_CONST_VOID_PTR pAdditionalFlags)
 {
-	Q_UNUSED(OpenFlags)
-	Q_UNUSED(pAdditionalFlags)
+	// Return value
+	PRL_RESULT retVal = PRL_ERR_INVALID_ARG;
+	// Pointer to disk
+	PrlHandleDisk* pDisk = NULL;
 
-	if (PRL_WRONG_PTR(pHandle) || PRL_WRONG_PTR(pDiskName))
-		return PRL_ERR_INVALID_ARG;
-	return PRL_ERR_UNIMPLEMENTED;
+	// Not used
+	(void)pAdditionalFlags;
+
+	// Check parameters
+	if (PRL_WRONG_PTR(pHandle) ||
+		PRL_WRONG_PTR(pDiskName))
+		return retVal;
+
+	// Create default disk class
+	pDisk = new (std::nothrow) PrlHandleDisk(true);
+
+	if (!pDisk)
+		return PRL_ERR_OUT_OF_MEMORY;
+
+	retVal = pDisk->OpenDisk(pDiskName, OpenFlags);
+
+	if (PRL_SUCCEEDED(retVal))
+	{
+		*pHandle = pDisk->GetHandle();
+		return PRL_ERR_SUCCESS;
+	}
+
+	// The handle must be invalid on error
+	pDisk->Release();
+	pDisk = NULL;
+	return retVal;
 }
 
 /**
@@ -101,7 +165,10 @@ PRL_METHOD(PrlDisk_WaitForCompletion) (
 {
 	if (PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK))
 		return PRL_ERR_INVALID_ARG;
-	return PRL_ERR_UNIMPLEMENTED;
+
+	PrlHandleDiskPtr pDisk = PRL_OBJECT_BY_HANDLE<PrlHandleDisk>(Handle);
+
+	return pDisk->WaitForCompletion();
 }
 
 /**
@@ -135,7 +202,10 @@ PRL_METHOD(PrlDisk_SwitchToState) (
 		return PRL_ERR_INVALID_ARG;
 	if (PRL_WRONG_PTR(pDirectoryName) || PRL_WRONG_PTR(pUid))
 		return PRL_ERR_INVALID_ARG;
-	return PRL_ERR_UNIMPLEMENTED;
+
+	PrlHandleDiskPtr pDisk = PRL_OBJECT_BY_HANDLE<PrlHandleDisk>(Handle);
+
+	return pDisk->SwitchToState(pUid, pCallback, pParameter);
 }
 
 /**
@@ -158,14 +228,15 @@ PRL_METHOD(PrlDisk_Write) (
 		// Offset of block (in sectors)
 		const PRL_UINT64 uiBlockOffset)
 {
-	Q_UNUSED(uiSize)
-	Q_UNUSED(uiBlockOffset)
+	if ( PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK) )
+		return PRL_ERR_INVALID_ARG;
 
-	if (PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK))
+	if ( PRL_WRONG_PTR(pBlock) )
 		return PRL_ERR_INVALID_ARG;
-	if (PRL_WRONG_PTR(pBlock))
-		return PRL_ERR_INVALID_ARG;
-	return PRL_ERR_UNIMPLEMENTED;
+
+	PrlHandleDiskPtr pDisk = PRL_OBJECT_BY_HANDLE<PrlHandleDisk>(Handle);
+
+	return pDisk->Write(pBlock, uiSize, uiBlockOffset);
 }
 
 /**
@@ -188,14 +259,15 @@ PRL_METHOD(PrlDisk_Read) (
 		// Offset of block (in sectors)
 		const PRL_UINT64 uiBlockOffset)
 {
-	Q_UNUSED(uiSize)
-	Q_UNUSED(uiBlockOffset)
+	if ( PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK) )
+		return PRL_ERR_INVALID_ARG;
 
-	if (PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK))
+	if ( PRL_WRONG_PTR(pBlock) )
 		return PRL_ERR_INVALID_ARG;
-	if (PRL_WRONG_PTR(pBlock))
-		return PRL_ERR_INVALID_ARG;
-	return PRL_ERR_UNIMPLEMENTED;
+
+	PrlHandleDiskPtr pDisk = PRL_OBJECT_BY_HANDLE<PrlHandleDisk>(Handle);
+
+	return pDisk->Read(pBlock, uiSize, uiBlockOffset);
 }
 
 /**
@@ -216,16 +288,29 @@ PRL_METHOD(PrlDisk_GetDiskInfo) (
 		// Parameter value buffer size
 		PRL_UINT32_PTR BufferSize)
 {
-	if (PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK))
+	if ( PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK) )
+	{
+		WRITE_TRACE(DBG_FATAL, "wrong handle");
 		return PRL_ERR_INVALID_ARG;
-	if (PRL_WRONG_PTR(BufferSize))
+	}
+
+	if ( PRL_WRONG_PTR(BufferSize) )
+	{
+		WRITE_TRACE(DBG_FATAL, "wrong buffer size ptr");
 		return PRL_ERR_INVALID_ARG;
+	}
 
 	// If specified buffer size is not equal to 0 - pointer should be valid
-	if (*BufferSize)
-		if (PRL_WRONG_PTR(ppDDesc))
+	if ( *BufferSize )
+		if ( PRL_WRONG_PTR(ppDDesc) )
+		{
+			WRITE_TRACE(DBG_FATAL, "wrong buffer ptr");
 			return PRL_ERR_INVALID_ARG;
-	return PRL_ERR_UNIMPLEMENTED;
+		}
+
+	PrlHandleDiskPtr pDisk = PRL_OBJECT_BY_HANDLE<PrlHandleDisk>(Handle);
+
+	return pDisk->GetDiskInfo(ppDDesc, BufferSize);
 }
 
 /**
