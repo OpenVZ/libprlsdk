@@ -1813,8 +1813,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_EFI_UNSUPPORTED_GUEST,
-		tr("Virtual machines with this type of guest OS cannot be used with EFI firmware."),
-		tr("Specify another guest OS or disable the EFI firmware."),
+		tr("The virtual machine configuration is invalid."),
+		tr("EFI firmware is not supported for this guest OS."),
 		false,
 		PMT_CRITICAL
 		);
