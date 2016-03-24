@@ -1812,6 +1812,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_EFI_UNSUPPORTED_GUEST,
+		tr("Virtual machines with this type of guest OS cannot be used with EFI firmware."),
+		tr("Specify another guest OS or disable the EFI firmware."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_TOOLS_WIN,
 		tr("Click Continue to connect the Parallels Tools installation CD to this virtual machine and start the installation."),
 		tr("If the installation does not start automatically, open your CD/DVD drive in Windows and double-click \"Setup.exe\"."),
