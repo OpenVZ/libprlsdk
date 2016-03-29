@@ -46,8 +46,11 @@ bool ModuleComposer::CompositeModule()
 	content += MDL_PRL_SDK_CHECK;
 // SDK library path
 	content += MDL_SDK_LIBRARY_PATH;
+	content += MDL_PRL_EVENT_HANDLER_ARGS;
 	content += MDL_SET_SDK_LIBRARY_PATH;
 	content += MDL_GET_SDK_LIBRARY_PATH;
+// Event callback handler
+    content += MDL_PRL_HANDLE_EVENT_CALLBACK_HANDLER_IMPL;
 // Initialization SDK
 	content += MDL_IS_SDK_INITIALIZED;
 	content += MDL_INITIALIZE_SDK;
@@ -111,6 +114,8 @@ bool ModuleComposer::CompositeModule()
 	content += MDL_ENTRY_FUNCTION;
 // Init module
 	content += MDL_INIT_MODULE;
+// Init GIL
+    content += MDL_INIT_GIL;
 // Register constants
 	RegisterConstants(content);
 // End entry function
@@ -193,6 +198,44 @@ void ModuleComposer::SdkPythonFunction(QString& content, const QString& qsFunc)
 		content += MDL_PRL_DISK_GET_DISK_INFO_IMPL;
 		return;
 	}
+
+	if ( qsFunc == MDL_PRL_HANDLE_REG_EVENT_HANDLER)
+    {
+        content += MDL_PRL_HANDLE_REG_EVENT_HANDLER_IMPL;
+        return;
+    }
+
+    if ( qsFunc == MDL_PRL_HANDLE_UNREG_EVENT_HANDLER)
+    {
+        content += MDL_PRL_HANDLE_UNREG_EVENT_HANDLER_IMPL;
+        return;
+    }
+
+    if ( qsFunc == MDL_PRL_SRV_REG_EVENT_HANDLER)
+    {
+        content += MDL_PRL_SRV_REG_EVENT_HANDLER_IMPL;
+        return;
+    }
+
+    if ( qsFunc == MDL_PRL_SRV_UNREG_EVENT_HANDLER)
+    {
+        content += MDL_PRL_SRV_UNREG_EVENT_HANDLER_IMPL;
+        return;
+    }
+
+    if ( qsFunc == MDL_PRL_VM_REG_EVENT_HANDLER)
+    {
+        content += MDL_PRL_VM_REG_EVENT_HANDLER_IMPL;
+        return;
+    }
+
+    if ( qsFunc == MDL_PRL_VM_UNREG_EVENT_HANDLER)
+    {
+        content += MDL_PRL_VM_UNREG_EVENT_HANDLER_IMPL;
+        return;
+    }	
+
+
 
 	QString qsGenFunc;
 

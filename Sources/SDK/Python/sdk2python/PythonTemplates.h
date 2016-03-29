@@ -304,4 +304,7 @@
 #define PTN_MEMGUARANTEE_SIZE_PARAMS \
 	"nType, nValue"
 
+#define PTN_EVENT_HANDLER_PARAMS \
+	"callback_func"
+
 #endif	// PYTHON_TEMPLATES_H

@@ -42,6 +42,7 @@
 #define PRL_OSES_H				"PrlOses.h"
 #define PRL_KEYS_H				"PrlKeys.h"
 #define PRL_ERRORS_VALUES_H		"PrlErrorsValues.h"
+#define PRL_EVENTS_VALUES_H     "PrlEventsValues.h"
 
 
 SDKParser::SDKParser(const QString& qsSdkIncludeDir, const QString& qsDocFile)
@@ -59,6 +60,7 @@ SDKParser::SDKParser(const QString& qsSdkIncludeDir, const QString& qsDocFile)
 				<< &m_qsPrlOses
 				<< &m_qsPrlKeys
 				<< &m_qsPrlErrorsValues
+				<< &m_qsPrlEnums
 				<< &m_qsPrlEnums),
   m_qsDocFile(qsDocFile)
 {
@@ -107,6 +109,7 @@ bool SDKParser::Init()
 		<< QString(PRL_OSES_H)
 		<< QString(PRL_KEYS_H)
 		<< QString(PRL_ERRORS_VALUES_H)
+		<< QString(PRL_EVENTS_VALUES_H)
 		<< QString(PRL_KEYS_H);
 
 	for(int i = 0; i < lstFileNames.size() && i < m_lstSources.size(); i++)
@@ -463,7 +466,13 @@ bool SDKParser::ParseAllFunctions()
 		<< MDL_PRL_GET_MEMGUARANTEE_SIZE
 		<< MDL_PRL_SET_MEMGUARANTEE_SIZE
 		<< MDL_PRL_DISK_MAP_READ
-		<< MDL_PRL_DISK_GET_DISK_INFO;
+		<< MDL_PRL_DISK_GET_DISK_INFO
+		<< MDL_PRL_HANDLE_REG_EVENT_HANDLER
+        << MDL_PRL_HANDLE_UNREG_EVENT_HANDLER
+        << MDL_PRL_SRV_REG_EVENT_HANDLER
+        << MDL_PRL_SRV_UNREG_EVENT_HANDLER
+        << MDL_PRL_VM_REG_EVENT_HANDLER
+        << MDL_PRL_VM_UNREG_EVENT_HANDLER;
 
 	foreach(QString qsNonStdFunc, m_lstNonStdFuncs)
 	{

@@ -47,6 +47,7 @@
 
 #define MDL_INCLUDES \
 	"#include <string>\n" \
+	"#include <vector>\n" \
 	"#ifdef _LIN_\n" \
 	"#ifdef _POSIX_C_SOURCE\n" \
 	"#undef _POSIX_C_SOURCE\n" \
@@ -131,6 +132,8 @@
 	"\tstd::string parent_name = PyModule_GetName(parent_module);\n" \
 	"\tPyObject* module = NULL;\n" \
 	"\tstd::string name;\n\n"
+#define MDL_INIT_GIL \
+	"\tPyEval_InitThreads();\n\n"
 #define MDL_ADD_MODULE \
 	"\tmodule = Py_InitModule( (char* )(parent_name + \".\" + name).c_str(), NULL );\n" \
 	"\tPy_INCREF(module);\n" \
@@ -163,6 +166,9 @@
 #define MDL_SDK_LIBRARY_PATH \
 	"static std::string s_strSdkLibraryPath;\n" \
 	"static bool s_bIsSDKInitialized = false;\n\n"
+
+#define MDL_PRL_EVENT_HANDLER_ARGS \
+	"static std::vector<PyObject *> args_vector;\n\n"
 
 #define MDL_SET_SDK_LIBRARY_PATH_NAME \
 	"SetSDKLibraryPath"
@@ -651,5 +657,141 @@ MDL_NEW_RETURN_LIST \
 "		if ( PyList_Append(ret_list, info) )\n" \
 "			break;\n" \
 MDL_END_SDK_PYTHON_FUNCTION
+
+#define MDL_PRL_HANDLE_EVENT_CALLBACK_HANDLER \
+    "PrlHandle_EventCallbackHandler"
+#define MDL_PRL_HANDLE_EVENT_CALLBACK_HANDLER_IMPL \
+    "static PRL_RESULT PrlHandle_EventCallbackHandler(PRL_HANDLE hEvent, PRL_VOID_PTR user_data)\n" \
+    "{\n" \
+    "\tPRL_SDK_CHECK;\n" \
+    "\tPyGILState_STATE gstate = PyGILState_Ensure();\n" \
+    "\tdo {\n" \
+    "\t\tPRL_HANDLE_TYPE type;\n" \
+    "\t\tPRL_HANDLE handle = (PRL_HANDLE)0;\n" \
+    "\t\tPyObject *py_callback_function;\n" \
+    "\t\tPyObject *py_user_data;\n" \
+    "\t\tif (PrlHandle_GetType(hEvent, &type))\n" \
+    "\t\t\tbreak;\n" \
+    "\t\tif (type == PHT_EVENT) {\n"\
+    "\t\t\tif (!PyArg_ParseTuple((PyObject *)user_data, \"kOO\", &handle, &py_callback_function, &py_user_data))\n"\
+    "\t\t\t\tbreak;\n" \
+    "\t\t\tPyObject *arglist;\n" \
+    "\t\t\targlist = Py_BuildValue(\"(i,O)\", hEvent, py_user_data);\n" \
+    "\t\t\tPyObject *call_obj_result;\n" \
+    "\t\t\tcall_obj_result = PyObject_CallObject(py_callback_function, arglist);\n" \
+    "\t\t\tif (PyErr_Occurred())\n" \
+    "\t\t\t\tPyErr_Print();\n" \
+    "\t\t\tPy_XDECREF(call_obj_result);\n" \
+    "\t\t\tPy_DECREF(arglist);\n" \
+    "\t\t}\n" \
+    "\t} while(0);\n" \
+    "\tPyGILState_Release(gstate);\n" \
+    "\treturn PRL_ERR_SUCCESS;\n" \
+    "}\n\n"
+
+#define MDL_PRL_HANDLE_REG_EVENT_HANDLER \
+    "PrlHandle_RegEventHandler"
+#define MDL_PRL_HANDLE_REG_EVENT_HANDLER_IMPL \
+    "static PyObject *sdk_"MDL_PRL_HANDLE_REG_EVENT_HANDLER "(PyObject* /*self*/, PyObject *args)\n" \
+    "{\n" \
+    "\tPRL_SDK_CHECK;\n" \
+    "\tdo {\n" \
+    "\t\tPyObject *py_callback_function;\n" \
+    "\t\tPyObject *py_user_data;\n" \
+    "\t\tPRL_HANDLE handle = (PRL_HANDLE)0;\n" \
+    "\t\tif ( ! PyArg_ParseTuple(args, \"kOO:PrlHandle_RegEventHandler\", &handle, &py_callback_function, &py_user_data))\n" \
+    "\t\t\tbreak;\n" \
+    "\t\tif ( ! PyCallable_Check(py_callback_function)) {\n" \
+    "\t\t\tPyErr_SetString(PyExc_TypeError, \"parameter must be callable\");\n" \
+    "\t\t\tbreak;\n" \
+    "\t\t}\n" \
+    "\t\tPRL_RESULT prlResult;\n" \
+    "\t\tPy_BEGIN_ALLOW_THREADS\n" \
+    "\t\tprlResult = "MDL_PRL_HANDLE_REG_EVENT_HANDLER"(handle, "MDL_PRL_HANDLE_EVENT_CALLBACK_HANDLER", (PRL_VOID_PTR) args);\n" \
+    "\t\tPy_END_ALLOW_THREADS\n" \
+    "\t\tif (PRL_SUCCEEDED(prlResult)) {\n" \
+    "\t\t\tPy_XINCREF(args);\n" \
+    "\t\t\targs_vector.push_back(args);\n" \
+    "\t\t}\n" \
+    MDL_NEW_RETURN_LIST \
+    "\t\tif ( PyList_Append(ret_list, Py_BuildValue( \"k\", prlResult )) )\n" \
+    "\t\t\tbreak;\n" \
+    MDL_END_SDK_PYTHON_FUNCTION
+
+#define MDL_PRL_HANDLE_UNREG_EVENT_HANDLER \
+    "PrlHandle_UnregEventHandler"
+#define MDL_PRL_HANDLE_UNREG_EVENT_HANDLER_IMPL \
+    "static PyObject *sdk_"MDL_PRL_HANDLE_UNREG_EVENT_HANDLER "(PyObject* /*self*/, PyObject *args)\n" \
+    "{\n" \
+    "\tPRL_SDK_CHECK;\n" \
+    "\tdo {\n" \
+    "\t\tPRL_HANDLE handle = (PRL_HANDLE)0;\n" \
+    "\t\tPyObject *py_callback_function;\n" \
+    "\t\tPyObject *py_user_data;\n" \
+    "\t\tPRL_RESULT prlResult = PRL_ERR_FAILURE;\n" \
+    "\t\tif ( ! PyArg_ParseTuple(args, \"kOO:PrlSrv_UnregEventHandler\", &handle, &py_callback_function, &py_user_data)) \n" \
+    "\t\t\tbreak;\n" \
+    "\t\tfor (std::vector<PyObject *>::size_type i = 0; i != args_vector.size(); i++) {\n" \
+    "\t\t\tif (PyObject_RichCompareBool(args, args_vector[i], Py_EQ)){ \n" \
+    "\t\t\t\tPy_BEGIN_ALLOW_THREADS\n" \
+    "\t\t\t\tprlResult = "MDL_PRL_HANDLE_UNREG_EVENT_HANDLER"(handle, "MDL_PRL_HANDLE_EVENT_CALLBACK_HANDLER", (PRL_VOID_PTR) args_vector[i]);\n" \
+    "\t\t\t\tPy_END_ALLOW_THREADS\n" \
+    "\t\t\t\tif (PRL_SUCCEEDED(prlResult)) {\n"  \
+    "\t\t\t\t\tPy_XDECREF(args_vector[i]);\n" \
+    "\t\t\t\t\targs_vector.erase(args_vector.begin() + i);\n" \
+    "\t\t\t\t}\n" \
+    "\t\t\t\tbreak;\n" \
+    "\t\t\t}\n" \
+    "\t\t}\n" \
+    MDL_NEW_RETURN_LIST \
+    "\t\tif ( PyList_Append(ret_list, Py_BuildValue( \"k\", prlResult )) )\n" \
+    "\t\t\tbreak;\n" \
+    MDL_END_SDK_PYTHON_FUNCTION
+
+#define MDL_PRL_SRV_REG_EVENT_HANDLER \
+    "PrlSrv_RegEventHandler"
+#define MDL_PRL_SRV_REG_EVENT_HANDLER_IMPL \
+    "static PyObject *sdk_"MDL_PRL_HANDLE_REG_EVENT_HANDLER "(PyObject* /*self*/, PyObject *args);\n" \
+    "static PyObject *sdk_"MDL_PRL_SRV_REG_EVENT_HANDLER "(PyObject* self, PyObject *args)\n" \
+    "{\n" \
+    "\tPRL_SDK_CHECK;\n" \
+    "\tdo {\n" \
+    MDL_NEW_RETURN_LIST \
+    "\t\tret_list = sdk_"MDL_PRL_HANDLE_REG_EVENT_HANDLER"(self, args);\n" \
+    MDL_END_SDK_PYTHON_FUNCTION
+
+#define MDL_PRL_SRV_UNREG_EVENT_HANDLER \
+    "PrlSrv_UnregEventHandler"
+#define MDL_PRL_SRV_UNREG_EVENT_HANDLER_IMPL \
+    "static PyObject *sdk_"MDL_PRL_HANDLE_UNREG_EVENT_HANDLER "(PyObject* /*self*/, PyObject *args);\n" \
+    "static PyObject *sdk_"MDL_PRL_SRV_UNREG_EVENT_HANDLER "(PyObject* self, PyObject *args)\n" \
+    "{\n" \
+    "\tPRL_SDK_CHECK;\n" \
+    "\tdo {\n" \
+    MDL_NEW_RETURN_LIST \
+    "\t\tret_list = sdk_"MDL_PRL_HANDLE_UNREG_EVENT_HANDLER"(self, args);\n" \
+    MDL_END_SDK_PYTHON_FUNCTION
+
+#define MDL_PRL_VM_REG_EVENT_HANDLER \
+    "PrlVm_RegEventHandler"
+#define MDL_PRL_VM_REG_EVENT_HANDLER_IMPL \
+    "static PyObject *sdk_"MDL_PRL_VM_REG_EVENT_HANDLER "(PyObject* self, PyObject *args)\n" \
+    "{\n" \
+    "\tPRL_SDK_CHECK;\n" \
+    "\tdo {\n" \
+    MDL_NEW_RETURN_LIST \
+    "\t\tret_list = sdk_"MDL_PRL_HANDLE_REG_EVENT_HANDLER"(self, args);\n" \
+    MDL_END_SDK_PYTHON_FUNCTION
+
+#define MDL_PRL_VM_UNREG_EVENT_HANDLER \
+    "PrlVm_UnregEventHandler"
+#define MDL_PRL_VM_UNREG_EVENT_HANDLER_IMPL \
+    "static PyObject *sdk_"MDL_PRL_VM_UNREG_EVENT_HANDLER "(PyObject* self, PyObject *args)\n" \
+    "{\n" \
+    "\tPRL_SDK_CHECK;\n" \
+    "\tdo {\n" \
+    MDL_NEW_RETURN_LIST \
+    "\t\tret_list = sdk_"MDL_PRL_HANDLE_UNREG_EVENT_HANDLER"(self, args);\n" \
+    MDL_END_SDK_PYTHON_FUNCTION
 
 #endif	// MODULE_TEMPLATES_H
