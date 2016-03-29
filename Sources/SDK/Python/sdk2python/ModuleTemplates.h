@@ -663,7 +663,6 @@ MDL_END_SDK_PYTHON_FUNCTION
 #define MDL_PRL_HANDLE_EVENT_CALLBACK_HANDLER_IMPL \
     "static PRL_RESULT PrlHandle_EventCallbackHandler(PRL_HANDLE hEvent, PRL_VOID_PTR user_data)\n" \
     "{\n" \
-    "\tPRL_SDK_CHECK;\n" \
     "\tPyGILState_STATE gstate = PyGILState_Ensure();\n" \
     "\tdo {\n" \
     "\t\tPRL_HANDLE_TYPE type;\n" \
