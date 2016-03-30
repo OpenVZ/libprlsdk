@@ -27,6 +27,7 @@
 #include "SDKParser.h"
 #include <QtXml>
 #include "ModuleTemplates.h"
+#include "CustomFunctions.h"
 #include <prlcommon/Interfaces/ParallelsQt.h>
 
 
@@ -455,24 +456,7 @@ bool SDKParser::ParseAllFunctions()
 	}
 
 	// Non-standard functions check
-
-	m_lstNonStdFuncs = QStringList()
-		<< MDL_PRL_OP_TYPE_LIST_GET_ITEM
-		<< MDL_PRL_REPORT_GET_DATA
-		<< MDL_PRL_REPORT_SEND
-		<< MDL_PRL_API_SEND_PROBLEM_REPORT
-		<< MDL_PRL_API_SEND_PACKED_PROBLEM_REPORT
-		<< MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG
-		<< MDL_PRL_GET_MEMGUARANTEE_SIZE
-		<< MDL_PRL_SET_MEMGUARANTEE_SIZE
-		<< MDL_PRL_DISK_MAP_READ
-		<< MDL_PRL_DISK_GET_DISK_INFO
-		<< MDL_PRL_HANDLE_REG_EVENT_HANDLER
-        << MDL_PRL_HANDLE_UNREG_EVENT_HANDLER
-        << MDL_PRL_SRV_REG_EVENT_HANDLER
-        << MDL_PRL_SRV_UNREG_EVENT_HANDLER
-        << MDL_PRL_VM_REG_EVENT_HANDLER
-        << MDL_PRL_VM_UNREG_EVENT_HANDLER;
+        m_lstNonStdFuncs = getCustomFunctions();
 
 	foreach(QString qsNonStdFunc, m_lstNonStdFuncs)
 	{
