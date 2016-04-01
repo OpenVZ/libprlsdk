@@ -361,8 +361,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the Parallels
               Service.
-   nFlags :   Flags bitset of PRL_VM_TYPE_FLAGS enumerator, filter Vm
-	      by Vm type.
+   nFlags :   Flags bitset of PRL_GET_VM_LIST_FLAGS enumerator.
    Returns
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
