@@ -80,13 +80,9 @@
 #define PRL_GUEST_CPU_USAGE_PTRN			"guest.cpu.usage"
 
 // sum of guest time change from last query(delta) for every vcpu averaged on
-// host cpu number
-// for CT - in microseconds
-// for VM - in TSC
+// host cpu number in microseconds
 #define PRL_GUEST_CPU_TIME_PTRN				"guest.cpu.time"
-// host time change from last query
-// for CT - in microseconds
-// for VM - in TSC
+// host time change from last query in microseconds
 #define PRL_HOST_CPU_TIME_PTRN				"host.cpu.time"
 
 // per vcpu statistics in nanosecs
