@@ -25,6 +25,7 @@
 
 
 #include "ModuleComposer.h"
+#include "CustomFunctions.h"
 #include "ModuleTemplates.h"
 
 
@@ -46,6 +47,7 @@ bool ModuleComposer::CompositeModule()
 	content += MDL_PRL_SDK_CHECK;
 // SDK library path
 	content += MDL_SDK_LIBRARY_PATH;
+	content += MDL_PRL_EVENT_HANDLER_ARGS;
 	content += MDL_SET_SDK_LIBRARY_PATH;
 	content += MDL_GET_SDK_LIBRARY_PATH;
 // Initialization SDK
@@ -58,6 +60,14 @@ bool ModuleComposer::CompositeModule()
 	{
 		SdkPythonFunction(content, qsFunc);
 	}
+// Read CustomFunctions file:
+        QFile customFunctionsFile(CUSTOM_FUNCS_CPP);
+        if (!customFunctionsFile.open(QFile::ReadOnly | QFile::Text)){ 
+                return false;
+        }
+        QTextStream in(&customFunctionsFile);
+        content += in.readAll();
+        customFunctionsFile.close();
 
 // Sdk SDK-Python bundle
 	content += MDL_SDK_PYTHON_BUNDLE;
@@ -111,11 +121,12 @@ bool ModuleComposer::CompositeModule()
 	content += MDL_ENTRY_FUNCTION;
 // Init module
 	content += MDL_INIT_MODULE;
+// Init GIL
+    content += MDL_INIT_GIL;
 // Register constants
 	RegisterConstants(content);
 // End entry function
-	content += MDL_END_ENTRY_FUNCTION;
-
+        content += MDL_END_ENTRY_FUNCTION;
 	if ( ! Save(MDL_PRL_PYTHON_SDK_CPP, content) )
 		return false;
 
@@ -127,72 +138,8 @@ void ModuleComposer::SdkPythonFunction(QString& content, const QString& qsFunc)
 	if ( ! m_sdk_parser.IsFunctionImplement(qsFunc) )
 		return;
 
-	if ( qsFunc == MDL_PRL_API_INIT )
-	{
-		content += MDL_PRL_API_INIT_IMPL;
+	if ( getCustomFunctions().contains(qsFunc) )
 		return;
-	}
-
-	if ( qsFunc == MDL_PRL_API_INIT_EX )
-	{
-		content += MDL_PRL_API_INIT_EX_IMPL;
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_API_DEINIT )
-	{
-		content += MDL_PRL_API_DEINIT_IMPL;
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_OP_TYPE_LIST_GET_ITEM )
-	{
-		content += MDL_PRL_OP_TYPE_LIST_GET_ITEM_IMPL;
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_REPORT_GET_DATA )
-	{
-		content += MDL_PRL_GENERIC_GET_DATA_IMPL(MDL_PRL_REPORT_GET_DATA);
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_DEV_DISPLAY_SET_CONFIGURATION )
-	{
-		content += MDL_PRL_DEV_DISPLAY_SET_CONFIGURATION_IMPL;
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG)
-	{
-		content += MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG_IMPL;
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_GET_MEMGUARANTEE_SIZE)
-	{
-		content += MDL_PRL_GET_MEMGUARANTEE_SIZE_IMPL;
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_SET_MEMGUARANTEE_SIZE)
-	{
-		content += MDL_PRL_SET_MEMGUARANTEE_SIZE_IMPL;
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_DISK_MAP_READ )
-	{
-		content += MDL_PRL_GENERIC_GET_DATA_IMPL(MDL_PRL_DISK_MAP_READ);
-		return;
-	}
-
-	if ( qsFunc == MDL_PRL_DISK_GET_DISK_INFO)
-	{
-		content += MDL_PRL_GUID_CONV_IMPL;
-		content += MDL_PRL_DISK_GET_DISK_INFO_IMPL;
-		return;
-	}
 
 	QString qsGenFunc;
 

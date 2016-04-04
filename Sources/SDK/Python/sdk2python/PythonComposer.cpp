@@ -339,8 +339,9 @@ bool PythonComposer::AddMethod(QString& content, const QString& qsFunc, bool bHa
 		if (arg.in)
 		{
 			// Skip special types
-			if (   arg.type == "PRL_EVENT_HANDLER_PTR"
+			if (  (arg.type == "PRL_EVENT_HANDLER_PTR"
 				|| arg.type == "PRL_VOID_PTR")
+				&& !qsFunc.contains("eventhandler", Qt::CaseInsensitive))
 			{
 				continue;
 			}
@@ -370,6 +371,11 @@ bool PythonComposer::AddMethod(QString& content, const QString& qsFunc, bool bHa
 				qsFuncArg = PTN_MEMGUARANTEE_SIZE_PARAMS;
 				qsMethArg = PTN_MEMGUARANTEE_SIZE_PARAMS;
 			}
+			else if (arg.type == "PRL_EVENT_HANDLER_PTR")
+            {   
+                qsFuncArg = PTN_EVENT_HANDLER_PARAMS;
+                qsMethArg = PTN_EVENT_HANDLER_PARAMS;
+            }
 
 			qsMethArgs += ", " + qsMethArg;
 			qsFuncArgs += (qsFuncArgs.isEmpty() ? "" : ", ") + qsFuncArg;

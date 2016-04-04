@@ -27,6 +27,7 @@
 #include "SDKParser.h"
 #include <QtXml>
 #include "ModuleTemplates.h"
+#include "CustomFunctions.h"
 #include <prlcommon/Interfaces/ParallelsQt.h>
 
 
@@ -42,6 +43,7 @@
 #define PRL_OSES_H				"PrlOses.h"
 #define PRL_KEYS_H				"PrlKeys.h"
 #define PRL_ERRORS_VALUES_H		"PrlErrorsValues.h"
+#define PRL_EVENTS_VALUES_H     "PrlEventsValues.h"
 
 
 SDKParser::SDKParser(const QString& qsSdkIncludeDir, const QString& qsDocFile)
@@ -59,6 +61,7 @@ SDKParser::SDKParser(const QString& qsSdkIncludeDir, const QString& qsDocFile)
 				<< &m_qsPrlOses
 				<< &m_qsPrlKeys
 				<< &m_qsPrlErrorsValues
+				<< &m_qsPrlEnums
 				<< &m_qsPrlEnums),
   m_qsDocFile(qsDocFile)
 {
@@ -107,6 +110,7 @@ bool SDKParser::Init()
 		<< QString(PRL_OSES_H)
 		<< QString(PRL_KEYS_H)
 		<< QString(PRL_ERRORS_VALUES_H)
+		<< QString(PRL_EVENTS_VALUES_H)
 		<< QString(PRL_KEYS_H);
 
 	for(int i = 0; i < lstFileNames.size() && i < m_lstSources.size(); i++)
@@ -452,18 +456,7 @@ bool SDKParser::ParseAllFunctions()
 	}
 
 	// Non-standard functions check
-
-	m_lstNonStdFuncs = QStringList()
-		<< MDL_PRL_OP_TYPE_LIST_GET_ITEM
-		<< MDL_PRL_REPORT_GET_DATA
-		<< MDL_PRL_REPORT_SEND
-		<< MDL_PRL_API_SEND_PROBLEM_REPORT
-		<< MDL_PRL_API_SEND_PACKED_PROBLEM_REPORT
-		<< MDL_PRL_SRV_GET_DEFAULT_VM_CONFIG
-		<< MDL_PRL_GET_MEMGUARANTEE_SIZE
-		<< MDL_PRL_SET_MEMGUARANTEE_SIZE
-		<< MDL_PRL_DISK_MAP_READ
-		<< MDL_PRL_DISK_GET_DISK_INFO;
+        m_lstNonStdFuncs = getCustomFunctions();
 
 	foreach(QString qsNonStdFunc, m_lstNonStdFuncs)
 	{
