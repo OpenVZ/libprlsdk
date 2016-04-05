@@ -6718,8 +6718,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_WARN_BACKUP_HAS_NOT_FULL_BACKUP,
-		tr("A full backup is being created for this virtual machine."),
-		tr("Though an incremental backup is created by default, it cannot be made because the virtual machine has no full backups."),
+		tr("A full backup is being created for this virtual environment."),
+		tr("Though an incremental backup is created by default, it cannot be made because the virtual environment has no full backups."),
 		false,
 		PMT_WARNING
 		);
