@@ -3158,10 +3158,10 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_HARD_DISK_IMAGE_IS_NOT_VALID,
-		tr("The specified hard disk image file is invalid. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the virtual hard disk will not be connected at the virtual machine startup."),
+		tr("The specified hard disk image file is invalid."),
+		tr("The virtual hard disk will not be connected at the virtual machine startup."),
 		true,
-		PMT_QUESTION
+		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
