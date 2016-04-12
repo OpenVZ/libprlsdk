@@ -77,8 +77,9 @@ public:
 	/**
 	 * Open disk and return handle
 	 *
-	 * @param Receive disk handle
 	 * @param File name in UTF8
+	 * @param Disk open flags
+	 * @param Disk open policies
 	 *
 	 * @return Error code in PRL_RESULT format
 	 */
@@ -86,7 +87,9 @@ public:
 		// File name
 		PRL_CONST_STR pDiskName,
 		// Open flags
-		const PRL_DISK_OPEN_FLAGS OpenFlags);
+		const PRL_DISK_OPEN_FLAGS OpenFlags,
+		// Open policies
+		const PrlHandleHandlesListPtr pPolicyList = PrlHandleHandlesListPtr());
 
 	/**
 	 * Wait for completion of the work
@@ -182,6 +185,9 @@ public:
 
 
 private:
+	static PRL_RESULT getPolicyList(const PrlHandleHandlesListPtr pPolicyList,
+	                                VirtualDisk::policyList_type &policies);
+
 	// Mark object as local or remote
 	bool m_bLocalObject;
 	// Disk interface
