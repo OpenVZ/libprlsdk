@@ -419,7 +419,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
                        the virtual disk files.
    OpenFlags :         Disk open parameters. See <link PRL_DISK Macros>
                        for available options.
-   pAdditionalFlags :  Additional flags (not currently used).
+   hPolicyList :       A handle of type PHT_HANDLE_LIST
+                       containing handles of type
+                       PHT_VIRTUAL_DISK_OPEN_POLICY
+                       representing disk open policies.
+					   May be NULL.
    Returns
    PRL_RESULT. Possible values:
 
@@ -439,7 +443,28 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 	// Open flags
 	const PRL_DISK_OPEN_FLAGS OpenFlags,
 	// Additional flags to image
-	PRL_CONST_VOID_PTR pAdditionalFlags) );
+	PRL_HANDLE hPolicyList) );
+
+/* Obtains a handle of type PHT_VIRTUAL_DISK_OPEN_POLICY
+   identifying an offset policy. This policy allows to
+   automatically increasing the offsets in PrlDisk_Read/Write
+   by specified value.
+   Parameters
+   pHandle :           [out] A handle of type
+                       PHT_VIRTUAL_DISK_OPEN_POLICY
+                       identifying the offset policy. You must
+                       always free the handle using the
+                       PrlHandle_Free function when the handle is
+                       no longer needed. Failure to do so will
+                       \result in memory leak.
+   uiOffset :          Offset value in bytes. This value is
+                       added to each read/write operation offset.       */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				PrlDiskOpenPolicy_CreateOffset, (
+	// Handle to receive data
+	PRL_HANDLE_PTR pHandle,
+	// Offset value in bytes
+	PRL_UINT64 uiOffset) );
 
 /* Waits for the background thread to finish executing before
    returning control to the client. Use this function with any

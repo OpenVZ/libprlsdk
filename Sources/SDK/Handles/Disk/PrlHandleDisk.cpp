@@ -26,6 +26,7 @@
  */
 
 #include "PrlHandleDisk.h"
+#include "PrlHandleDiskOpenPolicy.h"
 #include <prlcommon/VirtualDisk/Qcow2Disk.h>
 
 using namespace VirtualDisk;
@@ -83,11 +84,38 @@ PRL_RESULT PrlHandleDisk::CreateDisk(
 	return res;
 };
 
+PRL_RESULT PrlHandleDisk::getPolicyList(
+		const PrlHandleHandlesListPtr pPolicyList,
+		policyList_type &policies)
+{
+	policies = policyList_type();
+	if (pPolicyList == NULL)
+		return PRL_ERR_SUCCESS;
+
+	PRL_UINT32 items;
+	PRL_RESULT res = pPolicyList->GetItemsCount(&items);
+	if (PRL_FAILED(res))
+		return res;
+
+	PRL_HANDLE hPolicy;
+	for (PRL_UINT32 i = 0; i < items; ++i)
+	{
+		res = pPolicyList->GetItem(i, &hPolicy);
+		if (PRL_WRONG_HANDLE(hPolicy, PHT_VIRTUAL_DISK_OPEN_POLICY))
+			return PRL_ERR_INVALID_ARG;
+		policies.push_back(
+				PRL_OBJECT_BY_HANDLE<PrlHandleDiskOpenPolicy>(hPolicy)
+				->getPolicy());
+	}
+	return PRL_ERR_SUCCESS;
+}
+
 /**
- * Method let to open disk and return handle
+ * Open disk and return handle
  *
  * @param File name in UTF8
  * @param Open flags
+ * @param Open policies
  *
  * @return Error code in PRL_RESULT format
  */
@@ -95,17 +123,25 @@ PRL_RESULT PrlHandleDisk::OpenDisk(
 	// File name
 	PRL_CONST_STR pFileName,
 	// Open flags
-	const PRL_DISK_OPEN_FLAGS OpenFlags)
+	const PRL_DISK_OPEN_FLAGS OpenFlags,
+	// Open policies
+	const PrlHandleHandlesListPtr pPolicyList
+	)
 {
 	if (!m_bLocalObject)
 		return PRL_ERR_UNIMPLEMENTED;
+
+	policyList_type	policies;
+	PRL_RESULT res = getPolicyList(pPolicyList, policies);
+	if (PRL_FAILED(res))
+		return res;
 
 	m_pDisk = QSharedPointer<VirtualDisk::Format>(
 			VirtualDisk::detectImageFormat(pFileName));
 	if (!m_pDisk)
 		return PRL_ERR_INVALID_ARG;
 
-	PRL_RESULT res = m_pDisk->open(pFileName, OpenFlags);
+	res = m_pDisk->open(pFileName, OpenFlags, policies);
 	if (PRL_FAILED(res))
 		m_pDisk.clear();
 
