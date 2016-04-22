@@ -1510,6 +1510,28 @@ PRL_RESULT PrlHandleVmCfg::GetCpuMask(PRL_STR sMaskBuf, PRL_UINT32_PTR pnMaskBuf
 			sMaskBuf, pnMaskBufLength);
 }
 
+PRL_RESULT PrlHandleVmCfg::SetNodeMask(PRL_CONST_STR sNodeMask)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	QString sMask = sNodeMask;
+
+	if (Parallels::parseNodeMask(QString(sMask)))
+		return PRL_ERR_INVALID_ARG;
+
+	m_VmConfig.getVmHardwareList()->getCpu()->setNodeMask(sMask);
+
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::GetNodeMask(PRL_STR sMaskBuf, PRL_UINT32_PTR pnMaskBufLength)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	return CopyStringValue(m_VmConfig.getVmHardwareList()->getCpu()->getNodeMask(),
+			sMaskBuf, pnMaskBufLength);
+}
+
 PRL_RESULT PrlHandleVmCfg::SetIoPriority(PRL_UINT32 nVmIoPriority)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

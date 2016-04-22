@@ -7388,6 +7388,56 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnMaskBufLength
 		) );
 
+/* Sets the NUMA node mask for a virtual machine.
+   Parameters
+   hVmCfg :		A handle of type PHT_VM_CONFIGURATION
+				identifying the virtual machine configuration.
+   sMask :		NUMA node mask represented by a CPU number or
+				CPU range separated by comma, e.g., 0,2,3-10.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlVmCfg_GetCpuLimit                                          */
+
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmCfg_SetNodeMask, (
+		PRL_HANDLE hVmCfg,
+		PRL_CONST_STR sMask
+		) );
+
+/* \Returns the specified virtual machine node mask
+   Parameters
+   hVmCfg :				A handle of type PHT_VM_CONFIGURATION
+						identifying the virtual machine configuration.
+   sMaski :				[out] A pointer to a buffer that receives
+                        the result (a UTF\-8 encoded,
+						null\-terminated string).
+   pnVmUuidBufLength :  [in] The size of the output buffer (in
+                        bytes). Set the buffer pointer to null
+                        and this parameter's value to zero to
+                        receive the required size. [out] The
+                        required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmCfg_GetNodeMask, (
+		PRL_HANDLE hVmCfg,
+		PRL_STR sMask,
+		PRL_UINT32_PTR pnMaskBufLength
+		) );
 
 /* \Returns the UUID of the machine hosting the specified virtual
    machine.

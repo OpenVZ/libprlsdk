@@ -7773,6 +7773,36 @@ PRL_RESULT PrlVmCfg_GetCpuMask(
 	return (pVm->GetCpuMask(sMask, pnMaskBufLength));
 }
 
+PRL_METHOD( PrlVmCfg_SetNodeMask) (
+		PRL_HANDLE hVmCfg,
+		PRL_CONST_STR sMask
+		)
+{
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+		PRL_WRONG_PTR(sMask))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->SetNodeMask(sMask));
+}
+
+PRL_RESULT PrlVmCfg_GetNodeMask(
+		PRL_HANDLE hVmCfg,
+		PRL_STR sMask,
+		PRL_UINT32_PTR pnMaskBufLength
+		)
+{
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+		PRL_WRONG_PTR(sMask) ||
+	    PRL_WRONG_PTR(pnMaskBufLength))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetNodeMask(sMask, pnMaskBufLength));
+}
+
 PRL_METHOD( PrlVmCfg_SetIoPriority ) (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32 nVmIoPriority

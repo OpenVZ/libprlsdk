@@ -1420,6 +1420,9 @@ public:
 	PRL_RESULT SetCpuMask(PRL_CONST_STR sCpuMask);
 	PRL_RESULT GetCpuMask(PRL_STR sMaskBuf, PRL_UINT32_PTR pnMaskBufLength);
 
+	PRL_RESULT SetNodeMask(PRL_CONST_STR sNodeMask);
+	PRL_RESULT GetNodeMask(PRL_STR sMaskBuf, PRL_UINT32_PTR pnMaskBufLength);
+
 	/**
 	 * Returns VM configuration template sign
 	 * @param [out] buffer for storing result
