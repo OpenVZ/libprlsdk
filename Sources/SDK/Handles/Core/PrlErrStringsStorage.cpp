@@ -2941,6 +2941,13 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CPU_NODE_MASK_INVALID,
+		tr("The specified NUMA node mask is invalid."),
+		tr("Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_MAIN_MEMORY_ZERO_SIZE,
 		tr("The specified main memory size is invalid."),
 		tr("The memory size must be greater than 0. Correct the value and try again."),
