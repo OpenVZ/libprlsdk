@@ -179,6 +179,7 @@ uint PrlHandleVmDefaultConfig::GetDefaultRamSize (uint osVersion, uint hostRam )
 
 	case PVS_GUEST_VER_LIN_REDHAT_7:
 	case PVS_GUEST_VER_LIN_CENTOS_7:
+	case PVS_GUEST_VER_LIN_VZLINUX_7:
 	case PVS_GUEST_VER_LIN_PSBM:
 		return 2048;
 
