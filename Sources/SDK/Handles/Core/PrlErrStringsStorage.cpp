@@ -3224,8 +3224,8 @@ void PrlErrStringsStorage::Initialize()
 		tr("The following duplicated IP addresses have been detected: '%1'"),
 		tr("Saving the configuration may cause the network adapters with conflicting"
 			" IP addresses to work incorrectly."),
-		true,
-		PMT_QUESTION
+		false,
+		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
