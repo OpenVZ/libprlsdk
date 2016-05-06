@@ -1812,10 +1812,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
                        placed on target system). Empty string
                        accounts as default VM directory path
    migration_flags :   Flags that specify migration type and etc.
-                       Acceptable flags\: PVMT_COLD_MIGRATION,
-                       PVMT_WARM_MIGRATION, PVMT_HOT_MIGRATION,
-                       PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY,
-                       PVMSL_HIGH_SECURITY
+                       See acceptable flags at PrlCommandsFlags.h
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action
                        without asking any additional questions
@@ -1908,9 +1905,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    target_home_path :  Target VM home path (i.e. where VM will be
                        placed on target system). Empty string accounts
 					   as default VM directory path
-   migration_flags :   Flags that specify migration type and etc. Acceptable flags:
-                       PVMT_COLD_MIGRATION, PVMT_WARM_MIGRATION, PVMT_HOT_MIGRATION,
-					   PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   migration_flags :   Flags that specify migration type and etc.
+                       See acceptable flags at PrlCommandsFlags.h
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action without asking
                        any additional questions from the Parallels Service side
@@ -1951,10 +1947,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                        placed on target system). Empty string
                        accounts as default VM directory path
    migration_flags :   Flags that specify migration type and etc.
-                       Acceptable flags\: PVMT_COLD_MIGRATION,
-                       PVMT_WARM_MIGRATION, PVMT_HOT_MIGRATION,
-                       PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY,
-                       PVMSL_HIGH_SECURITY
+                       See acceptable flags at PrlCommandsFlags.h
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action
                        without asking any additional questions
@@ -1998,9 +1991,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    target_home_path :  Target VM home path (i.e. where VM will be
                        placed on target system). Empty string accounts
 					   as default VM directory path
-   migration_flags :   Flags that specify migration type and etc. Acceptable flags:
-                       PVMT_COLD_MIGRATION, PVMT_WARM_MIGRATION, PVMT_HOT_MIGRATION,
-					   PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   migration_flags :   Flags that specify migration type and etc.
+                       See acceptable flags at PrlCommandsFlags.h
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action without asking
                        any additional questions from the Parallels Service side
