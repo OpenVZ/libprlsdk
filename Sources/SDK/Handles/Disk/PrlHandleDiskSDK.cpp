@@ -27,6 +27,7 @@
 #include "SDK/Include/PrlErrors.h"
 #include "PrlHandleBase.h"
 #include "PrlHandleDisk.h"
+#include "PrlHandleDiskOpenPolicy.h"
 
 
 /**
@@ -106,6 +107,7 @@ PRL_METHOD(PrlDisk_CreateDisk_Local) (
  * @param Receive disk handle
  * @param File name in UTF8
  * @param Disk open parameters
+ * @param Disk open policies
  *
  * @return Error code in PRL_RESULT format
  */
@@ -117,20 +119,26 @@ PRL_METHOD(PrlDisk_OpenDisk_Local) (
 	// Open flags
 	const PRL_DISK_OPEN_FLAGS OpenFlags,
 	// Additional flags to image
-	PRL_CONST_VOID_PTR pAdditionalFlags)
+	const PRL_HANDLE hPolicyList)
 {
 	// Return value
 	PRL_RESULT retVal = PRL_ERR_INVALID_ARG;
 	// Pointer to disk
 	PrlHandleDisk* pDisk = NULL;
 
-	// Not used
-	(void)pAdditionalFlags;
-
 	// Check parameters
 	if (PRL_WRONG_PTR(pHandle) ||
 		PRL_WRONG_PTR(pDiskName))
 		return retVal;
+
+	PrlHandleHandlesListPtr phList;
+	if (PRL_RIGHT_HANDLE(hPolicyList))
+	{
+		if (PRL_WRONG_HANDLE(hPolicyList, PHT_HANDLES_LIST))
+			return retVal;
+
+		phList = PRL_OBJECT_BY_HANDLE<PrlHandleHandlesList>(hPolicyList);
+	}
 
 	// Create default disk class
 	pDisk = new (std::nothrow) PrlHandleDisk(true);
@@ -138,7 +146,7 @@ PRL_METHOD(PrlDisk_OpenDisk_Local) (
 	if (!pDisk)
 		return PRL_ERR_OUT_OF_MEMORY;
 
-	retVal = pDisk->OpenDisk(pDiskName, OpenFlags);
+	retVal = pDisk->OpenDisk(pDiskName, OpenFlags, phList);
 
 	if (PRL_SUCCEEDED(retVal))
 	{
@@ -150,6 +158,32 @@ PRL_METHOD(PrlDisk_OpenDisk_Local) (
 	pDisk->Release();
 	pDisk = NULL;
 	return retVal;
+}
+
+/**
+ * Create 'offset' disk open policy
+ * It automatically increases the offset of r/w operations by the given value.
+ *
+ * @param Receive disk handle
+ * @param Offset value in bytes
+ *
+ * @return Error code in PRL_RESULT format
+ */
+PRL_METHOD(PrlDiskOpenPolicy_CreateOffset) (
+	// Handle to receive data
+	PRL_HANDLE_PTR pHandle,
+	// Offset value in bytes
+	PRL_UINT64 uiOffset)
+{
+	if (PRL_WRONG_PTR(pHandle))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleDiskOpenPolicy *pPolicy = PrlHandleDiskOpenPolicy::createOffset(uiOffset);
+	if (!pPolicy)
+		return PRL_ERR_OUT_OF_MEMORY;
+
+	*pHandle = pPolicy->GetHandle();
+	return PRL_ERR_SUCCESS;
 }
 
 /**

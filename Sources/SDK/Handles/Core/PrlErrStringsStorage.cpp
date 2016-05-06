@@ -2941,6 +2941,13 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CPU_NODE_MASK_INVALID,
+		tr("The specified NUMA node mask is invalid."),
+		tr("Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_MAIN_MEMORY_ZERO_SIZE,
 		tr("The specified main memory size is invalid."),
 		tr("The memory size must be greater than 0. Correct the value and try again."),
@@ -3217,8 +3224,8 @@ void PrlErrStringsStorage::Initialize()
 		tr("The following duplicated IP addresses have been detected: '%1'"),
 		tr("Saving the configuration may cause the network adapters with conflicting"
 			" IP addresses to work incorrectly."),
-		true,
-		PMT_QUESTION
+		false,
+		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
