@@ -130,7 +130,9 @@ typedef PRL_RESIZE_IMAGE_FLAGS* PRL_RESIZE_IMAGE_FLAGS_PTR;
    PVMT_CLONE_MODE          : preserves source VM
    PVMT_SWITCH_TEMPLATE     : applable just in clone mode - lets to clone remotely VM to template
    PVMT_CHANGE_SID          : for Windows VMs/containers lets to change SID after remote clone
-   PVMT_IGNORE_EXISTING_BUNDLE : do not fail if Vm bundle exist. For clone Vm on mounted iSCSI storage */
+   PVMT_IGNORE_EXISTING_BUNDLE : do not fail if Vm bundle exist. For clone Vm on mounted iSCSI storage
+   PVMT_UNCOMPRESSED        : do not compress data during migration
+*/
 typedef enum _PRL_VM_MIGRATION_FLAGS
 {
 	PVMSL_LOW_SECURITY	     = PSL_LOW_SECURITY,
@@ -146,6 +148,7 @@ typedef enum _PRL_VM_MIGRATION_FLAGS
 	PVMT_CHANGE_SID          = 1<<(PACF_MAX+7),
 	PVMT_IGNORE_EXISTING_BUNDLE  = 1<<(PACF_MAX+8),
 	PVMT_REMOVE_SOURCE_BUNDLE  = 1<<(PACF_MAX+9),
+	PVMT_UNCOMPRESSED	= 1<<(PACF_MAX+10),
 } PRL_VM_MIGRATION_FLAGS;
 
 /* VM backup functionality flags set
