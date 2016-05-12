@@ -92,20 +92,12 @@ PrlHandleServer::~PrlHandleServer()
 	if (m_pPveControl)
 	{
 		m_pPveControl->stopTransport();
-		if ( QThread::currentThread() != QMainThread::Instance() )
-			QCoreApplication::postEvent( m_pPveControl, new QEvent(QEvent::DeferredDelete) );
-		else
-			delete m_pPveControl;
-		m_pPveControl = 0;
+		m_pPveControl->deleteLater();
 	}
 
 	//CEventsHandler object should to be destroyed from native event loop
-    m_pEventsHandler->StopNotificationThread();
-	if ( QThread::currentThread() != QMainThread::Instance() )
-		QCoreApplication::postEvent( m_pEventsHandler, new QEvent(QEvent::DeferredDelete) );
-	else
-		delete m_pEventsHandler;
-	m_pEventsHandler = 0;
+	m_pEventsHandler->StopNotificationThread();
+	m_pEventsHandler->deleteLater();
 }
 
 void PrlHandleServer::InitConnectionSettings(const QString& hostName,
