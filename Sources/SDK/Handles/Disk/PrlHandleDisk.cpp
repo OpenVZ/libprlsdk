@@ -71,9 +71,12 @@ PRL_RESULT PrlHandleDisk::CreateDisk(
 	if (pCallback != NULL)
 		return PRL_ERR_UNIMPLEMENTED;
 
-	VirtualDisk::Parameters::Disk params(pParams);
+	if (pParams == NULL)
+		return PRL_ERR_INVALID_ARG;
+
 	// Call disk creation
-	PRL_RESULT res = VirtualDisk::Qcow2::create(pFileName, params);
+	PRL_RESULT res = VirtualDisk::Qcow2::create(
+			pFileName, VirtualDisk::qcow2PolicyList_type(1, pParams->m_SizeInSectors));
 	if (PRL_FAILED(res))
 		return res;
 
