@@ -31,6 +31,11 @@
 
 using namespace VirtualDisk;
 
+namespace
+{
+enum {SECTOR_SIZE = 512};
+} // namespace
+
 PrlHandleDisk::PrlHandleDisk() :
 	PrlHandleBase(PHT_VIRTUAL_DISK), m_bLocalObject(false)
 {
@@ -76,7 +81,7 @@ PRL_RESULT PrlHandleDisk::CreateDisk(
 
 	// Call disk creation
 	PRL_RESULT res = VirtualDisk::Qcow2::create(
-			pFileName, VirtualDisk::qcow2PolicyList_type(1, pParams->m_SizeInSectors));
+			pFileName, VirtualDisk::qcow2PolicyList_type(1, pParams->m_SizeInSectors * SECTOR_SIZE));
 	if (PRL_FAILED(res))
 		return res;
 
