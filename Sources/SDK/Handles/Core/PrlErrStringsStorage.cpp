@@ -11067,6 +11067,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_BACKUP_RESTORE_EXISTING_SET_PRIVATE,
+		tr( "The --dst option cannot be used to restore a backup to an existing VM." ),
+		tr( "You can use the --dst option together with the --name option to restore a backup to a new VM." ),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_BUSE_NOT_MOUNTED,
 		tr( "The BUSE filesystem is not mounted." ),
 		tr( "Make sure that the \"buse\" package is installed and the \"bused\" daemon is running." ),
