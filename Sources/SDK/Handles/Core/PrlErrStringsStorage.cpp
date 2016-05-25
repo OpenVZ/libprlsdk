@@ -11068,8 +11068,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_RESTORE_EXISTING_SET_PRIVATE,
-		tr( "The --dst option cannot be used to restore a backup to an existing VM." ),
-		tr( "You can use the --dst option together with the --name option to restore a backup to a new VM." ),
+		tr( "Cannot set a new home path when restoring a backup to an existing VM or container." ),
+		tr( "The home path can only be changed together with the name by restoring the backup to a new VM or container." ),
 		false,
 		PMT_CRITICAL
 		);
