@@ -11240,4 +11240,11 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
+	REGISTER_ERROR_STRING(
+		PRL_WARN_DELETE_NO_CONFIG_UNREGISTER,
+		tr( "VM config was not found. Unregistering the VM." ),
+		tr( "" ),
+		false,
+		PMT_WARNING
+		);
 }
