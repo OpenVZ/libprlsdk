@@ -1250,12 +1250,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultNetwork ( CVmConfiguration& cfg, PRL_HA
 	SortDeviceListByIndex<CVmGenericNetworkAdapter >(cfg.getVmHardwareList()->m_lstNetworkAdapters);
 
 	unsigned int nVersion = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
-	if (nVersion == PVS_GUEST_VER_WIN_2003)
-	{
-		// BSOD bug #PSBM-46305
-		network->setAdapterType(PNT_E1000);
-	}
-	else if (nVersion == 0 || PVS_GUEST_VIRTIO_SUPPORTED(nVersion))
+	if (nVersion == 0 || PVS_GUEST_VIRTIO_SUPPORTED(nVersion))
 	{
 		network->setAdapterType(PNT_VIRTIO);
 	}
