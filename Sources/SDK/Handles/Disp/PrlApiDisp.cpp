@@ -5354,6 +5354,44 @@ PRL_METHOD( PrlCPUPool_GetCpuFeaturesMask ) (
 	return (pCpuPool->GetCpuFeaturesMask(phCpuFeatures));
 }
 
+PRL_HANDLE PrlSrv_JoinCPUPool_Impl(PRL_HANDLE hServer)
+{
+	if (PRL_WRONG_HANDLE(hServer, PHT_SERVER))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CPU_POOLS_JOIN))
+	PrlHandleServerPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>(hServer);
+	PrlHandleJobPtr pJob = pServer->JoinCPUPool();
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_JoinCPUPool ) (
+	PRL_HANDLE hServer
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_LIST_POOLS);
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_JoinCPUPool, (hServer))
+}
+
+PRL_HANDLE PrlSrv_LeaveCPUPool_Impl(PRL_HANDLE hServer)
+{
+	if (PRL_WRONG_HANDLE(hServer, PHT_SERVER))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CPU_POOLS_LEAVE))
+	PrlHandleServerPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>(hServer);
+	PrlHandleJobPtr pJob = pServer->LeaveCPUPool();
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_LeaveCPUPool ) (
+	PRL_HANDLE hServer
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_LIST_POOLS);
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_LeaveCPUPool, (hServer))
+}
+
 PRL_HANDLE PrlSrv_GetCPUPoolsList_Impl(PRL_HANDLE hServer)
 {
 	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) )
@@ -5373,12 +5411,12 @@ PRL_ASYNC_METHOD( PrlSrv_GetCPUPoolsList ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_GetCPUPoolsList, (hServer))
 }
 
-PRL_HANDLE PrlSrv_MoveToCPUPool_Impl(PRL_HANDLE hServer, PRL_HANDLE hCpuPool)
+PRL_HANDLE PrlSrv_MoveToCPUPool_Impl(PRL_HANDLE hServer, PRL_CONST_STR sCpuPool)
 {
-	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) || PRL_WRONG_HANDLE(hCpuPool, PHT_CPU_POOL) )
+	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) )
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CPU_POOLS_MOVE))
 	PrlHandleServerPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>( hServer );
-	PrlHandleJobPtr pJob = pServer->MoveToCPUPool(hCpuPool);
+	PrlHandleJobPtr pJob = pServer->MoveToCPUPool(sCpuPool);
 	if (!pJob)
 		RETURN_RES(PRL_INVALID_HANDLE)
 	RETURN_RES(pJob->GetHandle())
@@ -5386,19 +5424,19 @@ PRL_HANDLE PrlSrv_MoveToCPUPool_Impl(PRL_HANDLE hServer, PRL_HANDLE hCpuPool)
 
 PRL_ASYNC_METHOD( PrlSrv_MoveToCPUPool ) (
 	PRL_HANDLE hServer,
-	PRL_HANDLE hCpuPool
+	PRL_CONST_STR sCpuPool
 	)
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_MOVE);
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_MoveToCPUPool , (hServer, hCpuPool))
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_MoveToCPUPool , (hServer, sCpuPool))
 }
 
-PRL_HANDLE PrlSrv_RecalculateCPUPool_Impl(PRL_HANDLE hServer, PRL_HANDLE hCpuPool)
+PRL_HANDLE PrlSrv_RecalculateCPUPool_Impl(PRL_HANDLE hServer, PRL_CONST_STR sCpuPool)
 {
-	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) || PRL_WRONG_HANDLE(hCpuPool, PHT_CPU_POOL) )
+	if ( PRL_WRONG_HANDLE(hServer, PHT_SERVER) )
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CPU_POOLS_RECALCULATE))
 	PrlHandleServerPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServer>( hServer );
-	PrlHandleJobPtr pJob = pServer->RecalculateCPUPool(hCpuPool);
+	PrlHandleJobPtr pJob = pServer->RecalculateCPUPool(sCpuPool);
 	if (!pJob)
 		RETURN_RES(PRL_INVALID_HANDLE)
 	RETURN_RES(pJob->GetHandle())
@@ -5406,9 +5444,9 @@ PRL_HANDLE PrlSrv_RecalculateCPUPool_Impl(PRL_HANDLE hServer, PRL_HANDLE hCpuPoo
 
 PRL_ASYNC_METHOD( PrlSrv_RecalculateCPUPool ) (
 	PRL_HANDLE hServer,
-	PRL_HANDLE hCpuPool
+	PRL_CONST_STR sCpuPool
 	)
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_RECALCULATE);
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_RecalculateCPUPool, (hServer, hCpuPool))
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_RecalculateCPUPool, (hServer, sCpuPool))
 }

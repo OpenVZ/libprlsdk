@@ -418,6 +418,8 @@ CProtoCommandPtr CProtoSerializer::ParseCommand(PVE::IDispatcherCommands nCmdIde
 		case PVE::DspCmdRefreshPlugins:
 		case PVE::DspCmdGetVmConfigById:
 		case PVE::DspCmdGetCPUPoolsList:
+		case PVE::DspCmdJoinCPUPool:
+		case PVE::DspCmdLeaveCPUPool:
 			pCommand = static_cast<CProtoCommand *>(new CProtoCommandWithoutParams(nCmdIdentifier));
 		break;
 

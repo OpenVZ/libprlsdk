@@ -2932,6 +2932,26 @@ QString CPveControl::DspCmdGetCPUPoolsList()
 	return SendRequestToServer(pRequest);
 }
 
+QString CPveControl::DspCmdJoinCPUPool()
+{
+    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdJoinCPUPool()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithoutParams(
+									PVE::DspCmdJoinCPUPool);
+
+	return SendRequestToServer(pRequest);
+}
+
+QString CPveControl::DspCmdLeaveCPUPool()
+{
+    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdLeaveCPUPool()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithoutParams(
+									PVE::DspCmdLeaveCPUPool);
+
+	return SendRequestToServer(pRequest);
+}
+
 QString CPveControl::DspCmdMoveToCPUPool(PRL_CONST_STR strPoolName)
 {
     LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdMoveToCPUPool()");
