@@ -6880,7 +6880,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_HANDLE hServer
 		) );
 
-/* Moves server to a different cpu pool
+/* Join server to the default cpu pool
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -6901,9 +6901,56 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
    enough memory to instantiate the job object.                  */
 
 PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlSrv_JoinCPUPool, (
+		PRL_HANDLE hServer
+		) );
+
+/* Moves server to a different cpu pool
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   Parameters
+   hServer :  A handle of type PHT_SERVER identifying the
+              Parallels Service.
+   sCpuPool : name of the pool where server should be moved.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                  */
+
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 				PrlSrv_MoveToCPUPool, (
 		PRL_HANDLE hServer,
-		PRL_HANDLE hCpuPool
+		PRL_CONST_STR sCpuPool
+		) );
+
+/* Leaves server from any cpu pool
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   Parameters
+   hServer :  A handle of type PHT_SERVER identifying the
+              Parallels Service.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                  */
+
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
+				PrlSrv_LeaveCPUPool, (
+		PRL_HANDLE hServer
 		) );
 
 /* Recalculates features in pool
@@ -6919,8 +6966,8 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
               Parallels Service.
-   hCpuPool : A handle of type PHT_CPU_POOL, defines
-              the pool where features should be recalculated.
+   sCpuPool : name of the pool where features should
+              be recalculated.
    Returns
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
@@ -6929,7 +6976,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 				PrlSrv_RecalculateCPUPool, (
 		PRL_HANDLE hServer,
-		PRL_HANDLE hCpuPool
+		PRL_CONST_STR sCpuPool
 		) );
 
 #ifdef _WIN_

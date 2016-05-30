@@ -238,14 +238,24 @@ public://VM operations calls
 	PrlHandleJobPtr GetCPUPoolsList();
 
 	/**
+	 * Join server to default cpu pool
+	 */
+	PrlHandleJobPtr JoinCPUPool();
+
+	/**
+	 * Join server to default cpu pool
+	 */
+	PrlHandleJobPtr LeaveCPUPool();
+
+	/**
 	 * Move server to a different cpu pool
 	 */
-	PrlHandleJobPtr MoveToCPUPool(PRL_HANDLE hCpuPool);
+	PrlHandleJobPtr MoveToCPUPool(PRL_CONST_STR sCpuPool);
 
 	/**
 	 * Recalculates cpu pool features
 	 */
-	PrlHandleJobPtr RecalculateCPUPool(PRL_HANDLE hCpuPool);
+	PrlHandleJobPtr RecalculateCPUPool(PRL_CONST_STR sCpuPool);
 
 protected:
 	/// Flag to determine which connection is used: local or remote

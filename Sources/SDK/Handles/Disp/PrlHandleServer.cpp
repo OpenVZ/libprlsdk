@@ -560,19 +560,33 @@ PrlHandleJobPtr PrlHandleServer::GetCPUPoolsList()
 							PJOC_SRV_CPU_POOLS_LIST_POOLS)));
 }
 
-PrlHandleJobPtr PrlHandleServer::MoveToCPUPool(PRL_HANDLE hCpuPool)
+PrlHandleJobPtr PrlHandleServer::LeaveCPUPool()
 {
-    PrlHandleCpuPool *pCpuPool = PRL_OBJECT_BY_HANDLE<PrlHandleCpuPool>(hCpuPool);
-    QString job_uuid = m_pPveControl->DspCmdMoveToCPUPool(QSTR2UTF8(pCpuPool->GetName()));
+    QString job_uuid = m_pPveControl->DspCmdLeaveCPUPool();
+
+    return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_SRV_CPU_POOLS_LEAVE)));
+}
+
+PrlHandleJobPtr PrlHandleServer::JoinCPUPool()
+{
+    QString job_uuid = m_pPveControl->DspCmdJoinCPUPool();
+
+    return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_SRV_CPU_POOLS_JOIN)));
+}
+
+PrlHandleJobPtr PrlHandleServer::MoveToCPUPool(PRL_CONST_STR sCpuPool)
+{
+    QString job_uuid = m_pPveControl->DspCmdMoveToCPUPool(sCpuPool);
 
     return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
 							PJOC_SRV_CPU_POOLS_MOVE)));
 }
 
-PrlHandleJobPtr PrlHandleServer::RecalculateCPUPool(PRL_HANDLE hCpuPool)
+PrlHandleJobPtr PrlHandleServer::RecalculateCPUPool(PRL_CONST_STR sCpuPool)
 {
-    PrlHandleCpuPool *pCpuPool = PRL_OBJECT_BY_HANDLE<PrlHandleCpuPool>(hCpuPool);
-    QString job_uuid = m_pPveControl->DspCmdRecalculateCPUPool(QSTR2UTF8(pCpuPool->GetName()));
+    QString job_uuid = m_pPveControl->DspCmdRecalculateCPUPool(sCpuPool);
 
     return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
 							PJOC_SRV_CPU_POOLS_RECALCULATE)));

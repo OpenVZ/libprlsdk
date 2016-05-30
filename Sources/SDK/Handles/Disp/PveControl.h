@@ -1448,6 +1448,18 @@ public://Protocol methods
 	QString DspCmdGetCPUPoolsList();
 
 	/**
+	 * Join default cpu pool
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdJoinCPUPool();
+
+	/**
+	 * Join default cpu pool
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdLeaveCPUPool();
+
+	/**
 	 * Move to another cpu pool
 	 * @return id of performed asynchronous request
 	 */
