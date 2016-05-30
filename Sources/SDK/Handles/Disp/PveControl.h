@@ -1476,6 +1476,12 @@ private:
 									 const QString& qsHost = "localhost");
 
 	/**
+	 * Post a lost connection error
+	 * @param  error source string
+	 */
+	QString PostNotConnected(const QString &strErrorSource);
+
+	/**
 	 * Posts error result to receiver
 	 * @param remote request UUID
 	 * @param error source string
