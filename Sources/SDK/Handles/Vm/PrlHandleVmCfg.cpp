@@ -541,101 +541,93 @@ PRL_RESULT PrlHandleVmCfg::GetDisplayDev(PRL_UINT32 nIndex, PRL_HANDLE_PTR phDis
 PRL_RESULT PrlHandleVmCfg::CreateShare(PRL_HANDLE_PTR phVmShare)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	PrlHandleVmShare *pShare = new PrlHandleVmShare(PrlHandleVmPtr(this));
-	if (!pShare)
-		return (PRL_ERR_OUT_OF_MEMORY);
-	*phVmShare = pShare->GetHandle();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(phVmShare);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::GetSharesCount(PRL_UINT32_PTR pnSharesCount)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pnSharesCount = m_VmConfig.getVmSettings()->getVmTools()->getVmSharing()->getHostSharing()->m_lstSharedFolders.size();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(pnSharesCount);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::GetShare(PRL_UINT32 nShareIndex, PRL_HANDLE_PTR phVmShare)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	if (nShareIndex >= PRL_UINT32(m_VmConfig.getVmSettings()->getVmTools()->getVmSharing()->getHostSharing()->m_lstSharedFolders.size()))
-		return (PRL_ERR_INVALID_ARG);
-	CVmSharedFolder *pSharedFolder = m_VmConfig.getVmSettings()->getVmTools()->getVmSharing()->getHostSharing()->m_lstSharedFolders.value(nShareIndex);
-	PrlHandleVmShare *pShare = new PrlHandleVmShare(PrlHandleVmPtr(this), pSharedFolder);
-	*phVmShare = pShare->GetHandle();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(nShareIndex);
+	Q_UNUSED(phVmShare);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::IsUserDefinedSharedFoldersEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pbEnabled = (PRL_BOOL)m_VmConfig.getVmSettings()->getVmTools()->getVmSharing()->getHostSharing()->
-					isUserDefinedFoldersEnabled();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(pbEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::SetUserDefinedSharedFoldersEnabled(PRL_BOOL bEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_VmConfig.getVmSettings()->getVmTools()->getVmSharing()->getHostSharing()->
-		setUserDefinedFoldersEnabled( bEnabled );
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(bEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::IsSmartMountEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pbEnabled = (PRL_BOOL)m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->isEnabled();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(pbEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::SetSmartMountEnabled(PRL_BOOL bEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->setEnabled(bEnabled);
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(bEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::IsSmartMountRemovableDrivesEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pbEnabled = (PRL_BOOL)m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->isUseExternalDisks();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(pbEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::SetSmartMountRemovableDrivesEnabled(PRL_BOOL bEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->setUseExternalDisks(bEnabled);
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(bEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::IsSmartMountDVDsEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pbEnabled = (PRL_BOOL)m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->isUseDVDs();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(pbEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::SetSmartMountDVDsEnabled(PRL_BOOL bEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->setUseDVDs(bEnabled);
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(bEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::IsSmartMountNetworkSharesEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pbEnabled = (PRL_BOOL)m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->isUseConnectedServers();
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(pbEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_RESULT PrlHandleVmCfg::SetSmartMountNetworkSharesEnabled(PRL_BOOL bEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_VmConfig.getVmSettings()->getVmTools()->getSharedVolumes()->setUseConnectedServers(bEnabled);
-	return (PRL_ERR_SUCCESS);
+	Q_UNUSED(bEnabled);
+	return PRL_ERR_UNIMPLEMENTED;
 }
 /************************************Smart guard operations********************************************************/
 

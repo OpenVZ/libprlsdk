@@ -4015,9 +4015,7 @@ PRL_METHOD( PrlVmCfg_IsMapSharedFoldersOnLetters ) (
 			PRL_WRONG_PTR(pbMapSharedFoldersOnLetters))
 		return (PRL_ERR_INVALID_ARG);
 
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
-
-	return (pVm->IsMapSharedFoldersOnLetters(pbMapSharedFoldersOnLetters));
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_METHOD( PrlVmCfg_SetMapSharedFoldersOnLetters ) (
@@ -4036,9 +4034,7 @@ PRL_METHOD( PrlVmCfg_SetMapSharedFoldersOnLetters ) (
 	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
 		return (PRL_ERR_INVALID_ARG);
 
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
-
-	return (pVm->SetMapSharedFoldersOnLetters(bMapSharedFoldersOnLetters));
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_METHOD( PrlVmCfg_GetVNCMode ) (
@@ -6571,8 +6567,7 @@ PRL_METHOD( PrlVmCfg_IsUserDefinedSharedFoldersEnabled ) (
 			PRL_WRONG_PTR(pbEnabled) )
 		return (PRL_ERR_INVALID_ARG);
 
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>(hVmCfg);
-	return (pVm->IsUserDefinedSharedFoldersEnabled(pbEnabled));
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_METHOD( PrlVmCfg_SetUserDefinedSharedFoldersEnabled ) (
@@ -6591,8 +6586,7 @@ PRL_METHOD( PrlVmCfg_SetUserDefinedSharedFoldersEnabled ) (
 	if ( PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) )
 		return (PRL_ERR_INVALID_ARG);
 
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>(hVmCfg);
-	return (pVm->SetUserDefinedSharedFoldersEnabled(bEnabled));
+	return PRL_ERR_UNIMPLEMENTED;
 }
 
 PRL_METHOD( PrlVmCfg_IsSmartMountEnabled ) (
