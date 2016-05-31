@@ -542,25 +542,32 @@ QString CPveControl::SendRequestToServer(CProtoCommandPtr pRequest)
 	return (SendRequestToServer(pPackage));
 }
 
+QString CPveControl::PostNotConnected(const QString &strErrorSource)
+{
+	QString strUuid = (Uuid::createUuid()).toString();
+	QString rem = m_ioClient->remoteHostName();
+	QStringList p;
+
+	if (rem.startsWith('/'))
+		p.append("localhost");
+	else
+		p.append(rem);
+
+	PostFailedResult(strUuid, strErrorSource, PRL_ERR_NOT_CONNECTED_TO_DISPATCHER, p);
+
+	return strUuid;
+}
+
 QString CPveControl::SendRequestToServer(const SmartPtr<IOPackage> &pPackage)
 {
 	if (!CheckConnectionStatus())
-	{
-		QString strUuid = (Uuid::createUuid()).toString();
-		PostFailedResult(strUuid, PVE::DispatcherCommandToString(pPackage->header.type),
-				PRL_ERR_NOT_CONNECTED_TO_DISPATCHER, QStringList(m_ioClient->remoteHostName()));
-		return strUuid;
-	}
+		return PostNotConnected(PVE::DispatcherCommandToString(pPackage->header.type));
 
 	IOSendJob::Handle hJob = m_ioClient->sendPackage ( pPackage );
 
 	if (hJob == IOSendJob::InvalidHandle)
-	{
-		QString strUuid = (Uuid::createUuid()).toString();
-		PostFailedResult(strUuid, "SendRequestToServer", PRL_ERR_NOT_CONNECTED_TO_DISPATCHER,
-				QStringList(m_ioClient->remoteHostName()));
-		return strUuid;
-	}
+		return PostNotConnected("SendRequestToServer");
+
 	if (IOSendJob::SendQueueIsFull == m_ioClient->getSendResult(hJob))
 	{
 		QString strUuid = (Uuid::createUuid()).toString();
