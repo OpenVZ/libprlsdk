@@ -6767,7 +6767,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_BACKUP_CMD_FAILED,
-		tr("The backup command for the \"%1\" virtual machine failed with code %2 (\"%3\")."),
+		tr("The backup command for the \"%1\" virtual machine failed with code %2."),
 		tr("Try to back up the virtual machine again. If the problem persists, contact the Parallels support team for assistance."),
 		false,
 		PMT_CRITICAL
@@ -6775,7 +6775,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_RESTORE_CMD_FAILED,
-		tr("The restore command for the \"%1\" virtual machine failed with code %2 (\"%3\")."),
+		tr("The restore command for the \"%1\" virtual machine failed with code %2."),
 		tr("Try to restore the virtual machine again. If the problem persists, contact the Parallels support team for assistance."),
 		false,
 		PMT_CRITICAL
