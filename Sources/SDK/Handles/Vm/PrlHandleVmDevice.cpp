@@ -465,10 +465,6 @@ PRL_RESULT PrlHandleVmDevice::SetDefaultStackIndex()
 		const PRL_UINT32 nMaxPossibleIndexValue = GetMaxPossibleIndexValue( pVmDev->getInterfaceType() );
 		while (true)
 		{
-			// skip scsi controller stack index
-			if( pVmDev->getInterfaceType() == PMS_SCSI_DEVICE && nStackIndex == 7 )
-				nStackIndex++;
-
 			PROCESS_STACK_INDEX(m_pVm->GetVmConfig().getVmHardwareList()->m_lstHardDisks)
 			PROCESS_STACK_INDEX(m_pVm->GetVmConfig().getVmHardwareList()->m_lstOpticalDisks)
 			PROCESS_STACK_INDEX(m_pVm->GetVmConfig().getVmHardwareList()->m_lstGenericScsiDevices)

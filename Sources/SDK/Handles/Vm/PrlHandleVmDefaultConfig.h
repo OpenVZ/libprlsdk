@@ -372,12 +372,10 @@ private:
 	 *
 	 * @param Configuration to search in
 	 * @param Interface type to check for free indexes
-	 * @param Device type to check for free indexes
 	 * @param Limits placed on iface and index
 	 */
 	int GetFreeStackIndex( const CVmConfiguration& cfg,
 						   uint interfaceType,
-						   uint devType,
 						   StackIndexLimit *limit) const;
 
 	/**
