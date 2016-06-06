@@ -45,10 +45,11 @@ Sources/Libraries/ContextSwitcher/Makefile*
 Sources/Libraries/ProblemReportUtils/Makefile*
 Sources/Libraries/ProtoSerializer/Makefile*
 Sources/SDK/Makefile
+Sources/SDK/Python/Makefile
 Sources/SDK/Python/PrlPython.pri
+Sources/SDK/Wrappers/SdkWrap/Makefile*
 Sources/XmlModel/build
 z-Build
 
 # Others
 *.py[cod]
-

@@ -826,32 +826,31 @@ void %sManipulationsTest::test%sOnWrongParams()
         return True
 
 class Handle(object):
-    def __init__(self, subsystem, handle_name):
+    def __init__(self, subsystem, name):
         self.subsystem = subsystem
 
-        m = re.match("PHT_([A-Z_]+)", handle_name)
+        m = re.match('PHT_([A-Z_]+)', name)
         if not m:
             raise RuntimeError("Handle name doesn't conform rules:" \
                 "PHT_XXX[_XX,..]!")
-        self.handle_name = handle_name
-        self.short_handle_name = m.group(1)
-        self.name_groups = m.group(1).split('_')
-        for i in range(len(self.name_groups)):
-            self.name_groups[i] = self.name_groups[i].strip()
-        self.short_handle_class = ""
-        for str in self.name_groups:
-            self.short_handle_class += str.capitalize()
-        self.handle_class = "PrlHandle" + self.short_handle_class
+
+        self.name = name
+        self.short_name = m.group(1)
+
+        self.class_subname = ''.join(i.capitalize() \
+            for i in self.short_name.split('_'))
+
+        self.class_name = "PrlHandle" + self.class_subname
 
     def __str__(self):
         '''Print parsing results.'''
 
         descr = [
             'Type: Handle',
-            'Name: %s' % self.handle_name,
-            'Short Name: %s' % self.short_handle_name,
-            'Class Name: %s' % self.handle_class,
-            'Class Sub-Name: %s' % self.short_handle_class,
+            'Name: %s' % self.name,
+            'Short Name: %s' % self.short_name,
+            'Class Name: %s' % self.class_name,
+            'Class Sub-Name: %s' % self.class_subname,
         ]
 
         return os.linesep.join(descr)
@@ -871,7 +870,7 @@ class Handle(object):
             data = src.read()
 
         new_line = """{"%s",   "",             "_Handle",    "", "%s",  "",0,0,0,0},\n""" % \
-            (self.short_handle_class, self.handle_name)
+            (self.class_subname, self.name)
 
         in_map = 0
         out_data = ''
@@ -892,7 +891,7 @@ class Handle(object):
     @trace
     def add_handle_enum(self):
         '''
-        Add PHT_HANDLE_NAME to PRL_HANDLE_TYPE enum in SDK/Include/PrlEnums.h.
+        Add PHT_NAME to PRL_HANDLE_TYPE enum in SDK/Include/PrlEnums.h.
         '''
 
         f = os.path.join(SDK_HEADER_PATH, "PrlEnums.h")
@@ -901,7 +900,7 @@ class Handle(object):
         with open(f) as src:
             enums = src.read()
 
-        new_line = '\t' + self.handle_name + '\t\t\t\t\t\t\t= '
+        new_line = '\t' + self.name + '\t\t\t\t\t\t\t= '
         in_enum = 0
         last_num = 0
         num_changes = 0
@@ -917,7 +916,7 @@ class Handle(object):
                     num_changes = 1
                     in_enum = 0
             elif re.match('\s*PHT_LAST =', line):
-                line = '\tPHT_LAST = ' + self.handle_name + ' // should be set to last'
+                line = '\tPHT_LAST = ' + self.name + ' // should be set to last'
                 num_changes = 2
             elif line == 'typedef enum _PRL_HANDLE_TYPE':
                 in_enum = 1
@@ -932,12 +931,11 @@ class Handle(object):
     def add_handler_header(self):
         '''Define handle class in SDK/Handles/PrlHandle*.h.'''
 
-        hdr = os.path.join(SDK_HANDLES_PATH, self.subsystem, "%s.h" % self.handle_class)
-        sys.stdout.write("%s..." % hdr)
+        hdr = os.path.join(SDK_HANDLES_PATH, self.subsystem, '%s.h' % self.class_name)
+        sys.stdout.write('%s...' % hdr)
 
-        out_data = """
-/*
- * %s.h
+        out_data = '''/*
+ * {0}.h
  *
  * Copyright (C) 1999-2014 Parallels IP Holdings GmbH
  *
@@ -962,30 +960,30 @@ class Handle(object):
  */
 
 
-#ifndef __PARALLELS_HANDLE_%s_H__
-#define __PARALLELS_HANDLE_%s_H__
+#ifndef __PARALLELS_HANDLE_{1}_H__
+#define __PARALLELS_HANDLE_{1}_H__
 
 
 #include "PrlHandleBase.h"
-#include <prlxmlmodel/%s/%s.h>
+#include <prlxmlmodel/{2}/{2}.h>
 
 
 /**
  * Handle object represents FIXME OBJECT NAME
  */
-class %s: public PrlHandleBase
-{
+class {0}: public PrlHandleBase
+{{
 public:
 
 \t/**
 \t * Class default constructor.
 \t */
-\t%s();
+\t{0}();
 
 \t/**
 \t * Class initialize constructor.
 \t */
-\t%s(QString s%s);
+\t{0}(QString s{2});
 
 \t/**
 \t * Initialize object from XML string
@@ -999,19 +997,15 @@ public:
 
 private:
 
-\t%s m_%s;
-};
+\t{2} m_{2};
+}};
 
 
-typedef PrlHandleSmartPtr<%s> %sPtr;
+typedef PrlHandleSmartPtr<{0}> {0}Ptr;
 
 
-#endif\t// __PARALLELS_HANDLE_%s_H__
-""" % (self.handle_class, self.short_handle_name, self.short_handle_name, \
-    self.short_handle_class, self.short_handle_class, self.handle_class, \
-    self.handle_class, self.handle_class, self.short_handle_class, \
-    self.short_handle_class, self.short_handle_class, \
-    self.handle_class, self.handle_class, self.short_handle_name)
+#endif\t// __PARALLELS_HANDLE_{1}_H__
+'''.format(self.class_name, self.short_name, self.class_subname)
 
         with open(hdr, 'w') as dst:
             dst.write(out_data)
@@ -1020,14 +1014,13 @@ typedef PrlHandleSmartPtr<%s> %sPtr;
 
     @trace
     def add_handler_body(self):
-        '''Add the new handler class to SDK/Handles/PrlHandle*.cpp.'''
+        '''Add the new handler class to SDK/Handles/*/PrlHandle*.cpp.'''
 
-        hdr = os.path.join(SDK_HANDLES_PATH, self.subsystem, "%s.cpp" % self.handle_class)
+        hdr = os.path.join(SDK_HANDLES_PATH, self.subsystem, "%s.cpp" % self.class_name)
         sys.stdout.write("%s..." % hdr)
 
-        out_data = """
-/*
- * %s.cpp
+        out_data = '''/*
+ * {0}.cpp
  *
  * Copyright (C) 1999-2014 Parallels IP Holdings GmbH
  *
@@ -1052,39 +1045,34 @@ typedef PrlHandleSmartPtr<%s> %sPtr;
  */
 
 
-#include "%s.h"
+#include "{0}.h"
 
-%s::%s()
-: PrlHandleBase(%s)
-{
-}
+{0}::{0}()
+: PrlHandleBase({1})
+{{
+}}
 
-%s::%s(QString s%s)
-: PrlHandleBase(%s)
-{
-\tm_%s.fromString(s%s);
-}
+{0}::{0}(QString s{2})
+: PrlHandleBase({1})
+{{
+\tm_{2}.fromString(s{2});
+}}
 
-PRL_RESULT %s::fromString(PRL_CONST_STR sXml)
-{
+PRL_RESULT {0}::fromString(PRL_CONST_STR sXml)
+{{
 \tSYNCHRO_INTERNAL_DATA_ACCESS
-\tif (PRL_SUCCEEDED(m_%s.fromString(QString::fromUtf8(sXml))))
+\tif (PRL_SUCCEEDED(m_{2}.fromString(QString::fromUtf8(sXml))))
 \t\treturn PRL_ERR_SUCCESS;
 
 \treturn PRL_ERR_INVALID_ARG;
-}
+}}
 
-QString %s::toString()
-{
+QString {0}::toString()
+{{
 \tSYNCHRO_INTERNAL_DATA_ACCESS
-\treturn m_%s.toString();
-}
-""" % (self.handle_class, self.handle_class, \
-    self.handle_class, self.handle_class, self.handle_name, \
-    self.handle_class, self.handle_class, self.short_handle_class, self.handle_name, \
-    self.short_handle_class, self.short_handle_class, \
-    self.handle_class, self.short_handle_class, \
-    self.handle_class, self.short_handle_class)
+\treturn m_{2}.toString();
+}}
+'''.format(self.class_name, self.name, self.class_subname)
 
         with open(hdr, 'w') as dst:
             dst.write(out_data)
@@ -1092,46 +1080,41 @@ QString %s::toString()
         return True
 
     @trace
-    def add_sdk_pro(self):
-        '''Add the new handler to build routine in SDK/Handles/SDK.pro.'''
+    def add_to_build(self):
+        '''Add the new handler to SDK/Handles/SDKSources.pri.'''
 
-        hdr = os.path.join(SDK_HANDLES_PATH, "SDK.pro")
-        sys.stdout.write("%s..." % hdr)
+        pri = os.path.join(SDK_HANDLES_PATH, 'SDKSources.pri')
+        sys.stdout.write(pri + '...')
 
-        with open(hdr) as src:
-            data = src.read()
+        blank = '\t$$SRC_LEVEL/SDK/Handles/{0}/{1}{2}'
+        header = blank.format(self.subsystem, self.class_name, '.h')
+        source = blank.format(self.subsystem, self.class_name, '.cpp')
 
-        new_line_hdr = """\t%s.h\n""" % (self.handle_class)
-        new_line_src = """\t%s.cpp\n""" % (self.handle_class)
-
-        in_hdrs = 0
-        in_srcs = 0
+        output = []
         num_changes = 0
-        out_data = ''
-        for line in data.splitlines():
-            if in_hdrs == 1 and line == '':
-                out_data += new_line_hdr
-                num_changes = num_changes + 1
-                in_hdrs = 0
-            elif in_hdrs == 1 and re.match('\s*PrlHandle\w+\.h$', line):
-                line += ' \\'
-            elif line == 'HEADERS += \\':
-                in_hdrs = 1
-            elif in_srcs == 1 and line == '':
-                out_data += new_line_src
-                num_changes = num_changes + 1
-                in_srcs = 0
-            elif in_srcs == 1 and re.match("\s*PrlHandle\w+\.cpp$", line):
-                line += ' \\'
-            elif line == 'SOURCES += \\':
-                in_srcs = 1
-            out_data += line + '\n'
-        if in_srcs == 1:
-            out_data += new_line_src
-            num_changes = num_changes + 1
+        in_hdrs = in_srcs = False
 
-        with open(hdr, 'w') as dst:
-            dst.write(out_data)
+        with open(pri, 'r+') as src:
+            for line in src.read().splitlines():
+                if in_hdrs and not line.strip():
+                    output.append(header)
+                    num_changes += 1
+                    in_hdrs = False
+                elif in_srcs and not line.strip():
+                    output.append(source)
+                    num_changes += 1
+                    in_srcs = False
+                elif (in_hdrs or in_srcs) and not line.endswith('\\'):
+                    line += ' \\'
+                elif line.startswith('HEADERS'):
+                    in_hdrs = True
+                elif line.startswith('SOURCES'):
+                    in_srcs = True
+
+                output.append(line)
+
+            src.seek(0)
+            src.write(os.linesep.join(output))
 
         return num_changes == 2
 
@@ -1184,18 +1167,17 @@ def gen_async_method(subsystem, declaration):
 def gen_handle(subsystem, declaration):
     '''Generate handle code.'''
 
-    handler = Handle(subsystem, declaration)
-    print >> sys.stdout, os.linesep, handler
+    handle = Handle(subsystem, declaration)
+    print >> sys.stdout, os.linesep, handle
 
-    handler.add_python()
-    handler.add_handle_enum()
-    handler.add_handler_header()
-    handler.add_handler_body()
+    handle.add_python()
+    handle.add_handle_enum()
+    handle.add_handler_header()
+    handle.add_handler_body()
+    handle.add_to_build()
 
-# FIXME: Have to modify SDKSources.pri instead.
-    # handler.add_sdk_pro()
-
-    print >> sys.stdout, os.linesep, "Don't forget to add generated Handle's files to Git!"
+    print >> sys.stdout, os.linesep, \
+        'Don\'t forget to add the new files to Git!'
 
 COMMANDS = collections.OrderedDict([
     ('sync', gen_sync_method),
