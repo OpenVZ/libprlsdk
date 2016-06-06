@@ -316,8 +316,7 @@ PRL_RESULT PrlHandleVmDevice::SetIfaceType(PRL_MASS_STORAGE_INTERFACE_TYPE nIfac
 		if (PMS_IDE_DEVICE == nIfaceType)
 			return (PRL_ERR_INVALID_ARG);
 	pVmDev->setInterfaceType(nIfaceType);
-	SetDefaultStackIndex();
-	return (PRL_ERR_SUCCESS);
+	return SetDefaultStackIndex();
 }
 
 PRL_RESULT PrlHandleVmDevice::GetSubType(PRL_CLUSTERED_DEVICE_SUBTYPE_PTR pnSubType)
