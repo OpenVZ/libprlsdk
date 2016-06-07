@@ -916,11 +916,11 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 	}
 
 	StackIndexLimit limit(cfg, devType);
-	interfaceSlot = GetFreeStackIndex( cfg, interfaceType, devType, &limit );
+	interfaceSlot = GetFreeStackIndex( cfg, interfaceType, &limit );
 	if ( interfaceSlot < 0 )
 	{
 		interfaceType = PMS_SCSI_DEVICE;
-		interfaceSlot = GetFreeStackIndex( cfg, interfaceType,devType, &limit );
+		interfaceSlot = GetFreeStackIndex( cfg, interfaceType, &limit );
 		if ( interfaceSlot < 0 )
 		{
 			if( bTryAddToIde )
@@ -929,7 +929,7 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 					return false;
 
 				interfaceType = PMS_IDE_DEVICE;
-				interfaceSlot = GetFreeStackIndex( cfg, interfaceType,devType, &limit );
+				interfaceSlot = GetFreeStackIndex( cfg, interfaceType, &limit );
 				if ( interfaceSlot < 0 )
 					return false;
 			}
@@ -1521,7 +1521,6 @@ QString PrlHandleVmDefaultConfig::GetDeviceId( PRL_HANDLE hDevice )
 
 int PrlHandleVmDefaultConfig::GetFreeStackIndex( const CVmConfiguration& cfg,
 												 uint interfaceType,
-												 uint devType,
 												 StackIndexLimit *limit) const
 {
 	if (limit && !limit->hasFreeStackIndices(interfaceType))
@@ -1563,12 +1562,6 @@ int PrlHandleVmDefaultConfig::GetFreeStackIndex( const CVmConfiguration& cfg,
 	foreach ( CVmGenericScsiDevice* scsi, hwList->m_lstGenericScsiDevices )
 		if ( (uint)scsi->getInterfaceType() == interfaceType )
 			lstFreeSlots.removeAll( scsi->getStackIndex() );
-
-	// scsi slot 7 used by scsi controller
-	if ( interfaceType == PMS_SCSI_DEVICE &&
-		( ( devType == PDE_OPTICAL_DISK ) || ( devType == PDE_HARD_DISK )
-			|| ( devType == PDE_ATTACHED_BACKUP_DISK ) ) )
-		lstFreeSlots.removeAll(7);
 
 	if ( lstFreeSlots.isEmpty() )
 		return -1;
