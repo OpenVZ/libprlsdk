@@ -3421,6 +3421,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_VIRTIO_BLOCK_DEVICES_DUPLICATE_STACK_INDEX,
+		tr("This virtual machine has two or more devices sharing the same virtio-block position."),
+		tr("Make sure that each device has a unique position on the virtio-block bus and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_SCSI_DEVICES_COUNT_OUT_OF_RANGE,
 		tr("The allowed number of SCSI devices for this virtual machine has been exceeded."),
 				tr("The total number of SCSI devices in the virtual machine configuration cannot be greater than %1. Remove some of the devices and try again."),
