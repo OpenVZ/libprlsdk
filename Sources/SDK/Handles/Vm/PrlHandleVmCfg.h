@@ -1417,6 +1417,8 @@ public:
 	 */
 	PRL_RESULT GetCpuLimitEx(PRL_CPULIMIT_DATA_PTR pVmCpuLimit);
 
+	PRL_RESULT GetGuestCpuLimitType(PRL_UINT32_PTR npVmGuestCpuLimitType);
+
 	PRL_RESULT SetCpuMask(PRL_CONST_STR sCpuMask);
 	PRL_RESULT GetCpuMask(PRL_STR sMaskBuf, PRL_UINT32_PTR pnMaskBufLength);
 

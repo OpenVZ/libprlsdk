@@ -7739,6 +7739,28 @@ PRL_METHOD( PrlVmCfg_GetCpuLimitEx ) (
 	return (pVm->GetCpuLimitEx(pVmCpuLimit));
 }
 
+PRL_METHOD( PrlVmCfg_GetGuestCpuLimitType ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmGuestCpuLimitType
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmCpuLimit=%p)",
+			__FUNCTION__,
+			hVmCfg,
+			pnVmGuestCpuLimitType
+		   );
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+	    PRL_WRONG_PTR(pnVmGuestCpuLimitType))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetGuestCpuLimitType(pnVmGuestCpuLimitType));
+}
+
 PRL_METHOD( PrlVmCfg_SetCpuMask) (
 		PRL_HANDLE hVmCfg,
 		PRL_CONST_STR sMask

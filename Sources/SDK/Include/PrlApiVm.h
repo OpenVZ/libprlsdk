@@ -7194,6 +7194,31 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_CPULIMIT_DATA_PTR pVmCpuLimit
 		) );
 
+/* Determines the specified virtual machine CPU limit type.
+
+   Parameters
+   hVmCfg :       A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   pnVmGuestCpuLimitType :
+                  [out] A pointer to a variable that receives the
+                  result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the virtual machine object does not contain
+   the necessary data.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmCfg_GetGuestCpuLimitType, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmGuestCpuLimitType
+		) );
+
 /* Sets the specified virtual machine I/O priority.
    Priority range is [PRL_IOPRIO_MIN - PRL_IOPRIO_MAX]. The greater priority is,
    the more time for I/O  activity Vm has. By default each Vm has priority of
