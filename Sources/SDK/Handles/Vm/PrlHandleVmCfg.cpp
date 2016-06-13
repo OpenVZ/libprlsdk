@@ -1484,6 +1484,13 @@ PRL_RESULT PrlHandleVmCfg::GetCpuLimitEx(PRL_CPULIMIT_DATA_PTR pVmCpuLimit)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleVmCfg::GetGuestCpuLimitType(PRL_UINT32_PTR npVmGuestCpuLimitType)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*npVmGuestCpuLimitType = m_VmConfig.getVmHardwareList()->getCpu()->getGuestLimitType();
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleVmCfg::SetCpuMask(PRL_CONST_STR sCpuMask)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
