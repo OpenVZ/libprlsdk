@@ -168,6 +168,7 @@ typedef enum _PRL_VM_MIGRATION_FLAGS
    PBT_CT		: for containers
    PBT_BACKUP_ID: get information about a certain backup
    PBT_CHAIN	: get information about the whole backup chain for a certain backup
+   PBT_KEEP_CHAIN	: preserve the rest of the backup chain on backup removal
 */
 typedef enum _PRL_VM_BACKUP_FLAGS
 {
@@ -184,6 +185,7 @@ typedef enum _PRL_VM_BACKUP_FLAGS
 	PBT_CT			= 1<<(PACF_MAX+8),
 	PBT_BACKUP_ID	= 1<<(PACF_MAX+9),
 	PBT_CHAIN		= 1<<(PACF_MAX+10),
+	PBT_KEEP_CHAIN		= 1<<(PACF_MAX+11),
 } PRL_VM_BACKUP_FLAGS;
 
 /* App execution result extraction moderators:
