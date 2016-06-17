@@ -11083,6 +11083,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_BACKUP_UNSUPPORTED_KEEP_CHAIN,
+		tr( "Cannot preserve the backup chain for legacy backups." ),
+		tr( "The backup storage contains backups in the old format that does not allow deleting intermediate backups."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_BUSE_NOT_MOUNTED,
 		tr( "The BUSE filesystem is not mounted." ),
 		tr( "Make sure that the \"buse\" package is installed and the \"bused\" daemon is running." ),
