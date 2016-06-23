@@ -5457,56 +5457,6 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
 		PRL_UINT32 nVmCpuLimitType
 		) );
 
-/* \Returns default encryption plugin Id.
-   Parameters
-   hDispConfig :                A handle of type PHT_DISP_CONFIG.
-   sDefaultPluginId :           [out] Pointer to a buffer that receives
-                                default encryption plugin Id
-                                (a UTF\-8 encoded, null\-terminated string).
-								It is empty string for default Parallels encryption plugin
-
-   pnDefaultPluginIdBufLength : [in] The size of the output buffer (in
-                                bytes). Set the buffer pointer to null
-                                and this value to zero to receive the
-                                required size. [out] The required
-                                \output buffer size.
-   Returns
-   PRL_RESULT. Possible values are:
-
-   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
-   passed.
-
-   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
-   large enough. The parameter that is used to specify the size
-   will contain the required size.
-
-   PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
-				 PrlDispCfg_GetDefaultEncryptionPluginId, (
-		PRL_HANDLE hDispConfig,
-		PRL_STR sDefaultPluginId,
-		PRL_UINT32_PTR pnDefaultPluginIdBufLength
-		) );
-
-/* \Sets default encryption plugin Id.
-   Parameters
-   hDispConfig :                A handle of type PHT_DISP_CONFIG.
-   sDefaultPluginId :           [in] default encryption plugin Id
-                                (a UTF\-8 encoded, null\-terminated string).
-								Can be null or empty in case when
-								an empty value should be assigned.
-   Returns
-   PRL_RESULT. Possible values are:
-
-   PRL_ERR_INVALID_ARG - invalid handle was passed.
-
-   PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
-				 PrlDispCfg_SetDefaultEncryptionPluginId, (
-		PRL_HANDLE hDispConfig,
-		PRL_CONST_STR sDefaultPluginId
-		) );
-
 /* Determines whether the verbose log level is configured for
    dispatcher and virtual machines processes.
    Parameters

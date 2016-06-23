@@ -645,38 +645,6 @@ PrlHandleJobPtr PrlHandleVmSrv::StoreValueByKey( PRL_CONST_STR sKey, PRL_CONST_S
 	return (m_pServer->DspCmdVmStorageSetValue(GET_VM_UUID, sKey, sValue, nFlags));
 }
 
-PrlHandleJobPtr PrlHandleVmSrv::Authorise( PRL_CONST_STR sPassword, PRL_UINT32 nFlags )
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS;
-	CHECK_SERVER;
-	CHECK_IDENTIFICATION;
-	return (m_pServerVm->DspCmdVmAuthorise(GET_VM_UUID, sPassword, nFlags));
-}
-
-PrlHandleJobPtr PrlHandleVmSrv::ChangePassword( PRL_CONST_STR sOldPassword, PRL_CONST_STR sNewPassword, PRL_UINT32 nFlags )
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS;
-	CHECK_SERVER;
-	CHECK_IDENTIFICATION;
-	return (m_pServerVm->DspCmdVmChangePassword(GET_VM_UUID, sOldPassword, sNewPassword, nFlags));
-}
-
-PrlHandleJobPtr PrlHandleVmSrv::Encrypt( PRL_CONST_STR sPassword, PRL_CONST_STR sCipherPluginUuid, PRL_UINT32 nFlags )
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS;
-	CHECK_SERVER;
-	CHECK_IDENTIFICATION;
-	return (m_pServerVm->DspCmdVmEncrypt(GET_VM_UUID, sPassword, sCipherPluginUuid, nFlags));
-}
-
-PrlHandleJobPtr PrlHandleVmSrv::Decrypt( PRL_CONST_STR sPassword, PRL_UINT32 nFlags )
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS;
-	CHECK_SERVER;
-	CHECK_IDENTIFICATION;
-	return (m_pServerVm->DspCmdVmDecrypt(GET_VM_UUID, sPassword, nFlags));
-}
-
 PrlHandleJobPtr PrlHandleVmSrv::SetProtection( PRL_CONST_STR sProtectionPassword, PRL_UINT32 nReserved )
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS;

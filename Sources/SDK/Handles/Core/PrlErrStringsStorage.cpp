@@ -1227,30 +1227,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_LOCKED_FOR_ENCRYPT,
-		tr("Unable to perform the action because the virtual machine is busy."),
-		tr("The virtual machine is being encrypted. Please try again later."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_LOCKED_FOR_DECRYPT,
-		tr("Unable to perform the action because the virtual machine is busy."),
-		tr("The virtual machine is being decrypted. Please try again later."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_LOCKED_FOR_CHANGE_PASSWORD,
-		tr("Unable to perform the action because the virtual machine is busy."),
-		tr("The password for this virtual machine is being modified. Please try again later."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_LOCKED_FOR_CHANGE_FIREWALL,
 		tr("Unable to perform the action because the virtual machine is busy."),
 		tr("The firewall settings are being modified. Please try again later."),
@@ -3089,22 +3065,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please open the virtual machine configuration and select an existing Boot Camp partition in the Hard Disk %2 settings."),
 		false,
 		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_WRONG_TYPE_FOR_ENCRYPTRED_VM,
-		tr("Hard Disk %1 is using a physical disk and cannot be encrypted."),
-		tr("Encrypted virtual machines can use virtual hard disks only."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_NOT_ENOUGH_SPACE_FOR_ENCRYPT_DISK,
-		tr("Not enough free space on the physical hard disk \"%1\"."),
-		tr("Only %2 GB is available on the physical hard disk, while %3 GB is needed for the encryption. Please free some space on the physical hard disk and try again."),
-		false,
-		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7667,14 +7627,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_QUESTION_ASK_ENCRYPTED_VM_PASSWORD,
-		tr("The \"%1\" virtual machine is protected by password."),
-		tr("Please type the password to proceed."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_TEST_TEXT_MESSAGES,
 		tr("BRIEF DEFAULT %1."),
 		tr("LONG DEFAULT %2."),
@@ -7763,49 +7715,9 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_WRONG_KEY,
-		tr("The password you specified is not correct."),
-		tr("Please make sure that you typed the password correctly and try again."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_KEY_NOT_SET,
-		tr("The operation could not be completed because no password was set for performing it."),
-		tr("Please set a password for performing this operation and try again."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_OBJECT_NOT_FOUND,
-		tr("The required encryption plug-in could not be found."),
+		tr("The required plug-in could not be found."),
 		tr(""),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_PASSWORD_TO_ENCRYPTED_VM,
-		tr("The password you specified is invalid."),
-		tr("Please check the password you typed for the \"%1\" virtual machine and try again."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_CREATE_ENCRYPTED_VM,
-		tr("Only existing virtual machines can be protected by password."),
-		tr("You first need to create a virtual machine, and only then can you protect it by password."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_REGISTER_ENCRYPTED_VM_WO_PASSWD,
-		tr("The virtual machine you are trying to register is protected by password."),
-		tr("Authentication is required to register this virtual machine."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7838,343 +7750,6 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_PROXY_PEER_NOT_FOUND,
 		tr("Unable to connect to the proxy server \"%1\"."),
 		tr("Parallels Proxy Server can't find peer host for proxying."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_AUTH_REQUIRED_TO_ENCRYPTED_VM,
-		tr("This virtual machine is protected by password."),
-		tr("Authentication is required to use this virtual machine."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_VM_STATE_TO_ENCRYPTED_OP,
-		tr("Encryption settings could not be applied."),
-		tr("You need to shut down or suspend the virtual machine before applying encryption settings."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_CIPHER_ID_FORMAT,
-		tr("Encryption settings could not be applied."),
-		tr("Unknown encryption plugin ID. Make sure that the encryption plugin is installed."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_CIPHER_ID_FORMAT_IN_CONFIG,
-		tr("Encryption settings could not be applied."),
-		tr("Unknown encryption plugin ID is specified in the virtual machine configuration. Make sure that the encryption plugin with that ID is installed."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_TRANSACTION_STATE,
-		tr("Encryption settings could not be applied."),
-		tr("Internal error: invalid transaction state."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_PATCH_CONFIG_FILE,
-		tr("Encryption settings could not be applied."),
-		tr("Unable to change configuration files."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_ROLLBACK_TRANSACTION,
-		tr("Encryption settings could not be applied."),
-		tr("Unable to rollback transaction."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_COMMIT_TRANSACTION,
-		tr("Encryption settings could not be applied."),
-		tr("Unable to commit transaction."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_FINALIZE_TRANSACTION,
-		tr("Encryption settings could not be applied."),
-		tr("Unable to finalize transaction."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_PASSWORD_FOR_ENCRYPTED_VM_WAS_CHANGED,
-		tr("This virtual machine is protected by password."),
-		tr("You need to authenticate yourself again to be able to use this virtual machine."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_NOT_ENOUGH_DISK_SPACE_TO_ENCRYPT_VM,
-		tr("Unable to encrypt the \"%1\" virtual machine."),
-		tr("Free at least %2 MB on the physical hard disk that stores the \"%1\" virtual machine and try again."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_NOT_ENOUGH_DISK_SPACE_TO_DECRYPT_VM,
-		tr("Unable to decrypt the \"%1\" virtual machine."),
-		tr("Free at least %2 MB on the physical hard disk that stores the \"%1\" virtual machine and try again."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_ENCRYPTED_CONFIG_FORMAT,
-		tr("Encryption settings could not be applied."),
-		tr("One of the configuration files has an invalid format."),
-		false,
-		PMT_CRITICAL
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ADD_ENCRYPTED_HDD_TO_NON_ENCRYPTED_VM,
-		tr("The disk you are trying to connect is encrypted and cannot be added."),
-		tr("Encrypted virtual hard disks cannot be used by non-encrypted virtual machines."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_PASSWORD_TO_ENCRYPTED_HDD,
-		tr("The password you specified is invalid."),
-		tr("Please check the password and try again."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_NOT_ENOUGH_DISK_SPACE_TO_ENCRYPT_HDD,
-		tr("Unable to encrypt the virtual hard disk used by the \"%1\" virtual machine."),
-		tr("Please free at least %2 MB on the physical hard disk that stores this virtual hard disk, and try again."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_ALREADY_ENCRYPTED,
-		tr("Unable to encrypt the \"%1\" virtual machine."),
-		tr("This virtual machine is already encrypted."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_DECRYPT_UNENCRYPTED_VM,
-		tr("Unable to decrypt the \"%1\" virtual machine."),
-		tr("This virtual machine is not encrypted."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_MEMFILE_ENCRYPT_FAILED,
-		tr("Unable to encrypt the virtual machine."),
-		tr("The memory files could not be encrypted."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_MEMFILE_DECRYPT_FAILED,
-		tr("Unable to decrypt the virtual machine."),
-		tr("The memory files could not be decrypted."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_HDD_TYPE_FOR_ENCRYPT,
-		tr("Encryption settings could not be applied."),
-		tr("This virtual machine uses a physical hard disk."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_CHANGE_DEFAULT_PLUGIN_BY_NON_ADMIN,
-		tr("Unable to change the default encryption plugin."),
-		tr("This operation is available only for users with administrator's rights."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_SET_DEFAULT_ENCRYPTION_PLUGIN,
-		tr("Unable to change the default encryption plugin."),
-		tr("Make sure that this encryption plugin installed in the system. If the problem persists, contact the Parallels support team for assistance."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_SET_DEFAULT_ENCRYPTION_PLUGIN_BY_WRONG_FORMAT,
-		tr("Unable to change the default encryption plugin."),
-		tr("Make sure that you typed the plugin ID correctly. The ID should have the following format: {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx} where 'x' is heximal (UUID format)."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_CLEANUP_BROKEN_TRANSACTIONS,
-		tr("Unable to cleanup broken encryption operations."),
-		tr("Contact the Parallels support team for assistance if it is necessary."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_COMMIT_BROKEN_TRANSACTION,
-		tr("Unable to cleanup broken encryption operations."),
-		tr("Contact the Parallels support team for assistance if it is necessary."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_ROLLBACK_BROKEN_TRANSACTION,
-		tr("Unable to cleanup broken encryption operations."),
-		tr("Contact the Parallels support team for assistance if it is necessary."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_UNABLE_UNLOAD_PLUGINS_IN_USE,
-		tr("Unable to switch off the third-party plugins support."),
-		tr("One or more plugins are being used by the running virtual machines or by encryption operations."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_PLUGINS_FEATURE_IS_ALREADY_DISABLED,
-		tr("Unable to switch off the third-party plugins support."),
-		tr("The third-party plugins support is already switched off."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_PLUGINS_FEATURE_IS_DISABLED,
-		tr("Unable to perform the operation."),
-		tr("This action cannot be performed because the third-party plugins support is switched off."),
-		false,
-		PMT_CRITICAL
-	);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_SET_DEFAULT_ENCRYPTION_PLUGIN_FEATURE_DISABLED,
-		tr("Unable to specify the default encryption plugin."),
-		tr("This action cannot be performed because the third-party plugins support is switched off."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_ENABLE_PLUGINS_NOT_PERMITTED,
-		tr("Unable to switch on the third-party plugins support."),
-		tr("You must have administrator rights to perform this action."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_DISABLE_PLUGINS_NOT_PERMITTED,
-		tr("Unable to switch off the third-party plugins support."),
-		tr("You must have administrator rights to perform this action."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_RESCAN_PLUGINS_NOT_PERMITTED,
-		tr("Unable to rescan the plugins directory."),
-		tr("You must have administrator rights to perform this action."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_PLUGINS_FEATURE_IS_ALREADY_ENABLED,
-		tr("Unable to switch on the third-party plugins support."),
-		tr("The third-party plugins support is already switched on."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_PLUGINS_UNABLE_LOAD_DIR_ALREADY,
-		tr("Unable to load the third-party plugins from the directory."),
-		tr("This action cannot be performed because the plugins are already loaded."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_PLUGIN_UUID_NOT_FOUND,
-		tr("Unable to verify the password for the encrypted virtual machine \"%1\"."),
-		tr("The plugin which was used to encrypt this virtual machine is not found. Reload the required plugin and try again. If the problem persists, contact the Parallels support team."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_HDD_CANT_OPEN,
-		tr("Encryption settings could not be applied."),
-		tr("One of the hard disks could not be opened."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_HDD_IS_ALREADY_ENCRYPTED,
-		tr("Encryption settings could not be applied."),
-		tr("One of the hard disks is already encrypted."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_HDD_IS_UNENCRYPTED,
-		tr("Encryption settings could not be applied."),
-		tr("One of the hard disks is already decrypted. "),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_HDD_WRONG_ENCRYPTION_ENGINE,
-		tr("Encryption settings could not be applied."),
-		tr("The plugin that is used to encrypt one of the hard disks is not found. Reload the required plugin and try again. If the problem persists, contact the Parallels support team."),
-		false,
-		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_ENC_WRONG_HDD_PASSWORD,
-		tr("Encryption settings could not be applied."),
-		tr("One of the hard disks was re-encrypted with a different password."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9429,22 +9004,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_DECRYPTED_SUCCESSFULLY,
-		tr("The virtual machine was successfully decrypted."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_ENCRYPTED_SUCCESSFULLY,
-		tr("The virtual machine was successfully encrypted."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_INFO_PASSWORD_RESET_ENTER_EMAIL,
 		tr("Please enter your email address."),
 		tr("We will send you an email with a link to reset your password."),
@@ -9480,14 +9039,6 @@ void PrlErrStringsStorage::Initialize()
 		GUI_WRN_KEY_NOT_BE_AUTO_REGISTRED,
 		tr("The upgrade key could not be registered automatically."),
 		tr("You can register it by logging into your Parallels account at <a href=\"https://www.parallels.com/account/\">https://www.parallels.com/account</a> or by filling out the registration form that will appear the next time you open Parallels Desktop. In both cases, you should provide the email you used to register the previous version."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_ENCRYPTED_DISK_NOT_ADDED,
-		tr("The disk you are trying to connect is encrypted and cannot be added."),
-		tr("Encrypted virtual hard disks cannot be used  by non-encrypted virtual machines."),
 		false,
 		PMT_WARNING
 		);
@@ -10854,13 +10405,6 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_DECRYPT_PROTECTED_VM,
-		tr("Unable to perform the operation."),
-		tr("There's an expiration date set for this virtual machine. To be able to decrypt it, you need first to cancel the expiration date."),
-		false,
-		PMT_CRITICAL);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_EXPIRATION_VM_IS_IN_OFFLINE_GRACE_PERIOD,
 		tr("This virtual machine cannot contact the time server to check date and time."),
 		tr("Please contact your administrator for assistance. If the virtual machine cannot check the date, it will stop working at %1 on %2."),
@@ -10877,89 +10421,9 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_PROTECT_UNENCRYPTED_VM,
-		tr("Unable to set a password protecting this virtual machine expiration date settings."),
-		tr("Please encrypt the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_EXPIRATION_TIME_CHECK_INTERVAL_OUT_OF_RANGE,
 		tr("The specified data check frequency is invalid."),
 		tr("The interval must be a number between %1 and %2 seconds. Please correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_PROTECT_VM_IS_ALREADY_PROTECTED,
-		tr("Unable to set a password protecting this virtual machine expiration date settings."),
-		tr("The password is already set."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_TO_UNPROTECT_VM_IS_NOT_PROTECTED,
-		tr("Unable to cancel the password protecting this virtual machine expiration date settings."),
-		tr("The password is not set."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_EDIT_EXPIRATION_VM_IS_PROTECTED,
-		tr("Unable to edit this virtual machine expiration date settings."),
-		tr("These settings are protected with a password."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_LOCKED_FOR_REMOVE_PROTECTION,
-		tr("Unable to perform the action because the virtual machine is busy."),
-		tr("A password protecting this virtual machine expiration date settings is being canceled. Please try again later."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_LOCKED_FOR_SET_PROTECTION,
-		tr("Unable to perform the action because the virtual machine is busy."),
-		tr("A password protecting this virtual machine expiration date settings is being set. Please try again later."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_PROTECT_PASSWORD_IS_EMPTY,
-		tr("Unable to perform the operation."),
-		tr("You cannot use a blank password to protect the virtual machine expiration date settings."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_PASSWORD_TO_PROTECTED_VM,
-		tr("The specified password is incorrect."),
-		tr("Please enter a valid password protecting this virtual machine expiration date settings."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_PROTECT_VM_WRONG_EXPIRATION_DATE,
-		tr("Unable to apply the expiration date settings."),
-		tr("Please make sure the expiration date format (e.g. 2014-12-30T20:30:00) is correct and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WRONG_VM_STATE_OF_PROTECTION_OP,
-		tr("Unable to perform the operation."),
-		tr("Please suspend or shut down the virtual machine and try again."),
 		false,
 		PMT_WARNING
 		);

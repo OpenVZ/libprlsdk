@@ -830,21 +830,6 @@ public://Protocol methods
 								  const char *strDeviceConfig);
 
 	/**
-	 * Performs check virtual HDD password request
-	 * @param VM UUID
-	 * @param device type
-	 * @param device index
-	 * @param device XML representation string (CVmDevice inheritance class of XmlModel)
-	 * @param bitset of flags
-	 * @return id of performed asynchronous request
-	 */
-	QString DspCmdVmDevHdCheckPassword(const QString &sVmUUID,
-							   PRL_DEVICE_TYPE nDeviceType,
-							   int nDeviceIndex,
-							   const QString &sDeviceConfig,
-							   PRL_UINT32 nFlags);
-
-	/**
 	 * Performs requesting VM problem report operation
 	 * @param VM UUID
 	 * @return id of performed asynchronous request
@@ -1276,44 +1261,6 @@ public://Protocol methods
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdInstallAppliance(const char* strAppCfg, quint32 nFlags);
-
-	/**
-	 * Performs request on client session authorization against encrypted VM
-	 * @param VM UUID
-	 * @param password
-	 * @param nFlags reserved
-	 * @return id of performed asynchronous request
-	 */
-	QString DspCmdVmAuthorise( const char* strVmUUID, const char *strPassword, quint32 nFlags );
-
-	/**
-	 * Performs request on change password for encrypted VM
-	 * @param VM UUID
-	 * @param old password
-	 * @param new password
-	 * @param nFlags reserved
-	 * @return id of performed asynchronous request
-	 */
-	QString DspCmdVmChangePassword( const char* strVmUUID, const char *strOldPassword, const char *strNewPassword, quint32 nFlags );
-
-	/**
-	 * Performs request on VM encryption
-	 * @param VM UUID
-	 * @param password
-	 * @param cipher plugin UUID
-	 * @param nFlags reserved
-	 * @return id of performed asynchronous request
-	 */
-	QString DspCmdVmEncrypt( const char* strVmUUID, const char *strPassword, const char *strCipherPluginUuid, quint32 nFlags );
-
-	/**
-	 * Performs request on VM decryption
-	 * @param VM UUID
-	 * @param password
-	 * @param nFlags reserved
-	 * @return id of performed asynchronous request
-	 */
-	QString DspCmdVmDecrypt( const char* strVmUUID, const char *strPassword, quint32 nFlags );
 
 	/**
 	 * Performs request on set VM protection

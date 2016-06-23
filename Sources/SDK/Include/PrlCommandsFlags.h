@@ -255,15 +255,6 @@ typedef enum _PRL_COMPACT_MODE
 } PRL_COMPACT_MODE;
 typedef PRL_COMPACT_MODE* PRL_COMPACT_MODE_PTR;
 
-/* Encryption operations:
-Uses for PrlVm_Encrypt() / PrlVm_Decrypt operations
-*/
-typedef enum _PRL_ENCRYPTION_FLAGS
-{
-	PEF_CHECK_PRECONDITIONS_ONLY	= 1 << (PACF_MAX+1),
-} PRL_ENCRYPTION_FLAGS;
-typedef PRL_ENCRYPTION_FLAGS* PRL_ENCRYPTION_FLAGS_PTR;
-
 /**
 * Parallels Tools Utility command flags
 */

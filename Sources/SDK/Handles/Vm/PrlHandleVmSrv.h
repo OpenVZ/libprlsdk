@@ -452,40 +452,6 @@ public:
 	PrlHandleJobPtr StoreValueByKey( PRL_CONST_STR sKey, PRL_CONST_STR sValue, PRL_UINT32 nFlags);
 
 	/**
-	* Performs request on authorise current client session against encrypted VM
-	* @param password
-	* @param operation flags bitset
-	* @return pointer to the generated job object
-	*/
-	PrlHandleJobPtr Authorise( PRL_CONST_STR sPassword, PRL_UINT32 nFlags );
-
-	/**
-	* Performs request on change password for encrypted VM
-	* @param old password
-	* @param new password
-	* @param operation flags bitset
-	* @return pointer to the generated job object
-	*/
-	PrlHandleJobPtr ChangePassword( PRL_CONST_STR sOldPassword, PRL_CONST_STR sNewPassword, PRL_UINT32 nFlags );
-
-	/**
-	* Performs request on encrypt VM
-	* @param password for VM encryption
-	* @param cipher plugin UUID
-	* @param operation flags bitset
-	* @return pointer to the generated job object
-	*/
-	PrlHandleJobPtr Encrypt( PRL_CONST_STR sPassword, PRL_CONST_STR sCipherPluginUuid, PRL_UINT32 nFlags );
-
-	/**
-	* Performs request on decrypt VM
-	* @param password for VM decryption
-	* @param operation flags bitset
-	* @return pointer to the generated job object
-	*/
-	PrlHandleJobPtr Decrypt( PRL_CONST_STR sPassword, PRL_UINT32 nFlags );
-
-	/**
 	* Performs request on set VM protection
 	* @param password for VM protection
 	* @param reserved

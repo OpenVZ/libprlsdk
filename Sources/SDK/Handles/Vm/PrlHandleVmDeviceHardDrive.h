@@ -222,22 +222,6 @@ public://SDK API helpers set
 	inline CVmHardDisk* GetHardDiskPtr() { return m_pVmHardDisk; }
 
 	/**
-	 * Sets hard disk password.
-	 *
-	 * @param assigning value
-	 * @return PRL_RESULT
-	 */
-	PRL_RESULT SetPassword(PRL_CONST_STR sPassword);
-
-	/**
-	 * Returns sign whether hard disk is encrypted.
-	 *
-	 * @param bufer to retrieve result
-	 * @return PRL_RESULT
-	 */
-	PRL_RESULT IsEncrypted(PRL_BOOL_PTR pbIsEncrypted);
-
-	/**
 	 * Return custom storage URL
 	 *
 	 * @param [out] buffer for storing result
@@ -272,14 +256,6 @@ public://SDK API helpers set
 	 * PRL_ERR_SUCCESS - operation completed successfully
 	 */
 	PRL_RESULT GetSerialNumber(PRL_STR sSerialNumber, PRL_UINT32_PTR pnSerialNumberBufLength);
-
-public://Async operations
-	/**
-	 * Performs async request to remote side to check HDD
-	 * password validity
-	 * @param bitset of flags
-	 */
-	PrlHandleJobPtr CheckPassword( PRL_UINT32 nFlags );
 
 private:
 

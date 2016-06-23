@@ -2321,14 +2321,6 @@ public:
 	PRL_RESULT GetVmInfo(PRL_HANDLE_PTR phVmInfo);
 
 	/**
-	 * Returns sign whether VM encrypted
-	 * @param pointer to output buffer for storing result
-	 * @return PRL_RESULT. Possible values:
-	 * * PRL_ERR_SUCCESS - operation completed successfully
-	 */
-	PRL_RESULT IsEncrypted(PRL_BOOL_PTR pbEncrypted);
-
-	/**
 	 * Returns locale for unattended installation
 	 * @param [out] buffer for storing result
 	 * @param [out] buffer size (on in - how much symbols can be placed into buffer;

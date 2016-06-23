@@ -466,26 +466,6 @@ public:
 	PRL_RESULT SetBackupTimeout(PRL_UINT32 nTimeout);
 
 	/**
-	* Gets default encryption plugin Id
-	* @param [out] buffer for storing result
-	* @param [out] buffer size (on in - how much symbols can be placed into buffer;
-	* on out - how much were placed actually)
-	* @return PRL_RESULT. Possible values:
-	* * PRL_ERR_INVALID_ARG - incorrect passed buffer size (NULL size)
-	* * PRL_ERR_BUFFER_OVERRUN - not enough buffer to completely storing result
-	* * PRL_ERR_SUCCESS - operation completed successfully
-	*/
-	PRL_RESULT GetDefaultEncryptionPluginId(PRL_STR sDefaultPluginId, PRL_UINT32_PTR pnDefaultPluginIdBufLength);
-
-	/**
-	* Sets default encryption plugin Id
-	* @param [in] setting value
-	* @return PRL_RESULT. Possible values:
-	* * PRL_ERR_SUCCESS - operation completed successfully
-	*/
-	PRL_RESULT SetDefaultEncryptionPluginId(PRL_CONST_STR sDefaultPluginId);
-
-	/**
 	* Determines whether the plugins enabled or not
 	* @param [out]  Pointer to a variable that receives the result.
 	* @return PRL_RESULT. Possible values:
