@@ -23,6 +23,7 @@
 #endif
 
 #ifdef STDC_HEADERS
+# include <string.h>
 # include <stdlib.h>
 #endif
 
@@ -76,7 +77,7 @@ tar_init(TAR **t, char *pathname, tartype_t *type,
 	if (*t == NULL)
 		return -1;
 
-	(*t)->pathname = pathname;
+	(*t)->pathname = strdup(pathname);
 	(*t)->options = options;
 	(*t)->type = (type ? type : &default_type);
 	(*t)->oflags = oflags;
@@ -88,6 +89,7 @@ tar_init(TAR **t, char *pathname, tartype_t *type,
 		(*t)->h = libtar_hash_new(16, (libtar_hashfunc_t)dev_hash);
 	if ((*t)->h == NULL)
 	{
+		free((*t)->pathname);
 		free(*t);
 		return -1;
 	}
@@ -153,6 +155,8 @@ tar_close(TAR *t)
 		libtar_hash_free(t->h, ((t->oflags & O_ACCMODE) == O_RDONLY
 					? free
 					: (libtar_freefunc_t)tar_dev_free));
+
+	free(t->pathname);
 	free(t);
 
 	return i;

@@ -19,6 +19,7 @@
 
 #ifdef STDC_HEADERS
 # include <string.h>
+# include <stdlib.h>
 #endif
 
 
@@ -35,11 +36,12 @@ th_get_pathname(TAR *t)
 	{
 		snprintf(filename, sizeof(filename), "%.155s/%.100s",
 			 t->th_buf.prefix, t->th_buf.name);
-		return strdup(filename);
 	}
+	else
+		snprintf(filename, sizeof(filename), "%.100s", t->th_buf.name);
 
-	snprintf(filename, sizeof(filename), "%.100s", t->th_buf.name);
-	return strdup(filename);
+	free(t->pathname);
+	return t->pathname = strdup(filename);
 }
 
 
