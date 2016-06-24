@@ -219,6 +219,7 @@ CPackedProblemReport::CPackedProblemReport( const QString & strPathToSave ,
 m_bValid( true ),
 m_bCleanupTempDir( false ),
 m_strArchPath( strPathToSave ),
+m_Side(ReportToolSide),
 m_bQuitFromPack( false )
 {
 	m_strTempDirPath = strPathToTempDir;
@@ -239,6 +240,7 @@ CPackedProblemReport::CPackedProblemReport(  const QString & strPathToSave,
 m_bValid( true ),
 m_bCleanupTempDir( false ),
 m_strArchPath( strPathToSave ),
+m_Side(ReportToolSide),
 m_bQuitFromPack( false )
 {
 	try
