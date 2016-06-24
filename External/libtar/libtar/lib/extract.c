@@ -249,13 +249,13 @@ tar_extract_regfile(TAR *t, char *realname)
 		{
 			if (k != -1)
 				errno = EINVAL;
-			return -1;
+			goto ERROR_EXIT;
 		}
 
 		/* write block to output file */
 		if (write(fdout, buf,
 			  ((i > T_BLOCKSIZE) ? T_BLOCKSIZE : i)) == -1)
-			return -1;
+			goto ERROR_EXIT;
 	}
 
 	/* close output file */
@@ -267,6 +267,12 @@ tar_extract_regfile(TAR *t, char *realname)
 #endif
 
 	return 0;
+
+ERROR_EXIT:
+	k = errno;
+	close(fdout);
+	errno = k;
+	return -1;
 }
 
 
