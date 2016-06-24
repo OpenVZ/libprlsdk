@@ -158,20 +158,6 @@ private:
 	SmartPtr<IOService::IOPackage> m_pClipboardResponsePkg;
 	SmartPtr<IOService::IOPackage> m_pShutdownResponsePkg;
 
-	// Flag to handle capturing
-	volatile bool m_isScreenCaptured;
-
-	QByteArray m_captureBuffer;
-
-	// Capture screen to file
-	QString m_fileName;
-	QString m_format;
-	int m_quality;
-	QSize m_thumbnail;
-
-	volatile bool m_capturingToFile;
-	volatile bool m_captureResult;
-
 	/**
 	 * Pointer to the object that contains additional error info
 	 */

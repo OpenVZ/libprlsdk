@@ -119,10 +119,9 @@ PrlHandleIOJob::PrlHandleIOJob ( IOJobType type,
 	PrlHandleJob(Convert::toOpCode(type), true),
 	m_Result(PRL_ERR_OPERATION_PENDING),
 	m_JobStatus(PJS_RUNNING),
-	m_jobType( type ),
-	m_responseReceived( false ),
-	m_ioChannel( channel ),
-	m_quality(-1)
+	m_jobType(type),
+	m_responseReceived(false),
+	m_ioChannel(channel)
 {
 	if ( type == IOConnectJob ) {
 		m_Timer.setSingleShot(true);
