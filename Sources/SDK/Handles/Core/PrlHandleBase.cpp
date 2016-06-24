@@ -221,14 +221,15 @@ PRL_RESULT CopyStringValue(const QString &_string_value, PRL_STR sStringBuf, PRL
 {
 	if (!pnStringBufLength)
 		return (PRL_ERR_INVALID_ARG);
-	size_t required_buff_len = _string_value.toUtf8().size()+1 ;
-	if ( ! sStringBuf || *pnStringBufLength == 0)
+
+	size_t required_buff_len = _string_value.toUtf8().size() + 1;
+
+	if (!sStringBuf || *pnStringBufLength == 0)
 	{
 		*pnStringBufLength = required_buff_len ;
 		return (PRL_ERR_SUCCESS);
 	}
-	if (PRL_WRONG_PTR(sStringBuf))
-		return (PRL_ERR_INVALID_ARG);
+
 	QByteArray _string_value_utf8 = _string_value.toUtf8();
 	if (*pnStringBufLength < PRL_UINT32(required_buff_len))
 	{
@@ -241,6 +242,7 @@ PRL_RESULT CopyStringValue(const QString &_string_value, PRL_STR sStringBuf, PRL
 		strcpy(sStringBuf, _string_value_utf8.constData());
 		*pnStringBufLength = required_buff_len ;
 	}
+
 	return (PRL_ERR_SUCCESS);
 }
 

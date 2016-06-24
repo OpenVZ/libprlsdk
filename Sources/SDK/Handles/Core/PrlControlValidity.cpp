@@ -31,11 +31,11 @@ PrlControlValidityMap PrlControlValidity::g_ControlValidityMap;
 QMutex PrlControlValidity::g_ControlValidityMapMutex(QMutex::Recursive);
 
 PrlControlValidity::PrlControlValidity(PRL_HANDLE h)
-: m_handle(h)
+: m_nHashCode(0), m_handle(h)
 {}
 
 PrlControlValidity::PrlControlValidity(void *pData, PRL_HANDLE h)
-: m_handle(h)
+: m_nHashCode(0), m_handle(h)
 {
 	RegisterInstance(m_handle, pData);
 }

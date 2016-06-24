@@ -601,30 +601,6 @@ QString loadAppSwitcherPackagesInfo()
 	return strResult;
 }
 
-QString loadLearnVideoTimes()
-{
-// we are collecting this information only for stw7
-#ifndef _WIN_
-	return QString();
-#endif //_WIN_
-
-	QSettings settings( PRL_VENDOR, ParallelsDirs::getLearnVideoAppName() );
-	QStringList lstKeys = settings.allKeys();
-	QString strResult;
-	QString strValue;
-	foreach( QString strKey, lstKeys )
-	{
-		strValue = settings.value( strKey ).toString();
-		if( strKey.isEmpty() || strValue.isEmpty() )
-			continue;
-		strResult += strKey + " ";
-		strResult += strValue;
-		strResult += "\n";
-	}
-
-	return strResult;
-}
-
 /**
  * Simple helper - searches for newest panic log at specified folder
  * @param target folder path

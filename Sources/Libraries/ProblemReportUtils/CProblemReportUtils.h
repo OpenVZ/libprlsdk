@@ -117,9 +117,6 @@ namespace CProblemReportUtils
 	// load all app switcher packages info
 	QString loadAppSwitcherPackagesInfo();
 
-	// load all learn video time data
-	QString loadLearnVideoTimes();
-
 	/**
 	 * Returns path to the latest system panic log
 	 * @param target path to analyse
