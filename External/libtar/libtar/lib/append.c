@@ -240,7 +240,7 @@ tar_append_regfile(TAR *t, char *realname, PACK_OPERATION_CHECKQUIT_CALLBACK pFu
 	}
 
 	size = th_get_size(t);
-	for (i = size; i > T_BLOCKSIZE; i -= T_BLOCKSIZE)
+	for (i = size; i >= T_BLOCKSIZE; i -= T_BLOCKSIZE)
 	{
 		if( pFunc && ( pFunc( pParam ) > 0 ) )
 			goto ERROR_EXIT;
