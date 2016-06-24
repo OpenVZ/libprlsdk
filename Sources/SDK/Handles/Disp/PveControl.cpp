@@ -1818,25 +1818,6 @@ QString CPveControl::DspCmdVmDevDisconnect(const char *strVmUUID,
 	return SendRequestToServer(pRequest);
 }
 
-QString CPveControl::DspCmdVmDevHdCheckPassword(const QString &sVmUUID,
-						   PRL_DEVICE_TYPE nDeviceType,
-						   int nDeviceIndex,
-						   const QString &sDeviceConfig,
-						   PRL_UINT32 nFlags)
-{
-    LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdVmDevHdCheckPassword()");
-
-
-	CProtoCommandPtr pRequest = CProtoSerializer::CreateVmDeviceProtoCommand(PVE::DspCmdVmDevHdCheckPassword,
-																			 sVmUUID,
-																			 nDeviceType,
-																			 nDeviceIndex,
-																			 sDeviceConfig,
-																			 nFlags);
-
-	return SendRequestToServer(pRequest);
-}
-
 QString CPveControl::DspCmdVmGetProblemReport(const char *strVmUUID)
 {
     LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdVmGetProblemReport()");
@@ -2646,60 +2627,6 @@ QString CPveControl::DspCmdInstallAppliance(const char* strAppCfg, quint32 nFlag
 													UTF8_2QSTR(strAppCfg),
 													false,
 													nFlags);
-
-	return SendRequestToServer(pRequest);
-}
-
-QString CPveControl::DspCmdVmAuthorise( const char* strVmUUID, const char *strPassword, quint32 nFlags )
-{
-
-	CProtoCommandPtr
-		pRequest = CProtoSerializer::CreateProtoVmCommandWithOneStrParam( PVE::DspCmdVmAuthorise,
-				UTF8_2QSTR( strVmUUID ),
-				UTF8_2QSTR( strPassword ),
-				nFlags
-				);
-
-	return SendRequestToServer(pRequest);
-}
-
-QString CPveControl::DspCmdVmChangePassword( const char* strVmUUID, const char *strOldPassword, const char *strNewPassword, quint32 nFlags )
-{
-
-	CProtoCommandPtr
-		pRequest = CProtoSerializer::CreateProtoVmCommandWithTwoStrParams( PVE::DspCmdVmChangePassword,
-				UTF8_2QSTR( strVmUUID ),
-				UTF8_2QSTR( strOldPassword ),
-				UTF8_2QSTR( strNewPassword ),
-				nFlags
-				);
-
-	return SendRequestToServer(pRequest);
-}
-
-QString CPveControl::DspCmdVmEncrypt( const char* strVmUUID, const char *strPassword, const char *strCipherPluginUuid, quint32 nFlags )
-{
-
-	CProtoCommandPtr
-		pRequest = CProtoSerializer::CreateProtoVmCommandWithTwoStrParams( PVE::DspCmdVmEncrypt,
-				UTF8_2QSTR( strVmUUID ),
-				UTF8_2QSTR( strPassword ),
-				UTF8_2QSTR( strCipherPluginUuid ),
-				nFlags
-				);
-
-	return SendRequestToServer(pRequest);
-}
-
-QString CPveControl::DspCmdVmDecrypt( const char* strVmUUID, const char *strPassword, quint32 nFlags )
-{
-
-	CProtoCommandPtr
-		pRequest = CProtoSerializer::CreateProtoVmCommandWithOneStrParam( PVE::DspCmdVmDecrypt,
-				UTF8_2QSTR( strVmUUID ),
-				UTF8_2QSTR( strPassword ),
-				nFlags
-				);
 
 	return SendRequestToServer(pRequest);
 }

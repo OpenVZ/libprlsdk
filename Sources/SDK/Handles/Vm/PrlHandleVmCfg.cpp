@@ -2510,13 +2510,6 @@ PRL_RESULT PrlHandleVmCfg::GetVmInfo(PRL_HANDLE_PTR phVmInfo)
 	return (PRL_ERR_OUT_OF_MEMORY);
 }
 
-PRL_RESULT PrlHandleVmCfg::IsEncrypted(PRL_BOOL_PTR pbEncrypted)
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pbEncrypted = m_VmConfig.getVmSettings()->getVmEncryption()->isEnabled();
-	return PRL_ERR_SUCCESS;
-}
-
 PRL_RESULT PrlHandleVmCfg::GetUnattendedInstallLocale(PRL_STR sLocale, PRL_UINT32_PTR pnLocaleBufLength)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

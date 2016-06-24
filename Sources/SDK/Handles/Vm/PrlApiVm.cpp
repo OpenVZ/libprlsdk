@@ -1148,140 +1148,6 @@ PRL_ASYNC_METHOD( PrlVm_ValidateConfig ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_ValidateConfig, (hVm, nSection))
 }
 
-PRL_HANDLE PrlVm_Authorise_Impl(
-	PRL_HANDLE hVm,
-	PRL_CONST_STR sPassword,
-	PRL_UINT32 nFlags)
-{
-	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
-		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_AUTHORISE));
-
-	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>( hVm );
-	PrlHandleJobPtr pJob = pVm->Authorise( sPassword, nFlags );
-	if (!pJob)
-		RETURN_RES(PRL_INVALID_HANDLE);
-	pJob->SetVmHandle(hVm);
-	RETURN_RES(pJob->GetHandle())
-}
-
-PRL_ASYNC_METHOD( PrlVm_Authorise ) (
-					  PRL_HANDLE hVm,
-					  PRL_CONST_STR sPassword,
-					  PRL_UINT32 nFlags
-					  )
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sPassword=%p, nFlags=%.8x)",
-		__FUNCTION__,
-		hVm,
-		sPassword,
-		nFlags
-		);
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_AUTHORISE)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Authorise, (hVm, sPassword, nFlags))
-}
-
-PRL_HANDLE PrlVm_ChangePassword_Impl(
-	PRL_HANDLE hVm,
-	PRL_CONST_STR sOldPassword,
-	PRL_CONST_STR sNewPassword,
-	PRL_UINT32 nFlags)
-{
-	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
-		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_CHANGE_PASSWORD));
-
-	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>( hVm );
-	PrlHandleJobPtr pJob = pVm->ChangePassword( sOldPassword, sNewPassword, nFlags );
-	if (!pJob)
-		RETURN_RES(PRL_INVALID_HANDLE);
-	pJob->SetVmHandle(hVm);
-	RETURN_RES(pJob->GetHandle())
-}
-
-PRL_ASYNC_METHOD( PrlVm_ChangePassword ) (
-					  PRL_HANDLE hVm,
-					  PRL_CONST_STR sOldPassword,
-					  PRL_CONST_STR sNewPassword,
-					  PRL_UINT32 nFlags
-					  )
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sOldPassword=%p, sNewPassword=%p nFlags=%.8x)",
-		__FUNCTION__,
-		hVm,
-		sOldPassword,
-		sNewPassword,
-		nFlags
-		);
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_CHANGE_PASSWORD)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_ChangePassword, (hVm, sOldPassword, sNewPassword, nFlags))
-}
-
-PRL_HANDLE PrlVm_Encrypt_Impl(
-	PRL_HANDLE hVm,
-	PRL_CONST_STR sPassword,
-	PRL_CONST_STR sCipherPluginUuid,
-	PRL_UINT32 nFlags)
-{
-	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
-		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_ENCRYPT));
-
-	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>( hVm );
-	PrlHandleJobPtr pJob = pVm->Encrypt( sPassword, sCipherPluginUuid, nFlags );
-	if (!pJob)
-		RETURN_RES(PRL_INVALID_HANDLE);
-	pJob->SetVmHandle(hVm);
-	RETURN_RES(pJob->GetHandle())
-}
-
-PRL_ASYNC_METHOD( PrlVm_Encrypt ) (
-					  PRL_HANDLE hVm,
-					  PRL_CONST_STR sPassword,
-					  PRL_CONST_STR sCipherPluginUuid,
-					  PRL_UINT32 nFlags
-					  )
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sPassword=%p, sCipherPluginUuid=%s, nFlags=%.8x)",
-		__FUNCTION__,
-		hVm,
-		sPassword,
-		sCipherPluginUuid,
-		nFlags
-		);
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_ENCRYPT)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Encrypt, (hVm, sPassword, sCipherPluginUuid, nFlags))
-}
-
-PRL_HANDLE PrlVm_Decrypt_Impl(
-	PRL_HANDLE hVm,
-	PRL_CONST_STR sPassword,
-	PRL_UINT32 nFlags)
-{
-	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
-		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_DECRYPT));
-
-	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>( hVm );
-	PrlHandleJobPtr pJob = pVm->Decrypt( sPassword, nFlags );
-	if (!pJob)
-		RETURN_RES(PRL_INVALID_HANDLE);
-	pJob->SetVmHandle(hVm);
-	RETURN_RES(pJob->GetHandle())
-}
-
-PRL_ASYNC_METHOD( PrlVm_Decrypt ) (
-					  PRL_HANDLE hVm,
-					  PRL_CONST_STR sPassword,
-					  PRL_UINT32 nFlags
-					  )
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p, sPassword=%p, nFlags=%.8x)",
-		__FUNCTION__,
-		hVm,
-		sPassword,
-		nFlags
-		);
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_DECRYPT)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Decrypt, (hVm, sPassword, nFlags))
-}
-
 PRL_METHOD( PrlVm_GetQuestions ) (
 		PRL_HANDLE hVm,
 		PRL_HANDLE_PTR pQuestionsList
@@ -4823,27 +4689,6 @@ PRL_METHOD( PrlVmCfg_GetVmInfo ) (
 	return (pVm->GetVmInfo(phVmInfo));
 }
 
-PRL_METHOD( PrlVmCfg_IsEncrypted ) (
-		PRL_HANDLE hVmCfg,
-		PRL_BOOL_PTR pbEncrypted
-		)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbEncrypted=%p)",
-		__FUNCTION__,
-		hVmCfg,
-		pbEncrypted
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	if ( PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
-			PRL_WRONG_PTR(pbEncrypted) )
-		return (PRL_ERR_INVALID_ARG);
-
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>(hVmCfg);
-	return (pVm->IsEncrypted(pbEncrypted));
-}
-
 PRL_METHOD( PrlVmCfg_GetCapabilitiesMask ) (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnCapMask
@@ -5328,17 +5173,6 @@ PRL_HANDLE PrlVmDev_Connect_Impl(PRL_HANDLE hVmDevice)
 PRL_HANDLE PrlVmDev_Disconnect_Impl(PRL_HANDLE hVmDevice)
 {
 	ONE_HANDLE_VM_DEV_METH_IMPLEMENTATION(Disconnect, PJOC_VM_DEV_DISCONNECT)
-}
-
-PRL_HANDLE PrlVmDevHd_CheckPassword_Impl(PRL_HANDLE hVmDev, PRL_UINT32 nFlags)
-{
-	if ( PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK) )
-		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_DEV_HD_CHECK_PASSWORD))
-	PrlHandleVmDeviceHardDrivePtr pHdd = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
-	PrlHandleJobPtr pJob = pHdd->CheckPassword( nFlags );
-	if ( !pJob )
-		RETURN_RES((PRL_INVALID_HANDLE))
-	RETURN_RES(pJob->GetHandle())
 }
 
 PRL_HANDLE PrlVmDev_CreateImage_Impl(PRL_HANDLE hVmDevice, PRL_BOOL bRecreateIsAllowed, PRL_BOOL bNonInteractiveMode)
@@ -8887,60 +8721,6 @@ PRL_METHOD( PrlVmDevHd_GetSizeOnDisk ) (
 
 	PrlHandleVmDeviceHardDrivePtr pDevice = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
 	return (pDevice->GetSizeOnDisk(pnOnDiskSize));
-}
-
-PRL_METHOD( PrlVmDevHd_SetPassword ) (
-		PRL_HANDLE hVmDev,
-		PRL_CONST_STR sPassword
-		)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sPassword=%p)",
-		__FUNCTION__,
-		hVmDev,
-		sPassword
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	if (PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK))
-		return PRL_ERR_INVALID_ARG;
-
-	PrlHandleVmDeviceHardDrivePtr pDevice = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
-	return (pDevice->SetPassword(sPassword));
-}
-
-PRL_METHOD( PrlVmDevHd_IsEncrypted ) (
-		PRL_HANDLE hVmDev,
-		PRL_BOOL_PTR pbIsEncrypted
-		)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, pbIsEncrypted=%p)",
-		__FUNCTION__,
-		hVmDev,
-		pbIsEncrypted
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	if (PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK) || PRL_WRONG_PTR(pbIsEncrypted))
-		return PRL_ERR_INVALID_ARG;
-
-	PrlHandleVmDeviceHardDrivePtr pDevice = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
-	return (pDevice->IsEncrypted(pbIsEncrypted));
-}
-
-PRL_ASYNC_METHOD( PrlVmDevHd_CheckPassword ) (
-		PRL_HANDLE hVmDev,
-		PRL_UINT32 nFlags
-		)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, nFlags=%.8x)",
-		__FUNCTION__,
-		hVmDev,
-		nFlags
-		);
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_DEV_HD_CHECK_PASSWORD)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVmDevHd_CheckPassword, (hVmDev, nFlags))
 }
 
 PRL_METHOD( PrlVmDevHd_AddPartition ) (

@@ -636,30 +636,6 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmSectionValidateConfig(PRL_CONST_STR s
 							PJOC_VM_VALIDATE_CONFIG)));
 }
 
-PrlHandleJobPtr PrlHandleServerVm::DspCmdVmAuthorise( PRL_CONST_STR sVmUuid, PRL_CONST_STR sPassword, PRL_UINT32 nFlags )
-{
-	return create_job(m_pPveControl->DspCmdVmAuthorise(sVmUuid, sPassword, nFlags),
-					PJOC_VM_AUTHORISE);
-}
-
-PrlHandleJobPtr PrlHandleServerVm::DspCmdVmChangePassword( PRL_CONST_STR sVmUuid, PRL_CONST_STR sOldPassword, PRL_CONST_STR sNewPassword, PRL_UINT32 nFlags )
-{
-	return create_job(m_pPveControl->DspCmdVmChangePassword(sVmUuid, sOldPassword, sNewPassword, nFlags),
-					PJOC_VM_CHANGE_PASSWORD);
-}
-
-PrlHandleJobPtr PrlHandleServerVm::DspCmdVmEncrypt( PRL_CONST_STR sVmUuid, PRL_CONST_STR sPassword, PRL_CONST_STR sCipherPluginUuid, PRL_UINT32 nFlags )
-{
-	return create_job(m_pPveControl->DspCmdVmEncrypt(sVmUuid, sPassword, sCipherPluginUuid, nFlags),
-					PJOC_VM_ENCRYPT);
-}
-
-PrlHandleJobPtr PrlHandleServerVm::DspCmdVmDecrypt( PRL_CONST_STR sVmUuid, PRL_CONST_STR sPassword, PRL_UINT32 nFlags )
-{
-	return create_job(m_pPveControl->DspCmdVmDecrypt(sVmUuid, sPassword, nFlags),
-					PJOC_VM_DECRYPT);
-}
-
 PrlHandleJobPtr PrlHandleServerVm::DspCmdVmSetProtection( PRL_CONST_STR sVmUuid,
 														PRL_CONST_STR sProtectionPassword,
 														PRL_UINT32 nReserved )
@@ -836,13 +812,4 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmResizeDiskImage(PRL_CONST_STR sVmUuid
 {
     return create_job(m_pPveControl->DspCmdVmResizeDiskImage(sVmUuid, sDiskImage, nNewSize, nFlags),
 					PJOC_VM_RESIZE_DISK_IMAGE);
-}
-
-PrlHandleJobPtr PrlHandleServerVm::DspCmdVmDevHdCheckPassword( const QString &sVmUuid, PRL_DEVICE_TYPE nDevType, PRL_INT32 nDevIndex,
-																		const QString &sDeviceConfig, PRL_UINT32 nFlags )
-{
-	QString job_uuid = m_pPveControl->DspCmdVmDevHdCheckPassword( sVmUuid, nDevType, nDevIndex, sDeviceConfig, nFlags );
-
-	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
-							PJOC_VM_DEV_HD_CHECK_PASSWORD)));
 }

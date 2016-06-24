@@ -391,8 +391,6 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetDefaultBackupDirectory ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetDefaultBackupDirectory ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetBackupTimeout ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetBackupTimeout ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetDefaultEncryptionPluginId ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetDefaultEncryptionPluginId ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_ArePluginsEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_EnablePlugins ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetVmCpuLimitType ) \
@@ -791,7 +789,6 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_ValidateConfig ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_UpdateSecurity ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_InstallTools ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_GetToolsState ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_IsEncrypted ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDev_Create ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDev_Connect ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDev_Disconnect ) \
@@ -836,9 +833,6 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_SetSplitted ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_GetDiskSize ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_SetDiskSize ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_GetSizeOnDisk ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_SetPassword ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_IsEncrypted ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_CheckPassword ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_AddPartition ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_GetPartitionsCount ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_GetPartition ) \
@@ -1022,10 +1016,6 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_InstallAppliance ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_CancelInstallAppliance ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_StopInstallAppliance ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlAppliance_Create ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_Authorise ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_ChangePassword ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_Encrypt ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_Decrypt ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCtTemplate_GetName ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCtTemplate_GetType ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCtTemplate_GetDescription ) \

@@ -609,40 +609,6 @@ public:
 	PrlHandleJobPtr DspCmdVmSectionValidateConfig(PRL_CONST_STR sVmConfiguration, PRL_VM_CONFIG_SECTIONS nSection);
 
 	/**
-	* Send request to remote side on authorise current session against encrypted VM
-	* @param VM UUID
-	* @param password
-	* @param flags bitset
-	*/
-	PrlHandleJobPtr DspCmdVmAuthorise( PRL_CONST_STR sVmUuid, PRL_CONST_STR sPassword, PRL_UINT32 nFlags );
-
-	/**
-	* Send request to remote side on change password for encrypted VM
-	* @param VM UUID
-	* @param old password
-	* @param new password
-	* @param flags bitset
-	*/
-	PrlHandleJobPtr DspCmdVmChangePassword( PRL_CONST_STR sVmUuid, PRL_CONST_STR sOldPassword, PRL_CONST_STR sNewPassword, PRL_UINT32 nFlags );
-
-	/**
-	* Send request to remote side on encrypt VM
-	* @param VM UUID
-	* @param password for VM encryption
-	* @param cipher plugin UUID
-	* @param flags bitset
-	*/
-	PrlHandleJobPtr DspCmdVmEncrypt( PRL_CONST_STR sVmUuid, PRL_CONST_STR sPassword, PRL_CONST_STR sCipherPluginUuid, PRL_UINT32 nFlags );
-
-	/**
-	* Send request to remote side on decrypt VM
-	* @param VM UUID
-	* @param password for VM decryption
-	* @param flags bitset
-	*/
-	PrlHandleJobPtr DspCmdVmDecrypt( PRL_CONST_STR sVmUuid, PRL_CONST_STR sPassword, PRL_UINT32 nFlags );
-
-	/**
 	* Send request to remote side on set VM protection
 	* @param VM UUID
 	* @param password for VM protection
@@ -849,19 +815,6 @@ public:
 
 	PrlHandleJobPtr DspCmdVmResizeDiskImage(PRL_CONST_STR sVmUuid, const QString &sDiskImage,
 								PRL_UINT32 nNewSize, PRL_UINT32 nFlags);
-
-	/**
-	 * Performs request to check virtual HDD password to remote side
-	 * @param VM uuid
-	 * @param virtual device type
-	 * @param virtual device index
-	 * @param virtual device xml config
-	 * @param bitset of flags
-	 * @return pointer to generated job instance
-	 */
-	PrlHandleJobPtr DspCmdVmDevHdCheckPassword(const QString &sVmUuid, PRL_DEVICE_TYPE nDevType, PRL_INT32 nDevIndex,
-																			const QString &sDeviceConfig, PRL_UINT32 nFlags);
-
 };
 
 #endif // __PARALLELS_HANDLE_SERVER_VM_H__

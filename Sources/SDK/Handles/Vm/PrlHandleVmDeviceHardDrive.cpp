@@ -322,46 +322,6 @@ void PrlHandleVmDeviceHardDrive::TryToRestoreObjectElement()
 	}
 }
 
-PRL_RESULT PrlHandleVmDeviceHardDrive::SetPassword(PRL_CONST_STR sPassword)
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-	CHECK_HARD_DISK_ELEM
-	m_pVmHardDisk->setPassword( UTF8_2QSTR( sPassword ) );
-	return PRL_ERR_SUCCESS;
-}
-
-PrlHandleJobPtr PrlHandleVmDeviceHardDrive::CheckPassword( PRL_UINT32 nFlags )
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-	if ( !m_pVmHardDisk )
-		TryToRestoreObjectElement();
-	//Check whether valid element
-	if ( !m_pVmHardDisk )
-		return CreateErrorHandle( PRL_ERR_OBJECT_WAS_REMOVED,
-                                  (PRL_CONST_STR)__FUNCTION__,
-                                  PJOC_VM_DEV_HD_CHECK_PASSWORD );
-	//Check whether device object bound to VM
-	PrlHandleVmPtr pVm = GetVmPtr();
-	if ( !pVm.getHandle() )
-		return CreateErrorHandle( PRL_ERR_INVALID_ARG,
-                                  (PRL_CONST_STR)__FUNCTION__,
-                                  PJOC_VM_DEV_HD_CHECK_PASSWORD );
-
-	QString qsVmUuid = ((PrlHandleVmCfg* )m_pVm.getHandle())->GetUuid();
-	//Create and send request to dispatcher
-	return pVm->GetServerVm()->DspCmdVmDevHdCheckPassword( qsVmUuid, m_pVmHardDisk->getDeviceType(),
-														 m_pVmHardDisk->getIndex(), m_pVmHardDisk->toString(),
-														 nFlags );
-}
-
-PRL_RESULT PrlHandleVmDeviceHardDrive::IsEncrypted(PRL_BOOL_PTR pbIsEncrypted)
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-	CHECK_HARD_DISK_ELEM
-	*pbIsEncrypted = m_pVmHardDisk->isEncrypted();
-	return PRL_ERR_SUCCESS;
-}
-
 PRL_RESULT PrlHandleVmDeviceHardDrive::GetStorageURL(PRL_STR sURL, PRL_UINT32_PTR pnURLBufLength)
 {
 	SYNCHRO_VMDEV_DATA_ACCESS

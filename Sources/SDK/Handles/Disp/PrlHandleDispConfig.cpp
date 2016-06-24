@@ -450,22 +450,6 @@ PRL_RESULT PrlHandleDispConfig::SetBackupTimeout(PRL_UINT32 nTimeout)
 }
 
 
-PRL_RESULT PrlHandleDispConfig::GetDefaultEncryptionPluginId(PRL_STR sDefaultPluginId, PRL_UINT32_PTR pnDefaultPluginIdBufLength)
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-	return CopyStringValue( m_DispConfig.getEncryptionPreferences()->getDefaultPluginId(),
-	sDefaultPluginId,
-	pnDefaultPluginIdBufLength);
-}
-
-PRL_RESULT PrlHandleDispConfig::SetDefaultEncryptionPluginId(PRL_CONST_STR sDefaultPluginId)
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_DispConfig.getEncryptionPreferences()->setDefaultPluginId( UTF8_2QSTR(sDefaultPluginId) );
-	m_DispConfig.getEncryptionPreferences()->setDefaultPluginIdWasChanged( true );
-	return (PRL_ERR_SUCCESS);
-}
-
 PRL_RESULT PrlHandleDispConfig::ArePluginsEnabled(PRL_BOOL_PTR pbIsPluginsAllowed)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

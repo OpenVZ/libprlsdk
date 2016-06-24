@@ -70,46 +70,6 @@ typedef struct _PrlPlugin
 	PRL_RESULT (PRL_CALL *GetInfo)(struct _PrlPlugin* _self, IPluginInfoPtr Info);
 } PRL_STRUCT( PrlPlugin );
 
-// Encryption class
-static const PRL_GUID PRL_CLS_ENCRYPTION = { 0x564820fc, 0xe265, 0x4d69,
-	{ 0x9f, 0xb0, 0x3d, 0x18, 0x39, 0x6f, 0x1f, 0x8d } };
-#define GUID_CLS_ENCRYPTION_STR		"{564820fc-e265-4d69-9fb0-3d18396f1f8d}"
-
-/*
- * Information about encryption plugin
- */
-typedef struct _ICryptInfo
-{
-	IPluginInfo PluginInfo;
-	PRL_UINT32 KeySize;
-	PRL_UINT32 BlockSize;
-} PRL_STRUCT(ICryptInfo);
-typedef ICryptInfo*	ICryptInfoPtr;
-
-/*
- * Encryption interface
- */
-typedef struct _PrlCrypt
-{
-	// Inheritance from PrlPlugin
-	struct _PrlPlugin Plugin;
-	// Initialize engine
-	PRL_RESULT (PRL_CALL *Init)(struct _PrlCrypt* _self);
-	// Encrypt data block
-	PRL_RESULT (PRL_CALL *Encrypt)(struct _PrlCrypt* _self, PRL_VOID_PTR Data,
-						const PRL_UINT32 Size, const PRL_UINT8_PTR v);
-	// Decrypt data block
-	PRL_RESULT (PRL_CALL *Decrypt)(struct _PrlCrypt* _self, PRL_VOID_PTR Data,
-						const PRL_UINT32 Size, const PRL_UINT8_PTR v);
-	// Set key to encryptor, key size must be equal or larger than described in Info
-	PRL_RESULT (PRL_CALL *SetKey)(struct _PrlCrypt* _self, const PRL_UINT8_PTR Key);
-	// Set initial initialization vector, its size must be
-	// equal or larger than described in Info as block size
-	PRL_RESULT (PRL_CALL *SetInitIV)(struct _PrlCrypt* _self, const PRL_UINT8_PTR v);
-	// Get information about plugin
-	PRL_RESULT (PRL_CALL *GetInfo)(struct _PrlCrypt* _self, ICryptInfoPtr Info);
-} PRL_STRUCT( PrlCrypt );
-
 #ifdef _WIN_
 #pragma pack(pop, save_pack)
 #endif

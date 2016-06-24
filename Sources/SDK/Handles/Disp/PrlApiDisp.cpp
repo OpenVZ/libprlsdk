@@ -4214,51 +4214,6 @@ PRL_METHOD( PrlDispCfg_SetVmCpuLimitType ) (
 	return (pDispConfig->SetVmCpuLimitType(nVmCpuLimitType));
 }
 
-PRL_METHOD( PrlDispCfg_GetDefaultEncryptionPluginId ) (
-	PRL_HANDLE hDispConfig,
-	PRL_STR sDefaultPluginId,
-	PRL_UINT32_PTR pnDefaultPluginIdBufLength
-	)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, sDefaultPluginId=%.8X, pnDefaultPluginIdBufLength=%.8X)",
-		__FUNCTION__,
-		hDispConfig,
-		sDefaultPluginId,
-		pnDefaultPluginIdBufLength
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) ||
-		PRL_WRONG_PTR(pnDefaultPluginIdBufLength))
-		return (PRL_ERR_INVALID_ARG);
-
-	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
-
-	return (pDispConfig->GetDefaultEncryptionPluginId(sDefaultPluginId, pnDefaultPluginIdBufLength));
-}
-
-PRL_METHOD( PrlDispCfg_SetDefaultEncryptionPluginId ) (
-	PRL_HANDLE hDispConfig,
-	PRL_CONST_STR sDefaultPluginId
-	)
-{
-	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, sDefaultPluginId=%.8X)",
-		__FUNCTION__,
-		hDispConfig,
-		sDefaultPluginId
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG))
-		return (PRL_ERR_INVALID_ARG);
-
-	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
-
-	return (pDispConfig->SetDefaultEncryptionPluginId(sDefaultPluginId));
-}
-
 PRL_METHOD( PrlDispCfg_IsVerboseLogEnabled ) (
 	PRL_HANDLE hDispConfig,
 	PRL_BOOL_PTR pbEnabled
