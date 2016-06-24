@@ -40,7 +40,8 @@ PrlHandleServerJob(server, job_uuid, PJOC_VM_GUEST_RUN_PROGRAM, true),
 m_nStdin(nStdin),
 m_nStdout(nStdout),
 m_nStderr(nStderr),
-m_bIsTtyChanged(PRL_FALSE)
+m_bIsTtyChanged(PRL_FALSE),
+m_Tios()
 {
 	PrlFileDescriptorsMech::RegisterJob(this);
 }
