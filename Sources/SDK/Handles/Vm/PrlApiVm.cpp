@@ -8914,6 +8914,46 @@ PRL_METHOD( PrlVmDevHd_GetSerialNumber ) (
 	return (pDevice->GetSerialNumber(sSerialNumber, pnSerialNumberBufLength));
 }
 
+PRL_METHOD(PrlVmDevHd_GetEncryption) (PRL_HANDLE hVmDev, PRL_HANDLE_PTR phEncryption)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, phEncryption=%p)",
+		__FUNCTION__, hVmDev, phEncryption);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK)
+		|| PRL_WRONG_PTR(phEncryption))
+	{
+		return PRL_ERR_INVALID_ARG;
+	}
+
+	PrlHandleVmDeviceHardDrivePtr pDev = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
+	if (!pDev.isValid())
+		return PRL_ERR_INVALID_ARG;
+	return pDev->GetEncryption(phEncryption);
+}
+
+PRL_METHOD(PrlVmDevHd_SetEncryption) (PRL_HANDLE hVmDev, PRL_HANDLE hEncryption)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, hEncryption=%p)",
+		__FUNCTION__, hVmDev, hEncryption);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK)
+		|| PRL_WRONG_HANDLE(hEncryption, PHT_VIRTUAL_DISK_ENCRYPTION))
+	{
+		return PRL_ERR_INVALID_ARG;
+	}
+
+	PrlHandleVmDeviceHardDrivePtr pDev = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
+	PrlHandleVirtualDiskEncryptionPtr pEnc = PRL_OBJECT_BY_HANDLE<PrlHandleVirtualDiskEncryption>(hEncryption);
+	if (!pDev.isValid() || !pEnc.isValid())
+		return PRL_ERR_INVALID_ARG;
+
+	return (pDev->SetEncryption(pEnc));
+}
+
 PRL_METHOD( PrlVmDevHdPart_Remove ) (
 		PRL_HANDLE hPartition
 		)
@@ -8974,6 +9014,53 @@ PRL_METHOD( PrlVmDevHdPart_SetSysName ) (
 
 	PrlHandleVmDeviceHdPartPtr pPartition = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHdPart>(hPartition);
 	return pPartition->SetSysName(sSysName);
+}
+
+PRL_METHOD(PrlVmDevHdEncryption_GetKeyId) (
+		PRL_HANDLE hEncryption,
+		PRL_STR sKeyId,
+		PRL_UINT32_PTR pnKeyIdBufLength
+		)
+{
+	LOG_MESSAGE(DBG_DEBUG, "%s (hEncryption=%p, sKeyId=%p, pnKeyIdBufLength=%p)",
+		__FUNCTION__, hEncryption, sKeyId, pnKeyIdBufLength);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hEncryption, PHT_VIRTUAL_DISK_ENCRYPTION) ||
+		PRL_WRONG_PTR(pnKeyIdBufLength))
+	{
+		return PRL_ERR_INVALID_ARG;
+	}
+
+	PrlHandleVirtualDiskEncryptionPtr pEnc = PRL_OBJECT_BY_HANDLE<PrlHandleVirtualDiskEncryption>(hEncryption);
+	if (!pEnc.isValid())
+		return PRL_ERR_INVALID_ARG;
+
+	return pEnc->getKeyId(sKeyId, pnKeyIdBufLength);
+}
+
+PRL_METHOD(PrlVmDevHdEncryption_SetKeyId) (
+		PRL_HANDLE hEncryption,
+		PRL_CONST_STR sKeyId
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hEncryption=%p, sKeyId=%s)",
+		__FUNCTION__, hEncryption, sKeyId);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hEncryption, PHT_VIRTUAL_DISK_ENCRYPTION) ||
+		PRL_WRONG_PTR(sKeyId))
+	{
+		return PRL_ERR_INVALID_ARG;
+	}
+
+	PrlHandleVirtualDiskEncryptionPtr pEnc = PRL_OBJECT_BY_HANDLE<PrlHandleVirtualDiskEncryption>(hEncryption);
+	if (!pEnc.isValid())
+		return PRL_ERR_INVALID_ARG;
+
+	return pEnc->setKeyId(sKeyId);
 }
 
 PRL_METHOD( PrlVmDev_IsPassthrough ) (
