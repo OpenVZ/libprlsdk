@@ -75,6 +75,8 @@
 //as binary buffer contains structure PRL_STAT_NET_TRAFFIC. See
 //PrlIOStructs.h for more info
 #define PRL_NET_CLASSFUL_TRAFFIC_PTRN			"net.classful.traffic"
+#define PRL_NET_CLASSFUL_TRAFFIC_IPV4_PTRN		"net.classful.traffic.ipv4"
+#define PRL_NET_CLASSFUL_TRAFFIC_IPV6_PTRN		"net.classful.traffic.ipv6"
 
 //Guest OS CPU usage in percents (modulated to 100%)
 #define PRL_GUEST_CPU_USAGE_PTRN			"guest.cpu.usage"
