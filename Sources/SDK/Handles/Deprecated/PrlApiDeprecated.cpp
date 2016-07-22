@@ -1488,7 +1488,7 @@ PRL_METHOD( PrlApi_SetLogPath ) ( PRL_CONST_STR sLogPath )
 	PRL_APPLICATION_MODE nAppMode = ParallelsDirs::getAppExecuteMode();
 	if (nAppMode != PAM_UNKNOWN)
 	{
-		ParallelsDirs::setLogPath(QSTR2UTF8(ParallelsDirs::getClientLogPath()));
+		ParallelsDirs::setLogPath(GetUserHomeDir());
 		return PRL_ERR_SUCCESS;
 	}
 
