@@ -25,10 +25,9 @@
  */
 
 
-#include "External/libtar/libtar/compat/config.h"
-#include "External/libtar/libtar/lib/libtar.h"
 #include <prlcommon/Interfaces/ParallelsTypes.h>
 #include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/PrlCommonUtilsBase/Archive.h>
 
 #include <stdio.h>
 #include <fcntl.h>
@@ -42,12 +41,6 @@
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
-
-#ifdef HAVE_LIBZ
-#include "External/zlib/zlib.h"
-#endif
-
-#include "External/libtar/libtar/compat/compat.h"
 
 #ifdef _WIN_
 	#include <io.h>
@@ -77,70 +70,6 @@
 #endif
 
 const int g_maxSizeToReadFromLog = 16*1024*1024;
-
-static tarfd_t gzopen_frontend(const char *pathname, int oflags, int mode)
-{
-	(void)mode;
-	const char *gzoflags = 0;
-	gzFile gzf = 0;
-
-#ifndef _WIN_
-	int fd = -1;
-#endif
-
-	switch (oflags & O_ACCMODE)
-	{
-	case O_WRONLY:
-		gzoflags = "wb";
-		break;
-	case O_RDONLY:
-		gzoflags = "rb";
-		break;
-	default:
-	case O_RDWR:
-		errno = EINVAL;
-		return TAR_INVALID_FD;
-	}
-
-#ifndef _WIN_
-	fd = open(pathname, oflags, mode);
-	if (fd == -1)
-		return TAR_INVALID_FD;
-
-	if ((oflags & O_CREAT) && fchmod(fd, mode))
-		return TAR_INVALID_FD;
-
-	gzf = gzdopen(fd, gzoflags);
-#else
-	gzf = gzopen(pathname, gzoflags);
-#endif
-	if (!gzf)
-	{
-		errno = ENOMEM;
-		return TAR_INVALID_FD;
-	}
-
-	return (tarfd_t)gzf;
-}
-
-static int gzclose_frontend(tarfd_t fd)
-{
-	return gzclose((gzFile)fd);
-}
-
-static ssize_t gzread_frontend(tarfd_t fd, void * buf, size_t len)
-{
-	// NOTE : expected 'len' maximum value is T_BLOCKSIZE, so truncate unsigned is safe
-	return gzread((gzFile)fd, buf, (unsigned)len);
-}
-
-static ssize_t gzwrite_frontend(tarfd_t fd, const void * buf, size_t len)
-{
-	// NOTE : expected 'len' maximum value is T_BLOCKSIZE, so truncate unsigned is safe
-	return gzwrite((gzFile)fd, buf, (unsigned)len);
-}
-
-static tartype_t gztype = { gzopen_frontend, gzclose_frontend, gzread_frontend, gzwrite_frontend };
 
 PRL_RESULT CPackedProblemReport::createInstance( CPackedProblemReport::packedReportSide side ,
 								 CPackedProblemReport ** ppReport,
@@ -306,27 +235,9 @@ m_bQuitFromPack( false )
 
 PRL_RESULT CPackedProblemReport::extractArchive( const QString & strPath )
 {
-	TAR *t;
-
-	WRITE_TRACE(DBG_INFO, "Extract incoming archive %s to directoty %s",
-					QSTR2UTF8( m_strArchPath ),
-					QSTR2UTF8( strPath ) );
-	if ( tar_open(&t, m_strArchPath.toUtf8().data(), &gztype,O_RDONLY, 0, 0 ) == -1 )
+	if (Archive::Reader::extractAll(m_strArchPath, strPath) < 0)
 	{
-		WRITE_TRACE(DBG_FATAL, "tar_open(): %s\n", strerror(errno));
-		return PRL_ERR_FAILURE;
-	}
-
-	if ( tar_extract_all(t, strPath.toUtf8().data() ) != 0)
-	{
-		WRITE_TRACE(DBG_FATAL, "tar_extract_all(): %s\n", strerror(errno));
-		tar_close(t);
-		return PRL_ERR_FAILURE;
-	}
-
-	if (tar_close(t) != 0)
-	{
-		WRITE_TRACE(DBG_FATAL, "tar_close(): %s\n", strerror(errno));
+		WRITE_TRACE(DBG_FATAL, "unable to extract file from archive '%s'", qPrintable(m_strArchPath));
 		return PRL_ERR_FAILURE;
 	}
 
@@ -749,55 +660,23 @@ PRL_RESULT CPackedProblemReport::packReport()
 	saveMainXml();
 	QStringList lstFiles = createReportFilesList();
 
-	TAR *t = NULL;
-
-	if ( tar_open( &t,
-					m_strArchPath.toUtf8().data(),
-					&gztype,
-					O_WRONLY | O_CREAT,
-					0644,
-					0) == -1 )
+	QScopedPointer<Archive::Writer> w(Archive::Writer::create(m_strArchPath));
+	if (w.isNull())
 	{
-		WRITE_TRACE( DBG_FATAL, "tar_open(): %s\n", strerror(errno) );
+		WRITE_TRACE(DBG_FATAL, "unable to create archive '%s'", qPrintable(m_strArchPath));
 		return PRL_ERR_FAILURE;
 	}
 
-	foreach( QString strPath, lstFiles )
+	foreach(const QString& f, lstFiles)
 	{
-		QString strPathToSave = QFileInfo(m_strTempDirPath).fileName() + QString("/");
-		strPathToSave += QFileInfo(strPath).fileName();
-		if ( tar_append_tree( t,
-								strPath.toUtf8().data(),
-								strPathToSave.toUtf8().data(),
-								checkOnQuitCallback, this ) != 0 )
+		if(m_bQuitFromPack)
 		{
-			WRITE_TRACE(DBG_FATAL, "tar_append_tree(\"%s\", \"%s\"): %s\n",
-							QSTR2UTF8( m_strTempDirPath ),
-							QSTR2UTF8( strPathToSave ),
-							strerror(errno) );
-
-			tar_close(t);
-			if( m_bQuitFromPack )
-			{
 				m_bQuitFromPack = false;
 				return PRL_ERR_OPERATION_WAS_CANCELED;
-			}
-
-			return PRL_ERR_FAILURE;
 		}
-	}
-
-	if ( tar_append_eof( t ) != 0 )
-	{
-		WRITE_TRACE(DBG_FATAL, "tar_append_eof(): %s\n", strerror(errno) );
-		tar_close(t);
-		return PRL_ERR_FAILURE;
-	}
-
-	if (tar_close(t) != 0)
-	{
-		WRITE_TRACE(DBG_FATAL, "tar_close(): %s\n", strerror(errno) );
-		return PRL_ERR_FAILURE;
+		QString p = QDir(QFileInfo(m_strTempDirPath).fileName()).filePath(QFileInfo(f).fileName());
+		if (PRL_FAILED(w->append(f, p)))
+			WRITE_TRACE(DBG_FATAL, "unable to write file '%s' to problem report", qPrintable(f));
 	}
 
 	m_bCleanupTempDir = true;
