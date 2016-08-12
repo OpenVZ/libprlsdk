@@ -645,15 +645,6 @@ QStringList CPackedProblemReport::createReportFilesList()
 	return lstFiles.toList();
 }
 
-static int checkOnQuitCallback( void * pParam )
-{
-	CPackedProblemReport* pReport = dynamic_cast<CPackedProblemReport*>((CPackedProblemReport*)pParam);
-	if ( pReport && pReport->isQuitFromPack() )
-		return 1;
-
-	return 0;
-}
-
 PRL_RESULT CPackedProblemReport::packReport()
 {
 	m_bQuitFromPack = false;
