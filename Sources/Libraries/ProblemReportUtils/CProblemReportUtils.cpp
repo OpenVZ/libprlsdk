@@ -140,6 +140,7 @@ QStringList GetCrashDumpsTemplates(const QString& qsPatternSuffix, bool bAddLowM
 			<< g_prl_deactivation_id
 			<< g_prl_shappgroup_bridge
 			<< g_prl_updater_ctl
+			<< "vz[a-z]*"
 			;
 
 	for(int i = 0; i < filters.size(); i++)
