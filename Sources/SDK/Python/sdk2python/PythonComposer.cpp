@@ -74,6 +74,7 @@ PythonComposer::CustomClassInfo PythonComposer::s_CustomClassInfo[] =
 {"VmDev",        "VmDevice",     "_Handle",    "",       DEV_TYPE_OTHERS, "",0,0,0,0},
 {"VmDevHd",      "VmHardDisk",   "VmDevice",   "",       "PHT_VIRTUAL_DEV_HARD_DISK", "",0,0,0,0},
 {"VmDevHdPart",  "VmHdPartition","_Handle",    "",       "PHT_VIRTUAL_DEV_HD_PARTITION", "",0,0,0,0},
+{"VmDevHdEncryption","VmHdEncryption","_Handle","",      "PHT_VIRTUAL_DISK_ENCRYPTION", "",0,0,0,0},
 {"VmDevNet",     "VmNet",        "VmDevice",   "",       "PHT_VIRTUAL_DEV_NET_ADAPTER", "",0,0,0,0},
 {"VmDevUsb",     "VmUsb",        "VmDevice",   "",       "PHT_VIRTUAL_DEV_USB_DEVICE", "",0,0,0,0},
 {"VmDevSound",   "VmSound",      "VmDevice",   "",       "PHT_VIRTUAL_DEV_SOUND", "",0,0,0,0},

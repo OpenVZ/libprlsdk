@@ -348,3 +348,36 @@ PRL_RESULT PrlHandleVmDeviceHardDrive::GetSerialNumber(PRL_STR sSerialNumber,
 	return CopyStringValue(m_pVmHardDisk->getSerialNumber(),
 		sSerialNumber, pnSerialNumberBufLength);
 }
+
+PRL_RESULT PrlHandleVmDeviceHardDrive::GetEncryption(PRL_HANDLE_PTR phEncryption)
+{
+	SYNCHRO_VMDEV_DATA_ACCESS
+	CHECK_HARD_DISK_ELEM
+
+	PrlHandleVirtualDiskEncryptionPtr e(new PrlHandleVirtualDiskEncryption);
+	if (!e)
+		return PRL_ERR_OUT_OF_MEMORY;
+	CVmHddEncryption *enc = m_pVmHardDisk->getEncryption();
+	if (enc)
+	{
+		PRL_RESULT r = e->fromString(qPrintable(enc->toString()));
+		if (PRL_FAILED(r))
+			return r;
+	}
+	*phEncryption = e->GetHandle();
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVmDeviceHardDrive::SetEncryption(PrlHandleVirtualDiskEncryptionPtr hEncryption)
+{
+	SYNCHRO_VMDEV_DATA_ACCESS
+	CHECK_HARD_DISK_ELEM
+
+	CVmHddEncryption *e = new CVmHddEncryption;
+	if (!e)
+		return PRL_ERR_OUT_OF_MEMORY;
+
+	e->fromString(hEncryption->toString());
+	m_pVmHardDisk->setEncryption(e);
+	return PRL_ERR_SUCCESS;
+}

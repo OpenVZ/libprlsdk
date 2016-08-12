@@ -112,7 +112,8 @@ HEADERS += $${INSTALL_HEADERS} \
 	\
 	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskMap.h \
 	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDisk.h \
-	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskOpenPolicy.h
+	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskOpenPolicy.h \
+	$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVirtualDiskEncryption.h
 
 
 SOURCES += \
@@ -162,7 +163,8 @@ SOURCES += \
 	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskSDK.cpp \
 	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskMap.cpp \
 	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDisk.cpp \
-	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskOpenPolicy.cpp
+	$$SRC_LEVEL/SDK/Handles/Disk/PrlHandleDiskOpenPolicy.cpp \
+	$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVirtualDiskEncryption.cpp
 
 	HEADERS += \
 		$$SRC_LEVEL/SDK/Handles/Stat/PrlHandleServerStat.h \

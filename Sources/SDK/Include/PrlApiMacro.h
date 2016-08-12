@@ -843,8 +843,12 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_SetAutoCompressEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_IsAutoCompressEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_SetStorageURL ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_GetStorageURL ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_GetEncryption ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHd_SetEncryption ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHdPart_GetSysName ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHdPart_SetSysName ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHdEncryption_GetKeyId ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevHdEncryption_SetKeyId ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevNet_GetBoundAdapterIndex ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevNet_SetBoundAdapterIndex ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmDevNet_GetBoundAdapterName ) \

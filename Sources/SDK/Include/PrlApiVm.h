@@ -11830,6 +11830,40 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 		PRL_UINT32_PTR pnSerialNumberBufLength
 		));
 
+/* \Returns the disk encryption parameters
+   Parameters
+   hVmDev :         A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
+                    identifying the virtual hard disk.
+   phEncryption:   [out] A pointer to a variable that receives the
+			PHT_DISK_ENCRYPTION handle containing the disk
+			encryption parameters.
+   Returns
+   PRL_RESULT. */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmDevHd_GetEncryption, (
+		PRL_HANDLE hVmDev,
+		PRL_HANDLE_PTR phEncryption
+		) );
+
+/* Specify disk encryption parameters
+   Parameters
+   hVmDev :         A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
+                    identifying the virtual hard disk.
+   phEncryption:    PHT_DISK_ENCRYPTION handle containing the disk
+			encryption parameters.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmDevHd_SetEncryption, (
+		PRL_HANDLE hVmDev,
+		PRL_HANDLE hEncryption
+		) );
+
 /* Removes the specified partition handle from the virtual hard
    disk list.
    Parameters
@@ -11897,6 +11931,64 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_HANDLE hPartition,
 		PRL_CONST_STR sSysName
 		) );
+
+/*
+   Return disk encryption key identifier.
+
+   Parameters
+   hEncryption :    A valid handle of type PHT_VIRTUAL_DISK_ENCRYPTION
+                    identifying the virtual hard disk encryption parameters.
+   sKeyID           [out] A pointer to a buffer that receives the result (a UTF\-8 encoded,
+                    null\-terminated string).
+   pnKeyIdBufLength : [in] The size of the output buffer (in bytes). Set the buffer pointer to null
+                    and this parameter's value to zero to receive the required size.
+                    [out] The required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The parameter that is used to specify the size
+   will contain the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   See Also
+   PrlVmDevHdEncryption_SetKeyId
+   PrlVmDevHd_GetEncryption                                     */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmDevHdEncryption_GetKeyId, (
+		PRL_HANDLE hEncryption,
+		PRL_STR sKeyId,
+		PRL_UINT32_PTR pnKeyIdBufLength
+		));
+
+/*
+   Set disk encryption key identifier.
+
+   Parameters
+   hEncryption:  A valid handle of type PHT_VIRTUAL_DISK_ENCRYPTION
+                 identifying the virtual hard disk.
+   sKeyId   :     [in] Key identifier - an UTF-8 encoded string with null '\0' symbol at the end.
+
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   See Also
+   PrlVmDevHdEncryption_GetKeyId
+   PrlVmDevHd_GetEncryption                                     */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			 PrlVmDevHdEncryption_SetKeyId, (
+		PRL_HANDLE hEncryption,
+		PRL_CONST_STR sKeyId
+		));
 
 /* \Returns the index of the adapter to which the specified
    virtual adapter is bound. In a bridged networking mode, a

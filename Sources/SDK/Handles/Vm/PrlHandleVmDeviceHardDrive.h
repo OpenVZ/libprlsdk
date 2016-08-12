@@ -29,6 +29,8 @@
 
 
 #include "PrlHandleVmDevice.h"
+#include "PrlHandleVirtualDiskEncryption.h"
+
 
 /**
  * Hard drive VM device handle object.
@@ -256,6 +258,22 @@ public://SDK API helpers set
 	 * PRL_ERR_SUCCESS - operation completed successfully
 	 */
 	PRL_RESULT GetSerialNumber(PRL_STR sSerialNumber, PRL_UINT32_PTR pnSerialNumberBufLength);
+
+	/**
+	 * Return disk encryption parameters
+	 *
+	 * @param [out] pointer to a handle for storing result
+	 * @return PRL_RESULT
+	 */
+	PRL_RESULT GetEncryption(PRL_HANDLE_PTR phEncryption);
+
+	/**
+	 * Set disk encryption parameters
+	 *
+	 * @param assigning value
+	 * @return PRL_RESULT
+	 */
+	PRL_RESULT SetEncryption(PrlHandleVirtualDiskEncryptionPtr hEncryption);
 
 private:
 
