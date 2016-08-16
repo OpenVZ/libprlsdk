@@ -3546,7 +3546,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_COULDNT_BE_STARTED_UNDER_SPECIFIED_USER,
 		tr("The user \"%1\" does not have the permission to start this virtual machine."),
-		tr("Open the Virtual Machine Configuration dialog and enable the View and run option on the Permissions tab. Make sure that the user has the read and execute permissions for the virtual machine folder. Contact your Parallels Server administrator for further assistance."),
+		tr("Open the Virtual Machine Configuration dialog and enable the View and run option on the Permissions tab. Make sure that the user has the read and execute permissions for the virtual machine folder. Contact your Virtuozzo administrator for further assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -3917,7 +3917,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_COULDNT_DETACH_TARGET_CONNECTION,
 		tr("Unable to perform the migration."),
-		tr("The virtual machine migration could not be initialized on the destination server. Contact your Parallels Server administrator for assistance."),
+		tr("The virtual machine migration could not be initialized on the destination server. Contact your Virtuozzo administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6263,7 +6263,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_COMMAND_SUPPORTED_ONLY_AT_SERVER_MODE,
 		tr("The operation is not supported."),
-		tr("The requested operation is exclusive for the Parallels Server product."),
+		tr("The requested operation is exclusive for the Virtuozzo product."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7420,7 +7420,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONNECT_TO_DISPATCHER_ITERATIVELY,
 		tr("Unable to establish a connection between \"%1\" and \"%2\"."),
-		tr("The network connection between these servers may be broken, or one of the servers may be down. Contact your Parallels Server administrator for assistance."),
+		tr("The network connection between these servers may be broken, or one of the servers may be down. Contact your Virtuozzo administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7452,7 +7452,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_NO_AUTH_TO_SAVE_BACKUP_FILES,
 		tr("You do not have the permission to save the backup files in the folder \"%1\"."),
-		tr("Please select another location or contact the Parallels Server administrator for assistance."),
+		tr("Please select another location or contact the Virtuozzo administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7733,7 +7733,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PROXY_WRONG_PROTOCOL_VERSION,
 		tr("Unable to connect to the proxy server \"%1\"."),
-		tr("The version of your Parallels software <i>%2</i> is incompatible with the version of Parallels Proxy Server <i>%3</i>. Synchronize the Parallels Server software and try again."),
+		tr("The version of your Parallels software <i>%2</i> is incompatible with the version of Parallels Proxy Server <i>%3</i>. Synchronize the Virtuozzo software and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9556,7 +9556,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_WARM_MODE_NOT_SUPPORTED,
 		tr("Unable to migrate virtual machines that are running or paused."),
-		tr("An older version of Parallels Server is installed on the target server. Only stopped virtual machines can be migrated to it."),
+		tr("An older version of Virtuozzo is installed on the target server. Only stopped virtual machines can be migrated to it."),
 		false,
 		PMT_CRITICAL
 		);
