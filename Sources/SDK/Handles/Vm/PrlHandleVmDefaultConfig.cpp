@@ -1234,7 +1234,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultNetwork ( CVmConfiguration& cfg, PRL_HA
 	QString friendlyName = systemName;
 
 	network->setIndex( devIdx );
-	network->setEmulatedType( isServerMode ? PNA_BRIDGED_ETHERNET : PNA_SHARED );
+	network->setEmulatedType( isServerMode ? PNA_BRIDGED_NETWORK : PNA_SHARED );
 	network->setConnected( PVE::DeviceConnected );
 	network->setEnabled( PVE::DeviceEnabled );
 	network->setMacAddress( macAddress );
@@ -1242,7 +1242,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultNetwork ( CVmConfiguration& cfg, PRL_HA
 	network->setBoundAdapterName( QObject::tr( DEFAULT_NETWORK_ADAPTER_NAME ) );
 	network->setSystemName( systemName );
 	network->setUserFriendlyName( friendlyName );
-	if (network->getEmulatedType() == PNA_BRIDGED_ETHERNET)
+	if (network->getEmulatedType() == PNA_BRIDGED_NETWORK)
 		network->setVirtualNetworkID(getDefaultBridgedNetwork());
 
 	cfg.getVmHardwareList()->addNetworkAdapter( network );
