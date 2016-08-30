@@ -377,6 +377,11 @@ bool PythonComposer::AddMethod(QString& content, const QString& qsFunc, bool bHa
                 qsFuncArg = PTN_EVENT_HANDLER_PARAMS;
                 qsMethArg = PTN_EVENT_HANDLER_PARAMS;
             }
+            else if (arg.type == "PRL_IOLIMIT_DATA_PTR" || arg.type == "PRL_CONST_IOLIMIT_DATA_PTR")
+            {
+                qsFuncArg = PTN_IOLIMIT_DATA_PARAMS;
+                qsMethArg = PTN_IOLIMIT_DATA_PARAMS;
+            }
 
 			qsMethArgs += ", " + qsMethArg;
 			qsFuncArgs += (qsFuncArgs.isEmpty() ? "" : ", ") + qsFuncArg;

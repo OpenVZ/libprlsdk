@@ -553,3 +553,63 @@ static PyObject *sdk_PrlVm_UnregEventHandler(PyObject* self, PyObject *args)
 	PRL_SDK_CHECK;
 	return sdk_PrlHandle_UnregEventHandler(self, args);
 }
+
+static PyObject *sdk_PrlVmCfg_SetIoLimit(PyObject* /*self*/, PyObject *args)
+{
+    PRL_SDK_CHECK;
+
+	PRL_HANDLE hVmCfg = (PRL_HANDLE )0;
+	PRL_UINT32 value = (PRL_UINT32 )0;
+	PRL_IOLIMIT_TYPE type = (PRL_IOLIMIT_TYPE )0;
+
+	if ( ! PyArg_ParseTuple( args, "kII:PrlVmCfg_SetIoLimit", &hVmCfg, &value, &type ) )
+		return NULL;
+
+	PRL_IOLIMIT_DATA iolimit_data;
+	iolimit_data.value = value;
+	iolimit_data.type = type;
+
+	PRL_RESULT prlResult;
+	Py_BEGIN_ALLOW_THREADS
+	prlResult = PrlVmCfg_SetIoLimit(hVmCfg, &iolimit_data);
+	Py_END_ALLOW_THREADS
+
+	PyObject* ret_list = PyList_New(0);
+	if ( ! ret_list )
+		return NULL;
+	if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+		return NULL;
+
+	return ret_list;
+}
+
+static PyObject *sdk_PrlVmCfg_GetIoLimit(PyObject* /*self*/, PyObject *args)
+{
+    PRL_SDK_CHECK;
+
+	PRL_HANDLE hVmCfg = (PRL_HANDLE )0;
+	PRL_UINT32 value = (PRL_UINT32 )0;
+	PRL_IOLIMIT_TYPE type = (PRL_IOLIMIT_TYPE )0;
+
+	if ( ! PyArg_ParseTuple( args, "kII:PrlVmCfg_GetIoLimit", &hVmCfg, &value, &type ) )
+		return NULL;
+
+	PRL_IOLIMIT_DATA iolimit_data;
+	iolimit_data.value = value;
+	iolimit_data.type = type;
+
+	PRL_RESULT prlResult;
+	Py_BEGIN_ALLOW_THREADS
+	prlResult = PrlVmCfg_GetIoLimit(hVmCfg, &iolimit_data);
+	Py_END_ALLOW_THREADS
+
+	PyObject* ret_list = PyList_New(0);
+	if ( ! ret_list )
+		return NULL;
+	if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+		return NULL;
+	if ( PyList_Append(ret_list, Py_BuildValue( "I", iolimit_data.value )) )
+		return NULL;
+
+	return ret_list;
+}

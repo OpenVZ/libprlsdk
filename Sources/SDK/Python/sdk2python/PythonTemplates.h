@@ -307,4 +307,7 @@
 #define PTN_EVENT_HANDLER_PARAMS \
 	"callback_func"
 
+#define PTN_IOLIMIT_DATA_PARAMS \
+	"nValue"
+
 #endif	// PYTHON_TEMPLATES_H
