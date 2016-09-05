@@ -476,7 +476,6 @@ public:
 	 */
 	PrlHandleJobPtr Move(PRL_CONST_STR sNewHomePath, PRL_UINT32 nFlags);
 
-
 	/**
 	 * Capture VM screen
 	 *
@@ -485,6 +484,14 @@ public:
 	 * return pointer to job object
 	 */
 	PrlHandleJobPtr CaptureScreen(PRL_UINT32 nWidth, PRL_UINT32 nHeight, PRL_UINT32 nFlags);
+
+	/**
+	 * Commit changes in VM's encryption settings
+	 *
+	 * @param nFlags - encryption flags
+	 * @return pointer to job object
+	 */
+	PrlHandleJobPtr CommitEncryption(PRL_UINT32 nFlags);
 };
 
 #endif // __PARALLELS_HANDLE_VM_SRV_H__

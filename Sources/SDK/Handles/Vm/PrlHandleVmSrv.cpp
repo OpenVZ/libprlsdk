@@ -696,10 +696,20 @@ PrlHandleJobPtr PrlHandleVmSrv::CaptureScreen(
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	CHECK_SERVER
 	CHECK_IDENTIFICATION
+
 	return (m_pServerVm->DspCmdVmCaptureScreen(
 			m_VmConfig.getVmIdentification()->getVmUuid().toUtf8().data(),
 			nWidth,
 			nHeight,
 			nFlags));
+}
+
+PrlHandleJobPtr PrlHandleVmSrv::CommitEncryption(PRL_UINT32 nFlags)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	CHECK_SERVER
+	CHECK_IDENTIFICATION
+
+	return m_pServerVm->DspCmdVmCommitEncryption(m_VmConfig.toString().toUtf8().data(), nFlags);
 }
 

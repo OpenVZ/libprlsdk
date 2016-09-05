@@ -1425,6 +1425,14 @@ public://Protocol methods
 	QString DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, PRL_UINT32 nWidth,
 			PRL_UINT32 nHeight, PRL_UINT32 nFlags);
 
+	/**
+	 * Commit changes in VM encryption settings
+	 *
+	 * @param changed VM configuration XML representation string (CVmConfiguration XmlModel class)
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdVmCommitEncryption(PRL_CONST_STR strVmConfig, PRL_UINT32 nFlags);
+
 private:
 	/**
 	 * Checks connection status

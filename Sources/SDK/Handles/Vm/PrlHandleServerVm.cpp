@@ -820,3 +820,12 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, 
     return create_job(m_pPveControl->DspCmdVmCaptureScreen(sVmUuid, nWidth, nHeight, nFlags),
 					PJOC_VM_DEV_DISPLAY_CAPTURE_SCREEN);
 }
+
+PrlHandleJobPtr PrlHandleServerVm::DspCmdVmCommitEncryption(PRL_CONST_STR sVmConfiguration,
+	PRL_UINT32 nFlags)
+{
+	QString job_uuid = m_pPveControl->DspCmdVmCommitEncryption(sVmConfiguration, nFlags);
+	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob(PrlHandleServerPtr(this),
+		job_uuid, PJOC_VM_COMMIT_ENCRYPTION)));
+}
+

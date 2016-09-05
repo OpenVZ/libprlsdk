@@ -2917,3 +2917,16 @@ QString CPveControl::DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, PRL_UINT32 nWi
 			UTF8_2QSTR(sVmUuid), nWidth, nHeight, nFlags));
 }
 
+QString CPveControl::DspCmdVmCommitEncryption(PRL_CONST_STR strVmConfig, PRL_UINT32 nFlags)
+{
+	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdVmCommitEncryption()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithOneStrParam(
+		PVE::DspCmdVmCommitEncryption,
+		UTF8_2QSTR(strVmConfig),
+		false,
+		nFlags);
+
+	return SendRequestToServer(pRequest);
+}
+

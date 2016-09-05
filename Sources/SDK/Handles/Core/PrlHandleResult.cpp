@@ -700,11 +700,14 @@ PRL_RESULT PrlHandleResult::GetParamByIndex(PRL_UINT32 nIndex, PRL_HANDLE_PTR ph
 			 || m_Result.getOpCode() == PVE::DspCmdAllHostUsers
 			 || m_Result.getOpCode() == PVE::DspCmdConfigureGenericPci
 			 || m_Result.getOpCode() == PVE::DspCmdDirVmMigrate
-			 || m_Result.getOpCode() == PVE::DspCmdVmCompact )
+			 || m_Result.getOpCode() == PVE::DspCmdVmCompact
+			 || m_Result.getOpCode() == PVE::DspCmdVmCommitEncryption)
 	{
 		QString str	= m_Result.GetParamToken(nIndex);
 
-		if( m_Result.getOpCode() == PVE::DspCmdDirVmEditCommit && PRL_SUCCEEDED( m_Result.getReturnCode() ) )
+		if ((m_Result.getOpCode() == PVE::DspCmdDirVmEditCommit
+			|| m_Result.getOpCode() == PVE::DspCmdVmCommitEncryption)
+				&& PRL_SUCCEEDED( m_Result.getReturnCode()))
 		{
 			if( str.isEmpty() )
 				return PRL_ERR_NO_DATA; // old schema

@@ -3485,6 +3485,45 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
 		) );
 
 
+/* The PrlVm_CommitEncryption function is used in modifying a virtual
+   machine disk encryption configuration. The PrlVm_BeginEdit and the
+   PrlVm_CommitEncryption functions are used to detect collisions with
+   other clients trying to modify the same virtual machine at
+   the same time. The PrlVm_BeginEdit call timestamps the
+   beginning of the editing operation. It does not lock the
+   machine, so other clients can modify the same machine at the
+   same time. When you are done making the changes, you must
+   call the PrlVm_CommitEncryption function to save them in the virtual
+   machine configuration. The function will verify that the
+   configuration has not been modified by another client. If a
+   collision is detected, your changes will be rejected.
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Parameters
+   hVm :          A handle of type PHT_VIRTUAL_MACHINE identifying the
+                  virtual machine.
+   nFlags :       A bitset of flags from the PRL_COMMIT_ENCRYPTION_FLAGS enumeration
+   hPolicyList :  Reserved for future use, its value is ignored.
+   hReserved :    Reserved for future use, its value is ignored.
+
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                 */
+PRL_ASYNC_SRV_METHOD_DECL(PARALLELS_API_VER_7,
+	PrlVm_CommitEncryption, (
+		PRL_HANDLE hVm,
+		PRL_UINT32 nFlags,
+		PRL_HANDLE hPolicyList,
+		PRL_HANDLE hReserved
+	));
+
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Virtual machine guest OS session operations set
 ///////////////////////////////////////////////////////////////////////////////
