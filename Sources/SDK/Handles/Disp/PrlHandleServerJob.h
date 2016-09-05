@@ -30,7 +30,7 @@
 
 #include "PrlHandleJob.h"
 #include "PrlHandleServer.h"
-#include <prlxmlmodel/Messaging/CResult.h>
+#include <prlcommon/Messaging/CResult.h>
 #include <QWaitCondition>
 
 class PrlHandleResult;

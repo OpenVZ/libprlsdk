@@ -43,8 +43,8 @@
 #include "PrlHandleLicense.h"
 
 #include "PrlHandleEventParam.h"
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
-#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmBinaryEventParameter.h>
 #include "PrlHandleVm.h"
 #include "PrlHandleServer.h"
 #include <prlcommon/Logging/Logging.h>

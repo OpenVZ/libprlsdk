@@ -31,7 +31,7 @@
 #include "PrlHandleProblemReportBase.h"
 #include "PrlHandleCpuPool.h"
 
-#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
+#include <prlcommon/Messaging/CVmBinaryEventParameter.h>
 
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/PrlUuid/Uuid.h>

@@ -31,10 +31,10 @@
 #include <prlcommon/PrlUuid/Uuid.h>
 #include "PveControl.h"
 #include <prlcommon/Interfaces/ParallelsNamespace.h>
-#include <prlxmlmodel/Messaging/CResult.h>
-#include <prlxmlmodel/Messaging/CVmEvent.h>
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
-#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
+#include <prlcommon/Messaging/CResult.h>
+#include <prlcommon/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmBinaryEventParameter.h>
 #include <prlcommon/Std/SmartPtr.h>
 #include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 #include <prlcommon/IOService/IOCommunication/IORoutingTableHelper.h>

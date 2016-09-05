@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleLicense.h"
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
 
 PrlHandleLicense::PrlHandleLicense( CVmEvent *e  )
 : PrlHandleBase(PHT_LICENSE), m_evtLicense( e )

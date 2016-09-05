@@ -57,11 +57,11 @@
 #include "PrlHandleServerInfo.h"
 #include "PrlHandleVmEvent.h"
 
-#include <prlxmlmodel/Messaging/CResult.h>
-#include <prlxmlmodel/Messaging/CVmEvent.h>
-#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
+#include <prlcommon/Messaging/CResult.h>
+#include <prlcommon/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmBinaryEventParameter.h>
+#include <prlcommon/ProtoSerializer/CProtoCommands.h>
 
-#include "Libraries/ProtoSerializer/CProtoCommands.h"
 #include "Libraries/ProblemReportUtils/CPackedProblemReport.h"
 
 using namespace Parallels;

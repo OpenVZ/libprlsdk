@@ -26,7 +26,7 @@
 
 #include "PrlHandleLoginResponse.h"
 #include "PrlHandleRunningTask.h"
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
 
 PrlHandleLoginResponse::PrlHandleLoginResponse( CVmEvent *e  )
 : PrlHandleBase(PHT_LOGIN_RESPONSE), m_evtLoginResponse( e )

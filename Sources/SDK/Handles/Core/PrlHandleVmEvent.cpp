@@ -31,7 +31,7 @@
 #include "PrlErrStringsStorage.h"
 #include <prlcommon/Logging/Logging.h>
 
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
 
 namespace
 {

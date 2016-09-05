@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleEvent.h"
-#include <prlxmlmodel/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmEvent.h>
 
 #include <QRegExp>
 

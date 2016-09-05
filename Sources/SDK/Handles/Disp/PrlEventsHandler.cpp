@@ -31,8 +31,8 @@
 #include "PrlHandleVmEvent.h"
 #include "PrlContextSwitcher.h"
 
-#include <prlxmlmodel/Messaging/CVmEvent.h>
-#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
+#include <prlcommon/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmBinaryEventParameter.h>
 
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/PrlUuid/Uuid.h>

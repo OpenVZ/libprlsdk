@@ -26,8 +26,8 @@
 
 #include "PrlHandleVmInfo.h"
 #include <prlcommon/Logging/Logging.h>
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
-#include <prlxmlmodel/Messaging/CVmEventParameterList.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmEventParameterList.h>
 #include "PrlHandleAccessRights.h"
 
 PrlHandleVmInfo::PrlHandleVmInfo( CVmEvent *e )

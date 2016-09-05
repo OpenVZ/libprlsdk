@@ -34,6 +34,5 @@ target.path = $${PREFIX}/lib64
 INSTALLS += target
 
 include($$LIBS_LEVEL/ProblemReportUtils/ProblemReportUtils.pri)
-include($$LIBS_LEVEL/ProtoSerializer/ProtoSerializer.pri)
 include($$LIBS_LEVEL/ContextSwitcher/ContextSwitcher.pri)
 

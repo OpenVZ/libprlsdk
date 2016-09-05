@@ -26,8 +26,8 @@
 
 #include "PrlHandleLoginHelperJob.h"
 #include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/ProtoSerializer/CProtoSerializer.h>
 #include "SDK/Wrappers/SdkWrap/SdkHandleWrap.h"
-#include "Libraries/ProtoSerializer/CProtoSerializer.h"
 
 using namespace Parallels;
 enum

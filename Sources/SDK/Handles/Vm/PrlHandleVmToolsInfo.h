@@ -28,7 +28,7 @@
 #define __PARALLELS_HANDLE_VM_TOOLS_INFO_H__
 
 #include "PrlHandleBase.h"
-#include <prlxmlmodel/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmEvent.h>
 
 /**
  * Virtual machine information (state and etc.) handle.

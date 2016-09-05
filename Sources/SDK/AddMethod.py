@@ -1162,7 +1162,8 @@ def gen_async_method(subsystem, declaration):
     # self.add_test_header()
     # self.add_test_body()
 
-    method.add_proto_serializer()
+# FIXME: ProtoSerializer is a part of prlcommon, need to provide path to the repo.
+    # method.add_proto_serializer()
 
 def gen_handle(subsystem, declaration):
     '''Generate handle code.'''

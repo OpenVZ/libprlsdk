@@ -28,9 +28,9 @@
 #include "PrlProblemReportSender.h"
 
 #include <prlxmlmodel/ProblemReport/CProblemReport.h>
-#include <prlxmlmodel/Messaging/CVmEvent.h>
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
-#include <prlxmlmodel/Messaging/CVmBinaryEventParameter.h>
+#include <prlcommon/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmBinaryEventParameter.h>
 
 #include "PrlHandleVmEvent.h"
 #include "PrlHandleVm.h"

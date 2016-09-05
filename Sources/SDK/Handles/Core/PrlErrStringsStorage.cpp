@@ -25,7 +25,7 @@
 
 
 #include "PrlErrStringsStorage.h"
-#include <prlxmlmodel/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmEvent.h>
 #include "PrlHandleBase.h"
 #include <QObject>
 #include <QRegExp>

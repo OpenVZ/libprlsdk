@@ -42,9 +42,9 @@
 #include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
 #include <prlcommon/Std/PrlAssert.h>
 
-#include <prlxmlmodel/Messaging/CResult.h>
-#include <prlxmlmodel/Messaging/CVmEvent.h>
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CResult.h>
+#include <prlcommon/Messaging/CVmEvent.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
 
 #include "PrlHandleVm.h"
 #include "PrlHandleIOEvent.h"

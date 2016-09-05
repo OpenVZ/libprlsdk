@@ -29,7 +29,7 @@
 
 
 #include "PrlHandleBase.h"
-#include <prlxmlmodel/Messaging/CResult.h>
+#include <prlcommon/Messaging/CResult.h>
 
 /**
  * Base handle object - all objects representation on the client

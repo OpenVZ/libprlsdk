@@ -25,7 +25,7 @@
 
 
 #include "PrlHandleFoundVmInfo.h"
-#include <prlxmlmodel/Messaging/CVmEventParameter.h>
+#include <prlcommon/Messaging/CVmEventParameter.h>
 
 PrlHandleFoundVmInfo::PrlHandleFoundVmInfo( CVmEvent *e )
 : PrlHandleBase(PHT_FOUND_VM_INFO), m_VmEvent(e)
