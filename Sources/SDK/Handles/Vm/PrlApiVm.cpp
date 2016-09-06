@@ -11727,3 +11727,28 @@ PRL_ASYNC_METHOD( PrlVm_Move ) (
 }
 
 
+
+PRL_HANDLE PrlVm_CaptureScreen_Impl(PRL_HANDLE hVm, PRL_UINT32 nWidth, PRL_UINT32 nHeight, PRL_UINT32 nFlags)
+{
+	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_DEV_DISPLAY_CAPTURE_SCREEN))
+
+	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
+	PrlHandleJobPtr pJob = pVm->CaptureScreen(nWidth, nHeight, nFlags);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	pJob->SetVmHandle(hVm);
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlVm_CaptureScreen ) (
+		PRL_HANDLE hVm,
+		PRL_UINT32 nWidth,
+		PRL_UINT32 nHeight,
+		PRL_UINT32 nFlags
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_DEV_DISPLAY_CAPTURE_SCREEN)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_CaptureScreen, (hVm, nWidth, nHeight, nFlags))
+}
+

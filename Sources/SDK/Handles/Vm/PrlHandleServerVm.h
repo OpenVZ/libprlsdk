@@ -815,6 +815,9 @@ public:
 
 	PrlHandleJobPtr DspCmdVmResizeDiskImage(PRL_CONST_STR sVmUuid, const QString &sDiskImage,
 								PRL_UINT32 nNewSize, PRL_UINT32 nFlags);
+
+	PrlHandleJobPtr DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, PRL_UINT32 nWidth,
+								PRL_UINT32 nHeight, PRL_UINT32 nFlags);
 };
 
 #endif // __PARALLELS_HANDLE_SERVER_VM_H__

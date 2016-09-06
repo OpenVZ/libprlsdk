@@ -1418,6 +1418,13 @@ public://Protocol methods
 	 */
 	QString DspCmdRecalculateCPUPool(PRL_CONST_STR strPoolName);
 
+	/**
+	 * Captures a screen area of a remote virtual machine desktop
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, PRL_UINT32 nWidth,
+			PRL_UINT32 nHeight, PRL_UINT32 nFlags);
+
 private:
 	/**
 	 * Checks connection status
