@@ -2907,3 +2907,13 @@ QString CPveControl::DspCmdRecalculateCPUPool(PRL_CONST_STR strPoolName)
 
 	return SendRequestToServer(pRequest);
 }
+
+QString CPveControl::DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, PRL_UINT32 nWidth,
+		PRL_UINT32 nHeight, PRL_UINT32 nFlags)
+{
+	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdCaptureScreen()");
+
+	return SendRequestToServer(CProtoSerializer::CreateVmCaptureScreenProtoCommand(
+			UTF8_2QSTR(sVmUuid), nWidth, nHeight, nFlags));
+}
+

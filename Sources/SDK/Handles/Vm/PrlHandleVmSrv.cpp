@@ -687,3 +687,19 @@ PrlHandleJobPtr PrlHandleVmSrv::Move(PRL_CONST_STR sNewHomePath, PRL_UINT32 nFla
 	return (m_pServerVm->DspCmdDirVmMove(m_VmConfig.getVmIdentification()->getVmUuid().toUtf8().data(),
 				sNewHomePath, nFlags));
 }
+
+PrlHandleJobPtr PrlHandleVmSrv::CaptureScreen(
+		PRL_UINT32 nWidth,
+		PRL_UINT32 nHeight,
+		PRL_UINT32 nFlags)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	CHECK_SERVER
+	CHECK_IDENTIFICATION
+	return (m_pServerVm->DspCmdVmCaptureScreen(
+			m_VmConfig.getVmIdentification()->getVmUuid().toUtf8().data(),
+			nWidth,
+			nHeight,
+			nFlags));
+}
+

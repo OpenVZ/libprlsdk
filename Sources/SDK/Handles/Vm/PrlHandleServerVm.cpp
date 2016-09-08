@@ -813,3 +813,10 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmResizeDiskImage(PRL_CONST_STR sVmUuid
     return create_job(m_pPveControl->DspCmdVmResizeDiskImage(sVmUuid, sDiskImage, nNewSize, nFlags),
 					PJOC_VM_RESIZE_DISK_IMAGE);
 }
+
+PrlHandleJobPtr PrlHandleServerVm::DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, PRL_UINT32 nWidth,
+								PRL_UINT32 nHeight, PRL_UINT32 nFlags)
+{
+    return create_job(m_pPveControl->DspCmdVmCaptureScreen(sVmUuid, nWidth, nHeight, nFlags),
+					PJOC_VM_DEV_DISPLAY_CAPTURE_SCREEN);
+}

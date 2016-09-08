@@ -14950,6 +14950,34 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 
+
+/* %VM_ONLY%
+
+   Captures a screen area of a remote virtual machine desktop in
+   PNG format, scales is down to the specified size, and puts it
+   into a buffer which is then returned to the client. For local
+   connections, the capture works almost instantly. For remote
+   connections, the data must be transferred over network to the
+   client machine, so it may take some time.
+
+   Parameters
+   hVm :          A handle of type PHT_VIRTUAL_MACHINE identifying
+                  the virtual machine.
+   nWidth :       The width of the scaled down image, in pixels.
+   nHeight :      The height of the scaled down image, in pixels.
+   nFlags  :      Reserved parameter.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlVm_CaptureScreen, (
+		PRL_HANDLE hVm,
+		PRL_UINT32 nWidth,
+		PRL_UINT32 nHeight,
+		PRL_UINT32 nFlags
+		) );
+
 #ifdef _WIN_
     #pragma pack(pop, save_api_pack)
 #endif

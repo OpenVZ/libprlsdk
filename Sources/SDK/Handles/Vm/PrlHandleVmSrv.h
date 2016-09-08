@@ -476,6 +476,15 @@ public:
 	 */
 	PrlHandleJobPtr Move(PRL_CONST_STR sNewHomePath, PRL_UINT32 nFlags);
 
+
+	/**
+	 * Capture VM screen
+	 *
+	 * @param image's width in pixels
+	 * @param image's height in pixels
+	 * return pointer to job object
+	 */
+	PrlHandleJobPtr CaptureScreen(PRL_UINT32 nWidth, PRL_UINT32 nHeight, PRL_UINT32 nFlags);
 };
 
 #endif // __PARALLELS_HANDLE_VM_SRV_H__

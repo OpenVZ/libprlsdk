@@ -429,6 +429,7 @@ PRL_HANDLE PrlHandleResult::ResultAsHandle()
 		case PVE::DspCmdUserInfoList:
 		case PVE::DspCmdGetVirtualNetworkList:
 		case PVE::DspCmdVmGetSuspendedScreen:
+		case PVE::DspCmdVmCaptureScreen:
 		case PVE::DspCmdAllHostUsers:
 		case PVE::DspCmdConfigureGenericPci:
 		case PVE::DspCmdPrepareForHibernate:
@@ -760,7 +761,8 @@ PRL_RESULT PrlHandleResult::GetParamByIndex(PRL_UINT32 nIndex, PRL_HANDLE_PTR ph
 
 		*phParam = pOffSrv->GetHandle();
 	}
-	else if (m_Result.getOpCode() == PVE::DspCmdVmGetSuspendedScreen)
+	else if ((m_Result.getOpCode() == PVE::DspCmdVmGetSuspendedScreen) ||
+			(m_Result.getOpCode() == PVE::DspCmdVmCaptureScreen))
 	{
 		QString qsScreen = m_Result.GetParamToken(nIndex);
 
