@@ -75,7 +75,6 @@
 
 
 
-
 /**
  * Proxy connection errors
  */
@@ -983,5 +982,8 @@
 
 // CPU features managment errors
 /* +++ ALIGNED VALUE TO 54100 +++ */
+
+// Disk encryption errors
+/* +++ ALIGNED VALUE TO 54200 +++ */
 
 #endif // __PARALLELS_API_PRIVATE_ERRORS_VALUES_H__

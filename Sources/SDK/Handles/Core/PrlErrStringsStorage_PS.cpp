@@ -1659,4 +1659,12 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 		false,
 		PMT_CRITICAL
 		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_ENCRYPTION_COMMIT_REJECTED,
+		tr( "VM encryption parameters could not be applied." ),
+		tr( "Some extra parameters of the VM were changed. Only the VM encryption parameters could be altered when commiting disk encryption changes." ),
+		false,
+		PMT_CRITICAL
+		);
 }
