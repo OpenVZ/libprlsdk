@@ -818,6 +818,14 @@ public:
 
 	PrlHandleJobPtr DspCmdVmCaptureScreen(PRL_CONST_STR sVmUuid, PRL_UINT32 nWidth,
 								PRL_UINT32 nHeight, PRL_UINT32 nFlags);
+
+	/**
+	 * Commits changes in the VM encryption settings
+	 *
+	 * @param VM configuration with changed encryption settings
+	 * @return pointer to generated job instance
+	 */
+	PrlHandleJobPtr DspCmdVmCommitEncryption(PRL_CONST_STR sVmConfiguration, PRL_UINT32 nFlags);
 };
 
 #endif // __PARALLELS_HANDLE_SERVER_VM_H__

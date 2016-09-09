@@ -11726,8 +11726,6 @@ PRL_ASYNC_METHOD( PrlVm_Move ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_Move, (hVm, sNewHomePath, nFlags))
 }
 
-
-
 PRL_HANDLE PrlVm_CaptureScreen_Impl(PRL_HANDLE hVm, PRL_UINT32 nWidth, PRL_UINT32 nHeight, PRL_UINT32 nFlags)
 {
 	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
@@ -11750,5 +11748,35 @@ PRL_ASYNC_METHOD( PrlVm_CaptureScreen ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_DEV_DISPLAY_CAPTURE_SCREEN)
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_CaptureScreen, (hVm, nWidth, nHeight, nFlags))
+}
+
+PRL_HANDLE PrlVm_CommitEncryption_Impl(
+		PRL_HANDLE hVm,
+		PRL_UINT32 nFlags
+	)
+{
+	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_COMMIT_ENCRYPTION))
+
+	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
+	PrlHandleJobPtr pJob = pVm->CommitEncryption(nFlags);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	pJob->SetVmHandle(hVm);
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD(PrlVm_CommitEncryption) (
+		PRL_HANDLE hVm,
+		PRL_UINT32 nFlags,
+		PRL_HANDLE hPolicyList,
+		PRL_HANDLE hReserved
+	)
+{
+	PRL_UNUSED_PARAM(hPolicyList);
+	PRL_UNUSED_PARAM(hReserved);
+
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_COMMIT_ENCRYPTION)
+		CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_CommitEncryption, (hVm, nFlags))
 }
 

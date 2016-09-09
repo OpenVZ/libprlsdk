@@ -592,4 +592,41 @@ typedef enum _PRL_END_VM_BACKUP_FLAGS
 	PEMBF_FAILURE_CLEANUP	= 1 << (PACF_MAX+1), /* Perform failure specific clean-up */
 } PRL_END_VM_BACKUP_FLAGS;
 
+/* PrlVm_CommitEncryption command flags */
+typedef enum _PRL_COMMIT_ENCRYPTION_FLAGS
+{
+	/**
+	 * Normally, only the master key (MK is used to actually encrypt the data
+	 * on a virtual disk) is being re-encrypted when the disk encryption key
+	 * identifier is changed for an already encrypted disk. But sometimes
+	 * it is desirable to change the master key as well. In this case, new
+	 * master key is generated and the virtual disk content is re-encrypted
+	 * with this new master key. After that, the master key is encrypted
+	 * with the key, obtained by key identifier, and this encrypted value
+	 * of master key is stored in the LUSK header on the encrypted virtual disk.
+	 *
+	 * Set this flag to re-generate master key during the change of
+	 * encryption key identifier.
+	 */
+	PCEF_CHANGE_MASTER_KEY		= 1 << (PACF_MAX+1),
+	/**
+	 * When a plain disk is being encrypted, the encrypted copy of the original
+	 * disk is created. After the data had been successfully copied from
+	 * the original disk to the encrypted one, the original disk is removed.
+	 * Simply removing the original virtual disk file from the host HDD
+	 * would leave the unencrypted data on the HDD, albeit it is not accessible
+	 * via its name in the filesystem anymore. This data could later be
+	 * (partly) restored from the host HDD using special tools. The more secure
+	 * way of destroying the original virtual disk would be to overwrite the
+	 * original data with zeros ("shred" it) and only after that remove the
+	 * virtual disk from the host filesystem. This is the default behavior
+	 * when the original virtual disk is removed after its data had been
+	 * copied to the encrypted disk.
+	 *
+	 * Set this flag to disable wiping unencrypted data with zeros.
+	 */
+	PCEF_DONT_SHRED_PLAIN_DATA	= 1 << (PACF_MAX+2),
+} PRL_COMMIT_ENCRYPTION_FLAGS;
+typedef PRL_COMMIT_ENCRYPTION_FLAGS* PRL_COMMIT_ENCRYPTION_FLAGS_PTR;
+
 #endif // __PARALLELS_API_COMMANDS_FLAGS_H__
