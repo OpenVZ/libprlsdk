@@ -3498,6 +3498,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
    configuration has not been modified by another client. If a
    collision is detected, your changes will be rejected.
 
+   Note that changes in the virtual machine encryption settings can only be
+   committed using this function. Committing encryption changes along
+   with other changes in the virtual machine configuration using
+   the PrlVm_Commit or PrlVm_CommitEx functions will result in error.
+
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
 
