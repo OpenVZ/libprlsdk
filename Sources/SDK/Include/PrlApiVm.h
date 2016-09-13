@@ -567,6 +567,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PBT_DIFFERENTIAL	: differental backup
    PBT_UNCOMPRESSED	: uncompressed backup (by default fast zip compression used)
                        PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   PBT_DIRECT_DATA_CONNECTION  : Disables tunneling for backup (a laissez-fair
+                       data transfer).
    reserved_flags :    Reserved flags.
    force_operation :   Specifies to process VM backup action without asking
                        any additional questions from the Parallels Service side
