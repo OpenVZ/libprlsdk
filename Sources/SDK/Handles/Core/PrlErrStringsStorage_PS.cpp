@@ -1662,8 +1662,16 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ENCRYPTION_COMMIT_REJECTED,
-		tr( "VM encryption parameters could not be applied." ),
-		tr( "Some extra parameters of the VM were changed. Only the VM encryption parameters could be altered when commiting disk encryption changes." ),
+		tr( "The virtual machine encryption parameters could not be applied." ),
+		tr( "Some extra parameters of the virtual machine were changed. Only virtual machine encryption parameters can be altered when committing disk encryption changes." ),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_ENCRYPTION_COMMIT_PROHIBITED,
+		tr( "Virtual machine encryption parameters cannot be changed along with other settings." ),
+		tr( "Virtual machine encryption parameters must be altered separately from other virtual machine settings." ),
 		false,
 		PMT_CRITICAL
 		);
