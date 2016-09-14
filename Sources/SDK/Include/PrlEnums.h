@@ -2235,6 +2235,16 @@ typedef enum _PRL_MEMGUARANTEE_TYPE
 	PRL_MEMGUARANTEE_PERCENTS = 1,
 } PRL_MEMGUARANTEE_TYPE;
 
+/**
+ * Specifies an on-crash actions
+ */
+typedef enum _PRL_VM_ON_CRASH_ACTION
+{
+	POCA_PAUSE = 0,
+	POCA_RESTART = 1,
+} PRL_VM_ON_CRASH_ACTION;
+typedef PRL_VM_ON_CRASH_ACTION* PRL_VM_ON_CRASH_ACTION_PTR;
+
 #include "PrlCommandsFlags.h"
 
 #endif // __PARALLELS_API_ENUMS_H__
