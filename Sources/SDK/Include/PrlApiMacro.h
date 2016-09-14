@@ -1110,6 +1110,10 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDiskMap_GetSize ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDiskMap_GetGranularity ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDiskMap_Read ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_CaptureScreen ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_CommitEncryption )
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_CommitEncryption ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetActionOnGuestCrash ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetActionOnGuestCrash ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetOptionsOnGuestCrash ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetOptionsOnGuestCrash )
 
 #endif // PRL_SDK_WRAP_FOR_EACH

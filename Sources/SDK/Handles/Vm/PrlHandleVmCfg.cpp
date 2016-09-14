@@ -2739,4 +2739,30 @@ PRL_RESULT PrlHandleVmCfg::SetHighAvailabilityPriority(PRL_UINT32 nPriority)
 	return PRL_ERR_SUCCESS;
 }
 
+PRL_RESULT PrlHandleVmCfg::SetOnCrashAction(PRL_VM_ON_CRASH_ACTION nAction)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VmConfig.getVmSettings()->getVmRuntimeOptions()->getOnCrash()->setMode(nAction);
+	return PRL_ERR_SUCCESS;
+}
 
+PRL_RESULT PrlHandleVmCfg::GetOnCrashAction(PRL_VM_ON_CRASH_ACTION_PTR pnAction)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnAction = m_VmConfig.getVmSettings()->getVmRuntimeOptions()->getOnCrash()->getMode();
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVmCfg::SetOnCrashOptions(PRL_UINT32 nFlags)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VmConfig.getVmSettings()->getVmRuntimeOptions()->getOnCrash()->setOptions(nFlags);
+	return PRL_ERR_SUCCESS;
+}
+
+PRL_RESULT PrlHandleVmCfg::GetOnCrashOptions(PRL_UINT32_PTR pnFlags)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnFlags = m_VmConfig.getVmSettings()->getVmRuntimeOptions()->getOnCrash()->getOptions();
+	return PRL_ERR_SUCCESS;
+}

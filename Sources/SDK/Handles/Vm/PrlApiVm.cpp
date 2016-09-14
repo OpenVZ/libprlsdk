@@ -11800,3 +11800,86 @@ PRL_ASYNC_METHOD(PrlVm_CommitEncryption) (
 		CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_CommitEncryption, (hVm, nFlags))
 }
 
+PRL_METHOD( PrlVmCfg_SetActionOnGuestCrash ) (
+		PRL_HANDLE hVmCfg,
+		PRL_VM_ON_CRASH_ACTION nAction
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nAction=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nAction
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetOnCrashAction(nAction);
+}
+
+PRL_METHOD( PrlVmCfg_GetActionOnGuestCrash ) (
+		PRL_HANDLE hVmCfg,
+		PRL_VM_ON_CRASH_ACTION_PTR pnAction
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnAction=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnAction
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetOnCrashAction(pnAction);
+}
+
+PRL_METHOD( PrlVmCfg_SetOptionsOnGuestCrash ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nOptions
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nOptions=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nOptions
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->SetOnCrashOptions(nOptions);
+}
+
+PRL_METHOD( PrlVmCfg_GetOptionsOnGuestCrash ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnOptions
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnOptions=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnOptions
+	);
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return pVm->GetOnCrashOptions(pnOptions);
+}
