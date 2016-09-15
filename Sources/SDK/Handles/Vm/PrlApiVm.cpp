@@ -8914,6 +8914,26 @@ PRL_METHOD( PrlVmDevHd_GetSerialNumber ) (
 	return (pDevice->GetSerialNumber(sSerialNumber, pnSerialNumberBufLength));
 }
 
+PRL_METHOD( PrlVmDevHd_SetSerialNumber ) (
+		PRL_HANDLE hVmDev,
+		PRL_CONST_STR sSerialNumber
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, sSerialNumber=%s)",
+		__FUNCTION__,
+		hVmDev,
+		sSerialNumber
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmDev, PHT_VIRTUAL_DEV_HARD_DISK))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleVmDeviceHardDrivePtr pDevice = PRL_OBJECT_BY_HANDLE<PrlHandleVmDeviceHardDrive>(hVmDev);
+	return (pDevice->SetSerialNumber(sSerialNumber));
+}
+
 PRL_METHOD(PrlVmDevHd_GetEncryption) (PRL_HANDLE hVmDev, PRL_HANDLE_PTR phEncryption)
 {
 	LOG_MESSAGE( DBG_DEBUG, "%s (hVmDev=%p, phEncryption=%p)",
