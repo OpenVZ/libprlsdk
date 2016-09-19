@@ -11876,6 +11876,30 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 		PRL_UINT32_PTR pnSerialNumberBufLength
 		));
 
+/*
+   Set disk serial number.
+
+   Parameters
+   hVmDev :	A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
+                identifying the virtual hard disk.
+   sSerialNumber : [in] Serial number - a UTF-8 encoded string with null '\0' symbol at the end.
+
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   See Also
+   PrlVmDevHd_GetSerialNumber
+*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				PrlVmDevHd_SetSerialNumber, (
+		PRL_HANDLE hVmDev,
+		PRL_CONST_STR sSerialNumber
+		));
+
 /* \Returns the disk encryption parameters
    Parameters
    hVmDev :         A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK

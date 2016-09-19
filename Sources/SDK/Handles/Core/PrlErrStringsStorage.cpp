@@ -3148,6 +3148,15 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_SERIAL_IS_NOT_VALID,
+		tr("The specified serial number is invalid."),
+		tr("A hard disk serial number can only contain uppercase and lowercase letters, numbers, underscores (\"_\"), "
+				"periods (\".\"), and plus and minus signs (\"+\", \"-\"). Please specify a valid serial number"),
+		true,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_BOUND_INDEX,
 		tr("The physical network adapter connected to virtual network adapter %1 does not exist. Do you want to save the virtual machine configuration anyway?"),
 		tr("If you click Yes now, this virtual network adapter will not be connected at the virtual machine startup."),

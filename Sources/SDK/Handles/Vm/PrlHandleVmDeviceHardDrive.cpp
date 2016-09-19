@@ -340,6 +340,15 @@ PRL_RESULT PrlHandleVmDeviceHardDrive::SetStorageURL(PRL_CONST_STR sURL)
 	return PRL_ERR_SUCCESS;
 }
 
+PRL_RESULT PrlHandleVmDeviceHardDrive::SetSerialNumber(PRL_CONST_STR sSerialNumber)
+{
+	SYNCHRO_VMDEV_DATA_ACCESS
+	CHECK_HARD_DISK_ELEM
+
+	m_pVmHardDisk->setSerialNumber(sSerialNumber);
+	return PRL_ERR_SUCCESS;
+}
+
 PRL_RESULT PrlHandleVmDeviceHardDrive::GetSerialNumber(PRL_STR sSerialNumber,
 	PRL_UINT32_PTR pnSerialNumberBufLength)
 {

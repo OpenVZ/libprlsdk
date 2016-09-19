@@ -260,6 +260,14 @@ public://SDK API helpers set
 	PRL_RESULT GetSerialNumber(PRL_STR sSerialNumber, PRL_UINT32_PTR pnSerialNumberBufLength);
 
 	/**
+	* Set disk serial number
+	*
+	* @param assigning value
+	* @return PRL_RESULT
+	*/
+	PRL_RESULT SetSerialNumber(PRL_CONST_STR sSerialNumber);
+
+	/**
 	 * Return disk encryption parameters
 	 *
 	 * @param [out] pointer to a handle for storing result
