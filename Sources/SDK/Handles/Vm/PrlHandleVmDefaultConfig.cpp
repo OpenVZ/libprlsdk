@@ -367,8 +367,6 @@ void PrlHandleVmDefaultConfig::SetupBootingOptionsDefaults( CVmConfiguration& cf
 		new CVmStartupOptions::CVmBootDevice( PDE_HARD_DISK, 0, 0, true );
 	CVmStartupOptions::CVmBootDevice* bootDevice2 =
 		new CVmStartupOptions::CVmBootDevice( PDE_OPTICAL_DISK, 0, 1, true );
-	CVmStartupOptions::CVmBootDevice* bootDevice3 =
-		new CVmStartupOptions::CVmBootDevice( PDE_FLOPPY_DISK, 0, 2, true );
 	CVmStartupOptions::CVmBootDevice* bootDevice4 =
 		new CVmStartupOptions::CVmBootDevice( PDE_GENERIC_NETWORK_ADAPTER, 0, 3, true );
 	CVmStartupOptions::CVmBootDevice* bootDevice5 =
@@ -376,7 +374,6 @@ void PrlHandleVmDefaultConfig::SetupBootingOptionsDefaults( CVmConfiguration& cf
 
 	bootDeviceList.append( bootDevice1 );
 	bootDeviceList.append( bootDevice2 );
-	bootDeviceList.append( bootDevice3 );
 
 	// Do not add network on Netware
 	if ( GetOsType( cfg ) != PVS_GUEST_TYPE_NETWARE )
