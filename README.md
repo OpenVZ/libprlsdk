@@ -9,11 +9,11 @@ APIs.
 
 Documentation for commercial version of SDK is available here:
 
-- [Virtuozzo SDK Programmers Guide.pdf](http://download.cloudserver.parallels.com/doc/pcs/en_us/parallels/6/current/pdf/Parallels_Virtualization_SDK_Programmers_Guide.pdf)
-- [Virtuozzo C API Reference.pdf](http://download.cloudserver.parallels.com/doc/pcs/en_us/parallels/6/current/pdf/Parallels_C_API_Reference.pdf)
-- [Virtuozzo Python API Reference.pdf](http://download.cloudserver.parallels.com/doc/pcs/en_us/parallels/6/current/pdf/Parallels_Python_API_Reference.pdf)
+- [Virtuozzo SDK Programmers Guide.pdf](http://updates.virtuozzo.com/doc/pcs/en_us/virtuozzo/6/current/pdf/Virtuozzo_Virtualization_SDK_Programmers_Guide.pdf)
+- [Virtuozzo C API Reference.pdf](http://updates.virtuozzo.com/doc/pcs/en_us/virtuozzo/6/current/pdf/Virtuozzo_C_API_Reference.pdf)
+- [Virtuozzo Python API Reference.pdf](http://updates.virtuozzo.com/doc/pcs/en_us/virtuozzo/6/current/pdf/Virtuozzo_Python_API_Reference.pdf)
 
-Trial version of Virtuozzo can be downloaded here [http://www.odin.com/products/virtuozzo/](http://www.odin.com/products/virtuozzo/).
+Trial version of Virtuozzo can be downloaded here [https://www.virtuozzo.com/products/virtuozzo/](https://www.virtuozzo.com/products/virtuozzo/).
 
 How to install
 --------------
