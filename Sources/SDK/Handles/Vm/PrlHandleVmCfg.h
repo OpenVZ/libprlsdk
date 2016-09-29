@@ -2476,6 +2476,30 @@ public:
 	 */
 	PRL_RESULT SetProfile( PrlHandleSrvConfigPtr pSrvConfig,
 						   PRL_VIRTUAL_MACHINE_PROFILE nVmProfile );
+
+	/**
+	 * Sets on-crash VM action
+	 * @param the on-crash action to set
+	 */
+	PRL_RESULT SetOnCrashAction(PRL_VM_ON_CRASH_ACTION nAction);
+
+	/**
+	 * Gets on-crash VM action.
+	 * @param pointer to output buffer for storing result.
+	 */
+	PRL_RESULT GetOnCrashAction(PRL_VM_ON_CRASH_ACTION_PTR pnAction);
+
+	/**
+	 * Sets on-crash VM options
+	 * @param the on-crash options to set
+	 */
+	PRL_RESULT SetOnCrashOptions(PRL_UINT32 nFlags);
+
+	/**
+	 * Gets on-crash VM options.
+	 * @param pointer to output buffer for storing result.
+	 */
+	PRL_RESULT GetOnCrashOptions(PRL_UINT32_PTR pnFlags);
 };
 
 #endif // __PARALLELS_HANDLE_VM_CFG_H__

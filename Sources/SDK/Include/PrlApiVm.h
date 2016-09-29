@@ -15048,6 +15048,95 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_UINT32 nFlags
 		) );
 
+/* %VM_ONLY%
+
+   Allows to set the on-crash action for the specified
+   virtual machine
+   Parameters
+   hVmCfg :  A handle of type PHT_VM_CONFIGURATION
+		identifying the virtual machine configuration.
+   nAction:  The on-crash action to set.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully. 		*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmCfg_SetActionOnGuestCrash, (
+		PRL_HANDLE hVmCfg,
+		PRL_VM_ON_CRASH_ACTION nAction
+		) );
+
+/* %VM_ONLY%
+
+   Determines the on-crash action for the specified
+   virtual machine
+   Parameters
+   hHandle :  A handle of type PHT_VM_CONFIGURATION
+              identifying the virtual machine configuration.
+   pnAction:  [out] A pointer to a variable that receives
+              the result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+								*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmCfg_GetActionOnGuestCrash, (
+		PRL_HANDLE hVmCfg,
+		PRL_VM_ON_CRASH_ACTION_PTR pnAction
+		) );
+
+/* %VM_ONLY%
+
+   Allows to set the on-crash options for the specified
+   virtual machine
+   Parameters
+   hVmCfg :  A handle of type PHT_VM_CONFIGURATION
+             identifying the virtual machine configuration.
+   nOptions: Additional options to set (PRL_VM_ON_CRASH_OPTION)
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+								*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmCfg_SetOptionsOnGuestCrash, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nOptions
+		) );
+
+/* %VM_ONLY%
+
+   Determines the on-crash options for the specified
+   virtual machine
+   Parameters
+   hHandle :  A handle of type PHT_VM_CONFIGURATION
+              identifying the virtual machine configuration.
+   pnOptions: [out] A pointer to a variable that recieves
+              additional options.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+								*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmCfg_GetOptionsOnGuestCrash, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnOptions
+		) );
+
 #ifdef _WIN_
     #pragma pack(pop, save_api_pack)
 #endif
