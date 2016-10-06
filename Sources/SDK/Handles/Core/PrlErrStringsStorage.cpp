@@ -10736,4 +10736,16 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_WARNING
 		);
+	REGISTER_ERROR_STRING(
+		PRL_WARN_NESTED_VIRT_NOT_ENABLED,
+		tr("Nested virtualization isn't enabled on host."),
+		tr("To enable nested virtualization on host,\n"
+			" 1) stop all running or paused VMs\n"
+			" 2) run the following commands:\n"
+			"\trmmod kvm_intel\n"
+			"\techo 'options kvm-intel nested=y' >> /etc/modprobe.d/dist.conf\n"
+			"\tmodprobe kvm_intel"),
+		false,
+		PMT_WARNING
+		);
 }
