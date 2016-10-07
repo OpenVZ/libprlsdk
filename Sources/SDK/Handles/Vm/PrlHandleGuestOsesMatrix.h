@@ -74,6 +74,20 @@ public://API helpers
 	 */
 	PRL_RESULT GetDefaultOsVersion(PRL_UINT8 nGuestOsType, PRL_UINT16_PTR pnOsVersion);
 
+	/**
+	 * Returns the type of support (PRL_GUEST_OS_SUPPORT_TYPE) for the specified OS type
+	 * and OS version.
+	 * @param requesting guest OS type
+	 * @param requesting guest OS version
+	 * @param pointer to buffer for storing result
+	 *
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_INVALID_ARG - unknown OS type or version specified
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetSupportType(PRL_UINT8 nGuestOsType, PRL_UINT16 nOsVersion,
+					PRL_GUEST_OS_SUPPORT_TYPE_PTR pnSupportType);
+
 private:
 	/** Guest OSes matrix object */
 	COsesMatrix m_OsesMatrix;
