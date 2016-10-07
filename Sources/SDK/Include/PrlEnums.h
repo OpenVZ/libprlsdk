@@ -2245,6 +2245,17 @@ typedef enum _PRL_VM_ON_CRASH_ACTION
 } PRL_VM_ON_CRASH_ACTION;
 typedef PRL_VM_ON_CRASH_ACTION* PRL_VM_ON_CRASH_ACTION_PTR;
 
+
+/**
+ * Specifies the type of guest OS's support
+ */
+typedef enum _PRL_GUEST_OS_SUPPORT_TYPE
+{
+	PGS_OS_SUPPORTED = 0,
+	PGS_OS_EXPERIMENTAL = 1,
+} PRL_GUEST_OS_SUPPORT_TYPE;
+typedef PRL_GUEST_OS_SUPPORT_TYPE* PRL_GUEST_OS_SUPPORT_TYPE_PTR;
+
 #include "PrlCommandsFlags.h"
 
 #endif // __PARALLELS_API_ENUMS_H__
