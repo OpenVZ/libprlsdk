@@ -4081,6 +4081,28 @@ PRL_METHOD( PrlVmCfg_SetVNCPort ) (
 	return (pVm->SetRemoteDisplayPortNumber(nVmRemoteDisplayPortNumber));
 }
 
+PRL_METHOD( PrlVmCfg_GetVNCWebSocketPort ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmRemoteDisplayWebSocketPortNumber
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmRemoteDisplayWebSocketPortNumber=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnVmRemoteDisplayWebSocketPortNumber
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnVmRemoteDisplayWebSocketPortNumber))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetRemoteDisplayWebSocketPortNumber(pnVmRemoteDisplayWebSocketPortNumber));
+}
+
 PRL_METHOD( PrlVmCfg_IsScrResEnabled ) (
 		PRL_HANDLE hVmCfg,
 		PRL_BOOL_PTR pbVmScrResEnabled

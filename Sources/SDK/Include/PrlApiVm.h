@@ -8880,6 +8880,27 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nVmRemoteDisplayPort
 		) );
 
+/* \Returns the VNC WebSocket port number for the specified virtual
+   machine.
+   Parameters
+   hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
+                            identifying the virtual machine
+							configuration.
+   pnVmRemoteDisplayPort :  [out] A pointer to a variable that
+                            receives the result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmCfg_GetVNCWebSocketPort, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmRemoteDisplayWebSocketPort
+		) );
+
 /* Determines if additional screen resolution support is enabled
    in a virtual machine.
    Parameters

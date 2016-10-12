@@ -2022,6 +2022,13 @@ PRL_RESULT PrlHandleVmCfg::SetRemoteDisplayPortNumber(PRL_UINT32 nVmRemoteDispla
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleVmCfg::GetRemoteDisplayWebSocketPortNumber(PRL_UINT32_PTR pnVmRemoteDisplayWebSocketPortNumber)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnVmRemoteDisplayWebSocketPortNumber = m_VmConfig.getVmSettings()->getVmRemoteDisplay()->getWebSocketPortNumber();
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleVmCfg::IsScrResEnabled(PRL_BOOL_PTR pbVmScrResEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

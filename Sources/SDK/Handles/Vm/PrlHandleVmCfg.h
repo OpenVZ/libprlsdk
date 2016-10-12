@@ -1959,6 +1959,14 @@ public:
 	PRL_RESULT SetRemoteDisplayPortNumber(PRL_UINT32 nVmRemoteDisplayPortNumber);
 
 	/**
+	 * Gets VM remote display websocket port number option.
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetRemoteDisplayWebSocketPortNumber(PRL_UINT32_PTR pnVmRemoteDisplayWebSocketPortNumber);
+
+	/**
 	 * Returns VM additional screen resolutions support option.
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:
