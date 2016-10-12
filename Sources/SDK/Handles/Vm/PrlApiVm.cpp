@@ -4103,6 +4103,28 @@ PRL_METHOD( PrlVmCfg_GetVNCWebSocketPort ) (
 	return (pVm->GetRemoteDisplayWebSocketPortNumber(pnVmRemoteDisplayWebSocketPortNumber));
 }
 
+PRL_METHOD( PrlVmCfg_IsVNCEncryptionEnabled ) (
+		PRL_HANDLE hVmCfg,
+		PRL_BOOL_PTR pbVmRemoteDisplayEncryptionEnabled
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pbVmRemoteDisplayEncryptionEnabled=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pbVmRemoteDisplayEncryptionEnabled
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pbVmRemoteDisplayEncryptionEnabled))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->IsRemoteDisplayEncryptionEnabled(pbVmRemoteDisplayEncryptionEnabled));
+}
+
 PRL_METHOD( PrlVmCfg_IsScrResEnabled ) (
 		PRL_HANDLE hVmCfg,
 		PRL_BOOL_PTR pbVmScrResEnabled

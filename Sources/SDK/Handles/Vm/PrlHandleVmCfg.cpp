@@ -2029,6 +2029,13 @@ PRL_RESULT PrlHandleVmCfg::GetRemoteDisplayWebSocketPortNumber(PRL_UINT32_PTR pn
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleVmCfg::IsRemoteDisplayEncryptionEnabled(PRL_BOOL_PTR pbVmRemoteDisplayEncryptionEnabled)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pbVmRemoteDisplayEncryptionEnabled = m_VmConfig.getVmSettings()->getVmRemoteDisplay()->isEncrypted();
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleVmCfg::IsScrResEnabled(PRL_BOOL_PTR pbVmScrResEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

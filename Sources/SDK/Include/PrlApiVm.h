@@ -8901,6 +8901,27 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 		PRL_UINT32_PTR pnVmRemoteDisplayWebSocketPort
 		) );
 
+/* Determines if VNC is encrypted.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine configuration.
+   pbVmRemoteDisplayEncryptionEnabled  :  [out] A pointer to a variable that
+                        receives the result. PRL_TRUE indicates
+                        that the feature is enabled. PRL_FALSE
+                        indicates otherwise.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmCfg_IsVNCEncryptionEnabled, (
+		PRL_HANDLE hVmCfg,
+		PRL_BOOL_PTR pbVmRemoteDisplayEncryptionEnabled
+		) );
+
 /* Determines if additional screen resolution support is enabled
    in a virtual machine.
    Parameters

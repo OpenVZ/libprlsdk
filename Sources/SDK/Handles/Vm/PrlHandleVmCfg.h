@@ -1967,6 +1967,14 @@ public:
 	PRL_RESULT GetRemoteDisplayWebSocketPortNumber(PRL_UINT32_PTR pnVmRemoteDisplayWebSocketPortNumber);
 
 	/**
+	 * Returns a sign whether remote display is enabled.
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT IsRemoteDisplayEncryptionEnabled(PRL_BOOL_PTR pbVmRemoteDisplayEncryptionEnabled);
+
+	/**
 	 * Returns VM additional screen resolutions support option.
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:
