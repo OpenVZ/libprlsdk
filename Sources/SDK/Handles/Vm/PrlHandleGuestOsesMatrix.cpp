@@ -78,3 +78,13 @@ PRL_RESULT PrlHandleGuestOsesMatrix::GetDefaultOsVersion(PRL_UINT8 nGuestOsType,
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleGuestOsesMatrix::GetSupportType(PRL_UINT8 nGuestOsType, PRL_UINT16 nOsVersion,
+							PRL_GUEST_OS_SUPPORT_TYPE_PTR pnSupportType)
+{
+	if (!CGuestOsesHelper::CheckGuestOsVersion(nGuestOsType, nOsVersion))
+		return (PRL_ERR_INVALID_ARG);
+
+	*pnSupportType = CGuestOsesHelper::GetSupportType(nOsVersion);
+	return (PRL_ERR_SUCCESS);
+}
+

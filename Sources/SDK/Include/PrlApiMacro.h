@@ -1001,6 +1001,7 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_CancelConvertDisks ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlOsesMatrix_GetSupportedOsesTypes ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlOsesMatrix_GetSupportedOsesVersions ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlOsesMatrix_GetDefaultOsVersion ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlOsesMatrix_GetSupportType ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_HasRestriction ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_GetRestrictionInfo ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlApi_CreateProblemReport ) \
