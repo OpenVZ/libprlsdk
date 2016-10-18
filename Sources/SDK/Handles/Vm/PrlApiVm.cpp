@@ -11225,32 +11225,6 @@ PRL_METHOD( PrlOsesMatrix_GetDefaultOsVersion ) (
 	return (pOsesMatrix->GetDefaultOsVersion(nGuestOsType, pnOsVersion));
 }
 
-PRL_METHOD( PrlOsesMatrix_GetSupportType ) (
-					PRL_HANDLE hOsesMatrix,
-					PRL_UINT8 nGuestOsType,
-					PRL_UINT16 nGuestOSVersion,
-					PRL_GUEST_OS_SUPPORT_TYPE_PTR pnGuestSupportType
-		)
-{
-	LOG_MESSAGE( DBG_INFO, "%s (hOsesMatrix=%p, nGuestOsType=%.2X, nGuestOSVersion=%.2X, pnGuestSupportType=%p)",
-		__FUNCTION__,
-		hOsesMatrix,
-		nGuestOsType,
-		nGuestOSVersion,
-		pnGuestSupportType
-		);
-
-	SYNC_CHECK_API_INITIALIZED
-
-	// check input parameters validity
-	if ( PRL_WRONG_HANDLE(hOsesMatrix, PHT_GUEST_OSES_MATRIX) || PRL_WRONG_PTR(pnGuestSupportType) )
-		return PRL_ERR_INVALID_ARG;
-
-	PrlHandleGuestOsesMatrixPtr pOsesMatrix = PRL_OBJECT_BY_HANDLE<PrlHandleGuestOsesMatrix>( hOsesMatrix );
-
-	return (pOsesMatrix->GetSupportType(nGuestOsType, nGuestOSVersion, pnGuestSupportType));
-}
-
 PRL_METHOD( PrlAppliance_Create) (
 		PRL_HANDLE_PTR phAppCfg
 		)

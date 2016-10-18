@@ -1087,32 +1087,6 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 					PRL_UINT16_PTR pnOsVersion
 		) );
 
-/* Returns the support type for the specified guest OS type retrieved from the
-   remote server (see PrlSrv_GetSupportedOses)
-   and guest OS version (see PrlOsesMatrix_GetSupportedOsesVersions)
-
-   Parameters
-   hOsesMatrix       :  [in] handle of type PHT_GUEST_OSES_MATRIX.
-   nGuestOsType      :  [in] requesting guest OS type. In order to determine the list of supported
-                        guest types refer to PrlOses.h
-   nGuestOSVersion   :  [in] requesting guest OS version. In order to determine the list of supported
-                        guest types refer to PrlOses.h
-   pnGuestSupportType:  [out] A pointer to a variable that receives the result
-
-   Returns
-   PRL_RESULT. Possible values:
-
-   PRL_ERR_INVALID_ARG - an invalid handle, a null pointer or an unknown OS type/version was passed.
-
-   PRL_ERR_SUCCESS - function completed successfully */
-PRL_METHOD_DECL( PARALLELS_API_VER_7,
-				PrlOsesMatrix_GetSupportType, (
-					PRL_HANDLE hOsesMatrix,
-					PRL_UINT8 nGuestOsType,
-					PRL_UINT16 nGuestOSVersion,
-					PRL_GUEST_OS_SUPPORT_TYPE_PTR pnGuestSupportType
-		) );
-
 
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Virtual machine OS info
