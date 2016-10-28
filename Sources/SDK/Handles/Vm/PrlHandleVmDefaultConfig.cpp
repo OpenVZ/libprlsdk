@@ -149,9 +149,6 @@ uint PrlHandleVmDefaultConfig::GetDefaultRamSize (uint osVersion, uint hostRam )
 	case PVS_GUEST_VER_WIN_2K:
 		return 256;
 
-	case PVS_GUEST_VER_WIN_WINDOWS:
-		return 1024;
-
 	case PVS_GUEST_VER_WIN_XP:
 	case PVS_GUEST_VER_WIN_2003:
 	case PVS_GUEST_VER_WIN_VISTA:
@@ -196,7 +193,7 @@ uint PrlHandleVmDefaultConfig::GetDefaultRamSize (uint osVersion, uint hostRam )
 
 	switch(PVS_GET_GUEST_TYPE(osVersion)) {
 	case PVS_GUEST_TYPE_WINDOWS:
-		return 256;
+		return 1024;
 
 	case PVS_GUEST_TYPE_OS2:
 		return 128;
