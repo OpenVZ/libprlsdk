@@ -149,6 +149,9 @@ uint PrlHandleVmDefaultConfig::GetDefaultRamSize (uint osVersion, uint hostRam )
 	case PVS_GUEST_VER_WIN_2K:
 		return 256;
 
+	case PVS_GUEST_VER_WIN_WINDOWS:
+		return 1024;
+
 	case PVS_GUEST_VER_WIN_XP:
 	case PVS_GUEST_VER_WIN_2003:
 	case PVS_GUEST_VER_WIN_VISTA:
@@ -158,6 +161,10 @@ uint PrlHandleVmDefaultConfig::GetDefaultRamSize (uint osVersion, uint hostRam )
 	case PVS_GUEST_VER_WIN_WINDOWS8_1:
 	case PVS_GUEST_VER_WIN_OTHER:
 		return CalculateDefaultWindowsRamSize( hostRam );
+
+	case PVS_GUEST_VER_WIN_WINDOWS10:
+	case PVS_GUEST_VER_WIN_2016:
+		return 2048;
 
 	case PVS_GUEST_VER_OS2_ECS11:
 	case PVS_GUEST_VER_OS2_ECS12:
