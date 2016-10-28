@@ -63,6 +63,7 @@ public:
 	bool prepareDataForValidation(const QString& sFilePath,
 								  const QString& sCheckData,
 								  CResult* pResult);
+	void switchToCompatibilityMode();
 
 	bool isDelayedConnectionMode() const;
 
@@ -89,6 +90,8 @@ private:
 		NoLogin = 0,
 		LoginStage1,
 		LoginStage2,
+		LegacyLogin,
+		LegacyLoginStage1,
 	} m_iLoginStage;
 };
 
