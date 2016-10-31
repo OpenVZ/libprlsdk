@@ -806,12 +806,13 @@ PRL_ASYNC_METHOD( PrlVm_GetSuspendedScreen ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_GetSuspendedScreen, (hVm))
 }
 
-PRL_HANDLE PrlVm_CreateSnapshot_Impl(PRL_HANDLE hVm, PRL_CONST_STR sName, PRL_CONST_STR sDescription)
+PRL_HANDLE PrlVm_CreateSnapshot_Impl(PRL_HANDLE hVm, PRL_CONST_STR sName,
+		PRL_CONST_STR sDescription, PRL_UINT32 nFlags)
 {
 	if ( PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE) || PRL_WRONG_PTR(sName) || PRL_WRONG_PTR(sDescription) )
 		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_CREATE_SNAPSHOT))
 	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
-	PrlHandleJobPtr pJob = pVm->CreateSnapshot(sName, sDescription);
+	PrlHandleJobPtr pJob = pVm->CreateSnapshot(sName, sDescription, nFlags);
 	if (!pJob)
 		RETURN_RES(PRL_INVALID_HANDLE)
 	pJob->SetVmHandle(hVm);
@@ -824,8 +825,22 @@ PRL_ASYNC_METHOD( PrlVm_CreateSnapshot ) (
 								  PRL_CONST_STR sDescription
 								  )
 {
+	PRL_UINT32 nFlsgs = 0;
+
 	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_CREATE_SNAPSHOT)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_CreateSnapshot, (hVm, sName, sDescription))
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_CreateSnapshot, (hVm, sName, sDescription, nFlsgs))
+}
+
+PRL_ASYNC_METHOD( PrlVm_CreateSnapshotEx ) (
+		PRL_HANDLE hVm,
+		PRL_CONST_STR sName,
+		PRL_CONST_STR sDescription,
+		PRL_UINT32 nFlags
+		)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_CREATE_SNAPSHOT)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(),
+		PrlVm_CreateSnapshot, (hVm, sName, sDescription, nFlags))
 }
 
 PRL_HANDLE PrlVm_SwitchToSnapshot_Impl(PRL_HANDLE hVm, PRL_CONST_STR sSnapshotUuid,

@@ -170,7 +170,8 @@ public:
 	/**
 	 * Start creation procedure of the new state
 	 */
-	PrlHandleJobPtr CreateSnapshot(PRL_CONST_STR sName, PRL_CONST_STR sDescription);
+	PrlHandleJobPtr CreateSnapshot(PRL_CONST_STR sName,
+			PRL_CONST_STR sDescription, PRL_UINT32 nFlags);
 
 	/**
 	 * Start switching to state procedure

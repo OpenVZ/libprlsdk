@@ -370,12 +370,17 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmDropSuspendedState(PRL_CONST_STR sVmU
 							PJOC_VM_DROP_SUSPENDED_STATE)));
 }
 
-PrlHandleJobPtr PrlHandleServerVm::DspCmdVmCreateSnapshot(PRL_CONST_STR sVmUuid, PRL_CONST_STR sName, PRL_CONST_STR sDescription, PRL_CONST_STR sSnapshotUuid)
+PrlHandleJobPtr PrlHandleServerVm::DspCmdVmCreateSnapshot(PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sName,
+		PRL_CONST_STR sDescription,
+		PRL_CONST_STR sSnapshotUuid,
+		PRL_UINT32 nFlags)
 {
-	QString job_uuid = m_pPveControl->DspCmdVmCreateSnapshot(sVmUuid, sName, sDescription, sSnapshotUuid);
+	QString job_uuid = m_pPveControl->DspCmdVmCreateSnapshot(sVmUuid,
+			sName, sDescription, sSnapshotUuid, nFlags);
 
 	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
-							PJOC_VM_CREATE_SNAPSHOT)));
+					PJOC_VM_CREATE_SNAPSHOT)));
 }
 
 PrlHandleJobPtr PrlHandleServerVm::DspCmdVmGetSnapshotsTree(PRL_CONST_STR sVmUuid, PRL_UINT32 nFlags)

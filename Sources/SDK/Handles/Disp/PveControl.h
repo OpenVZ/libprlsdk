@@ -335,12 +335,14 @@ public://Protocol methods
 	* @param Snapshot name
 	* @param Snapshot description
 	* @param UUID of the state to create
+	* @param flags
 	* @return id of performed asynchronous request
 	*/
 	QString DspCmdVmCreateSnapshot( const char *strVmUUID,
-									const char *strName,
-									const char *strDescription,
-									const char *strStateUuid);
+			const char *strName,
+			const char *strDescription,
+			const char *strStateUuid,
+			quint32 nFlags);
 
 	/**
 	* Start switching to state procedure
