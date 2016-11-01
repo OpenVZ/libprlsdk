@@ -359,13 +359,15 @@ PrlHandleJobPtr PrlHandleVmSrv::InstallTools()
 	return (m_pServerVm->DspCmdVmInstallTools(GET_VM_UUID));
 }
 
-PrlHandleJobPtr PrlHandleVmSrv::CreateSnapshot(PRL_CONST_STR sName, PRL_CONST_STR sDescription)
+PrlHandleJobPtr PrlHandleVmSrv::CreateSnapshot(PRL_CONST_STR sName,
+		PRL_CONST_STR sDescription, PRL_UINT32 nFlags)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	CHECK_SERVER
 	CHECK_IDENTIFICATION
 	QString strSnapshotUuid = Uuid::createUuid().toString();
-	return (m_pServerVm->DspCmdVmCreateSnapshot(GET_VM_UUID, sName, sDescription, strSnapshotUuid.toUtf8().data()));
+	return (m_pServerVm->DspCmdVmCreateSnapshot(GET_VM_UUID, sName,
+			sDescription, strSnapshotUuid.toUtf8().data(), nFlags));
 }
 
 PrlHandleJobPtr PrlHandleVmSrv::SwitchToSnapshot(PRL_CONST_STR sSnapshotUuid, PRL_UINT32 nFlags)

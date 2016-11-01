@@ -1472,6 +1472,40 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_CONST_STR sDescription
 		) );
 
+/* Creates a virtual machine snapshot. To get the return code
+   from the PHT_JOB object, use the PrlJob_GetRetCode function.
+   Possible value are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Parameters
+   handle :        A handle of type PHT_VIRTUAL_MACHINE
+                   identifying the virtual machine.
+   sName :         Snapshot name.
+   sDescription :  Snapshot description.
+   nFlag :	   Flags from enum PRL_CREATE_SNAPSHOT_FLAGS
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.
+   See Also
+   PrlVm_DeleteSnapshot
+
+   PrlVm_GetSnapshotsTreeEx
+
+   PrlVm_SwitchToSnapshot
+
+   PrlVm_UpdateSnapshotData                                     */
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_7,
+					   PrlVm_CreateSnapshotEx, (
+		PRL_HANDLE hVm,
+		PRL_CONST_STR sName,
+		PRL_CONST_STR sDescription,
+		PRL_UINT32 nFlags
+		) );
+
 /* Retrieves snapshot information for the specified virtual
    machine. Snapshot information is returned as an XML file
    containing the snapshot tree. Some of the important XML

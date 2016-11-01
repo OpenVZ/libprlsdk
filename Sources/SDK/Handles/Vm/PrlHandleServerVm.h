@@ -341,7 +341,9 @@ public:
 	* @param uuid of the state to create
 	* @return pointer to generated job instance
 	*/
-	PrlHandleJobPtr DspCmdVmCreateSnapshot(PRL_CONST_STR sVmUuid, PRL_CONST_STR sName, PRL_CONST_STR sDescription, PRL_CONST_STR sSnapshotUuid);
+	PrlHandleJobPtr DspCmdVmCreateSnapshot(PRL_CONST_STR sVmUuid,
+			PRL_CONST_STR sName, PRL_CONST_STR sDescription,
+			PRL_CONST_STR sSnapshotUuid, PRL_UINT32 nFlags);
 
 	/**
 	* Get snapshots tree

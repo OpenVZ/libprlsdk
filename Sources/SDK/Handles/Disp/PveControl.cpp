@@ -1136,17 +1136,21 @@ QString CPveControl::DspCmdVmDropSuspendedState(const char *strVmUUID)
 }
 
 QString CPveControl::DspCmdVmCreateSnapshot(const char *strVmUUID,
-											const char *strName,
-											const char *strDescription,
-											const char *strStateUuid)
+		const char *strName,
+		const char *strDescription,
+		const char *strStateUuid,
+		quint32 nFlags)
 {
 	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdVmCreateSnapshot()");
 
 
 	CProtoCommandPtr pRequest = CProtoSerializer::CreateCreateSnapshotProtoCommand(UTF8_2QSTR(strVmUUID),
-													UTF8_2QSTR(strName),
-													UTF8_2QSTR(strDescription),
-													UTF8_2QSTR(strStateUuid) );
+			UTF8_2QSTR(strName),
+			UTF8_2QSTR(strDescription),
+			UTF8_2QSTR(strStateUuid),
+			QString(),
+			QString(),
+			nFlags);
 
 	return SendRequestToServer(pRequest);
 }
