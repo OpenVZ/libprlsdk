@@ -10564,6 +10564,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_BACKUP_UNSUPPORTED_STORAGE_VERSION,
+		tr( "Cannot backup to this storage." ),
+		tr( "The backup storage version is not supported."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_BUSE_NOT_MOUNTED,
 		tr( "The BUSE filesystem is not mounted." ),
 		tr( "Make sure that the \"buse\" package is installed and the \"bused\" daemon is running." ),
