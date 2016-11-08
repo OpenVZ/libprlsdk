@@ -6384,8 +6384,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_RESTORE_VM_RUNNING,
-		tr("Failed to restore the virtual machine \"%1\"."),
-		tr("This virtual machine cannot be restored because it is currently running, suspended, paused, or mounted. Shut down the virtual machine and try to restore it again."),
+		tr("Failed to restore the virtual environment \"%1\"."),
+		tr("This virtual environment cannot be restored because it is currently running, paused, or mounted. Shut down the virtual environment and try to restore it again."),
 		false,
 		PMT_CRITICAL
 		);
