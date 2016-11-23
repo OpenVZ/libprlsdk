@@ -122,11 +122,20 @@ PRL_RESULT PrlHandleVirtNet::SetBoundCardMac(PRL_CONST_STR sBoundCardMac)
 	return PRL_ERR_SUCCESS;
 }
 
+namespace {
+
+QString getAdapterName(const CVirtualNetwork& net)
+{
+	return net.getHostOnlyNetwork()->getParallelsAdapter()->getName();
+}
+
+} // anonymouse namespace
+
 PRL_RESULT PrlHandleVirtNet::GetAdapterName(PRL_STR sAdapterName, PRL_UINT32_PTR pnAdapterNameBufLength)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	return CopyStringValue(m_VirtualNetwork.getHostOnlyNetwork()->getParallelsAdapter()->getName(),
-							sAdapterName, pnAdapterNameBufLength);
+	return CopyStringValue(getAdapterName(m_VirtualNetwork),
+						sAdapterName, pnAdapterNameBufLength);
 }
 
 PRL_RESULT PrlHandleVirtNet::SetAdapterName(PRL_CONST_STR sAdapterName)
@@ -482,11 +491,13 @@ PRL_RESULT PrlHandleVirtNet::SetPortForwardList(PRL_PORT_FORWARDING_TYPE nPortFw
 
 PRL_RESULT PrlHandleVirtNet::GetBoundAdapterInfo(const PrlHandleSrvConfigPtr &pSrvConfig, PRL_HANDLE_PTR phNetAdapter)
 {
+	QString sName;
 	QString sMacAddress;
 	PRL_UINT16 nVlanTag = 0;
 	{
 		//To prevent potential deadlocks
 		SYNCHRO_INTERNAL_DATA_ACCESS
+		sName = getAdapterName(m_VirtualNetwork);
 		sMacAddress = m_VirtualNetwork.getBoundCardMac();
 		nVlanTag = m_VirtualNetwork.getVLANTag();
 	}
@@ -494,7 +505,8 @@ PRL_RESULT PrlHandleVirtNet::GetBoundAdapterInfo(const PrlHandleSrvConfigPtr &pS
 	CHwNetAdapter *pTargetNetAdapter = NULL;
 	foreach(CHwNetAdapter *pNetAdapter, pSrvConfig->GetSrvConfig().m_lstNetworkAdapters)
 	{
-		if (!QString::compare(pNetAdapter->getMacAddress(),
+		if (sName != pNetAdapter->getDeviceName() &&
+			!QString::compare(pNetAdapter->getMacAddress(),
 			sMacAddress, Qt::CaseInsensitive) &&
 			pNetAdapter->getVLANTag() == nVlanTag)
 		{
