@@ -23,18 +23,17 @@ static PRL_RESULT PrlHandle_EventCallbackHandler(PRL_HANDLE hEvent, PRL_VOID_PTR
 		PyObject *py_user_data;
 		if (PrlHandle_GetType(hEvent, &type))
 			break;
-		if (type == PHT_EVENT) {
-			if (!PyArg_ParseTuple((PyObject *)user_data, "kOO", &handle, &py_callback_function, &py_user_data))
-				break;
-			PyObject *arglist;
-			arglist = Py_BuildValue("(i,O)", hEvent, py_user_data);
-			PyObject *call_obj_result;
-			call_obj_result = PyObject_CallObject(py_callback_function, arglist);
-			if (PyErr_Occurred())
-				PyErr_Print();
-			Py_XDECREF(call_obj_result);
-			Py_DECREF(arglist);
-		}
+
+		if (!PyArg_ParseTuple((PyObject *)user_data, "kOO", &handle, &py_callback_function, &py_user_data))
+			break;
+		PyObject *arglist;
+		arglist = Py_BuildValue("(i,O)", hEvent, py_user_data);
+		PyObject *call_obj_result;
+		call_obj_result = PyObject_CallObject(py_callback_function, arglist);
+		if (PyErr_Occurred())
+			PyErr_Print();
+		Py_XDECREF(call_obj_result);
+		Py_DECREF(arglist);
 	} while(0);
 	PyGILState_Release(gstate);
 	return PRL_ERR_SUCCESS;
