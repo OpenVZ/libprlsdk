@@ -133,6 +133,7 @@ typedef PRL_RESIZE_IMAGE_FLAGS* PRL_RESIZE_IMAGE_FLAGS_PTR;
    PVMT_IGNORE_EXISTING_BUNDLE : do not fail if Vm bundle exist. For clone Vm on mounted iSCSI storage
    PVMT_UNCOMPRESSED        : do not compress data during migration
    PVMT_DIRECT_DATA_CONNECTION : do not use tunnel for migration
+   PVMT_DONT_CREATE_DISK       : don't create disk file on target host
 */
 typedef enum _PRL_VM_MIGRATION_FLAGS
 {
@@ -152,6 +153,7 @@ typedef enum _PRL_VM_MIGRATION_FLAGS
 	PVMT_SEND_DISK_MAP = 1<<(PACF_MAX+10),
 	PVMT_UNCOMPRESSED	= 1<<(PACF_MAX+11),
 	PVMT_DIRECT_DATA_CONNECTION  = 1<<(PACF_MAX+12),
+	PVMT_DONT_CREATE_DISK        = 1<<(PACF_MAX+13),
 } PRL_VM_MIGRATION_FLAGS;
 
 /* VM backup functionality flags set
