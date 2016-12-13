@@ -49,7 +49,7 @@ PrlHandleLoginLocalHelperJob::PrlHandleLoginLocalHelperJob(
 , m_qsPrevSessionUuid(UTF8_2QSTR(strPrevSessionUuid))
 , m_nAppMode(appMode)
 , m_nFlags(flags)
-, m_iLoginStage(NoLogin)
+, m_iLoginStage(LegacyLogin)
 {
 	m_pServer->AddJobToResponseAwaitingList(PrlHandleServerJobPtr(this));
 
@@ -116,6 +116,12 @@ void PrlHandleLoginLocalHelperJob::doJob()
 #endif
 				m_nFlags);
 		break;
+	case LegacyLogin:
+		pRequest = CProtoSerializer::CreateDspCmdUserEasyLoginLocalCommand(
+				m_nAppMode,
+				m_qsPrevSessionUuid,
+				m_nFlags);
+		break;
 	case LoginStage1:
 		pRequest = CProtoSerializer::CreateProtoCommandWithOneStrParam(
 				PVE::DspCmdUserLoginLocalStage2, m_qsPrevSessionUuid);
@@ -163,6 +169,12 @@ bool PrlHandleLoginLocalHelperJob::prepareDataForValidation(const QString& sFile
 	doJob();
 
 	return true;
+}
+
+void PrlHandleLoginLocalHelperJob::switchToCompatibilityMode()
+{
+	m_iLoginStage = NoLogin;
+	doJob();
 }
 
 bool PrlHandleLoginLocalHelperJob::isDelayedConnectionMode() const

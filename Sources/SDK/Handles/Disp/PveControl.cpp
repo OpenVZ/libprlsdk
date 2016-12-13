@@ -227,14 +227,27 @@ void CPveControl::handleResponsePackage ( IOSendJob::Handle hJob, const SmartPtr
 		{
 			bool bDoLoginLocalStage2 = (nOpCode == PVE::DspCmdUserLoginLocal
 				&& PRL_SUCCEEDED(pResult->getReturnCode()));
-
-			if (bDoLoginLocalStage2)
+			switch(nOpCode)
 			{
-				QString sFilePath = pResponseCmd->GetStandardParam(0);
-				QString sCheckData = pResponseCmd->GetStandardParam(1);
+			case PVE::DspCmdUserEasyLoginLocal:
+				if (!PRL_SUCCEEDED(pResult->getReturnCode()))
+				{
+					m_pLoginLocalHelperJob->switchToCompatibilityMode();
+					return;
+				}
+				break;
+			case PVE::DspCmdUserLoginLocal:
+				if (bDoLoginLocalStage2)
+				{
+					QString sFilePath = pResponseCmd->GetStandardParam(0);
+					QString sCheckData = pResponseCmd->GetStandardParam(1);
 
-				bDoLoginLocalStage2
-					= m_pLoginLocalHelperJob->prepareDataForValidation(sFilePath, sCheckData, pResult);
+					bDoLoginLocalStage2
+						= m_pLoginLocalHelperJob->prepareDataForValidation(sFilePath, sCheckData, pResult);
+				}
+				break;
+			default:
+				break;
 			}
 
 			emit cleanupLoginHelperJob();

@@ -273,7 +273,9 @@ bool CEventsHandler::event( QEvent *pEvent )
 		if ( pJob )
 		{
 			event_handle = pJob->GetHandle();
-			if ((pResult->getOpCode() == PVE::DspCmdUserLogin || pResult->getOpCode() == PVE::DspCmdUserLoginLocalStage2)
+			if ((pResult->getOpCode() == PVE::DspCmdUserLogin
+				|| pResult->getOpCode() == PVE::DspCmdUserEasyLoginLocal
+				|| pResult->getOpCode() == PVE::DspCmdUserLoginLocalStage2)
 					&& PRL_SUCCEEDED(pResult->getReturnCode()))
 			{
 				pServer->ProcessLoginResponse(pResult);

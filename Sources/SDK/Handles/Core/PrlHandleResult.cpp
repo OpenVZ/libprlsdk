@@ -161,6 +161,7 @@ PVE::IDspMethodsArgs GetHashIdByOperationCode(PVE::IDispatcherCommands _cmd)
 		case PVE::DspCmdUpdateDeviceInfo: return PVE::DspCmdUpdateDeviceInfo_strDeviceInfo;
 		case PVE::DspCmdGetNetServiceStatus: return PVE::DspCmdGetNetServiceStatus_strNetServiceStatus;
 		case PVE::DspCmdUserLogin: return (PVE::DspCmdUserLogin_strLoginInfo);
+		case PVE::DspCmdUserEasyLoginLocal: return (PVE::DspCmdUserLoginLocalStage2_strLoginInfo);
 		case PVE::DspCmdUserLoginLocalStage2: return (PVE::DspCmdUserLoginLocalStage2_strLoginInfo);
 		case PVE::DspCmdVmUpdateSecurity: return (PVE::DspCmdVmUpdateSecurity_strSecurityInfo);
 		case PVE::DspCmdPerfomanceStatistics: return (PVE::DspCmdPerfomanceStatistics_strPerfStats) ;
@@ -177,6 +178,7 @@ PRL_HANDLE PrlHandleResult::ResultAsHandle()
 	{
 		case PVE::DspCmdUserLogin:
 		case PVE::DspCmdUserLoginLocal:
+		case PVE::DspCmdUserEasyLoginLocal:
 		case PVE::DspCmdUserLoginLocalStage2:
 		{
 			CVmEvent evtLoginInfo( m_Result.m_hashResultSet[ PVE::DspCmdUserLogin_strLoginInfo ] );
@@ -618,6 +620,7 @@ PRL_RESULT PrlHandleResult::GetParamByIndex(PRL_UINT32 nIndex, PRL_HANDLE_PTR ph
 		if (
 			PVE::DspCmdUserLogin == m_Result.getOpCode() ||
 			PVE::DspCmdUserLoginLocal == m_Result.getOpCode() ||
+			PVE::DspCmdUserEasyLoginLocal == m_Result.getOpCode() ||
 			PVE::DspCmdUserLoginLocalStage2 == m_Result.getOpCode()
 			)
 		{
