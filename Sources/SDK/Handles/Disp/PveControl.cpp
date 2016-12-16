@@ -250,7 +250,8 @@ void CPveControl::handleResponsePackage ( IOSendJob::Handle hJob, const SmartPtr
 				break;
 			}
 
-			emit cleanupLoginHelperJob();
+			if (m_pLoginLocalHelperJob->isCompatibilityMode())
+				emit cleanupLoginHelperJob();
 
 			if (bDoLoginLocalStage2)
 				return;
