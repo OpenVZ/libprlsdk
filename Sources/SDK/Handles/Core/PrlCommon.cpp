@@ -173,7 +173,7 @@ void PrlSdkThreadsDestructor::ProcessThreadsInstances()
 	{
 		if ( !(*it)->isRunning() )
 		{
-			delete (*it);
+			(*it)->deleteLater();
 			it = m_lstThreadObjs.erase(it);
 		}
 		else
