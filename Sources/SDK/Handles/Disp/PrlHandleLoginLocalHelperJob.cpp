@@ -177,6 +177,18 @@ void PrlHandleLoginLocalHelperJob::switchToCompatibilityMode()
 	doJob();
 }
 
+bool PrlHandleLoginLocalHelperJob::isCompatibilityMode() const
+{
+	switch(m_iLoginStage)
+	{
+	case LegacyLogin:
+	case LegacyLoginStage1:
+		return false;
+	default:
+		return true;
+	}
+}
+
 bool PrlHandleLoginLocalHelperJob::isDelayedConnectionMode() const
 {
 	return (m_nFlags & PLLF_LOGIN_WITH_DELAYED_CONNECTION);

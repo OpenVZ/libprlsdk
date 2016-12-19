@@ -64,6 +64,7 @@ public:
 								  const QString& sCheckData,
 								  CResult* pResult);
 	void switchToCompatibilityMode();
+	bool isCompatibilityMode() const;
 
 	bool isDelayedConnectionMode() const;
 
