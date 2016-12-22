@@ -343,6 +343,7 @@ typedef PrlHandleSmartPtr<class PrlHandleOpTypeList> PrlHandleOpTypeListPtr;
 typedef PrlHandleSmartPtr<class PrlHandleLoginHelperJob> PrlHandleLoginHelperJobPtr;
 typedef PrlHandleSmartPtr<class PrlHandleLoginLocalHelperJob> PrlHandleLoginLocalHelperJobPtr;
 typedef PrlHandleSmartPtr<class PrlHandleBackupResult> PrlHandleBackupResultPtr;
+typedef PrlHandleSmartPtr<class PrlHandleVcmmdConfig> PrlHandleVcmmdConfigPtr;
 
 /**
  * Get pointer to the object by handle.

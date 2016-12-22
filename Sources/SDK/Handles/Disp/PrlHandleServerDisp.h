@@ -379,6 +379,19 @@ public:
 	 */
 	PrlHandleJobPtr GetFreeDiskSpace(PRL_CONST_STR sPath, PRL_UINT32 nFlags);
 
+	/**
+	 * Get vcmmd config
+	 * @param nFlags
+	 */
+	PrlHandleJobPtr GetVcmmdConfig(PRL_UINT32 nFlags);
+
+	/**
+	 * Set vcmmd config
+	 * @param sConfig
+	 * @param nFlags
+	 */
+	PrlHandleJobPtr SetVcmmdConfig(PRL_CONST_STR sConfig, PRL_UINT32 nFlags);
+
 };
 
 #endif // __PARALLELS_HANDLE_SERVER_DISP_H__

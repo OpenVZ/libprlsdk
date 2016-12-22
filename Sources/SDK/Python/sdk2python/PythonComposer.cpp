@@ -117,6 +117,7 @@ PythonComposer::CustomClassInfo PythonComposer::s_CustomClassInfo[] =
 {"CPUPool",      "",             "_Handle",    "",       "PHT_CPU_POOL",   "",0,0,0,0},
 {"Disk",	     "",             "_Handle",    "",       "PHT_VIRTUAL_DISK",   "",0,0,0,0},
 {"DiskMap",      "",             "_Handle",    "",       "PHT_VIRTUAL_DISK_MAP",   "",0,0,0,0},
+{"VcmmdConfig",      "",             "_Handle",    "",       "PHT_VCMMD_CONFIG",   "",0,0,0,0},
 };
 
 

@@ -62,6 +62,7 @@
 #include "PrlHandleOpTypeList.h"
 #include "PrlHandleCpuFeatures.h"
 #include "PrlHandleCpuPool.h"
+#include "PrlHandleVcmmdConfig.h"
 
 #include "Build/Current.ver"
 
@@ -5404,4 +5405,83 @@ PRL_ASYNC_METHOD( PrlSrv_RecalculateCPUPool ) (
 {
 	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CPU_POOLS_RECALCULATE);
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_RecalculateCPUPool, (hServer, sCpuPool))
+}
+
+PRL_METHOD( PrlVcmmdConfig_GetPolicy ) (
+	PRL_HANDLE hVcmmdConfig,
+	PRL_STR sPolicy,
+	PRL_UINT32_PTR pnSize
+	)
+{
+	if (PRL_WRONG_HANDLE(hVcmmdConfig, PHT_VCMMD_CONFIG) ||
+		PRL_WRONG_PTR(pnSize))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVcmmdConfigPtr pConfig = PRL_OBJECT_BY_HANDLE<PrlHandleVcmmdConfig>( hVcmmdConfig );
+	return pConfig->GetPolicy(sPolicy, pnSize);
+}
+
+PRL_METHOD( PrlVcmmdConfig_SetPolicy ) (
+	PRL_HANDLE hVcmmdConfig,
+	PRL_CONST_STR sPolicy
+	)
+{
+	if (PRL_WRONG_HANDLE(hVcmmdConfig, PHT_VCMMD_CONFIG))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVcmmdConfigPtr pConfig = PRL_OBJECT_BY_HANDLE<PrlHandleVcmmdConfig>( hVcmmdConfig );
+	return pConfig->SetPolicy(sPolicy);
+}
+
+PRL_HANDLE PrlSrv_GetVcmmdConfig_Impl (
+		PRL_HANDLE hServer,
+		PRL_UINT32 nFlags
+		)
+{
+	ONE_HANDLE_SRV_DISP_METH_IMPLEMENTATION_WITH_FLAGS(GetVcmmdConfig, nFlags, PJOC_SRV_GET_VCMMD_CONFIG)
+}
+
+PRL_ASYNC_METHOD( PrlSrv_GetVcmmdConfig ) (
+		PRL_HANDLE hServer,
+		PRL_UINT32 nFlags
+		)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_GET_VCMMD_CONFIG)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_GetVcmmdConfig, (hServer, nFlags))
+}
+
+PRL_HANDLE PrlSrv_SetVcmmdConfig_Impl(
+		PRL_HANDLE hServer,
+		PRL_HANDLE hVcmmdConfig,
+		PRL_UINT32 nFlags
+		)
+{
+	if (PRL_WRONG_HANDLE(hServer, PHT_SERVER) ||
+				PRL_WRONG_HANDLE(hVcmmdConfig, PHT_VCMMD_CONFIG))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_STORE_VALUE_BY_KEY))
+
+	PrlHandleVcmmdConfigPtr pConfig = PRL_OBJECT_BY_HANDLE<PrlHandleVcmmdConfig>( hVcmmdConfig );
+
+	CVmEventParameter *pEventParam;
+	SmartPtr<CVmEvent> pEvent(new CVmEvent());
+
+	pEventParam = new CVmEventParameter(PVE::String, pConfig->toString(),
+			EVT_PARAM_VCMMD_CONFIG_VALUE);
+	pEvent->addEventParameter(pEventParam);
+
+	PrlHandleServerDispPtr pServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerDisp>( hServer );
+	PrlHandleJobPtr pJob = pServer->SetVcmmdConfig(QSTR2UTF8(pEvent->toString()), nFlags);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE);
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_SetVcmmdConfig ) (
+		PRL_HANDLE hServer,
+		PRL_HANDLE hVcmmdConfig,
+		PRL_UINT32 nFlags
+		)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_STORE_VALUE_BY_KEY)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_SetVcmmdConfig, (hServer, hVcmmdConfig, nFlags))
 }
