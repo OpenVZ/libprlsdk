@@ -2948,3 +2948,14 @@ QString CPveControl::DspCmdVmCommitEncryption(PRL_CONST_STR strVmConfig, PRL_UIN
 	return SendRequestToServer(pRequest);
 }
 
+QString CPveControl::DspCmdGetVcmmdConfig(PRL_UINT32 nFlags)
+{
+	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdGetVcmmdConfig()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithoutParams(
+		PVE::DspCmdGetVcmmdConfig,
+		false,
+		nFlags);
+
+	return SendRequestToServer(pRequest);
+}

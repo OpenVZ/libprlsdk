@@ -6929,6 +6929,79 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_CONST_STR sCpuPool
 		) );
 
+/* Obtain a handle to vcmmd config.
+ * Parameters
+ * hServer : A handle of type PHT_SERVER.
+ * nFlags  : A flags to select mode( from enum PRL_VCMMD_COMMAND_FLAGS )
+ * Returns
+ * A handle of type PHT_JOB containing the results of this
+ * asynchronous operation or PRL_INVALID_HANDLE if there's not
+ * enough memory to instantiate the job object.
+ */
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlSrv_GetVcmmdConfig, (
+		PRL_HANDLE hServer,
+		PRL_UINT32 nFlags
+		) );
+
+/* Set handle of vcmmd config.
+ * Parameters
+ * hServer      : A handle of type PHT_SERVER.
+ * hVcmmdConfig : A handle of type PHT_VCMMD_CONFIG.
+ * nFlags       : reserver parameter
+ * Returns
+ * A handle of type PHT_JOB containing the results of this
+ * asynchronous operation or PRL_INVALID_HANDLE if there's not
+ * enough memory to instantiate the job object.
+ */
+PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlSrv_SetVcmmdConfig, (
+		PRL_HANDLE hDispConfig,
+		PRL_HANDLE hVcmmdConfig,
+		PRL_UINT32 nFlags
+		) );
+
+/* Obtains vcmmd policy.
+ * Parameters
+ * hVcmmdConfig  : A handle of type PHT_VCMMD_CONFIG.
+ * sPolicy  : [out] Pointer to a buffer that receives
+ *             vcmmd policy (a UTF\-8 encoded,
+ *             null\-terminated string).
+ * pnSize   : [in] The size of the output buffer (in
+ *            bytes). Set the buffer pointer to null
+ *            and this value to zero to receive the
+ *            required size.
+ *            [out] The required output buffer size.
+ * nFlags   : reserved parameter
+ * Returns
+ * PRL_RESULT. Possible values are:
+ * PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed.
+ *
+ * PRL_ERR_SUCCESS - function completed successfully.
+ */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVcmmdConfig_GetPolicy, (
+		PRL_HANDLE hVcmmdConfig,
+		PRL_STR sPolicy,
+		PRL_UINT32_PTR pnSize
+		) );
+
+/* Set vcmmd config value.
+ * Parameters
+ * hVcmmdConfig : A handle of type PHT_VCMMD_CONFIG.
+ * sPolicy      : [in] vcmmd policy to set
+ * Returns
+ * PRL_RESULT. Possible values are:
+ * PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed.
+ *
+ * PRL_ERR_SUCCESS - function completed successfully.
+ */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVcmmdConfig_SetPolicy, (
+		PRL_HANDLE hVcmmdConfig,
+		PRL_CONST_STR sPolicy
+		) );
+
 #ifdef _WIN_
     #pragma pack(pop, save_api_pack)
 #endif

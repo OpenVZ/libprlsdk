@@ -1119,6 +1119,10 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_CommitEncryption ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetActionOnGuestCrash ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetActionOnGuestCrash ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetOptionsOnGuestCrash ) \
-PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetOptionsOnGuestCrash )
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetOptionsOnGuestCrash ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_GetVcmmdConfig ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_SetVcmmdConfig ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVcmmdConfig_SetPolicy ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVcmmdConfig_GetPolicy )
 
 #endif // PRL_SDK_WRAP_FOR_EACH

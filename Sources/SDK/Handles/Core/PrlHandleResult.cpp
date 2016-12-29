@@ -56,6 +56,7 @@
 #include "PrlHandleLoginResponse.h"
 #include "PrlHandleServerInfo.h"
 #include "PrlHandleVmEvent.h"
+#include "PrlHandleVcmmdConfig.h"
 
 #include <prlcommon/Messaging/CResult.h>
 #include <prlcommon/Messaging/CVmEvent.h>
@@ -264,6 +265,15 @@ PRL_HANDLE PrlHandleResult::ResultAsHandle()
 			PrlHandleDispConfig *pDispConfig = new PrlHandleDispConfig(sDispConfig, sNetworkConfig);
 			if (pDispConfig)
 				res_handle = pDispConfig->GetHandle();
+		}
+		break;
+
+		case PVE::DspCmdGetVcmmdConfig:
+		{
+			QString sVcmmdConfig = m_Result.m_hashResultSet[GetHashIdByOperationCode(m_Result.getOpCode())];
+			PrlHandleVcmmdConfig *pVcmmdConfig = new PrlHandleVcmmdConfig(sVcmmdConfig);
+			if (pVcmmdConfig)
+				res_handle = pVcmmdConfig->GetHandle();
 		}
 		break;
 

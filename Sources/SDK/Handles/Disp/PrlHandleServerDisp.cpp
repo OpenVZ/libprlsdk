@@ -25,6 +25,7 @@
 
 
 #include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/Interfaces/ParallelsSdk.h>
 
 #include "PrlHandleServerJob.h"
 #include "PrlHandleLoginLocalHelperJob.h"
@@ -525,3 +526,18 @@ PrlHandleJobPtr PrlHandleServerDisp::GetFreeDiskSpace(PRL_CONST_STR sPath, PRL_U
 							PJOC_SRV_GET_DISK_FREE_SPACE)));
 }
 
+PrlHandleJobPtr PrlHandleServerDisp::GetVcmmdConfig(PRL_UINT32 nFlags)
+{
+	QString job_uuid = m_pPveControl->DspCmdGetVcmmdConfig(nFlags);
+
+	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_SRV_GET_VCMMD_CONFIG)));
+}
+
+PrlHandleJobPtr PrlHandleServerDisp::SetVcmmdConfig(PRL_CONST_STR sConfig, PRL_UINT32 nFlags)
+{
+	QString job_uuid = m_pPveControl->DspCmdStorageSetValue(PRL_KEY_SET_VCMMD_CONFIG_VALUE, sConfig, nFlags);
+
+	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_SRV_STORE_VALUE_BY_KEY)));
+}

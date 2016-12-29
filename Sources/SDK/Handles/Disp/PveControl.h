@@ -1435,6 +1435,12 @@ public://Protocol methods
 	 */
 	QString DspCmdVmCommitEncryption(PRL_CONST_STR strVmConfig, PRL_UINT32 nFlags);
 
+	/**
+	 * Get vcmmd config
+	 * @param nFlags
+	 */
+	QString DspCmdGetVcmmdConfig(PRL_UINT32 nFlags);
+
 private:
 	/**
 	 * Checks connection status
