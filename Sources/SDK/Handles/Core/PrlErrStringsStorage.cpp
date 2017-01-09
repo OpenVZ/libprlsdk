@@ -10700,7 +10700,7 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_CPUFEATURES_RUNNING_VM_OR_CT,
+		PRL_ERR_RUNNING_VM_OR_CT,
 		tr( "Cannot complete the operation as there are virtual machines or Containers currently running on the server." ),
 		tr( "Stop all virtual machines and Containers and try again." ),
 		false,
