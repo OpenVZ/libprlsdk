@@ -286,7 +286,7 @@ void PrlHandleServer::InitializeConnection()
 		m_pPveControl->stopTransport();
 		delete m_pPveControl;
 	}
-	m_pPveControl = new CPveControl( false, m_pEventsHandler);
+	m_pPveControl = new CPveControl(m_pEventsHandler);
 }
 
 bool PrlHandleServer::IsConnectionLocal () const
