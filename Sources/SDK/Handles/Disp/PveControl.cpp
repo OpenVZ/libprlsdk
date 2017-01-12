@@ -60,8 +60,8 @@
 
 using namespace Parallels;
 
-CPveControl::CPveControl(bool bUseSSL, QObject *pEventReceiverObj)
-: m_bUseSSL(bUseSSL),
+CPveControl::CPveControl(QObject *pEventReceiverObj)
+: m_bUseSSL(IOService::initSSLLibrary()),
   m_pEventReceiverObj(pEventReceiverObj),
   m_JobsHandlesHashMutex(QMutex::Recursive),
   m_ioClient(0)
@@ -76,12 +76,14 @@ CPveControl::CPveControl(bool bUseSSL, QObject *pEventReceiverObj)
 	bRes = connect(this, SIGNAL(cleanupLoginHelperJob()), SLOT(onCleanupLoginHelperJob()),
 							Qt::QueuedConnection);
 	Q_ASSERT(bRes);
-	(void)bRes;
+	Q_UNUSED(bRes);
 }
 
 CPveControl::~CPveControl ()
 {
-    delete m_ioClient;
+	delete m_ioClient;
+	if (m_bUseSSL)
+		IOService::deinitSSLLibrary();
 }
 
 void CPveControl::stopTransport()

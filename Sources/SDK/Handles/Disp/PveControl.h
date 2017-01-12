@@ -59,10 +59,9 @@ class CPveControl : public QObject
 public:
 	/**
 	 * Class constructor
-	 * @param sign whether SSL must to be using
 	 * @param pointer to object that will be processing all receiving packages and connection state changing
 	 */
-	CPveControl(bool bUseSSL, QObject *pEventReceiverObj);
+	explicit CPveControl(QObject *pEventReceiverObj);
 
 	/**
 	 * Class destructor
