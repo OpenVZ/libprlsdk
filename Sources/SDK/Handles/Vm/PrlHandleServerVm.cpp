@@ -834,3 +834,10 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmCommitEncryption(PRL_CONST_STR sVmCon
 		job_uuid, PJOC_VM_COMMIT_ENCRYPTION)));
 }
 
+PrlHandleJobPtr PrlHandleServerVm::DspCmdVmReinstall(PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sOs, PRL_UINT32 nFlags)
+{
+	QString job_uuid = m_pPveControl->DspCmdVmReinstall(sVmUuid, sOs, nFlags);
+	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob(PrlHandleServerPtr(this),
+		job_uuid, PJOC_VM_REINSTALL)));
+}
