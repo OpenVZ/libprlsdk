@@ -493,15 +493,6 @@ public:
 	 * @return pointer to job object
 	 */
 	PrlHandleJobPtr CommitEncryption(PRL_UINT32 nFlags);
-
-	/**
-	 * Reinstall
-	 *
-	 * @param
-	 * @param nFlags - encryption flags
-	 * @return pointer to job object
-	 */
-	PrlHandleJobPtr Reinstall(PRL_CONST_STR sOs, PRL_UINT32 nFlags);
 };
 
 #endif // __PARALLELS_HANDLE_VM_SRV_H__

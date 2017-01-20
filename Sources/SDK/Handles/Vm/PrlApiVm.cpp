@@ -11968,32 +11968,3 @@ PRL_METHOD( PrlVmCfg_GetOptionsOnGuestCrash ) (
 
 	return pVm->GetOnCrashOptions(pnOptions);
 }
-
-PRL_HANDLE PrlVm_Reinstall_Impl(
-		PRL_HANDLE hVm,
-		PRL_CONST_STR sOsTemplate,
-		PRL_UINT32 nFlags
-	)
-{
-	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE) ||
-			PRL_WRONG_PTR(sOsTemplate))
-		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_REINSTALL))
-
-	PrlHandleVmSrvPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmSrv>(hVm);
-	PrlHandleJobPtr pJob = pVm->Reinstall(sOsTemplate, nFlags);
-	if (!pJob)
-		RETURN_RES(PRL_INVALID_HANDLE)
-	pJob->SetVmHandle(hVm);
-	RETURN_RES(pJob->GetHandle())
-}
-
-PRL_ASYNC_METHOD( PrlVm_Reinstall ) (
-		PRL_HANDLE hVm,
-		PRL_CONST_STR sOsTemplate,
-		PRL_UINT32 nFlags
-	)
-{
-	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_REINSTALL)
-	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(),
-			PrlVm_Reinstall, (hVm, sOsTemplate, nFlags))
-}

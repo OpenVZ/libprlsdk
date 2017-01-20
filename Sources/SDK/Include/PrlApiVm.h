@@ -3591,35 +3591,6 @@ PRL_ASYNC_SRV_METHOD_DECL(PARALLELS_API_VER_7,
 		PRL_HANDLE hReserved
 	));
 
-/* Reinstall Container 
-   Recreate a root virtial disk, installs all
-   applications, copies CT credentials from the old CT (unless
-   REINSTALL_RESET_PWDB flag is specified), and moves old '/' to /old
-   directory (unless REINSTALL_SKIP_BACKUP flag is specified).
-
-   To get the return code from the PHT_JOB object, use the
-   PrlJob_GetRetCode function. Possible values are:
-   PRL_ERR_INVALID_ARG - invalid handle was passed.
-   PRL_ERR_SUCCESS - function completed successfully.
-   Parameters
-   hVm :          A handle of type PHT_VIRTUAL_MACHINE
-                  identifying the virtual machine.
-   sOsTemplate :  Specify new ostemplate name/
-   nFlags :       Bitset of flags - from enum PRL_VM_REINSTALL_OPTIONS
-
-   Returns
-   A handle of type PHT_JOB containing the results of this
-   asynchronous operation or PRL_INVALID_HANDLE if there's not
-   enough memory to instantiate the job object.
-
-*/
-PRL_ASYNC_SRV_METHOD_DECL(PARALLELS_API_VER_7,
-	PrlVm_Reinstall, (
-		PRL_HANDLE hVm,
-		PRL_CONST_STR sOsTemplate,
-		PRL_UINT32 nFlags
-	));
-
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Virtual machine guest OS session operations set
 ///////////////////////////////////////////////////////////////////////////////
