@@ -715,3 +715,12 @@ PrlHandleJobPtr PrlHandleVmSrv::CommitEncryption(PRL_UINT32 nFlags)
 	return m_pServerVm->DspCmdVmCommitEncryption(m_VmConfig.toString().toUtf8().data(), nFlags);
 }
 
+PrlHandleJobPtr PrlHandleVmSrv::Reinstall(PRL_CONST_STR sOs, PRL_UINT32 nFlags)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	CHECK_SERVER
+	CHECK_IDENTIFICATION
+
+	return m_pServerVm->DspCmdVmReinstall(GET_VM_UUID, sOs, nFlags);
+}
+
