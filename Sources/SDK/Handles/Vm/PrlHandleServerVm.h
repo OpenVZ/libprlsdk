@@ -828,6 +828,9 @@ public:
 	 * @return pointer to generated job instance
 	 */
 	PrlHandleJobPtr DspCmdVmCommitEncryption(PRL_CONST_STR sVmConfiguration, PRL_UINT32 nFlags);
+
+	PrlHandleJobPtr DspCmdCtReinstall(PRL_CONST_STR sVmUuid,
+			PRL_CONST_STR sOs, PRL_UINT32 nFlags);
 };
 
 #endif // __PARALLELS_HANDLE_SERVER_VM_H__

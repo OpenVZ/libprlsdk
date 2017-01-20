@@ -2961,3 +2961,17 @@ QString CPveControl::DspCmdGetVcmmdConfig(PRL_UINT32 nFlags)
 
 	return SendRequestToServer(pRequest);
 }
+
+QString CPveControl::DspCmdCtReinstall(PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sOs, PRL_UINT32 nFlags)
+{
+	CProtoCommandPtr pRequest =
+		CProtoSerializer::CreateProtoCommandWithTwoStrParams(
+				PVE::DspCmdCtReinstall,
+				UTF8_2QSTR(sVmUuid),
+				UTF8_2QSTR(sOs),
+				false,
+				nFlags);
+
+	return SendRequestToServer(pRequest);
+}
