@@ -57,6 +57,7 @@ INSTALL_HEADERS = $$SRC_LEVEL/SDK/Include/Parallels.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiCore.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiDisp.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiVm.h \
+	$$SRC_LEVEL/SDK/Include/PrlApiCt.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiNet.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiStat.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiDeprecated.h

@@ -43,6 +43,7 @@ extern "C" {
 #include "PrlApiCore.h"
 #include "PrlApiDisp.h"
 #include "PrlApiVm.h"
+#include "PrlApiCt.h"
 #include "PrlApiNet.h"
 #include "PrlApiStat.h"
 

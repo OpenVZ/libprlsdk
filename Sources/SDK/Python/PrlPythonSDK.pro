@@ -52,6 +52,7 @@ SDK2PYTHON_INPUT = \
 	$$SRC_LEVEL/SDK/Include/PrlApiCore.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiDisp.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiVm.h \
+	$$SRC_LEVEL/SDK/Include/PrlApiCt.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiNet.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiStat.h \
 	$$SRC_LEVEL/SDK/Include/PrlDisk.h \
