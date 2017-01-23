@@ -35,6 +35,7 @@
 #define PRL_API_CORE_H			"PrlApiCore.h"
 #define PRL_API_DISP_H			"PrlApiDisp.h"
 #define PRL_API_VM_H			"PrlApiVm.h"
+#define PRL_API_CT_H			"PrlApiCt.h"
 #define PRL_API_NET_H			"PrlApiNet.h"
 #define PRL_API_STAT_H			"PrlApiStat.h"
 #define PRL_DISK_H				"PrlDisk.h"
@@ -50,6 +51,7 @@ SDKParser::SDKParser(const QString& qsSdkIncludeDir, const QString& qsDocFile)
 : m_qsSdkIncludeDir(qsSdkIncludeDir),
   m_lstSources( QList<QString* >()
 				<< &m_qsPrlApiMacro
+				<< &m_qsPrlApi
 				<< &m_qsPrlApi
 				<< &m_qsPrlApi
 				<< &m_qsPrlApi
@@ -102,6 +104,7 @@ bool SDKParser::Init()
 		<< QString(PRL_API_CORE_H)
 		<< QString(PRL_API_DISP_H)
 		<< QString(PRL_API_VM_H)
+		<< QString(PRL_API_CT_H)
 		<< QString(PRL_API_NET_H)
 		<< QString(PRL_API_STAT_H)
 		<< QString(PRL_DISK_H)
