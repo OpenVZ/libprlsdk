@@ -149,6 +149,7 @@ bool PythonComposer::CompositePython()
 	{
 		QStringList lstUnusedClasses = setUnusedClasses.toList();
 		m_qsErrorMessage = QString("The class(es) %1 are unused!").arg(lstUnusedClasses.join(", "));
+		return false;
 	}
 
 	QString content;
