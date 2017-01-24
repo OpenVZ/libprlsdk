@@ -1765,24 +1765,24 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_PRL_TOOLS_BETA,
-		tr("Automatic installation of Parallels Tools is not supported in this Beta. Please install Parallels Tools manually."),
-		tr("Parallels Tools are available from the image file \"%1\". Connect this image to the virtual machine and install Parallels Tools."),
+		tr("Automatic installation of Virtuozzo Tools is not supported in this Beta. Please install Virtuozzo Tools manually."),
+		tr("Virtuozzo Tools are available from the image file \"%1\". Connect this image to the virtual machine and install Virtuozzo Tools."),
 		false,
 		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_CANT_INSTALL_TOOLS_WITHOUT_CD,
-		tr("You cannot install Parallels Tools because the virtual machine has no CD/DVD device."),
-		tr("The virtual machine must have at least one CD/DVD device to install Parallels Tools. Please shut down the virtual machine, add a CD/DVD device, run the virtual machine, and start the installation again."),
+		tr("You cannot install Virtuozzo Tools because the virtual machine has no CD/DVD device."),
+		tr("The virtual machine must have at least one CD/DVD device to install Virtuozzo Tools. Please shut down the virtual machine, add a CD/DVD device, run the virtual machine, and start the installation again."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_TOOLS_UNSUPPORTED_GUEST,
-		tr("Parallels Tools cannot be installed in the virtual machine \"%1\"."),
-		tr("The operating system of your virtual machine belongs to the \"%2\" type. Parallels Tools cannot be installed in operating systems of this type."),
+		tr("Virtuozzo Tools cannot be installed in the virtual machine \"%1\"."),
+		tr("The operating system of your virtual machine belongs to the \"%2\" type. Virtuozzo Tools cannot be installed in operating systems of this type."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1797,7 +1797,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_TOOLS_WIN,
-		tr("Click Continue to connect the Parallels Tools installation CD to this virtual machine and start the installation."),
+		tr("Click Continue to connect the Virtuozzo Tools installation CD to this virtual machine and start the installation."),
 		tr("If the installation does not start automatically, open your CD/DVD drive in Windows and double-click \"Setup.exe\"."),
 		true,
 		PMT_INFORMATION
@@ -1805,16 +1805,16 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_TOOLS_LIN,
-		tr("Click Continue to connect the Parallels Tools installation CD to this virtual machine."),
-		tr("To install Parallels Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install Parallels Tools."),
+		tr("Click Continue to connect the Virtuozzo Tools installation CD to this virtual machine."),
+		tr("To install Virtuozzo Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install Virtuozzo Tools."),
 		true,
 		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_TOOLS_MAC,
-		tr("Click Continue to connect the Parallels Tools installation CD to this virtual machine."),
-		tr("To install Parallels Tools, open the Parallels Tools CD in the virtual machine and double-click \"Install\"."),
+		tr("Click Continue to connect the Virtuozzo Tools installation CD to this virtual machine."),
+		tr("To install Virtuozzo Tools, open the Virtuozzo Tools CD in the virtual machine and double-click \"Install\"."),
 		true,
 		PMT_INFORMATION
 		);
@@ -3198,10 +3198,10 @@ void PrlErrStringsStorage::Initialize()
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
-				tr("The virtual machine does not have Parallels Tools installed."
+				tr("The virtual machine does not have Virtuozzo Tools installed."
 				   " Do you want to save the configuration anyway?"),
 				tr("If you save the configuration now, the network adapter may work incorrectly."
-				   " Install Parallels Tools and configure the network adapter settings again."),
+				   " Install Virtuozzo Tools and configure the network adapter settings again."),
 		true,
 		PMT_QUESTION
 		);
@@ -3523,7 +3523,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONVERT_OLD_VM_WITH_INSTALLED_TOOLS,
 		tr("Unable to add the virtual machine located in %1."),
-		tr("This virtual machine was created with an earlier version of the Parallels software and has Parallels Tools installed. Before adding the virtual machine, run it with the same application version that was used for its creation and uninstall Parallels Tools using Add or Remove Programs in Windows Control Panel. Then shut down the virtual machine and try again."),
+		tr("This virtual machine was created with an earlier version of the Parallels software and has Virtuozzo Tools installed. Before adding the virtual machine, run it with the same application version that was used for its creation and uninstall Virtuozzo Tools using Add or Remove Programs in Windows Control Panel. Then shut down the virtual machine and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -3619,8 +3619,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_WARN_VM_PD3_COMPAT_MODE,
-		tr("The virtual machine is running in compatibility mode. A newer version of Parallels Tools needs to be installed. The installation will start automatically."),
-			tr("Please wait for the guest operating system to boot and start the Parallels Tools installation, it might take a while. If the installation of Parallels Tools does not start automatically, select Install Parallels Tools on the Virtual Machine menu to start the installation manually."),
+		tr("The virtual machine is running in compatibility mode. A newer version of Virtuozzo Tools needs to be installed. The installation will start automatically."),
+			tr("Please wait for the guest operating system to boot and start the Virtuozzo Tools installation, it might take a while. If the installation of Virtuozzo Tools does not start automatically, select Install Virtuozzo Tools on the Virtual Machine menu to start the installation manually."),
 		false,
 		PMT_INFORMATION
 		);
@@ -3973,16 +3973,16 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_NO_CD_DRIVE_AVAILABLE,
-		tr("Unable to install Parallels Tools."),
-		tr("Parallels Tools can be installed if at least one CD/DVD drive is connected to the virtual machine. Add a CD/DVD drive to the virtual machine configuration and try again."),
+		tr("Unable to install Virtuozzo Tools."),
+		tr("Virtuozzo Tools can be installed if at least one CD/DVD drive is connected to the virtual machine. Add a CD/DVD drive to the virtual machine configuration and try again."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_GUEST_TOOLS_NOT_INSTALLED,
-		tr("Parallels Tools are not installed in this virtual machine."),
-		tr("Start the installation now by choosing Install Parallels Tools from the Virtual Machine menu."),
+		tr("Virtuozzo Tools are not installed in this virtual machine."),
+		tr("Start the installation now by choosing Install Virtuozzo Tools from the Virtual Machine menu."),
 		false,
 		PMT_WARNING
 		);
@@ -4053,8 +4053,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_ANOTHER_TOOLS_IN_USE,
-		tr("Parallels Tools cannot be mounted to the virtual machine."),
-		tr("Another ISO image with Parallels Tools is mounted to the CD/DVD device of this virtual machine. Unmount this image, then try again."),
+		tr("Virtuozzo Tools cannot be mounted to the virtual machine."),
+		tr("Another ISO image with Virtuozzo Tools is mounted to the CD/DVD device of this virtual machine. Unmount this image, then try again."),
 		false,
 		PMT_WARNING
 		);
@@ -4150,7 +4150,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_BOOTCAMP_HELPER_INIT_FAILURE,
-		tr("An unexpected error occurred when initializing Parallels Tools."),
+		tr("An unexpected error occurred when initializing Virtuozzo Tools."),
 		tr("The virtual machine is booting from a Boot Camp partition. If you continue, you may encounter problems with Microsoft Windows or Office activation."),
 		true,
 		PMT_QUESTION
@@ -5039,8 +5039,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_TOOLS_INSTALL_OTHER,
-		tr("Parallels Tools are a set of useful add-in features, like automatic mouse capture and dynamic screen resolution adjustment."),
-		tr("To install Parallels Tools, click Continue, make sure your CD/DVD drive is mounted, go to the CD/DVD root directory, and install the available drivers."),
+		tr("Virtuozzo Tools are a set of useful add-in features, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("To install Virtuozzo Tools, click Continue, make sure your CD/DVD drive is mounted, go to the CD/DVD root directory, and install the available drivers."),
 		true,
 		PMT_QUESTION
 		);
@@ -5112,7 +5112,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_RESTART_GUEST_FAILED,
 		tr("Unable to restart the virtual machine operating system."),
-		tr("Check that Parallels Tools are installed in the virtual machine. As an alternative, you can restart the operating system from within the virtual machine."),
+		tr("Check that Virtuozzo Tools are installed in the virtual machine. As an alternative, you can restart the operating system from within the virtual machine."),
 		true,
 		PMT_WARNING
 		);
@@ -5328,7 +5328,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_EXEC_GUEST_TOOL_NOT_AVAILABLE,
 		tr("Unable to open new session in this virtual machine."),
-		tr("Make sure the latest version of Parallels Tools is installed in this virtual machine and it has finished booting."),
+		tr("Make sure the latest version of Virtuozzo Tools is installed in this virtual machine and it has finished booting."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5505,7 +5505,7 @@ void PrlErrStringsStorage::Initialize()
 		tr("This virtual machine cannot be suspended."),
 		tr("This virtual machine uses a directly assigned PCIe device and can be"\
 			" suspended only after you install a native driver for this device or update Parallels"\
-			" Tools. Please install the native driver or reinstall Parallels Tools and try again."),
+			" Tools. Please install the native driver or reinstall Virtuozzo Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5514,9 +5514,9 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_CREATE_SNAPSHOT_VM_VTD_WITH_UNSUPPORTED_SHUTDOWN_TOOL,
 		tr("Unable to create a snapshot of this virtual machine."),
 		tr("This virtual machine uses a directly assigned PCIe device. You need"\
-			" to install a native driver for this device or update Parallels Tools before you can"\
+			" to install a native driver for this device or update Virtuozzo Tools before you can"\
 			" create a snapshot of this virtual machine. Please install the native driver or"\
-			" reinstall Parallels Tools and try again."),
+			" reinstall Virtuozzo Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5525,8 +5525,8 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_REVERT_SNAPSHOT_VM_VTD_WITH_UNSUPPORTED_SHUTDOWN_TOOL,
 		tr("Unable to revert to the snapshot."),
 		tr("This virtual machine uses a directly assigned PCIe device. You need"\
-			" to install a native driver for this device or update Parallels Tools before you can"\
-			" revert to this snapshot. Please install the native driver or reinstall Parallels Tools"\
+			" to install a native driver for this device or update Virtuozzo Tools before you can"\
+			" revert to this snapshot. Please install the native driver or reinstall Virtuozzo Tools"\
 			" and try again."),
 		false,
 		PMT_CRITICAL
@@ -5535,7 +5535,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SUSPEND_VM_VTD_WITH_UNLOADED_SHUTDOWN_TOOL,
 		tr("Unable to suspend the virtual machine."),
-		tr("This virtual machine can be suspended only after Parallels Tools are loaded because it uses a directly assigned PCIe device. Wait until the guest operating system is fully loaded and try again."),
+		tr("This virtual machine can be suspended only after Virtuozzo Tools are loaded because it uses a directly assigned PCIe device. Wait until the guest operating system is fully loaded and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5543,7 +5543,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CREATE_SNAPSHOT_VM_VTD_WITH_UNLOADED_SHUTDOWN_TOOL,
 		tr("Unable to create a snapshot of this virtual machine."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and Parallels Tools to be loaded before you can create a snapshot of it."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and Virtuozzo Tools to be loaded before you can create a snapshot of it."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5551,7 +5551,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_REVERT_SNAPSHOT_VM_VTD_WITH_UNLOADED_SHUTDOWN_TOOL,
 		tr("Unable to revert to the snapshot."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and Parallels Tools to be loaded before you can revert to this snapshot."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and Virtuozzo Tools to be loaded before you can revert to this snapshot."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5559,7 +5559,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SUSPEND_VM_VTD_WITH_OUTDATED_SHUTDOWN_TOOL,
 		tr("This virtual machine cannot be suspended."),
-		tr("This virtual machine uses a directly assigned PCIe device and can be suspended only after Parallels Tools are updated. Please reinstall Parallels Tools and try again."),
+		tr("This virtual machine uses a directly assigned PCIe device and can be suspended only after Virtuozzo Tools are updated. Please reinstall Virtuozzo Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5567,7 +5567,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CREATE_SNAPSHOT_VM_VTD_WITH_OUTDATED_SHUTDOWN_TOOL,
 		tr("Unable to create a snapshot of this virtual machine."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to update Parallels Tools before you can create a snapshot of it. Please reinstall Parallels Tools and try again."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to update Virtuozzo Tools before you can create a snapshot of it. Please reinstall Virtuozzo Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5575,7 +5575,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_REVERT_SNAPSHOT_VM_VTD_WITH_OUTDATED_SHUTDOWN_TOOL,
 		tr("Unable to revert to the snapshot."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to update Parallels Tools before you can revert to this snapshot. Please reinstall Parallels Tools and try again."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to update Virtuozzo Tools before you can revert to this snapshot. Please reinstall Virtuozzo Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6064,8 +6064,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PREPARE_FOR_HIBERNATE_VM_WITHOUT_TOOLS,
-		tr("Some of the running virtual machines cannot be put into the Stand By mode because they have no Parallels Tools installed."),
-		tr("Install Parallels Tools in the running virtual machines or shut them down."),
+		tr("Some of the running virtual machines cannot be put into the Stand By mode because they have no Virtuozzo Tools installed."),
+		tr("Install Virtuozzo Tools in the running virtual machines or shut them down."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6584,14 +6584,14 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CHANGESID_GUEST_TOOLS_NOT_AVAILABLE,
 		tr("Could not change the Windows security identifier."),
-		tr("Parallels Tools might be not installed in the source virtual machine."),
+		tr("Virtuozzo Tools might be not installed in the source virtual machine."),
 		false,
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CHANGESID_NOT_AVAILABLE,
 		tr("Could not change the Windows security identifier."),
-		tr("Make sure the latest version of Parallels Tools is installed in this virtual machine."),
+		tr("Make sure the latest version of Virtuozzo Tools is installed in this virtual machine."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6761,7 +6761,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_WARN_BACKUP_GUEST_SYNCHRONIZATION_FAILED,
 		tr("Unable to synchronize the virtual machine's file system."),
-		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that Parallels Tools are properly installed in the virtual machine."),
+		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that Virtuozzo Tools are properly installed in the virtual machine."),
 		false,
 		PMT_WARNING
 		);
@@ -7630,7 +7630,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_VM_REBOOT_REQUIRED_BY_PRL_TOOLS,
 		tr("The virtual machine needs to be restarted. Do you want to restart it now?"),
-		tr("Restart is required to apply the changes made to the Parallels Tools settings."),
+		tr("Restart is required to apply the changes made to the Virtuozzo Tools settings."),
 		false,
 		PMT_QUESTION
 		);
@@ -8369,7 +8369,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_CONVERT_SUCCEDED,
 		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Parallels Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>Parallels website</a>."),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Virtuozzo Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>Parallels website</a>."),
 		false,
 		PMT_QUESTION
 		);
@@ -8377,7 +8377,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_CONVERT_3RDPARTY_VM_SUCCEDED,
 		tr("You need to start the virtual machine to complete the conversion. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Parallels Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac."),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Virtuozzo Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac."),
 		false,
 		PMT_QUESTION
 		);
@@ -8393,7 +8393,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_CONVERT_AND_BACKUP_SUCCEDED,
 		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Parallels Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>Parallels website</a>.<br/><br/>Note: Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Virtuozzo Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>Parallels website</a>.<br/><br/>Note: Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
 		false,
 		PMT_QUESTION
 		);
@@ -8450,7 +8450,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_IMPORT_BOOTCAMP_VM_SUCCEDED_AND_START,
 		tr("You need to start the virtual machine to complete the import. Do you want to start it now?"),
-		tr("When you start the virtual machine, its virtual hardware and Parallels Tools will be upgraded. The upgrade may take some time to complete, so please do not restart or switch off your Mac during this time. To learn how to reclaim the unused space, click <a href=\"http://kb.parallels.com/en/8703\">here</a>"),
+		tr("When you start the virtual machine, its virtual hardware and Virtuozzo Tools will be upgraded. The upgrade may take some time to complete, so please do not restart or switch off your Mac during this time. To learn how to reclaim the unused space, click <a href=\"http://kb.parallels.com/en/8703\">here</a>"),
 		false,
 		PMT_QUESTION
 		);
@@ -8483,7 +8483,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_CANNOTSTART_SMOFF,
 		tr("Unable to switch to Coherence."),
-		tr("The Parallels mouse synchronization service is not started. Reinstall Parallels Tools and try again."),
+		tr("The Parallels mouse synchronization service is not started. Reinstall Virtuozzo Tools and try again."),
 		false,
 		PMT_INFORMATION
 		);
