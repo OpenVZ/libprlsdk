@@ -133,9 +133,9 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
-				tr("The virtual machine does not have Parallels Tools installed."),
+				tr("The virtual machine does not have Virtuozzo Tools installed."),
 				tr("The settings will be applied to the virtual machine, but the network adapter may work incorrectly."
-				   " Install Parallels Tools and check the network adapter settings."),
+				   " Install Virtuozzo Tools and check the network adapter settings."),
 		true,
 		PMT_QUESTION
 		);
@@ -1380,64 +1380,64 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_WIN,
-		tr("You are going to reinstall Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_LIN,
-		tr("You are going to reinstall Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_MAC,
-		tr("You are going to reinstall Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_OTHER,
-		tr("You are going to reinstall Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_WIN,
-		tr("You are going to update Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_LIN,
-		tr("You are going to update Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_MAC,
-		tr("You are going to update Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_OTHER,
-		tr("You are going to update Parallels Tools. Do you want to continue?"),
-		tr("Parallels Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
+		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
