@@ -948,5 +948,10 @@ QString SDKParser::GetFunctionClass(const QString& qsFunc) const
 		return QString();
 
 	int idx = sizeof(CLS_PRL_PREFIX) - 1;
-	return qsFunc.mid(idx, qsFunc.indexOf(CLS_DELIMITER) - idx);
+	QString c = qsFunc.mid(idx, qsFunc.indexOf(CLS_DELIMITER) - idx);
+
+	if (c == "Ct")
+		c = "Vm";
+
+	return c;
 }
