@@ -64,6 +64,10 @@ class CStdinMaintainer : public PrlThread
 public:
 	typedef QMap<QString, QPair<PRL_FILE_DESC, bool> > TStdinDescsMap;
 	/**
+	 * Class constructor
+	 */
+	CStdinMaintainer();
+	/**
 	 * Class destructor
 	 */
 	~CStdinMaintainer();
@@ -91,12 +95,8 @@ public:
 public:
 	/** Returns pointer to the global stdin file descriptors mech instance */
 	static CStdinMaintainer *instance();
-	/** Returns sign whether stdin file descriptors mech was initialized */
-	static bool IsInitialized();
 
 private:
-	/** Closed class constructor */
-	CStdinMaintainer();
 	/** Overridden template thread function */
 	void concreteRun();
 
@@ -109,18 +109,14 @@ private:
 	QWaitCondition m_cond;
 	/** Sign specifies whether thread should finalize it work or not */
 	bool m_bFinalizeWork;
-
-private:
-	static CStdinMaintainer *g_pStdinMaintainer;
 };
 
-CStdinMaintainer *CStdinMaintainer::g_pStdinMaintainer = NULL;
+Q_GLOBAL_STATIC(CStdinMaintainer, getStdinMaintainer)
 
 CStdinMaintainer::~CStdinMaintainer()
 {
 	QMutexLocker _lock(&m_StdinDescsMapMutex);
 	m_StdinDescsMap.clear();
-	g_pStdinMaintainer = NULL;
 }
 
 void CStdinMaintainer::RegisterJob( PrlRunProgramInGuestJob *pJob )
@@ -162,14 +158,7 @@ void CStdinMaintainer::FinalizeThread()
 
 CStdinMaintainer *CStdinMaintainer::instance()
 {
-	if ( !g_pStdinMaintainer )
-		g_pStdinMaintainer = new CStdinMaintainer;
-	return ( g_pStdinMaintainer );
-}
-
-bool CStdinMaintainer::IsInitialized()
-{
-	return ( g_pStdinMaintainer != NULL );
+	return getStdinMaintainer();
 }
 
 CStdinMaintainer::CStdinMaintainer()
@@ -287,8 +276,7 @@ void CStdinMaintainer::concreteRun()
 
 void FinalizeStdinMech()
 {
-	if ( CStdinMaintainer::IsInitialized() )
-		CStdinMaintainer::instance()->FinalizeThread();
+	CStdinMaintainer::instance()->FinalizeThread();
 }
 
 void RegisterJob(PrlRunProgramInGuestJob *pJob)
