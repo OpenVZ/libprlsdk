@@ -36,6 +36,7 @@
 #include <QWaitCondition>
 #include <QByteArray>
 #include <QPair>
+#include <QScopedPointer>
 
 #ifndef _WIN_
 #include <errno.h>
@@ -111,12 +112,13 @@ private:
 	bool m_bFinalizeWork;
 };
 
-Q_GLOBAL_STATIC(CStdinMaintainer, getStdinMaintainer)
+Q_GLOBAL_STATIC_WITH_ARGS(QScopedPointer<CStdinMaintainer>, getStdinMaintainer, (new CStdinMaintainer()))
 
 CStdinMaintainer::~CStdinMaintainer()
 {
 	QMutexLocker _lock(&m_StdinDescsMapMutex);
 	m_StdinDescsMap.clear();
+	getStdinMaintainer()->take();
 }
 
 void CStdinMaintainer::RegisterJob( PrlRunProgramInGuestJob *pJob )
@@ -158,7 +160,7 @@ void CStdinMaintainer::FinalizeThread()
 
 CStdinMaintainer *CStdinMaintainer::instance()
 {
-	return getStdinMaintainer();
+	return getStdinMaintainer()->data();
 }
 
 CStdinMaintainer::CStdinMaintainer()
