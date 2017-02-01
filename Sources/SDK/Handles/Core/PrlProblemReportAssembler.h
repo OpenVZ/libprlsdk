@@ -35,7 +35,7 @@
 /**
  * Problem report assembler thread implementation
  */
-class PrlProblemReportAssembler : public PrlThread
+class PrlProblemReportAssembler : public Heappy
 {
 Q_OBJECT
 

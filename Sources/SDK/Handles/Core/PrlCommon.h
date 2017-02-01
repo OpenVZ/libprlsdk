@@ -34,7 +34,7 @@
 #include <QWaitCondition>
 #include <QAtomicInt>
 #include <QReadWriteLock>
-
+#include <QObjectCleanupHandler>
 #include "Parallels.h"
 
 #define PRL_STACK_SIZE 1024*1024
@@ -262,7 +262,8 @@ public:
 	/** Class default constructor */
 	PrlSdkThreadsDestructor();
 	/** Registries thread instance for further deletion */
-	void RegisterThreadForDeletion(class QThread *pThread);
+	void RegisterThreadForDeletion(class PrlThread *pThread);
+	void RegisterThreadForDeletion(struct Heappy *thread_);
 	/** Waits for all registered threads and destroys them */
 	void WaitAllThreadsAndCleanup();
 
@@ -273,8 +274,10 @@ public slots:
 private:
 	/** Threads objects list access synchronization object */
 	QMutex m_ThreadsListMutex;
+	QWaitCondition m_event;
 	/** Processing threads objects list */
-	QList<QThread *> m_lstThreadObjs;
+	QList<QObject *> m_lstThreadObjs;
+	QObjectCleanupHandler m_sweeper;
 };
 
 /**
@@ -307,21 +310,31 @@ private:
  * Thread inheritance that incapsulates necessary registration actions
  * at common SDK threads destruction mechanism
  */
-class PrlThread : public QThread, public CInstancesCounter
+class PrlThread : public QThread
 {
 Q_OBJECT
 
 public:
 	/** Class default constructor */
 	PrlThread();
-	/** Virtual destructor for proper inheritances destruction */
-	virtual ~PrlThread();
 
 private:
 	/** Overridden thread function */
 	void run();
 	/** Template thread function */
 	virtual void concreteRun();
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// struct Heappy
+// protect from creation on stack.
+
+struct Heappy: PrlThread, CInstancesCounter
+{
+	Heappy();
+
+protected:
+	~Heappy();
 };
 
 //Global threads destructor instance

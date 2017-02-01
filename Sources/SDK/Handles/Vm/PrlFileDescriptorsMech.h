@@ -35,6 +35,18 @@
  */
 namespace PrlFileDescriptorsMech
 {
+///////////////////////////////////////////////////////////////////////////////
+// struct Attached
+
+struct Attached: PrlThread
+{
+public slots:
+	virtual void reactQuit() = 0;
+
+private:
+	Q_OBJECT
+};
+
 	/**
 	 * Registries job at file descriptors mech.
 	 * @param pointer to the registering job instance
@@ -57,10 +69,6 @@ namespace PrlFileDescriptorsMech
 	 * @return sign whether package was properly processed
 	 */
 	bool ProcessStdoutStderrEvent( const SmartPtr<IOPackage> &p );
-	/**
-	 * Finalizes stdin file descriptors mechanism
-	 */
-	void FinalizeStdinMech();
 	/**
 	 * Processes finalize stdin/stdout/stderr interoperation package
 	 * @param pointer on the received package

@@ -46,7 +46,7 @@ signals:
 /**
  * Problem report sender implementation
  */
-class PrlProblemReportSender : public PrlThread
+class PrlProblemReportSender : public Heappy
 {
 Q_OBJECT
 

@@ -35,7 +35,7 @@ using namespace IOService;
 /**
  * Class which implements check server operations
  */
-class PrlCheckServerHelper : public PrlThread
+class PrlCheckServerHelper : public Heappy
 {
 Q_OBJECT
 public:
