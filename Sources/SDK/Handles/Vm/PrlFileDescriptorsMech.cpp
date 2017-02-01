@@ -60,7 +60,7 @@ Q_GLOBAL_STATIC(QReadWriteLock, FileDescriptorsMapLocker)
 /**
  * Implementation of stdin file descriptors multiplexer
  */
-class CStdinMaintainer : public PrlThread
+class CStdinMaintainer : public Attached
 {
 public:
 	typedef QMap<QString, QPair<PRL_FILE_DESC, bool> > TStdinDescsMap;
@@ -91,7 +91,7 @@ public:
 	/**
 	 * Finalizes thread work
 	 */
-	void FinalizeThread();
+	void reactQuit();
 
 public:
 	/** Returns pointer to the global stdin file descriptors mech instance */
@@ -112,13 +112,12 @@ private:
 	bool m_bFinalizeWork;
 };
 
-Q_GLOBAL_STATIC_WITH_ARGS(QScopedPointer<CStdinMaintainer>, getStdinMaintainer, (new CStdinMaintainer()))
+Q_GLOBAL_STATIC(CStdinMaintainer, getStdinMaintainer)
 
 CStdinMaintainer::~CStdinMaintainer()
 {
 	QMutexLocker _lock(&m_StdinDescsMapMutex);
 	m_StdinDescsMap.clear();
-	getStdinMaintainer()->take();
 }
 
 void CStdinMaintainer::RegisterJob( PrlRunProgramInGuestJob *pJob )
@@ -151,7 +150,7 @@ void CStdinMaintainer::MarkReadyToAcceptStdin( PrlRunProgramInGuestJob *pJob )
 	}
 }
 
-void CStdinMaintainer::FinalizeThread()
+void CStdinMaintainer::reactQuit()
 {
 	QMutexLocker _lock( &m_StdinDescsMapMutex );
 	m_bFinalizeWork = true;
@@ -160,14 +159,19 @@ void CStdinMaintainer::FinalizeThread()
 
 CStdinMaintainer *CStdinMaintainer::instance()
 {
-	return getStdinMaintainer()->data();
+	CStdinMaintainer* output = getStdinMaintainer();
+	if (!output->m_bFinalizeWork)
+	{
+		QMutexLocker g(&output->m_StdinDescsMapMutex);
+		if (!output->m_bFinalizeWork && !output->isRunning() &&
+			output->connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(reactQuit())))
+			output->start();
+	}
+	return output;
 }
 
-CStdinMaintainer::CStdinMaintainer()
-:
-m_bFinalizeWork( false )
+CStdinMaintainer::CStdinMaintainer(): m_bFinalizeWork(false)
 {
-	start();
 }
 
 #define STDIN_THREAD_TIMEOUT 50
@@ -274,11 +278,6 @@ void CStdinMaintainer::concreteRun()
 		}
 		m_cond.wait( &m_StdinDescsMapMutex, STDIN_THREAD_TIMEOUT );
 	}
-}
-
-void FinalizeStdinMech()
-{
-	CStdinMaintainer::instance()->FinalizeThread();
 }
 
 void RegisterJob(PrlRunProgramInGuestJob *pJob)

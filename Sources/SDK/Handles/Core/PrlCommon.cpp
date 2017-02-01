@@ -157,7 +157,14 @@ void PrlContextSwitcher::DeinitInstance ()
 PrlContextSwitcher::PrlContextSwitcher()
 {}
 
-void PrlSdkThreadsDestructor::RegisterThreadForDeletion(QThread *pThread)
+void PrlSdkThreadsDestructor::RegisterThreadForDeletion(Heappy *thread_)
+{
+	QMutexLocker g(&m_ThreadsListMutex);
+	m_sweeper.add(thread_);
+	m_lstThreadObjs.append(thread_);
+}
+
+void PrlSdkThreadsDestructor::RegisterThreadForDeletion(PrlThread *pThread)
 {
 	QMutexLocker _lock(&m_ThreadsListMutex);
 	m_lstThreadObjs.append(pThread);
@@ -166,46 +173,26 @@ void PrlSdkThreadsDestructor::RegisterThreadForDeletion(QThread *pThread)
 void PrlSdkThreadsDestructor::ProcessThreadsInstances()
 {
 	QMutexLocker _lock(&m_ThreadsListMutex);
-	QList<QThread *>::iterator it = m_lstThreadObjs.begin();
-	//If some controlling thread still not finishing work we need to run this logic again later
-	bool bReloadTimer = false;
-	while ( it != m_lstThreadObjs.end() )
-	{
-		if ( !(*it)->isRunning() )
-		{
-			(*it)->deleteLater();
-			it = m_lstThreadObjs.erase(it);
-		}
-		else
-		{
-			++it;
-			bReloadTimer = true;
-		}
-	}
-	if (bReloadTimer)
-		QTimer::singleShot(1000, this, SLOT(ProcessThreadsInstances()));
+	m_lstThreadObjs.removeAll(sender());
+	if (m_lstThreadObjs.isEmpty())
+		m_event.wakeOne();
 }
 
 void PrlSdkThreadsDestructor::WaitAllThreadsAndCleanup()
 {
 	QMutexLocker _lock(&m_ThreadsListMutex);
-	foreach(QThread *pThread, m_lstThreadObjs)
-	{
-		pThread->wait();
-		delete pThread;
-	}
-	m_lstThreadObjs.clear();
+	if (!m_lstThreadObjs.isEmpty())
+		m_event.wait(&m_ThreadsListMutex);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// class PrlThread
 
 PrlThread::PrlThread()
 {
 	Q_ASSERT(g_pThreadsDestructor);
 	setStackSize(PRL_STACK_SIZE);
 	CHECK_CONNECT_DONE_PROPERLY(connect(this, SIGNAL(finished()), g_pThreadsDestructor, SLOT(ProcessThreadsInstances()), Qt::QueuedConnection))
-}
-
-PrlThread::~PrlThread()
-{
 }
 
 void PrlThread::run()
@@ -215,6 +202,18 @@ void PrlThread::run()
 }
 
 void PrlThread::concreteRun()
+{
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// struct Heappy
+
+Heappy::Heappy()
+{
+	g_pThreadsDestructor->RegisterThreadForDeletion(this);
+}
+
+Heappy::~Heappy()
 {
 }
 
@@ -315,7 +314,6 @@ void QMainThread::InitCommonThreadsDestructionMech()
 
 void QMainThread::DeinitSdkParts()
 {
-	PrlFileDescriptorsMech::FinalizeStdinMech();
 	PrlHandleServer::FinalizeAllTransportConnections();
 	//Finalize all therads described to common finalization mech
 	PrlContextSwitcher::Instance()->NotifyWorkFinalization();
