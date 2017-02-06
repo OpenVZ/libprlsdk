@@ -160,7 +160,7 @@ PrlContextSwitcher::PrlContextSwitcher()
 void PrlSdkThreadsDestructor::RegisterThreadForDeletion(Heappy *thread_)
 {
 	QMutexLocker g(&m_ThreadsListMutex);
-	m_sweeper.add(thread_);
+	m_heappies << thread_;
 	m_lstThreadObjs.append(thread_);
 }
 
@@ -173,7 +173,11 @@ void PrlSdkThreadsDestructor::RegisterThreadForDeletion(PrlThread *pThread)
 void PrlSdkThreadsDestructor::ProcessThreadsInstances()
 {
 	QMutexLocker _lock(&m_ThreadsListMutex);
-	m_lstThreadObjs.removeAll(sender());
+	QObject* s = sender();
+	m_lstThreadObjs.removeAll(s);
+	if (0 < m_heappies.removeAll(s))
+		s->deleteLater();
+
 	if (m_lstThreadObjs.isEmpty())
 		m_event.wakeOne();
 }

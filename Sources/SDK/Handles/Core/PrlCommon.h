@@ -276,8 +276,7 @@ private:
 	QMutex m_ThreadsListMutex;
 	QWaitCondition m_event;
 	/** Processing threads objects list */
-	QList<QObject *> m_lstThreadObjs;
-	QObjectCleanupHandler m_sweeper;
+	QObjectList m_lstThreadObjs, m_heappies;
 };
 
 /**
