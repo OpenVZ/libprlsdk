@@ -28,9 +28,9 @@
 #include <QMetaType>
 
 #include <QTranslator>
-
+#include <boost/bind.hpp>
 #include "Build/Current.ver"
-
+#include <boost/foreach.hpp>
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
@@ -124,10 +124,6 @@ quint32 CInstancesCounter::GetInstancesNum()
 #endif // QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 )
 }
 
-PrlSdkThreadsDestructor::PrlSdkThreadsDestructor()
-: m_ThreadsListMutex(QMutex::Recursive)
-{}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Static definition
@@ -161,23 +157,23 @@ void PrlSdkThreadsDestructor::RegisterThreadForDeletion(Heappy *thread_)
 {
 	QMutexLocker g(&m_ThreadsListMutex);
 	m_heappies << thread_;
-	m_lstThreadObjs.append(thread_);
 }
 
-void PrlSdkThreadsDestructor::RegisterThreadForDeletion(PrlThread *pThread)
+void PrlSdkThreadsDestructor::RegisterThreadForDeletion(PrlThread *pThread, Qt::HANDLE threadId_)
 {
 	QMutexLocker _lock(&m_ThreadsListMutex);
-	m_lstThreadObjs.append(pThread);
+	m_lstThreadObjs[threadId_] = pThread;
+	CHECK_CONNECT_DONE_PROPERLY(connect(pThread, SIGNAL(finished()),
+		this, SLOT(ProcessThreadsInstances()), Qt::DirectConnection))
 }
 
 void PrlSdkThreadsDestructor::ProcessThreadsInstances()
 {
 	QMutexLocker _lock(&m_ThreadsListMutex);
-	QObject* s = sender();
-	m_lstThreadObjs.removeAll(s);
-	if (0 < m_heappies.removeAll(s))
-		s->deleteLater();
-
+	Qt::HANDLE k = QThread::currentThreadId();
+	QThread* s = m_lstThreadObjs[k];
+	m_lstThreadObjs.remove(k);
+	m_pending << s;
 	if (m_lstThreadObjs.isEmpty())
 		m_event.wakeOne();
 }
@@ -187,6 +183,14 @@ void PrlSdkThreadsDestructor::WaitAllThreadsAndCleanup()
 	QMutexLocker _lock(&m_ThreadsListMutex);
 	if (!m_lstThreadObjs.isEmpty())
 		m_event.wait(&m_ThreadsListMutex);
+	std::for_each(m_pending.constBegin(), m_pending.constEnd(),
+		boost::bind(&QThread::wait, _1, ULONG_MAX));
+	m_pending.clear();
+	BOOST_FOREACH(QObject* q, m_heappies)
+	{
+		delete q;
+	}
+	m_heappies.clear();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -196,12 +200,11 @@ PrlThread::PrlThread()
 {
 	Q_ASSERT(g_pThreadsDestructor);
 	setStackSize(PRL_STACK_SIZE);
-	CHECK_CONNECT_DONE_PROPERLY(connect(this, SIGNAL(finished()), g_pThreadsDestructor, SLOT(ProcessThreadsInstances()), Qt::QueuedConnection))
 }
 
 void PrlThread::run()
 {
-	g_pThreadsDestructor->RegisterThreadForDeletion(this);
+	g_pThreadsDestructor->RegisterThreadForDeletion(this, QThread::currentThreadId());
 	concreteRun();
 }
 

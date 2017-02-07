@@ -27,6 +27,7 @@
 #ifndef PrlCommon_H
 #define PrlCommon_H
 
+#include <QHash>
 #include <QObject>
 #include <QMutex>
 #include <QList>
@@ -259,10 +260,8 @@ class PrlSdkThreadsDestructor : public QObject
 Q_OBJECT
 
 public:
-	/** Class default constructor */
-	PrlSdkThreadsDestructor();
 	/** Registries thread instance for further deletion */
-	void RegisterThreadForDeletion(class PrlThread *pThread);
+	void RegisterThreadForDeletion(class PrlThread *pThread, Qt::HANDLE threadId_);
 	void RegisterThreadForDeletion(struct Heappy *thread_);
 	/** Waits for all registered threads and destroys them */
 	void WaitAllThreadsAndCleanup();
@@ -276,7 +275,9 @@ private:
 	QMutex m_ThreadsListMutex;
 	QWaitCondition m_event;
 	/** Processing threads objects list */
-	QObjectList m_lstThreadObjs, m_heappies;
+	QObjectList m_heappies;
+	QList<QThread* > m_pending;
+	QHash<Qt::HANDLE, QThread* > m_lstThreadObjs;
 };
 
 /**
