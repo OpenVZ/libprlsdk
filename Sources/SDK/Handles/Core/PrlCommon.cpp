@@ -406,9 +406,9 @@ void QMainThread::stop()
 		QCoreApplication::exit(0);
 	else
 		exit(0);
+	g_pThreadsDestructor->WaitAllThreadsAndCleanup();
 	m_MainThreadCondition.wait(&m_MainThreadMutex);
 	wait();
-	g_pThreadsDestructor->WaitAllThreadsAndCleanup();
 	delete g_pThreadsDestructor;
 	g_pThreadsDestructor = NULL;
 }
