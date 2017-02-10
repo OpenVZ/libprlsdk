@@ -1555,7 +1555,10 @@ typedef enum _PRL_VM_CPULIMIT_TYPE
 /**
  * constant for unlimited CPU number
  */
-#define PRL_CPU_UNLIMITED 0xffffffff
+typedef enum _PRL_CPUS_COUNT
+{
+	PRL_CPU_UNLIMITED = 0xffffffff
+} PRL_CPUS_COUNT;
 
 typedef enum _PRL_IOLIMIT_TYPE
 {
