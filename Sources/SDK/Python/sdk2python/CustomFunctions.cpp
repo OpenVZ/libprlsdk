@@ -1,16 +1,16 @@
 static PyObject* sdk_PrlApi_Init(PyObject* self, PyObject* args)
 {
-        return sdk_InitializeSDKEx(self, args);
+		return sdk_InitializeSDKEx(self, args);
 }
 
 static PyObject* sdk_PrlApi_InitEx(PyObject* self, PyObject* args)
 {
-        return sdk_InitializeSDKEx(self, args);
+		return sdk_InitializeSDKEx(self, args);
 }
 
 static PyObject* sdk_PrlApi_Deinit(PyObject* self, PyObject* args)
 {
-        return sdk_DeinitializeSDK(self, args);
+		return sdk_DeinitializeSDK(self, args);
 }
 
 static PRL_RESULT PrlHandle_EventCallbackHandler(PRL_HANDLE hEvent, PRL_VOID_PTR user_data)
@@ -63,8 +63,15 @@ static PyObject* sdk_PrlApi_SendProblemReport(PyObject* /*self*/, PyObject* args
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", hResultJob )) )
+
+		PyObject *pResultJob = Py_BuildValue( "k", hResultJob );
+		if ( PyList_Append(ret_list, pResultJob) ) {
+			Py_DECREF(pResultJob);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pResultJob);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -92,8 +99,15 @@ static PyObject* sdk_PrlSrv_GetDefaultVmConfig(PyObject* /*self*/, PyObject* arg
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", hResultJob )) )
+
+		PyObject *pResultJob = Py_BuildValue( "k", hResultJob );
+		if ( PyList_Append(ret_list, pResultJob) ) {
+			Py_DECREF(pResultJob);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pResultJob);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -116,12 +130,31 @@ static PyObject* sdk_PrlVmCfg_GetMemGuaranteeSize(PyObject* /*self*/, PyObject* 
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if (PyList_Append(ret_list, Py_BuildValue("k", prlResult)))
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
 			break;
-		if (PyList_Append(ret_list, Py_BuildValue("I", data.type)))
+		}
+		Py_DECREF(pResult);
+
+		PyObject *pDataType = Py_BuildValue("I", data.type);
+		if (PyList_Append(ret_list, pDataType)) {
+			Py_DECREF(pDataType);
+			Py_DECREF(ret_list);
 			break;
-		if (PyList_Append(ret_list, Py_BuildValue("I", data.value)))
+		}
+		Py_DECREF(pDataType);
+
+		PyObject *pDataValue = Py_BuildValue("I", data.value);
+		if (PyList_Append(ret_list, pDataValue)) {
+			Py_DECREF(pDataValue);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pDataValue);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -150,8 +183,15 @@ static PyObject* sdk_PrlVmCfg_SetMemGuaranteeSize(PyObject* /*self*/, PyObject* 
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if (PyList_Append(ret_list, Py_BuildValue("k", prlResult)))
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pResult);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -159,25 +199,28 @@ static PyObject* sdk_PrlVmCfg_SetMemGuaranteeSize(PyObject* /*self*/, PyObject* 
 
 static int generateGuid(PRL_GUID *guid, char *buf, size_t len)
 {
-        int ret = snprintf(buf, len, "%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
-                        guid->Data1,
-                        guid->Data2,
-                        guid->Data3,
-                        guid->Data4[0],
-                        guid->Data4[1],
-                        guid->Data4[2],
-                        guid->Data4[3],
-                        guid->Data4[4],
-                        guid->Data4[5],
-                        guid->Data4[6],
-                        guid->Data4[7]);
-        if (ret < 0 || ret >= (ssize_t)len)
-                return -1;
-        return 0;
+		int ret = snprintf(buf, len, "%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
+						guid->Data1,
+						guid->Data2,
+						guid->Data3,
+						guid->Data4[0],
+						guid->Data4[1],
+						guid->Data4[2],
+						guid->Data4[3],
+						guid->Data4[4],
+						guid->Data4[5],
+						guid->Data4[6],
+						guid->Data4[7]);
+		if (ret < 0 || ret >= (ssize_t)len)
+				return -1;
+		return 0;
 }
 
 static PyObject* sdk_PrlDisk_GetDiskInfo(PyObject* /*self*/, PyObject* args)
 {
+    /* FIXME: This function definitely has memory leaks, becase of PyList_Append
+     * and possibly because of PyObject_SetAttrString. Need to check it carefully.
+     * PSBM-60480 */
 	PRL_SDK_CHECK;
 	do {
 		PRL_HANDLE	hDisk = (PRL_HANDLE )0;
@@ -301,14 +344,39 @@ static PyObject* sdk_PrlOpTypeList_GetItem(PyObject* /*self*/, PyObject* args)
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "L", nInt64 )) )
+		}
+		Py_DECREF(pResult);
+
+		PyObject *pnInt64 = Py_BuildValue( "L", nInt64 );
+		if ( PyList_Append(ret_list, pnInt64) ) {
+			Py_DECREF(pnInt64);
+			Py_DECREF(ret_list);
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "K", nUInt64 )) )
+		}
+		Py_DECREF(pnInt64);
+
+		PyObject *pnUInt64 = Py_BuildValue( "K", nUInt64 );
+		if ( PyList_Append(ret_list, pnUInt64) ) {
+			Py_DECREF(pnUInt64);
+			Py_DECREF(ret_list);
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "d", dDouble )) )
+		}
+		Py_DECREF(pnUInt64);
+
+		PyObject *pdDouble = Py_BuildValue( "d", dDouble );
+		if ( PyList_Append(ret_list, pdDouble) ) {
+			Py_DECREF(pdDouble);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pdDouble);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -349,11 +417,24 @@ static PyObject* sdk_PrlReport_GetData(PyObject* /*self*/, PyObject* args)
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
 			break;
-		if ( pBufObj )
-			if ( PyList_Append(ret_list, pBufObj) )
+		}
+		Py_DECREF(pResult);
+
+		if ( pBufObj ) {
+			if ( PyList_Append(ret_list, pBufObj) ) {
+				Py_DECREF(pBufObj);
+				Py_DECREF(ret_list);
 				break;
+			}
+			Py_DECREF(pBufObj);
+		}
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -383,8 +464,15 @@ static PyObject* sdk_PrlReport_Send(PyObject* /*self*/, PyObject* args)
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", hResultJob )) )
+
+		PyObject *pResultJob = Py_BuildValue( "k", hResultJob );
+		if ( PyList_Append(ret_list, pResultJob) ) {
+			Py_DECREF(pResultJob);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pResultJob);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -414,8 +502,15 @@ static PyObject* sdk_PrlApi_SendPackedProblemReport(PyObject* /*self*/, PyObject
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", hResultJob )) )
+
+		PyObject *pResultJob = Py_BuildValue( "k", hResultJob );
+		if ( PyList_Append(ret_list, pResultJob) ) {
+			Py_DECREF(pResultJob);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pResultJob);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -456,11 +551,24 @@ static PyObject* sdk_PrlDiskMap_Read(PyObject* /*self*/, PyObject* args)
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
 			break;
-		if ( pBufObj )
-			if ( PyList_Append(ret_list, pBufObj) )
+		}
+		Py_DECREF(pResult);
+
+		if ( pBufObj ) {
+			if ( PyList_Append(ret_list, pBufObj) ) {
+				Py_DECREF(pBufObj);
+				Py_DECREF(ret_list);
 				break;
+			}
+			Py_DECREF(pBufObj);
+		}
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -490,8 +598,15 @@ static PyObject *sdk_PrlHandle_RegEventHandler(PyObject* /*self*/, PyObject *arg
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pResult);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -522,8 +637,15 @@ static PyObject *sdk_PrlHandle_UnregEventHandler(PyObject* /*self*/, PyObject *a
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
 			break;
-		if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
 			break;
+		}
+		Py_DECREF(pResult);
+
 		return ret_list;
 	} while(0);
 	return NULL;
@@ -555,7 +677,7 @@ static PyObject *sdk_PrlVm_UnregEventHandler(PyObject* self, PyObject *args)
 
 static PyObject *sdk_PrlVmCfg_SetIoLimit(PyObject* /*self*/, PyObject *args)
 {
-    PRL_SDK_CHECK;
+	PRL_SDK_CHECK;
 
 	PRL_HANDLE hVmCfg = (PRL_HANDLE )0;
 	PRL_UINT32 value = (PRL_UINT32 )0;
@@ -575,15 +697,21 @@ static PyObject *sdk_PrlVmCfg_SetIoLimit(PyObject* /*self*/, PyObject *args)
 	PyObject* ret_list = PyList_New(0);
 	if ( ! ret_list )
 		return NULL;
-	if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+
+	PyObject *pResult = Py_BuildValue( "k", prlResult );
+	if ( PyList_Append(ret_list, pResult) ) {
+		Py_DECREF(pResult);
+		Py_DECREF(ret_list);
 		return NULL;
+	}
+	Py_DECREF(pResult);
 
 	return ret_list;
 }
 
 static PyObject *sdk_PrlVmCfg_GetIoLimit(PyObject* /*self*/, PyObject *args)
 {
-    PRL_SDK_CHECK;
+	PRL_SDK_CHECK;
 
 	PRL_HANDLE hVmCfg = (PRL_HANDLE )0;
 	PRL_UINT32 value = (PRL_UINT32 )0;
@@ -603,10 +731,22 @@ static PyObject *sdk_PrlVmCfg_GetIoLimit(PyObject* /*self*/, PyObject *args)
 	PyObject* ret_list = PyList_New(0);
 	if ( ! ret_list )
 		return NULL;
-	if ( PyList_Append(ret_list, Py_BuildValue( "k", prlResult )) )
+
+	PyObject *pResult = Py_BuildValue( "k", prlResult );
+	if ( PyList_Append(ret_list, pResult) ) {
+		Py_DECREF(pResult);
+		Py_DECREF(ret_list);
 		return NULL;
-	if ( PyList_Append(ret_list, Py_BuildValue( "I", iolimit_data.value )) )
+	}
+	Py_DECREF(pResult);
+
+	PyObject *pValue = Py_BuildValue( "I", iolimit_data.value );
+	if ( PyList_Append(ret_list, pValue) ) {
+		Py_DECREF(pValue);
+		Py_DECREF(ret_list);
 		return NULL;
+	}
+	Py_DECREF(pValue);
 
 	return ret_list;
 }
