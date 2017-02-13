@@ -215,9 +215,10 @@
 #define PTN_HANDLE_TO_OBJECT_INIT \
 	"\tobj = None\n" \
 	"\tif handle == None:\n" \
-	"\t\treturn obj\n"
+	"\t\treturn obj\n" \
+	"\thandle_type = call_sdk_function('PrlHandle_GetType', handle)\n"
 #define PTN_HANDLE_TO_OBJECT_CHECK_TYPE \
-	"call_sdk_function('PrlHandle_GetType', handle) == consts.PHT_"
+	"handle_type == consts.PHT_"
 #define PTN_HANDLE_TO_OBJECT_BY_TYPE \
 	"\tif %1:\n" \
 	"\t\tobj = %2(handle)\n"
