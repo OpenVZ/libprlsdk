@@ -97,8 +97,13 @@
 	"\t\tif ( ! ret_list )\n" \
 	"\t\t\tbreak;\n"
 #define MDL_PY_LIST_APPEND_PY_BUILD_VALUE \
-	"\t\tif ( PyList_Append(ret_list, Py_BuildValue( \"%1\", %2 )) )\n" \
-	"\t\t\tbreak;\n"
+	"\t\tPyObject *x_%2 = Py_BuildValue( \"%1\", %2 );\n" \
+	"\t\tif ( PyList_Append(ret_list, x_%2) ) {\n" \
+	"\t\t\tPy_DECREF(x_%2);\n" \
+	"\t\t\tPy_DECREF(ret_list);\n" \
+	"\t\t\tbreak;\n" \
+	"\t\t};\n" \
+	"\t\tPy_DECREF(x_%2);\n\n"
 #define MDL_END_SDK_PYTHON_FUNCTION \
 	"\t\treturn ret_list;\n" \
 	"\t} while(0);\n" \
