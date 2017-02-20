@@ -2532,3 +2532,22 @@ PRL_METHOD( PrlApi_SwitchConsoleLogging ) ( PRL_BOOL bSwitchOn )
         return 0;
 }
 
+PRL_METHOD( PrlApi_GuestToString ) (
+									PRL_UINT32 nGuestId,
+									PRL_STR sGuestString,
+									PRL_UINT32_PTR pnGuestStringSize
+									)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE ( DBG_DEBUG, "%s (nGuestId=%d, sGuestString=%p)",
+		__FUNCTION__,
+		nGuestId,
+		sGuestString
+		);
+
+	if (PRL_WRONG_PTR(pnGuestStringSize))
+		return PRL_ERR_INVALID_ARG;
+
+	return (CopyStringValue(PVS_GUEST_TO_STRING(nGuestId), sGuestString, pnGuestStringSize));
+}

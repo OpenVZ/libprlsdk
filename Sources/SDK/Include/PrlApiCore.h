@@ -2666,6 +2666,26 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL bSwitchOn
 		) );
 
+/* \Returns a readable string representation given guest OS ID.
+	Parameters
+	nGuestId :			[in] Guest OS ID
+	sGuestString :		[out] Guest OS name as string.
+	pnPathStringSize :	[in] The size of string containing guest
+						 OS name
+	Returns
+	PRL_RESULT. Possible values are:
+
+	PRL_ERR_INVALID_ARG - null pointer to the string size was
+	passed.
+
+	PRL_ERR_SUCCESS - function completed successfully.			*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				PrlApi_GuestToString, (
+		PRL_UINT32 nGuestId,
+		PRL_STR sGuestString,
+		PRL_UINT32_PTR pnGuestStringSize
+		) );
+
 #ifndef DYN_API_WRAP
 
 /* This inline function returns a readable string representation
