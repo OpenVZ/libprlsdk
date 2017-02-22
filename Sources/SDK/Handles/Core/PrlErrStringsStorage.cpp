@@ -6761,7 +6761,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_WARN_BACKUP_GUEST_SYNCHRONIZATION_FAILED,
 		tr("Unable to synchronize the virtual machine's file system."),
-		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that Parallels Tools are properly installed in the virtual machine."),
+		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that Virtuozzo Guest Tools are properly installed in the virtual machine."),
 		false,
 		PMT_WARNING
 		);
