@@ -1784,7 +1784,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 /// @section Port Forwarding operations
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Creates a new handle of type PHT_PORT_FORWARDING. It is the
+/* %VM_ONLY%
+
+   Creates a new handle of type PHT_PORT_FORWARDING. It is the
    responsibility of the user to free the handle when it is no
    longer needed.
    Parameters
@@ -1853,8 +1855,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_HANDLE hPortFwd,
 		PRL_CONST_STR sRuleName
 		) );
+  
+/* %VM_ONLY%
 
-/* \Returns the incoming port.
+   Returns the incoming port.
    Parameters
    hPortFwd :        A handle of type PHT_PORT_FORWARDING
                      identifying the port forwarding.
@@ -1873,7 +1877,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT16_PTR pnIncomingPort
 		) );
 
-/* Sets the specified incoming port.
+/* %VM_ONLY%
+
+   Sets the specified incoming port.
    Parameters
    hPortFwd :      A handle of type PHT_PORT_FORWARDING
                    identifying the port forwarding.
@@ -1891,7 +1897,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT16 nIncomingPort
 		) );
 
-/* \Returns the redirect IP address of the specified port forward entry.
+/* %VM_ONLY%
+
+   Returns the redirect IP address of the specified port forward entry.
    Parameters
    hPortFwd :            A handle of type PHT_PORT_FORWARDING
                          identifying the port forwarding.
@@ -1921,7 +1929,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT32_PTR pnRedirectIPAddressBufLength
 		) );
 
-/* Sets the specified port forwardi entry redirect IP address.
+/* %VM_ONLY%
+
+   Sets the specified port forwardi entry redirect IP address.
    Parameters
    hPortFwd :           A handle of type PHT_PORT_FORWARDING
                         identifying the port forwarding.
@@ -1940,7 +1950,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_CONST_STR sRedirectIPAddress
 		) );
 
-/* \Returns the redirect port.
+/* %VM_ONLY%
+
+   Returns the redirect port.
    Parameters
    hPortFwd :        A handle of type PHT_PORT_FORWARDING
                      identifying the port forwarding.
@@ -1959,7 +1971,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT16_PTR pnRedirectPort
 		) );
 
-/* Sets the specified redirect port.
+/* %VM_ONLY%
+
+   Sets the specified redirect port.
    Parameters
    hPortFwd :      A handle of type PHT_PORT_FORWARDING
                    identifying the port forwarding.
