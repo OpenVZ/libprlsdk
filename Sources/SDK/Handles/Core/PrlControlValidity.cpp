@@ -79,24 +79,27 @@ void PrlControlValidity::UnregisterInstance(PRL_HANDLE h)
 
 void PrlControlValidity::MarkAsInvalid(void *pData)
 {
-	QMutexLocker _lock(&g_ControlValidityMapMutex);
-	PrlControlValidityMap::iterator _data_it = g_ControlValidityMap.find(pData);
-	if (_data_it != g_ControlValidityMap.end())
+	PrlControlValiditySet v;
 	{
-		PrlControlValiditySet::iterator _instance = _data_it.value().begin();
-		for (; _instance != _data_it.value().end(); ++_instance)
+		QMutexLocker _lock(&g_ControlValidityMapMutex);
+		PrlControlValidityMap::iterator _data_it = g_ControlValidityMap.find(pData);
+		if (_data_it != g_ControlValidityMap.end())
 		{
-			PrlHandleBasePtr pObj = PRL_OBJECT_BY_HANDLE<PrlHandleBase>(*_instance);
-			if ( pObj )
-			{
-				PrlControlValidity *pInstance = dynamic_cast<PrlControlValidity *>( pObj.getHandle() );
-				PRL_ASSERT(pInstance);
-				pInstance->GenerateHashCode();
-				pInstance->MarkAsInvalid();
-			}
+			v = _data_it.value();
+			//Clear storage now to prevent possibility of further mark as invalid attemptions on this data pointer
+			g_ControlValidityMap.erase(_data_it);
 		}
-		//Clear storage now to prevent possibility of further mark as invalid attemptions on this data pointer
-		g_ControlValidityMap.erase(_data_it);
+	}
+	foreach (PRL_HANDLE h, v)
+	{
+		PrlHandleBasePtr pObj = PRL_OBJECT_BY_HANDLE<PrlHandleBase>(h);
+		if ( pObj )
+		{
+			PrlControlValidity *pInstance = dynamic_cast<PrlControlValidity *>( pObj.getHandle() );
+			PRL_ASSERT(pInstance);
+			pInstance->GenerateHashCode();
+			pInstance->MarkAsInvalid();
+		}
 	}
 }
 
