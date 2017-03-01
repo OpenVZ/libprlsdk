@@ -4247,7 +4247,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnDefaultDirBufLength
 		) );
 
-/* Determines the amount of physical memory reserved for
+/* %VM_ONLY%
+
+   Determines the amount of physical memory reserved for
    Parallels Service operation. By default, this memory size is
    calculated automatically based on the RAM size available on
    the host machine. If needed, the default value can be
@@ -4322,8 +4324,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hDispConfig,
 		PRL_UINT32 nMemSize
 		) );
+ 
+/* %VM_ONLY%
 
-/* Determines the minimum required memory size that must be
+   Determines the minimum required memory size that must be
    allocated to an individual virtual machine. The value
    returned by this function indicates the minimum amount of
    memory that is absolutely required for a virtual machine to
@@ -4357,7 +4361,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnMemSize
 		) );
 
-/* Allows to set the minimum required memory size that must be
+/* %VM_ONLY%
+
+   Allows to set the minimum required memory size that must be
    allocated to an individual virtual machine. By default,
    virtual machine memory limits are calculated automatically.
    If needed, you can set your own minimum memory limit using
@@ -4424,7 +4430,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnMemSize
 		) );
 
-/* Allows to set the maximum memory size that can be allocated
+/* %VM_ONLY%
+
+   Allows to set the maximum memory size that can be allocated
    to an individual virtual machine. By default, virtual machine
    memory limits are calculated automatically. If needed, you
    can set your own maximum memory limit using this function.
@@ -4459,7 +4467,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nMemSize
 		) );
 
-/* Determines the recommended memory size for an individual
+/* %VM_ONLY%
+
+   Determines the recommended memory size for an individual
    virtual machine. Setting the virtual machine memory size to
    the value returned by this function is the safest way to do
    it but is not mandatory. You can use your own value but you
@@ -4493,7 +4503,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnMemSize
 		) );
 
-/* Allows to manually set recommended memory size for an
+/* %VM_ONLY%
+
+   Allows to manually set recommended memory size for an
    individual virtual machine. By default, the recommended
    memory size for a virtual machine is calculated
    automatically. If needed, you can set your own recommended
@@ -4527,7 +4539,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nMemSize
 		) );
 
-/* Determines the maximum amount of physical memory that can be
+/* %VM_ONLY%
+
+   Determines the maximum amount of physical memory that can be
    reserved for Parallels Service operation. By default, memory
    limits and the actual size of the reserved memory are
    calculated automatically based on the total RAM available on
@@ -4566,7 +4580,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnMemSize
 		) );
 
-/* Allows to manually set the upper limit of the memory size
+/* %VM_ONLY%
+
+   Allows to manually set the upper limit of the memory size
    that can be reserved for Parallels Service operation. By
    default, memory limits are calculated automatically based on
    the host machine RAM size. If needed, you can use this
@@ -4608,7 +4624,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nMemSize
 		) );
 
-/* Determines the minimum amount of physical memory that must be
+/* %VM_ONLY%
+
+   Determines the minimum amount of physical memory that must be
    reserved for Parallels Service operation. By default, memory
    limits and the actual size of the reserved memory are
    calculated automatically based on the total RAM available on
@@ -4647,7 +4665,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnMemSize
 		) );
 
-/* Allows to manually set the lower limit of the memory size
+/* %VM_ONLY%
+
+   Allows to manually set the lower limit of the memory size
    that must be reserved for Parallels Service operation. By
    default, memory limits are calculated automatically based on
    the host machine RAM size and other parameters. If needed,
@@ -4689,7 +4709,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nMemSize
 		) );
 
-/* Determines whether memory allocation for Parallels Service is
+/* %VM_ONLY%
+
+   Determines whether memory allocation for Parallels Service is
    performed automatically or manually. By default, the amount
    of memory allocated for Parallels Service is calculated
    automatically based on the total RAM available on the host.
@@ -4732,7 +4754,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbAdjustMemAuto
 		) );
 
-/* Allows to choose the Parallels Service memory allocation mode
+/* %VM_ONLY%
+
+   Allows to choose the Parallels Service memory allocation mode
    from automatic or manual. By default, the amount of memory
    allocated for Parallels Service operations is calculated
    automatically based on the total RAM available on the host.
@@ -5383,7 +5407,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
 		) );
 
 
-/* \Determines whether the plugins enabled or not
+/* %VM_ONLY%
+
+   Determines whether the plugins enabled or not
    Parameters
    hDispConfig :                A handle of type PHT_DISP_CONFIG.
    pbIsPluginsAllowed :        [out] Pointer to a variable that receives the result.
@@ -5402,7 +5428,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
 		PRL_BOOL_PTR pbIsPluginsAllowed
 		) );
 
-/* \Enable or disable the plugins support
+/* %VM_ONLY%
+
+   Enable or disable the plugins support
    Parameters
    hDispConfig :                A handle of type PHT_DISP_CONFIG.
    bEnablePluginsSupport :     [in] A value to set.
@@ -5422,7 +5450,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
 
 /* %VM_ONLY%
 
-   \Returns VM CPU limit type.
+   Returns VM CPU limit type.
    Parameters
    hDispConfig :                A handle of type PHT_DISP_CONFIG.
    pnVmCpuLimitType :           [out] Pointer to a buffer that receives

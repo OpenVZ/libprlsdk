@@ -202,7 +202,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 
-/* Registers an existing 3rd party virtual machine with Parallels Service.
+/* %VM_ONLY%
+ 
+   Registers an existing 3rd party virtual machine with Parallels Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -246,7 +248,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Extracts supported guest OSes matrix from remote server (it's more proper
+/* %VM_ONLY%
+ 
+   Extracts supported guest OSes matrix from remote server (it's more proper
    way instead of using local synch API in case when client and server
    interoperate remotely).
 
@@ -486,8 +490,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32 nFlags
 		) );
 
+/* %VM_ONLY%
 
-/* Cancels the appliance installation previously started with
+   Cancels the appliance installation previously started with
    the PrlSrv_InstallAppliance function call.
 
    To get the return code from the PHT_JOB object, use the
@@ -515,7 +520,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 
-/* Stops the appliance installation previously started with
+/* %VM_ONLY%
+
+   Stops the appliance installation previously started with
    the PrlSrv_InstallAppliance function call.
 
    To get the return code from the PHT_JOB object, use the
@@ -769,7 +776,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Creates a bootable ISO-image for unattended Linux installation.
+/* %VM_ONLY%
+
+   Creates a bootable ISO-image for unattended Linux installation.
    The following steps describe how to prepare a virtual
    machine for unattended Linux installation:
      1. Create a virtual machine. The machine should have all
@@ -877,7 +886,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 
-/* Copy the specified Containers template to the specified server.
+/* %CT_ONLY%
+
+   Copy the specified Containers template to the specified server.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -937,7 +948,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_5,
 /// @section Supported guest OSes extraction functions set
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Returns handle of type PHT_OPAQUE_TYPE_LIST which contains supported guest OSes
+/* %VM_ONLY%
+ 
+   Returns handle of type PHT_OPAQUE_TYPE_LIST which contains supported guest OSes
    types list for current API mode (see PrlApi_InitEx for more info about API mode).
 
    Parameters
@@ -963,7 +976,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 					PRL_HANDLE_PTR phOsesTypesList
 		) );
 
-/* Returns handle of type PHT_OPAQUE_TYPE_LIST which contains supported guest OSes
+
+/* %VM_ONLY%
+
+   Returns handle of type PHT_OPAQUE_TYPE_LIST which contains supported guest OSes
    list for specified guest OS type at current API mode (see PrlApi_InitEx for more
    info about API mode).
 
@@ -993,7 +1009,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 					PRL_HANDLE_PTR phGuestsList
 		) );
 
-/* Returns default guest OS version for specified guest OS type at current API mode
+
+/* %VM_ONLY%
+ 
+   Returns default guest OS version for specified guest OS type at current API mode
    (see PrlApi_InitEx for more info about API mode).
 
    Parameters
@@ -1118,7 +1137,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 /// @section Virtual machine OS info
 ///////////////////////////////////////////////////////////////////////////////
 
-/* The PrlApi_GetRecommendMinVmMem returns recommend minimal
+/* %VM_ONLY%
+ 
+   The PrlApi_GetRecommendMinVmMem returns recommend minimal
    memory size for guest OS defined in the OS version parameter.
    Parameters
    nOsVersion :      OS version
@@ -1362,7 +1383,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hVm
 		) );
 
-/* Retrieves the virtual machine screen state before it was
+/* %VM_ONLY%
+
+   Retrieves the virtual machine screen state before it was
    suspending. To get the return code from the PHT_JOB object,
    use the PrlJob_GetRetCode function. Possible values are:
 
@@ -1563,7 +1586,9 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_3,
 					  PRL_UINT32 nFlags
 					  ) );
 
-/* Lets to exclusively lock VM for current session. After this
+/* %VM_ONLY%
+
+   Lets to exclusively lock VM for current session. After this
    call just current sesiion be able to operate with locked VM
    until PrlVm_Unlock will be called or current session will be
    closed. If VM was already locked by some another session
@@ -1587,7 +1612,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT32 nReserved
 		) );
 
-/* Lets to unlock previously locked with PrlVm_Lock call VM.
+/* %VM_ONLY%
+
+   Lets to unlock previously locked with PrlVm_Lock call VM.
    Note that just VM lock owner session can unlock VM.
 
    To get the return code from the PHT_JOB object, use the
@@ -2231,7 +2258,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Automatically generates a name for a virtual device which
+/* %VM_ONLY%
+
+   Automatically generates a name for a virtual device which
    will be unique within a home directory of the specified
    virtual machine. To get the return code from the PHT_JOB
    object, use the PrlJob_GetRetCode function. Possible value
@@ -2290,7 +2319,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hVm
 		) );
 
-/* The PrlVm_RefreshConfig function updates the configuration
+/* %VM_ONLY%
+
+   The PrlVm_RefreshConfig function updates the configuration
    information contained in the specified virtual machine object
    (handle). When you obtain a virtual machine handle that
    refers to an existing virtual machine, it is populated with
@@ -3052,7 +3083,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE_PTR phEvent
 		) );
 
-/* Creates a floppy disk image in the virtual machine home
+/* %VM_ONLY%
+
+   Creates a floppy disk image in the virtual machine home
    directory for unattended Windows installation. The following
    steps describe how to prepare a virtual machine for
    unattended Windows installation:
@@ -3093,7 +3126,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* This method lets to initiate sending notifications about
+/* %VM_ONLY%
+
+   This method lets to initiate sending notifications about
    devices states by VM. Those notifications have to be same as
    notifications after changing a device state
    Parameters
@@ -3207,7 +3242,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 						PRL_VM_CONFIG_SECTIONS nSection
 						) );
 
-/* Begin the Parallels Tools installation process. The machine must be
+/* %VM_ONLY%
+
+   Begin the Parallels Tools installation process. The machine must be
    registered with the Parallels Service to perform this operation.
    Parameters
    handle :  A handle of type PHT_VIRTUAL_MACHINE identifying the
@@ -3276,7 +3313,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
                ) );
 
 
-/**
+/* %VM_ONLY%
+
 Start process conversion of the virtual hard disk(s).
 The machine should be registered on the server to do that.
 
@@ -3301,7 +3339,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
              ) );
 
 
-/**
+/* %VM_ONLY%
+
 Finishes process of conversion of the virtual hard disk(s).
 The machine should be registered on the server to do that.
 
@@ -3323,7 +3362,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
                ) );
 
 
-/**
+/* %VM_ONLY%
+
    Generates and assigns a new Windows SID to the specified virtual machine running Windows guest OS.
    This function is useful when cloning or migrating a virtual machine to another host to avoid conflicts.
    Please note that this functionality is applicable to Windows guests only.
@@ -3488,7 +3528,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 
-/* Connect to remote desktop.
+/* %VM_ONLY%
+
+   Connect to remote desktop.
    Parameters
    hObj :  A handle of type PHT_VIRTUAL_MACHINE or PHT_DESKTOP_CONTROL.
    nFlags :  Flags, must be 0.
@@ -3503,7 +3545,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 
-/* Disconnect from remote desktop.
+/* %VM_ONLY%
+
+   Disconnect from remote desktop.
    Parameters
    hObj :  A handle of type PHT_VIRTUAL_MACHINE or PHT_DESKTOP_CONTROL.
 */
@@ -4211,7 +4255,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE_PTR phDevice
 		) );
 
-/* Determines the number of floppy disk drives in a virtual
+/* %VM_ONLY%
+
+   Determines the number of floppy disk drives in a virtual
    machine.
    Parameters
    hVmCfg :              A handle of type PHT_VM_CONFIGURATION
@@ -4232,7 +4278,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_FLOPPY containing
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_FLOPPY containing
    information about the specified floppy disk drive in a
    virtual machine.
    Parameters
@@ -4304,7 +4352,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 PRL_HANDLE_PTR phDevice
 				 ) );
 
-/* Determines the number of optical disks in the specified
+/* %VM_ONLY%
+
+   Determines the number of optical disks in the specified
    virtual machine.
    Parameters
    hVmCfg :               A handle of type PHT_VM_CONFIGURATION
@@ -4325,7 +4375,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_OPTICAL_DISK
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_OPTICAL_DISK
    containing information a virtual optical disk in a virtual
    machine.
    Parameters
@@ -4351,7 +4403,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 PRL_HANDLE_PTR phDevice
 				 ) );
 
-/* Determines the number of virtual printer ports in the
+/* %VM_ONLY%
+
+   Determines the number of virtual printer ports in the
    specified virtual machine.
    Parameters
    hVmCfg :                A handle of type PHT_VM_CONFIGURATION
@@ -4372,7 +4426,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_PARALLEL_PORT
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_PARALLEL_PORT
    containing information about a virtual printer port in the
    specified virtual machine.
    Parameters
@@ -4398,7 +4454,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 PRL_HANDLE_PTR phDevice
 				 ) );
 
-/* Determines the number of serial ports in a virtual machine.
+/* %VM_ONLY%
+
+   Determines the number of serial ports in a virtual machine.
    Parameters
    hVmCfg :              A handle of type PHT_VM_CONFIGURATION
                          identifying the virtual machine configuration.
@@ -4418,7 +4476,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_SERIAL_PORT
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_SERIAL_PORT
    containing information about a serial port in a virtual
    machine.
    Parameters
@@ -4441,7 +4501,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 PRL_HANDLE_PTR phDevice
 				 ) );
 
-/* Determines the number of sound devices in a virtual machine.
+/* %VM_ONLY%
+
+   Determines the number of sound devices in a virtual machine.
    Parameters
    hVmCfg :            A handle of type PHT_VM_CONFIGURATION
                        identifying the virtual machine configuration.
@@ -4461,7 +4523,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_SOUND containing
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_SOUND containing
    information about a sound device in a virtual machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION
@@ -4486,7 +4550,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 PRL_HANDLE_PTR phDevice
 				 ) );
 
-/* Determines the number of USB devices in a virtual machine.
+/* %VM_ONLY%
+
+   Determines the number of USB devices in a virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
                         identifying the virtual machine configuration.
@@ -4506,7 +4572,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_USB_DEVICE
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_USB_DEVICE
    containing information about a USB device in a virtual
    machine.
    Parameters
@@ -4580,7 +4648,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 ) );
 
 
-/* Determines the number of generic PCI devices in a virtual
+/* %VM_ONLY%
+
+   Determines the number of generic PCI devices in a virtual
    machine.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
@@ -4604,7 +4674,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_GENERIC_PCI
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_GENERIC_PCI
    containing information about a generic PCI device in a
    virtual machine.
    Parameters
@@ -4632,7 +4704,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 PRL_HANDLE_PTR phDevice
 				 ) );
 
-/* Determines the number of generic SCSI devices in a virtual
+/* %VM_ONLY%
+
+   Determines the number of generic SCSI devices in a virtual
    machine.
    Parameters
    hVmCfg :                  A handle of type
@@ -4656,7 +4730,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_GENERIC_SCSI
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_GENERIC_SCSI
    containing information about a generic SCSI device in a
    virtual machine.
    Parameters
@@ -4685,7 +4761,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 ) );
 
 
-/* Determines the number of display devices in a virtual
+/* %VM_ONLY%
+
+   Determines the number of display devices in a virtual
    machine.
    Parameters
    hVmCfg :                  A handle of type
@@ -4709,7 +4787,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 ) );
 
 
-/* Obtains a handle of type PHT_VIRTUAL_DEV_DISPLAY
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_VIRTUAL_DEV_DISPLAY
    containing information about a display device in a
    virtual machine.
    Parameters
@@ -4738,7 +4818,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				 ) );
 
 
-/* Determines whether the SmartGuard feature is enabled or not
+/* %VM_ONLY%
+
+   Determines whether the SmartGuard feature is enabled or not
    in a virtual machine. SmartGuard is feature that allows to
    make automatic snapshots of a virtual machine at predefined
    time intervals. The feature requires Parallels Tools
@@ -4764,7 +4846,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* <unfinished>
+/* %VM_ONLY%
 
    Enables the SmartGuard feature in a virtual machine.
    SmartGuard is feature that allows to make automatic snapshots
@@ -4795,7 +4877,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether the user will be notified on automatic
+/* %VM_ONLY%
+
+   Determines whether the user will be notified on automatic
    snapshot creation, a SmartGaurd setting. See
    PrlVmCfg_SetSmartGuardNotifyBeforeCreation for more
    information.
@@ -4822,6 +4906,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
    Enables or disables notification of automatic snapshot
    creation, a SmartGuard feature. SmartGuard is a facility that
@@ -4856,7 +4941,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines the interval at which snapshots are taken by
+/* %VM_ONLY%
+
+   Determines the interval at which snapshots are taken by
    SmartGuard. SmartGuard is a facility that allows to make
    automatic snapshots of a virtual machine at predefined time
    intervals. The currently set time interval can be obtained
@@ -4882,6 +4969,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
    Sets the time interval at which snapshots are taken by
    SmartGuard. SmartGuard is feature that allows to make
@@ -4907,7 +4995,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines the maximum snapshot count, a SmartGuard setting.
+/* %VM_ONLY%
+
+   Determines the maximum snapshot count, a SmartGuard setting.
    SmartGuard is a facility that allows to make automatic
    snapshots of a virtual machine at predefined time intervals.
    The snapshot count setting specifies how many snapshots taken
@@ -4933,6 +5023,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
    Sets the maximum snapshot count, a SmartGuard feature.
    SmartGuard is a facility that allows to make automatic
@@ -4960,7 +5051,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether the user-defined shared folders are
+/* %VM_ONLY%
+
+   Determines whether the user-defined shared folders are
    enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -4981,7 +5074,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables user-defined shared folders.
+/* %VM_ONLY%
+
+   Enables or disables user-defined shared folders.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -4999,7 +5094,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                PRL_BOOL bEnabled
 		) );
 
-/* Determines whether the SmartMount feature is
+/* %VM_ONLY%
+
+   Determines whether the SmartMount feature is
    enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5020,7 +5117,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables the SmartMount feature.
+/* %VM_ONLY%
+
+   Enables or disables the SmartMount feature.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -5038,7 +5137,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL bEnabled
 		) );
 
-/* Determines whether the SmartMount removable drives is
+/* %VM_ONLY%
+
+   Determines whether the SmartMount removable drives is
    enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5059,7 +5160,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables the SmartMount removable drives.
+/* %VM_ONLY%
+
+   Enables or disables the SmartMount removable drives.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -5077,7 +5180,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL bEnabled
 		) );
 
-/* Determines whether the SmartMount CD/DVD drives is
+/* %VM_ONLY%
+
+   Determines whether the SmartMount CD/DVD drives is
    enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5098,7 +5203,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables the SmartMount CD/DVD drives.
+/* %VM_ONLY%
+
+   Enables or disables the SmartMount CD/DVD drives.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -5116,7 +5223,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL bEnabled
 		) );
 
-/* Determines whether the SmartMount network shares is
+/* %VM_ONLY%
+
+   Determines whether the SmartMount network shares is
    enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5137,7 +5246,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables the SmartMount network shares.
+/* %VM_ONLY%
+
+   Enables or disables the SmartMount network shares.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -5155,7 +5266,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL bEnabled
 		) );
 
-/* Determines whether select boot device should be shown on
+/* %VM_ONLY%
+
+   Determines whether select boot device should be shown on
    virtual machine startup.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5179,7 +5292,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Switches on/off select boot device dialog on virtual machine startup.
+/* %VM_ONLY%
+
+   Switches on/off select boot device dialog on virtual machine startup.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -5200,7 +5315,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether EFI boot is switched on.
+/* %VM_ONLY%
+
+   Determines whether EFI boot is switched on.
    Parameters
    handle :       A handle of type PHT_VIRTUAL_MACHINE
                   identifying the virtual machine.
@@ -5220,7 +5337,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_BOOL_PTR pbEfiEnabled
 		) );
 
-/* Sets EFI boot for the virtual machine.
+/* %VM_ONLY%
+
+   Sets EFI boot for the virtual machine.
    for the specified virtual machine.
    Parameters
    handle :      A handle of type PHT_VIRTUAL_MACHINE
@@ -5292,7 +5411,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 
-/* Creates a new handle of type PHT_SHARE and adds it to the
+/* %VM_ONLY%
+
+   Creates a new handle of type PHT_SHARE and adds it to the
    specified virtual machine list of shares. It is the
    responsibility of the caller to free the handle when it is no
    longer needed.
@@ -5314,7 +5435,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE_PTR phVmShare
 		) );
 
-/* Determines the number of shared folders in a virtual machine.
+/* %VM_ONLY%
+
+   Determines the number of shared folders in a virtual machine.
    A shared folder is a folder in the host OS which is shared
    with a given virtual machine. To obtain its information,
    first determine the number of the available shared folders
@@ -5343,7 +5466,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnSharesCount
 		) );
 
-/* Obtains a handle of type PHT_SHARE containing information
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_SHARE containing information
    about a shared folder. A shared folder is a folder in the
    host OS which is shared with a given virtual machine. To
    obtain its information, first determine the number of the
@@ -5378,7 +5503,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Determines whether the Shared Profile feature is enabled in a
+/* %VM_ONLY%
+
+   Determines whether the Shared Profile feature is enabled in a
    virtual machine.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5402,7 +5529,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables the Shared Profile feature in a virtual
+/* %VM_ONLY%
+
+   Enables or disables the Shared Profile feature in a virtual
    machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -5423,7 +5552,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                PRL_BOOL bEnabled
 		) );
 
-/* Determines whether the "use desktop in shared profile" feature
+/* %VM_ONLY%
+
+   Determines whether the "use desktop in shared profile" feature
    is enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5444,7 +5575,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables the "undo-desktop" feature in the shared
+/* %VM_ONLY%
+
+   Enables or disables the "undo-desktop" feature in the shared
    profile.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -5463,7 +5596,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether "use documents in shared profile" feature
+/* %VM_ONLY%
+
+   Determines whether "use documents in shared profile" feature
    is enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5483,7 +5618,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Lets to set use documents in shared profile enabling sign.
+/* %VM_ONLY%
+
+   Lets to set use documents in shared profile enabling sign.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION
                 identifying the virtual machine configuration.
@@ -5502,7 +5639,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 
-/* Determines whether the "used pictures in shared profile"
+/* %VM_ONLY%
+
+   Determines whether the "used pictures in shared profile"
    feature is enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5523,7 +5662,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Lets to set use pictures in shared profile enabling sign.
+/* %VM_ONLY%
+
+   Lets to set use pictures in shared profile enabling sign.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION
                 identifying the virtual machine configuration.
@@ -5542,7 +5683,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 
-/* Determines whether the "use music in shared profile" feature
+/* %VM_ONLY%
+
+   Determines whether the "use music in shared profile" feature
    is enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5563,7 +5706,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Lets to set use music in shared profile enabling sign.
+/* %VM_ONLY%
+
+   Lets to set use music in shared profile enabling sign.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION
                 identifying the virtual machine configuration.
@@ -5602,7 +5747,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Lets to set use downloads in shared profile enabling sign.
+/* %VM_ONLY%
+
+   Lets to set use downloads in shared profile enabling sign.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION
                 identifying the virtual machine configuration.
@@ -5620,7 +5767,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
 		) );
 
 
-/* Determines whether the "used movies in shared profile"
+/* %VM_ONLY%
+
+   Determines whether the "used movies in shared profile"
    feature is enabled or not.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5641,7 +5790,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Lets to set use movies in shared profile enabling sign.
+/* %VM_ONLY%
+
+   Lets to set use movies in shared profile enabling sign.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION
                 identifying the virtual machine configuration.
@@ -5697,7 +5848,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_OPTIMIZE_MODIFIERS_MODE nMode
 		) );
 
-/* Determines whether the clipboard sharing feature is enabled
+/* %VM_ONLY%
+
+   Determines whether the clipboard sharing feature is enabled
    or disabled in a virtual machine. When clipboard sharing is
    enabled, you can copy and paste text and files from the host
    to a virtual machine or vise versa, or from one virtual
@@ -5746,6 +5899,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 /* <unfinished>
+%VM_ONLY%
 
    Determines whether the time synchronization feature is
    enabled in a virtual machine.
@@ -5771,6 +5925,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
    Enables or disables the time synchronization feature in a
    virtual machine. You can synchronize the time in a virtual
@@ -5800,7 +5955,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether the smart time synchronization is enabled
+/* %VM_ONLY%
+
+   Determines whether the smart time synchronization is enabled
    in a virtual machine. For more information, see PrlVmCfg_SetTimeSyncSmartModeEnabled.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5821,7 +5978,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables or disables the smart time-synchronization mode in a
+/* %VM_ONLY%
+
+   Enables or disables the smart time-synchronization mode in a
    virtual machine. You can automatically synchronize the time
    in a virtual machine with the time in the OS by using the PrlVmCfg_SetTimeSynchronizationEnabled
    function. That functionality will keep the time in the
@@ -5852,6 +6011,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 /* <unfinished>
+%VM_ONLY%
 
    Obtains the time synchronization interval between the host
    and a guest OS. See PrlVmCfg_SetTimeSynchronizationEnabled
@@ -5879,6 +6039,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
    Allows to set the time interval at which the time in the
    virtual machine will be synchronized with the time in the
@@ -5905,7 +6066,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                PRL_UINT32 nTimeSyncInterval
 		) );
 
-/* Creates a new handle of type PHT_BOOT_DEVICE and adds it to
+/* %VM_ONLY%
+
+   Creates a new handle of type PHT_BOOT_DEVICE and adds it to
    the specified virtual machine boot device list. It is the
    responsibility of the caller to free the handle when it is no
    longer needed.
@@ -5927,7 +6090,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE_PTR phVmBootDev
 		) );
 
-/* Determines the number of devices in the virtual machine boot
+/* %VM_ONLY%
+
+   Determines the number of devices in the virtual machine boot
    device priority list.
    Parameters
    hVmCfg :          A handle of type PHT_VM_CONFIGURATION
@@ -5947,7 +6112,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnBootDevCount
 		) );
 
-/* Obtains a handle of type PHT_BOOT_DEVICE containing
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_BOOT_DEVICE containing
    information about a specified device from the virtual machine
    boot device priority list. It is the responsibility of the
    called to free the handle when it is no longer needed.
@@ -6276,7 +6443,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nVmRamSize
 		) );
 
-/* Determines whether the memory (RAM) hotplug is available in
+/* %VM_ONLY%
+
+   Determines whether the memory (RAM) hotplug is available in
    the virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
@@ -6299,7 +6468,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL_PTR pbVmRamHotplugEnabled
 		) );
 
-/* Sets the virtual machine memory (RAM) hotplug mode (enabled or
+/* %VM_ONLY%
+
+   Sets the virtual machine memory (RAM) hotplug mode (enabled or
    disabled).
    Parameters
    hVmCfg :            A handle of type PHT_VM_CONFIGURATION
@@ -6318,7 +6489,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL bVmRamHotplugEnabled
 		) );
 
-/* \Returns the video memory size of the specified virtual
+/* %VM_ONLY%
+
+   Returns the video memory size of the specified virtual
    machine.
    Parameters
    hVmCfg :            A handle of type PHT_VM_CONFIGURATION
@@ -6341,7 +6514,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnVmVideoRamSize
 		) );
 
-/* Sets the virtual machine video memory size.
+/* %VM_ONLY%
+
+   Sets the virtual machine video memory size.
    Parameters
    hVmCfg :           A handle of type PHT_VM_CONFIGURATION
                       identifying the virtual machine configuration.
@@ -6443,7 +6618,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nVmCpuCount
 		) );
 
-/* Determines the specified virtual machine CPU mode (32 bit or
+/* %VM_ONLY%
+
+   Determines the specified virtual machine CPU mode (32 bit or
    64 bit).
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
@@ -6466,7 +6643,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CPU_MODE_PTR pnVmCpuMode
 		) );
 
-/* Sets CPU mode (32 bit or 64 bit) for the specified virtual
+/* %VM_ONLY%
+
+   Sets CPU mode (32 bit or 64 bit) for the specified virtual
    machine.
    Parameters
    hVmCfg :      A handle of type PHT_VM_CONFIGURATION
@@ -6485,7 +6664,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CPU_MODE nVmCpuMode
 		) );
 
-/* Determines the virtual machine CPU acceleration level.
+/* %VM_ONLY%
+
+   Determines the virtual machine CPU acceleration level.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
                         identifying the virtual machine configuration.
@@ -6507,7 +6688,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_ACCELERATION_LEVEL_PTR pnVmCpuAccelLevel
 		) );
 
-/* Sets CPU acceleration level for the specified virtual
+/* %VM_ONLY%
+
+   Sets CPU acceleration level for the specified virtual
    machine.
    Parameters
    hVmCfg :            A handle of type PHT_VM_CONFIGURATION
@@ -6526,7 +6709,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_ACCELERATION_LEVEL nVmCpuAccelLevel
 		) );
 
-/* Determines whether the x86 virtualization (such as Vt-x) is
+/* %VM_ONLY%
+
+   Determines whether the x86 virtualization (such as Vt-x) is
    available in the virtual machine CPU.
    Parameters
    handle :             A handle of type PHT_VIRTUAL_MACHINE
@@ -6551,7 +6736,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmCpuVtxEnabled
 		) );
 
-/* Determines whether the CPU hotplug is available in the virtual machine.
+/* %VM_ONLY%
+
+   Determines whether the CPU hotplug is available in the virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
                         identifying the virtual machine configuration.
@@ -6573,7 +6760,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL_PTR pbVmCpuHotplugEnabled
 		) );
 
-/* Sets CPU hotplug mode (enabled or disabled) for the specified virtual
+/* %VM_ONLY%
+
+   Sets CPU hotplug mode (enabled or disabled) for the specified virtual
    machine.
    Parameters
    hVmCfg :            A handle of type PHT_VM_CONFIGURATION
@@ -7547,7 +7736,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_VM_LOCATION_PTR pnVmLocation
 		) );
 
-/* \Returns the name of the icon file used by the specified
+/* %VM_ONLY%
+
+   \Returns the name of the icon file used by the specified
    virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
@@ -7578,7 +7769,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnVmIconBufLength
 		) );
 
-/* Sets the virtual machine icon.
+/* %VM_ONLY%
+
+   Sets the virtual machine icon.
    Parameters
    hVmCfg :      A handle of type PHT_VM_CONFIGURATION
                  identifying the virtual machine configuration.
@@ -7702,7 +7895,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bVmIsTemplate
 		) );
 
-/* \Returns the virtual machine custom property information. If
+/* %VM_ONLY%
+
+   Returns the virtual machine custom property information. If
    you have some custom data which relates to a virtual machine
    in some way, you can save it in the virtual machine
    configuration for future retrieval. This can be any data that
@@ -7745,7 +7940,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				PRL_UINT32_PTR pnVmCustomPropertyBufLength
 				) );
 
-/* Sets the virtual machine custom property information. If you
+/* %VM_ONLY%
+
+   Sets the virtual machine custom property information. If you
    have some custom data, which relates to a virtual machine in
    some way, you can save it in the virtual machine
    configuration for future retrieval. This can be any data that
@@ -7984,7 +8181,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_AUTOSTOP_OPTION nVmAutoStop
 		) );
 
-/* Determines the action on Parallels Application window close for the
+/* %VM_ONLY%
+
+   Determines the action on Parallels Application window close for the
    specified virtual machine.
    Parameters
    hVmCfg : A handle of type PHT_VM_CONFIGURATION
@@ -8004,7 +8203,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_VM_ACTION_ON_WINDOW_CLOSE_PTR pnActionOnWindowClose
 		) );
 
-/* Allows to set the action on Parallels Application window close for the specified
+/* %VM_ONLY%
+
+   Allows to set the action on Parallels Application window close for the specified
    virtual machine.
    Parameters
    hVmCfg : A handle of type PHT_VM_CONFIGURATION
@@ -8061,7 +8262,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_VM_ACTION_ON_STOP nMode
 		) );
 
-/* \Returns the current window mode the specified virtual
+/* %VM_ONLY%
+
+   Returns the current window mode the specified virtual
    machine is in.
    Parameters
    hVm :             A handle of type PHT_VIRTUAL_MACHINE
@@ -8081,7 +8284,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_WINDOW_MODE_PTR pnVmWindowMode
 		) );
 
-/* Sets the virtual machine window mode.
+/* %VM_ONLY%
+
+   Sets the virtual machine window mode.
    Parameters
    hVmCfg :         A handle of type PHT_VM_CONFIGURATION
                     identifying the virtual machine configuration.
@@ -8140,7 +8345,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_BOOL bEnable
 		) );
 
-/* Determines whether the lock in screen mode sign is set or not
+/* %VM_ONLY%
+
+   Determines whether the lock in screen mode sign is set or not
    in a virtual machine configuration. Lock in screen mode is feature
    of Parallels Player product that allows to mandatory apply full
    screen mode for Parallels GUI until guest OS started and go to
@@ -8167,6 +8374,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
    Enables or disables the lock in screen mode feature
    in a virtual machine configuration. Lock in screen mode is feature
@@ -8230,7 +8438,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnVmLastModifiedDateBufLength
 		) );
 
-/* \Returns the name of the user who last modified the specified
+/* %VM_ONLY%
+
+   Returns the name of the user who last modified the specified
    virtual machine.
    Parameters
    hVmCfg :                         A handle of type PHT_VM_CONFIGURATION
@@ -8324,7 +8534,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT64_PTR pnVmUptime
 		) );
 
-/* Obtains a handle of type PHT_ACCESS_RIGHTS.
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_ACCESS_RIGHTS.
    Parameters
    hVmCfg :   A handle of type PHT_VM_CONFIGURATION
               identifying the virtual machine configuration.
@@ -8345,7 +8557,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE_PTR phVmAcl
 		) );
 
-/* Determines if guest sharing is enabled (the guest OS disk
+/* %VM_ONLY%
+
+   Determines if guest sharing is enabled (the guest OS disk
    drives are visible in the host OS).
 
    Parallels Tools must be installed to use this feature. To
@@ -8373,7 +8587,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmGuestSharingEnabled
 		) );
 
-/* Enables the guest sharing feature. If guest sharing is
+/* %VM_ONLY%
+
+   Enables the guest sharing feature. If guest sharing is
    enabled, the guest OS disk drives will be accessible in the
    host OS. If, in addition, the auto-mount feature is turned
    on, the guest OS disk drives will appear as icons on the host
@@ -8404,7 +8620,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bVmGuestSharingEnabled
 		) );
 
-/* Determines if host shared folders are mounted automatically
+/* %VM_ONLY%
+
+   Determines if host shared folders are mounted automatically
    in a given virtual machine. If shares are mounted
    automatically, then shared folders will be mapped and appear
    in the guest OS on startup.
@@ -8434,7 +8652,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmGuestSharingAutoMount
 		) );
 
-/* Sets the guest OS sharing auto-mount option. If guest sharing
+/* %VM_ONLY%
+
+   Sets the guest OS sharing auto-mount option. If guest sharing
    is enabled (see PrlVmCfg_SetGuestSharingEnabled) and auto-mount
    is turned on, the guest OS disk drives will appear as icons
    on the host desktop. If sharing is enabled but auto-mount is
@@ -8465,7 +8685,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bVmGuestSharingAutoMount
 		) );
 
-/* Determines if the virtual disks in a virtual machine will be
+/* %VM_ONLY%
+
+   Determines if the virtual disks in a virtual machine will be
    added to Spotlight search subsystem (Mac OS X feature).
    Parallels Tools must be installed to use this feature. To
    obtain the Parallels Tools status, use the
@@ -8495,7 +8717,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL_PTR pbVmGuestSharingEnableSpotlight
 		) );
 
-/* Sets the VM virtual disks added to Spotlight search subsystem sign.
+/* %VM_ONLY%
+
+   Sets the VM virtual disks added to Spotlight search subsystem sign.
    If guest sharing is enabled (see PrlVmCfg_SetGuestSharingEnabled) and
    Spotlight enable sign is turned on, the search through Spotlight subsystem
    will be using VM virtual hardisks too.
@@ -8524,7 +8748,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL bVmGuestSharingEnableSpotlight
 		) );
 
-/* Determines if host sharing is enabled (host shared folders
+/* %VM_ONLY%
+
+   Determines if host sharing is enabled (host shared folders
    are visible in the guest OS). Parallels Tools must be
    installed to use this feature. To obtain the Parallels Tools
    status, use the PrlVm_GetToolsState function.
@@ -8549,7 +8775,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmHostSharingEnabled
 		) );
 
-/* Enables host sharing for the specified virtual machine. When
+/* %VM_ONLY%
+
+   Enables host sharing for the specified virtual machine. When
    host sharing is enabled, the host OS shared folders will be
    visible in the guest OS. To use the host sharing feature, the
    shared folders must be set up first using the functionality
@@ -8578,7 +8806,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bVmHostSharingEnabled
 		) );
 
-/* Determines whether all host disks will be present at guest OS
+/* %VM_ONLY%
+
+   Determines whether all host disks will be present at guest OS
    as shares. Parallels Tools must be installed to use this
    feature. To obtain the Parallels Tools status, use the
    PrlVm_GetToolsState function.
@@ -8604,7 +8834,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL_PTR pbShareAllHostDisks
 		) );
 
-/* Enables sharing of all host disks for the specified virtual machine.
+/* %VM_ONLY%
+
+   Enables sharing of all host disks for the specified virtual machine.
    When this sign switched on all host disks will be shared into guest
    OS. Note that host sharing should be switched on to enable this
    functionality.
@@ -8633,7 +8865,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether the host user home directory will be
+/* %VM_ONLY%
+
+   Determines whether the host user home directory will be
    available in the guest OS as a share. Parallels Tools must be
    installed to use this feature. To obtain the Parallels Tools
    status, use the PrlVm_GetToolsState function.
@@ -8659,7 +8893,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL_PTR pbShareUserHomeDir
 		) );
 
-/* Enables or disables sharing of the host user home directory
+/* %VM_ONLY%
+
+   Enables or disables sharing of the host user home directory
    in the specified virtual machine. When this feature is
    enabled, the host user home directory will be shared in the
    virtual machine. Note that host sharing should be enabled to
@@ -8687,7 +8923,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether host disks shared with the guest Windows
+/* %VM_ONLY%
+
+   Determines whether host disks shared with the guest Windows
    OS will be mapped to drive letters. Parallels Tools must be
    installed to use this feature. To obtain the Parallels Tools
    status, use the PrlVm_GetToolsState function.
@@ -8715,7 +8953,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL_PTR pbMapSharedFoldersOnLetters
 		) );
 
-/* Enables mapping of shared host disks on drive letters for the specified virtual machine.
+/* %VM_ONLY%
+
+   Enables mapping of shared host disks on drive letters for the specified virtual machine.
    When this sign switched on host disks shared into guest Windows OS will be maped on
    correspond drive letters. Note that host sharing should be switched on to enable this
    functionality.
@@ -8982,7 +9222,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 		PRL_BOOL_PTR pbVmRemoteDisplayEncryptionEnabled
 		) );
 
-/* Determines if additional screen resolution support is enabled
+/* %VM_ONLY%
+
+   Determines if additional screen resolution support is enabled
    in a virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
@@ -9004,7 +9246,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmScrResEnabled
 		) );
 
-/* Enables or disables the additional screen resolution support
+/* %VM_ONLY%
+
+   Enables or disables the additional screen resolution support
    in a virtual machine.
    Parameters
    hVmCfg :            A handle of type PHT_VM_CONFIGURATION
@@ -9028,7 +9272,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bVmScrResEnabled
 		) );
 
-/* Determines if disk cache write-back is enabled in the
+/* %VM_ONLY%
+
+   Determines if disk cache write-back is enabled in the
    specified virtual machine.
    Parameters
    hVmCfg :                  A handle of type
@@ -9054,7 +9300,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmDiskCacheWriteBack
 		) );
 
-/* Sets the virtual machine disk cache write-back option.
+/* %VM_ONLY%
+
+   Sets the virtual machine disk cache write-back option.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
                             identifying the virtual machine
@@ -9076,7 +9324,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bVmDiskCacheWriteBack
 		) );
 
-/* Determines wether the virtual machine OS resolution is in
+/* %VM_ONLY%
+
+   Determines wether the virtual machine OS resolution is in
    full screen mode.
    Parameters
    hVmCfg :                  A handle of type
@@ -9099,7 +9349,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmOsResInFullScrMode
 		) );
 
-/* Sets the virtual machine OS resolution in full screen mode
+/* %VM_ONLY%
+
+   Sets the virtual machine OS resolution in full screen mode
    option.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
@@ -9122,6 +9374,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
    Determines whether the Parallels application (such as
    Parallels Desktop) will be automatically closed on the
@@ -9147,7 +9400,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbVmCloseAppOnShutdown
 		) );
 
-/* Allows to specify whether the Parallels application (such
+/* %VM_ONLY%
+
+   Allows to specify whether the Parallels application (such
    Parallels Desktop) will be closed on the virtual machine
    shutdown.
    Parameters
@@ -9172,8 +9427,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* <unfinished>
+%VM_ONLY%
 
-   \Returns the virtual machine system flags.
+   Returns the virtual machine system flags.
    Parameters
    hVmCfg :                    A handle of type
                                PHT_VM_CONFIGURATION identifying
@@ -9205,7 +9461,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnVmSystemFlagsBufLength
 		) );
 
-/* Sets the virtual machine system flags.
+/* %VM_ONLY%
+
+   Sets the virtual machine system flags.
    Parameters
    handle :         A handle of type PHT_VIRTUAL_MACHINE
                     identifying the virtual machine.
@@ -9224,7 +9482,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CONST_STR sNewVmSystemFlags
 		) );
 
-/* Determines whether the APIC is enabled or disabled during the
+/* %VM_ONLY%
+
+   Determines whether the APIC is enabled or disabled during the
    virtual machine runtime.
    Parameters
    hVmCfg :         A handle of type PHT_VM_CONFIGURATION
@@ -9246,7 +9506,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL_PTR pbDisableAPIC
 		) );
 
-/* Allows to specify whether the virtual machine should be using
+/* %VM_ONLY%
+
+   Allows to specify whether the virtual machine should be using
    APIC during runtime.
    Parameters
    hVmCfg :        A handle of type PHT_VM_CONFIGURATION
@@ -9268,7 +9530,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL bDisableAPIC
 		) );
 
-/* Determines the current undo-disks mode for the specified
+/* %VM_ONLY%
+
+   Determines the current undo-disks mode for the specified
    virtual machine.
    Parameters
    hVmCfg :           A handle of type PHT_VM_CONFIGURATION
@@ -9290,7 +9554,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Sets the undo-disks mode for the virtual machine.
+/* %VM_ONLY%
+
+   Sets the undo-disks mode for the virtual machine.
    Parameters
    hVmCfg :          A handle of type PHT_VM_CONFIGURATION
                      identifying the virtual machine
@@ -9310,7 +9576,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Determines whether the speaker is enabled or disabled during the
+/* %VM_ONLY%
+
+   Determines whether the speaker is enabled or disabled during the
    virtual machine runtime.
    Parameters
    hVmCfg :           A handle of type PHT_VM_CONFIGURATION
@@ -9332,7 +9600,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL_PTR pbDisableSpeaker
 		) );
 
-/* Allows to specify whether the virtual machine should be using
+/* %VM_ONLY%
+
+   Allows to specify whether the virtual machine should be using
    speaker during runtime.
    Parameters
    hVmCfg :          A handle of type PHT_VM_CONFIGURATION
@@ -9354,7 +9624,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_BOOL bDisableSpeaker
 		) );
 
-/* \Returns foreground processes priority for the specified
+/* %VM_ONLY%
+
+   Returns foreground processes priority for the specified
    virtual machine.
    Parameters
    hVmCfg :                  A handle of type PHT_VM_CONFIGURATION
@@ -9374,7 +9646,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_PRIORITY_PTR pnVmForegroundPriority
 		) );
 
-/* Sets the virtual machine foreground processes priority.
+/* %VM_ONLY%
+
+   Sets the virtual machine foreground processes priority.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
                             identifying the virtual machine
@@ -9393,7 +9667,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_PRIORITY nVmForegroundPriority
 		) );
 
-/* Determines the specified virtual machine background process
+/* %VM_ONLY%
+
+   Determines the specified virtual machine background process
    priority type.
    Parameters
    hVmCfg :                  A handle of type PHT_VM_CONFIGURATION
@@ -9414,7 +9690,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_PRIORITY_PTR pnVmBackgroundPriority
 		) );
 
-/* Sets the virtual machine background processes priority.
+/* %VM_ONLY%
+
+   Sets the virtual machine background processes priority.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
                             identifying the virtual machine
@@ -9433,7 +9711,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_PRIORITY nVmBackgroundPriority
 		) );
 
-/* Determines whether the use default answers mechanism active for
+/* %VM_ONLY%
+
+   Determines whether the use default answers mechanism active for
    the virtual machine.
    Parameters
    hVmCfg :               A handle of type PHT_VM_CONFIGURATION identifying
@@ -9456,7 +9736,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                 PRL_BOOL_PTR pbUseDefaultAnswers
 		) );
 
-/* Enables the use default answers mechanism in a virtual machine.
+/* %VM_ONLY%
+
+   Enables the use default answers mechanism in a virtual machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -9986,7 +10268,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
                PRL_DOUBLE dFreeDiskSpaceRatio
 		) );
 
-/*
+/* %VM_ONLY%
+
    Enables or disables the Parallels Tools AutoUpdate feature for a
    virtual machine.
    Parameters
@@ -10337,7 +10620,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
                 PRL_CONST_STR sConfigSample
                 ) );
 
-/* \Returns the list of application templates installed for the specified
+/* %CT_ONLY%
+
+   Returns the list of application templates installed for the specified
    Container. This option acceptable for Virtual Machine of PVT_CT only.
    Parameters
    hVmCfg:		A handle of type PHT_VM_CONFIGURATION
@@ -10361,7 +10646,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_HANDLE_PTR phAppList
 		) );
 
-/* Specify application templates list which will be used in the specified
+/* %CT_ONLY%
+
+   Specify application templates list which will be used in the specified
    Parallels Virtuozzo Container.
    This option acceptable for Virtual Machine of PVT_CT only.
    Parameters
@@ -10387,7 +10674,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 /// @section Functions specific for the Parallels Containers.
 /////////////////////////////////////////////////////////////////////////////////
 
-/* Sets barrier and limit for various user beancounters.
+/* %CT_ONLY%
+
+   Sets barrier and limit for various user beancounters.
    Parameters
    hVmCfg:		A handle of type PHT_VM_CONFIGURATION
 			identifying the virtual machine
@@ -10409,7 +10698,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_UINT64 nLimit
 		) );
 
-/* \Returns beancounters barrier and limit for specified resource id.
+/* %CT_ONLY%
+
+   Returns beancounters barrier and limit for specified resource id.
    were created on.
    Parameters
    hVmCfg:		A handle of type PHT_VM_CONFIGURATION
@@ -10468,7 +10759,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
                 ) );
 
 
-/* Returns a capabilities mask specified inside the CT.
+/* %CT_ONLY%
+
+   Returns a capabilities mask specified inside the CT.
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
                   identifying the virtual machine configuration.
@@ -10490,7 +10783,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_UINT32_PTR pnCapMask
 		) );
 
-/* Sets a capabilities inside the CT.
+/* %CT_ONLY%
+
+   Sets a capabilities inside the CT.
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
                   identifying the virtual machine configuration.
@@ -10512,7 +10807,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_UINT32 nCapMask
 		) );
 
-/* Returns a features mask specified inside the CT.
+/* %CT_ONLY%
+
+   Returns a features mask specified inside the CT.
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
                   identifying the virtual machine configuration.
@@ -10537,7 +10834,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_UINT32_PTR pnOff
 		) );
 
-/* Returns netfilter mode specified inside the CT.
+/* %CT_ONLY%
+
+   Returns netfilter mode specified inside the CT.
    Parameters
    hVmCfg : A handle of type PHT_VM_CONFIGURATION
             identifying the virtual machine configuration.
@@ -10557,7 +10856,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 
-/* Allows to set netfilter mode inside the CT.
+/* %CT_ONLY%
+
+   Allows to set netfilter mode inside the CT.
    Parameters
    hVmCfg : A handle of type PHT_VM_CONFIGURATION
             identifying the virtual machine configuration.
@@ -10576,7 +10877,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_NETFILTER_MODE nMode
 		) );
 
-/* Sets a features inside the CT.
+/* %CT_ONLY%
+
+   Sets a features inside the CT.
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
                   identifying the virtual machine configuration.
@@ -13607,7 +13910,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 
-/* Obtains USB controller autoconnect device option.
+/* %VM_ONLY%
+
+   Obtains USB controller autoconnect device option.
    Parameters
    hVmDev :               A handle of type
                           PHT_VIRTUAL_DEV_USB_DEVICE identifying
@@ -13629,7 +13934,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_USB_DEVICE_AUTO_CONNECT_OPTION_PTR pnAutoconnectOption
 		) );
 
-/* Sets USB controller autoconnect device option.
+/* %VM_ONLY%
+
+   Sets USB controller autoconnect device option.
    Parameters
    hVmDev :              A handle of type
                          PHT_VIRTUAL_DEV_USB_DEVICE identifying
@@ -13650,7 +13957,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_USB_DEVICE_AUTO_CONNECT_OPTION nAutoconnectOption
 		) );
 
-/* \Returns output device string for the specified sound device.
+/* %VM_ONLY%
+
+   \Returns output device string for the specified sound device.
    Parameters
    hVmDev :                A handle of type PHT_VIRTUAL_DEV_SOUND
                            identifying the sound device.
@@ -13702,7 +14011,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CONST_STR sNewOutputDev
 		) );
 
-/* \Returns mixer device string for the specified sound device.
+/* %VM_ONLY%
+
+   Returns mixer device string for the specified sound device.
    Parameters
    hVmDev :               A handle of type PHT_VIRTUAL_DEV_SOUND
                           identifying the sound device.
@@ -13734,7 +14045,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnMixerDevBufLength
 		) );
 
-/* Sets mixer device string for the specified sound device.
+
+/* %VM_ONLY%
+
+   Sets mixer device string for the specified sound device.
    Parameters
    hVmDev :        A handle of type PHT_VIRTUAL_DEV_SOUND
                    identifying the sound device.
@@ -13754,7 +14068,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CONST_STR sNewMixerDev
 		) );
 
-/* \Returns the socket mode of a virtual serial port. Use this
+/* %VM_ONLY%
+
+   \Returns the socket mode of a virtual serial port. Use this
    function to get the socket mode when the emulation type of
    the port is "socket". To get the port's emulation type, use
    the PrlVmDev_GetEmulatedType function.
@@ -13806,7 +14122,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /// @section VM shared folders operations
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Removes the share from the virtual machine configuration.
+/* %VM_ONLY%
+
+   Removes the share from the virtual machine configuration.
    Once a share is removed from the virtual machine
    configuration, the folder cannot be accessed from the guest
    OS. Just like any other virtual machine configuration
@@ -13827,7 +14145,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hVmShare
 		) );
 
-/* \Returns the shared folder name (as it appears in the guest
+/* %VM_ONLY%
+
+   \Returns the shared folder name (as it appears in the guest
    OS).
    Parameters
    hVmShare :              A handle of type PHT_SHARE identifying
@@ -13860,7 +14180,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnShareNameBufLength
 		) );
 
-/* Sets the share name (as it will appear in the guest OS).
+/* %VM_ONLY%
+
+   Sets the share name (as it will appear in the guest OS).
    Parameters
    hVmShare :       A handle of type PHT_SHARE identifying the
                     shared folder.
@@ -13881,7 +14203,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CONST_STR sNewShareName
 		) );
 
-/* \Returns the shared folder path.
+/* %VM_ONLY%
+ 
+   \Returns the shared folder path.
    Parameters
    hVmShare :              A handle of type PHT_SHARE identifying
                            the shared folder.
@@ -13913,7 +14237,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnSharePathBufLength
 		) );
 
-/* Sets the shared folder path.
+/* %VM_ONLY%
+
+   Sets the shared folder path.
    Parameters
    hVmShare :       A handle of type PHT_SHARE identifying the
                     shared folder.
@@ -13936,7 +14262,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CONST_STR sNewSharePath
 		) );
 
-/* \Returns the shared folder description.
+/* %VM_ONLY%
+
+   Returns the shared folder description.
    Parameters
    hVmShare :                     A handle of type PHT_SHARE
                                   identifying the shared folder.
@@ -13971,7 +14299,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnShareDescriptionBufLength
 		) );
 
-/* Sets the shared folder description.
+/* %VM_ONLY%
+
+   Sets the shared folder description.
    Parameters
    hVmShare :              A handle of type PHT_SHARE identifying
                            the shared folder.
@@ -13993,7 +14323,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CONST_STR sNewShareDescription
 		) );
 
-/* Determines whether the share is enabled or not.
+/* %VM_ONLY%
+
+   Determines whether the share is enabled or not.
    Parameters
    hVmShare :   A handle of type PHT_SHARE identifying the shared
                 folder.
@@ -14015,7 +14347,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbEnabled
 		) );
 
-/* Enables the specified share.
+/* %VM_ONLY%
+
+   Enables the specified share.
    Parameters
    hVmShare :  A handle of type PHT_SHARE identifying the shared
                folder.
@@ -14037,7 +14371,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bEnabled
 		) );
 
-/* Determines if the share is read-only.
+/* %VM_ONLY%
+
+   Determines if the share is read-only.
    Parameters
    hVmShare :    A handle of type PHT_SHARE identifying the
                  shared folder.
@@ -14061,7 +14397,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbReadOnly
 		) );
 
-/* Makes the specified shared folder read-only.
+/* %VM_ONLY%
+
+   Makes the specified shared folder read-only.
    Parameters
    hVmShare :   A handle of type PHT_SHARE identifying the shared
                 folder.
@@ -14087,7 +14425,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /// @section VM boot devices operations
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Removes the boot device from the boot priority list. This
+/* %VM_ONLY%
+
+   Removes the boot device from the boot priority list. This
    function permanently removes a devices from the list. If you
    would like to temporarily disable a device, use the
    PrlBootDev_SetInUse function. To add a device back to the
@@ -14109,7 +14449,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hVmBootDev
 		) );
 
-/* \Returns the boot device type. Device type is a property
+/* %VM_ONLY%
+
+   Returns the boot device type. Device type is a property
    that, together with device index, is used to uniquely
    identify a device in the virtual machine boot list. The
    supported device types are defined in the PRL_DEVICE_TYPE
@@ -14134,7 +14476,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_DEVICE_TYPE_PTR pnDevType
 		) );
 
-/* Sets the boot device type. Use this function when adding a
+/* %VM_ONLY%
+
+   Sets the boot device type. Use this function when adding a
    device to the boot device priority list. Device type is a
    property that, together with device index, is used to
    uniquely identify a device in a virtual machine boot list.
@@ -14161,7 +14505,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_DEVICE_TYPE nDevType
 		) );
 
-/* Obtains the boot device index. Device index is a property
+/* %VM_ONLY%
+
+   Obtains the boot device index. Device index is a property
    that, together with device type, is used to uniquely identify
    a device in the boot priority list of a virtual machine. The
    index should be the same index the device has in the main
@@ -14187,7 +14533,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnDevIndex
 		) );
 
-/* Sets the boot device index. Device index is a property that,
+/* %VM_ONLY%
+
+   Sets the boot device index. Device index is a property that,
    together with device type, is used to uniquely identify a
    device in the virtual machine boot priority list. The index
    must be the same index the device has in the main virtual
@@ -14215,7 +14563,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nDevIndex
 		) );
 
-/* Obtains the boot device sequence index. The boot device
+/* %VM_ONLY%
+
+   Obtains the boot device sequence index. The boot device
    sequence index starts with 0. When a virtual machine is
    powered on, it will first try to boot from the boot device
    that has a sequence index of 0. If it cannot boot from the
@@ -14241,7 +14591,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnSequenceIndex
 		) );
 
-/* Assigns a sequence index to a boot device in the boot
+/* %VM_ONLY%
+
+   Assigns a sequence index to a boot device in the boot
    priority list. The boot device sequence index starts with 0.
    When a virtual machine is powered on, it will first try to
    boot from the boot device that has a sequence index of 0. If
@@ -14281,7 +14633,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nSequenceIndex
 		) );
 
-/* Determines whether the boot device is enabled or disabled. A
+/* %VM_ONLY%
+
+   Determines whether the boot device is enabled or disabled. A
    boot device can be either enabled or disabled. If a device is
    disabled, it is ignored during the boot operation. To change
    the status of a device, use the PrlBootDev_SetInUse function.
@@ -14306,7 +14660,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbInUse
 		) );
 
-/* Enables or disables the boot device. A boot device can be
+/* %VM_ONLY%
+
+   Enables or disables the boot device. A boot device can be
    enabled or disabled without being removed from the boot
    device priority list. If the device is disabled, it is
    ignored during the boot operation. To obtain the current
@@ -14341,7 +14697,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /// @section Parallels Tools Utility functions
 ///////////////////////////////////////////////////////////////////////////////
 
-/* \Returns the Parallels Tools package state information.
+/* %VM_ONLY%
+
+   Returns the Parallels Tools package state information.
    Parameters
    handle :         A handle of type PHT_VM_TOOLS_INFO.
    pVmToolsState :  [out] A pointer to a variable that receives
@@ -14362,7 +14720,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_VM_TOOLS_STATE_PTR pVmToolsState
 		) );
 
-/* \Returns version information of the Parallels Tools package
+/* %VM_ONLY%
+
+   \Returns version information of the Parallels Tools package
    installed in a given virtual machine. Before calling this
    function, make sure that the Parallels Tools package is
    installed in the virtual machine by calling the
@@ -14446,7 +14806,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 				VIRTUAL_MACHINE_ADDITION_STATE_PTR pVmState
 				) );
 
-/* Obtains a handle of type PHT_ACCESS_RIGHTS.
+/* %VM_ONLY%
+
+   Obtains a handle of type PHT_ACCESS_RIGHTS.
    Parameters
    hVmInfo :  A handle of type PHT_VM_INFO.
    phVmAcl :  [out] A pointer to a variable that receives the
@@ -14717,7 +15079,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /// @section Functions specific for the access rights list info processing
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Determines if the current user is authorized to perform a
+/* %VM_ONLY%
+
+   Determines if the current user is authorized to perform a
    specified task on a virtual machine.
    Parameters
    hAcl :         A handle of type PHT_ACCESS_RIGHTS containing
@@ -14743,7 +15107,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Obtains the virtual machine access rights information. The
+/* %VM_ONLY%
+
+   Obtains the virtual machine access rights information. The
    function determines whether other users besides the owner can
    view, run, or have full access to a virtual machine.
    Parameters
@@ -14769,7 +15135,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Sets access rights on a virtual machine. The owner of a
+/* %VM_ONLY%
+
+   Sets access rights on a virtual machine. The owner of a
    virtual machine can use this function to grant or deny access
    rights for the virtual machine to other users. The access
    rights will be applied to all users. The call will only
@@ -14800,7 +15168,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Determines the virtual machine owner name.
+/* %VM_ONLY%
+
+   Determines the virtual machine owner name.
    Parameters
    hAcl :                  A handle of type PHT_ACCESS_RIGHTS
                            containing the access rights
@@ -14835,7 +15205,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				) );
 
 
-/* Determines if the current user is the owner of the specified
+/* %VM_ONLY%
+
+   Determines if the current user is the owner of the specified
    virtual machine.
    Parameters
    hAcl :       A handle of type PHT_ACCESS_RIGHTS containing the
@@ -14863,7 +15235,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /////////////////////////////////////////////////////////////////////////////////
 
 
-/* Creates a new handle of type PHT_APPLIANCE_CONFIG. The handle
+/* %VM_ONLY%
+
+   Creates a new handle of type PHT_APPLIANCE_CONFIG. The handle
    is necessary to create and configure an appliance download configuration.
    If you would like to create a new appliance download configuration,
    use this function to create the handle first and then use the handle
@@ -14893,7 +15267,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 /////////////////////////////////////////////////////////////////////////////////
 
 
-/* \Returns name of the Container's template.
+/* %CT_ONLY%
+
+   Returns name of the Container's template.
    Parameters
    hTemplate :            A handle of type PHT_CT_TEMPLATE.
    sName      :           [out] A pointer to a buffer that receives
@@ -14922,7 +15298,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnNameLength
 		) );
 
-/* \Returns the type of the specified template.
+/* %CT_ONLY%
+
+   Returns the type of the specified template.
    Parameters
    hTemplate :   A handle of type PHT_CT_TEMPLATE.
    pnType :      [out] A pointer to a variable that receives the
@@ -14940,7 +15318,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_CT_TEMPLATE_TYPE_PTR pType
 		) );
 
-/* \Returns description of the Container's template.
+/* %CT_ONLY%
+
+   Returns description of the Container's template.
    Parameters
    hTemplate :             A handle of type PHT_CT_TEMPLATE.
    sDescription:           [out] A pointer to a buffer that receives
@@ -14969,7 +15349,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnDescriptionLength
 		) );
 
-/* \Returns version of the Container's template.
+/* %CT_ONLY%
+
+   Returns version of the Container's template.
    Parameters
    hTemplate :             A handle of type PHT_CT_TEMPLATE.
    sVersion:               [out] A pointer to a buffer that receives
@@ -14998,7 +15380,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnVersionLength
 		) );
 
-/* \Returns the type of the operating system for which the specified
+/* %CT_ONLY%
+
+   Returns the type of the operating system for which the specified
    template is. The OS types are defined in the PrlOses.h file as
    macros. Look for the macros that are prefixed with
    PVS_GUEST_TYPE_ (e.g. PVS_GUEST_TYPE_LINUX).
@@ -15022,7 +15406,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnOsType
 		) );
 
-/* \Returns the version of the operating system for which the
+/* %CT_ONLY%
+
+   Returns the version of the operating system for which the
    specified template is running. The OS versions are
    defined in the PrlOses.h file as macros. Look for the macros
    that are prefixed with PVS_GUEST_VER_ (e.g.
@@ -15047,7 +15433,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnOsVersion
 		) );
 
-/* \Returns the version of the operating system template for which the
+/* %CT_ONLY%
+
+   Returns the version of the operating system template for which the
    specified application template is.
    Parameters
    hTemplate :             A handle of type PHT_CT_TEMPLATE.
@@ -15077,7 +15465,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnOsTemplateLength
 		) );
 
-/* Determines the specified template CPU mode (32 bit or
+/* %CT_ONLY%
+
+   Determines the specified template CPU mode (32 bit or
    64 bit).
    Parameters
    hTemplate:     A handle of type PHT_CT_TEMPLATE.
@@ -15099,7 +15489,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_CPU_MODE_PTR pnCpuMode
 		) );
 
-/* Determines whether the template cached.
+/* %CT_ONLY%
+
+   Determines whether the template cached.
    Makes sense only for operating system templates.
    Parameters
    hTemplate:     A handle of type PHT_CT_TEMPLATE.
@@ -15120,7 +15512,6 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_HANDLE hTemplate,
 		PRL_BOOL_PTR pbCached
 		) );
-
 
 
 /* %VM_ONLY%
