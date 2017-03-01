@@ -15,7 +15,6 @@ inline QStringList getCustomFunctions() {
 	nonStdFuncs.append("PrlVmCfg_GetMemGuaranteeSize");
 	nonStdFuncs.append("PrlVmCfg_SetMemGuaranteeSize");
 	nonStdFuncs.append("PrlDiskMap_Read");
-	nonStdFuncs.append("PrlDisk_GetDiskInfo");
 	nonStdFuncs.append("PrlHandle_RegEventHandler");
 	nonStdFuncs.append("PrlHandle_UnregEventHandler");
 	nonStdFuncs.append("PrlSrv_RegEventHandler");
