@@ -197,6 +197,90 @@ static PyObject* sdk_PrlVmCfg_SetMemGuaranteeSize(PyObject* /*self*/, PyObject* 
 	return NULL;
 }
 
+static PyObject* sdk_PrlVmCfg_GetCpuLimitEx(PyObject* /*self*/, PyObject* args){
+	PRL_SDK_CHECK;
+	do {
+		PRL_HANDLE hVm;
+
+		if (!PyArg_ParseTuple(args, "k:PrlVmCfg_GetCpuLimitEx" , &hVm))
+			break;
+
+		PRL_CPULIMIT_DATA data = {0, PRL_CPULIMIT_MHZ};
+		PRL_RESULT prlResult;
+
+		Py_BEGIN_ALLOW_THREADS
+		prlResult = PrlVmCfg_GetCpuLimitEx(hVm, &data);
+		Py_END_ALLOW_THREADS
+		PyObject* ret_list = PyList_New(0);
+		if ( ! ret_list )
+			break;
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
+			break;
+		}
+		Py_DECREF(pResult);
+
+		PyObject *pDataType = Py_BuildValue("I", data.type);
+		if (PyList_Append(ret_list, pDataType)) {
+			Py_DECREF(pDataType);
+			Py_DECREF(ret_list);
+			break;
+		}
+		Py_DECREF(pDataType);
+
+		PyObject *pDataValue = Py_BuildValue("I", data.value);
+		if (PyList_Append(ret_list, pDataValue)) {
+			Py_DECREF(pDataValue);
+			Py_DECREF(ret_list);
+			break;
+		}
+		Py_DECREF(pDataValue);
+
+		return ret_list;
+	} while(0);
+	return NULL;
+}
+
+static PyObject* sdk_PrlVmCfg_SetCpuLimitEx(PyObject* /*self*/, PyObject* args)
+{
+	PRL_SDK_CHECK;
+	do {
+		PRL_HANDLE hVm;
+		PRL_CPULIMIT_TYPE nType;
+		PRL_UINT32 nValue;
+
+		if (!PyArg_ParseTuple(args, "kII:PrlVmCfg_SetCpuLimitEx" ,
+				&hVm, &nType, &nValue))
+			break;
+
+		PRL_CPULIMIT_DATA data;
+		data.type = nType;
+		data.value = nValue;
+		PRL_RESULT prlResult;
+
+		Py_BEGIN_ALLOW_THREADS
+		prlResult = PrlVmCfg_GetCpuLimitEx(hVm, &data);
+		Py_END_ALLOW_THREADS
+		PyObject* ret_list = PyList_New(0);
+		if ( ! ret_list )
+			break;
+
+		PyObject *pResult = Py_BuildValue( "k", prlResult );
+		if ( PyList_Append(ret_list, pResult) ) {
+			Py_DECREF(pResult);
+			Py_DECREF(ret_list);
+			break;
+		}
+		Py_DECREF(pResult);
+
+		return ret_list;
+	} while(0);
+	return NULL;
+}
+
 static PyObject* sdk_PrlOpTypeList_GetItem(PyObject* /*self*/, PyObject* args)
 {
 	PRL_SDK_CHECK;
