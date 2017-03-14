@@ -5,7 +5,7 @@
  * Basic necessity of this file is that it can be used without libs
  * such as prl_problem_report_utilities.
  *
- * Copyright (C) 1999-2014 Parallels IP Holdings GmbH
+ * Copyright (c) 1999-2017, Parallels International GmbH
  *
  * This file is part of Parallels SDK. Parallels SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -23,7 +23,7 @@
  * <http://www.gnu.org/licenses/> or write to Free Software Foundation,
  * 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
  *
- * Our contact details: Parallels IP Holdings GmbH, Vordergasse 59, 8200
+ * Our contact details: Parallels International GmbH, Vordergasse 59, 8200
  * Schaffhausen, Switzerland; http://www.parallels.com/.
  */
 

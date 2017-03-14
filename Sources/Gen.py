@@ -2,7 +2,7 @@
 #
 # Gen.py
 #
-# Copyright (c) 2015 Parallels IP Holdings GmbH
+# Copyright (c) 2015-2017, Parallels International GmbH
 #
 # This file is part of OpenVZ. OpenVZ is free software; you can redistribute it
 # and/or modify it under the terms of the GNU Lesser General Public License as
@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
-# Our contact details: Parallels IP Holdings GmbH, Vordergasse 59, 8200
+# Our contact details: Parallels International GmbH, Vordergasse 59, 8200
 # Schaffhausen, Switzerland.
 #
 

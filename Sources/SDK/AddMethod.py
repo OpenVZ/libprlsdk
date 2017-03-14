@@ -3,7 +3,7 @@
 #
 # AddMethod.py
 #
-# Copyright (C) 1999-2014 Parallels IP Holdings GmbH
+# Copyright (c) 1999-2017, Parallels International GmbH
 #
 # This file is part of Parallels SDK. Parallels SDK is free
 # software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@
 # <http://www.gnu.org/licenses/> or write to Free Software Foundation,
 # 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
 #
-# Our contact details: Parallels IP Holdings GmbH, Vordergasse 59, 8200
+# Our contact details: Parallels International GmbH, Vordergasse 59, 8200
 # Schaffhausen, Switzerland; http://www.parallels.com/.
 #
 
@@ -937,7 +937,7 @@ class Handle(object):
         out_data = '''/*
  * {0}.h
  *
- * Copyright (C) 1999-2014 Parallels IP Holdings GmbH
+ * Copyright (c) 1999-2017, Parallels International GmbH
  *
  * This file is part of Parallels SDK. Parallels SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -955,7 +955,7 @@ class Handle(object):
  * <http://www.gnu.org/licenses/> or write to Free Software Foundation,
  * 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
  *
- * Our contact details: Parallels IP Holdings GmbH, Vordergasse 59, 8200
+ * Our contact details: Parallels International GmbH, Vordergasse 59, 8200
  * Schaffhausen, Switzerland; http://www.parallels.com/.
  */
 
@@ -1022,7 +1022,7 @@ typedef PrlHandleSmartPtr<{0}> {0}Ptr;
         out_data = '''/*
  * {0}.cpp
  *
- * Copyright (C) 1999-2014 Parallels IP Holdings GmbH
+ * Copyright (c) 1999-2017, Parallels International GmbH
  *
  * This file is part of Parallels SDK. Parallels SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -1040,7 +1040,7 @@ typedef PrlHandleSmartPtr<{0}> {0}Ptr;
  * <http://www.gnu.org/licenses/> or write to Free Software Foundation,
  * 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
  *
- * Our contact details: Parallels IP Holdings GmbH, Vordergasse 59, 8200
+ * Our contact details: Parallels International GmbH, Vordergasse 59, 8200
  * Schaffhausen, Switzerland; http://www.parallels.com/.
  */
 
