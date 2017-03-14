@@ -95,9 +95,11 @@ STRINGIFY_CONSTS_TMPL = """/////////////////////////////////////////////////////
 ///
 /// @author maximk
 ///
-/// Copyright (c) 1999-2017, Parallels International GmbH.
+/// Copyright (c) 1999-2017, Parallels International GmbH
 /// All rights reserved.
-/// http://www.parallels.com
+///
+/// Our contact details: Parallels International GmbH, Vordergasse 59, 8200
+/// Schaffhausen, Switzerland; http://www.parallels.com/.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 
