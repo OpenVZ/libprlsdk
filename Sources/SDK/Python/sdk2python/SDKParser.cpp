@@ -924,7 +924,7 @@ bool SDKParser::AddClass(const QString& qsFunc)
 	QString qsClass = GetFunctionClass(qsFunc);
 	if ( qsClass.isEmpty() )
 	{
-		m_qsErrorMessage = QString("Function %1 is not Parallels SDK API function!")
+		m_qsErrorMessage = QString("Function %1 is not " PRODUCT_NAME_SHORT " SDK API function!")
 							.arg(qsFunc);
 		return false;
 	}

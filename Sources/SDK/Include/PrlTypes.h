@@ -250,7 +250,7 @@ typedef const PRL_DOUBLE*	PRL_CONST_DOUBLE_PTR;
 	#define PRL_PACKED __attribute__((packed))
 	#define PRL_UNUSED_PARAM(x) (void)x
 #else
-	#error Parallels SDK detected unknown compiler (!)
+	#error SDK detected unknown compiler (!)
 #endif
 
 /// Handle representation
@@ -273,7 +273,7 @@ typedef const PRL_HANDLE* 	PRL_CONST_HANDLE_PTR;
 #endif
 
 /**
- * Parallels API method
+ * API method
  **/
 typedef struct _PRL_API_METHOD
 {

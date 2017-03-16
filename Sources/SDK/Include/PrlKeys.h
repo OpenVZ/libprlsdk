@@ -193,7 +193,7 @@
 
 
 /**
- * Parallels virtual keycodes.
+ * virtual keycodes.
  */
 typedef enum _PRL_KEY
 {

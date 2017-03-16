@@ -45,7 +45,7 @@ extern "C" {
 /// @section Generic API methods for the client
 ///
 /// This section consists of methods that are used for general
-/// manipulation of the parallels api library and are not specific
+/// manipulation of the api library and are not specific
 /// to objects in the object hierarchy.
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -53,11 +53,11 @@ extern "C" {
 
 
 /* Creates a new handle of type PHT_SERVER. In order to
-   establish a connection with a Parallels Service, a handle of
+   establish a connection with a Dispatcher Service, a handle of
    type PHT_SERVER must be created and the object that the
-   handle references must be populated with the Parallels Service
+   handle references must be populated with the Dispatcher Service
    connection information. Once a connection is established, the
-   handle can be used to access the Parallels Service. It is the
+   handle can be used to access the Dispatcher Service. It is the
    responsibility of the caller to free the handle with the
    PrlHandle_Free call when it is no longer needed.
    Parameters
@@ -81,7 +81,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* Performs a remote login operation using the specified
    \parameters. A remote login operation logs the user to a
-   Parallels Service running on a remote host. You can also use
+   Dispatcher Service running on a remote host. You can also use
    this function to log to a local host or you can use the
    PrlSrv_LoginLocal function, which is a simplified version
    created specifically to perform local host logins.
@@ -100,7 +100,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
         of type PHT_LOGIN_RESPONSE.
    Parameters
    hServer :           A handle of type PHT_SERVER identifying
-                       the Parallels Service.
+                       the Dispatcher Service.
    host :              The name or IP address of the host machine (a UTF\-8
                        encoded, null\-terminated string).
    user :              User name (a UTF\-8 encoded,
@@ -109,10 +109,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
                        null\-terminated string).
    sPrevSessionUuid :  Previous session ID. This is an optional
                        parameter that can be used in recovering
-                       from a lost Parallels Service connection. The ID will
+                       from a lost Dispatcher Service connection. The ID will
                        be used to restore references to the tasks
                        that were initiated in the previous
-                       session and are still running inside the Parallels Service.
+                       session and are still running inside the Dispatcher Service.
                        You can pass a null or an empty
                        string value if you are not restoring any
                        references. See PrlSrv_AttachToLostTask
@@ -127,7 +127,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    security_level :    Communication security level to use for
                        this connection. The security level set
                        here will be used for all communications
-                       with the Parallels Service for the duration of this
+                       with the Dispatcher Service for the duration of this
                        session. The minimum allowable security
                        level can be determined using the PrlDispCfg_GetMinSecurityLevel
                        function.
@@ -138,16 +138,16 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
                        PACF_NON_INTERACTIVE_MODE - to use
 					 non-interactive mode. In interactive mode,
 					 a client may receive questions from the
-					 Parallels Service, which it is expected
+					 Dispatcher Service, which it is expected
 					 to answer in order for the operation to
 					 continue. In non\-interactive mode, the
-					 Parallels Service will make decisions
+					 Dispatcher Service will make decisions
 					 on its own.
    Returns
    A handle of type PHT_JOB containing the results of this
    asynchronous operation, including the return code and a
    handle of type PHT_LOGIN_RESPONSE, containing an additional
-   Parallels Service information.
+   Dispatcher Service information.
 
    PRL_INVALID_HANDLE if there's not enough memory to
    instantiate the job object.
@@ -178,7 +178,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32 flags
 		) );
 
-/* Allows to log in to the local Parallels Service (the Parallels
+/* Allows to log in to the local Dispatcher Service (the Dispatcher
    Service running on this host) using the current user
    credentials. When performing a local login operation, no
    password/username is needed. The authentication and
@@ -200,14 +200,14 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    Note
    Parameters
    hServer :           A handle of type PHT_SERVER identifying
-                       the Parallels Service.
+                       the Dispatcher Service.
    sPrevSessionUuid :  Previous session ID. This is an optional
                        parameter that can be used in recovering
-                       from a lost Parallels Service connection. The ID will
+                       from a lost Dispatcher Service connection. The ID will
                        be used to restore references to the tasks
                        that were initiated in the previous
                        session and are still running inside the
-                       Parallels Service. You can pass a null or an empty
+                       Dispatcher Service. You can pass a null or an empty
                        string value if you are not restoring any
                        references. See PrlSrv_AttachToLostTask
                        for more information.
@@ -216,7 +216,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    security_level :    Communication security level to use for
                        this connection. The security level set
                        here will be used for all communications
-                       with the Parallels Service for the duration of this
+                       with the Dispatcher Service for the duration of this
                        session. The minimum allowable security
                        level can be determined using the PrlDispCfg_GetMinSecurityLevel
                        function.
@@ -227,16 +227,16 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
                        PACF_NON_INTERACTIVE_MODE - to use
 					 non-interactive mode. In interactive mode,
 					 a client may receive questions from the
-					 Parallels Service, which it is expected
+					 Dispatcher Service, which it is expected
 					 to answer in order for the operation to
 					 continue. In non\-interactive mode, the
-					 Parallels Service will make decisions
+					 Dispatcher Service will make decisions
 					 on its own.
    Returns
    A handle of type PHT_JOB containing the results of this
    asynchronous operation, including the return code and a
    handle of type PHT_LOGIN_RESPONSE, containing an additional
-   Parallels Service information.
+   Dispatcher Service information.
 
    PRL_INVALID_HANDLE if there's not enough memory to
    instantiate the job object.
@@ -259,7 +259,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32 flags
 		) );
 
-/* Logs off the Parallels Service. The function logs of the Parallels Service and ends
+/* Logs off the Dispatcher Service. The function logs of the Dispatcher Service and ends
    a session that was started with the PrlSrv_Login or the
    PrlSrv_LoginLocal function.
 
@@ -270,7 +270,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -288,17 +288,17 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    complete. The callback function must have a specific
    signature. The callback function prototype type is
    PRL_EVENT_HANDLER_PTR. The PrlSrv_RegEventHandler function is
-   used to register an event handler with the specified Parallels Service,
+   used to register an event handler with the specified Dispatcher Service,
    PrlSrv_UnregEventHandler is used to unregister an event
    handler. When an event handler is registered, it will start
-   receiving all events/jobs generated by the Parallels Service. It is the
+   receiving all events/jobs generated by the Dispatcher Service. It is the
    responsibility of the client application to identify and
    handle the relevant event(s). For more information on events
-   and asynchronous functions, see the Parallels Virtualization SDK
+   and asynchronous functions, see the Virtualization SDK
    Programmer's Guide.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    handler :   A pointer to a user callback function (event
                handler).
    userData :  Optional. A pointer to a user data that will be
@@ -314,7 +314,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    that was previously registered with the
    PrlSrv_RegEventHandler function. When using callback
    functionality with asynchronous functions, a callback
-   function is first registered with Parallels Service. When no
+   function is first registered with Dispatcher Service. When no
    longer needed (client doesn't want to receive events
    anymore), the function must by unregistered using the
    PrlSrv_UnregEventHandler function. The values of the handler
@@ -326,7 +326,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    illustrating event handlers usage.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    handler :   A pointer to the callback function (event handler)
                to unregister. This must be the same pointer that
                was passed to the PrlSrv_RegEventHandler when the
@@ -352,9 +352,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /**
 The PrlSrv_GetQuestions function allows to synchronously receive questions from
-a Parallels Service. It can be used as an alternative to asynchronous question
+a Dispatcher Service. It can be used as an alternative to asynchronous question
 processing through events. You can use this function at any time to check
-if a question is awaiting the client response on the Parallels Service.
+if a question is awaiting the client response on the Dispatcher Service.
 
 Parameters
 handle : A handle of type PHT_SERVER.
@@ -592,7 +592,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
         of type PHT_SERVER_CONFIG containing the host
         configuration information.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -604,7 +604,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns a handle of type PHT_DISP_CONFIG containing the
-   specified Parallels Service preferences information.
+   specified Dispatcher Service preferences information.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -617,9 +617,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
      1. Use the PrlJob_GetResult function to obtain a handle to
         the PHT_RESULT object.
      2. Use the PrlResult_GetParam function to obtain a handle
-        of type PHT_DISP_CONFIG containing the Parallels Service preferences.
+        of type PHT_DISP_CONFIG containing the Dispatcher Service preferences.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -631,16 +631,16 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* The PrlSrv_CommonPrefsBeginEdit function is used in modifying
-   Parallels Service preferences (see PHT_DISP_CONFIG). The
+   Dispatcher Service preferences (see PHT_DISP_CONFIG). The
    PrlSrv_CommonPrefsBeginEdit and the PrlSrv_CommonPrefsCommit
    functions are used to detect collisions with other clients
-   trying to modify preferences of the same Parallels Service.
+   trying to modify preferences of the same Dispatcher Service.
    The PrlSrv_CommonPrefsBeginEdit call timestamps the beginning
-   of the operation. It does not lock the Parallels Service, so other
-   clients can modify the same Parallels Service settings at the same time. When you
+   of the operation. It does not lock the Dispatcher Service, so other
+   clients can modify the same Dispatcher Service settings at the same time. When you
    are done making the changes, you must call the
    PrlSrv_CommonPrefsCommit function to apply them to the
-   Parallels Service. The function will verify that the Parallels Service preferences
+   Dispatcher Service. The function will verify that the Dispatcher Service preferences
    have not been modified by another client. If a collision is
    detected, your changes will be rejected.
 
@@ -654,7 +654,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -666,16 +666,16 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* The PrlSrv_CommonPrefsCommit function is used in modifying
-   Parallels Service preferences (see PHT_DISP_CONFIG). The
+   Dispatcher Service preferences (see PHT_DISP_CONFIG). The
    PrlSrv_CommonPrefsBeginEdit and the PrlSrv_CommonPrefsCommit
    functions are used to detect collisions with other clients
-   trying to modify preferences of the same Parallels Service.
+   trying to modify preferences of the same Dispatcher Service.
    The PrlSrv_CommonPrefsBeginEdit call timestamps the beginning
-   of the operation. It does not lock the Parallels Service, so other
-   clients can modify the same Parallels Service at the same time. When you
+   of the operation. It does not lock the Dispatcher Service, so other
+   clients can modify the same Dispatcher Service at the same time. When you
    are done making the changes, you must call the
    PrlSrv_CommonPrefsCommit function to apply them to the
-   Parallels Service. The function will verify that the Parallels Service preferences
+   Dispatcher Service. The function will verify that the Dispatcher Service preferences
    have not been modified by another client. If a collision is
    detected, your changes will be rejected.
 
@@ -687,9 +687,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hDispCfg :  A handle of type PHT_DISP_CONFIG containing the
-               Parallels Service preferences.
+               Dispatcher Service preferences.
    nFlags :    Reserved flags
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -723,7 +723,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_4,
      2. Use the PrlResult_GetParam function to obtain a handle
         of type PHT_USER_PROFILE.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -754,7 +754,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    of type PHT_USER_INFO containing an individual user
    information.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -784,7 +784,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    type PHT_USER_INFO containing the user information.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    sUserId :  UUID of the user to obtain the information for.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -812,7 +812,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hDevList :  A handle of type PHT_HANDLES_LIST containing a
                list of handles of type PHT_HW_GENERIC_PCI_DEVICE.
                Each handle in the list identifies an individual
@@ -851,7 +851,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -862,7 +862,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hServer
 		) );
 
-/* Saves (commits) user profile changes to the Parallels Service. Every
+/* Saves (commits) user profile changes to the Dispatcher Service. Every
    modification to the user profile (see PHT_USER_PROFILE) must
    begin with the PrlSrv_UserProfileBeginEdit function call. The
    function, together with the PrlSrv_UserProfileCommit
@@ -870,7 +870,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    trying to modify the profile of the same user at the same
    time. The function does not lock the profile being edited. If
    a collision is detected on commit, the changes are rejected.
-   Otherwise, the changes are saved to the Parallels Service.
+   Otherwise, the changes are saved to the Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -880,7 +880,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :       A handle of type PHT_SERVER identifying the
-                   Parallels Service.
+                   Dispatcher Service.
    hUserProfile :  A handle of type PHT_USER_PROFILE containing
                    the user information.
    Returns
@@ -893,11 +893,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hUserProfile
 		) );
 
-/* Determines if the connection to the specified Parallels Service is
+/* Determines if the connection to the specified Dispatcher Service is
    active.
    Parameters
    hServer :              A handle of type PHT_SERVER identifying
-                          the Parallels Service.
+                          the Dispatcher Service.
    pbConnected :          [out] A pointer to a variable that
                           receives the result. PRL_TRUE indicates
                           that the connection is active.
@@ -921,11 +921,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbIsConnectionLocal
 		) );
 
-/* Determines if the connection to the specified Parallels Service is
+/* Determines if the connection to the specified Dispatcher Service is
    a proxy connection.
    Parameters
    hServer :              A handle of type PHT_SERVER identifying
-                          the Parallels Service.
+                          the Dispatcher Service.
    pbProxyConnection :    [out] A pointer to a variable that
                           receives the result. PRL_TRUE indicates
                           that the connection is proxy.
@@ -948,10 +948,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    complete host info, the function must be called after
    the login operation is completed and the results of the
    login operation are received. In all other situations, some
-   of the Parallels Service properties may not be populated.
+   of the Dispatcher Service properties may not be populated.
    Parameters
    hServer :       A handle of type PHT_SERVER identifying the
-                   Parallels Service.
+                   Dispatcher Service.
    phServerInfo :  [out] A pointer to a variable that receives
                    a handle to the server info object.
    Returns
@@ -968,9 +968,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Shuts down the Parallels Service. The
+/* Shuts down the Dispatcher Service. The
    current user must have sufficient privileges to execute the
-   Parallels Service shutdown.
+   Dispatcher Service shutdown.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -981,7 +981,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    sufficient privileges.
 
    PRL_ERR_ANOTHER_USER_SESSIONS_PRESENT - another user is
-   currently connected to the Parallels Service, the Parallels Service shutdown
+   currently connected to the Dispatcher Service, the Dispatcher Service shutdown
    aborted.
 
    PRL_ERR_SOME_VMS_RUNNING - running virtual machines found,
@@ -992,7 +992,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    bForceShutdown : Specifies whether the shutdown operation should be forced. The value of
                     PRL_TRUE will force the shutdown; PRL_FALSE will perform a
@@ -1016,7 +1016,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 						  ) );
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels remote file system operations
+/// @section remote file system operations
 ///////////////////////////////////////////////////////////////////////////////
 
 /* \Returns a list of root directories on the host computer.
@@ -1041,7 +1041,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
      3. Use the PrlResult_GetParamByIndex function to get
         individual results.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1078,7 +1078,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
         entry information.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    path :     An absolute directory name and path, or drive
               letter (e.g. C\:\\) on the host computer for which to
               get the information.
@@ -1108,7 +1108,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    path :     The new directory name and path.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1131,7 +1131,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    path :     An absolute path to the file system entry to be
               removed.
    Returns
@@ -1156,7 +1156,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    path :     Full path to the intended file or directory.
    Returns
@@ -1181,7 +1181,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    oldPath :  An absolute path to the entry to be renamed.
    newPath :  An absolute path including the new file system entry
               name.
@@ -1220,7 +1220,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
         null-terminated string.
    Parameters
    hServer :          A handle of type PHT_SERVER identifying the
-                      Parallels Service.
+                      Dispatcher Service.
    sDirPath :         A full path to the target location
                       (directory).
    sFilenamePrefix :  Specifies a prefix to use in the directory
@@ -1250,7 +1250,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_CONST_STR sIndexDelimiter
 		) );
 
-/* Installs Parallels license on the specified Parallels Service.
+/* Installs license on the specified Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -1266,7 +1266,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    sKey :      License key.
    sUser :     License user name.
    sCompany :  License company name.
@@ -1294,7 +1294,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 							 ) );
 
 /* \Returns an object of type PHT_LICENSE containing the
-   Parallels license information.
+   license information.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -1309,7 +1309,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
      2. Use the PrlResult_GetParam function to obtain a handle
         of type PHT_LICENSE containing the license information.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1320,14 +1320,14 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 							 PRL_HANDLE hServer
 							 ) );
 
-/* Sends an answer to the Parallels Service in response to a question. Some
+/* Sends an answer to the Dispatcher Service in response to a question. Some
    operations have an option to be carried out in interactive
-   mode. This means that the Parallels Service may interrupt an operation
+   mode. This means that the Dispatcher Service may interrupt an operation
    and ask client a question about how it would like to proceed.
-   This function allows to send such an answer to the Parallels Service.
+   This function allows to send such an answer to the Dispatcher Service.
    The answer must be prepared using the
    PrlEvent_CreateAnswerEvent function before it can be sent to
-   the Parallels Service using this function.
+   the Dispatcher Service using this function.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -1337,7 +1337,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    hAnswer :  A handle of type PHT_EVENT containing the answer.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1350,7 +1350,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Refreshes states of installed parallels plugins.
+/* Refreshes states of installed plugins.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -1360,7 +1360,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :       A handle of type PHT_SERVER identifying the
-                   Parallels Service.
+                   Dispatcher Service.
    nFlags :        Reserved parameter
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1383,7 +1383,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_4,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    sClassId : [optional] Class GUID in text format.
    nFlags :   Reserved parameter
    Returns
@@ -1399,10 +1399,10 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_4,
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels Problem Report operations
+/// @section Problem Report operations
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Allows to receive a problem report from the Parallels Service
+/* Allows to receive a problem report from the Dispatcher Service
    in the event of a virtual machine operation failure.
 
    To get the return code from the PHT_JOB object, use the
@@ -1418,7 +1418,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_4,
      2. Use the PrlResult_GetParamAsString function to obtain a
         string value containing the report.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1429,7 +1429,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 					  PRL_HANDLE hServer
 					  ) );
 
-/* Allows to receive a packed problem report from the Parallels Service
+/* Allows to receive a packed problem report from the Dispatcher Service
 in the event of a virtual machine operation failure.
 
 To get the return code from the PHT_JOB object, use the
@@ -1445,7 +1445,7 @@ the PHT_RESULT object.
 2. Use the PrlResult_GetParamAsString function to obtain a
 string value containing the packed report dir path.
 Parameters
-hServer :  A handle of type PHT_SERVER identifying the Parallels
+hServer :  A handle of type PHT_SERVER identifying the Dispatcher
 Service.
 PRL_UINT32 nFlags - reserved flags parameter
 Returns
@@ -1487,12 +1487,12 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 
 
 /* The PrlSrv_AttachToLostTask function allows to obtain a
-   handle to a running task after the connection to the Parallels Service
+   handle to a running task after the connection to the Dispatcher Service
    was lost. If you've started a long asynchronous operation
-   and then lost a connection with the Parallels Service,
+   and then lost a connection with the Dispatcher Service,
    you may use this function to get a handle to the task after
-   reconnecting to the Parallels Service. In order to do that, log in to
-   the Parallels Service using the PrlSrv_Login or the PrlSrv_LoginLocal
+   reconnecting to the Dispatcher Service. In order to do that, log in to
+   the Dispatcher Service using the PrlSrv_Login or the PrlSrv_LoginLocal
    function passing the UUID of the session that you've lost.
    The returned PHT_LOGIN_RESPONSE object will contain the list
    of the tasks that belong to the lost session and are still
@@ -1510,7 +1510,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    sTaskId :  The ID of the task to get a job handle for.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1558,7 +1558,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
         the PHT_RESULT object.
      2. Use the PrlResult_GetParamAsString function to obtain a result as string
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    sPath :    Path as pointer of type PRL_CONST_STR_PTR.
    nFlags :   Flags
@@ -1875,7 +1875,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels Service config operations
+/// @section Dispatcher Service config operations
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Determines the amount of memory (RAM) available on the host.
@@ -2167,11 +2167,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_BOOL_PTR pbVtdSupported
 		) );
 
-/* \Returns max possible Parallels network adapters on the host.
+/* \Returns max possible network adapters on the host.
    Parameters
    hSrvConfig :      A handle of type PHT_SERVER_CONFIG.
    pnMaxNetAdaptersCount :  [out] A pointer to a variable that receives
-                     the result. Null value (0) means that remote Parallels
+                     the result. Null value (0) means that remote
 					 server doesn't supported this interface.
    Returns
    PRL_RESULT. Possible values:
@@ -2186,7 +2186,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32_PTR pnMaxNetAdaptersCount
 		) );
 
-/* \Returns max possible Parallels virtual network adapters which can be applied per VM.
+/* \Returns max possible virtual network adapters which can be applied per VM.
    Parameters
    hSrvConfig :      A handle of type PHT_SERVER_CONFIG.
    pnMaxNetAdaptersCount :  [out] A pointer to a variable that receives
@@ -3102,7 +3102,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    Intel Vt-d) or a USB device. When using this function to set
    a PCI device access, the PrlSrv_ConfigureGenericPci function
    needs to be called afterwards to apply the changes to the
-   Parallels Service preferences.
+   Dispatcher Service preferences.
    Parameters
    hGenericDevice :  A handle of type PHT_HW_GENERIC_DEVICE, or
                      one of the descendant types, identifying the
@@ -3822,7 +3822,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 ///////////////////////////////////////////////////////////////////////////////
 
 /* \Returns name and path of the default virtual machine folder
-   for this Parallels Service. If a default virtual machine folder has been
+   for this Dispatcher Service. If a default virtual machine folder has been
    set up for this user with the PrlUsrCfg_SetDefaultVmFolder
    function, use the PrlUsrCfg_GetDefaultVmFolder to get its
    name and path.
@@ -3880,7 +3880,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    the PrlUsrCfg_SetDefaultVmFolder function call), the function
    \returns an empty string. In such a case, use the
    PrlUsrCfg_GetVmDirUuid function to get the virtual machine
-   folder for the Parallels Service, which is used by default for all
+   folder for the Dispatcher Service, which is used by default for all
    users.
    Parameters
    hUserProfile :                A handle of type
@@ -3917,11 +3917,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 					 ) );
 
 /* Allows to set a default virtual machine folder for the user.
-   A Parallels Service has a default virtual machine directory
+   A Dispatcher Service has a default virtual machine directory
    (the directory where new virtual machines are created).
    Individual users can have their own default virtual machine
    directories if needed. If a user has its own virtual machine
-   directory set up, it takes precedence over the Parallels Service
+   directory set up, it takes precedence over the Dispatcher Service
    default. To set a default directory for a user, first call
    the PrlSrv_UserProfileBeginEdit function to mark the
    beginning of the operation. Then call the
@@ -3950,7 +3950,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 
 
-/* Determines if the user is allowed to use the Parallels Service
+/* Determines if the user is allowed to use the Dispatcher Service
    management console utility.
    Parameters
    hUserProfile :        A handle of type PHT_USER_PROFILE
@@ -3972,22 +3972,21 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL_PTR pbCanUseMngConsole
 		) );
 
-/* Determines if the current user can modify Parallels Service
+/* Determines if the current user can modify Dispatcher Service
    preferences (PHT_DISP_CONFIG). By default, only
-   administrators of the host machine can modify Parallels Service
-   preferences. Depending on the current Parallels Service settings, other
+   administrators of the host machine can modify Dispatcher Service
+   preferences. Depending on the current Dispatcher Service settings, other
    users may also be granted this privilege at the time a user
    profile is created. To verify the default settings, use the
    PrlDispCfg_CanChangeDefaultSettings function. Whether the
-   user can or cannot modify Parallels Service preferences, this setting is
-   final and cannot itself be changed through Parallels
-   API.
+   user can or cannot modify Dispatcher Service preferences, this setting is
+   final and cannot itself be changed through API.
    Parameters
    hUserProfile :        A handle of type PHT_USER_PROFILE
                          identifying the user.
    pbCanChangeSrvSets :  [out] A pointer to a variable that
                          receives the result. PRL_TRUE indicates
-                         that the client can modify Parallels Service
+                         that the client can modify Dispatcher Service
                          preferences. PRL_FALSE indicates
                          otherwise.
    Returns
@@ -4009,7 +4008,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 
 /* Determines if the user is a local administrator account on the host where
-   Parallels Service started.
+   Dispatcher Service started.
    Parameters
    hUserProfile :        A handle of type PHT_USER_PROFILE
                          identifying the user.
@@ -4116,7 +4115,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* \Returns name and path of the default virtual machine
    directory for the specified user. If the user doesn't have a
    default virtual machine directory, the function will return
-   the name and path of the default directory for this Parallels
+   the name and path of the default directory for this Dispatcher
    Service. To set a default virtual machine directory for a
    user, use the PrlUsrCfg_SetDefaultVmFolder function.
    Parameters
@@ -4153,14 +4152,14 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 					 ) );
 
 /* Determines whether the specified user is allowed to modify
-   Parallels Service preferences.
+   Dispatcher Service preferences.
    Parameters
    hUserInfo :           A handle of type PHT_USER_INFO
                          identifying the user.
    pbCanChangeSrvSets :  [out] A pointer to a variable that
                          receives the result. PRL_TRUE indicates
                          that the user is allowed to modify
-                         Parallels Service preferences. PRL_FALSE indicates
+                         Dispatcher Service preferences. PRL_FALSE indicates
                          otherwise.
    Returns
    PRL_RESULT. Possible values:
@@ -4176,7 +4175,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels Service config common preferences access methods
+/// @section Dispatcher Service config common preferences access methods
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Obtains name and path of the directory in which new virtual
@@ -4250,7 +4249,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* %VM_ONLY%
 
    Determines the amount of physical memory reserved for
-   Parallels Service operation. By default, this memory size is
+   Dispatcher Service operation. By default, this memory size is
    calculated automatically based on the RAM size available on
    the host machine. If needed, the default value can be
    modified manually using the PrlDispCfg_SetReservedMemLimit
@@ -4287,13 +4286,13 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Allows to set the amount of memory that will be allocated for
-   Parallels Service operation. The memory size must fall within
+   Dispatcher Service operation. The memory size must fall within
    the memory limits that can be determined using the
    PrlDispCfg_GetMaxReservMemLimit and the
    PrlDispCfg_GetMinReservMemLimit functions. By default, the
    memory size is calculated automatically based on the total
    RAM available on the host. If you are changing the default
-   value, you must also switch the Parallels Service memory
+   value, you must also switch the Dispatcher Service memory
    allocation to manual mode using the
    PrlDispCfg_SetAdjustMemAuto function.
    Parameters
@@ -4368,7 +4367,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    virtual machine memory limits are calculated automatically.
    If needed, you can set your own minimum memory limit using
    this function. Please note that the new value must not fall
-   below the size of the minimum memory limit set for Parallels
+   below the size of the minimum memory limit set for Dispatcher
    Service, which can be obtained using the
    PrlDispCfg_GetMinReservMemLimit function. The actual memory
    size for a virtual machine is set when configuring it and
@@ -4437,7 +4436,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    memory limits are calculated automatically. If needed, you
    can set your own maximum memory limit using this function.
    Please note that the new value must not exceed the size of
-   the memory reserved for Parallels Service, which can be
+   the memory reserved for Dispatcher Service, which can be
    obtained using the PrlDispCfg_GetReservedMemLimit function.
    The actual memory size for a virtual machine is set when
    configuring it and will be validated against the value set
@@ -4542,12 +4541,12 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* %VM_ONLY%
 
    Determines the maximum amount of physical memory that can be
-   reserved for Parallels Service operation. By default, memory
+   reserved for Dispatcher Service operation. By default, memory
    limits and the actual size of the reserved memory are
    calculated automatically based on the total RAM available on
    the host machine. If needed, you can modify the default
    values. When setting the size of the memory reserved for
-   Parallels Service, use this function to find out the maximum
+   Dispatcher Service, use this function to find out the maximum
    allowable size.
    Parameters
    hDispConfig :  A handle of type PHT_DISP_CONFIG.
@@ -4583,16 +4582,16 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* %VM_ONLY%
 
    Allows to manually set the upper limit of the memory size
-   that can be reserved for Parallels Service operation. By
+   that can be reserved for Dispatcher Service operation. By
    default, memory limits are calculated automatically based on
    the host machine RAM size. If needed, you can use this
    function to modify the default value of the maximum reserved
    memory size. Please note that modifying default memory limits
    must be done with extreme caution. Unjustified memory limits
    may result in too much or too little memory reserved for
-   Parallels Service, which in turn may lead to an unstable or
+   Dispatcher Service, which in turn may lead to an unstable or
    inefficient system. While this and other functions allow you
-   to experiment with Parallels Service memory limits, the
+   to experiment with Dispatcher Service memory limits, the
    default values are the ones that should be used in most
    situations.
    Parameters
@@ -4627,12 +4626,12 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* %VM_ONLY%
 
    Determines the minimum amount of physical memory that must be
-   reserved for Parallels Service operation. By default, memory
+   reserved for Dispatcher Service operation. By default, memory
    limits and the actual size of the reserved memory are
    calculated automatically based on the total RAM available on
    the host machine. If needed, you can modify the default
    values. When setting the size of the memory reserved on the
-   host machine for Parallels Service, use this function to find
+   host machine for Dispatcher Service, use this function to find
    out the minimum required size.
    Parameters
    hDispConfig :  A handle of type PHT_DISP_CONFIG.
@@ -4668,17 +4667,17 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* %VM_ONLY%
 
    Allows to manually set the lower limit of the memory size
-   that must be reserved for Parallels Service operation. By
+   that must be reserved for Dispatcher Service operation. By
    default, memory limits are calculated automatically based on
    the host machine RAM size and other parameters. If needed,
    you can use this function to modify the default value of the
    minimum required reserved memory size. Please note that
    modifying default memory limits must be done with extreme
    caution. Unjustified memory limits may result in too much or
-   too little memory reserved for Parallels Service, which in
+   too little memory reserved for Dispatcher Service, which in
    turn may lead to an unstable or inefficient system. While
    this and other functions allow you to experiment with
-   Parallels Service memory limits, the default values are
+   Dispatcher Service memory limits, the default values are
    should be used in most situations.
    Parameters
    hDispConfig :  A handle of type PHT_DISP_CONFIG.
@@ -4711,9 +4710,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* %VM_ONLY%
 
-   Determines whether memory allocation for Parallels Service is
+   Determines whether memory allocation for Dispatcher Service is
    performed automatically or manually. By default, the amount
-   of memory allocated for Parallels Service is calculated
+   of memory allocated for Dispatcher Service is calculated
    automatically based on the total RAM available on the host.
    You can allocate a different amount of memory if needed using
    the PrlDispCfg_SetReservedMemLimit function. Before you do
@@ -4756,9 +4755,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* %VM_ONLY%
 
-   Allows to choose the Parallels Service memory allocation mode
+   Allows to choose the Dispatcher Service memory allocation mode
    from automatic or manual. By default, the amount of memory
-   allocated for Parallels Service operations is calculated
+   allocated for Dispatcher Service operations is calculated
    automatically based on the total RAM available on the host.
    You can allocate a different amount of memory if needed using
    the PrlDispCfg_SetReservedMemLimit function. Before you do
@@ -4804,8 +4803,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* Determines whether send statistics reports (CEP) mechanism
    activated. When this mechanism activated periodically report
-   about Parallels product configuration genrating and sending to
-   the Parallels problem reports server automatically.
+   about product configuration genrating and sending to
+   the problem reports server automatically.
    Parameters
    hDispConfig :      A handle of type PHT_DISP_CONFIG.
    pbSendStatisticReport :  [out] A pointer to a variable that receives
@@ -4850,7 +4849,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* \Returns the default VNC host name for the Parallels Service.
+/* \Returns the default VNC host name for the Dispatcher Service.
    Parameters
    hDispConfig :          A handle of type PHT_DISP_CONFIG.
    sHostName :            [out] Pointer to a buffer that receives
@@ -4931,13 +4930,13 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nPort
 		) );
 
-/* Determines if new users have the right to modify Parallels
+/* Determines if new users have the right to modify Dispatcher
    Service preferences. By default, only administrators of the
-   host machine can modify Parallels Service preferences. When a
-   new Parallels Service user profile is created (this happens
-   automatically when a user logs in to the Parallels Service
+   host machine can modify Dispatcher Service preferences. When a
+   new Dispatcher Service user profile is created (this happens
+   automatically when a user logs in to the Dispatcher Service
    for the first time), he/she will be granted or denied this
-   privilege based on the flag set in the Parallels Service
+   privilege based on the flag set in the Dispatcher Service
    configuration. This function determines the status of this
    flag.
    Parameters
@@ -4945,7 +4944,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    pbDefaultChangeSettings :  [out] A pointer to a variable that
                               receives the result. PRL_TRUE
                               indicates that new users are
-                              allowed to change the Parallels
+                              allowed to change the Dispatcher
                               Service preferences. PRL_FALSE
                               indicates otherwise.
    Returns
@@ -4964,10 +4963,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Allows to grant or deny a permission to new users to modify
-   Parallels Service preferences. By default, only administrators
-   of the host OS can modify Parallels Service preferences.
-   When a new Parallels Service user profile is created (this
-   happens when a user logs on to the Parallels Service for the first
+   Dispatcher Service preferences. By default, only administrators
+   of the host OS can modify Dispatcher Service preferences.
+   When a new Dispatcher Service user profile is created (this
+   happens when a user logs on to the Dispatcher Service for the first
    time), he/she will be granted or denied this privilege based
    on the default setting. This function allows to set that
    default setting. To determine the current behavior, use
@@ -4978,7 +4977,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    Parameters
    hDispConfig :             A handle of type PHT_DISP_CONFIG.
    bDefaultChangeSettings :  If set to PRL_TRUE, new users will
-                             be allowed to modify Parallels Service
+                             be allowed to modify Dispatcher Service
                              preferences. If set to PRL_FALSE,
                              new users will not be allowed to
                              make such modifications.
@@ -4998,12 +4997,12 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Determines the lowest allowable security level that can be
-   used to connect to the Parallels Service. Parallels Service
+   used to connect to the Dispatcher Service. Dispatcher Service
    has a configuration parameter that specifies the connection
    security level that must be used by clients to communicate
    with it. If a client tries to login using a lower level than
    the one returned by this function, the connection to the
-   Parallels Service will be refused. Higher security levels are
+   Dispatcher Service will be refused. Higher security levels are
    allowed. If the minimum security level is not known in
    advance, use this function to determine it before
    establishing a connection with the Service.
@@ -5031,10 +5030,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Allows to set the lowest allowable security level that can be
-   used to connect to the specified Parallels Service. The lowest
-   allowable security level is a setting in the Parallels Service preferences.
+   used to connect to the specified Dispatcher Service. The lowest
+   allowable security level is a setting in the Dispatcher Service preferences.
    If a client tries to login using a lower level that the
-   one set by this function, the connection to the Parallels Service will
+   one set by this function, the connection to the Dispatcher Service will
    be refused.
    Parameters
    hDispConfig :        A handle of type PHT_DISP_CONFIG.
@@ -5590,7 +5589,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		PRL_BOOL bEnabled
 		) );
 
-/* Determines number of USB devices known to the Parallels Service.
+/* Determines number of USB devices known to the Dispatcher Service.
    Parameters
    hDispCfg :  A handle of type PHT_DISP_CONFIG.
    pnUsbIdentityCount: [out] A pointer to a variable that receives result.
@@ -5753,7 +5752,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels license extracting info operations set
+/// @section license extracting info operations set
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Determines if the license is valid.
@@ -5905,13 +5904,13 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels Service info extracting operations set
+/// @section Dispatcher Service info extracting operations set
 ///////////////////////////////////////////////////////////////////////////////
 
-/* \Returns the name of the machine hosting the specified Parallels Service.
+/* \Returns the name of the machine hosting the specified Dispatcher Service.
    Parameters
    hServerInfo :          A handle of type PHT_SERVER_INFO
-                          containing the Parallels Service information.
+                          containing the Dispatcher Service information.
    sHostName :            [out] A pointer to a buffer that
                           receives the result (a UTF\-8 encoded,
                           null\-terminated string).
@@ -5944,7 +5943,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* \Returns the version of the host operating system.
    Parameters
    hServerInfo :           A handle of type PHT_SERVER_INFO
-                           containing the Parallels Service information.
+                           containing the Dispatcher Service information.
    sOsVersion :            [out] A pointer to a buffer that
                            receives the result (a UTF\-8 encoded,
                            null\-terminated string).
@@ -5974,10 +5973,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnOsVersionBufLength
 		) );
 
-/* \Returns the port number at which the Parallels Service is listening for requests.
+/* \Returns the port number at which the Dispatcher Service is listening for requests.
    Parameters
    hServerInfo :  A handle of type PHT_SERVER_INFO containing the
-                  Parallels Service information.
+                  Dispatcher Service information.
    pnPort :       [out] A pointer to a variable that receives the
                   port number.
    Returns
@@ -6000,7 +5999,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* \Returns the host machine UUID (universally unique ID).
    Parameters
    hServerInfo :            A handle of type PHT_SERVER_INFO
-                            containing the Parallels Service information.
+                            containing the Dispatcher Service information.
    sServerUuid :            [out] A pointer to a buffer that
                             receives the result (a UTF\-8
                             encoded, null\-terminated string).
@@ -6031,10 +6030,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnServerUuidBufLength
 		) );
 
-/* \Returns the Parallels product version number.
+/* \Returns the product version number.
    Parameters
    hServerInfo :                A handle of type PHT_SERVER_INFO
-                                containing the Parallels Service
+                                containing the Dispatcher Service
                                 information.
    sProductVersion :            [out] A pointer to a buffer that
                                 receives the result (a UTF\-8
@@ -6070,7 +6069,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* \Returns the application mode of server.
    Parameters
    hServerInfo :  A handle of type PHT_SERVER_INFO containing the
-                  Parallels Service information.
+                  Dispatcher Service information.
    pnAppMode :    [out] A pointer to a variable that receives the
                   server application mode.
    Returns
@@ -6092,7 +6091,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 /* \Returns the service start time in milliseconds since Epoch (01-01-1970).
    Parameters
    hServerInfo :  A handle of type PHT_SERVER_INFO containing the
-                  Parallels Service information.
+                  Dispatcher Service information.
    pnStartTime :  [out] A pointer to a variable that receives the
                   service start time in milliseconds.
    Returns
@@ -6119,7 +6118,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 /* \Returns the service start time in milliseconds (monotonic time clock).
    Parameters
    hServerInfo          : A handle of type PHT_SERVER_INFO containing the
-                          Parallels Service information.
+                          Dispatcher Service information.
    pnStartTimeMonotonic : [out] A pointer to a variable that receives the
                           service start time in milliseconds from monotonic time clock.
    Returns
@@ -6179,7 +6178,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    hLoginResp :             A handle of type PHT_LOGIN_RESPONSE
                             containing the login response info.
    sServerUuid :            [out] A pointer to a buffer that
-                            receives the Parallels Service UUID (a UTF\-8
+                            receives the Dispatcher Service UUID (a UTF\-8
                             encoded, null\-terminated string).
    pnServerUuidBufLength :  [in] The size of the output buffer
                             (in bytes). Set the buffer pointer to
@@ -6236,7 +6235,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 	PRL_UINT32_PTR pnHostOsVersionBufLength
 	) );
 
-/* \Returns the Parallels product version number.
+/* \Returns the product version number.
    Parameters
    hLoginResp :                 A handle of type
                                 PHT_LOGIN_RESPONSE containing the
@@ -6847,7 +6846,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
    a cpu pool.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    Returns
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
@@ -6870,7 +6869,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    hCpuPool : A handle of type PHT_CPU_POOL, defines
               the pool where server should be moved.
    Returns
@@ -6895,7 +6894,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    sCpuPool : name of the pool where server should be moved.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -6920,7 +6919,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    Returns
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
@@ -6943,7 +6942,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
 
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    sCpuPool : name of the pool where features should
               be recalculated.
    Returns

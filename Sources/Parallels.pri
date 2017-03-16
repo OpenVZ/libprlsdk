@@ -25,6 +25,8 @@
 isEmpty(__PARALLELS_PRI__) {
 __PARALLELS_PRI__ = 1
 
+include(Makefile.incl)
+
 linux-*-64 {
 	CONFIG += x86_64
 	CONFIG += no_fixpath

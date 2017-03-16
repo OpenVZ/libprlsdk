@@ -30,7 +30,7 @@
 .base 0
 
 /**
- * All parallels error values should go here in order to be maintained in one place
+ * All error values should go here in order to be maintained in one place
  * We're taking approach of HRESULT windows notation error codes here.
  */
 .suc PRL_ERR_SUCCESS
@@ -2354,7 +2354,7 @@
 .err PRL_ERR_TEST_TEXT_MESSAGES
 .err PRL_ERR_TEST_TEXT_MESSAGES_PS
 
-// Virtuozzo specific error
+// Vz specific error
 .align 1000
 .err PRL_ERR_SET_CPULIMIT
 .err PRL_ERR_SET_CPUUNITS

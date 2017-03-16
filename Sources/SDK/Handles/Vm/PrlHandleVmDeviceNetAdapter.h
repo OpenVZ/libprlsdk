@@ -159,7 +159,7 @@ public://SDK API helpers set
 	 * Returns net VM device MAC address/
 	 * @param [out] buffer for storing result
 	 * @param [out] buffer size (on in - how much symbols can be placed into buffer;
-	 * @param bCanonical mac address format canonical/parallels
+	 * @param bCanonical mac address format canonical
 	 * on out - how much were placed actually)
 	 * @return PRL_RESULT. Possible values:
 	 * * PRL_ERR_INVALID_ARG - incorrect passed buffer size (NULL size)

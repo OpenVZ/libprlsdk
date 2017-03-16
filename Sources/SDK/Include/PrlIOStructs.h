@@ -326,7 +326,7 @@ typedef struct _PRL_TIS_RECORD_INFO
 typedef PRL_TIS_RECORD_INFO* PRL_TIS_RECORD_INFO_PTR;
 
 
-///    @brief Structure that represents Parallels Tools Utility command
+///    @brief Structure that represents Tools Utility command
 /** This structure is used to handle PET_IO_TOOLS_UTILITY_COMMAND.
  */
 typedef struct _PRL_IO_TOOLS_UTILITY_COMMAND
@@ -346,7 +346,7 @@ PRL_STRUCT( PRL_IO_TOOLS_UTILITY_COMMAND );
 typedef PRL_IO_TOOLS_UTILITY_COMMAND* PRL_IO_TOOLS_UTILITY_COMMAND_PTR;
 
 
-///	@brief Structure that represents Parallels Tools Shared Internet Applications data
+///	@brief Structure that represents Tools Shared Internet Applications data
 /** This structure is used to handle message of PET_IO_TOOLS_SIA_DATA type.
 */
 typedef struct _PRL_IO_TOOLS_SIA_DATA

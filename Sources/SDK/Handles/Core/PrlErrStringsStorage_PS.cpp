@@ -101,8 +101,8 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_NET_CONNECTION_SHARING_CONFLICT,
-		tr("Conflict between Parallels Shared Networking and Mac OS X Internet Sharing."),
-		tr("Parallels detected that Mac OS X Internet Sharing is active for %1. This setting interferes with Parallels Shared Networking. In Mac OS X, go to System Preferences > Sharing  and disable Internet Sharing. Then, clear the %1 option in the \"To computers using\" list."),
+		tr("Conflict between " PRODUCT_NAME_SHORT " Shared Networking and Mac OS X Internet Sharing."),
+		tr(PRODUCT_NAME_SHORT " detected that Mac OS X Internet Sharing is active for %1. This setting interferes with " PRODUCT_NAME_SHORT " Shared Networking. In Mac OS X, go to System Preferences > Sharing  and disable Internet Sharing. Then, clear the %1 option in the \"To computers using\" list."),
 		false,
 		PMT_WARNING
 		);
@@ -118,7 +118,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_APPLY_CONFIG_FAILED,
 		tr("Unable to apply the changes."),
-		tr("The configuration was not saved. Contact your Virtuozzo administrator for assistance."),
+		tr("The configuration was not saved. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -126,16 +126,16 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_ALREADY_REGISTERED_VM_UUID,
 		tr("Cannot register this virtual machine due to an ID conflict."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
-				tr("The virtual machine does not have Virtuozzo Tools installed."),
+				tr("The virtual machine does not have " PRODUCT_NAME_SHORT " Tools installed."),
 				tr("The settings will be applied to the virtual machine, but the network adapter may work incorrectly."
-				   " Install Virtuozzo Tools and check the network adapter settings."),
+				   " Install " PRODUCT_NAME_SHORT " Tools and check the network adapter settings."),
 		true,
 		PMT_QUESTION
 		);
@@ -143,7 +143,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_OUT_OF_DISK_SPACE,
 		tr("Out of disk space."),
-		tr("Not enough disk space on the physical server. Contact your Virtuozzo administrator for assistance."),
+		tr("Not enough disk space on the physical server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -151,7 +151,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEV_USB_OPEN_MANAGER_FAILED,
 		tr("Cannot connect the USB device because the required driver is missing."),
-		tr("Install the USB device driver or contact your Virtuozzo administrator for assistance."),
+		tr("Install the USB device driver or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -159,7 +159,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACCESS_TO_VM_DENIED,
 		tr("Access denied."),
-		tr("You do not have enough rights to use this virtual machine. Contact your Virtuozzo administrator for assistance."),
+		tr("You do not have enough rights to use this virtual machine. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -175,7 +175,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_START_FAILED,
 		tr("Unable to start the virtual machine."),
-		tr("An unexpected error occurred while starting the virtual machine. Contact your Virtuozzo administrator for assistance."),
+		tr("An unexpected error occurred while starting the virtual machine. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -183,7 +183,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_PROCESS_IS_NOT_STARTED,
 		tr("The virtual machine cannot be started due to a critical error."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -199,7 +199,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_NO_AUTH_TO_SAVE_FILES,
 		tr("You do not have the permission to save the virtual machine files in this folder."),
-		tr("Select another location or contact your Virtuozzo administrator for assistance."),
+		tr("Select another location or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -207,7 +207,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_NO_AUTH_TO_CREATE_VM_IN_DIR,
 		tr("You do not have the permission to create a virtual machine in the \"%1\" folder."),
-		tr("Select another location or contact your Virtuozzo administrator for assistance."),
+		tr("Select another location or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -215,7 +215,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_RETRIEVE_VM_CONFIG,
 		tr("Access denied."),
-		tr("You do not have the permission to use this virtual machine and perform any actions with it until you have the proper access privileges. Contact your Virtuozzo administrator for assistance."),
+		tr("You do not have the permission to use this virtual machine and perform any actions with it until you have the proper access privileges. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -223,7 +223,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_OPERATION_NOT_AUTHORISED,
 		tr("You do not have the permission to perform this operation."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -239,7 +239,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_NO_AUTH_TO_EDIT_VM,
 		tr("You do not have the permission to edit the virtual machine configuration."),
-		tr("The changes you did to the virtual machine configuration will be discarded. Contact your Virtuozzo administrator for assistance."),
+		tr("The changes you did to the virtual machine configuration will be discarded. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -262,7 +262,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_LICENSE_ACTIVATION_SUCCESSFUL,
-		tr("Virtuozzo was successfully activated."),
+		tr(PRODUCT_NAME_SHORT " was successfully activated."),
 		QString(),
 		false,
 		PMT_INFORMATION
@@ -270,7 +270,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_OLD_CONFIG_CONVERTION,
-		tr("Attention! Virtuozzo is going to update your virtual machine to a new format."),
+		tr("Attention! " PRODUCT_NAME_SHORT " is going to update your virtual machine to a new format."),
 		tr("This operation is irreversible. After the update, you will not be able to use this virtual machine with Parallels Desktop 3.0 and its earlier versions.<br><br>We recommend that you create a backup copy of this virtual machine before starting the update."),
 		true,
 		PMT_QUESTION
@@ -278,7 +278,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_NET_PRLNET_OPEN_FAILED,
-		tr("Failed to open the Parallels networking module."),
+		tr("Failed to open the " PRODUCT_NAME_SHORT " networking module."),
 		tr("Your virtual machine will continue to work normally, but the networking will be disabled. You can fix the problem by restoring the default network settings. To this effect, go to <b>Server > Edit settings > Network</b> and click <b>Restore Defaults</b>."),
 		false,
 		PMT_CRITICAL
@@ -295,7 +295,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_NET_ERR_PRL_NO_BINDABLE_ADAPTER,
 		tr("Unable to find a suitable Ethernet adapter."),
-		tr("No suitable adapter for the specified network type could be found. Check your network settings using <b>Server > Edit settings > Network</b> or contact your Virtuozzo administrator for assistance."),
+		tr("No suitable adapter for the specified network type could be found. Check your network settings using <b>Server > Edit settings > Network</b> or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -311,7 +311,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_HVT_DISABLED,
 		tr("Unable to start the virtual machine \"%1\"."),
-		tr("The virtual machine cannot be started because the hardware virtualization support is disabled in the physical server BIOS settings. Contact your Virtuozzo administrator for assistance."),
+		tr("The virtual machine cannot be started because the hardware virtualization support is disabled in the physical server BIOS settings. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -319,7 +319,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VTX_ENABLED_ONLY_IN_SMX,
 		tr("Unable to start the virtual machine \"%1\"."),
-		tr("The virtual machine cannot be started because the hardware virtualization support is disabled in the physical server BIOS settings. Contact your Virtuozzo administrator for assistance."),
+		tr("The virtual machine cannot be started because the hardware virtualization support is disabled in the physical server BIOS settings. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -334,8 +334,8 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_DIRECTORY_NOT_SET,
-		tr("The folder required for the correct operation of Virtuozzo is not available."),
-		tr("Contact your Virtuozzo administrator for assistance or try to reinstall the application."),
+		tr("The folder required for the correct operation of " PRODUCT_NAME_SHORT " is not available."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance or try to reinstall the application."),
 		false,
 		PMT_CRITICAL
 		);
@@ -351,7 +351,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_DELETE_FILE,
 		tr("Unable to delete the virtual hard disk image file."),
-		tr("The file does not exist or you do not have the permission to delete it. Contact your Virtuozzo administrator for assistance."),
+		tr("The file does not exist or you do not have the permission to delete it. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -359,7 +359,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CREATE_HDD_IMAGE,
 		tr("The image file \"%1\" was not created."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -407,7 +407,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_VM_INVALID_EXTENSION,
 		tr("Unable to add the virtual machine because the specified file %1 is not a valid configuration file."),
-		tr("Virtuozzo virtual machine configuration files must have the \".pvs\" extension. Select the correct file and try again."),
+		tr(PRODUCT_NAME_SHORT " virtual machine configuration files must have the \".pvs\" extension. Select the correct file and try again."),
 		false,
 		PMT_WARNING
 		);
@@ -415,14 +415,14 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_POWER_ON_FAILED,
 		tr("Unable to start the virtual machine."),
-		tr("The virtual machine cannot be started. Contact your Virtuozzo administrator for assistance."),
+		tr("The virtual machine cannot be started. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_REBOOT_HOST,
-		tr("Unable to load the Parallels driver."),
+		tr("Unable to load the " PRODUCT_NAME_SHORT " driver."),
 		tr("Restart the physical server and try again."),
 		false,
 		PMT_CRITICAL
@@ -431,7 +431,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_COULDNT_CREATE_AUTHORIZATION_FILE,
 		tr("Unable to authorize the user."),
-		tr("The necessary authorization file could not be created because your physical hard disk is full. Free some disk space and try again or contact your Virtuozzo administrator for assistance."),
+		tr("The necessary authorization file could not be created because your physical hard disk is full. Free some disk space and try again or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -439,15 +439,15 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_NET_INSTALL_FAILED,
 		tr("Unable to install the network adapter."),
-		tr("The specified network adapter cannot be installed on this server. Contact your Virtuozzo administrator for assistance."),
+		tr("The specified network adapter cannot be installed on this server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_NET_UNINSTALL_FAILED,
-		tr("Unable to remove the Parallels network adapter."),
-		tr("The specified network adapter cannot be removed. Contact your Virtuozzo administrator for assistance."),
+		tr("Unable to remove the " PRODUCT_NAME_SHORT " network adapter."),
+		tr("The specified network adapter cannot be removed. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -455,7 +455,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_NET_SYSTEM_ERROR,
 		tr("The changes to the networking settings could not be applied."),
-		tr("The system error %1 occurred when applying the new settings. Contact your Virtuozzo administrator for assistance."),
+		tr("The system error %1 occurred when applying the new settings. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -471,7 +471,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_REPORT_POST_ID_REGISTER_FAILED,
 		tr("Unable to send the problem report."),
-		tr("Check your network settings and try again. If the problem persists, contact your Virtuozzo administrator." ),
+		tr("Check your network settings and try again. If the problem persists, contact your " PRODUCT_NAME_SHORT " administrator." ),
 		false,
 		PMT_WARNING
 		);
@@ -487,7 +487,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_HARD_DISK_IMAGE_CORRUPTED,
 		tr("The virtual disk %1 is corrupted."),
-		tr("Virtuozzo detected that the structure of the virtual hard disk %1 is corrupt. This may cause your virtual machine and its applications to work incorrectly. Use the disk checking utilities inside the virtual machine to repair the disk."),
+		tr(PRODUCT_NAME_SHORT " detected that the structure of the virtual hard disk %1 is corrupt. This may cause your virtual machine and its applications to work incorrectly. Use the disk checking utilities inside the virtual machine to repair the disk."),
 		false,
 		PMT_WARNING
 		);
@@ -495,7 +495,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_MAKE_DIRECTORY,
 		tr("The folder %1 cannot be created."),
-		tr("You are not allowed to create folders in this location. Choose another location or contact the Virtuozzo administrator."),
+		tr("You are not allowed to create folders in this location. Choose another location or contact the " PRODUCT_NAME_SHORT " administrator."),
 		false,
 		PMT_CRITICAL
 		);
@@ -503,7 +503,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_EXPIRED,
 		tr("This product was activated for a trial period that has now expired."),
-		tr("Purchase a new <a href=\"http://www.parallels.com/en/shop/online/server/\">activation key</a> to continue using Virtuozzo."),
+		tr("Purchase a new activation key to continue using " PRODUCT_NAME_SHORT "."),
 		false,
 		PMT_WARNING
 		);
@@ -511,7 +511,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_NOT_STARTED,
 		tr("License period starts in future."),
-		tr("Contact the Parallels support team for assistance."),
+		tr("Contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -519,14 +519,14 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACCESS_DENINED_TO_RUN_WIZARD,
 		tr("You do not have the permission to %1 the virtual machine \"%2\"."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNDER_OLD_HYPERVISOR,
-		tr("You need to quit %1 to be able to start virtual machines with Virtuozzo."),
+		tr("You need to quit %1 to be able to start virtual machines with " PRODUCT_NAME_SHORT "."),
 		tr("Shut down all virtual machines running under %1 and quit the application."),
 		false,
 		PMT_CRITICAL
@@ -535,7 +535,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SAVE_VM_CONFIG,
 		tr("The virtual machine \"%1\" cannot be saved."),
-		tr("You do not have the permission to write to the folder %2. Contact your Virtuozzo administrator for assistance."),
+		tr("You do not have the permission to write to the folder %2. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -543,7 +543,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_INSTALLATION_PROBLEM,
 		tr("The default network adapters cannot be reinstalled."),
-		tr("The default network adapters on this server cannot be reinstalled properly. Contact your Virtuozzo administrator for assistance."),
+		tr("The default network adapters on this server cannot be reinstalled properly. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -559,7 +559,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONFIG_BEGIN_EDIT_NOT_FOUND_OBJECT_UUID,
 		tr("Your changes cannot be saved due to an incorrect object reference."),
-		tr("The selected object was opened for editing incorrectly. Try to open the object again or contact your Virtuozzo administrator for assistance."),
+		tr("The selected object was opened for editing incorrectly. Try to open the object again or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -567,15 +567,15 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONFIG_BEGIN_EDIT_NOT_FOUND_USER_UUID,
 		tr("Your changes cannot be saved due to an improper user session initialization."),
-		tr("The user session was established incorrectly. Try to establish a new session or contact your Virtuozzo administrator for assistance."),
+		tr("The user session was established incorrectly. Try to establish a new session or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONNECT_TO_DISPATCHER,
-		tr("Unable to connect to Virtuozzo."),
-		tr("You may experience a connection problem or the server may be down. Contact your Virtuozzo administrator for assistance."),
+		tr("Unable to connect to " PRODUCT_NAME_SHORT "."),
+		tr("You may experience a connection problem or the server may be down. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -591,15 +591,15 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_NO_AUTH_TO_EDIT_SERVER_SETTINGS,
 		tr("You do not have the permission to change the server settings."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_SERVER_RESTART_IS_NEEDED,
-		tr("You need to restart Virtuozzo on the physical server."),
-		tr("The new settings will come into effect only after the Virtuozzo restart."),
+		tr("You need to restart " PRODUCT_NAME_SHORT " on the physical server."),
+		tr("The new settings will come into effect only after the " PRODUCT_NAME_SHORT " restart."),
 		false,
 		PMT_INFORMATION
 		);
@@ -607,7 +607,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_INVALID_KEXT_REBOOT_REQUIRED,
 		tr("Are you sure you want to start the virtual machine?"),
-		tr("One or more kernel components loaded on your server are for another version of Virtuozzo. If you start the virtual machine now, it may work incorrectly. To solve this problem, restart your server. If the problem persists, reinstall Virtuozzo."),
+		tr("One or more kernel components loaded on your server are for another version of " PRODUCT_NAME_SHORT ". If you start the virtual machine now, it may work incorrectly. To solve this problem, restart your server. If the problem persists, reinstall " PRODUCT_NAME_SHORT "."),
 		false,
 		PMT_QUESTION
 		);
@@ -615,7 +615,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VTD_INITIALIZATION_FAILED,
 		tr("The virtual machine cannot start due to an Intel VT-d I/O subsystem initialization failure."),
-		tr("You will not be able to start the virtual machine until you disable or remove the Intel-d device from its configuration. Contact your Virtuozzo administrator for assistance."),
+		tr("You will not be able to start the virtual machine until you disable or remove the Intel-d device from its configuration. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -623,7 +623,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 	PRL_ERR_VTD_ALREADY_HOOKED_FAILED,
 		tr("The virtual machine cannot be started."),
-		tr("The Intel VT-d PCI device is already in use in another virtual machine. You will not be able to start this virtual machine until you disable or remove the device from its configuration. Contact your Virtuozzo administrator for assistance."),
+		tr("The Intel VT-d PCI device is already in use in another virtual machine. You will not be able to start this virtual machine until you disable or remove the device from its configuration. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -631,7 +631,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 	PRL_ERR_VTD_HOOK_FAILED,
 		tr("The virtual machine cannot be started."),
-		tr("Virtuozzo could not gain control over the Intel VT-d PCI device connected to this virtual machine. You will not be able to start the virtual machine until you disable or remove the device from its configuration. Contact your Virtuozzo administrator for assistance."),
+		tr(PRODUCT_NAME_SHORT " could not gain control over the Intel VT-d PCI device connected to this virtual machine. You will not be able to start the virtual machine until you disable or remove the device from its configuration. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -639,7 +639,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VTD_WAIT_ASR,
 		tr("The initialization of the VT-d device added to the virtual machine configuration has not yet completed."),
-		tr("Please wait some time, then try to start the virtual machine again. If the problem persists, remove the VT-d device from the virtual machine configuration or contact the Parallels support team for assistance."),
+		tr("Please wait some time, then try to start the virtual machine again. If the problem persists, remove the VT-d device from the virtual machine configuration or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -647,7 +647,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_UUID_NOT_FOUND,
 		tr("The virtual machine could not be found."),
-		tr("The virtual machine is not registered in the virtual machine directory on this server. Contact your Virtuozzo administrator for assistance."),
+		tr("The virtual machine is not registered in the virtual machine directory on this server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -655,23 +655,23 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
   REGISTER_ERROR_STRING(
 		PRL_ERR_X64GUEST_ON_X64VM_HVT_DISABLED,
 		tr("The virtual machine cannot be started."),
-		tr("You cannot run a 64-bit virtual machine on a 64-bit physical server if the server does not support hardware virtualization or has the hardware virtualization option disabled in its BIOS settings. Contact your Virtuozzo administrator for assistance."),
+		tr("You cannot run a 64-bit virtual machine on a 64-bit physical server if the server does not support hardware virtualization or has the hardware virtualization option disabled in its BIOS settings. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_NET_RENAME_FAILED,
-		tr("Unable to rename the Parallels network adapter."),
-		tr("The name of this network adapter could not be changed. Contact your Virtuozzo administrator for assistance."),
+		tr("Unable to rename the " PRODUCT_NAME_SHORT " network adapter."),
+		tr("The name of this network adapter could not be changed. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_NET_INSTALL_TIMEOUT,
-		tr("Unable to configure the Parallels network adapter."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Unable to configure the " PRODUCT_NAME_SHORT " network adapter."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -718,8 +718,8 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_WS_DISP_CONNECTION_CLOSED,
-		tr("Connection to Parallels Service was lost."),
-		tr("There may be connection problems or the server may be down. Contact your Virtuozzo administrator for assistance."),
+		tr("Connection to " PRODUCT_NAME_SHORT "Dispatcher Service was lost."),
+		tr("There may be connection problems or the server may be down. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -727,7 +727,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 	PRL_ERR_VTD_HOOK_NEED_REBOOT_FAILED,
 		tr("Unable to start the virtual machine."),
-		tr("The Intel VT-d support is disabled on this server. Restart the server and try again. If the problem persists, contact your Virtuozzo administrator for assistance."),
+		tr("The Intel VT-d support is disabled on this server. Restart the server and try again. If the problem persists, contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -775,7 +775,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CORE_STATE_INV_SAV_VERSION,
 		tr("Do you want to remove the saved state and restart the virtual machine?"),
-		tr("The virtual machine %1 cannot be resumed because the file containing its saved state is incompatible with this version of Virtuozzo. If you restart the virtual machine now, you will lose this saved state."),
+		tr("The virtual machine %1 cannot be resumed because the file containing its saved state is incompatible with this version of " PRODUCT_NAME_SHORT ". If you restart the virtual machine now, you will lose this saved state."),
 		false,
 		PMT_QUESTION
 		);
@@ -783,7 +783,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACCESS_DENIED_TO_DISK_IMAGE,
 		tr("The disk image file %1 cannot be recreated."),
-		tr("You do not have the permission to write to the file \"%2\". Contact your Virtuozzo administrator for assistance."),
+		tr("You do not have the permission to write to the file \"%2\". Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -791,7 +791,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_HANDSHAKE_FAILED,
 		tr("Unable to connect to the server \"%1\"."),
-		tr("An invalid response has been received from the server. Make sure that Virtuozzo is running on the server \"%1\" and is up to date and try again."),
+		tr("An invalid response has been received from the server. Make sure that " PRODUCT_NAME_SHORT " is running on the server \"%1\" and is up to date and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -799,7 +799,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_WRONG_PROTOCOL_VERSION,
 		tr("Unable to connect to the server \"%1\"."),
-		tr("The version of your Virtuozzo software <i>%2</i> is incompatible with the version of Virtuozzo installed on the physical server <i>%3</i>. Synchronize the Virtuozzo software on both servers and try again."),
+		tr("The version of your " PRODUCT_NAME_SHORT " software <i>%2</i> is incompatible with the version of " PRODUCT_NAME_SHORT " installed on the physical server <i>%3</i>. Synchronize the " PRODUCT_NAME_SHORT " software on both servers and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -807,7 +807,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SSL_HANDSHAKE_FAILED,
 		tr("Unable to connect to the server \"%1\"."),
-		tr("The SSL authentication failed. Try to connect to the server again. If the problem persists, contact your Virtuozzo administrator for assistance."),
+		tr("The SSL authentication failed. Try to connect to the server again. If the problem persists, contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -823,7 +823,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_IO_UNKNOWN_VM_ID,
 		tr("The virtual machine \"%1\" is not available at the moment."),
-		tr("Make sure that the connection to the respective physical server is established, you have the necessary permissions for the virtual machine, and the virtual machine files are present on the server's hard disk. If the problem persists, contact your Virtuozzo administrator for assistance."),
+		tr("Make sure that the connection to the respective physical server is established, you have the necessary permissions for the virtual machine, and the virtual machine files are present on the server's hard disk. If the problem persists, contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -839,7 +839,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ONLY_ADMIN_CAN_SET_PARAMETER_STARTLOGINMODE_ROOT,
 		tr("You are not allowed to set the startup and shutdown options for the local system account."),
-		tr("To set these options, you need to have administrator privileges for this server. Contact your Virtuozzo administrator for assistance."),
+		tr("To set these options, you need to have administrator privileges for this server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -847,7 +847,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ONLY_ADMIN_CAN_SET_VERBOSE_LOGGING,
 		tr("You are not allowed to enable or disable verbose logging for this server."),
-		tr("To enable or disable verbose logging, you need to have administrator rights for this server. Contact your Virtuozzo administrator for assistance."),
+		tr("To enable or disable verbose logging, you need to have administrator rights for this server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -879,14 +879,14 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACCESS_DENIED_TO_CHANGE_PERMISSIONS,
 		tr("Unable to change the permissions of the virtual machine \"%1\"."),
-		tr("You do not have the necessary permissions to perform this operation. Contact your Virtuozzo administrator for assistance."),
+		tr("You do not have the necessary permissions to perform this operation. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISP_SHUTDOWN_IN_PROCESS,
 		tr("Unable to complete the operation."),
-		tr("Virtuozzo is shutting down. Try again later."),
+		tr("" PRODUCT_NAME_SHORT " is shutting down. Try again later."),
 		false,
 		PMT_CRITICAL);
 
@@ -902,7 +902,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_UNKNOWN_OS_TYPE,
 		tr("The guest operating system type is incorrect."),
-		tr("Specify a guest operating system that is supported in Virtuozzo and try again."),
+		tr("Specify a guest operating system that is supported in " PRODUCT_NAME_SHORT " and try again."),
 		false,
 		PMT_WARNING
 		);
@@ -910,7 +910,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_UNKNOWN_OS_VERSION,
 		tr("The version of the guest operating system is incorrect."),
-		tr("Specify a guest operating system version that is supported in Virtuozzo and try again."),
+		tr("Specify a guest operating system version that is supported in " PRODUCT_NAME_SHORT " and try again."),
 		false,
 		PMT_WARNING
 		);
@@ -952,7 +952,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CHANGE_OWNER_OF_FILE,
 		tr("Unable to change the virtual machine permissions."),
-		tr("Virtuozzo cannot set the required permissions for one or more objects in the virtual machine folder. Contact your Virtuozzo administrator for assistance."),
+		tr(PRODUCT_NAME_SHORT " cannot set the required permissions for one or more objects in the virtual machine folder. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -960,7 +960,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_REMOVE_INVALID_VM_AS_NON_ADMIN,
 		tr("You do not have the permission to remove the virtual machine from the list."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -984,7 +984,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CHANGE_OWNER_OF_VM_FILE,
 		tr("Unable to change the virtual machine permissions."),
-		tr("Virtuozzo cannot set the required permissions for one or more objects in the virtual machine folder. Contact your Virtuozzo administrator for assistance."),
+		tr(PRODUCT_NAME_SHORT " cannot set the required permissions for one or more objects in the virtual machine folder. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -992,7 +992,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CHANGE_OWNER_OF_DISK_IMAGE_FILE,
 		tr("Unable to create the virtual disk image file \"%1\"."),
-		tr("Virtuozzo cannot set the required access permissions for one or more objects in the virtual machine folder. Contact your Virtuozzo administrator for assistance."),
+		tr(PRODUCT_NAME_SHORT " cannot set the required access permissions for one or more objects in the virtual machine folder. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1000,7 +1000,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CHANGE_FILE_PERMISSIONS,
 		tr("Unable to change the virtual machine permissions."),
-		tr("Virtuozzo cannot set the required permissions for one or more objects in the virtual machine folder. Contact your Virtuozzo administrator for assistance."),
+		tr(PRODUCT_NAME_SHORT " cannot set the required permissions for one or more objects in the virtual machine folder. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1008,7 +1008,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_UNABLE_ALLOC_MEM_MONITOR,
 		tr("Unable to allocate memory for VMM purposes."),
-		tr("Virtuozzo cannot allocate enough memory for running the virtual machine. Suspend or stop one or more of the virtual machines currently running on the server and try again. If the problem persists, contact your Virtuozzo administrator for assistance."),
+		tr(PRODUCT_NAME_SHORT " cannot allocate enough memory for running the virtual machine. Suspend or stop one or more of the virtual machines currently running on the server and try again. If the problem persists, contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1049,7 +1049,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_LOAD_MONITOR,
 		tr("Failed to load virtual machine monitor."),
-		tr("@PRL_PRODUCT_NAME cannot load the virtual machine monitor due to internal incoherence. Please contact the Parallels support team for assistance."),
+		tr("@PRL_PRODUCT_NAME cannot load the virtual machine monitor due to internal incoherence. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1057,7 +1057,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_INIT_MONITOR,
 		tr("Failed to init virtual machine monitor."),
-		tr("@PRL_PRODUCT_NAME cannot start the virtual machine. Please contact the Parallels support team for assistance."),
+		tr("@PRL_PRODUCT_NAME cannot start the virtual machine. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1065,7 +1065,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNSUPPORTED_NETWORK_FILE_SYSTEM,
 		tr("You cannot use virtual machine files on the network share \"%1\"."),
-		tr("Virtuozzo does not support using virtual machine files located on a network share. Select a path on your local disk and try again."),
+		tr(PRODUCT_NAME_SHORT " does not support using virtual machine files located on a network share. Select a path on your local disk and try again."),
 		false,
 		PMT_WARNING
 		);
@@ -1089,7 +1089,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_NET_VLAN_UNSUPPORTED_IN_THIS_VERSION,
 		tr("The network adapter \"%1\" cannot be used for bridged networking." ),
-		tr("This is a VLAN interface. The current version of Virtuozzo does not support using VLAN interfaces for bridged networking."),
+		tr("This is a VLAN interface. The current version of " PRODUCT_NAME_SHORT " does not support using VLAN interfaces for bridged networking."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1097,35 +1097,35 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_ALLOC_VM_MEMORY,
 		tr("The requested system resources cannot be allocated to the virtual machine \"%1\"."),
-		tr("There is not enough memory or disk space for the virtual machine to work correctly. Contact your Virtuozzo administrator for assistance."),
+		tr("There is not enough memory or disk space for the virtual machine to work correctly. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNABLE_SEND_REQUEST,
 		tr("The operation could not be completed due to a critical error."),
-		tr("Virtuozzo was unable to send data to the hypervisor driver. Contact your Virtuozzo administrator for assistance."),
+		tr(PRODUCT_NAME_SHORT " was unable to send data to the hypervisor driver. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_CANT_INITIALIZE_IMAGE,
 		tr("Unable to initialize the hard disk %1."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_TO_CHANGE_PERMISSIONS_ON_REMOTE_LOCATION,
 		tr("Unable to change the permissions for the virtual machine \"%1\"."),
-		tr("The virtual machine permissions could not be changed because some of its files are stored on a network location. Contact your Virtuozzo administrator for assistance."),
+		tr("The virtual machine permissions could not be changed because some of its files are stored on a network location. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNSUPPORTED_DEVICE_TYPE,
 		tr("Unable to complete the operation."),
-		tr("This type of devices is not supported in Virtuozzo."),
+		tr("This type of devices is not supported in " PRODUCT_NAME_SHORT "."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1141,15 +1141,15 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_IPHONE_PROXY_CANNOT_START,
 		tr("Unable to start the iPhone service."),
-		tr("An error occurred while starting the iPhone service. Try to restart the physical server. If the problem persists, reinstall Virtuozzo or contact your Virtuozzo administrator for assistance."),
+		tr("An error occurred while starting the iPhone service. Try to restart the physical server. If the problem persists, reinstall " PRODUCT_NAME_SHORT " or contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_WRONG_VERSION,
-		tr("This product could not be activated because your activation key is invalid for this version of Virtuozzo."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("This product could not be activated because your activation key is invalid for this version of " PRODUCT_NAME_SHORT "."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -1221,7 +1221,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_LIBRARY,
 		tr("Unable to load the iSCSI storage library."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1229,7 +1229,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_START,
 		tr("Unable to start the iSCSI service."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1237,7 +1237,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_CREATE,
 		tr("Unable to create a new iSCSI storage."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1245,7 +1245,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_REMOVE,
 		tr("Unable to remove the iSCSI storage."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1253,7 +1253,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_MOUNT,
 		tr("Unable to mount the iSCSI storage."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1261,7 +1261,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_UMOUNT,
 		tr("Unable to unmount the iSCSI storage."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1269,7 +1269,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_EXTEND,
 		tr("Unable to extend the iSCSI storage."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1277,7 +1277,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_GET_STATE,
 		tr("Unable to retrieve the status of the iSCSI storage."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1285,7 +1285,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_INVALID_FSTYPE,
 		tr("An invalid file system was specified for the iSCSI storage."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1293,7 +1293,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_NOT_FOUND,
 		tr("The iSCSI storage could not be found."),
-		tr("This iSCSI storage is not registered on this server. Contact your Virtuozzo administrator for assistance."),
+		tr("This iSCSI storage is not registered on this server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1301,7 +1301,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_ALREADY_REGISTERED,
 		tr("The iSCSI storage mount point already registered."),
-		tr("This iSCSI storage mount point already registered on server. Contact your Virtuozzo administrator for assistance."),
+		tr("This iSCSI storage mount point already registered on server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1309,7 +1309,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_CANNOT_CREATE_MOUNT_POINT,
 		tr("Unable to create the iSCSI storage mount point."),
-		tr("Contact your Virtuozzo administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1317,7 +1317,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ISCSI_STORAGE_MOUNT_POINT_ALREADY_EXISTS,
 		tr("The iSCSI storage mount point already exists."),
-		tr("This iSCSI storage mount point already exists on server. Contact your Virtuozzo administrator for assistance."),
+		tr("This iSCSI storage mount point already exists on server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1380,64 +1380,64 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_WIN,
-		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_LIN,
-		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_MAC,
-		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REINSTALL_TOOLS_OTHER,
-		tr("You are going to reinstall Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to reinstall " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_WIN,
-		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and Windows, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_LIN,
-		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and Linux, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_MAC,
-		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_UPDATE_TOOLS_OTHER,
-		tr("You are going to update Virtuozzo Tools. Do you want to continue?"),
-		tr("Virtuozzo Tools are required for features that provide better integration of Parallels Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("You are going to update " PRODUCT_NAME_SHORT " Tools. Do you want to continue?"),
+		tr(PRODUCT_NAME_SHORT " Tools are required for features that provide better integration of " PRODUCT_NAME_SHORT " Management Console and the virtual machine, like automatic mouse capture and dynamic screen resolution adjustment."),
 		true,
 		PMT_QUESTION
 		);

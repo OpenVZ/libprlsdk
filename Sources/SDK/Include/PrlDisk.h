@@ -55,7 +55,7 @@ extern "C" {
 #define PRL_STATE_PROGRESS_MAX			1000
 #define PRL_STATE_PROGRESS_COMPLETED	1005
 
-/* Parallels images types */
+/* images types */
 
 typedef PRL_UINT32 PRL_IMAGE_TYPE;
 typedef PRL_IMAGE_TYPE* PRL_IMAGE_TYPE_PTR;
@@ -119,7 +119,7 @@ typedef const PRL_DISK_OPEN_FLAGS*	PRL_CONST_DISK_OPEN_FLAGS_PTR;
 #define PRL_DISK_XML_CHANGE			0x00000020
 /* Type of the file access to use (15 file accessors is enough). */
 #define PRL_DISK_FOPS_MASK			0x000003C0
-/* Default access mode that compiled in Parallels itself. */
+/* Default access mode that compiled itself. */
 #define PRL_DISK_FOPS_DEFAULT		0x00000000
 // DEPRECATED! Normal access mode (default os)
 #define PRL_DISK_FOPS_NORMAL		0x00000040
@@ -243,7 +243,7 @@ typedef PRL_STATES_CALLBACK_TYPE* PRL_STATES_CALLBACK_TYPE_PTR;
 #define PRL_DISK_CACHE_UNCACHED_SEQ_READ			4
 
 ////////////////////////////////////////////////////////////////////////
-/* Parallels storage parameters */
+/* storage parameters */
 ////////////////////////////////////////////////////////////////////////
 
 typedef struct __PRL_IMAGE_PARAMETERS
@@ -260,8 +260,7 @@ typedef struct __PRL_IMAGE_PARAMETERS
 typedef PRL_IMAGE_PARAMETERS* PRL_IMAGE_PARAMETERS_PTR;
 
 ////////////////////////////////////////////////////////////////////////
-/* Parallels disk parameters. Differs from internal due to lists
-   classes                                                       */
+/* disk parameters. Differs from internal due to lists classes */
 ////////////////////////////////////////////////////////////////////////
 
 typedef struct __PRL_DISK_PARAMETERS
@@ -294,8 +293,7 @@ typedef const PRL_DISK_PARAMETERS*	PRL_CONST_DISK_PARAMETERS_PTR;
 
 ////////////////////////////////////////////////////////////////////////
 /**
- * Parallels snapshot tree element
- *
+ * snapshot tree element
  */
 ////////////////////////////////////////////////////////////////////////
 typedef struct __PRL_SNAPSHOT_ELEMENT
@@ -340,7 +338,7 @@ typedef PRL_CHS* PRL_CHS_PTR;
 #endif
 
 /* This function can be used to create a new virtual disk
-   locally without being connected to the Virtuozzo Service. The
+   locally without being connected to the Dispatcher Service. The
    function creates a new virtual disk and obtains a handle of
    type PHT_VIRTUAL_DISK identifying the new disk. The handle
    can then be used to perform other operations on the disk if
@@ -403,7 +401,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    when you want to view or modify the configuration of an
    existing virtual disk. Once you obtain the disk handle, use
    its functions to perform the desired disk manipulations. This
-   function can be used locally without a Virtuozzo Service
+   function can be used locally without a Dispatcher Service
    connection.
    Parameters
    pHandle :           [out] A handle of type PHT_VIRTUAL_DISK

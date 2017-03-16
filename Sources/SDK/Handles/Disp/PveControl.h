@@ -1134,51 +1134,51 @@ public://Protocol methods
    QString DspCmdSMCRestartVm(const char *strVmUUID);
 
 	/**
-	 * Performs start Parallels network service operation
+	 * Performs start network service operation
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdNetPrlNetworkServiceStart();
 
 	/**
-	 * Performs stop Parallels network service operation
+	 * Performs stop network service operation
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdNetPrlNetworkServiceStop();
 
 	/**
-	 * Performs restart Parallels network service operation
+	 * Performs restart network service operation
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdNetPrlNetworkServiceRestart();
 
 	/**
-	 * Performs restore defaults of Parallels network service
+	 * Performs restore defaults of network service
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdNetPrlNetworkServiceRestoreDefaults();
 
 	/**
-	 * Performs getting Parallels Net service status
+	 * Performs getting Net service status
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdGetNetServiceStatus();
 
 	/**
-	 * Performs adding Parallels Network Adapter
+	 * Performs adding Network Adapter
 	* @param Network Adapter config XML representation string
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdAddNetAdapter(const char *strNetAdapter);
 
 	/**
-	 * Performs deleting Parallels Network Adapter
+	 * Performs deleting Network Adapter
 	* @param Network Adapter index
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdDeleteNetAdapter(unsigned int nIndex);
 
 	/**
-	 * Performs updating Parallels Network Adapter
+	 * Performs updating Network Adapter
 	* @param Network Adapter config XML representation string
 	 * @return id of performed asynchronous request
 	 */

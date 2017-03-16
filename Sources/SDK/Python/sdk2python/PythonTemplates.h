@@ -40,7 +40,6 @@
 	"#//\n" \
 	"#// Copyright (c) 1999-2017, Parallels International GmbH\n" \
 	"#// All rights reserved.\n" \
-	"#// http://www.parallels.com\n" \
 	"#//\n" \
 	"#///////////////////////////////////////////////////////////////////////////////\n\n"
 

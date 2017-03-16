@@ -545,7 +545,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_TXT_ERROR,
-		tr("Parallels Warning Message."),
+		tr(PRODUCT_NAME_SHORT " Warning Message."),
 		tr("%1"),
 		false,
 		PMT_QUESTION
@@ -570,7 +570,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_SHARED_BLOCK,
 		tr("The virtual disk %1 %2 is corrupt. Please check it for errors."),
-		tr("To check the disk, use the prl_disk_tool command line utility. For more information, see <a href=\"http://kb.parallels.com/en/113241\">http://kb.parallels.com/en/113241</a>."),
+		tr("To check the disk, use the prl_disk_tool command line utility."),
 		false,
 		PMT_CRITICAL
 		);
@@ -586,7 +586,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_COMMON_HDD_ERROR,
 		tr("An error occurred while accessing the Hard Disk %1 used by \"%2\"."),
-		tr("Click <b>Retry</b> to try again or click <b>Stop</b> to forcibly stop the virtual machine. If this error persists, please contact the Parallels support team for assistance.<br><br><b>Note</b>: If you stop the virtual machine \"%2\" now, you will lose all unsaved data.<br><br><b>Error ID:</b> %3."),
+		tr("Click <b>Retry</b> to try again or click <b>Stop</b> to forcibly stop the virtual machine. If this error persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance.<br><br><b>Note</b>: If you stop the virtual machine \"%2\" now, you will lose all unsaved data.<br><br><b>Error ID:</b> %3."),
 		false,
 		PMT_QUESTION
 		);
@@ -724,8 +724,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_NET_IPADDRESS_MODIFY_FAILED_WARNING,
-		tr("The IP address of the Parallels network adapter has not been changed."),
-		tr("There was a failure changing the IP address of the Parallels network adapter. The other network parameters have been modified successfully."),
+		tr("The IP address of the " PRODUCT_NAME_SHORT " network adapter has not been changed."),
+		tr("There was a failure changing the IP address of the " PRODUCT_NAME_SHORT " network adapter. The other network parameters have been modified successfully."),
 		false,
 		PMT_WARNING
 		);
@@ -893,7 +893,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PARSE_VM_CONFIG,
 		tr("The configuration file you specified is invalid."),
-		tr("Make sure that the specified file is a valid Parallels virtual machine configuration file and it is not corrupt, or select another file."),
+		tr("Make sure that the specified file is a valid " PRODUCT_NAME_SHORT " virtual machine configuration file and it is not corrupt, or select another file."),
 		false,
 		PMT_WARNING
 		);
@@ -1333,7 +1333,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_CANCEL_IMPORT_BOOTCAMP_OPERATION,
 		tr("The import is in progress. Are you sure you want to stop it?"),
-		tr("If you cancel the import now, no Parallels virtual machine will be created."),
+		tr("If you cancel the import now, no " PRODUCT_NAME_SHORT " virtual machine will be created."),
 		true,
 		PMT_QUESTION
 		);
@@ -1341,7 +1341,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_CANCEL_CONVERT_3RD_VM_OPERATION,
 		tr("The conversion is in progress. Are you sure you want to cancel it?"),
-		tr("If you cancel the conversion now, no Parallels virtual machine will be created."),
+		tr("If you cancel the conversion now, no " PRODUCT_NAME_SHORT " virtual machine will be created."),
 		true,
 		PMT_QUESTION
 		);
@@ -1413,7 +1413,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONVERT_VM_CONFIG_DUE_UNDO_SNAPSHOTS_PRESENT,
 		tr("Unable to add the virtual machine in %1."),
-		tr("This virtual machine was created with an earlier version of Parallels virtualization software and has a number of snapshots in it. Before adding this virtual machine, open it with the application you used to create it and delete all snapshots."),
+		tr("This virtual machine was created with an earlier version of " PRODUCT_NAME_SHORT " virtualization software and has a number of snapshots in it. Before adding this virtual machine, open it with the application you used to create it and delete all snapshots."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1445,7 +1445,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_INVALID_PARALLELS_DISK,
 		tr("%1 does not exist or the specified hard disk image file is not valid."),
-		tr("Specify the correct path to a valid Parallels virtual hard disk image file."),
+		tr("Specify the correct path to a valid " PRODUCT_NAME_SHORT " virtual hard disk image file."),
 		false,
 		PMT_WARNING
 		);
@@ -1686,7 +1686,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_DHCP_INCORRECT_START_IP,
 		tr("The DHCP scope start address is incorrect."),
-		tr("The specified address cannot be used as the start address of the DHCP scope. Specify a valid address or contact the Parallels support team for assistance."),
+		tr("The specified address cannot be used as the start address of the DHCP scope. Specify a valid address or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -1694,7 +1694,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_DHCP_INCORRECT_END_IP,
 		tr("The DHCP scope end address is incorrect."),
-		tr("The specified address cannot be used as the end address of the DHCP scope. Specify a valid address or contact the Parallels support team for assistance."),
+		tr("The specified address cannot be used as the end address of the DHCP scope. Specify a valid address or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -1765,24 +1765,24 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_PRL_TOOLS_BETA,
-		tr("Automatic installation of Virtuozzo Tools is not supported in this Beta. Please install Virtuozzo Tools manually."),
-		tr("Virtuozzo Tools are available from the image file \"%1\". Connect this image to the virtual machine and install Virtuozzo Tools."),
+		tr("Automatic installation of " PRODUCT_NAME_SHORT " Tools is not supported in this Beta. Please install " PRODUCT_NAME_SHORT " Tools manually."),
+		tr(PRODUCT_NAME_SHORT " Tools are available from the image file \"%1\". Connect this image to the virtual machine and install " PRODUCT_NAME_SHORT " Tools."),
 		false,
 		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_CANT_INSTALL_TOOLS_WITHOUT_CD,
-		tr("You cannot install Virtuozzo Tools because the virtual machine has no CD/DVD device."),
-		tr("The virtual machine must have at least one CD/DVD device to install Virtuozzo Tools. Please shut down the virtual machine, add a CD/DVD device, run the virtual machine, and start the installation again."),
+		tr("You cannot install " PRODUCT_NAME_SHORT " Tools because the virtual machine has no CD/DVD device."),
+		tr("The virtual machine must have at least one CD/DVD device to install " PRODUCT_NAME_SHORT " Tools. Please shut down the virtual machine, add a CD/DVD device, run the virtual machine, and start the installation again."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_TOOLS_UNSUPPORTED_GUEST,
-		tr("Virtuozzo Tools cannot be installed in the virtual machine \"%1\"."),
-		tr("The operating system of your virtual machine belongs to the \"%2\" type. Virtuozzo Tools cannot be installed in operating systems of this type."),
+		tr(PRODUCT_NAME_SHORT " Tools cannot be installed in the virtual machine \"%1\"."),
+		tr("The operating system of your virtual machine belongs to the \"%2\" type. " PRODUCT_NAME_SHORT " Tools cannot be installed in operating systems of this type."),
 		false,
 		PMT_CRITICAL
 		);
@@ -1797,7 +1797,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_TOOLS_WIN,
-		tr("Click Continue to connect the Virtuozzo Tools installation CD to this virtual machine and start the installation."),
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine and start the installation."),
 		tr("If the installation does not start automatically, open your CD/DVD drive in Windows and double-click \"Setup.exe\"."),
 		true,
 		PMT_INFORMATION
@@ -1805,16 +1805,16 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_TOOLS_LIN,
-		tr("Click Continue to connect the Virtuozzo Tools installation CD to this virtual machine."),
-		tr("To install Virtuozzo Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install Virtuozzo Tools."),
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install " PRODUCT_NAME_SHORT " Tools."),
 		true,
 		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_TOOLS_MAC,
-		tr("Click Continue to connect the Virtuozzo Tools installation CD to this virtual machine."),
-		tr("To install Virtuozzo Tools, open the Virtuozzo Tools CD in the virtual machine and double-click \"Install\"."),
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, open the " PRODUCT_NAME_SHORT " Tools CD in the virtual machine and double-click \"Install\"."),
 		true,
 		PMT_INFORMATION
 		);
@@ -1822,7 +1822,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_INSTALL_GHOSTSCRIPT_ON_HOST,
 		tr("The document has been sent to a printer that is shared with the host computer."),
-		tr("To ensure proper printing from the virtual machine, it is recommended that you install a PostScript interpreter as described on the Parallels <a href=\"%1\">website</a>" ),
+		tr("To ensure proper printing from the virtual machine, it is recommended that you install a PostScript interpreter as described on the " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>" ),
 		true,
 		PMT_INFORMATION
 		);
@@ -1974,8 +1974,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_PROBLEM_REPORT_POST_SUCCESS,
-		tr("A problem report with the ID number %1 has been sent to Parallels to help us improve the product. Thank you for your feedback."),
-		tr("If you'd like to contact our support team to request help with your problem, please copy the problem report ID number, %1, and submit a support ticket to Parallels Support."),
+		tr("A problem report with the ID number %1 has been sent to " PRODUCT_NAME_SHORT " to help us improve the product. Thank you for your feedback."),
+		tr("If you'd like to contact our support team to request help with your problem, please copy the problem report ID number, %1, and submit a support ticket to " PRODUCT_NAME_SHORT " Support."),
 		false,
 		PMT_INFORMATION
 		);
@@ -2105,7 +2105,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_SUSPEND_STATE_INCOMPATIBLE,
-		tr("Unable to resume this virtual machine because it was suspended in a newer version of your Parallels software."),
+		tr("Unable to resume this virtual machine because it was suspended in a newer version of your " PRODUCT_NAME_SHORT " software."),
 		tr("Do you want to restart the virtual machine to be able to use it in this version? Note: If you restart the virtual machine now, all unsaved data will be lost."),
 		false,
 		PMT_QUESTION
@@ -2113,7 +2113,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_SNAPSHOT_STATE_INCOMPATIBLE,
-		tr("Unable to restore this virtual machine as running because the snapshot was created in a newer version of your Parallels software."),
+		tr("Unable to restore this virtual machine as running because the snapshot was created in a newer version of your " PRODUCT_NAME_SHORT " software."),
 		tr("Do you want to stop the virtual machine while reverting? Note: If you stop the virtual machine now, all the data that was not saved at the time the snapshot was taken will be lost."),
 		false,
 		PMT_QUESTION
@@ -2138,7 +2138,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DELETE_UNFINISHED_STATE_FAILED,
 		tr("Unable to perform this operation because one of your virtual machine snapshots is still being removed."),
-		tr("Free some disk space on the hard disk where the virtual machine is stored and try again. If the problem persists, contact the Parallels support team." ),
+		tr("Free some disk space on the hard disk where the virtual machine is stored and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -2601,7 +2601,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_GET_DISK_FREE_SPACE_FAILED,
 		tr("Unable to get disk information."),
-		tr("An error occurred while retrieving the disk information. Please try again. If the problem persists, contact the Parallels support team."),
+		tr("An error occurred while retrieving the disk information. Please try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
 		false,
 		PMT_CRITICAL
 		);
@@ -3198,10 +3198,10 @@ void PrlErrStringsStorage::Initialize()
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
-				tr("The virtual machine does not have Virtuozzo Tools installed."
+				tr("The virtual machine does not have " PRODUCT_NAME_SHORT " Tools installed."
 				   " Do you want to save the configuration anyway?"),
 				tr("If you save the configuration now, the network adapter may work incorrectly."
-				   " Install Virtuozzo Tools and configure the network adapter settings again."),
+				   " Install " PRODUCT_NAME_SHORT " Tools and configure the network adapter settings again."),
 		true,
 		PMT_QUESTION
 		);
@@ -3515,7 +3515,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONVERT_VM_CONFIG_DUE_UNDO_DISKS_PRESENT,
 		tr("Unable to add the virtual machine located in %1."),
-		tr("This virtual machine was created with an earlier version of the Parallels software and has the Rollback mode option enabled. Before adding the virtual machine, open it with the same application version that was used for its creation and disable the Rollback mode option using Configuration Editor > Options > Advanced."),
+		tr("This virtual machine was created with an earlier version of the " PRODUCT_NAME_SHORT " software and has the Rollback mode option enabled. Before adding the virtual machine, open it with the same application version that was used for its creation and disable the Rollback mode option using Configuration Editor > Options > Advanced."),
 		false,
 		PMT_CRITICAL
 		);
@@ -3523,7 +3523,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONVERT_OLD_VM_WITH_INSTALLED_TOOLS,
 		tr("Unable to add the virtual machine located in %1."),
-		tr("This virtual machine was created with an earlier version of the Parallels software and has Virtuozzo Tools installed. Before adding the virtual machine, run it with the same application version that was used for its creation and uninstall Virtuozzo Tools using Add or Remove Programs in Windows Control Panel. Then shut down the virtual machine and try again."),
+		tr("This virtual machine was created with an earlier version of the " PRODUCT_NAME_SHORT " software and has " PRODUCT_NAME_SHORT " Tools installed. Before adding the virtual machine, run it with the same application version that was used for its creation and uninstall " PRODUCT_NAME_SHORT " Tools using Add or Remove Programs in Windows Control Panel. Then shut down the virtual machine and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -3555,7 +3555,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_COULDNT_BE_STARTED_UNDER_SPECIFIED_USER,
 		tr("The user \"%1\" does not have the permission to start this virtual machine."),
-		tr("Open the Virtual Machine Configuration dialog and enable the View and run option on the Permissions tab. Make sure that the user has the read and execute permissions for the virtual machine folder. Contact your Virtuozzo administrator for further assistance."),
+		tr("Open the Virtual Machine Configuration dialog and enable the View and run option on the Permissions tab. Make sure that the user has the read and execute permissions for the virtual machine folder. Contact your " PRODUCT_NAME_SHORT " administrator for further assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -3619,8 +3619,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_WARN_VM_PD3_COMPAT_MODE,
-		tr("The virtual machine is running in compatibility mode. A newer version of Virtuozzo Tools needs to be installed. The installation will start automatically."),
-			tr("Please wait for the guest operating system to boot and start the Virtuozzo Tools installation, it might take a while. If the installation of Virtuozzo Tools does not start automatically, select Install Virtuozzo Tools on the Virtual Machine menu to start the installation manually."),
+		tr("The virtual machine is running in compatibility mode. A newer version of " PRODUCT_NAME_SHORT " Tools needs to be installed. The installation will start automatically."),
+			tr("Please wait for the guest operating system to boot and start the " PRODUCT_NAME_SHORT " Tools installation, it might take a while. If the installation of " PRODUCT_NAME_SHORT " Tools does not start automatically, select Install " PRODUCT_NAME_SHORT " Tools on the Virtual Machine menu to start the installation manually."),
 		false,
 		PMT_INFORMATION
 		);
@@ -3643,8 +3643,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PET_DSP_EVT_DISP_SHUTDOWN,
-		tr("Parallels Service will be stopped."),
-		tr("After Parallels Service is stopped, you will not be able to manage your virtual machines."),
+		tr(PRODUCT_NAME_SHORT " Service will be stopped."),
+		tr("After Dispatcher Service is stopped, you will not be able to manage your virtual machines."),
 		false,
 		PMT_WARNING
 		);
@@ -3926,7 +3926,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_COULDNT_DETACH_TARGET_CONNECTION,
 		tr("Unable to perform the migration."),
-		tr("The virtual machine migration could not be initialized on the destination server. Contact your Virtuozzo administrator for assistance."),
+		tr("The virtual machine migration could not be initialized on the destination server. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -3973,16 +3973,16 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_NO_CD_DRIVE_AVAILABLE,
-		tr("Unable to install Virtuozzo Tools."),
-		tr("Virtuozzo Tools can be installed if at least one CD/DVD drive is connected to the virtual machine. Add a CD/DVD drive to the virtual machine configuration and try again."),
+		tr("Unable to install " PRODUCT_NAME_SHORT " Tools."),
+		tr(PRODUCT_NAME_SHORT " Tools can be installed if at least one CD/DVD drive is connected to the virtual machine. Add a CD/DVD drive to the virtual machine configuration and try again."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_GUEST_TOOLS_NOT_INSTALLED,
-		tr("Virtuozzo Tools are not installed in this virtual machine."),
-		tr("Start the installation now by choosing Install Virtuozzo Tools from the Virtual Machine menu."),
+		tr(PRODUCT_NAME_SHORT " Tools are not installed in this virtual machine."),
+		tr("Start the installation now by choosing Install " PRODUCT_NAME_SHORT " Tools from the Virtual Machine menu."),
 		false,
 		PMT_WARNING
 		);
@@ -4053,16 +4053,16 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_ANOTHER_TOOLS_IN_USE,
-		tr("Virtuozzo Tools cannot be mounted to the virtual machine."),
-		tr("Another ISO image with Virtuozzo Tools is mounted to the CD/DVD device of this virtual machine. Unmount this image, then try again."),
+		tr(PRODUCT_NAME_SHORT " Tools cannot be mounted to the virtual machine."),
+		tr("Another ISO image with " PRODUCT_NAME_SHORT " Tools is mounted to the CD/DVD device of this virtual machine. Unmount this image, then try again."),
 		false,
 		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_RUN_COMPRESSOR_WIN,
-		tr("Parallels Compressor helps you keep your virtual machine compact and efficient."),
-		tr("Parallels Compressor is an easy-to-use tool allowing you to clean up unused disk space in the virtual machine. Using this tool, you can significantly reduce the size of your virtual machine hard disks files and use the resources of your physical hard disks more efficiently."),
+		tr(PRODUCT_NAME_SHORT " Compressor helps you keep your virtual machine compact and efficient."),
+		tr(PRODUCT_NAME_SHORT " Compressor is an easy-to-use tool allowing you to clean up unused disk space in the virtual machine. Using this tool, you can significantly reduce the size of your virtual machine hard disks files and use the resources of your physical hard disks more efficiently."),
 		true,
 		PMT_INFORMATION
 		);
@@ -4085,8 +4085,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_COMPRESSOR_UNSUPPORTED_GUEST,
-		tr("Parallels Compressor cannot be started."),
-		tr("Your virtual machine's operating system is \"%1\". This operating system is not supported by Parallels Compressor."),
+		tr(PRODUCT_NAME_SHORT " Compressor cannot be started."),
+		tr("Your virtual machine's operating system is \"%1\". This operating system is not supported by " PRODUCT_NAME_SHORT " Compressor."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4150,7 +4150,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_BOOTCAMP_HELPER_INIT_FAILURE,
-		tr("An unexpected error occurred when initializing Virtuozzo Tools."),
+		tr("An unexpected error occurred when initializing " PRODUCT_NAME_SHORT " Tools."),
 		tr("The virtual machine is booting from a Boot Camp partition. If you continue, you may encounter problems with Microsoft Windows or Office activation."),
 		true,
 		PMT_QUESTION
@@ -4183,7 +4183,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_NOT_VALID,
 		tr("This product could not be activated because your activation key is invalid."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4199,7 +4199,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_NOT_STARTED,
 		tr("Your activation key covers a period in the future, so it cannot be validated at the moment."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4207,15 +4207,15 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_WRONG_VERSION,
 		tr("This product could not be activated because your activation key is not valid for this version of @PRL_PRODUCT_NAME."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_WRONG_PRODUCT,
-		tr("This product could not be activated because your activation key is designed for use with another Parallels product."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("This product could not be activated because your activation key is designed for use with another " PRODUCT_NAME_SHORT " product."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4223,7 +4223,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_WRONG_PLATFORM,
 		tr("This product could not be activated because your activation key is designed for using @PRL_PRODUCT_NAME on another platform."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4231,7 +4231,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_WRONG_LANGUAGE,
 		tr("This product could not be activated because your activation key is designed for use with another language version."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4239,7 +4239,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_WRONG_DISTRIBUTOR,
 		tr("This product could not be activated because your activation key distributor does not match that of the product itself."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4247,7 +4247,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_IS_NOT_VOLUME,
 		tr("This product could not be activated because your activation key is not supported special flags."),
-		tr("In this screen, you can enter an activation key only for Parallels Desktop Enterprise Edition."),
+		tr("In this screen, you can enter an activation key only for " PRODUCT_NAME_SHORT " Desktop Enterprise Edition."),
 		false,
 		PMT_WARNING
 		);
@@ -4256,7 +4256,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_BETA_KEY_RELEASE_PRODUCT,
 		tr("This product could not be activated because your activation key is designed for use with the Beta version of @PRL_PRODUCT_NAME."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4264,7 +4264,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_RELEASE_KEY_BETA_PRODUCT,
 		tr("This product could not be activated because your activation key is not designed for use with the Beta version of @PRL_PRODUCT_NAME."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4272,7 +4272,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_BLACKLISTED,
 		tr("Your activation key has been disabled due to security reasons: someone might have attempted to use the same activation key."),
-		tr("Please contact the Parallels support team for further assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for further assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4280,7 +4280,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_BLACKLISTED_TO_VM_OPERATION,
 		tr("Your activation key has been disabled due to security reasons: someone might have attempted to use the same activation key."),
-		tr("Please contact the Parallels support team for further assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for further assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -4320,7 +4320,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_OFFLINE_PERIOD_EXPIRED,
 		tr("The deadline for confirming your activation has expired."),
-		tr("To continue using Parallels Desktop, please complete the activation now."),
+		tr("To continue using " PRODUCT_NAME_SHORT " Desktop, please complete the activation now."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4328,7 +4328,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_OLD_VERSION_LICENSE_WRONG_LANGUAGE,
 		tr("This product could not be activated because the language version of your activation key does not match the language version of the product you are trying to upgrade from."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4336,7 +4336,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_OLD_VERSION_LICENSE_WRONG_DISTRIBUTOR,
 		tr("This product could not be activated because the distributor of your activation key does not match the distributor of the product you are trying to upgrade to."),
-		tr("Make sure you typed the key correctly or contact the Parallels support team for assistance."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4488,7 +4488,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_FATAL,
 		tr("The operation failed due to an unknown error."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4528,7 +4528,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_UNSUPPORTED_APP_MODE,
 		tr("Failed to perform this operation."),
-		tr("Use the appropriate Parallels product to manage the license."),
+		tr("Use the appropriate " PRODUCT_NAME_SHORT " product to manage the license."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4552,7 +4552,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_KA_LICENSE_IS_UP_TO_DATE,
 		tr("Unable to update the product license."),
-		tr("Your license is already up to date. For more detailed information, please contact the Parallels support team."),
+		tr("Your license is already up to date. For more detailed information, please contact the " PRODUCT_NAME_SHORT " support team."),
 		false,
 		PMT_WARNING
 		);
@@ -4560,7 +4560,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_KA_LICENSE_IS_NOT_PROLONGATED_YET,
 		tr("Unable to update the product license."),
-		tr("Your license has not been renewed. Please renew it and try again. For more detailed information, contact the Parallels support team."),
+		tr("Your license has not been renewed. Please renew it and try again. For more detailed information, contact the " PRODUCT_NAME_SHORT " support team."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4568,7 +4568,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_KA_ACTIVATION_LIMIT_REACHED,
 		tr("Unable to activate the product."),
-		tr("Your license has reached the activation limit. Please contact the Parallels support team for assistance. "),
+		tr("Your license has reached the activation limit. Please contact the " PRODUCT_NAME_SHORT " support team for assistance. "),
 		false,
 		PMT_CRITICAL
 		);
@@ -4576,7 +4576,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_KA_HWID_DOES_NOT_MATCH,
 		tr("Unable to update the product license."),
-		tr("Your license hardware ID has changed and does not coincide with that on the license server. Please contact the Parallels support team for assistance."),
+		tr("Your license hardware ID has changed and does not coincide with that on the license server. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4584,7 +4584,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_KA_LICENSE_IS_TERMINATED,
 		tr("Unable to update or activate the product license."),
-		tr("Your license has been terminated on the license server. Please contact the Parallels support team for assistance."),
+		tr("Your license has been terminated on the license server. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4600,7 +4600,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_WRONG_CONFIRMATION_FORMAT,
 		tr("Unable to confirm the product license."),
-		tr("Make sure that you typed the confirmation ID correctly. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Make sure that you typed the confirmation ID correctly. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4608,7 +4608,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_WRONG_CONFIRMATION_MESSAGE,
 		tr("Unable to confirm the product license."),
-		tr("Make sure that you typed the confirmation ID correctly. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Make sure that you typed the confirmation ID correctly. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4616,7 +4616,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_WRONG_CONFIRMATION_SIGNATURE,
 		tr("Unable to confirm the product license."),
-		tr("Make sure that you typed the confirmation ID correctly. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Make sure that you typed the confirmation ID correctly. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4624,7 +4624,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATE_WRONG_TYPE_OF_ACTIVE_LICENSE,
 		tr("Unable to confirm the product license."),
-		tr("The current license type does not support this operation. Please contact the Parallels support team for assistance."),
+		tr("The current license type does not support this operation. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4632,7 +4632,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATE_WRONG_TYPE_OF_ACTIVE_LICENSE,
 		tr("Unable to deactivate the product."),
-		tr("The current license type does not support this operation. Please contact the Parallels support team for assistance."),
+		tr("The current license type does not support this operation. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4672,7 +4672,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_SERVER_ERROR,
 		tr("Unable to confirm the product license."),
-		tr("Please try again later or contact the Parallels support team for assistance."),
+		tr("Please try again later or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4680,7 +4680,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_SERVER_ERROR,
 		tr("Unable to deactivate the product."),
-		tr("Please try again later or contact the Parallels support team for assistance."),
+		tr("Please try again later or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4688,7 +4688,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_SERVER_ACTIVATION_ID_IS_INVALID,
 		tr("Unable to confirm the product license."),
-		tr("Make sure that you typed the activation ID correctly. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Make sure that you typed the activation ID correctly. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4696,7 +4696,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_SERVER_ACTIVATION_ID_IS_INVALID,
 		tr("Unable to deactivate the product."),
-		tr("Please contact the Parallels support team for assistance or deactivate the product license manually. For details, see <a href=\"http://kb.parallels.com/en/115133\">http://kb.parallels.com/en/115133</a>."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance or deactivate the product license manually."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4704,7 +4704,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_SERVER_KEY_IS_INVALID,
 		tr("Unable to confirm the product license."),
-		tr("There's a problem with your product activation key. Please contact the Parallels support team for assistance."),
+		tr("There's a problem with your product activation key. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4712,7 +4712,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_SERVER_KEY_IS_INVALID,
 		tr("Unable to deactivate the product."),
-		tr("There's a problem with your product activation key. Please contact the Parallels support team for assistance."),
+		tr("There's a problem with your product activation key. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4720,7 +4720,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_SERVER_KEY_IS_BLACKLISTED,
 		tr("Unable to confirm the product license."),
-		tr("Your product activation key was blacklisted. Please contact the Parallels support team for assistance."),
+		tr("Your product activation key was blacklisted. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4728,7 +4728,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_SERVER_KEY_IS_BLACKLISTED,
 		tr("Unable to deactivate the product."),
-		tr("Your product activation key was blacklisted. Please contact the Parallels support team for assistance."),
+		tr("Your product activation key was blacklisted. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4736,7 +4736,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_SERVER_HWIDS_AMOUNT_REACHED,
 		tr("Unable to confirm the product license."),
-		tr("You have reached the maximum number of activations available for your activation key (<a href=\"http://www.parallels.com/eula\">http://www.parallels.com/eula</a>). Please purchase a new product license."),
+		tr("You have reached the maximum number of activations available for your activation key. Please purchase a new product license."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4744,7 +4744,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_WRONG_SERVER_RESPONSE,
 		tr("Unable to confirm the product license."),
-		tr("The operation failed due to a connection problem. Please try again later or contact the Parallels support team for assistance."),
+		tr("The operation failed due to a connection problem. Please try again later or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4752,7 +4752,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_WRONG_SERVER_RESPONSE,
 		tr("Unable to deactivate the product."),
-		tr("The operation failed due to a connection problem. Please try again later. If the problem persists, contact the Parallels support team for assistance or deactivate the product license manually. For details, see <a href=\"http://kb.parallels.com/en/115133\">http://kb.parallels.com/en/115133</a>."),
+		tr("The operation failed due to a connection problem. Please try again later. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance or deactivate the product license manually."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4760,7 +4760,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_UNABLE_TO_SEND_REQUEST,
 		tr("Unable to confirm the product license."),
-		tr("Unable to send the confirmation request. Please try again later or contact the Parallels support team for assistance."),
+		tr("Unable to send the confirmation request. Please try again later or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4768,7 +4768,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_UNABLE_TO_SEND_REQUEST,
 		tr("Unable to deactivate the product."),
-		tr("Unable to send the deactivation request. Please try again later. If the problem persists, contact the Parallels support team for assistance or deactivate the product license manually. For details, see <a href=\"http://kb.parallels.com/en/115133\">http://kb.parallels.com/en/115133</a>."),
+		tr("Unable to send the deactivation request. Please try again later. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance or deactivate the product license manually."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4776,7 +4776,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_HTTP_REQUEST_FAILED,
 		tr("Unable to confirm the product license."),
-		tr("The operation failed due to a connection problem. Please try again later or contact the Parallels support team for assistance."),
+		tr("The operation failed due to a connection problem. Please try again later or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4784,7 +4784,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_HTTP_REQUEST_FAILED,
 		tr("Unable to deactivate the product."),
-		tr("The operation failed due to a connection problem. Please try again later. If the problem persists, contact the Parallels support team for assistance or deactivate the product license manually. For details, see <a href=\"http://kb.parallels.com/en/115133\">http://kb.parallels.com/en/115133</a>."),
+		tr("The operation failed due to a connection problem. Please try again later. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance or deactivate the product license manually."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4792,7 +4792,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_OLD_HWID_NOT_FOUND,
 		tr("Unable to deactivate the product."),
-		tr("Your product activation key is not registered on the activation server. Please contact the Parallels support team for assistance."),
+		tr("Your product activation key is not registered on the activation server. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4800,7 +4800,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_COMMON_SERVER_ERROR,
 		tr("Unable to confirm the product license."),
-		tr("Please try again later or contact the Parallels support team for assistance."),
+		tr("Please try again later or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4808,7 +4808,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DEACTIVATION_COMMON_SERVER_ERROR,
 		tr("Unable to deactivate the product."),
-		tr("Please try again later. If the problem persists, contact the Parallels support team for assistance or deactivate the product license manually. For details, see <a href=\"http://kb.parallels.com/en/115133\">http://kb.parallels.com/en/115133</a>."),
+		tr("Please try again later. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance or deactivate the product license manually."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4816,7 +4816,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNABLE_TO_SEND_REQUEST,
 		tr("Unable to send HTTP request to server."),
-		tr("Please try again or contact the Parallels support team for assistance."),
+		tr("Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4824,7 +4824,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_HTTP_REQUEST_FAILED,
 		tr("Server returns failed HTTP response."),
-		tr("Please try again or contact the Parallels support team for assistance."),
+		tr("Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4832,7 +4832,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_ACTIVATION_UPDATE_FAILED,
 		tr("Unable to confirm the product license."),
-		tr("The confirmation could not be registered. Please try again later or contact the Parallels support team for assistance."),
+		tr("The confirmation could not be registered. Please try again later or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4848,7 +4848,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_DEFERRED_LICENSE_NOT_FOUND,
 		tr("License operation failed."),
-		tr("Unable to find the pre-cached license. Please contact the Parallels support team for assistance."),
+		tr("Unable to find the pre-cached license. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -4856,7 +4856,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_INVALID_FORMAT,
 		tr("The virtual disk is invalid."),
-		tr("'%1' is not a valid Parallels virtual disk. Specify another disk."),
+		tr("'%1' is not a valid " PRODUCT_NAME_SHORT " virtual disk. Specify another disk."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5039,15 +5039,15 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_TOOLS_INSTALL_OTHER,
-		tr("Virtuozzo Tools are a set of useful add-in features, like automatic mouse capture and dynamic screen resolution adjustment."),
-		tr("To install Virtuozzo Tools, click Continue, make sure your CD/DVD drive is mounted, go to the CD/DVD root directory, and install the available drivers."),
+		tr(PRODUCT_NAME_SHORT " Tools are a set of useful add-in features, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, click Continue, make sure your CD/DVD drive is mounted, go to the CD/DVD root directory, and install the available drivers."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_WARN_COMPACT_THROUGH_COPY,
-		tr("Parallels Compressor will temporarily use the free space on the physical hard disk."),
+		tr(PRODUCT_NAME_SHORT " Compressor will temporarily use the free space on the physical hard disk."),
 		tr("Compressing the disk will be performed with the help of the free space on your physical hard disk. Make sure that you do not occupy this space with extra files during the compression."),
 		true,
 		PMT_WARNING
@@ -5056,7 +5056,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_WARN_COMPACT_DESTRUCTIVE,
 		tr("It is highly recommended to make a backup of the virtual machine before the operation."),
-		tr("Compressing the disk is sensitive to power failures and similar events. If you have a backup copy of your virtual machine, click OK. Otherwise, click Cancel, shut down the virtual machine, create a backup copy, then run Parallels Compressor again."),
+		tr("Compressing the disk is sensitive to power failures and similar events. If you have a backup copy of your virtual machine, click OK. Otherwise, click Cancel, shut down the virtual machine, create a backup copy, then run " PRODUCT_NAME_SHORT " Compressor again."),
 		true,
 		PMT_QUESTION
 		);
@@ -5112,7 +5112,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_RESTART_GUEST_FAILED,
 		tr("Unable to restart the virtual machine operating system."),
-		tr("Check that Virtuozzo Tools are installed in the virtual machine. As an alternative, you can restart the operating system from within the virtual machine."),
+		tr("Check that " PRODUCT_NAME_SHORT " Tools are installed in the virtual machine. As an alternative, you can restart the operating system from within the virtual machine."),
 		true,
 		PMT_WARNING
 		);
@@ -5191,8 +5191,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISP_CONFIG_WRITE_ERR,
-		tr("Unable to update the Parallels Service configuration."),
-		tr("The Parallels Service configuration file is not found or corrupt. Reinstall @PRL_PRODUCT_NAME and try again."),
+		tr("Unable to update the Dispatcher Service configuration."),
+		tr("The Dispatcher Service configuration file is not found or corrupt. Reinstall @PRL_PRODUCT_NAME and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5328,7 +5328,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_EXEC_GUEST_TOOL_NOT_AVAILABLE,
 		tr("Unable to open new session in this virtual machine."),
-		tr("Make sure the latest version of Virtuozzo Tools is installed in this virtual machine and it has finished booting."),
+		tr("Make sure the latest version of " PRODUCT_NAME_SHORT " Tools is installed in this virtual machine and it has finished booting."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5399,7 +5399,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_FAILED_TO_START_VNC_SERVER,
 		tr("Unable to start the VNC server in this virtual machine."),
-		tr("Change the VNC server port number in the virtual machine configuration and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Change the VNC server port number in the virtual machine configuration and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5431,7 +5431,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_WARN_FAILED_TO_START_VNC_SERVER,
 		tr("Unable to start the VNC server in this virtual machine."),
-		tr("Change the VNC server port number in the virtual machine configuration and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Change the VNC server port number in the virtual machine configuration and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		true,
 		PMT_WARNING
 		);
@@ -5504,8 +5504,8 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_SUSPEND_VM_VTD_WITH_UNSUPPORTED_SHUTDOWN_TOOL,
 		tr("This virtual machine cannot be suspended."),
 		tr("This virtual machine uses a directly assigned PCIe device and can be"\
-			" suspended only after you install a native driver for this device or update Parallels"\
-			" Tools. Please install the native driver or reinstall Virtuozzo Tools and try again."),
+			" suspended only after you install a native driver for this device or update " PRODUCT_NAME_SHORT \
+			" Tools. Please install the native driver or reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5514,9 +5514,9 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_CREATE_SNAPSHOT_VM_VTD_WITH_UNSUPPORTED_SHUTDOWN_TOOL,
 		tr("Unable to create a snapshot of this virtual machine."),
 		tr("This virtual machine uses a directly assigned PCIe device. You need"\
-			" to install a native driver for this device or update Virtuozzo Tools before you can"\
+			" to install a native driver for this device or update " PRODUCT_NAME_SHORT " Tools before you can"\
 			" create a snapshot of this virtual machine. Please install the native driver or"\
-			" reinstall Virtuozzo Tools and try again."),
+			" reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5525,8 +5525,8 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_REVERT_SNAPSHOT_VM_VTD_WITH_UNSUPPORTED_SHUTDOWN_TOOL,
 		tr("Unable to revert to the snapshot."),
 		tr("This virtual machine uses a directly assigned PCIe device. You need"\
-			" to install a native driver for this device or update Virtuozzo Tools before you can"\
-			" revert to this snapshot. Please install the native driver or reinstall Virtuozzo Tools"\
+			" to install a native driver for this device or update " PRODUCT_NAME_SHORT " Tools before you can"\
+			" revert to this snapshot. Please install the native driver or reinstall " PRODUCT_NAME_SHORT " Tools"\
 			" and try again."),
 		false,
 		PMT_CRITICAL
@@ -5535,7 +5535,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SUSPEND_VM_VTD_WITH_UNLOADED_SHUTDOWN_TOOL,
 		tr("Unable to suspend the virtual machine."),
-		tr("This virtual machine can be suspended only after Virtuozzo Tools are loaded because it uses a directly assigned PCIe device. Wait until the guest operating system is fully loaded and try again."),
+		tr("This virtual machine can be suspended only after " PRODUCT_NAME_SHORT " Tools are loaded because it uses a directly assigned PCIe device. Wait until the guest operating system is fully loaded and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5543,7 +5543,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CREATE_SNAPSHOT_VM_VTD_WITH_UNLOADED_SHUTDOWN_TOOL,
 		tr("Unable to create a snapshot of this virtual machine."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and Virtuozzo Tools to be loaded before you can create a snapshot of it."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and " PRODUCT_NAME_SHORT " Tools to be loaded before you can create a snapshot of it."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5551,7 +5551,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_REVERT_SNAPSHOT_VM_VTD_WITH_UNLOADED_SHUTDOWN_TOOL,
 		tr("Unable to revert to the snapshot."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and Virtuozzo Tools to be loaded before you can revert to this snapshot."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to wait for the guest operating system and " PRODUCT_NAME_SHORT " Tools to be loaded before you can revert to this snapshot."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5559,7 +5559,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SUSPEND_VM_VTD_WITH_OUTDATED_SHUTDOWN_TOOL,
 		tr("This virtual machine cannot be suspended."),
-		tr("This virtual machine uses a directly assigned PCIe device and can be suspended only after Virtuozzo Tools are updated. Please reinstall Virtuozzo Tools and try again."),
+		tr("This virtual machine uses a directly assigned PCIe device and can be suspended only after " PRODUCT_NAME_SHORT " Tools are updated. Please reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5567,7 +5567,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CREATE_SNAPSHOT_VM_VTD_WITH_OUTDATED_SHUTDOWN_TOOL,
 		tr("Unable to create a snapshot of this virtual machine."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to update Virtuozzo Tools before you can create a snapshot of it. Please reinstall Virtuozzo Tools and try again."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to update " PRODUCT_NAME_SHORT " Tools before you can create a snapshot of it. Please reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5575,7 +5575,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_REVERT_SNAPSHOT_VM_VTD_WITH_OUTDATED_SHUTDOWN_TOOL,
 		tr("Unable to revert to the snapshot."),
-		tr("This virtual machine uses a directly assigned PCIe device. You need to update Virtuozzo Tools before you can revert to this snapshot. Please reinstall Virtuozzo Tools and try again."),
+		tr("This virtual machine uses a directly assigned PCIe device. You need to update " PRODUCT_NAME_SHORT " Tools before you can revert to this snapshot. Please reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5629,7 +5629,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VTD_HOOK_INSTALLATION_FAILED,
 		tr("Unable to install the pass-through drivers for the directly assigned PCIe devices."),
-		tr("The installation of the pass-through drivers failed. Restart the computer and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("The installation of the pass-through drivers failed. Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5637,7 +5637,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VTD_HOOK_REVERT_FAILED,
 		tr("Unable to remove the pass-through drivers for the directly assigned PCIe devices."),
-		tr("The pass-through drivers could not be removed. Restart the computer and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("The pass-through drivers could not be removed. Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5653,7 +5653,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_VTD_INSTALLATION_FAILED_FOR_DEVICES,
 		tr("Unable to install the pass-through drivers."),
-		tr("Pass-through drivers for the following PCIe devices have not been installed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Pass-through drivers for the following PCIe devices have not been installed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -5670,7 +5670,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_VTD_REVERT_FAILED_FOR_DEVICES,
 		tr("Unable to remove the pass-through drivers."),
-		tr("The pass-through drivers for the following PCIe devices could not be removed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("The pass-through drivers for the following PCIe devices could not be removed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -5776,7 +5776,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_VM_HW_UPGRADE_INIT_TIMEOUT,
 		tr("You need to log in to Windows to complete upgrading your virtual machine."),
-		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit Parallels <a href=\"%1\">website</a>."),
+		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>."),
 		false,
 		PMT_WARNING
 		);
@@ -5784,7 +5784,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_VM_HW_UPGRADE_VMXPHY_INIT_TIMEOUT,
 		tr("You need to log in to Windows to complete configuring your virtual machine."),
-		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit Parallels <a href=\"%1\">website</a>."),
+		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>."),
 		false,
 		PMT_WARNING
 		);
@@ -5808,7 +5808,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_NO_TEMPLATE_SUPPORT_IN_PLAYER_MODE,
 		tr("You are trying to open a virtual machine template."),
-		tr("Virtual machine templates cannot be used in Parallels Desktop Express."),
+		tr("Virtual machine templates cannot be used in " PRODUCT_NAME_SHORT " Desktop Express."),
 		false,
 		PMT_INFORMATION
 		);
@@ -5824,7 +5824,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_LEAVE_AUTO_HW_UPGRADING,
 		tr("Are you sure you want to switch to the manual upgrade mode for the \"%1\" virtual machine?"),
-		tr("It is highly recommended to continue upgrading the virtual machine in automatic mode. For more information on upgrading your virtual machines, <a href=\"%1\">visit the upgrade page</a> on the Parallels website." ),
+		tr("It is highly recommended to continue upgrading the virtual machine in automatic mode. For more information on upgrading your virtual machines, <a href=\"%1\">visit the upgrade page</a> on the " PRODUCT_NAME_SHORT " website." ),
 		false,
 		PMT_QUESTION
 		);
@@ -5832,7 +5832,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_LEAVE_AUTO_HW_UPGRADING_VMXPHY,
 		tr("Are you sure you want to switch to the manual configuration mode for the \"%1\" virtual machine?"),
-		tr("It is highly recommended to continue configuring the virtual machine in automatic mode. For more information on configuring your virtual machines, <a href=\"%1\">visit the configuration page</a> on the Parallels website." ),
+		tr("It is highly recommended to continue configuring the virtual machine in automatic mode. For more information on configuring your virtual machines, <a href=\"%1\">visit the configuration page</a> on the " PRODUCT_NAME_SHORT " website." ),
 		false,
 		PMT_QUESTION
 		);
@@ -5920,7 +5920,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_TOOL_PROCESS_ERROR,
 		tr("Unable to process the disk."),
-		tr("The disk is corrupt or dynamic or has snapshots. Delete the snapshots and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("The disk is corrupt or dynamic or has snapshots. Delete the snapshots and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5944,7 +5944,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_COMPACT_HARD_DISK_FAILED,
 		tr("Could not compress the Hard Disk %1 used by the \"%2\" virtual machine."),
-		tr("The disk is corrupt or has snapshots. Delete the snapshots and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("The disk is corrupt or has snapshots. Delete the snapshots and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -5968,8 +5968,8 @@ void PrlErrStringsStorage::Initialize()
 	// Copied error for fast resolving problem (bug #446007)
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_COMPACT_NOT_SUPPORTED_GUEST_OS,
-		tr("Parallels Compressor cannot be started."),
-		tr("Your virtual machine's operating system is \"%1\". This operating system is not supported by Parallels Compressor."),
+		tr(PRODUCT_NAME_SHORT " Compressor cannot be started."),
+		tr("Your virtual machine's operating system is \"%1\". This operating system is not supported by " PRODUCT_NAME_SHORT " Compressor."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6064,8 +6064,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PREPARE_FOR_HIBERNATE_VM_WITHOUT_TOOLS,
-		tr("Some of the running virtual machines cannot be put into the Stand By mode because they have no Virtuozzo Tools installed."),
-		tr("Install Virtuozzo Tools in the running virtual machines or shut them down."),
+		tr("Some of the running virtual machines cannot be put into the Stand By mode because they have no " PRODUCT_NAME_SHORT " Tools installed."),
+		tr("Install " PRODUCT_NAME_SHORT " Tools in the running virtual machines or shut them down."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6073,7 +6073,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PREPARE_FOR_HIBERNATE_VM_CANNOT_STAND_BY,
 		tr("Some of the running virtual machines cannot be put into the Stand By mode."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6208,7 +6208,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_HTTP_AUTH_REQUIRED,
 		tr("Your report could not be sent because the server you are trying to connect requires authentication."),
-		tr("Wait a while and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Wait a while and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6216,7 +6216,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_HTTP_PROBLEM_REPORT_SEND_FAILURE,
 		tr("Your problem report could not be sent."),
-		tr("Wait a while and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Wait a while and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6232,7 +6232,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_SNAPSHOT_NOT_FOUND,
 		tr("Unable to find the snapshot ID."),
-		tr("The snapshot may have been deleted. If this problem persists, contact the Parallels support team for assistance."),
+		tr("The snapshot may have been deleted. If this problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6240,7 +6240,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_SNAPSHOTS_CONFIG_NOT_FOUND,
 		tr("Unable to open the snapshot configuration file."),
-		tr("If this problem persists, contact the Parallels support team for assistance."),
+		tr("If this problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6272,7 +6272,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_COMMAND_SUPPORTED_ONLY_AT_SERVER_MODE,
 		tr("The operation is not supported."),
-		tr("The requested operation is exclusive for the Virtuozzo product."),
+		tr("The requested operation is exclusive for the " PRODUCT_NAME_SHORT " product."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6280,7 +6280,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_LOGIN_BY_MISMATCH_CLIENT_MODE,
 		tr("Unable to log you in."),
-		tr("The mode of your application does not match the mode of Parallels Virtualization Service."),
+		tr("The mode of your application does not match the mode of Dispatcher Virtualization Service."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6288,7 +6288,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_NOT_SENTILLION_CLIENT,
-		tr("Unathorized access to Parallels Virtualization Service."),
+		tr("Unathorized access to Dispatcher Virtualization Service."),
 		tr("To perform this action, please use the GUI application designed for this service."),
 		false,
 		PMT_CRITICAL
@@ -6494,8 +6494,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_GET_HDD_IMG_NOT_OPEN,
-		tr("The disk you specified cannot be used with Parallels virtual machines."),
-		tr("Only virtual hard disks created in @PRL_PRODUCT_NAME or Parallels Transporter are supported."),
+		tr("The disk you specified cannot be used with " PRODUCT_NAME_SHORT " virtual machines."),
+		tr("Only virtual hard disks created in @PRL_PRODUCT_NAME or " PRODUCT_NAME_SHORT " Transporter are supported."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6584,14 +6584,14 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CHANGESID_GUEST_TOOLS_NOT_AVAILABLE,
 		tr("Could not change the Windows security identifier."),
-		tr("Virtuozzo Tools might be not installed in the source virtual machine."),
+		tr(PRODUCT_NAME_SHORT " Tools might be not installed in the source virtual machine."),
 		false,
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CHANGESID_NOT_AVAILABLE,
 		tr("Could not change the Windows security identifier."),
-		tr("Make sure the latest version of Virtuozzo Tools is installed in this virtual machine."),
+		tr("Make sure the latest version of " PRODUCT_NAME_SHORT " Tools is installed in this virtual machine."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6745,7 +6745,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_BACKUP_CMD_FAILED,
 		tr("The backup command for the \"%1\" virtual machine failed with code %2."),
-		tr("Try to back up the virtual machine again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Try to back up the virtual machine again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6753,7 +6753,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_RESTORE_CMD_FAILED,
 		tr("The restore command for the \"%1\" virtual machine failed with code %2."),
-		tr("Try to restore the virtual machine again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Try to restore the virtual machine again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6761,7 +6761,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_WARN_BACKUP_GUEST_SYNCHRONIZATION_FAILED,
 		tr("Unable to synchronize the virtual machine's file system."),
-		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that Virtuozzo Tools are properly installed in the virtual machine."),
+		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that " PRODUCT_NAME_SHORT " Tools are properly installed in the virtual machine."),
 		false,
 		PMT_WARNING
 		);
@@ -6833,21 +6833,21 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_PROCESS_IS_NOT_STARTED_BY_WRONG_HOST_SW,
 		tr("Unable to start the virtual machine due to software incompatibility."),
-		tr("The problem may be caused by an antivirus, firewall, network traffic analyzer, or similar software installed on your computer. For additional information, please see the following knowledgebase article: <a href=\"http://kb.parallels.com/en/6748\">http://kb.parallels.com/en/6748</a>."),
+		tr("The problem may be caused by an antivirus, firewall, network traffic analyzer, or similar software installed on your computer."),
 		false,
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_CPUUNITS_NOT_SUPPORTED,
 		tr("Unable to configure the cpuunits parameter."),
-		tr("It is a Virtuozzo-specific parameter and can be configured on Virtuozzo hardware nodes only."),
+		tr("It is a " PRODUCT_NAME_SHORT "-specific parameter and can be configured on " PRODUCT_NAME_SHORT " hardware nodes only."),
 		false,
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_CPULIMIT_NOT_SUPPORTED,
 		tr("Unable to configure the cpulimit parameter."),
-		tr("It is a Virtuozzo-specific parameter and can be configured on Virtuozzo hardware nodes only."),
+		tr("It is a " PRODUCT_NAME_SHORT "-specific parameter and can be configured on " PRODUCT_NAME_SHORT " hardware nodes only."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6855,7 +6855,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_IOPRIO_NOT_SUPPORTED,
 		tr("Unable to configure the I/O priority."),
-		tr("This parameter can be configured only on servers running the Parallels Virtuozzo Containers software."),
+		tr("This parameter can be configured only on servers running the " PRODUCT_NAME_SHORT " Containers software."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6869,24 +6869,24 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_AUTOSTART,
-		tr("For this change to take effect, you must set the Parallels Desktop service to automatically start on Mac startup. Select anyway?"),
-		tr("To do so, choose <b>Start Parallels Desktop as a service</b> in General Preferences."),
+		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
+		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_AUTOSTOP,
-		tr("For this change to take effect, you must set the Parallels Desktop service to automatically start on Mac startup. Select anyway?"),
-		tr("To do so, choose <b>Start Parallels Desktop as a service</b> in General Preferences."),
+		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
+		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
 		true,
 		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_KEEP_VM_ALIVE_ON_GUI_EXIT,
-		tr("For this change to take effect, you must set the Parallels Desktop service to automatically start on Mac startup. Select anyway?"),
-		tr("To do so, choose <b>Start Parallels Desktop as a service</b> in General Preferences."),
+		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
+		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
 		true,
 		PMT_QUESTION
 		);
@@ -6917,7 +6917,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_IOPSLIMIT_NOT_SUPPORTED,
 		tr("Unable to configure the IOPS limit parameter."),
-		tr("It is a Virtuozzo-specific parameter and can be configured on Virtuozzo hardware nodes only."),
+		tr("It is a " PRODUCT_NAME_SHORT "-specific parameter and can be configured on " PRODUCT_NAME_SHORT " hardware nodes only."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6925,7 +6925,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_IOLIMIT_NOT_SUPPORTED,
 		tr("Unable to configure the I/O limit."),
-		tr("This parameter can be configured only on servers running the Parallels Virtuozzo Containers software."),
+		tr("This parameter can be configured only on servers running the " PRODUCT_NAME_SHORT " Containers software."),
 		false,
 		PMT_CRITICAL
 		);
@@ -6941,7 +6941,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VZ_API_NOT_INITIALIZED,
 		tr("Unable to perform the operation."),
-		tr("The Virtuozzo Containers functionality is not loaded."),
+		tr("The " PRODUCT_NAME_SHORT " Containers functionality is not loaded."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7071,7 +7071,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PCMOVER_NOT_INSTALLED,
 		tr("Some components required for migration are missing."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7079,7 +7079,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PCMOVER_VAN_FILE_PREPARE_FAILED,
 		tr("Could not prepare the migration file."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7087,7 +7087,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PCMOVER_MIGRATE_FAILED,
 		tr("Migration failed."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7095,7 +7095,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMHELPER_CREATEVM_FAILED,
 		tr("Could not create the virtual machine."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7197,7 +7197,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_FEATURE_RESTRICTED,
-		tr("This feature is not available in this edition of Parallels Desktop."),
+		tr("This feature is not available in this edition of " PRODUCT_NAME_SHORT " Desktop."),
 		tr("This edition contains only features that are necessary for working with Windows XP applications and files on Windows 7."),
 		false,
 		PMT_INFORMATION );
@@ -7236,7 +7236,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_POST_REPORT,
 		tr("Unable to send the problem report."),
-		tr("Please check your network settings and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please check your network settings and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7257,7 +7257,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_INVALID_CONFIG,
 		tr("The appliance description file contains errors and cannot be used."),
-		tr("Repair the file or contact the Parallels support team for assistance."),
+		tr("Repair the file or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7348,7 +7348,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_CANNOT_EXTRACT_VM,
 		tr("Unable to extract the virtual machine from the downloaded archive \"%1\"."),
-		tr("Please try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Please try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7364,7 +7364,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_CANNOT_CHANGE_OWNER,
 		tr("Could not change the owner to the current user for appliance files folder \"%1\"."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7372,7 +7372,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_NAME_NOT_MATCH_VM_BUNDLE,
 		tr("The appliance name %1 does not match the name of the virtual machine bundle."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7380,7 +7380,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_CANNOT_MOVE_VM_BUNDLE,
 		tr("Could not move the virtual machine bundle from the source folder \"%1\" to the destination folder \"%2\"."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7396,7 +7396,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_CANNOT_CALCULATE_MD5,
 		tr("Unable to read the appliance file \"%1\"."),
-		tr("Try to download the appliance again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Try to download the appliance again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7404,7 +7404,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_MISMATCH_MD5,
 		tr("The appliance file is corrupt."),
-		tr("Try to download the appliance again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Try to download the appliance again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7429,7 +7429,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONNECT_TO_DISPATCHER_ITERATIVELY,
 		tr("Unable to establish a connection between \"%1\" and \"%2\"."),
-		tr("The network connection between these servers may be broken, or one of the servers may be down. Contact your Virtuozzo administrator for assistance."),
+		tr("The network connection between these servers may be broken, or one of the servers may be down. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7437,7 +7437,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_RESOLVE_HOSTNAME,
 		tr("The \"%2\" server is unable to resolve the hostname assigned to the \"%1\" server."),
-		tr("Please check your DNS server settings or contact the Parallels server administrator for assistance."),
+		tr("Please check your DNS server settings or contact the " PRODUCT_NAME_SHORT " server administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7461,7 +7461,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_USER_NO_AUTH_TO_SAVE_BACKUP_FILES,
 		tr("You do not have the permission to save the backup files in the folder \"%1\"."),
-		tr("Please select another location or contact the Virtuozzo administrator for assistance."),
+		tr("Please select another location or contact the " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7501,7 +7501,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_COULDNT_TO_CREATE_HDD_LINKED_CLONE,
 		tr("Could not create a linked clone of the virtual hard disk."),
-		tr("Could not create a linked clone of virtual hard disk \"%1\" due to an internal error. Please contact the Parallels support team for assistance."),
+		tr("Could not create a linked clone of virtual hard disk \"%1\" due to an internal error. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7533,7 +7533,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONV_HD_DISK_TOOL_NOT_STARTED,
 		tr("The Disk Tool utility %1 could not be started."),
-		tr("Please try to reinstall Parallels Desktop, or contact the Parallels support team for assistance."),
+		tr("Please try to reinstall " PRODUCT_NAME_SHORT " Desktop, or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7549,7 +7549,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONVERT_3RD_PARTY_VM_FAILED,
 		tr("Failed to convert the virtual machine."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7630,7 +7630,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_VM_REBOOT_REQUIRED_BY_PRL_TOOLS,
 		tr("The virtual machine needs to be restarted. Do you want to restart it now?"),
-		tr("Restart is required to apply the changes made to the Virtuozzo Tools settings."),
+		tr("Restart is required to apply the changes made to the " PRODUCT_NAME_SHORT " Tools settings."),
 		false,
 		PMT_QUESTION
 		);
@@ -7718,7 +7718,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_GET_SIZE_FAILED,
 		tr("Unable to retrieve the virtual hard disk size."),
-		tr("Please try again later. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Please try again later. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7742,7 +7742,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PROXY_WRONG_PROTOCOL_VERSION,
 		tr("Unable to connect to the proxy server \"%1\"."),
-		tr("The version of your Parallels software <i>%2</i> is incompatible with the version of Parallels Proxy Server <i>%3</i>. Synchronize the Virtuozzo software and try again."),
+		tr("The version of your " PRODUCT_NAME_SHORT " software <i>%2</i> is incompatible with the version of " PRODUCT_NAME_SHORT " Proxy Server <i>%3</i>. Synchronize the " PRODUCT_NAME_SHORT " software and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7758,7 +7758,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PROXY_PEER_NOT_FOUND,
 		tr("Unable to connect to the proxy server \"%1\"."),
-		tr("Parallels Proxy Server can't find peer host for proxying."),
+		tr(PRODUCT_NAME_SHORT " Proxy Server can't find peer host for proxying."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7766,7 +7766,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISPLAY_ENCODINGS_NOT_SUPPORTED,
 		tr("Runtime display encodings are not supported."),
-		tr("Please upgrade your Parallels software."),
+		tr("Please upgrade your " PRODUCT_NAME_SHORT " software."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7774,7 +7774,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_AUDIO_ENCODINGS_NOT_SUPPORTED,
 		tr("Runtime audio encodings are not supported."),
-		tr("Please upgrade your Parallels software."),
+		tr("Please upgrade your " PRODUCT_NAME_SHORT " software."),
 		false,
 		PMT_CRITICAL
 		);
@@ -7798,7 +7798,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_READ_FAILED,
 		tr("An error occurred while reading the file." ),
-		tr("Click Report to see details or send a report to Parallels." ),
+		tr("Click Report to see details or send a report to " PRODUCT_NAME_SHORT "." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -7806,7 +7806,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_WRITE_FAILED,
 		tr("An error occurred while writing the file." ),
-		tr("Click Report to see details or send a report to Parallels." ),
+		tr("Click Report to see details or send a report to " PRODUCT_NAME_SHORT "." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -7814,7 +7814,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_OPEN_FAILED,
 		tr("An error occurred while opening the file." ),
-		tr("Click Report to see details or send a report to Parallels." ),
+		tr("Click Report to see details or send a report to " PRODUCT_NAME_SHORT "." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -7887,7 +7887,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_GPT_MBR_NOT_EQUAL,
 		tr("Unable to perform the operation."),
-		tr("A disk partition error is detected on your Boot Camp partition. To learn how to fix this error, please see <a href=\"http://kb.parallels.com/en/11244\">here</a>."),
+		tr("A disk partition error is detected on your Boot Camp partition."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8128,7 +8128,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_WRN_HOST_IP_ADDRESS,
-		tr("<nobr>The specified Parallels adapter IP address is invalid.</nobr>"),
+		tr("<nobr>The specified " PRODUCT_NAME_SHORT " adapter IP address is invalid.</nobr>"),
 		tr(""),
 		false,
 		PMT_WARNING
@@ -8233,7 +8233,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_WRN_INVALID_VM_BUNDLE,
 		tr("The specified bundle is invalid."),
-		tr("The bundle does not contain a valid Parallels virtual machine."),
+		tr("The bundle does not contain a valid " PRODUCT_NAME_SHORT " virtual machine."),
 		false,
 		PMT_WARNING
 		);
@@ -8241,7 +8241,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_WRN_INVALID_VM_FOLDER,
 		tr("The specified folder is invalid."),
-		tr("The folder does not contain a valid Parallels virtual machine."),
+		tr("The folder does not contain a valid " PRODUCT_NAME_SHORT " virtual machine."),
 		false,
 		PMT_WARNING
 		);
@@ -8249,7 +8249,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_CANT_START_UTW7_AGENT,
 		tr("Could not launch Upgrade Agent."),
-		tr("If you have an installation CD for Upgrade to Windows 7, insert it into your optical drive to launch the Upgrade Agent. Otherwise, please contact the Parallels support team for assistance."),
+		tr("If you have an installation CD for Upgrade to Windows 7, insert it into your optical drive to launch the Upgrade Agent. Otherwise, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8328,7 +8328,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UPDATER_NO_CONNECTION,
-		tr("Unable to connect to the Parallels Update site."),
+		tr("Unable to connect to the " PRODUCT_NAME_SHORT " Update site."),
 		tr("Please check your Internet connection and try again."),
 		false,
 		PMT_CRITICAL
@@ -8337,7 +8337,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_NO_INSTALLER_FILE,
 		tr("The Installer file is not found."),
-		tr("Contact the Parallels support team for assistance."),
+		tr("Contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8345,7 +8345,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UPDATE_INSTALL_FAILED,
 		tr("Unable to install the update."),
-		tr("Contact the Parallels support team for assistance."),
+		tr("Contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8353,7 +8353,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UPDATE_UNABLE_TO_CHECK,
 		tr("Unable to check for updates"),
-		tr("Contact the Parallels support team for assistance."),
+		tr("Contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8369,7 +8369,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_CONVERT_SUCCEDED,
 		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Virtuozzo Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>Parallels website</a>."),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>" PRODUCT_NAME_SHORT " website</a>."),
 		false,
 		PMT_QUESTION
 		);
@@ -8377,7 +8377,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_CONVERT_3RDPARTY_VM_SUCCEDED,
 		tr("You need to start the virtual machine to complete the conversion. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Virtuozzo Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac."),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac."),
 		false,
 		PMT_QUESTION
 		);
@@ -8393,7 +8393,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_CONVERT_AND_BACKUP_SUCCEDED,
 		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and Virtuozzo Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>Parallels website</a>.<br/><br/>Note: Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>" PRODUCT_NAME_SHORT " website</a>.<br/><br/>Note: Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
 		false,
 		PMT_QUESTION
 		);
@@ -8426,7 +8426,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_NO_BACKUP,
 		tr("Are you sure you want to continue without backing up the virtual machine?"),
-		tr("If you click Yes, you will not be able to use this virtual machine with older versions of Parallels Desktop."),
+		tr("If you click Yes, you will not be able to use this virtual machine with older versions of " PRODUCT_NAME_SHORT " Desktop."),
 		false,
 		PMT_QUESTION
 		);
@@ -8450,7 +8450,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_IMPORT_BOOTCAMP_VM_SUCCEDED_AND_START,
 		tr("You need to start the virtual machine to complete the import. Do you want to start it now?"),
-		tr("When you start the virtual machine, its virtual hardware and Virtuozzo Tools will be upgraded. The upgrade may take some time to complete, so please do not restart or switch off your Mac during this time. To learn how to reclaim the unused space, click <a href=\"http://kb.parallels.com/en/8703\">here</a>"),
+		tr("When you start the virtual machine, its virtual hardware and " PRODUCT_NAME_SHORT " Tools will be upgraded. The upgrade may take some time to complete, so please do not restart or switch off your Mac during this time."),
 		false,
 		PMT_QUESTION
 		);
@@ -8459,7 +8459,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_IMPORT_BOOTCAMP_VM_COMPLETE,
 		tr("The import was successful. A virtual machine was created. Do you want to start it now?"),
-		tr("To learn how to reclaim the unused space, click <a href=\"http://kb.parallels.com/en/8703\">here</a>"),
+		tr("Try to reclaim the unused space."),
 		false,
 		PMT_QUESTION
 		);
@@ -8483,7 +8483,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_CANNOTSTART_SMOFF,
 		tr("Unable to switch to Coherence."),
-		tr("The Parallels mouse synchronization service is not started. Reinstall Virtuozzo Tools and try again."),
+		tr("The " PRODUCT_NAME_SHORT " mouse synchronization service is not started. Reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
 		false,
 		PMT_INFORMATION
 		);
@@ -8499,7 +8499,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_GUEST,
 		tr("Unable to switch to Coherence."),
-		tr("The virtual machine display configuration could not be applied. Please try again or contact the Parallels support team for assistance."),
+		tr("The virtual machine display configuration could not be applied. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_INFORMATION
 		);
@@ -8507,7 +8507,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_HOST,
 		tr("Unable to switch to Coherence."),
-		tr("The information about your display configuration could not be retrieved. Please try again or contact the Parallels support team for assistance."),
+		tr("The information about your display configuration could not be retrieved. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_INFORMATION
 		);
@@ -8515,7 +8515,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_STOPPED_DSPCFGERROR_GUEST,
 		tr("Coherence mode has been turned off."),
-		tr("The virtual machine display configuration could not be applied. Please try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("The virtual machine display configuration could not be applied. Please try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_INFORMATION
 		);
@@ -8531,7 +8531,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_CANNOTSTART_SERVERBUSY,
 		tr("An error occurred while switching to Coherence. Please try again."),
-		tr("If the problem persists, please contact the Parallels support team for assistance."),
+		tr("If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_INFORMATION
 		);
@@ -8539,7 +8539,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_CANNOTSTART_LINUX_3D,
 		tr("Unable to switch to Coherence."),
-		tr("Please disable Linux desktop visual effects. For details, please see <a href=\"http://kb.parallels.com/en/111510\">http://kb.parallels.com/en/111510</a>."),
+		tr("Please disable Linux desktop visual effects."),
 		false,
 		PMT_INFORMATION
 		);
@@ -8547,7 +8547,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_COHERENCE_STOPPED_LINUX_3D,
 		tr("Coherence mode has been turned off."),
-		tr("Coherence is not available when Linux desktop visual effects are enabled. For details, please see <a href=\"http://kb.parallels.com/en/111510\">http://kb.parallels.com/en/111510</a>."),
+		tr("Coherence is not available when Linux desktop visual effects are enabled."),
 		false,
 		PMT_INFORMATION
 		);
@@ -8621,7 +8621,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_REGISTRATION_PRODUCT_ERR_GENERAL_ERROR,
 		tr("Unable to register @PRL_PRODUCT_NAME."),
-		tr("Check your Internet connection and try again. If the problem persists, follow <a href=\"http://www.parallels.com/en/account/\">this link</a> to register your copy of @PRL_PRODUCT_NAME."),
+		tr("Check your Internet connection and try again."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8629,7 +8629,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_REGISTRATION_PRODUCT_ERR_INVALID_KEY_ERROR,
 		tr("Unable to register @PRL_PRODUCT_NAME."),
-		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please contact the Parallels support team for assistance."),
+		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8653,7 +8653,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK_NO_SUPPORT_CODE,
-		tr("Your copy of @PRL_PRODUCT_NAME has been successfully registered, but the support code could not be created at the moment. To get the support code later, please log in to your account on the Parallels website and browse to <a href=\"%1\">the support options area</a>."),
+		tr("Your copy of @PRL_PRODUCT_NAME has been successfully registered, but the support code could not be created at the moment. To get the support code later, please log in to your account on the " PRODUCT_NAME_SHORT " website and browse to <a href=\"%1\">the support options area</a>."),
 		tr(""),
 		false,
 		PMT_INFORMATION
@@ -8669,7 +8669,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED_NO_SUPPORT_CODE,
-		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account, but the support code could not be created. To get the support code, please log in to your account on the <a href=\"%1\">Parallels website</a> and browse to the registered products area."),
+		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account, but the support code could not be created. To get the support code, please log in to your account on the <a href=\"%1\">" PRODUCT_NAME_SHORT " website</a> and browse to the registered products area."),
 		tr(""),
 		false,
 		PMT_INFORMATION
@@ -8750,7 +8750,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_INSTALLING_HOST_ANTIVIRUS_FAILED,
 		tr("%1 for Mac could not be installed."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8766,7 +8766,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UNINSTALLING_HOST_ANTIVIRUS_FAILED,
 		tr("%1 for Mac could not be uninstalled."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8782,7 +8782,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_NATIVE_LOOK_ERR_TRANSFER_FAILED,
 		tr("Could not transfer the MacLook installation file to the virtual machine."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8790,7 +8790,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_NATIVE_LOOK_ERR_INSTALL_FAILED,
 		tr("MacLook could not be installed."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8798,7 +8798,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERRNATIVE_LOOK_ERR_CANNOT_START_INSTALL,
 		tr("MacLook installation could not be started."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8831,7 +8831,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_WINDOWS7_LOOK_ERR_TRANSFER_FAILED,
 		tr("Could not transfer the Windows 7 look installation file to the virtual machine."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8839,7 +8839,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_WINDOWS7_LOOK_ERR_INSTALL_FAILED,
 		tr("Windows 7 look could not be installed."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8847,7 +8847,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_WINDOWS7_LOOK_ERR_CANNOT_START_INSTALL,
 		tr("Windows 7 look installation could not be started."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8879,7 +8879,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_CHECK_LICENSE_ERR_GENERAL_ERROR,
 		tr("An unexpected error has occurred."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8951,7 +8951,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PPC_UNABLE_TO_CONNECT,
 		tr("Unable to connect to the @PRL_PRODUCT_NAME server."),
-		tr("Please check your network connection and try again. If the problem persists, contact the <a href=\"%1\">Parallels support</a> team for assistance."),
+		tr("Please check your network connection and try again. If the problem persists, contact the <a href=\"%1\">" PRODUCT_NAME_SHORT " support</a> team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -8991,7 +8991,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_WRN_UNABLE_OPEN_FEEDBACK_DLG,
 		tr("Unable to open the feedback dialog."),
-		tr("Please check your network connection and try again. If the problem persists, contact the Parallels support team."),
+		tr("Please check your network connection and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
 		false,
 		PMT_WARNING
 		);
@@ -8999,7 +8999,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_WRN_UNABLE_REQUEST_TRIAL_KEY,
 		tr("Unable to request a trial key."),
-		tr("Please check your network connection and try again. If the problem persists, contact the Parallels support team."),
+		tr("Please check your network connection and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
 		false,
 		PMT_WARNING
 		);
@@ -9038,8 +9038,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_DONT_USE_DIRECT_CONECTION,
-		tr("Are you sure you don't want to use direct connection for speeding up Parallels Mobile when possible?"),
-		tr("If you disable the direct connection option, Parallels Mobile will not be able to connect directly to your computer."),
+		tr("Are you sure you don't want to use direct connection for speeding up " PRODUCT_NAME_SHORT " Mobile when possible?"),
+		tr("If you disable the direct connection option, " PRODUCT_NAME_SHORT " Mobile will not be able to connect directly to your computer."),
 		false,
 		PMT_QUESTION
 		);
@@ -9047,7 +9047,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_WRN_KEY_NOT_BE_AUTO_REGISTRED,
 		tr("The upgrade key could not be registered automatically."),
-		tr("You can register it by logging into your Parallels account at <a href=\"https://www.parallels.com/account/\">https://www.parallels.com/account</a> or by filling out the registration form that will appear the next time you open Parallels Desktop. In both cases, you should provide the email you used to register the previous version."),
+		tr("You can register it by logging into your " PRODUCT_NAME_SHORT " account."),
 		false,
 		PMT_WARNING
 		);
@@ -9086,7 +9086,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REG_INVALID_KEY,
-		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please follow the link to learn more: <a href=\"%1\">Parallels Knowledge Base</a>."),
+		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please follow the link to learn more: <a href=\"%1\">" PRODUCT_NAME_SHORT " Knowledge Base</a>."),
 		tr(""),
 		false,
 		PMT_INFORMATION
@@ -9118,7 +9118,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_REG_INVALID_USER,
-		tr("Your activation key for @PRL_PRODUCT_NAME is already registered by another user. Please contact the Parallels support team for assistance."),
+		tr("Your activation key for @PRL_PRODUCT_NAME is already registered by another user. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		tr(""),
 		false,
 		PMT_INFORMATION
@@ -9149,7 +9149,7 @@ void PrlErrStringsStorage::Initialize()
 		);
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_GUEST_SHARING,
-		tr("Parallels Desktop is going to enable sharing Windows disks with Mac OS X."),
+		tr(PRODUCT_NAME_SHORT " Desktop is going to enable sharing Windows disks with Mac OS X."),
 		tr("%1"),
 		false,
 		PMT_QUESTION
@@ -9278,7 +9278,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CT_MIGRATE_INTERNAL_ERROR,
 		tr("Failed to migrate the Container."),
-		tr("An internal error occurred when performing the operation. Try to migrate the Container again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("An internal error occurred when performing the operation. Try to migrate the Container again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9286,7 +9286,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_COPY_CT_TMPL_INTERNAL_ERROR,
 		tr("Failed to copy the Container template."),
-		tr("An internal error occurred when performing the operation. Try to migrate the template again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("An internal error occurred when performing the operation. Try to migrate the template again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9294,7 +9294,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_NET_VALID_FAILURE,
 		tr("The specified virtual network is invalid."),
-		tr("Make sure that the virtual network name is correct and try again. If the error persists, contact the Parallels support team for assistance."),
+		tr("Make sure that the virtual network name is correct and try again. If the error persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9310,7 +9310,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_NET_VALID_WRONG_HOST_IP_ADDR,
 		tr("The server IP address is invalid."),
-		tr("Make sure that the IP address assigned to the Parallels server adapter is correct and try again. If the error persists, contact the Parallels support team for assistance."),
+		tr("Make sure that the IP address assigned to the " PRODUCT_NAME_SHORT " server adapter is correct and try again. If the error persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9318,7 +9318,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_NET_VALID_WRONG_DHCP_IP_ADDR,
 		tr("The DHCP server IP address is invalid."),
-		tr("An internal error occurred when performing the operation. Please contact the Parallels support team for assistance."),
+		tr("An internal error occurred when performing the operation. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9509,7 +9509,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_MSG_START_32BIT_VM_ON_64BIT_HOST,
 		tr("The virtual machine process cannot be run in native mode due to the host OS problems."),
-		tr("The compatibility mode that may slow down the virtual machine performance will be used instead. For solution and additional information, please read the following knowledgebase article: <a href=\"http://kb.parallels.com/en/9643\">http://kb.parallels.com/en/9643</a>."),
+		tr("The compatibility mode that may slow down the virtual machine performance will be used instead."),
 		true,
 		PMT_WARNING
 		);
@@ -9565,7 +9565,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_WARM_MODE_NOT_SUPPORTED,
 		tr("Unable to migrate virtual machines that are running or paused."),
-		tr("An older version of Virtuozzo is installed on the target server. Only stopped virtual machines can be migrated to it."),
+		tr("An older version of " PRODUCT_NAME_SHORT " is installed on the target server. Only stopped virtual machines can be migrated to it."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9604,7 +9604,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_DOWNLOADING_APPLIANCE_DESCRIPTOR_FAILED,
-		tr("Unable to connect to the Parallels appliances server."),
+		tr("Unable to connect to the " PRODUCT_NAME_SHORT " appliances server."),
 		tr("Please check your network connection and try again."),
 		false,
 		PMT_CRITICAL
@@ -9613,7 +9613,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_OS_IMG_DWNLD_RETRY_ON_CHECKSUM_MISMATCH,
 		tr("The downloaded image might have been damaged during the operation."),
-		tr("Please try to download it again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_QUESTION
 		);
@@ -9629,7 +9629,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_OS_IMG_DWNLD_CLOSE_WINDOW,
 		tr("Continue downloading Windows in the background?"),
-		tr("If you stop the installation, your progress will be lost. You can restart the installation later by choosing File > New, clicking Install Windows 7 purchased from Parallels, and following the onscreen instructions."),
+		tr("If you stop the installation, your progress will be lost. You can restart the installation later by choosing File > New, clicking Install Windows 7 purchased from " PRODUCT_NAME_SHORT ", and following the onscreen instructions."),
 		false,
 		PMT_QUESTION
 		);
@@ -9644,16 +9644,16 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_WEB_STORE_UNEXPECTED,
-		tr("Cannot connect to the Parallels online store."),
-		tr("Please contact Parallels support team for assistance."),
+		tr("Cannot connect to the " PRODUCT_NAME_SHORT " online store."),
+		tr("Please contact " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_WEB_STORE_NO_CONNECTION,
-		tr("Cannot connect to the Parallels online store."),
-		tr("Please check your network connection and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Cannot connect to the " PRODUCT_NAME_SHORT " online store."),
+		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9661,7 +9661,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_WEB_STORE_NO_DATA,
 		tr("Unable to access the online store content."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9669,7 +9669,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_WEB_STORE_INVALID_DATA,
 		tr("Unable to access the online store content."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9677,7 +9677,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_OS_IMG_DWNLD_UNEXPECTED,
 		tr("Unable to download the operating system installation files."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9685,7 +9685,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_OS_IMG_DWNLD_INVALID_DESCRIPTOR,
 		tr("Unable to download the operating system installation files."),
-		tr("Download descriptor is invalid. Please contact the Parallels support team for assistance."),
+		tr("Download descriptor is invalid. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9693,7 +9693,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_OS_IMG_DWNLD_NO_CONNECTION,
 		tr("Unable to download the operating system installation files."),
-		tr("Please check your network connection and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9701,7 +9701,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_OS_IMG_DWNLD_SIZE_MISMATCH,
 		tr("Unable to download the operating system installation files."),
-		tr("Download size does not match the expected value. Please contact the Parallels support team for assistance."),
+		tr("Download size does not match the expected value. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9709,7 +9709,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_OS_IMG_DWNLD_CANNOT_SAVE,
 		tr("Unable to save the operating system installation file in %1."),
-		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9717,7 +9717,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_CREATE_SNAPSHOT_WITH_ENABLED_AUTOCOMPRESS,
 		tr("Are you sure you want to create a snapshot of %1?"),
-		tr("The virtual machine is set to compress periodically to free up unused space. Creating a snapshot will disable auto-compression. If you delete all snapshots later, you can re-enable auto-compression using the Optimization settings in the virtual machine configuration (Virtual Machine > Configure or Parallels icon > Configure)."),
+		tr("The virtual machine is set to compress periodically to free up unused space. Creating a snapshot will disable auto-compression. If you delete all snapshots later, you can re-enable auto-compression using the Optimization settings in the virtual machine configuration (Virtual Machine > Configure or " PRODUCT_NAME_SHORT " icon > Configure)."),
 		false,
 		PMT_QUESTION
 		);
@@ -9725,7 +9725,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_MIGRATE_PC_TRANSPORTER_INIT_FAILURE,
 		tr("Some of the components required for migration are missing."),
-		tr("Please reinstall @PRL_PRODUCT_NAME and try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Please reinstall @PRL_PRODUCT_NAME and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9733,7 +9733,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_MIGRATE_PC_FAILED_TO_REGISTER_VM,
 		tr("Unable to register the migrated virtual machine."),
-		tr("Your Windows applications were successfully transferred to a virtual machine on your Mac, but the virtual machine was not registered in @PRL_PRODUCT_NAME. Please locate the virtual machine file and open it with @PRL_PRODUCT_NAME. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Your Windows applications were successfully transferred to a virtual machine on your Mac, but the virtual machine was not registered in @PRL_PRODUCT_NAME. Please locate the virtual machine file and open it with @PRL_PRODUCT_NAME. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_WARNING
 		);
@@ -9885,7 +9885,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_DWNLD_RETRY,
 		tr("Unable to download the %1 file."),
-		tr("Please try to download it again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_QUESTION
 		);
@@ -9893,7 +9893,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_DWNLD_RETRY_ON_CANNOT_SAVE,
 		tr("Unable to save the file in %1."),
-		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_QUESTION
 		);
@@ -9901,7 +9901,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_DWNLD_RETRY_ON_NO_CONNECTION,
 		tr("Unable to download the %1 file."),
-		tr("Please check your network connection and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_QUESTION
 		);
@@ -9909,7 +9909,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_DWNLD_RETRY_ON_CHECKSUM_MISMATCH,
 		tr("The downloaded file might have been damaged during the operation."),
-		tr("Please try to download it again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_QUESTION
 		);
@@ -9957,7 +9957,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_FIREWALL_MAY_BLOCK_REMOTE_MANAGE,
 		tr("@PRL_PRODUCT_NAME will be allowed to communicate through firewall."),
-		tr("If you are unable to connect to @PRL_PRODUCT_NAME remotely, please open the firewall settings and make sure that @PRL_PRODUCT_NAME is allowed to accept incoming connections and port %1 is not blocked by the firewall. For details, see <a href=\"http://kb.parallels.com/112747\">http://kb.parallels.com/112747</a>."),
+		tr("If you are unable to connect to @PRL_PRODUCT_NAME remotely, please open the firewall settings and make sure that @PRL_PRODUCT_NAME is allowed to accept incoming connections and port %1 is not blocked by the firewall."),
 		true,
 		PMT_INFORMATION
 		);
@@ -9965,15 +9965,15 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_APP_COULD_NOT_BE_STARTED,
 		tr("@PRL_PRODUCT_NAME could not be started."),
-		tr("Please try again. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Please try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UNABLE_TO_START_SERVICES,
-		tr("Unable to start Parallels services."),
-		tr("Please relaunch @PRL_PRODUCT_NAME. If the problem persists, contact the Parallels support team for assistance."),
+		tr("Unable to start " PRODUCT_NAME_SHORT " services."),
+		tr("Please relaunch @PRL_PRODUCT_NAME. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -9981,7 +9981,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_STAND_BY_VM_WITH_UNSUPPORTED_SHUTDOWN_TOOL,
 		tr("Unable to suspend the virtual machine."),
-		tr("The drivers for some of your virtual machine devices (video, audio, etc.) are not installed in the guest operating system. That's why the virtual machine cannot be suspended. Install all the missing drivers and try again. If the problem persists, please contact the Parallels support team."),
+		tr("The drivers for some of your virtual machine devices (video, audio, etc.) are not installed in the guest operating system. That's why the virtual machine cannot be suspended. Install all the missing drivers and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10069,7 +10069,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_ANTIVIRUS_DOWNLOAD_UNEXPECTED,
 		tr("Unable to download the antivirus software installation files."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10077,7 +10077,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_ANTIVIRUS_DOWNLOAD_NO_CONNECTION,
 		tr("Unable to download the antivirus software installation files."),
-		tr("Please check your network connection and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10092,7 +10092,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_ANTIVIRUS_IMG_DWNLD_UNEXPECTED,
 		tr("Unable to download the antivirus software installation files."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10100,7 +10100,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_ANTIVIRUS_IMG_DWNLD_INVALID_DESCRIPTOR,
 		tr("Unable to download the antivirus software installation files."),
-		tr("Download descriptor is invalid. Please contact the Parallels support team for assistance."),
+		tr("Download descriptor is invalid. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10108,7 +10108,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_ANTIVIRUS_IMG_DWNLD_NO_CONNECTION,
 		tr("Unable to download the antivirus software installation files."),
-		tr("Please check your network connection and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10116,7 +10116,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_ANTIVIRUS_IMG_DWNLD_SIZE_MISMATCH,
 		tr("Unable to download the antivirus software installation files."),
-		tr("Download size does not match the expected value. Please contact the Parallels support team for assistance."),
+		tr("Download size does not match the expected value. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10124,7 +10124,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_ANTIVIRUS_IMG_DWNLD_CANNOT_SAVE,
 		tr("Unable to save the antivirus software installation files in %1."),
-		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10172,7 +10172,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UPGRADE_REQUEST_NETWORK_ERROR,
 		tr("Unable to process the upgrade request."),
-		tr("Please check your network connection and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10180,7 +10180,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UPGRADE_REQUEST_UNEXPECTED,
 		tr("Unable to process the upgrade request."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10188,7 +10188,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_UPGRADE_REQUEST_INVALID_RESPONSE,
 		tr("Unable to process the upgrade request."),
-		tr("Please contact the Parallels support team for assistance."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10196,7 +10196,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_INFO_USB3_DRIVERS_REQUIRED_WIN,
 		tr("\"%1\" may not have USB 3.0 drivers installed."),
-		tr("To use USB 3.0 devices with this virtual machine, please download the USB 3.0 driver from <a href=\"http://www.parallels.com/support/xhc-drivers\">here</a> and install it in Windows."),
+		tr("To use USB 3.0 devices with this virtual machine, please download the USB 3.0 driver and install it in Windows."),
 		true,
 		PMT_INFORMATION
 		);
@@ -10236,8 +10236,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_HYPERVISOR_HVT_ENABLED_ON_HYPERSWITCH,
 		tr("An incompatible virtualization application is running."),
-		tr(	"Don't use your Parallels virtual machines until you quit that application. "
-			"For details, see <a href=\"http://kb.parallels.com/en/115966\">http://kb.parallels.com/en/115966</a>."),
+		tr("Don't use your " PRODUCT_NAME_SHORT " virtual machines until you quit that application."),
 		false,
 		PMT_WARNING
 		);
@@ -10268,7 +10267,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_PAX_AGENT_NO_CONNECTION,
-		tr( "Unable to download the Parallels Access agent." ),
+		tr( "Unable to download the " PRODUCT_NAME_SHORT " Access agent." ),
 		tr( "Please check your Internet connection and try again." ),
 		false,
 		PMT_CRITICAL
@@ -10276,7 +10275,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_PAX_AGENT_DOWNLOAD_ERROR,
-		tr( "Parallels Access agent could not be downloaded." ),
+		tr( PRODUCT_NAME_SHORT " Access agent could not be downloaded." ),
 		tr( "Please try to download it again." ),
 		false,
 		PMT_CRITICAL
@@ -10308,8 +10307,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_ERR_PAX_AGENT_INSTALL_FAILURE,
-		tr( "Parallels Access agent could not be installed." ),
-		tr( "Please contact the Parallels support team for assistance." ),
+		tr( PRODUCT_NAME_SHORT " Access agent could not be installed." ),
+		tr( "Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10332,8 +10331,8 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_QUESTION_PAX_ENABLE_REMOTE_ACCESS,
-		tr( "Do you want to install Parallels Access and work with your Mac and Windows applications from your iPad?" ),
-		tr( "The installation won't affect your work, as it's performed in the background. Parallels Access can also be installed at a later time using <b>Preferences</b> > <b>Access</b>." ),
+		tr( "Do you want to install " PRODUCT_NAME_SHORT " Access and work with your Mac and Windows applications from your iPad?" ),
+		tr( "The installation won't affect your work, as it's performed in the background. " PRODUCT_NAME_SHORT " Access can also be installed at a later time using <b>Preferences</b> > <b>Access</b>." ),
 		false,
 		PMT_QUESTION
 		);
@@ -10381,7 +10380,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_NOT_CONNECTED_TO_PROXY_MANAGER,
 		tr("Unable to perform the operation."),
-		tr("This action cannot be performed because Parallels Service is not connected to the Parallels Access server."),
+		tr("This action cannot be performed because " PRODUCT_NAME_SHORT " Service is not connected to the " PRODUCT_NAME_SHORT " Access server."),
 		false,
 		PMT_CRITICAL);
 
@@ -10464,7 +10463,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_APP_BUNDLE_INIT_SOUND_DRIVER_LOCKED,
 		tr( "Other software running on your computer is preventing @PRL_PRODUCT_NAME from being upgraded" ),
-		tr( "Please try again. If the problem persists, contact the Parallels support team." ),
+		tr( "Please try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10472,7 +10471,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNABLE_TO_SETUP_HEADLESS_MODE,
 		tr("Unable to select this option."),
-		tr("Restart your Mac and try again. If the problem persists, please contact the Parallels support team for assistance."),
+		tr("Restart your Mac and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL);
 
@@ -10486,7 +10485,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_PAX_HOST_LIMIT_WAS_EXCEEDED,
 		tr( "No more computers can be added." ),
-		tr( "You have reached your limit of computers registered with Parallels Access. If you need more, you can create a business account at <a href=\"%1\">account.parallels.com</a>." ),
+		tr( "You have reached your limit of computers registered with " PRODUCT_NAME_SHORT " Access."),
 		false,
 		PMT_CRITICAL
 		);
@@ -10509,7 +10508,7 @@ void PrlErrStringsStorage::Initialize()
 
 	REGISTER_ERROR_STRING(
 		GUI_INFO_FEEDBACK_SUCCESS,
-		tr( "Thank you. Your feedback has been successfully sent to Parallels." ),
+		tr( "Thank you. Your feedback has been successfully sent to " PRODUCT_NAME_SHORT "." ),
 		tr( "" ),
 		false,
 		PMT_INFORMATION
@@ -10622,7 +10621,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONN_UNABLE_TO_ESTABLISH_TRUSTED_CHANNEL,
 		tr( "Unable to establish a secure connection to the remote computer." ),
-		tr( "Please try again. If the problem persists, contact the Parallels support team." ),
+		tr( "Please try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10630,7 +10629,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONN_CLIENT_CERTIFICATE_INVALID,
 		tr( "Unable to connect to the remote computer." ),
-		tr( "The client-side certificate is invalid. Please contact the Parallels support team for assistance." ),
+		tr( "The client-side certificate is invalid. Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10638,7 +10637,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONN_CLIENT_CERTIFICATE_EXPIRED,
 		tr( "Unable to connect to the remote computer." ),
-		tr( "The client-side certificate has expired. Please contact the Parallels support team for assistance." ),
+		tr( "The client-side certificate has expired. Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10646,7 +10645,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONN_CLIENT_CERTIFICATE_REVOKED,
 		tr( "Unable to connect to the remote computer." ),
-		tr( "The client-side certificate has been revoked. Please contact the Parallels support team for assistance." ),
+		tr( "The client-side certificate has been revoked. Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10654,7 +10653,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONN_SERVER_CERTIFICATE_INVALID,
 		tr( "Unable to connect to the remote computer." ),
-		tr( "The server-side certificate is invalid. Please contact the Parallels support team for assistance." ),
+		tr( "The server-side certificate is invalid. Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10662,7 +10661,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONN_SERVER_CERTIFICATE_EXPIRED,
 		tr( "Unable to connect to the remote computer." ),
-		tr( "The server-side certificate has expired. Please contact the Parallels support team for assistance." ),
+		tr( "The server-side certificate has expired. Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
 		false,
 		PMT_CRITICAL
 		);
@@ -10670,7 +10669,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CONN_SERVER_CERTIFICATE_REVOKED,
 		tr( "Unable to connect to the remote computer." ),
-		tr( "The server-side certificate has been revoked. Please contact the Parallels support team for assistance." ),
+		tr( "The server-side certificate has been revoked. Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
 		false,
 		PMT_CRITICAL
 		);

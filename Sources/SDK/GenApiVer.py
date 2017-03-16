@@ -42,7 +42,7 @@ GLOBAL_TEMPLATE = """\
 
 %(ver_macroses)s
 
-/* Current Parallels API version. */
+/* Current API version. */
 %(curr_ver_macro)s
 
 /* Current major version of SDK library */

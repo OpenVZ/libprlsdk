@@ -299,7 +299,7 @@ QString GetUserSideBaseDir()
 }
 
 //Input format: Product name x.x.x (y.y.y)
-//Example: Parallels Cloud Server 6.0.6 (1992)
+//Example: %NAME% Server 6.0.6 (1992)
 QString extractIsoVersion(const QString & sInput)
 {
 	QRegExp x("(\\d+(\\.\\d+)+).+\\((\\d+)\\)");
@@ -576,32 +576,6 @@ QString getHostInfo()
 	return ( QString() );
 }
 
-QString loadAppSwitcherPackagesInfo()
-{
-	QString productName = QString( PRL_PRODUCT_NAME_DESKTOP_WL ) + PRL_STATISTICS_KEY_POSTFIX;
-	QString vendorName = PRL_VENDOR;
-	QString appName = ParallelsDirs::getAppSwitcherAppName();
-
-	QSettings settings( vendorName, productName );
-	settings.beginGroup( appName + QString("/") + PRL_KEY_CEP_STATISTICS_APP_SWITCHER_PACKAGES );
-
-	QStringList lstKeys = settings.allKeys();
-	QString strResult;
-	QString strValue;
-	foreach( QString strKey, lstKeys )
-	{
-		strValue = settings.value( strKey ).toString();
-		if( strKey.isEmpty() || strValue.isEmpty() )
-			continue;
-		strResult += strKey + ":";
-		strResult += strValue;
-		strResult += "\n";
-	}
-
-	settings.endGroup();
-	return strResult;
-}
-
 /**
  * Simple helper - searches for newest panic log at specified folder
  * @param target folder path
@@ -641,12 +615,6 @@ QString GetLastPanicLogPath( const QString &sTargetPath )
 
 	//Return last entry - it should be newest panic log actually
 	return _panic_logs.values().back();
-}
-
-QString getGuiCepQSettingsOrganizationName()
-{
-	PRL_ASSERT( !qApp->organizationName().compare( PRL_VENDOR ) );
-	return QSettings().organizationName();
 }
 
 bool getAppVersionFromLineOfMacCrashDump(

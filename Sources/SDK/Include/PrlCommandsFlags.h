@@ -262,7 +262,7 @@ typedef enum _PRL_COMPACT_MODE
 typedef PRL_COMPACT_MODE* PRL_COMPACT_MODE_PTR;
 
 /**
-* Parallels Tools Utility command flags
+* Guest Tools Utility command flags
 */
 typedef enum _PRL_TOOLS_UTILITY_COMMAND_FLAG
 {
@@ -273,7 +273,7 @@ typedef enum _PRL_TOOLS_UTILITY_COMMAND_FLAG
 PRL_TOOLS_UTILITY_COMMAND_FLAG;
 typedef PRL_TOOLS_UTILITY_COMMAND_FLAG* PRL_TOOLS_UTILITY_COMMAND_FLAG_PTR;
 
-/** Parallels problem report flags functionality:
+/** problem report flags functionality:
  *  PPRF_ADD_CLIENT_PART : specifies to add client information to problem report
  *  PPRF_ADD_SERVER_PART : specifies to add server information to problem report
  *  PPRF_DO_NOT_CREATE_HOST_SCREENSHOT : specifies do not create and add host screenshot to generating problem report
@@ -286,7 +286,7 @@ typedef enum _PRL_PROBLEM_REPORT_FLAGS
 } PRL_PROBLEM_REPORT_FLAGS;
 typedef PRL_PROBLEM_REPORT_FLAGS* PRL_PROBLEM_REPORT_FLAGS_PTR;
 
-/** Parallels API initialization flags:
+/** API initialization flags:
 	* PrlApi_InitEx command flags set
 	*  PAIF_USE_GRAPHIC_MODE : specifies create SDK session which has access to the graphic mode
  */

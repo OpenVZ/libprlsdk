@@ -619,7 +619,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlStatIface_GetOutPkgsCount</name>
-		<shortcomment>Return the total number of packets the network interface has sent since the Parallels Service was last started.</shortcomment>
+		<shortcomment>Return the total number of packets the network interface has sent since the Dispatcher Service was last started.</shortcomment>
 		<longcomment>
 			<line_1>@return: An integer containing the result.</line_1>
 			<line_2/>
@@ -647,7 +647,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlStatIface_GetInPkgsCount</name>
-		<shortcomment>Return the total number of packets the network interface has received since the Parallels Service was last started.</shortcomment>
+		<shortcomment>Return the total number of packets the network interface has received since the Dispatcher Service was last started.</shortcomment>
 		<longcomment>
 			<line_1>@return: An integer containing the result.</line_1>
 			<line_2/>
@@ -985,7 +985,7 @@
 		<name>ApiHelper</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides common Parallels Python API system methods.</line_1>
+			<line_1>Provides common Python API system methods.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1041,7 +1041,7 @@
 		<name>Debug</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides common Parallels Python API debug methods.</line_1>
+			<line_1>Provides common Python API debug methods.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1069,7 +1069,7 @@
 		<name>Disk</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for creating, configuring, and maintaining Parallels virtual disks.</line_1>
+			<line_1>Provides methods for creating, configuring, and maintaining virtual disks.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1097,7 +1097,7 @@
 		<name>DispConfig</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for managing Parallels Service preferences.</line_1>
+			<line_1>Provides methods for managing Dispatcher Service preferences.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1489,7 +1489,7 @@
 		<name>Licence</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for obtaining the Parallels license information.</line_1>
+			<line_1>Provides methods for obtaining the license information.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1517,7 +1517,7 @@
 		<name>LoginResponse</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Contains information returned as a result of a successful Parallels Service login operation.</line_1>
+			<line_1>Contains information returned as a result of a successful Dispatcher Service login operation.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1545,7 +1545,7 @@
 		<name>NetService</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for obtaining the Parallels Service network status information.</line_1>
+			<line_1>Provides methods for obtaining the Dispatcher Service network status information.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1629,9 +1629,9 @@
 		<name>RunningTask</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>The RunningTask class is used to recover from a lost Parallels Service connection.</line_1>
+			<line_1>The RunningTask class is used to recover from a lost Dispatcher Service connection.</line_1>
 			<line_2>It allows to attach to an existing task that was started in the previous session and</line_2>
-			<line_3>is still running inside the Parallels Service.</line_3>
+			<line_3>is still running inside the Dispatcher Service.</line_3>
 			<line_4/>
 			<line_5/>
 			<line_6/>
@@ -1685,10 +1685,10 @@
 		<name>Server</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>The main class providing methods for accessing Parallels Service.</line_1>
-			<line_2>Most of the operations in the Parallels Python API begin with obtaining an instance of this class.</line_2>
-			<line_3>The class is used to establish a connection with the Parallels Service. Its other methods can be used</line_3>
-			<line_4>to perform various tasks related to the Parallels Service itself, higher level virtual machine tasks,</line_4>
+			<line_1>The main class providing methods for accessing Dispatcher Service.</line_1>
+			<line_2>Most of the operations in the Python API begin with obtaining an instance of this class.</line_2>
+			<line_3>The class is used to establish a connection with the Dispatcher Service. Its other methods can be used</line_3>
+			<line_4>to perform various tasks related to the Dispatcher Service itself, higher level virtual machine tasks,</line_4>
 			<line_5>such as obtaining the virtual machine list or creating a virtual machine, and many others.</line_5>
 			<line_6/>
 			<line_7/>
@@ -1741,7 +1741,7 @@
 		<name>ServerInfo</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for obtaining the Parallels Service information.</line_1>
+			<line_1>Provides methods for obtaining the Dispatcher Service information.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1853,7 +1853,7 @@
 		<name>UserInfo</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for obtaining information about the specified Parallels Service user.</line_1>
+			<line_1>Provides methods for obtaining information about the specified Dispatcher Service user.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -1881,7 +1881,7 @@
 		<name>VirtualNet</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for managing Parallels virtual networks.</line_1>
+			<line_1>Provides methods for managing virtual networks.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -2217,7 +2217,7 @@
 		<name>VmToolsInfo</name>
 		<shortcomment/>
 		<longcomment>
-			<line_1>Provides methods for determining whether the Parallels Tools package is installed in a virtual</line_1>
+			<line_1>Provides methods for determining whether the Tools package is installed in a virtual</line_1>
 			<line_2>machine and for obtaining its status and version information.</line_2>
 			<line_3/>
 			<line_4/>
@@ -2719,7 +2719,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlApi_GetAppMode</name>
-		<shortcomment>Return the Parallels API application mode. </shortcomment>
+		<shortcomment>Return the API application mode. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -2747,7 +2747,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlApi_GetCrashDumpsPath</name>
-		<shortcomment>Return the name and path of the directory where Parallels crash dumps are stored. </shortcomment>
+		<shortcomment>Return the name and path of the directory where crash dumps are stored. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -3055,7 +3055,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlApi_GetVersion</name>
-		<shortcomment>Return the Parallels API version number. </shortcomment>
+		<shortcomment>Return the API version number. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -3083,7 +3083,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlApi_Init</name>
-		<shortcomment>Initialize the Parallels API library. </shortcomment>
+		<shortcomment>Initialize the API library. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -3111,7 +3111,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlApi_InitCrashHandler</name>
-		<shortcomment>Initiate the standard Parallels crash dump handler. </shortcomment>
+		<shortcomment>Initiate the standard crash dump handler. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -3139,7 +3139,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlApi_InitEx</name>
-		<shortcomment>Initialize the Parallels API library (extended version).</shortcomment>
+		<shortcomment>Initialize the API library (extended version).</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -3251,7 +3251,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlApi_SendProblemReport</name>
-		<shortcomment>Send a problem report to the Parallels support server.</shortcomment>
+		<shortcomment>Send a problem report to the support server.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -4343,7 +4343,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_CanChangeDefaultSettings</name>
-		<shortcomment>Determine if new users have the right to modify Parallels Service preferences.</shortcomment>
+		<shortcomment>Determine if new users have the right to modify Dispatcher Service preferences.</shortcomment>
 		<longcomment>
 			<line_1>@return: Boolean. True indicates that new users can modify preferences. False indicates otherwise.</line_1>
 			<line_2/>
@@ -4511,7 +4511,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_GetDefaultVNCHostName</name>
-		<shortcomment>Return the default VNC host name for the Parallels Service.</shortcomment>
+		<shortcomment>Return the default VNC host name for the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1>@return: A string containing the VNC host name.</line_1>
 			<line_2/>
@@ -4539,7 +4539,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_GetMaxReservMemLimit</name>
-		<shortcomment>Return the maximum amount of memory that can be reserved for Parallels Service operation.</shortcomment>
+		<shortcomment>Return the maximum amount of memory that can be reserved for Dispatcher Service operation.</shortcomment>
 		<longcomment>
 			<line_1>@return: Integer. The memory size, in megabytes.</line_1>
 			<line_2/>
@@ -4595,7 +4595,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_GetMinReservMemLimit</name>
-		<shortcomment>Return the minimum amount of physical memory that must be reserved for Parallels Service operation.</shortcomment>
+		<shortcomment>Return the minimum amount of physical memory that must be reserved for Dispatcher Service operation.</shortcomment>
 		<longcomment>
 			<line_1>@return: Integer. The memory size in megabytes.</line_1>
 			<line_2/>
@@ -4623,7 +4623,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_GetMinSecurityLevel</name>
-		<shortcomment>Determine the lowest allowable security level that can be used to connect to the Parallels Service.</shortcomment>
+		<shortcomment>Determine the lowest allowable security level that can be used to connect to the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1>@return: One of the following constants:</line_1>
 			<line_2>PSL_LOW_SECURITY -- Plain TCP/IP (no encryption).</line_2>
@@ -4707,7 +4707,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_GetReservedMemLimit</name>
-		<shortcomment>Determine the amount of physical memory reserved for Parallels Service operation.</shortcomment>
+		<shortcomment>Determine the amount of physical memory reserved for Dispatcher Service operation.</shortcomment>
 		<longcomment>
 			<line_1>@return: Integer. The memory size in megabytes.</line_1>
 			<line_2/>
@@ -4763,7 +4763,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_IsAdjustMemAuto</name>
-		<shortcomment>Determine whether memory allocation for Parallels Service is performed automatically or manually.</shortcomment>
+		<shortcomment>Determine whether memory allocation for Dispatcher Service is performed automatically or manually.</shortcomment>
 		<longcomment>
 			<line_1>@return: Boolean. True -- automatic memory allocation. False --  manual allocation.</line_1>
 			<line_2/>
@@ -4875,7 +4875,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_SetAdjustMemAuto</name>
-		<shortcomment>Set the Parallels Service memory allocation mode (automatic or manual).</shortcomment>
+		<shortcomment>Set the Dispatcher Service memory allocation mode (automatic or manual).</shortcomment>
 		<longcomment>
 			<line_1>@param  bAdjustMemAuto: Boolean. Set to True for automatic mode. Set to False for manual mode.</line_1>
 			<line_2/>
@@ -4987,7 +4987,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_SetCanChangeDefaultSettings</name>
-		<shortcomment>Grant or deny a permission to new users to modify Parallels Service preferences.</shortcomment>
+		<shortcomment>Grant or deny a permission to new users to modify Dispatcher Service preferences.</shortcomment>
 		<longcomment>
 			<line_1>@param bDefaultChangeSettings: Boolean. Set to True to grant the permission. Set to False to deny it.</line_1>
 			<line_2/>
@@ -5127,7 +5127,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_SetMaxReservMemLimit</name>
-		<shortcomment>Set the upper limit of the memory size that can be reserved for Parallels Service operation.</shortcomment>
+		<shortcomment>Set the upper limit of the memory size that can be reserved for Dispatcher Service operation.</shortcomment>
 		<longcomment>
 			<line_1>@param nMemSize: Integer. The memory size in megabytes.</line_1>
 			<line_2/>
@@ -5183,7 +5183,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_SetMinReservMemLimit</name>
-		<shortcomment>Set the lower limit of the memory size that must be reserved for Parallels Service operation.</shortcomment>
+		<shortcomment>Set the lower limit of the memory size that must be reserved for Dispatcher Service operation.</shortcomment>
 		<longcomment>
 			<line_1>@param nMemSize: Integer. The memory size in megabytes.</line_1>
 			<line_2/>
@@ -5211,7 +5211,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_SetMinSecurityLevel</name>
-		<shortcomment>Set the lowest allowable security level that can be used to connect to the Parallels Service.</shortcomment>
+		<shortcomment>Set the lowest allowable security level that can be used to connect to the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1>@param nMinSecurityLevel: Security level to set. Can be one of the following constants:</line_1>
 			<line_2>PSL_LOW_SECURITY -- Plain TCP/IP (no encryption).</line_2>
@@ -5295,7 +5295,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlDispCfg_SetReservedMemLimit</name>
-		<shortcomment>Set the amount of memory that will be allocated for Parallels Service operation.</shortcomment>
+		<shortcomment>Set the amount of memory that will be allocated for Dispatcher Service operation.</shortcomment>
 		<longcomment>
 			<line_1>@param nMemSize: Integer. The memory size in megabytes.</line_1>
 			<line_2/>
@@ -6138,7 +6138,7 @@
 		<shortcomment>Determines whether the vitrual machine configuration is an older version.</shortcomment>
 		<longcomment>
 			<line_1>This method allows to determine whether the virtual machine was created with an older or the current version</line_1>
-			<line_2>of the Parallels virtualization product that you are using.</line_2>
+			<line_2>of the virtualization product that you are using.</line_2>
 			<line_3>@return: Boolean. True indicates that the virtual machine was created with </line_3>
 			<line_4>an older version of the product. False indicates that the virtual machine was created with the </line_4>
 			<line_5>version that you are running.</line_5>
@@ -7087,7 +7087,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlLoginResponse_GetProductVersion</name>
-		<shortcomment>Return the Parallels product version number.</shortcomment>
+		<shortcomment>Return the product version number.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -8179,7 +8179,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_AddVirtualNetwork</name>
-		<shortcomment>Add a new virtual network to the Parallels Service configuration.</shortcomment>
+		<shortcomment>Add a new virtual network to the Dispatcher Service configuration.</shortcomment>
 		<longcomment>
 			<line_1>@param  hVirtNet: An instance of the L{VirtualNet} class containing the vitual network information.</line_1>
 			<line_2>@param  nFlags: Reserved parameter.</line_2>
@@ -8207,7 +8207,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_AttachToLostTask</name>
-		<shortcomment>Obtain a handle to a running task after the connection to the Parallels Service was lost.</shortcomment>
+		<shortcomment>Obtain a handle to a running task after the connection to the Dispatcher Service was lost.</shortcomment>
 		<longcomment>
 			<line_1>@param  sTaskId: The ID of the task to attach to. The ID is obtained from the L{LoginResponse} object.</line_1>
 			<line_2/>
@@ -8235,11 +8235,11 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_CheckParallelsServerAlive</name>
-		<shortcomment>Determine if the Parallels Service on the specified host is running.</shortcomment>
+		<shortcomment>Determine if the Dispatcher Service on the specified host is running.</shortcomment>
 		<longcomment>
 			<line_1>@param timeout: The desired operation timeout (in milliseconds).</line_1>
-			<line_2>@param sServerHostname: The name of the host machine for which to get the Parallels Service status. </line_2>
-			<line_3>To get the status for the local Parallels Service, the parameter can be null or empty.</line_3>
+			<line_2>@param sServerHostname: The name of the host machine for which to get the Dispatcher Service status. </line_2>
+			<line_3>To get the status for the local Dispatcher Service, the parameter can be null or empty.</line_3>
 			<line_4/>
 			<line_5/>
 			<line_6/>
@@ -8263,10 +8263,10 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_CommonPrefsBeginEdit</name>
-		<shortcomment>Mark the beginning of the Parallels Service preferences modification operation.</shortcomment>
+		<shortcomment>Mark the beginning of the Dispatcher Service preferences modification operation.</shortcomment>
 		<longcomment>
 			<line_1>This method must be called before making any changes to the</line_1>
-			<line_2>Parallels Service common preferences through L{DispConfig}. When you are done making the</line_2>
+			<line_2>Dispatcher Service common preferences through L{DispConfig}. When you are done making the</line_2>
 			<line_3>changes, call L{Server.common_prefs_commit} to commit the changes.</line_3>
 			<line_4/>
 			<line_5/>
@@ -8291,9 +8291,9 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_CommonPrefsCommit</name>
-		<shortcomment>Commit the Parallels Server preferences changes.</shortcomment>
+		<shortcomment>Commit the Server preferences changes.</shortcomment>
 		<longcomment>
-			<line_1>@param  hDispCfg: A instance of L{DispConfig} contaning the Parallels Service preferences info.</line_1>
+			<line_1>@param  hDispCfg: A instance of L{DispConfig} contaning the Dispatcher Service preferences info.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -8436,11 +8436,11 @@
 			<line_1>@param  sVmUuid: The virtual machine UUID</line_1>
 			<line_2>@param sTargetHost: The name of the target host machine.</line_2>
 			<line_3>@param  nTargetPort: Port number on the target host.</line_3>
-			<line_4>@param  sTargetSessionId: The targt Parallels Service session ID.</line_4>
+			<line_4>@param  sTargetSessionId: The targt Dispatcher Service session ID.</line_4>
 			<line_5>@param  strDescription: Backup description.</line_5>
 			<line_6>@param backup_flags: Backup options.</line_6>
 			<line_7>@param  reserved_flags: Reserved backup flags.</line_7>
-			<line_8>@param force_operation: Ignore all possible questions from the Parallels Service (non-interactive mode).</line_8>
+			<line_8>@param force_operation: Ignore all possible questions from the Dispatcher Service (non-interactive mode).</line_8>
 			<line_9>@return: A L{Job} object.</line_9>
 			<line_10/>
 			<line_11/>
@@ -8459,7 +8459,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_DeleteVirtualNetwork</name>
-		<shortcomment>Remove an existing virtual network from the Parallels Service configuration. </shortcomment>
+		<shortcomment>Remove an existing virtual network from the Dispatcher Service configuration. </shortcomment>
 		<longcomment>
 			<line_1>@param  hVirtNet: An instance of L{VirtualNet} identifying the virtual network.</line_1>
 			<line_2>@param  nFlags: Reserved parameter.</line_2>
@@ -8744,10 +8744,10 @@
 			<line_1>@param sVmUuid: The target virtual machine UUID. Empty string gets the tree for all virtual machines.</line_1>
 			<line_2>@param  sTargetHost: The name of the target host machine.</line_2>
 			<line_3>@param  nTargetPort: Port number.</line_3>
-			<line_4>@param  sTargetSessionId: The target Parallels Service session ID.</line_4>
+			<line_4>@param  sTargetSessionId: The target Dispatcher Service session ID.</line_4>
 			<line_5>@param backup_flags: Backup options.</line_5>
 			<line_6>@param reserved_flags: Reserved flags parameter.</line_6>
-			<line_7>@param  force_operation: Ignore all questions from the Parallels Service (non-interactive mode).</line_7>
+			<line_7>@param  force_operation: Ignore all questions from the Dispatcher Service (non-interactive mode).</line_7>
 			<line_8>@return: A L{Job} object.</line_8>
 			<line_9>The backup tree data is obtained as an XML document from the L{Result} object.</line_9>
 			<line_10/>
@@ -8767,7 +8767,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_GetCommonPrefs</name>
-		<shortcomment>Obtain the L{DispConfig} object containing the specified Parallels Service preferences info. </shortcomment>
+		<shortcomment>Obtain the L{DispConfig} object containing the specified Dispatcher Service preferences info. </shortcomment>
 		<longcomment>
 			<line_1>@return: A L{Job} object.</line_1>
 			<line_2/>
@@ -8795,7 +8795,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_GetLicenseInfo</name>
-		<shortcomment>Obtain the L{License} object containing the Parallels license information. </shortcomment>
+		<shortcomment>Obtain the L{License} object containing the license information. </shortcomment>
 		<longcomment>
 			<line_1>@return: A L{Job} object.</line_1>
 			<line_2/>
@@ -8823,7 +8823,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_GetNetServiceStatus</name>
-		<shortcomment>Obtain the L{NetService} object containing the Parallels network service status information.</shortcomment>
+		<shortcomment>Obtain the L{NetService} object containing the network service status information.</shortcomment>
 		<longcomment>
 			<line_1>@return: A L{Job} object.</line_1>
 			<line_2/>
@@ -8879,7 +8879,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_GetQuestions</name>
-		<shortcomment>Allows to synchronously receive questions from Parallels Service.</shortcomment>
+		<shortcomment>Allows to synchronously receive questions from Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9159,7 +9159,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_IsConnected</name>
-		<shortcomment>Determine if the connection to the specified Parallels Service is active. </shortcomment>
+		<shortcomment>Determine if the connection to the specified Dispatcher Service is active. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9187,7 +9187,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_Login</name>
-		<shortcomment>Login to a remote Parallels Service. </shortcomment>
+		<shortcomment>Login to a remote Dispatcher Service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9215,7 +9215,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_LoginLocal</name>
-		<shortcomment>Login to the local Parallels Service. </shortcomment>
+		<shortcomment>Login to the local Dispatcher Service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9243,7 +9243,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_Logoff</name>
-		<shortcomment>Log off the Parallels Service.</shortcomment>
+		<shortcomment>Log off the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9271,7 +9271,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_LookupParallelsServers</name>
-		<shortcomment>Searches the network for running Parallels Services.</shortcomment>
+		<shortcomment>Searches the network for running Dispatcher Services.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9299,7 +9299,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_NetServiceRestart</name>
-		<shortcomment>Restarts the Parallels network service. </shortcomment>
+		<shortcomment>Restarts the network service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9327,7 +9327,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_NetServiceRestoreDefaults</name>
-		<shortcomment>Restores the default settings of the Parallels network service. </shortcomment>
+		<shortcomment>Restores the default settings of the network service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9355,7 +9355,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_NetServiceStart</name>
-		<shortcomment>Start the Parallels network service. </shortcomment>
+		<shortcomment>Start the network service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9383,7 +9383,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_NetServiceStop</name>
-		<shortcomment>Stop the Parallels network service. </shortcomment>
+		<shortcomment>Stop the network service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9439,7 +9439,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_RegisterVm</name>
-		<shortcomment>Register an existing virtual machine with the Parallels Service.</shortcomment>
+		<shortcomment>Register an existing virtual machine with the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1>This is an asynchronous method.</line_1>
 			<line_2>@param strVmDirPath:              Name and path of the virtual machine directory.</line_2>
@@ -9467,7 +9467,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_RegisterVmEx</name>
-		<shortcomment>Register an existing virtual machine with Parallels Service (extended version). </shortcomment>
+		<shortcomment>Register an existing virtual machine with Dispatcher Service (extended version). </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9551,7 +9551,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_SendAnswer</name>
-		<shortcomment>Send an answer to the Parallels Service in response to a question. </shortcomment>
+		<shortcomment>Send an answer to the Dispatcher Service in response to a question. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9607,7 +9607,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_Shutdown</name>
-		<shortcomment>Shut down the Parallels Service. </shortcomment>
+		<shortcomment>Shut down the Dispatcher Service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9803,7 +9803,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_UpdateLicense</name>
-		<shortcomment>Installs Parallels license on the specified Parallels Service. </shortcomment>
+		<shortcomment>Installs license on the specified Dispatcher Service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -9859,10 +9859,10 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_UserProfileBeginEdit </name>
-		<shortcomment>Mark the beginning of the Parallels Service user profile modification operation.</shortcomment>
+		<shortcomment>Mark the beginning of the Dispatcher Service user profile modification operation.</shortcomment>
 		<longcomment>
 			<line_1>This method must be called before making any changes</line_1>
-			<line_2>to a Parallels Service user profile. When you are done making the changes,</line_2>
+			<line_2>to a Dispatcher Service user profile. When you are done making the changes,</line_2>
 			<line_3>call L{UserConfig.commit} to commit the changes.</line_3>
 			<line_4/>
 			<line_5/>
@@ -9887,7 +9887,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrv_UserProfileCommit</name>
-		<shortcomment>Saves (commits) user profile changes to the Parallels Service. </shortcomment>
+		<shortcomment>Saves (commits) user profile changes to the Dispatcher Service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -11959,7 +11959,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrvInfo_GetCmdPort</name>
-		<shortcomment>Return the port number at which the Parallels Service is listening for requests.</shortcomment>
+		<shortcomment>Return the port number at which the Dispatcher Service is listening for requests.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -11987,7 +11987,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrvInfo_GetHostName</name>
-		<shortcomment>Return the name of the machine hosting the specified Parallels Service.</shortcomment>
+		<shortcomment>Return the name of the machine hosting the specified Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -12043,7 +12043,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlSrvInfo_GetProductVersion</name>
-		<shortcomment>Return the Parallels product version number.</shortcomment>
+		<shortcomment>Return the product version number.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -12099,7 +12099,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlUsrCfg_CanChangeSrvSets</name>
-		<shortcomment>Determine if the current user can modify Parallels Service preferences. </shortcomment>
+		<shortcomment>Determine if the current user can modify Dispatcher Service preferences. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -12127,7 +12127,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlUsrCfg_CanUseMngConsole</name>
-		<shortcomment>Determine if the user is allowed to use the Parallels Service Management Console.</shortcomment>
+		<shortcomment>Determine if the user is allowed to use the Dispatcher Service Management Console.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -12183,7 +12183,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlUsrCfg_GetVmDirUuid</name>
-		<shortcomment>Return name and path of the default virtual machine folder for the Parallels Service.</shortcomment>
+		<shortcomment>Return name and path of the default virtual machine folder for the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -12211,7 +12211,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlUsrCfg_IsLocalAdministrator</name>
-		<shortcomment>Determine if the user is a local administrator on the host where Parallels Service is running.</shortcomment>
+		<shortcomment>Determine if the user is a local administrator on the host where Dispatcher Service is running.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -12267,7 +12267,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlUsrCfg_SetVmDirUuid</name>
-		<shortcomment>Set the default virtual machine directory name and path for the Parallels Service.</shortcomment>
+		<shortcomment>Set the default virtual machine directory name and path for the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -12295,7 +12295,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlUsrInfo_CanChangeSrvSets</name>
-		<shortcomment>Determine whether the specified user is allowed to modify Parallels Service preferences.</shortcomment>
+		<shortcomment>Determine whether the specified user is allowed to modify Dispatcher Service preferences.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -13919,7 +13919,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVm_GetQuestions</name>
-		<shortcomment>Synchronously receive questions from the Parallels Service. </shortcomment>
+		<shortcomment>Synchronously receive questions from the Dispatcher Service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -14059,7 +14059,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVm_GetToolsState</name>
-		<shortcomment>Determine whether Parallels Tools is installed in the virtual machine. </shortcomment>
+		<shortcomment>Determine whether Tools is installed in the virtual machine. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -14115,7 +14115,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVm_InstallTools</name>
-		<shortcomment>Install Parallels Tools in the virtual machine.</shortcomment>
+		<shortcomment>Install Tools in the virtual machine.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -14367,7 +14367,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVm_Reg</name>
-		<shortcomment>Create a new virtual machine and register it with the Parallels Service. </shortcomment>
+		<shortcomment>Create a new virtual machine and register it with the Dispatcher Service. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -14843,7 +14843,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVm_ToolsGetShutdownCapabilities</name>
-		<shortcomment>Obtain the available capabilities of a graceful virtual machine shutdown using Parallels Tools.</shortcomment>
+		<shortcomment>Obtain the available capabilities of a graceful virtual machine shutdown using Tools.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -14927,7 +14927,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVm_Unreg</name>
-		<shortcomment>Unregisters the virtual machine from the Parallels Service.</shortcomment>
+		<shortcomment>Unregisters the virtual machine from the Dispatcher Service.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -15011,7 +15011,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVm_UnsubscribeFromPerfStats</name>
-		<shortcomment>Cancels the Parallels Service performance statistics subscription .</shortcomment>
+		<shortcomment>Cancels the Dispatcher Service performance statistics subscription .</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -15291,7 +15291,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVmCfg_GetActionOnWindowClose</name>
-		<shortcomment>Determine the action on Parallels Application window close for the specified virtual machine. </shortcomment>
+		<shortcomment>Determine the action on Application window close for the specified virtual machine. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -15403,7 +15403,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVmCfg_GetAutoStart</name>
-		<shortcomment>Determine if the specified virtual machine is set to start automatically on Parallels Service start.</shortcomment>
+		<shortcomment>Determine if the specified virtual machine is set to start automatically on Dispatcher Service start.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -17727,7 +17727,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVmCfg_IsCloseAppOnShutdown</name>
-		<shortcomment>Determine whether the Parallels console app is automatically closed on the virtual machine shutdown.</shortcomment>
+		<shortcomment>Determine whether the console app is automatically closed on the virtual machine shutdown.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -18483,7 +18483,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVmCfg_IsToolsAutoUpdateEnabled</name>
-		<shortcomment>Enables or disables the Parallels Tools AutoUpdate feature for the virtual machine.</shortcomment>
+		<shortcomment>Enables or disables the Tools AutoUpdate feature for the virtual machine.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -18679,7 +18679,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVmCfg_SetActionOnWindowClose</name>
-		<shortcomment>Set the action to perform on the Parallels console window closing.</shortcomment>
+		<shortcomment>Set the action to perform on the console window closing.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -18959,7 +18959,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVmCfg_SetCloseAppOnShutdown</name>
-		<shortcomment>Set whether the Parallels console app will be closed on the virtual machine shutdown.</shortcomment>
+		<shortcomment>Set whether the console app will be closed on the virtual machine shutdown.</shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -20415,7 +20415,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlVmCfg_SetToolsAutoUpdateEnabled</name>
-		<shortcomment>Enable or disable the Parallels Tools AutoUpdate feature for the virtual machine. </shortcomment>
+		<shortcomment>Enable or disable the Tools AutoUpdate feature for the virtual machine. </shortcomment>
 		<longcomment>
 			<line_1/>
 			<line_2/>
@@ -23411,9 +23411,9 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlStat_GetDispUptime</name>
-		<shortcomment>Return the Parallels Service uptime in seconds.</shortcomment>
+		<shortcomment>Return the Dispatcher Service uptime in seconds.</shortcomment>
 		<longcomment>
-			<line_1>@return: An integer specifying the Parallels Service uptime in seconds.</line_1>
+			<line_1>@return: An integer specifying the Dispatcher Service uptime in seconds.</line_1>
 			<line_2/>
 			<line_3/>
 			<line_4/>
@@ -23607,7 +23607,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlStatIface_GetInDataSize</name>
-		<shortcomment>Return the total number of bytes the network interface has received since the Parallels Service was last started.</shortcomment>
+		<shortcomment>Return the total number of bytes the network interface has received since the Dispatcher Service was last started.</shortcomment>
 		<longcomment>
 			<line_1>@return: An integer containing the result.</line_1>
 			<line_2/>
@@ -23635,7 +23635,7 @@
 	<symbol>
 		<type>method</type>
 		<name>PrlStatIface_GetOutDataSize</name>
-		<shortcomment>Return the total number of bytes the network interface has sent since the Parallels Service was last started.</shortcomment>
+		<shortcomment>Return the total number of bytes the network interface has sent since the Dispatcher Service was last started.</shortcomment>
 		<longcomment>
 			<line_1>@return: An integer containing the result.</line_1>
 			<line_2/>

@@ -225,7 +225,7 @@ PRL_BOOL SdkWrap_LoadLibFromStdPaths( bool bDebugMode )
 /* Fixme:
 [TARGETDIR]\Application\prl_sdk_py.dll
 
-[TARGETDIR] is a base directory for Parallels Server.
+[TARGETDIR] is a base directory for Server.
 It can be determine via Windows registry key:
 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F005D13D-B44F-4B5B-B856-D5494ABF72B5}\InstallLocation

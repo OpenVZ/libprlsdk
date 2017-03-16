@@ -115,7 +115,7 @@ private:
 	 */
 	void Initialize();
 	/**
-	 * Initializes Parallels Server specific errors strings database
+	 * Initializes Dispatcher Server specific errors strings database
 	 */
 	void InitializePSErrorMessages();
 	/**
@@ -165,13 +165,13 @@ public://Static tools for manipulating errors strings storage
 public:
 	/** Common errors strings database */
 	PrlErrStringsStorageMap m_CommonErrorsStringsMap;
-	/** Parallels Server specific errors strings database */
+	/** Server specific errors strings database */
 	PrlErrStringsStorageMap m_PSErrorsStringsMap;
-	/** Parallels Desktop specific errors strings database */
+	/** Desktop specific errors strings database */
 	PrlErrStringsStorageMap m_PDErrorsStringsMap;
-	/** Parallels Workstation specific errors strings database */
+	/** Workstation specific errors strings database */
 	PrlErrStringsStorageMap m_PWErrorsStringsMap;
-	/** Parallels Access specific errors strings database */
+	/** Access specific errors strings database */
 	PrlErrStringsStorageMap m_PAErrorsStringsMap;
 
 private://Global objects
