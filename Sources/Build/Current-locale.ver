@@ -11,26 +11,6 @@
 	#define VER_FULL_BUILD_LOCALE_STR "en_US"
 #endif
 
-#ifndef VER_FULL_BUILD_DISTRIBUTOR_STR
-	#define VER_FULL_BUILD_DISTRIBUTOR_STR "parallels"
-#endif
-
-#ifndef DISTRIBUTOR_PARALLELS
-	#define DISTRIBUTOR_PARALLELS
-#endif
-
-#ifndef VER_DOCUMENTATION_URL
-	#define VER_DOCUMENTATION_URL "http://www.parallels.com/products/workstation/pw70_docs-@LOCALE@"
-#endif
-
-#ifndef VER_TROUBLESHOOTER_URL
-	#define VER_TROUBLESHOOTER_URL "http://www.parallels.com/support/workstation/troubleshooter-@LOCALE@"
-#endif
-
-#ifndef VER_TRADEMARKS_URL
-	#define VER_TRADEMARKS_URL "http://www.parallels.com/trademarks-@LOCALE@"
-#endif
-
 #ifndef INSTALLER_CEIPROGRAM_FLAG_FILE_ENABLE
 	#define INSTALLER_CEIPROGRAM_FLAG_FILE_ENABLE     "prl_server_ceiprogram_enable"
 #endif

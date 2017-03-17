@@ -45,7 +45,7 @@ extern "C" {
 /// @section Generic API methods for the client
 ///
 /// This section consists of methods that are used for general
-/// manipulation of the parallels api library and are not specific
+/// manipulation of the api library and are not specific
 /// to objects in the object hierarchy.
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -76,7 +76,7 @@ extern "C" {
    a virtual network.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -89,11 +89,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Adds a new virtual network to the Parallels Service
+/* Adds a new virtual network to the Dispatcher Service
    configuration. To create a new virtual network, first create
    a handle of type PHT_VIRTUAL_NETWORK, configure the network
    using the handle's functions, and then call this function to
-   add the network to the Parallels Service configuration.
+   add the network to the Dispatcher Service configuration.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -104,9 +104,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hVirtNet :  A handle of type PHT_VIRTUAL_NETWORK identifying
-               the virtual network to add to the Parallels
+               the virtual network to add to the Dispatcher
                Service configuration.
    nFlags :    Reserved parameter.
    Returns
@@ -137,7 +137,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hVirtNet :  A handle of type PHT_VIRTUAL_NETWORK identifying a
                virtual network.
    nFlags :    Reserved parameter.
@@ -159,7 +159,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Removes an existing virtual network from the Parallels
+/* Removes an existing virtual network from the Dispatcher
    Service configuration. To get the return code from the
    PHT_JOB object, use the PrlJob_GetRetCode function. Possible
    values are:
@@ -170,7 +170,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hVirtNet :  A handle of type PHT_VIRTUAL_NETWORK identifying a
                virtual network.
    nFlags :    Reserved parameter.
@@ -192,7 +192,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 
-/* Starts the Parallels network service. To get the
+/* Starts the network service. To get the
    return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
 
@@ -200,7 +200,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -211,7 +211,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hServer
 		) );
 
-/* Stops the Parallels network service. To get the return
+/* Stops the network service. To get the return
    code from the PHT_JOB object, use the PrlJob_GetRetCode
    function. Possible values are:
 
@@ -220,7 +220,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    unnamed_param :  A handle of type PHT_SERVER identifying the
-                    Parallels Service.
+                    Dispatcher Service.
    Returns
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
@@ -230,7 +230,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hServer
 		) );
 
-/* Restarts the Parallels network service. To get the
+/* Restarts the network service. To get the
    return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
 
@@ -238,7 +238,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -249,7 +249,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hServer
 		) );
 
-/* Restores the default settings of the Parallels network
+/* Restores the default settings of the network
    service.
 
    To get the return code from the PHT_JOB object, use the
@@ -259,7 +259,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -271,7 +271,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns an object of type PHT_NET_SERVICE_STATUS containing
-   the Parallels network service status information.
+   the network service status information.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -287,7 +287,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
         of type PHT_NET_SERVICE_STATUS containing the NET service
         status.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -309,7 +309,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hOffmgmtService :  A handle of type PHT_OFFLINE_SERVICE identifying a
                offline management service
    nFlags :    Reserved parameter.
@@ -340,7 +340,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hOffmgmtService :  A handle of type PHT_OFFLINE_SERVICE identifying a
                offline management service
 
@@ -382,7 +382,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    an individual offline service.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -405,7 +405,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :		A handle of type PHT_SERVER identifying the
-			Parallels Service.
+			Dispatcher Service.
    hNetworkClassList :	A handle of type PHT_HANDLES_LIST contains the
 			list of handles of type PHT_NETWORK_CLASS
    nFlags :		Reserved parameter.
@@ -442,7 +442,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    of type PHT_HANDLES_LIST
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -465,7 +465,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :		A handle of type PHT_SERVER identifying the
-			Parallels Service.
+			Dispatcher Service.
    hNetworkShapingConfig: A handle of type PHT_NETWORK_SHAPING_CONFIG.
    nFlags :		Reserved parameter.
    Returns
@@ -500,7 +500,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    of type PHT_NETWORK_SHAPING_CONFIG
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -513,11 +513,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 
-/* Adds a new private network to the Parallels Service
+/* Adds a new private network to the Dispatcher Service
    configuration. To create a new private network, first create
    a handle of type PHT_IPPRIV_NET, configure the network
    using the handle's functions, and then call this function to
-   add the network to the Parallels Service configuration.
+   add the network to the Dispatcher Service configuration.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -528,9 +528,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hPrivNet :  A handle of type PHT_IPPRIV_NET identifying
-               the private network to add to the Parallels
+               the private network to add to the Dispatcher
                Service configuration.
    nFlags :    Reserved parameter.
    Returns
@@ -550,7 +550,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_UINT32 nFlags
 		) );
 
-/* Removes an existing private network from the Parallels
+/* Removes an existing private network from the Dispatcher
    Service configuration. To get the return code from the
    PHT_JOB object, use the PrlJob_GetRetCode function. Possible
    values are:
@@ -561,7 +561,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hPrivNet :  A handle of type PHT_IPPRIV_NET identifying a
                private network.
    nFlags :    Reserved parameter.
@@ -592,7 +592,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   A handle of type PHT_SERVER identifying the
-               Parallels Service.
+               Dispatcher Service.
    hPrivNet :  A handle of type PHT_IPPRIV_NET identifying a
                private network.
    nFlags :    Reserved parameter.
@@ -633,7 +633,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    a private network.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -2042,10 +2042,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Functions specific for the Parallels Net service processing
+/// @section Functions specific for the Net service processing
 ///////////////////////////////////////////////////////////////////////////////
 
-/* \Returns the Parallels Service network status information.
+/* \Returns the Dispatcher Service network status information.
    Parameters
    handle :       A handle of type PHT_NET_SERVICE_STATUS.
    pnNetStatus :  [out] A pointer to a variable that receives the

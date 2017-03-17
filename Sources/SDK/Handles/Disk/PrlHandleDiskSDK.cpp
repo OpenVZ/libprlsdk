@@ -33,7 +33,7 @@
 /**
  * Free allocated disk handle
  *
- * @param Parallels handle value
+ * @param handle value
  *
  * @return Error code in PRL_RESULT format
  */

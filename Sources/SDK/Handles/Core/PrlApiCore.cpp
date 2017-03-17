@@ -137,7 +137,7 @@ static PRL_RESULT InitApi(PRL_UINT32 version, PRL_APPLICATION_MODE nAppMode, PRL
 	// Store SDK application mode
 	s_SdkAppMode = nAppMode;
 
-	// Temporally disable console output, only parallels.log
+	// Temporally disable console output, only log file
 	int nConsoleLogging = SetConsoleLogging(0);
 	ParallelsDirs::InitOptions	nSubMode = (nFlags & PAIF_INIT_AS_APPSTORE_CLIENT)
 			? ParallelsDirs::smAppStoreMode

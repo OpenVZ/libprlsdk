@@ -68,35 +68,35 @@ public:
 	PrlHandleJobPtr DeleteVirtualNetwork(PRL_HANDLE hVirtNet, PRL_UINT32 nFlags);
 
 	/**
-	 * Performs Parallels network service start operation to the remote server.
+	 * Performs network service start operation to the remote server.
 	 *
 	 * @return pointer to the class that abstracts the job process
 	 */
 	PrlHandleJobPtr NetServiceStart();
 
 	/**
-	 * Performs Parallels network service stop operation to the remote server.
+	 * Performs network service stop operation to the remote server.
 	 *
 	 * @return pointer to the class that abstracts the job process
 	 */
 	PrlHandleJobPtr NetServiceStop();
 
 	/**
-	 * Performs Parallels network service restart operation to the remote server.
+	 * Performs network service restart operation to the remote server.
 	 *
 	 * @return pointer to the class that abstracts the job process
 	 */
 	PrlHandleJobPtr NetServiceRestart();
 
 	/**
-	 * Performs Parallels network service restore defaults operation to the remote server.
+	 * Performs network service restore defaults operation to the remote server.
 	 *
 	 * @return pointer to the class that abstracts the job process
 	 */
 	PrlHandleJobPtr NetServiceRestoreDefaults();
 
 	/**
-	 * Perform getting Parallels Net service status.
+	 * Perform getting Net service status.
 	 *
 	 * @return pointer to the class that abstracts the job process
 	 */

@@ -547,7 +547,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -576,7 +576,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -590,17 +590,17 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels Service net adapters operations
+/// @section Dispatcher Service net adapters operations
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Removes the specified virtual network adapter object from
    memory. This function does not delete the adapter from the
-   Parallels Service configuration. Use this function if you
+   Dispatcher Service configuration. Use this function if you
    would like to cancel the changes that you've made to the
    object properties so far. The function must be called before
    calling the PrlSrv_AddNetAdapter or the
    PrlSrv_UpdateNetAdapter function (the calls that update the
-   Parallels Service configuration and make the changes permanent). To
+   Dispatcher Service configuration and make the changes permanent). To
    delete an existing adapter from the configuration, use the
    PrlSrv_DeleteNetAdapter function.
    Parameters
@@ -940,7 +940,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns the index identifying the specified adapter on the
-   Parallels Service.
+   Dispatcher Service.
    Parameters
    hDispNet :  A handle of type PHT_DISP_NET_ADAPTER identifying
                the network adapter.
@@ -1411,7 +1411,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_CONST_STR sNewDispNetDhcpScopeMask
 		) );
 
-/* Adds a new virtual network adapter to the specified Parallels
+/* Adds a new virtual network adapter to the specified Dispatcher
    Service. To get the return code from the PHT_JOB object, use
    the PrlJob_GetRetCode function. Possible values are:
 
@@ -1420,7 +1420,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :      A handle of type PHT_SERVER identifying the
-                  Parallels Service.
+                  Dispatcher Service.
    hNetAdapter :  A handle of type PHT_DISP_NET_ADAPTER containing
                   the new adapter information. For the details on
                   how to create the handle and how to set the
@@ -1435,9 +1435,9 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hNetAdapter
 		) );
 
-/* Removes a virtual network adapter from the Parallels Service
+/* Removes a virtual network adapter from the Dispatcher Service
    configuration. See PHT_DISP_CONFIG and PHT_DISP_NET_ADAPTER
-   for more information about Parallels Service preferences and
+   for more information about Dispatcher Service preferences and
    virtual network adapters.
 
    To get the return code from the PHT_JOB object, use the
@@ -1448,7 +1448,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    nIndex :   An index of the virtual network adapter to remove.
    Returns
@@ -1462,7 +1462,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Updates an existing virtual network adapter in the specified
-   Parallels Service.
+   Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -1472,7 +1472,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :      A handle of type PHT_SERVER identifying the
-                  Parallels Service.
+                  Dispatcher Service.
    hNetAdapter :  A handle of PHT_DISP_NET_ADAPTER containing the
                   new adapter information.
    Returns
@@ -1496,7 +1496,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :[in] A handle of type PHT_SERVER identifying the
-             Parallels Service.
+             Dispatcher Service.
    sKey	   :[in] Key to access to value
    sValue  :[in] Value to store
    nFlags  :[in] Reserved parameter.
@@ -1543,10 +1543,10 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 /* Creates a new virtual network adapter object and adds it to
    the network adapters list. This function merely creates a new
    virtual network adapter object in the local memory. To add a
-   network adapter to the Parallels Service, populate the
+   network adapter to the Dispatcher Service, populate the
    necessary network adapter properties using functions from the
    PHT_DISP_NET_ADAPTER group and then call PrlSrv_AddNetAdapter
-   to add the adapter to the Parallels Service configuration.
+   to add the adapter to the Dispatcher Service configuration.
    Parameters
    hDispConfig :  A handle of type PHT_DISP_CONFIG.
    phDispNet :    [out] A pointer to a new handle of type
@@ -1565,7 +1565,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Determines the total number of the virtual network adapters
-   in the Parallels Service configuration.
+   in the Dispatcher Service configuration.
    Parameters
    hDispCfg :        A handle of type PHT_DISP_CONFIG.
    pnDispNetCount :  [out] A pointer to a variable that receives
@@ -1584,7 +1584,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Obtains information about a virtual network adapter from the
-   Parallels Service configuration. Parallels Service can have
+   Dispatcher Service configuration. Dispatcher Service can have
    multiple network adapters, each identified by a numeric index
    starting with 0 and up. Use PrlDispCfg_GetDispNetCount to
    determine the total adapter count and then obtain each
@@ -1693,7 +1693,7 @@ typedef enum _PRL_USB_LIST_VERSION
 	ULV_VER_END = ULV_VER1,
 } PRL_USB_LIST_VERSION;
 
-/* Updates internal Parallels client USB associations list.
+/* Updates internal client USB associations list.
 list to update has format UsbFriendlyName:USB_LIST_DIVIDER:UsbId
 
 To get the return code from the PHT_JOB object, use the
@@ -1705,7 +1705,7 @@ PRL_ERR_SUCCESS - function completed successfully.
 
 Parameters
 hServer :       A handle of type PHT_SERVER identifying the
-Parallels Service.
+Dispatcher Service.
 hStringsList :  A handle of type PHT_STRINGS_LIST containing
 the USB associations list.
 PRL_UINT32 nListVersion - version of list on client
@@ -1724,11 +1724,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels Compressor Utility functions
+/// @section Compressor Utility functions
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Initiates the Compressor process. The virtual machine must be
-   registered with Parallels Service.
+   registered with Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -1790,7 +1790,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :           A handle of type PHT_SERVER identifying the
-                       Parallels Service.
+                       Dispatcher Service.
    nFlags :            Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -1817,7 +1817,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :		A handle of type PHT_SERVER identifying the
-			Parallels Service.
+			Dispatcher Service.
    hNetworkShapingList: A handle of type PHT_HANDLE_LIST contains the
                         list of handles of type PHT_NETWORK_SHAPING
 
@@ -1856,7 +1856,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PHT_NETWORK_SHAPING
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    nFlags :   Reserved parameter.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -2163,7 +2163,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels HA processing.
+/// @section HA processing.
 ///////////////////////////////////////////////////////////////////////////////
 
 /* \Start HA service by service name
@@ -2216,7 +2216,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
                 PRL_BOOL bClusterMode
                 ) );
 
-/* Determines whether Parallels product operates in cluster mode.
+/* Determines whether product operates in cluster mode.
    Parameters
    hDispConfig :      A handle of type PHT_DISP_CONFIG.
    pbClusterMode :    [out] A pointer to a variable that receives
@@ -2620,11 +2620,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT32 nFlags
 		) );
 
-/* \Returns the Parallels Service uptime in seconds.
+/* \Returns the Dispatcher Service uptime in seconds.
    Parameters
    hStat :     A handle of type PHT_SYSTEM_STATISTICS.
    pnUptime :  [out] A pointer to a variable that receives the
-               \result (Parallels Service uptime in seconds).
+               \result (Dispatcher Service uptime in seconds).
    Returns
    PRL_RESULT. Possible values:
 
@@ -2776,7 +2776,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns the total number of bytes the network interface has
-   received since the Parallels Service was last started.
+   received since the Dispatcher Service was last started.
    Parameters
    hIfaceStat :  A handle of type of PHT_SYSTEM_STATISTICS_IFACE
                  identifying the network interface.
@@ -2796,7 +2796,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns the total number of bytes the network interface has
-   sent since the Parallels Service was last started.
+   sent since the Dispatcher Service was last started.
    Parameters
    hIfaceStat :  A handle of type of PHT_SYSTEM_STATISTICS_IFACE
                  identifying the network interface.
@@ -2816,7 +2816,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns the total number of packets the network interface
-   has received since the Parallels Service was last started.
+   has received since the Dispatcher Service was last started.
    Parameters
    hIfaceStat :   A handle of type of PHT_SYSTEM_STATISTICS_IFACE
                   identifying the network interface.
@@ -2836,7 +2836,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns the total number of packets the network interface
-   has sent since the Parallels Service was last started.
+   has sent since the Dispatcher Service was last started.
    Parameters
    hIfaceStat :   A handle of type of PHT_SYSTEM_STATISTICS_IFACE
                   identifying the network interface.

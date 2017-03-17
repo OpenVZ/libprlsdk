@@ -1641,7 +1641,7 @@ public:
 	PRL_RESULT SetAutoStop(PRL_VM_AUTOSTOP_OPTION nVmAutoStop);
 
 	/**
-	 * Returns action on Parallels Application window close
+	 * Returns action on Application window close
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:
 	 * * PRL_ERR_SUCCESS - operation completed successfully
@@ -1649,7 +1649,7 @@ public:
 	PRL_RESULT GetActionOnWindowClose(PRL_VM_ACTION_ON_WINDOW_CLOSE_PTR pnActionOnWindowClose);
 
 	/**
-	 * Sets action on Parallels Application window close
+	 * Sets action on Application window close
 	 * @param setting value
 	 * @return PRL_RESULT. Possible values:
 	 * * PRL_ERR_SUCCESS - operation completed successfully
@@ -2229,7 +2229,7 @@ public:
 	PRL_RESULT SetRateBound(PRL_BOOL bEnabled);
 
 	/**
-	 * Returns sign whether Parallels Tools AutoUpdate is enabled
+	 * Returns sign whether Tools AutoUpdate is enabled
 	 * @param pointer to output buffer for storing result
 	 * @return PRL_RESULT. Possible values:
 	 * * PRL_ERR_SUCCESS - operation completed successfully
@@ -2237,7 +2237,7 @@ public:
 	PRL_RESULT IsToolsAutoUpdateEnabled(PRL_BOOL_PTR pbEnabled);
 
 	/**
-	 * Sets Parallels Tools AutoUpdate enabling sign
+	 * Sets Tools AutoUpdate enabling sign
 	 * @param setting value
 	 * @return PRL_RESULT. Possible values:
 	 * * PRL_ERR_SUCCESS - operation completed successfully

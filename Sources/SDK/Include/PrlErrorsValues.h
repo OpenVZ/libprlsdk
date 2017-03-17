@@ -31,7 +31,7 @@
 /* +++ BASE VALUE SET TO 0 +++ */
 
 /**
- * All parallels error values should go here in order to be maintained in one place
+ * All error values should go here in order to be maintained in one place
  * We're taking approach of HRESULT windows notation error codes here.
  */
 #define PRL_ERR_SUCCESS  PRL_RESULT_DECLARE_SUCCESS(0)
@@ -1843,7 +1843,7 @@
 #define PRL_ERR_TEST_TEXT_MESSAGES  PRL_RESULT_DECLARE_ERROR(43200)
 #define PRL_ERR_TEST_TEXT_MESSAGES_PS  PRL_RESULT_DECLARE_ERROR(43201)
 
-// Virtuozzo specific error
+// Vz specific error
 /* +++ ALIGNED VALUE TO 44000 +++ */
 #define PRL_ERR_SET_CPULIMIT  PRL_RESULT_DECLARE_ERROR(44000)
 #define PRL_ERR_SET_CPUUNITS  PRL_RESULT_DECLARE_ERROR(44001)

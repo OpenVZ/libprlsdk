@@ -27,6 +27,7 @@
 #define __CURRENT_VER__
 
 #include "Current-gen.ver"
+#include "Branding.incl"
 
 #define _ver_stringify_(...) #__VA_ARGS__
 #define _ver_stringify(...) _ver_stringify_(__VA_ARGS__)
@@ -41,8 +42,6 @@
 
 #define VER_BUILDFEATURES_STR VER_BUILD_STR VER_FEATURES_STR
 #define VER_PRIVATE_BUILD_STR "Build " VER_BUILDFEATURES_STR
-
-#define VER_SHORTPRODUCTNAME_STR_PS "Parallels Server"
 
 #ifndef VER_SHORTPRODUCTNAME_STR
 #define VER_SHORTPRODUCTNAME_STR VER_SHORTPRODUCTNAME_STR_PS
@@ -67,7 +66,7 @@
 #endif
 
 #define VER_PRODUCTVERSION_STR VER_FULL_BUILD_NUMBER_STR
-/* "Prallels Server 6.5.23456.987654" */
+/* "%NAME% 6.5.23456.987654" */
 #define VER_PRODUCTNAME_STR VER_SHORTPRODUCTNAME_STR " " VER_PRODUCTVERSION_STR
 
 #ifndef VER_FILEVERSION
@@ -76,13 +75,9 @@
 #define VER_FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
 #define VER_FILEFLAGS (VS_FF_PRERELEASE | VS_FF_DEBUG)
 #define VER_FILEOS VOS_NT_WINDOWS32
-#define VER_COMPANYNAME_STR "Parallels Holdings, Ltd. and its affiliates."
-#define VER_COMPANYNAME_REGISTRYBRANCH_STR "Parallels"
 #define VER_COPYRIGHT_STR "Copyright" VER_COPYRIGHT_YEAR_STR VER_COMPANYNAME_STR
 #define VER_RIGHTRESERVED_STR "All rights reserved."
 #define VER_LEGALCOPYRIGHT_STR VER_COPYRIGHT_STR " " VER_RIGHTRESERVED_STR
-#define VER_LEGALTRADEMARKS_STR "Parallels is a trademark of " VER_COMPANYNAME_STR
-#define VER_WEBSITE_STR "parallels.com"
 #define VER_REG_TREE_COMPANY_STR "SOFTWARE\\" VER_COMPANYNAME_REGISTRYBRANCH_STR
 #define VER_REG_TREE_ROOT_STR VER_REG_TREE_COMPANY_STR "\\" VER_SHORTPRODUCTNAME_STR
 
@@ -96,13 +91,6 @@
 #define VER_VERSION_ANSI_LANG     "0c0904E4" /* LANG_ENGLISH/SUBLANG_ENGLISH_US, Ansi CP */
 #define VER_VERSION_TRANSLATION   0x0409, 0x04B0
 #endif
-
-/* Distributors-dependent registration URL */
-#define PARALLELS_REGISTRATION_URL       "https://registration.parallels.com/license/registrationPD6"
-#define AVANTQUEST_REGISTRATION_URL      PARALLELS_REGISTRATION_URL
-#define AFLEX_REGISTRATION_URL           PARALLELS_REGISTRATION_URL
-#define NOVADEVELOPMENT_REGISTRATION_URL "http://www.parallels.com/cgi-bin/RegLicenseFromNovaApp"
-#define VER_REGISTRATION_URL            "FIXME.URL"
 
 #ifdef RC_INVOKED
 

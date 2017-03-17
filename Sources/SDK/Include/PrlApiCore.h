@@ -45,7 +45,7 @@ extern "C" {
 /// @section Generic API methods for the client
 ///
 /// This section consists of methods that are used for general
-/// manipulation of the parallels api library and are not specific
+/// manipulation of the api library and are not specific
 /// to objects in the object hierarchy.
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -56,7 +56,7 @@ extern "C" {
 /// @section Initialization SDK functionality.
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Initializes Parallels API library. This function must be
+/* Initializes API library. This function must be
    called after the dynamic libraries are loaded and before
    making any of the API calls. Internally, this call creates
    the internal event-loop and initializes the library state.
@@ -132,7 +132,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				 PrlApi_Deinit, (void) );
 
-/* \Returns the Parallels API version number. Version number is
+/* \Returns the API version number. Version number is
    incremented each time a public interfaces is changed. Our
    goal is to achieve full backward compatibility where the
    changes add new functionality without breaking the existing
@@ -151,7 +151,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR current_version
 		) );
 
-/* \Returns the Parallels API application mode.
+/* \Returns the API application mode.
    Parameters
    app_mode :  [out] Current application mode of the API.
    Returns
@@ -172,7 +172,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Evaluates a return code and returns a description of the
-   problem. All synchronous functions in the Parallels API
+   problem. All synchronous functions in the API
    return PRL_RESULT - a numeric return code used to evaluate
    the success or failure of the operation. If the return code
    indicates a failure, the PrlApi_GetResultDescription function
@@ -262,7 +262,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Handles operating routines.
 ///
-/// Parallels API is designed to allow clients to access most objects through handles.
+/// API is designed to allow clients to access most objects through handles.
 /// Handles are represented by the PRL_HANDLE opaque data type.
 /// For most object types, provided the special routine that creates or opens the object,
 /// provides a handle to the caller.
@@ -272,7 +272,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Increases the specified handle reference count by one.
-   Handles used within the Parallels API are thread safe.
+   Handles used within the API are thread safe.
    They can be used in multiple threads at the same time. To
    maintain the proper reference counting, the count should be
    increased each time a handle is passed to another thread by
@@ -294,7 +294,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE handle
 		) );
 
-/* Frees the specified handle. Handles used within the Parallels
+/* Frees the specified handle. Handles used within the
    API are reference counted. Each handle contains a
    count of the number of references to it held by other
    objects. A corresponding object stays in memory for as long
@@ -858,7 +858,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Jobs handling routines and data types.
 ///
-/// Some methods in the parallels SDK are known to take a lot of time to execute.
+/// Some methods in the SDK are known to take a lot of time to execute.
 /// 'Job' abstraction is intended to allow users to perfrom asynchronous calls.
 /// Caller can perform a call that returns a handle representing job object.
 ///////////////////////////////////////////////////////////////////////////////
@@ -911,7 +911,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_INVALID_ARG - invalid PHT_JOB handle was passed.
 
-   PRL_ERR_UNINITIALIZED - job instance was not bound to Parallels Service
+   PRL_ERR_UNINITIALIZED - job instance was not bound to Dispatcher Service
    connection.                                                  */
 PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_1,
 					   PrlJob_Cancel, (
@@ -1285,7 +1285,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 ///
 /// Events are recieved by the client in the form of event 'handles'
 /// There is a number of different event types and client can recieve
-/// them by registering his 'callbacks' with the parallels library.
+/// them by registering his 'callbacks' with the library.
 ///////////////////////////////////////////////////////////////////////////////
 
 /* \Returns the type of the event.
@@ -1326,7 +1326,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Obtains a handle of type PHT_SERVER identifying the Parallels Service
+/* Obtains a handle of type PHT_SERVER identifying the Dispatcher Service
    that generated the event. When processing an event
    inside a callback function (event handler) this function is
    the only way to get the server handle.
@@ -1561,7 +1561,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* Determines whether the event requires a response from the
    client. See PrlEvent_CreateAnswerEvent for more information
-   about Parallels Service questions.
+   about Dispatcher Service questions.
    Parameters
    hEvent :              A handle of type PHT_EVENT identifying
                          the event.
@@ -1636,20 +1636,20 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* Generates properly formatted and structured answer to a
    question included in the event. One of the event types that a
    callback function can receive is PET_DSP_EVT_VM_QUESTION. The
-   event of this type is generated on the Parallels Service side when a user
+   event of this type is generated on the Dispatcher Service side when a user
    interaction is required. For example, let's say you've sent a
-   request to the Parallels Service to create a virtual machine but
+   request to the Dispatcher Service to create a virtual machine but
    specified the size of the virtual hard drive that exceeds the
    free space available on the physical hard drive. In such a
-   case, the Parallels Service will generate an event containing a question
+   case, the Dispatcher Service will generate an event containing a question
    (and possible answers) about how the user would like to
    proceed. In this particular case, the question will be
    similar to "The size of the specified disk is larger than the
    free space available. Would you like to create the disk
    anyway?" and the possible answers will be "Yes" or "No". The
    user must choose one of the available options, compose an
-   answer, and send it to the Parallels Service. Based on the answer
-   received, the Parallels Service will take the appropriate action.
+   answer, and send it to the Dispatcher Service. Based on the answer
+   received, the Dispatcher Service will take the appropriate action.
 
    To obtain a string containing the question, use the
    PrlEvent_GetErrString function. Answer choices are acquired
@@ -1660,7 +1660,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    populate another object of type PHT_EVENT with the properly
    formatted answer data. The resulting object must then be
    passed to the PrlSrv_SendAnswer function which will send the
-   answer to the Parallels Service.
+   answer to the Dispatcher Service.
    Parameters
    hEvent :   A handle of type PHT_EVENT identifying the event.
    phEvent :  [out] A pointer to a variable that receives the
@@ -1978,7 +1978,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 /// @section Crash handler API support
 ///////////////////////////////////////////////////////////////////////////////
 
-/* \Returns the name and path of the directory where Parallels
+/* \Returns the name and path of the directory where
    crash dumps are stored.
    Parameters
    sPath :            [out] A pointer to a buffer that receives
@@ -2006,10 +2006,10 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		PRL_UINT32_PTR pnPathBufLength
 		) );
 
-/* Initiates the standard Parallels crash dump handler. Call
+/* Initiates the standard crash dump handler. Call
    this function if you would like a dump file to be created on
    the application crash. The crush dump will be created in the
-   common Parallels crush dump directory (use PrlApi_GetCrashDumpsPath
+   common crush dump directory (use PrlApi_GetCrashDumpsPath
    to obtains its name and path). The crash dump file name will
    begin with the name of the crashed application and can also
    contain a user-define suffix that is passed a parameter (see
@@ -2030,11 +2030,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Functions specific for the Parallels problem report object.
+/// @section Functions specific for the problem report object.
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Creates and returns a handle of type PHT_PROBLEM_REPORT,
-   which is used to obtain and manage Parallels problem reports.
+   which is used to obtain and manage problem reports.
 
    Parameters
    nReportScheme : [in] the type of report that will be generated (XML based or new packed form).
@@ -2057,7 +2057,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
 /* The PrlApi_SendProblemReport lets to send previously extracted
    with PrlSrv_GetProblemReport or PrlVm_GetProblemReport calls
-   problem report to the Parallels support server.
+   problem report to the support server.
    Parameters
    sProblemReport :  problem report string representation (expected
 					 null terminated string in UTF-8 encoding)
@@ -2109,7 +2109,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* The PrlApi_SendPackedProblemReport lets to send previously extracted
    with PrlSrv_GetPackedProblemReport or PrlVm_GetPackedProblemReport calls
-   problem report to the Parallels support server.
+   problem report to the support server.
    Parameters
    hProblemReport :  handle of PHT_EVENT type contains packed problem report data
    bUseProxy	  :  sign specifies whether proxy settings should be used. Either
@@ -2505,7 +2505,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 /* The PrlReport_Send function is provided for convenience. It allows submitting a previously
-   generated problem report to the Parallels support server. The report could be generated using
+   generated problem report to the support server. The report could be generated using
    the PrlSrv_GetPackedProblemReport (PrlSrv_GetProblemReport) or
    PrlVm_GetProblemReport (PrlVm_GetPackedProblemReport) functions, or created and assembled using
    PrlApi_CreateProblemReport/PrlReport_Assembly functions.
@@ -2564,7 +2564,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_3,
 /// @section miscellaneous functions.
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Frees a buffer allocated by the Parallels API library and
+/* Frees a buffer allocated by the API library and
    returned to the client. Every time a pointer to a buffer
    containing the data is returned to the client, it must be
    freed using this function. Failure to do so will result in
@@ -2587,7 +2587,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 ///////////////////////////////////////////////////////////////////////////////
 /// @section Debuging functionality.
 ///
-/// Parallels API is designed to allow clients to access most objects through handles.
+/// API is designed to allow clients to access most objects through handles.
 /// Handles are represented by the PRL_HANDLE opaque data type.
 /// All handles are allocated in the 'callee creates - caller frees' model and should
 /// be explecitely be freed by the special client with PrlHandle_Free call.

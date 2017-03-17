@@ -45,7 +45,7 @@ extern "C" {
 /// @section Generic API methods for the client
 ///
 /// This section consists of methods that are used for general
-/// manipulation of the parallels api library and are not specific
+/// manipulation of the api library and are not specific
 /// to objects in the object hierarchy.
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -72,7 +72,7 @@ extern "C" {
      2. Use the PrlResult_GetParam function to obtain a handle
         of type PHT_SYSTEM_STATISTICS.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -111,7 +111,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -122,7 +122,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_HANDLE hServer
 		) );
 
-/* Cancels the Parallels Service statistics subscription that was started
+/* Cancels the Dispatcher Service statistics subscription that was started
    using the PrlSrv_SubscribeToHostStatistics function.
 
    To get the return code from the PHT_JOB object, use the
@@ -132,7 +132,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   handle :  A handle of type PHT_SERVER identifying the Parallels
+   handle :  A handle of type PHT_SERVER identifying the Dispatcher
              Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -159,7 +159,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PrlSrv_UnregEventHandler.
 
    If method is called more than once, the 'filter' value is
-   updated each time on the Parallels Service side.
+   updated each time on the Dispatcher Service side.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -169,7 +169,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    sFilter :  String representing statistics filter, use char '*'
               at the end to get subset of statistic. Could be
               NULL, to get all statistic.
@@ -184,7 +184,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                            PRL_HANDLE hServer, PRL_CONST_STR sFilter
                            ) );
 
-/* Cancels the Parallels Service perfomace statistics subscription
+/* Cancels the Dispatcher Service perfomace statistics subscription
    that was started using the PrlSrv_SubscribeToPerfStats function.
 
    To get the return code from the PHT_JOB object, use the
@@ -194,7 +194,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
-   handle :  A handle of type PHT_SERVER identifying the Parallels
+   handle :  A handle of type PHT_SERVER identifying the Dispatcher
              Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -221,7 +221,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
      2. Use the PrlResult_GetParam function to obtain a handle
         of type PHT_EVENT.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    sFilter :  String representing statistics filter,
               use char '*' at the end to get subset of statistic.

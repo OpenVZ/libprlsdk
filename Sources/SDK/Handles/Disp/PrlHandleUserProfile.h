@@ -118,7 +118,7 @@ public:
 	PRL_RESULT CanChangeSrvSets(PRL_BOOL_PTR pbCanChangeSrvSets);
 
 	/**
-	 * Returns sign whether user is local administrator at the host where Parallels Service started
+	 * Returns sign whether user is local administrator at the host where Dispatcher Service started
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:
 	 * PRL_ERR_SUCCESS - operation completed successfully

@@ -30,7 +30,7 @@
 /* The _PRL_HANDLE_TYPE enumeration defines handle types. Each
    handle type and the functions that operate on it is described
    in detail in the "Functions by Handle" chapter of the
-   Parallels C API Reference guide.                              */
+   C API Reference guide.                              */
 typedef enum _PRL_HANDLE_TYPE
 {
 	PHT_ERROR									= 0,
@@ -735,7 +735,7 @@ typedef enum _PRL_PROCESS_STATE_TYPE
 typedef PRL_PROCESS_STATE_TYPE* PRL_PROCESS_STATE_TYPE_PTR;
 
 /**
- * Parallels license versions enumeration.
+ * license versions enumeration.
  */
 typedef enum _PRL_VERSION_ENUM
 {
@@ -752,7 +752,7 @@ typedef enum _PRL_VERSION_ENUM
 typedef PRL_VERSION_ENUM* PRL_VERSION_ENUM_PTR;
 
 /**
- * Parallels license products enumeration.
+ * license products enumeration.
  */
 typedef enum _PRL_PRODUCT_ENUM
 {
@@ -771,7 +771,7 @@ typedef PRL_PRODUCT_ENUM* PRL_PRODUCT_ENUM_PTR;
  */
 typedef enum _PRL_LICENSE_RESTRICTION_KEY
 {
-	/* NOTE to Parallels Developers:
+	/* NOTE to Developers:
 	* DO NOT CHANGE ANY MEMBER NAME BECAUSE IT USES IN INTERNAL PROTOCOL( ParallelsDomModel.h )
 	*/
 
@@ -883,7 +883,7 @@ typedef enum _PRL_USB_DEVICE_TYPE
 typedef PRL_USB_DEVICE_TYPE* PRL_USB_DEVICE_TYPE_PTR;
 
 /**
- * Parallels service statuses
+ * service statuses
  */
 typedef enum _PRL_SERVICE_STATUS_ENUM
 {
@@ -913,13 +913,13 @@ typedef enum _PRL_RUNNING_TASK_TYPE_ENUM
 typedef PRL_RUNNING_TASK_TYPE_ENUM* PRL_RUNNING_TASK_TYPE_ENUM_PTR;
 
 /**
-* Parallels Tools Utility commands identifiers
+* Guest Tools Utility commands identifiers
 */
 typedef enum _PRL_TOOLS_UTILITY_COMMAND_ID
 {
        ///     @brief Identifier of invalid command
        PTU_CMD_INVALID         = 0,
-       ///     @brief Can be sent to indicate that Parallels Tools Utility subsystem
+       ///     @brief Can be sent to indicate that Guest Tools Utility subsystem
        ///     is alive and ready to work
        PTU_CMD_PTU_ALIVE       = 1
 }
@@ -927,7 +927,7 @@ PRL_TOOLS_UTILITY_COMMAND_ID;
 typedef PRL_TOOLS_UTILITY_COMMAND_ID* PRL_TOOLS_UTILITY_COMMAND_ID_PTR;
 
 /**
-* Parallels remote desktop modes
+* remote desktop modes
 */
 typedef enum _PRL_VM_REMOTE_DISPLAY_MODE
 {
@@ -1107,7 +1107,7 @@ typedef enum _PRL_VM_CONFIG_SECTIONS
 typedef PRL_VM_CONFIG_SECTIONS* PRL_VM_CONFIG_SECTIONS_PTR;
 
 /**
- * Parallels Tools Information Service record states
+ * Guest Tools Information Service record states
  */
 typedef enum _PRL_TIS_RECORD_STATE
 {
@@ -1119,7 +1119,7 @@ PRL_TIS_RECORD_STATE;
 typedef PRL_TIS_RECORD_STATE* PRL_TIS_RECORD_STATE_PTR;
 
 /**
- * Parallels Tools Information Service record fields
+ * Guest Tools Information Service record fields
  */
 typedef enum _PRL_TIS_RECORD_FIELD
 {
@@ -1434,8 +1434,8 @@ typedef enum _PRL_TOOLS_SIA_OPEN_IN_TYPES
 } PRL_TOOLS_SIA_OPEN_IN_TYPES;
 typedef PRL_TOOLS_SIA_OPEN_IN_TYPES* PRL_TOOLS_SIA_OPEN_IN_TYPES_PTR;
 
-/* Parallels application mode in which SDK should work
-   PAM_SERVER : 	SDK should working at Parallels Service application mode
+/* application mode in which SDK should work
+   PAM_SERVER : 	SDK should working at Dispatcher Service application mode
 */
 typedef enum _PRL_APPLICATION_MODE
 {
@@ -1566,9 +1566,9 @@ typedef enum _PRL_IOLIMIT_TYPE
 } PRL_IOLIMIT_TYPE;
 
 /*
- * Parallels adapter index reserved values:
- * PAI_INVALID_ADAPTER:  parallels adapter in general is not available
- * PAI_GENERATE_INDEX:   calculate a new parallels adapter index
+ * adapter index reserved values:
+ * PAI_INVALID_ADAPTER:  adapter in general is not available
+ * PAI_GENERATE_INDEX:   calculate a new adapter index
  */
 typedef enum _PRL_ADAPTER_INDEX
 {

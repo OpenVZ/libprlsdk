@@ -114,9 +114,6 @@ namespace CProblemReportUtils
 	 */
 	void addKeyboardMouseProfiles( CProblemReport & cReport );
 
-	// load all app switcher packages info
-	QString loadAppSwitcherPackagesInfo();
-
 	/**
 	 * Returns path to the latest system panic log
 	 * @param target path to analyse
@@ -125,8 +122,6 @@ namespace CProblemReportUtils
 
 	// execute Shell command using QProcess
 	bool executeShellCommandSync( const QString & strCommand, QString & strOut );
-
-	QString getGuiCepQSettingsOrganizationName();
 
 	// get app version from line macosx crash report
 	bool getAppVersionFromLineOfMacCrashDump( const QString& sLineOfCrashDump

@@ -527,8 +527,8 @@ void CPackedProblemReport::appendTemplateSystemLog( const QString& strPathFrom,
 
 		//report server don't show logs without ".log" extension
 		if (postfixlen > 0 && saveName.length() > 4 && saveName.right(4) != QString(".log"))
-		{	//we have name like parallels-system.log-XXX
-			//convert to parallels-system-XXX.log
+		{	//we have name like system.log-XXX
+			//convert to system-XXX.log
 			if (strCustomName.length() > 4 && strCustomName.right(4) == QString(".log"))
 				saveName = strCustomName.left(strCustomName.length()-4) + postfix + ".log";
 			else

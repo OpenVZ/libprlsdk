@@ -46,7 +46,7 @@ extern "C" {
 /// @section Generic API methods for the client
 ///
 /// This section consists of methods that are used for general
-/// manipulation of the parallels api library and are not specific
+/// manipulation of the api library and are not specific
 /// to objects in the object hierarchy.
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -57,7 +57,7 @@ extern "C" {
 /// @section Server object handling routines and data types.
 ///////////////////////////////////////////////////////////////////////////////
 
-/* Registers an existing virtual machine with Parallels Service.
+/* Registers an existing virtual machine with Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -73,17 +73,17 @@ extern "C" {
         of type PHT_VIRTUAL_MACHINE.
    Parameters
    hServer :              A handle of type PHT_SERVER identifying
-                          the Parallels Service.
+                          the Dispatcher Service.
    strVmDirPath :         An absolute path to the virtual machine
                           directory to register.
    bNonInteractiveMode :  Set to PRL_TRUE to use non\-interactive
                           mode. Set to PRL_FALSE to use
                           interactive mode. In interactive mode,
                           a client may receive questions from the
-                          Parallels Service, which it is expected
+                          Dispatcher Service, which it is expected
                           to answer in order for the operation to
                           continue. In non\-interactive mode, the
-                          Parallels Service will make decisions
+                          Dispatcher Service will make decisions
                           on its own.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -100,7 +100,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bNonInteractiveMode
 		) );
 
-/* Registers an existing virtual machine with Parallels Service.
+/* Registers an existing virtual machine with Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -116,7 +116,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
         of type PHT_VIRTUAL_MACHINE.
    Parameters
    hServer :      A handle of type PHT_SERVER identifying
-                  the Parallels Service.
+                  the Dispatcher Service.
    strVmDirPath : An absolute path the virtual machine
                   directory to register.
    nFlags       : A bitset of flags.
@@ -127,10 +127,10 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
                   PACF_NON_INTERACTIVE_MODE	  - to use
 					 non-interactive mode. In interactive mode,
 					 a client may receive questions from the
-					 Parallels Service, which it is expected
+					 Dispatcher Service, which it is expected
 					 to answer in order for the operation to
 					 continue. In non\-interactive mode, the
-					 Parallels Service will make decisions
+					 Dispatcher Service will make decisions
 					 on its own.
 
 				  PRVF_REGENERATE_VM_UUID  - to generate new VM identity after registration.
@@ -167,7 +167,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
         of type PHT_VIRTUAL_MACHINE.
    Parameters
    hServer :      A handle of type PHT_SERVER identifying
-                  the Parallels Service.
+                  the Dispatcher Service.
    strVmDirPath : An absolute path the virtual machine
                   directory to register.
    strVmUuid	: Assign custom Vm uuid
@@ -179,10 +179,10 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                   PACF_NON_INTERACTIVE_MODE	  - to use
 					 non-interactive mode. In interactive mode,
 					 a client may receive questions from the
-					 Parallels Service, which it is expected
+					 Dispatcher Service, which it is expected
 					 to answer in order for the operation to
 					 continue. In non\-interactive mode, the
-					 Parallels Service will make decisions
+					 Dispatcher Service will make decisions
 					 on its own.
 
    Returns
@@ -204,7 +204,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_5,
 
 /* %VM_ONLY%
  
-   Registers an existing 3rd party virtual machine with Parallels Service.
+   Registers an existing 3rd party virtual machine with Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -220,7 +220,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_5,
         of type PHT_VIRTUAL_MACHINE.
    Parameters
    hServer :              A handle of type PHT_SERVER identifying
-                          the Parallels Service.
+                          the Dispatcher Service.
    strVmConfigPath :      [required] An absolute path to the virtual
                           machine configuration file (*.vmx for
 						  example)
@@ -269,7 +269,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		of supported guest OSes types, versions and defaults.
    Parameters
    hServer :              A handle of type PHT_SERVER identifying
-                          the Parallels Service.
+                          the Dispatcher Service.
    phOsesMatrix :         pointer to the buffer for storing result.
    Returns
    PRL_RESULT. Possible values:
@@ -296,7 +296,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    virtual machine.
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    phVm :     [out] A pointer to a variable that receives the
               handle.
    Returns
@@ -313,7 +313,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 					 ) );
 
 /* Retrieves a list of virtual machines registered with the
-   specified Parallels Service. The information about each virtual machine
+   specified Dispatcher Service. The information about each virtual machine
    is returned as a handle of type PHT_VIRTUAL_MACHINE.
 
    To get the return code from the PHT_JOB object, use the
@@ -332,7 +332,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
         by passing a specific index, to obtain a handle to each
         virtual machine.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -344,7 +344,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* Retrieves a list of virtual machines registered with the
-   specified Parallels Service. The information about each virtual machine
+   specified Dispatcher Service. The information about each virtual machine
    is returned as a handle of type PHT_VIRTUAL_MACHINE.
 
    To get the return code from the PHT_JOB object, use the
@@ -363,7 +363,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
         by passing a specific index, to obtain a handle to each
         virtual machine.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    nFlags :   Flags bitset of PRL_GET_VM_LIST_FLAGS enumerator.
    Returns
@@ -398,7 +398,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 
    Parameters
    hServer :  A handle of type PHT_SERVER identifying the
-              Parallels Service.
+              Dispatcher Service.
    pParam :   Pointer to the PRL_GET_VM_CONFIG_PARAM_DATA structure.
    Returns
    PRL_RESULT. Possible values:
@@ -418,7 +418,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 /* Searches for unregistered virtual machines at the specified
    location(s). The function can be used
    to search for virtual machines that are not currently
-   registered with the specified Parallels Service but are otherwise valid
+   registered with the specified Dispatcher Service but are otherwise valid
    machines to be registered with it. The virtual machine
    information is returned as a list of PHT_FOUND_VM_INFO
    objects. When the function is executed asynchronously using
@@ -442,7 +442,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
         handles of type PHT_FOUND_VM_INFO.
    Parameters
    hServer :       A handle of type PHT_SERVER identifying the
-                   Parallels Service.
+                   Dispatcher Service.
    hStringsList :  A handle of type PHT_STRINGS_LIST containing
                    the list of pathnames to search. If the list
                    is empty, all available drives and directories
@@ -458,8 +458,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 
-/* Sends an appliance configuration to the Parallels Service in order to
-   install the corresponding appliance from Parallels download service.
+/* Sends an appliance configuration to the Dispatcher Service in order to
+   install the corresponding appliance from download service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -469,14 +469,14 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :       A handle of type PHT_SERVER identifying the
-                   Parallels Service.
+                   Dispatcher Service.
    hAppCfg :       A handle of type PHT_APPLIANCE_CONFIG identifying the appliance.
    sVmParentPath : Optional. Name and path of the parent directory
                    where the virtual machine appliance should be installed.
                    If this parameter is omitted (null pointer or empty string
                    is passed), the new virtual machine appliance directory
                    will be created in the default directory for this
-                   Parallels Service.
+                   Dispatcher Service.
    nFlags :        Reserved parameter
    Returns
    A handle of type PHT_JOB containing the results of this
@@ -503,7 +503,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :       A handle of type PHT_SERVER identifying the
-                   Parallels Service.
+                   Dispatcher Service.
    hAppCfg :       A handle of type PHT_APPLIANCE_CONFIG identifying the appliance.
                    This must be the same handle instance that was passed
                    to the PrlSrv_InstallAppliance function.
@@ -533,7 +533,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :       A handle of type PHT_SERVER identifying the
-                   Parallels Service.
+                   Dispatcher Service.
    hAppCfg :       A handle of type PHT_APPLIANCE_CONFIG identifying the appliance.
                    This must be the same handle instance that was passed
                    to the PrlSrv_InstallAppliance function.
@@ -562,11 +562,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 
    Parameters
    hSourceServer :     A handle of type PHT_SERVER
-                       identifying the source Parallels Service.
+                       identifying the source Dispatcher Service.
    sVmUuid :           A virtual machine uuid
    sTargetHost:        The name of the target host machine.
    nTargetPort:        The port number on the target host.
-   sTargetSessionId:   The target Parallels Service session ID.
+   sTargetSessionId:   The target Dispatcher Service session ID.
    sDescription:       The backup description.
    backup_flags :      Flags that specify backup type and etc. Acceptable flags:
    PBT_FULL		: full backup
@@ -578,7 +578,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
                        data transfer).
    reserved_flags :    Reserved flags.
    force_operation :   Specifies to process VM backup action without asking
-                       any additional questions from the Parallels Service side
+                       any additional questions from the Dispatcher Service side
                        (non-interactive clients should use this option).
 
    Returns
@@ -610,19 +610,19 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
    Parameters
    hSourceServer :     A handle of type PHT_SERVER
-                       identifying the source Parallels Service.
+                       identifying the source Dispatcher Service.
    sVmUuid :           A virtual machine uuid
    sBackupUuid :       A backup uuid
    sTargetHost:        The name of the target host machine.
    nTargetPort:        The port number on the target host.
-   sTargetSessionId:   The target Parallels Service session ID.
+   sTargetSessionId:   The target Dispatcher Service session ID.
    sTargetVmHomePath : Home directory of the target virtual machine.
    restore_flags :     Flags that specify restore type and etc. Acceptable flags:
    PBT_RESTORE_TO_COPY	: change Vm name/uuid/MAC address on restore
                        PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
    reserved_flags :    Reserved flags.
    force_operation :   Specifies to process VM backup action without asking
-                       any additional questions from the Parallels Service side
+                       any additional questions from the Dispatcher Service side
                        (non-interactive clients should use this option).
 
    Returns
@@ -688,7 +688,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
    Parameters
    hSourceServer :     A handle of type PHT_SERVER
-                       identifying the source Parallels Service.
+                       identifying the source Dispatcher Service.
    sUuid :             A virtual machine or a backup ID. If it is empty,
                        the tree will be built for backups of all virtual machines.
                        When PBT_BACKUP_ID or PBT_CHAIN flag is specified in
@@ -696,7 +696,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                        is treated as a backup ID, otherwise - as a virtual machine UUID.
    sTargetHost:        The name of the target host machine.
    nTargetPort:        The port number on the target host.
-   sTargetSessionId:   The target Parallels Service session ID.
+   sTargetSessionId:   The target Dispatcher Service session ID.
    backup_flags :      Flags that specify backup type and etc. Acceptable flags:
    	   	   	   	   	   PBT_VM - include only virtual machine backups (used by default
    	   	   	   	   	   if PBT_VM and PBT_CT flags are not specified)
@@ -714,7 +714,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                        PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
    reserved_flags :    Reserved flags.
    force_operation :   Specifies to process VM backup action without asking
-                       any additional questions from the Parallels Service side
+                       any additional questions from the Dispatcher Service side
                        (non-interactive clients should use this option).
 
    Returns
@@ -745,17 +745,17 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
    Parameters
    hSourceServer :     A handle of type PHT_SERVER
-                       identifying the source Parallels Service.
+                       identifying the source Dispatcher Service.
    sVmUuid :           A virtual machine uuid
    sBackupUuid :       A backup uuid
    sTargetHost:        The name of the target host machine.
    nTargetPort:        The port number on the target host.
-   sTargetSessionId:   The target Parallels Service session ID.
+   sTargetSessionId:   The target Dispatcher Service session ID.
    remove_flags :      Flags that specify remove type and etc. Acceptable flags:
                        PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
    reserved_flags :    Reserved flags.
    force_operation :   Specifies to process VM backup action without asking
-                       any additional questions from the Parallels Service side
+                       any additional questions from the Dispatcher Service side
                        (non-interactive clients should use this option).
 
    Returns
@@ -800,7 +800,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.
    Parameters
    hServer :   		A handle of type PHT_SERVER identifying the
-               		Parallels Service.
+               		Dispatcher Service.
    nGuestDistroType :   Guest OS version from the (PVS_GUEST_VER_...).
    sPath :		Full path to the OS distribution image or folder.
    sUserName :          User name.
@@ -825,7 +825,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 /* Retrieves a list of Containers templates registered with the
-   specified Parallels Service. The information about each template
+   specified Dispatcher Service. The information about each template
    is returned as a handle of type PHT_CT_TEMPLATE.
 
    To get the return code from the PHT_JOB object, use the
@@ -844,7 +844,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
         by passing a specific index, to obtain a handle to each
         template.
    Parameters
-   hServer :  A handle of type PHT_SERVER identifying the Parallels
+   hServer :  A handle of type PHT_SERVER identifying the Dispatcher
               Service.
    nFlags :   Reserved parameter.
    Returns
@@ -867,7 +867,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
 
    Parameters
-   hServer    : A handle of type PHT_SERVER identifying the Parallels
+   hServer    : A handle of type PHT_SERVER identifying the Dispatcher
                 Service.
    sName      : Name of template to be removed.
    sOsTmplName: Name of OS template for which this application template is.
@@ -898,7 +898,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
 
    Parameters
-   hSrv       : A handle of type PHT_SERVER identifying the Parallels
+   hSrv       : A handle of type PHT_SERVER identifying the Dispatcher
                 Service.
    sName      : Name of template to be removed.
    sOsTmplName: Name of OS template for which this application template is.
@@ -1559,7 +1559,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_7,
    Please note that no parser is provided to traverse the
    returned XML. To use this functionality, you will have to
    parse the returned XML yourself. This function will be
-   replaced in the future releases of the Parallels SDK.
+   replaced in the future releases of the SDK.
    Parameters
    handle :  A handle of type PHT_VIRTUAL_MACHINE identifying the
              virtual machine.
@@ -1785,7 +1785,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_2,
    exact copy of the specified virtual machine on the same
    host using the specified new name and location. In order to
    perform a clone operation, the original machine must be
-   registered with the Parallels Service. A clone can be created as a
+   registered with the Dispatcher Service. A clone can be created as a
    virtual machine or as a template. To create a template, set
    the bCreateTemplate parameter value to PRL_TRUE. The function
    can also be used to create new virtual machines from
@@ -1835,7 +1835,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    exact copy of the specified virtual machine on the same
    host using the specified new name and location. In order to
    perform a clone operation, the original machine must be
-   registered with the Parallels Service. A clone can be created as a
+   registered with the Dispatcher Service. A clone can be created as a
    virtual machine or as a template. To create a template, set
    the nFlags parameter to PACF_CLONEVM_TO_TEMPLATE value. The function
    can also be used to create new virtual machines from
@@ -1896,7 +1896,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
    hVm :               A handle of type PHT_VIRTUAL_MACHINE
                        identifying the virtual machine.
    hTargetServer :     A handle of type PHT_SERVER identifying
-                       the target Parallels Service.
+                       the target Dispatcher Service.
    target_home_path :  Target VM home path (i.e. where VM will be
                        placed on target system). Empty string
                        accounts as default VM directory path
@@ -1905,7 +1905,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action
                        without asking any additional questions
-                       from the Parallels Service side
+                       from the Dispatcher Service side
                        (non\-interactive clients should use this
                        option).
    Returns
@@ -1926,7 +1926,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    exact copy of the specified virtual machine on the same
    host using the specified new name and location. In order to
    perform a clone operation, the original machine must be
-   registered with the Parallels Service. A clone can be created as a
+   registered with the Dispatcher Service. A clone can be created as a
    virtual machine or as a template. To create a template, set
    the nFlags parameter to PACF_CLONEVM_TO_TEMPLATE value. The function
    can also be used to create new virtual machines from
@@ -1975,7 +1975,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 /* Migrates an existing virtual machine to another host.
    This is an extended version of PrlVm_Migrate function that allows to
    initiate VM migration process without active connection to target
-   Parallels Service.
+   Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -1988,7 +1988,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                        identifying the virtual machine.
    target_host :       The name of the target host machine.
    target_port :       The port number on the target host.
-   target_session_id : The target Parallels Service session ID. This ID can be
+   target_session_id : The target Dispatcher Service session ID. This ID can be
                        retrieved with PrlLoginResponse_GetSessionUuid from the
 					   response of the login request.
    target_home_path :  Target VM home path (i.e. where VM will be
@@ -1998,7 +1998,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                        See acceptable flags at PrlCommandsFlags.h
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action without asking
-                       any additional questions from the Parallels Service side
+                       any additional questions from the Dispatcher Service side
                        (non-interactive clients should use this option).
 
    Returns
@@ -2028,7 +2028,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    hVm :               A handle of type PHT_VIRTUAL_MACHINE
                        identifying the virtual machine.
    hTargetServer :     A handle of type PHT_SERVER identifying
-                       the target Parallels Service.
+                       the target Dispatcher Service.
    target_name :       Target VM name (i.e. what name will be
                        given to VM on target system). Specify empty
                        string to preserve VM name from source system.
@@ -2040,7 +2040,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action
                        without asking any additional questions
-                       from the Parallels Service side
+                       from the Dispatcher Service side
                        (non\-interactive clients should use this
                        option).
    Returns
@@ -2061,7 +2061,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 /* Migrates an existing virtual machine to another host.
    This is an extended version of PrlVm_MigrateWithRename function that allows to
    initiate VM migration process without active connection to target
-   Parallels Service.
+   Dispatcher Service.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -2074,7 +2074,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                        identifying the virtual machine.
    target_host :       The name of the target host machine.
    target_port :       The port number on the target host.
-   target_session_id : The target Parallels Service session ID. This ID can be
+   target_session_id : The target Dispatcher Service session ID. This ID can be
                        retrieved with PrlLoginResponse_GetSessionUuid from the
 					   response of the login request.
    target_home_path :  Target VM home path (i.e. where VM will be
@@ -2084,7 +2084,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                        See acceptable flags at PrlCommandsFlags.h
    reserved_flags :    Reserved parameter for further purposes
    force_operation :   Specifies to process VM migration action without asking
-                       any additional questions from the Parallels Service side
+                       any additional questions from the Dispatcher Service side
                        (non-interactive clients should use this option).
 
    Returns
@@ -2125,10 +2125,10 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* Deletes the specified virtual machine from the host. This
-   function un-registers the machine from the Parallels Service
+   function un-registers the machine from the Dispatcher Service
    and deletes all its files. This operation cannot be undone.
-   The specified machine must be registered with the Parallels Service. To
-   un-register a machine from the Parallels Service without deleting any of
+   The specified machine must be registered with the Dispatcher Service. To
+   un-register a machine from the Dispatcher Service without deleting any of
    its file, use the PrlVm_Unreg function.
 
    To get the return code from the PHT_JOB object, use the
@@ -2164,7 +2164,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 /* The PrlVm_GetProblemReport function obtains a problem report
    on abnormal virtual machine termination. If a virtual machine
    stops running abnormally, you call this function to obtain a
-   report from the Parallels Service describing the problem.
+   report from the Dispatcher Service describing the problem.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -2196,7 +2196,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 /* The PrlVm_GetPackedProblemReport function obtains a Packed problem report
 on abnormal virtual machine termination. If a virtual machine
 stops running abnormally, you call this function to obtain a
-report from the Parallels Service describing the problem.
+report from the Dispatcher Service describing the problem.
 
 To get the return code from the PHT_JOB object, use the
 PrlJob_GetRetCode function. Possible values are:
@@ -2305,7 +2305,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
 
 /* Obtains a handle of type PHT_VM_TOOLS_INFO containing
-   information about the state of the Parallels Tools package in
+   information about the state of the Tools package in
    a virtual machine.
    Parameters
    hVm :  A handle of type PHT_VIRTUAL_MACHINE identifying the
@@ -2327,15 +2327,15 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    refers to an existing virtual machine, it is populated with
    the virtual machine configuration data. When working with
    configuration data, you always work with this local copy.
-   Naturally, the configuration can change on the Parallels Service side at
+   Naturally, the configuration can change on the Dispatcher Service side at
    any time. The PrlVm_RefreshConfig function allows to re-retrieve
-   the configuration data from the Parallels Service. The function can be
+   the configuration data from the Dispatcher Service. The function can be
    used when an event of type PET_DSP_EVT_VM_CONFIG_CHANGED is
    triggered (the event notifies the client that the virtual
    machine configuration has been modified), or on unsuccessful
    PrlVm_Commit operation, or at any time you want to
    synchronize your local virtual machine object with the
-   Parallels Service. Please note that the function replaces the local
+   Dispatcher Service. Please note that the function replaces the local
    data, so if you made any modification to it, the changes will
    be lost.
 
@@ -2365,15 +2365,15 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    refers to an existing virtual machine, it is populated with
    the virtual machine configuration data. When working with
    configuration data, you always work with this local copy.
-   Naturally, the configuration can change on the Parallels Service side at
+   Naturally, the configuration can change on the Dispatcher Service side at
    any time. The PrlVm_RefreshConfigEx function allows to re-retrieve
-   the configuration data from the Parallels Service. The function can be
+   the configuration data from the Dispatcher Service. The function can be
    used when an event of type PET_DSP_EVT_VM_CONFIG_CHANGED is
    triggered (the event notifies the client that the virtual
    machine configuration has been modified), or on unsuccessful
    PrlVm_Commit operation, or at any time you want to
    synchronize your local virtual machine object with the
-   Parallels Service. Please note that the function replaces the local
+   Dispatcher Service. Please note that the function replaces the local
    data, so if you made any modification to it, the changes will
    be lost.
 
@@ -2402,7 +2402,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* Creates a new console session or binds to an existing GUI
    session in a virtual machine. <b>Note</b>: To use this
-   function, Parallels Tools must be installed in the target
+   function, Tools must be installed in the target
    virtual machine.
 
    This function is used when you want to run a program in a
@@ -2422,7 +2422,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
        contain the PRL_PRIVILEGED_GUEST_OS_SESSION constant or a
        valid user name and password. When using
        PRL_PRIVILEGED_GUEST_OS_SESSION, the function will bind to an
-       existing session under which Parallels Service is running.
+       existing session under which Dispatcher Service is running.
        This session belongs to a privileged user (e.g. root on Linux
        or LocalSystem on Windows), so it can be used to perform
        administrative tasks. When specifying a user name and
@@ -2462,7 +2462,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
                     \-\- binds to an existing GUI session in a
                     virtual machine.<p />PRL_PRIVILEGED_GUEST_OS_SESSION
                     \-\- binds to an existing session under which
-                    Parallels Service is running. This session
+                    Dispatcher Service is running. This session
                     belongs to a privileged user (e.g. root on
                     Linux or LocalSystem on Windows), so it can
                     be used to perform administrative tasks.<p />Note
@@ -2705,7 +2705,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    PrlVm_UnregEventHandler.
 
    If method is called mutliple times, the 'filter'
-   value is updated each time on the Parallels Service side.
+   value is updated each time on the Dispatcher Service side.
 
    To get the return code from the PHT_JOB object, use the
    PrlJob_GetRetCode function. Possible values are:
@@ -2728,7 +2728,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                            PRL_HANDLE hVm, PRL_CONST_STR sFilter
                            ) );
 
-/* Cancels the Parallels Service performance statistics subscription
+/* Cancels the Dispatcher Service performance statistics subscription
    that was started using the PrlVm_SubscribeToPerfStats function.
 
    To get the return code from the PHT_JOB object, use the
@@ -2780,21 +2780,21 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 /* Creates a new virtual machine and registers it with the
-   Parallels Service. The steps involved in creating a typical
+   Dispatcher Service. The steps involved in creating a typical
    virtual machine are:
      1. Obtain a handle to a new virtual machine object using
         the PrlSrv_CreateVm function.
      2. Populate the object with the desired configuration data.
      3. Choose a name for the virtual machine and set it using
         the PrlVmCfg_SetName function.
-     4. Create and register the new machine with a Parallels
+     4. Create and register the new machine with a Dispatcher
         Service using the PrlVm_Reg function. This step will create
         the necessary virtual machine files on the host and
-        will add the machine to the Parallels Service VM registry. The
+        will add the machine to the Dispatcher Service VM registry. The
         directory containing the virtual machine files will have the
         same name as the name you've chosen for your virtual machine.
         The directory will be created in the default VM root
-        directory for this Parallels Service. If you would like to create the
+        directory for this Dispatcher Service. If you would like to create the
         virtual machine directory in a different location, you may
         specify the desired parent directory name and path.
    To get the return code from the PHT_JOB object, use the
@@ -2814,7 +2814,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
                           empty string is passed), the new
                           virtual machine directory will be
                           created in the default directory for
-                          this Parallels Service.
+                          this Dispatcher Service.
    nFlags :               Flags set which specifies way of
                           virtual machine creation. Use
 						  PACF_NON_INTERACTIVE_MODE flag here
@@ -2838,11 +2838,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_BOOL bNonInteractiveMode
 		) );
 
-/* Unregisters the specified virtual machine from the Parallels
+/* Unregisters the specified virtual machine from the Dispatcher
    Service. This call removes the virtual machine from the
-   Parallels Service registry, but does not delete the virtual
+   Dispatcher Service registry, but does not delete the virtual
    machine files from the hard drive. You can re-register a
-   machine with the Parallels Service at any time using the
+   machine with the Dispatcher Service at any time using the
    PrlSrv_RegisterVm or PrlSrv_RegisterVmEx functions call.
 
    To get the return code from the PHT_JOB object, use the
@@ -2983,13 +2983,13 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    virtual machine, the callback function will be called every
    time an event is generated in the machine.
 
-   You can also register an event handler with a Parallels
+   You can also register an event handler with a Dispatcher
    Service (instead of a particular virtual machine) using the
    PrlSrv_RegEventHandler function. If you register the event
-   handler with the Parallels Service, you will be able to receive events
-   from all of the virtual machines registered with that Parallels Service.
+   handler with the Dispatcher Service, you will be able to receive events
+   from all of the virtual machines registered with that Dispatcher Service.
    For more information on events and asynchronous functions,
-   see the Parallels Virtualization SDK Programmer's Guide.
+   see the Virtualization SDK Programmer's Guide.
    Parameters
    hObj :      A handle of type PHT_VIRTUAL_MACHINE or PHT_DESKTOP_CONTROL.
    handler :   A pointer to the callback function that will
@@ -3044,9 +3044,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /**
 The PrlVm_GetQuestions function allows to synchronously receive questions from
-a Parallels Service. It can be used as an alternative to asynchronous question
+a Dispatcher Service. It can be used as an alternative to asynchronous question
 processing through events. You can use this function at any time to check
-if a question is awaiting the client response on the Parallels Service side.
+if a question is awaiting the client response on the Dispatcher Service side.
 
 Parameters
 handle : A handle of type PHT_VIRTUAL_MACHINE.
@@ -3141,7 +3141,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    can be extracted with @ref PrlJob_GetRetCode() call. Possible
    values: PRL_ERR_INVALID_ARG - non valid PHT_VIRTUAL_MACHINE
    handle was passed PRL_ERR_UNINITIALIZED - unexpected error:
-   uninitialized with the Parallels Service connection or non identified VM
+   uninitialized with the Dispatcher Service connection or non identified VM
    object                                                         */
 PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 						   PrlVm_InitiateDevStateNotifications, (
@@ -3196,7 +3196,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    configuration, this function can be used to verify that a
    particular section of the configuration is valid. Use this
    function before sending the virtual machine object containing
-   the configuration information to the Parallels Service. If the
+   the configuration information to the Dispatcher Service. If the
    configuration is valid, you can commit the changes. If the
    configuration is not valid, make the necessary modifications
    and retry.
@@ -3244,8 +3244,8 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* %VM_ONLY%
 
-   Begin the Parallels Tools installation process. The machine must be
-   registered with the Parallels Service to perform this operation.
+   Begin the Tools installation process. The machine must be
+   registered with the Dispatcher Service to perform this operation.
    Parameters
    handle :  A handle of type PHT_VIRTUAL_MACHINE identifying the
              virtual machine.
@@ -3256,7 +3256,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    can be extracted with @ref PrlJob_GetRetCode() call. Possible
    values: PRL_ERR_INVALID_ARG - non valid PHT_VIRTUAL_MACHINE
    handle was passed PRL_ERR_UNINITIALIZED - unexpected error:
-   uninitialized with Parallels Service connection or non identified VM
+   uninitialized with Dispatcher Service connection or non identified VM
    object                                                         */
 PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
 						   PrlVm_InstallTools, (
@@ -3367,7 +3367,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    Generates and assigns a new Windows SID to the specified virtual machine running Windows guest OS.
    This function is useful when cloning or migrating a virtual machine to another host to avoid conflicts.
    Please note that this functionality is applicable to Windows guests only.
-   Parallels Tools must be installed in the virtual machine.
+   Tools must be installed in the virtual machine.
    The machine must be stopped before calling this function.
 
    Parameters
@@ -3412,10 +3412,10 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Functions specific for the Parallels offline management. This mode
+/// @section Functions specific for the Offline management. This mode
 /// lets to redirect packages going on VM assigned IP address to the some offline
 /// service that will process these requests.
-/// Note that offline management mode just working through Parallels Virtuozzo
+/// Note that offline management mode just working through Dispatcher Service
 ///////////////////////////////////////////////////////////////////////////////
 
 /* Performs an attempt to authenticate the user through the
@@ -4823,7 +4823,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    Determines whether the SmartGuard feature is enabled or not
    in a virtual machine. SmartGuard is feature that allows to
    make automatic snapshots of a virtual machine at predefined
-   time intervals. The feature requires Parallels Tools
+   time intervals. The feature requires Tools
    installed in a virtual machine.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -4851,7 +4851,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    Enables the SmartGuard feature in a virtual machine.
    SmartGuard is feature that allows to make automatic snapshots
    of a virtual machine at predefined time intervals. The
-   feature requires Parallels Tools installed in a virtual
+   feature requires Tools installed in a virtual
    machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -4912,7 +4912,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    creation, a SmartGuard feature. SmartGuard is a facility that
    allows to make automatic snapshots of a virtual machine at
    predefined time intervals. By default, the snapshots are
-   creating transparently to the user. If needed, Parallels
+   creating transparently to the user. If needed, Dispatcher
    Service can notify the user that a snapshot is about to be
    created. The user can then choose to proceed with snapshot
    creation or cancel it. This function allows to enabled or
@@ -5445,8 +5445,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    information about an individual folder using the
    PrlVmCfg_GetShare function.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the PrlVm_GetToolsState
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the PrlVm_GetToolsState
    function.
    Parameters
    hVmCfg :         A handle of type PHT_VM_CONFIGURATION
@@ -5476,8 +5476,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    function. Then iterate through the list using the iteration
    number as the nShareIndex parameter value.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the PrlVm_GetToolsState
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the PrlVm_GetToolsState
    function.
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
@@ -5854,7 +5854,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
    or disabled in a virtual machine. When clipboard sharing is
    enabled, you can copy and paste text and files from the host
    to a virtual machine or vise versa, or from one virtual
-   machine to another. This feature requires Parallels Tools
+   machine to another. This feature requires Tools
    installed in a virtual machine.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -5879,7 +5879,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    clipboard sharing is enabled, you can copy and paste text and
    files from the host to a virtual machine or vise versa, or
    from one virtual machine to another. This feature requires
-   Parallels Tools installed in a virtual machine.
+   Tools installed in a virtual machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
                the virtual machine configuration.
@@ -5934,7 +5934,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PrlVmCfg_SetTimeSynchronizationEnabled function. The time
    will be synchronized at predefined time intervals. To set the
    time interval, use the PrlVmCfg_SetSmartGuardInterval
-   function. This feature requires Parallels Tools installed in
+   function. This feature requires Tools installed in
    a virtual machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -5987,7 +5987,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    virtual machine in a perfect synch with the time in the host
    OS. You can also set different time zones in the host and the
    guest OS and still synchronize the time. To do so, use the PrlVmCfg_SetTimeSyncSmartModeEnabled
-   function. This feature requires Parallels Tools installed in
+   function. This feature requires Tools installed in
    a virtual machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -7969,7 +7969,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 				) );
 
 /* Determines if the specified virtual machine is set to start
-   automatically on Parallels Service startup.
+   automatically on Dispatcher Service startup.
    Parameters
    hVmCfg :         A handle of type PHT_VM_CONFIGURATION
                     identifying the virtual machine configuration.
@@ -8183,7 +8183,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* %VM_ONLY%
 
-   Determines the action on Parallels Application window close for the
+   Determines the action on Application window close for the
    specified virtual machine.
    Parameters
    hVmCfg : A handle of type PHT_VM_CONFIGURATION
@@ -8205,12 +8205,12 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* %VM_ONLY%
 
-   Allows to set the action on Parallels Application window close for the specified
+   Allows to set the action on Application window close for the specified
    virtual machine.
    Parameters
    hVmCfg : A handle of type PHT_VM_CONFIGURATION
             identifying the virtual machine configuration.
-   nActionOnWindowClose :  Action on Parallels window close to set.
+   nActionOnWindowClose :  Action on window close to set.
    Returns
    PRL_RESULT. Possible values:
 
@@ -8349,8 +8349,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 
    Determines whether the lock in screen mode sign is set or not
    in a virtual machine configuration. Lock in screen mode is feature
-   of Parallels Player product that allows to mandatory apply full
-   screen mode for Parallels GUI until guest OS started and go to
+   of Player product that allows to mandatory apply full
+   screen mode for GUI until guest OS started and go to
    the windowed mode just after guest OS will be stopped.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -8378,8 +8378,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
    Enables or disables the lock in screen mode feature
    in a virtual machine configuration. Lock in screen mode is feature
-   of Parallels Player product that allows to mandatory apply full
-   screen mode for Parallels GUI until guest OS started and go to
+   of Player product that allows to mandatory apply full
+   screen mode for GUI until guest OS started and go to
    the windowed mode just after guest OS will be stopped.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -8562,8 +8562,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    Determines if guest sharing is enabled (the guest OS disk
    drives are visible in the host OS).
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                   A handle of type PHT_VM_CONFIGURATION
@@ -8597,8 +8597,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will not see the drives in the host OS but Smart Select
    feature will still work.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                  A handle of type PHT_VM_CONFIGURATION
@@ -8627,8 +8627,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    automatically, then shared folders will be mapped and appear
    in the guest OS on startup.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                     A handle of type PHT_VM_CONFIGURATION
@@ -8661,8 +8661,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    not, you will not see the drives in the host OS but Smart
    Select feature will still work.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                    A handle of type PHT_VM_CONFIGURATION
@@ -8689,8 +8689,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
    Determines if the virtual disks in a virtual machine will be
    added to Spotlight search subsystem (Mac OS X feature).
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                           A handle of type
@@ -8724,8 +8724,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    Spotlight enable sign is turned on, the search through Spotlight subsystem
    will be using VM virtual hardisks too.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                    A handle of type PHT_VM_CONFIGURATION
@@ -8751,8 +8751,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 /* %VM_ONLY%
 
    Determines if host sharing is enabled (host shared folders
-   are visible in the guest OS). Parallels Tools must be
-   installed to use this feature. To obtain the Parallels Tools
+   are visible in the guest OS). Tools must be
+   installed to use this feature. To obtain the Tools
    status, use the PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                  A handle of type
@@ -8783,8 +8783,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    shared folders must be set up first using the functionality
    provided by the PHT_SHARE object.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
@@ -8809,8 +8809,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* %VM_ONLY%
 
    Determines whether all host disks will be present at guest OS
-   as shares. Parallels Tools must be installed to use this
-   feature. To obtain the Parallels Tools status, use the
+   as shares. Tools must be installed to use this
+   feature. To obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :               A handle of type PHT_VM_CONFIGURATION
@@ -8841,8 +8841,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    OS. Note that host sharing should be switched on to enable this
    functionality.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
@@ -8868,8 +8868,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 /* %VM_ONLY%
 
    Determines whether the host user home directory will be
-   available in the guest OS as a share. Parallels Tools must be
-   installed to use this feature. To obtain the Parallels Tools
+   available in the guest OS as a share. Tools must be
+   installed to use this feature. To obtain the Tools
    status, use the PrlVm_GetToolsState function.
    Parameters
    hVmCfg :              A handle of type PHT_VM_CONFIGURATION
@@ -8899,8 +8899,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    in the specified virtual machine. When this feature is
    enabled, the host user home directory will be shared in the
    virtual machine. Note that host sharing should be enabled to
-   use this functionality. Parallels Tools must be installed to
-   use this feature. To obtain the Parallels Tools status, use
+   use this functionality. Tools must be installed to
+   use this feature. To obtain the Tools status, use
    the PrlVm_GetToolsState function.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
@@ -8926,8 +8926,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 /* %VM_ONLY%
 
    Determines whether host disks shared with the guest Windows
-   OS will be mapped to drive letters. Parallels Tools must be
-   installed to use this feature. To obtain the Parallels Tools
+   OS will be mapped to drive letters. Tools must be
+   installed to use this feature. To obtain the Tools
    status, use the PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                       A handle of type
@@ -8960,8 +8960,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    correspond drive letters. Note that host sharing should be switched on to enable this
    functionality.
 
-   Parallels Tools must be installed to use this feature. To
-   obtain the Parallels Tools status, use the
+   Tools must be installed to use this feature. To
+   obtain the Tools status, use the
    PrlVm_GetToolsState function.
    Parameters
    hVmCfg :                 A handle of type PHT_VM_CONFIGURATION
@@ -9376,8 +9376,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* <unfinished>
 %VM_ONLY%
 
-   Determines whether the Parallels application (such as
-   Parallels Desktop) will be automatically closed on the
+   Determines whether the application (such as
+   Desktop) will be automatically closed on the
    virtual machine shutdown.
    Parameters
    handle :                  A handle of type PHT_VIRTUAL_MACHINE
@@ -9402,8 +9402,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* %VM_ONLY%
 
-   Allows to specify whether the Parallels application (such
-   Parallels Desktop) will be closed on the virtual machine
+   Allows to specify whether the application (such
+   Desktop) will be closed on the virtual machine
    shutdown.
    Parameters
    hVmCfg :                 A handle of type PHT_VIRTUAL_MACHINE
@@ -9791,8 +9791,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* Allows to manually set the global search domain list that
-   will be assigned to the Virtuozzo Container.
-   \Note: For these changes to take effect, Parallels Tools must
+   will be assigned to the Container.
+   \Note: For these changes to take effect, Guest Tools must
    be installed in a target virtual machine.
 
    If the changes are applied to a stopped virtual machine, they
@@ -9826,7 +9826,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /* Obtains the list of of globally defined DNS servers which is assigned to a
-   Virtuozzo Container.
+   Container.
    Parameters
    hVmCfg:              A handle of type PHT_VM_CONFIGURATION
                          identifying the virtual machine
@@ -9852,7 +9852,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
 /* Allows to manually assign DNS servers
    a virtual machine. <b>Note</b>: For these changes to take
-   effect, Parallels Tools must be installed in the target virtual
+   effect, Tools must be installed in the target virtual
    machine, and its network adapter settings should be configured
    to change automatically.
 
@@ -9886,7 +9886,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    configured for IP addrs.
    In comparison with PrlVmDevNet_SetAutoApply(), dns servers
    and searchdomains settings will be skipped.
-   Note: for changes to take effect, Parallels Tools must be
+   Note: for changes to take effect, Tools must be
    installed in a target virtual machine.
 
    If the changes are applied to a stopped virtual machine, they
@@ -10118,7 +10118,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 /* Determines whether the Automatic HDD compress feature is enabled
    or not in a virtual machine. Automatic HDD compress is feature
    that allows to make automatic compacting of a virtual machine disks
-   at predefined time intervals. The feature recommends Parallels Tools
+   at predefined time intervals. The feature recommends Tools
    installed in a virtual machine.
    Parameters
    hVmCfg :     A handle of type PHT_VM_CONFIGURATION identifying
@@ -10145,7 +10145,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 /* Enables the Automatic HDD compress feature in a virtual machine.
    Automatic HDD compress is feature that allows to make automatic
    compress of a virtual machine disks at predefined time intervals.
-   The feature recommends Parallels Tools installed in a virtual
+   The feature recommends Tools installed in a virtual
    machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -10270,7 +10270,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* %VM_ONLY%
 
-   Enables or disables the Parallels Tools AutoUpdate feature for a
+   Enables or disables the Tools AutoUpdate feature for a
    virtual machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -10290,7 +10290,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		) );
 
 /*
-   Enables or disables the Parallels Tools AutoUpdate feature for a
+   Enables or disables the Tools AutoUpdate feature for a
    virtual machine.
    Parameters
    hVmCfg :    A handle of type PHT_VM_CONFIGURATION identifying
@@ -10553,8 +10553,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		PRL_VM_TYPE_PTR pnType
                 ) );
 
-/* \Returns Operation System template name the Parallels Virtuozzo Container
-   were created on.
+/* \Returns Operation System template name the Container were created on.
    Parameters
    hVmCfg:		A handle of type PHT_VM_CONFIGURATION
 			identifying the virtual machine
@@ -10581,7 +10580,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 /* Specify the Virtual Machine Operation System template name
-   which will be used to create new Parallels Virtuozzo Container.
+   which will be used to create new Container.
    This option acceptable for Virtual Machine of PVT_CT only.
    Parameters
    hVmCfg:		A handle of type PHT_VM_CONFIGURATION
@@ -10649,7 +10648,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 /* %CT_ONLY%
 
    Specify application templates list which will be used in the specified
-   Parallels Virtuozzo Container.
+   Container.
    This option acceptable for Virtual Machine of PVT_CT only.
    Parameters
    hVmCfg:		A handle of type PHT_VM_CONFIGURATION
@@ -10671,7 +10670,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 		) );
 
 /////////////////////////////////////////////////////////////////////////////////
-/// @section Functions specific for the Parallels Containers.
+/// @section Functions specific for the Containers.
 /////////////////////////////////////////////////////////////////////////////////
 
 /* %CT_ONLY%
@@ -11052,11 +11051,11 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
                           aborted if image already exists.
    bNonInteractiveMode :  Specifies wether the operation should
                           be carried out in interactive mode
-                          (where the Parallels Service may ask
+                          (where the Dispatcher Service may ask
                           questions and the client will have to
                           send answers). If set to PRL_TRUE,
                           non\-interactive mode will be used (the
-                          Parallels Service will make decisions
+                          Dispatcher Service will make decisions
                           on its own). If set to PRL_FALSE,
                           interactive mode will be used.
    Returns
@@ -12086,7 +12085,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 		 ) );
 
 /* Sets the mount point of the specified virtual hard disk.
-   (for Virtuozzo Container only)
+   (for Container only)
    Parameters
    hVmDev :      A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
                  identifying the virtual hard disk.
@@ -12208,7 +12207,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		));
 
 /* Returns the auto compress flag of the specified virtual hard disk.
-   (for Virtuozzo Container only)
+   (for Container only)
    Parameters
    hVmDev :      A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
                  identifying the virtual hard disk.
@@ -12230,7 +12229,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 		) );
 
 /* Sets the auto compress sign flag of the specified virtual hard disk.
-   (for Virtuozzo Container only)
+   (for Container only)
    Parameters
    hVmDev :      A valid handle of type PHT_VIRTUAL_DEV_HARD_DISK
                  identifying the virtual hard disk.
@@ -12588,7 +12587,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		) );
 
 /* \Returns the MAC address of a virtual network adapter inside
-   a virtual machine (in Parallels format XXXXXXXXXXXX).
+   a virtual machine (in format XXXXXXXXXXXX).
    Parameters
    hVmDev :                 A handle of type
                             PHT_VIRTUAL_DEV_NET_ADAPTER
@@ -12735,7 +12734,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* Allows to specify whether a network adapter in a virtual
    machine should be automatically configured. Note:
-   For these changes to take effect, Parallels Tools must be
+   For these changes to take effect, Tools must be
    installed in a target virtual machine.
 
    If the changes are applied to a stopped virtual machine, they
@@ -12770,7 +12769,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    \Returns the list of pairs "IP address/Subnet mask" which
    will be applied to the network adapter on the guest OS side
    (on guest start or immediately on config commit if guest
-   already working and Parallels tools with necessary
+   already working and Tools with necessary
    functionality are installed). The result will be returned as
    list of strings (PHT_STRINGS_LIST type) of pairs "IP
    address/Subnet mask".
@@ -12800,7 +12799,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* Allows to manually set IP addresses/Subnet masks to a network
    adapter in a virtual machine. <b>Note</b>: For these changes
-   to take effect, Parallels Tools must be installed in the target
+   to take effect, Tools must be installed in the target
    virtual machine, and its network adapter settings should be
    configured to change automatically.
 
@@ -12862,7 +12861,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* Allows to manually assign DNS servers to a network adapter in
    a virtual machine. <b>Note</b>: For these changes to take
-   effect, Parallels Tools must be installed in the target virtual
+   effect, Tools must be installed in the target virtual
    machine, and its network adapter settings should be configured
    to change automatically.
 
@@ -12923,7 +12922,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* Allows to manually assign search domains to a network adapter
    in a virtual machine. <b>Note</b>: For these changes to take
-   effect, Parallels Tools must be installed in the target virtual
+   effect, Tools must be installed in the target virtual
    machine, and its network adapter settings should be configured
    to change automatically.
 
@@ -12981,7 +12980,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* Allows to specify whether a network adapter in a virtual
    machine should be configured through DHCP or manually. Note:
-   For these changes to take effect, Parallels Tools must be
+   For these changes to take effect, Tools must be
    installed in the target virtual machine, and its network adapter
    settings should be configured to change automatically.
 
@@ -13038,7 +13037,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
 /* Allows to specify whether a network adapter in a virtual
    machine should be configured through DHCP (IPv6) or manually. Note:
-   For these changes to take effect, Parallels Tools must be
+   For these changes to take effect, Tools must be
    installed in the target virtual machine, and its network adapter
    settings should be configured to change automatically.
 
@@ -13108,7 +13107,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 
 /* Allows to manually set the default gateway address for a
    network adapter in a virtual machine. <b>Note</b>: For these
-   changes to take effect, Parallels Tools must be installed in
+   changes to take effect, Tools must be installed in
    the target virtual machine, and its network adapter settings
    should be configured to change automatically.
 
@@ -13179,7 +13178,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
 /* Allows to manually set the default gateway address (IPv6) for a
    network adapter in a virtual machine. <b>Note</b>: For these
-   changes to take effect, Parallels Tools must be installed in
+   changes to take effect, Tools must be installed in
    the target virtual machine, and its network adapter settings
    should be configured to change automatically.
 
@@ -14694,12 +14693,12 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @section Parallels Tools Utility functions
+/// @section Tools Utility functions
 ///////////////////////////////////////////////////////////////////////////////
 
 /* %VM_ONLY%
 
-   Returns the Parallels Tools package state information.
+   Returns the Tools package state information.
    Parameters
    handle :         A handle of type PHT_VM_TOOLS_INFO.
    pVmToolsState :  [out] A pointer to a variable that receives
@@ -14710,7 +14709,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_INVALID_ARG - invalid handle or null pointer was
    passed.
 
-   PRL_ERR_NO_DATA - the Parallels Tools package state
+   PRL_ERR_NO_DATA - the Tools package state
    information is not available.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
@@ -14722,9 +14721,9 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 /* %VM_ONLY%
 
-   \Returns version information of the Parallels Tools package
+   \Returns version information of the Tools package
    installed in a given virtual machine. Before calling this
-   function, make sure that the Parallels Tools package is
+   function, make sure that the Tools package is
    installed in the virtual machine by calling the
    PrlVmToolsInfo_GetState function.
    Parameters
@@ -14747,7 +14746,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    large enough. The parameter that is used to specify the size
    will contain the required size.
 
-   PRL_ERR_NO_DATA - the Parallels Tools package version
+   PRL_ERR_NO_DATA - the Tools package version
    information is not available.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
@@ -15231,7 +15230,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
 
 /////////////////////////////////////////////////////////////////////////////////
-/// @section Functions specific for the Parallels appliance configuration object.
+/// @section Functions specific for the appliance configuration object.
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -15263,7 +15262,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
 
 /////////////////////////////////////////////////////////////////////////////////
-/// @section Functions specific for the Parallels Containers Templates.
+/// @section Functions specific for the Containers Templates.
 /////////////////////////////////////////////////////////////////////////////////
 
 

@@ -31,7 +31,7 @@
 /* +++ BASE VALUE SET TO 0 +++ */
 
 /**
- * All parallels error values should go here in order to be maintained in one place
+ * All error values should go here in order to be maintained in one place
  * We're taking approach of HRESULT windows notation error codes here.
  */
 
@@ -888,7 +888,7 @@
 // Test errors
 /* +++ ALIGNED VALUE TO 43200 +++ */
 
-// Virtuozzo specific error
+// Vz specific error
 /* +++ ALIGNED VALUE TO 44000 +++ */
 
 // Encryption Vm errors

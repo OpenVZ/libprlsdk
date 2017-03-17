@@ -333,7 +333,7 @@ public:
 	PrlHandleJobPtr DspCmdUserGetLicenseInfo();
 
 	/**
-	 * Perform refresh states of installed parallels plugins.
+	 * Perform refresh states of installed plugins.
 	 * @return pointer to the class that abstracts the job process
 	 */
 	PrlHandleJobPtr RefreshPlugins(PRL_UINT32 nFlags);

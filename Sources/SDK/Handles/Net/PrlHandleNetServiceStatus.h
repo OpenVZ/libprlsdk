@@ -47,7 +47,7 @@ public:
 	~PrlHandleNetServiceStatus();
 
 	/**
-	 * Returns a status of Parallels Net service
+	 * Returns a status of Net service
 	 * @param pointer to buffer for storing result
 	 * @return PRL_ERR_SUCCESS if the method succeeds
 	 */

@@ -28,7 +28,7 @@
 #define VER_FILETYPE                VFT_DLL
 #define VER_FILESUBTYPE             VFT2_UNKNOWN
 
-#define VER_FILEDESCRIPTION_STR     "Parallels Public API Python Binding"
+#define VER_FILEDESCRIPTION_STR     "Public API Python Binding"
 #define VER_INTERNALNAME_STR        "prl_python_sdk"
 #define VER_ORIGINALFILENAME_STR    "prl_python_sdk.dll"
 

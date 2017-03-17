@@ -67,7 +67,7 @@ public:
 	PrlHandleJobPtr AfterHostResume(PRL_UINT32 nFlags);
 
 	/**
-	 * Adds Parallels Network Adapter.
+	 * Adds Network Adapter.
 	 * @param handle of PHT_DISP_NET_ADPTER type
 	 *
 	 * @return pointer to the class that abstracts the job process
@@ -75,15 +75,15 @@ public:
 	PrlHandleJobPtr AddNetAdapter(PRL_HANDLE hNetAdapter);
 
 	/**
-	 * Deletes Parallels Network Adapter.
-	 * @param Index of Parallels Network Adapter
+	 * Deletes Network Adapter.
+	 * @param Index of Network Adapter
 	 *
 	 * @return pointer to the class that abstracts the job process
 	 */
 	PrlHandleJobPtr DeleteNetAdapter(PRL_UINT32 nIndex);
 
 	/**
-	 * Updates Parallels Network Adapter.
+	 * Updates Network Adapter.
 	 * @param handle of PHT_DISP_NET_ADPTER type
 	 *
 	 * @return pointer to the class that abstracts the job process
