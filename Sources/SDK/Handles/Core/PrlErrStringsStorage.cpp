@@ -10755,4 +10755,11 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_WARNING
 		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SCSI_HYPERV_LINUX_NOT_SUPPORTED,
+		tr( "Hyper-V SCSI devices are not supported in Linux virtual machines." ),
+		tr( "" ),
+		true,
+		PMT_WARNING
+		);
 }
