@@ -235,9 +235,8 @@ QString GetProblemReportPath(const QString & strBaseDir)
 
 	//0x222
 	QFile::Permissions writePerm = QFile::Permissions(
-				QFile::WriteOther | QFile::WriteUser | QFile::WriteGroup
-				| QFile::ReadOther | QFile::ReadUser | QFile::ReadGroup
-				| QFile::ExeOther | QFile::ExeUser | QFile::ExeGroup
+				QFile::WriteUser | QFile::WriteGroup | QFile::ReadUser
+				| QFile::ReadGroup | QFile::ExeUser | QFile::ExeGroup
 			);
 	QFile::Permissions dirPerm =  QFile::permissions( reportName );
 	if ( (dirPerm & writePerm) != writePerm )
