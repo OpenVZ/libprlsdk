@@ -392,18 +392,13 @@ void CPveControl::connectionStateChanged (IOSender::State _state)
 	}
 	else if (m_pLoginLocalHelperJob)
 	{
-		if (   m_pLoginLocalHelperJob->wasCanceled()
-			|| ! CheckConnectionStatusHelper(
-						_state, m_pLoginLocalHelperJob->GetJobUuid(),
-						m_pLoginLocalHelperJob->isDelayedConnectionMode())
-			)
-		{
-			emit cleanupLoginHelperJob();
-		}
-		else
+		if (!m_pLoginLocalHelperJob->wasCanceled()
+			&& CheckConnectionStatusHelper(_state, m_pLoginLocalHelperJob->GetJobUuid(),
+				m_pLoginLocalHelperJob->isDelayedConnectionMode()))
 		{
 			m_pLoginLocalHelperJob->doJob();
 		}
+		emit cleanupLoginHelperJob();
 	}
 	else
 	{
