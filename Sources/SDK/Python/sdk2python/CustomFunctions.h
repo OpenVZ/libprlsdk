@@ -50,6 +50,8 @@ inline QStringList getCustomFunctions() {
 	nonStdFuncs.append("PrlApi_Deinit");
 	nonStdFuncs.append("PrlVmCfg_GetIoLimit");
 	nonStdFuncs.append("PrlVmCfg_SetIoLimit");
+	nonStdFuncs.append("PrlVmCfg_GetCpuLimitEx");
+	nonStdFuncs.append("PrlVmCfg_SetCpuLimitEx");
 	return nonStdFuncs;
 }
 

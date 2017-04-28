@@ -373,6 +373,11 @@ bool PythonComposer::AddMethod(QString& content, const QString& qsFunc, bool bHa
 				qsFuncArg = PTN_MEMGUARANTEE_SIZE_PARAMS;
 				qsMethArg = PTN_MEMGUARANTEE_SIZE_PARAMS;
 			}
+			else if (arg.type == "PRL_CONST_CPULIMIT_DATA_PTR")
+			{
+				qsFuncArg = PTN_CPULIMIT_EX_PARAMS;
+				qsMethArg = PTN_CPULIMIT_EX_PARAMS;
+			}
 			else if (arg.type == "PRL_EVENT_HANDLER_PTR")
             {   
                 qsFuncArg = PTN_EVENT_HANDLER_PARAMS;
