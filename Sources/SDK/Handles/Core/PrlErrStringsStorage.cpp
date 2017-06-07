@@ -1750,7 +1750,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		GUI_ERR_INVALID_VM_NAME_SPECIFIED,
 		tr("The virtual machine name \"%1\" is invalid."),
-		tr("A virtual machine name cannot contain any of the following characters: \\/:*?\"&lt;&gt;|. Specify a valid name and try again."),
+		tr("A virtual machine name cannot contain any of the following characters: [/:*?\"<>|%] Specify a valid name and try again."),
 		false,
 		PMT_WARNING
 		);
@@ -2658,7 +2658,7 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_VM_NAME_HAS_INVALID_SYMBOL,
 		tr("The virtual machine name \"%1\" is invalid."),
-		tr("A virtual machine name cannot contain any of the following characters: \\/:*?\"&lt;&gt;|. Specify a different name and try again."),
+		tr("A virtual machine name cannot contain any of the following characters: [/:*?\"<>|%]"),
 		false,
 		PMT_WARNING
 		);
