@@ -6577,7 +6577,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 		PRL_CONST_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize
 		) );
 
-/* Determines the number of CPUs in the virtual machine.
+/* Determines the number of CPU cores in a single CPU socket of the
+   virtual machine.
    Parameters
    hVmCfg :        A handle of type PHT_VM_CONFIGURATION
                    identifying the virtual machine configuration.
@@ -6599,7 +6600,8 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32_PTR pnVmCpuCount
 		) );
 
-/* Sets the number of CPUs for the specified virtual machine
+/* Sets the number of CPU cores in a single CPU socket of the
+   specified virtual machine.
    (the CPUs should be present in the machine).
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
@@ -15627,6 +15629,47 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 			PrlVmCfg_GetOptionsOnGuestCrash, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnOptions
+		) );
+
+/* Determines the number of CPU sockets in the virtual machine.
+   Parameters
+   hVmCfg :        A handle of type PHT_VM_CONFIGURATION
+                   identifying the virtual machine configuration.
+   pnVmCpuSocketsCount :  [out] A pointer to a variable that receives
+                   the result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the virtual machine object does not contain
+   the necessary data.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmCfg_GetCpuSocketsCount, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmCpuSocketsCount
+		) );
+
+/* Sets the number of CPU sockets in the specified virtual machine.
+   (the CPUs should be present in the machine).
+   Parameters
+   hVmCfg :       A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   nVmCpuSocketsCount :  The number to set.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlVmCfg_SetCpuSocketsCount, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nVmCpuSocketsCount
 		) );
 
 #ifdef _WIN_

@@ -1203,17 +1203,31 @@ PRL_RESULT PrlHandleVmCfg::SetMemGuaranteeSize(PRL_CONST_MEMGUARANTEE_DATA_PTR p
 	return PRL_ERR_SUCCESS;
 }
 
-PRL_RESULT PrlHandleVmCfg::GetCpuCount(PRL_UINT32_PTR pnVmCpuCount)
+PRL_RESULT PrlHandleVmCfg::GetCpuCoreCount(PRL_UINT32_PTR pnVmCpuCoreCount)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pnVmCpuCount = m_VmConfig.getVmHardwareList()->getCpu()->getNumber();
+	*pnVmCpuCoreCount = m_VmConfig.getVmHardwareList()->getCpu()->getNumber();
 	return (PRL_ERR_SUCCESS);
 }
 
-PRL_RESULT PrlHandleVmCfg::SetCpuCount(PRL_UINT32 nVmCpuCount)
+PRL_RESULT PrlHandleVmCfg::SetCpuCoreCount(PRL_UINT32 nVmCpuCoreCount)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_VmConfig.getVmHardwareList()->getCpu()->setNumber(nVmCpuCount);
+	m_VmConfig.getVmHardwareList()->getCpu()->setNumber(nVmCpuCoreCount);
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::GetCpuSocketCount(PRL_UINT32_PTR pnVmCpuSocketCount)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnVmCpuSocketCount = m_VmConfig.getVmHardwareList()->getCpu()->getSockets();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::SetCpuSocketCount(PRL_UINT32 nVmCpuSocketCount)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VmConfig.getVmHardwareList()->getCpu()->setSockets(nVmCpuSocketCount);
 	return (PRL_ERR_SUCCESS);
 }
 
