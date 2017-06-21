@@ -191,6 +191,13 @@ PRL_RESULT PrlHandleDispConfig::SetRemoteDisplayBasePort(PRL_UINT32 nPort)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleDispConfig::GetRemoteDisplayMaxPort(PRL_UINT32_PTR pnPort)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnPort = m_DispConfig.getRemoteDisplayPreferences()->getMaxPort();
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleDispConfig::GetRemoteDisplayBaseHostName(PRL_STR sHostNameBuf, PRL_UINT32_PTR pnHostNameBufLength)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

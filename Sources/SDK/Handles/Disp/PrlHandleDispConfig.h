@@ -224,6 +224,14 @@ public:
 	PRL_RESULT SetRemoteDisplayBasePort(PRL_UINT32 nPort);
 
 	/**
+	 * Returns max port for remote desktop
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetRemoteDisplayMaxPort(PRL_UINT32_PTR pnPort);
+
+	/**
 	 * Gets remote desktop base host name
 	 * @param [out] buffer for storing result
 	 * @param [out] buffer size (on in - how much symbols can be placed into buffer;
