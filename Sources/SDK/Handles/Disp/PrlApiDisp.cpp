@@ -3690,6 +3690,22 @@ PRL_METHOD( PrlDispCfg_SetVNCBasePort ) (
 	return (pDispConfig->SetRemoteDisplayBasePort(nPort));
 }
 
+PRL_METHOD( PrlDispCfg_GetVNCMaxPort ) (
+	PRL_HANDLE hDispConfig,
+	PRL_UINT32_PTR pnPort
+	)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) ||
+		PRL_WRONG_PTR(pnPort))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->GetRemoteDisplayMaxPort(pnPort));
+}
+
 PRL_METHOD( PrlDispCfg_CanChangeDefaultSettings ) (
 	PRL_HANDLE hDispConfig,
 	PRL_BOOL_PTR pbDefaultChangeSettings

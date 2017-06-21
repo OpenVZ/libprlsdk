@@ -4930,6 +4930,24 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_UINT32 nPort
 		) );
 
+/* Obtains the currently set maximum VNC port number for auto mode.
+   Parameters
+   hDispConfig :  A handle of type PHT_DISP_CONFIG.
+   pnPort :       [out] A pointer to a variable that receives the
+                  port number.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				 PrlDispCfg_GetVNCMaxPort, (
+		PRL_HANDLE hDispConfig,
+		PRL_UINT32_PTR pnPort
+		) );
+
 /* Determines if new users have the right to modify Dispatcher
    Service preferences. By default, only administrators of the
    host machine can modify Dispatcher Service preferences. When a
