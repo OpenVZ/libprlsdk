@@ -72,6 +72,20 @@ PRL_HANDLE PrlHandleLoginHelperJob::Cancel()
 	return hJob;
 }
 
+QString PrlHandleLoginHelperJob::EncodePassword(const QString &sPassword)
+{
+    IOCommunication::ProtocolVersion ver;
+	IOClient *pClient = m_pServer->GetPveControl()->GetIoClient();
+
+    if (pClient && pClient->serverProtocolVersion(ver) && IOPROTOCOL_NEW_LOGIN_SUPPORT(ver))
+	{
+		QByteArray b;
+		b.append(sPassword.leftJustified(MAX_PASSWORD_LENGTH, QChar::Null));
+		return b.toBase64();
+	}
+	return sPassword;
+}
+
 void PrlHandleLoginHelperJob::doJob()
 {
 	if ( ! wasCanceled() )
@@ -79,7 +93,7 @@ void PrlHandleLoginHelperJob::doJob()
 		QMutexLocker _lock( &m_mutex );
 		CProtoCommandPtr pRequest = CProtoSerializer::CreateDspCmdUserLoginCommand(
 												m_sUser,
-												m_sPassword,
+												EncodePassword(m_sPassword),
 												m_sPrevSessionUuid,
 												m_flags);
 		SmartPtr<IOPackage> pPackage = DispatcherPackage::createInstance(pRequest->GetCommandId(),
