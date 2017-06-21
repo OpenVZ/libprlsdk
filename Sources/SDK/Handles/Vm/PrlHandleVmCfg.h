@@ -1089,21 +1089,38 @@ public:
 	PRL_RESULT SetMemGuaranteeSize(PRL_CONST_MEMGUARANTEE_DATA_PTR pMemGuaranteeSize);
 
 	/**
-	 * Returns VM CPU count
+	 * Returns VM CPU core count
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:
 	 * * PRL_ERR_NO_DATA - VM configuration do not has necessary data
 	 * * PRL_ERR_SUCCESS - operation completed successfully
 	 */
-	PRL_RESULT GetCpuCount(PRL_UINT32_PTR pnVmCpuCount);
+	PRL_RESULT GetCpuCoreCount(PRL_UINT32_PTR pnVmCpuCoreCount);
 
 	/**
-	 * Sets VM CPU count
+	 * Sets VM CPU core count
 	 * @param setting value
 	 * @return PRL_RESULT. Possible values:
 	 * * PRL_ERR_SUCCESS - operation completed successfully
 	 */
-	PRL_RESULT SetCpuCount(PRL_UINT32 nVmCpuCount);
+	PRL_RESULT SetCpuCoreCount(PRL_UINT32 nVmCpuCoreCount);
+
+	/**
+	 * Returns VM CPU socket count
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_NO_DATA - VM configuration do not has necessary data
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetCpuSocketCount(PRL_UINT32_PTR pnVmCpuSocketCount);
+
+	/**
+	 * Sets VM CPU socket count
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetCpuSocketCount(PRL_UINT32 nVmCpuSocketCount);
 
 	/**
 	 * Returns VM CPU mode

@@ -2143,7 +2143,7 @@ PRL_METHOD( PrlVmCfg_GetCpuCount ) (
 
 	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
 
-	return (pVm->GetCpuCount(pnVmCpuCount));
+	return (pVm->GetCpuCoreCount(pnVmCpuCount));
 }
 
 PRL_METHOD( PrlVmCfg_SetCpuCount ) (
@@ -2164,7 +2164,52 @@ PRL_METHOD( PrlVmCfg_SetCpuCount ) (
 
 	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
 
-	return (pVm->SetCpuCount(nVmCpuCount));
+	return (pVm->SetCpuCoreCount(nVmCpuCount));
+}
+
+PRL_METHOD( PrlVmCfg_GetCpuSocketsCount ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmCpuSocketsCount
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmCpuSocketsCount=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnVmCpuSocketsCount
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnVmCpuSocketsCount))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetCpuSocketCount(pnVmCpuSocketsCount));
+}
+
+PRL_METHOD( PrlVmCfg_SetCpuSocketsCount ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nVmCpuSocketsCount
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmCpuSocketsCount=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nVmCpuSocketsCount
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return (PRL_ERR_INVALID_ARG);
+	if (0 == nVmCpuSocketsCount)
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->SetCpuSocketCount(nVmCpuSocketsCount));
 }
 
 PRL_METHOD( PrlVmCfg_GetCpuMode ) (
