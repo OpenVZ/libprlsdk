@@ -62,6 +62,8 @@ public:
 	PRL_UINT32 GetFlags() const { return m_flags; }
 
 private:
+	QString EncodePassword(const QString &sPassword);
+
 	PrlHandleServerPtr m_pServer;
 	QString m_sUser;
 	QString m_sPassword;
