@@ -210,6 +210,9 @@ void CPveControl::handleResponsePackage ( IOSendJob::Handle hJob, const SmartPtr
 	LOG_MESSAGE(DBG_DEBUG, "PveControl::handleResponsePackage() received response=[%s]",
 					m_ioClient->getJobUuid(hJob).toString().toUtf8().data());
 
+	// NB. take one package from the io job to free space for another one. the socket
+	// client is eager to put it there.
+	m_ioClient->takeResponse(hJob);
     if ( p->header.type == PVE::DspWsResponse )
 	{
 		if (!p->isResponsePackage())
