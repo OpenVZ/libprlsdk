@@ -285,7 +285,7 @@ static PyObject* sdk_PrlVmCfg_SetCpuLimitEx(PyObject* /*self*/, PyObject* args)
 		PRL_RESULT prlResult;
 
 		Py_BEGIN_ALLOW_THREADS
-		prlResult = PrlVmCfg_GetCpuLimitEx(hVm, &data);
+		prlResult = PrlVmCfg_SetCpuLimitEx(hVm, &data);
 		Py_END_ALLOW_THREADS
 		PyObject* ret_list = PyList_New(0);
 		if ( ! ret_list )
