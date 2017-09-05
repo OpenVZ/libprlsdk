@@ -50,7 +50,7 @@ static PRL_RESULT PrlHandle_EventCallbackHandler(PRL_HANDLE hEvent, PRL_VOID_PTR
 		if (!PyArg_ParseTuple((PyObject *)user_data, "kOO", &handle, &py_callback_function, &py_user_data))
 			break;
 		PyObject *arglist;
-		arglist = Py_BuildValue("(i,O)", hEvent, py_user_data);
+		arglist = Py_BuildValue("(I,O)", hEvent, py_user_data);
 		PyObject *call_obj_result;
 		call_obj_result = PyObject_CallObject(py_callback_function, arglist);
 		if (PyErr_Occurred())
