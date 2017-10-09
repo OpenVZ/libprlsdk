@@ -192,8 +192,12 @@ void CServerNotifier::Notify ( PrlHandleServerPtr pServer, PrlHandleBasePtr pEve
 /** Vm notifier object implementation */
 void CVmNotifier::Notify ( PrlHandleVmPtr pVm, PrlHandleBasePtr pEvent )
 {
-	pVm->ProcessVmEvent(pEvent);
-	pVm->eventSource()->NotifyListeners(pEvent);
+	if (pVm.isValid() && pVm->GetType() == PHT_VIRTUAL_MACHINE
+		&& pVm->GetHandle() != PRL_INVALID_HANDLE)
+	{
+		pVm->ProcessVmEvent(pEvent);
+		pVm->eventSource()->NotifyListeners(pEvent);
+	}
 }
 
 /**
@@ -380,7 +384,8 @@ bool CEventsHandler::event( QEvent *pEvent )
 		{
 			emit pNotificationThread->ToNotifyServer(pServer, pEvent);
 
-			if (pVm)
+			if (pVm.isValid() && pVm->GetType() == PHT_VIRTUAL_MACHINE
+				&& pVm->GetHandle() != PRL_INVALID_HANDLE)
 				emit pNotificationThread->ToNotifyVm(pVm, pEvent);
 
 			if (PHT_EVENT == pEvent->GetType())
