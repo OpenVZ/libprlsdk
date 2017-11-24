@@ -160,14 +160,13 @@ PrlHandleVm::~PrlHandleVm ()
 
 PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 {
-	QWriteLocker locker( &m_ioJobsListRWLock );
-
-	if ( m_ioConnection.isValid() )
-		return m_ioConnection->Attach(pJob);
-
+	{
+		QMutexLocker g(&m_HandleMutex);
+		if (m_ioConnection.isValid())
+			return m_ioConnection->Attach(pJob);
+	}
 	// Inconsistent state: Connection is down by some reason.
-	if ( m_ioExecChannel.isValid() )
-		VmDisconnectForcibly();
+	VmDisconnectForcibly();
 
 	QString vmId = m_VmConfig.getVmIdentification()->getVmUuid();
 
@@ -182,10 +181,11 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 #endif
 	}
 
+	SmartPtr<IOService::ExecChannel> x;
 	// Local connection
 	if ( m_pServer->IsConnectionLocal() )
 #ifndef _WIN_
-		m_ioExecChannel = SmartPtr<IOService::ExecChannel>(new ExecChannel(
+		x = SmartPtr<IOService::ExecChannel>(new ExecChannel(
 				m_pServer->GetSessionUuid(),
 				vmId,
 				true,
@@ -194,7 +194,7 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 				m_pServer->GetSecurityLevel(),
 				true));
 #else
-		m_ioExecChannel = SmartPtr<IOService::ExecChannel>(new ExecChannel(
+		x = SmartPtr<IOService::ExecChannel>(new ExecChannel(
 				m_pServer->GetSessionUuid(),
 				vmId,
 				true,
@@ -205,7 +205,7 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 	// Remote connections (generic or proxy)
 	else
 	{
-		m_ioExecChannel = SmartPtr<IOService::ExecChannel>(new ExecChannel(
+		x = SmartPtr<IOService::ExecChannel>(new ExecChannel(
 					m_pServer->GetSessionUuid(),
 					vmId,
 					false,
@@ -214,32 +214,36 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 					m_pServer->GetSecurityLevel()));
 	}
 
-	if ( ! m_ioExecChannel.isValid() )
+	if ( ! x.isValid() )
 		return PRL_ERR_OUT_OF_MEMORY;
 
 	// Catch state changes
 	QObject::connect(
-				  m_ioExecChannel.getImpl(),
+				  x.getImpl(),
 				  SIGNAL(onStateChange(IOService::Channel::State)),
 				  SLOT(IOStateChanged(IOService::Channel::State)),
 				  Qt::DirectConnection );
 
 	// Catch all packages
 	QObject::connect(
-				  m_ioExecChannel.getImpl(),
+				  x.getImpl(),
 				  SIGNAL(onPackageReceived(const SmartPtr<IOPackage>)),
 				  SLOT(IOPackageReceived(const SmartPtr<IOPackage>)),
 				  Qt::DirectConnection );
 
 	// Catch all received packages
 	QObject::connect(
-				  m_ioExecChannel.getImpl(),
+				  x.getImpl(),
 				  SIGNAL(onResponsePackageReceived(IOSendJob::Handle, const SmartPtr<IOPackage>)),
 				  SLOT(IOResponsePackageReceived(IOSendJob::Handle, const SmartPtr<IOPackage>)),
 				  Qt::DirectConnection );
 
-	m_ioExecChannel->enable();
+	QMutexLocker g(&m_HandleMutex);
+	if (m_ioExecChannel.isValid())
+		return PRL_ERR_INVALID_HANDLE;
 
+	x->enable();
+	m_ioExecChannel = x;
 	PrlHandleIOJob *const ioJob = new PrlHandleIOJob(
 		PrlHandleIOJob::IOConnectJob,
 		SmartPtr<IOService::ExecChannel>(m_ioExecChannel) );
@@ -255,27 +259,40 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 
 PRL_RESULT PrlHandleVm::VmDisconnect ()
 {
-	if ( ! m_ioConnection.isValid() )
-		return PRL_ERR_SUCCESS;
+	SmartPtr<IOService::ExecChannel> x;
+	{
+		QMutexLocker g(&m_HandleMutex);
+		if (!m_ioConnection.isValid())
+			return PRL_ERR_SUCCESS;
+		m_ioConnection->Detach();
 
-	m_ioConnection->Detach();
+		if (m_ioConnection->IsAttached())
+			return PRL_ERR_SUCCESS;
 
-	if ( ! m_ioConnection->IsAttached() )
-		return VmDisconnectForcibly();
+		x = m_ioExecChannel;
+		m_ioConnection.reset();
+		m_ioExecChannel.reset();
+		m_bStartInProgress = false;
+	}
+	if (x.isValid())
+		x->disable();
 
 	return PRL_ERR_SUCCESS;
 }
 
 PRL_RESULT PrlHandleVm::VmDisconnectForcibly ()
 {
-	m_ioConnection.reset();
-
-	m_bStartInProgress = false;
-
-	if ( m_ioExecChannel.isValid() ) {
-		m_ioExecChannel->disable();
-		m_ioExecChannel = SmartPtr<IOService::ExecChannel>();
+	SmartPtr<IOService::ExecChannel> x;
+	{
+		QMutexLocker g(&m_HandleMutex);
+		x = m_ioExecChannel;
+		m_ioConnection.reset();
+		m_ioExecChannel.reset();
+		m_bStartInProgress = false;
 	}
+	if (x.isValid())
+		x->disable();
+
 	return PRL_ERR_SUCCESS;
 }
 
@@ -294,8 +311,6 @@ void PrlHandleVm::IOStateChanged (  IOService::Channel::State s )
 	PrlHandleIOEvent* event = 0;
 	PRL_IO_STATE* state = 0;
 	PRL_VOID_PTR vptr;
-
-	m_bStartInProgress = false;
 
 	event = new PrlHandleIOEvent( m_pServer, PET_IO_STATE,
 								  sizeof(PRL_IO_STATE), 0 );
@@ -327,14 +342,15 @@ void PrlHandleVm::IOStateChanged (  IOService::Channel::State s )
 		*state = IOS_DISABLED;
 		break;
 	}
-
-	if ( m_ioConnection.isValid() )
-		m_ioConnection->SetState(s);
-
-	if ( s != IOService::Channel::Started )
+	if (m_ioConnection.isValid())
 	{
-		m_ioConnection.reset();
-		CleanAllIOJobs();
+		QMutexLocker g(&m_HandleMutex);
+		m_bStartInProgress = false;
+		if (m_ioConnection.isValid())
+			m_ioConnection->SetState(s);
+
+		if (s != IOService::Channel::Started)
+			m_ioConnection.reset();
 	}
 
 	m_eventSource.NotifyListeners(event);
@@ -667,60 +683,6 @@ void PrlHandleVm::SetServer(const PrlHandleServerPtr &pServer)
 	m_pServerDisp = PrlHandleServerDispPtr((PrlHandleServerDisp* )pServer.getHandle());
 	m_pServerStat = PrlHandleServerStatPtr((PrlHandleServerStat* )pServer.getHandle());
 	m_pServerVm = PrlHandleServerVmPtr((PrlHandleServerVm* )pServer.getHandle());
-}
-
-void PrlHandleVm::RegisterIOJob ( PrlHandleIOJob* ioJobPtr )
-{
-	PrlHandleSmartPtr<PrlHandleIOJob> ioJob =
-		PRL_OBJECT_BY_HANDLE<PrlHandleIOJob>( ioJobPtr->GetHandle() );
-
-	Q_ASSERT( ioJob.getHandle() );
-
-	ioJob->SetVmHandle(GetHandle());
-
-	QWriteLocker locker( &m_ioJobsListRWLock );
-
-	// Clean jobs which are released by SDK client (refs == 1)
-	QList< PrlHandleSmartPtr<PrlHandleIOJob> >::Iterator it =
-		m_ioJobsList.begin();
-	while ( it != m_ioJobsList.end() ) {
-		PrlHandleSmartPtr<PrlHandleIOJob>& job = *it;
-		if ( job->GetRefCount() == 1 )
-			it = m_ioJobsList.erase(it);
-		else
-			++it;
-	}
-
-	// Append new job
-	m_ioJobsList.append( ioJob );
-}
-
-void PrlHandleVm::DeregisterIOJob ( PrlHandleIOJob* ioJobPtr )
-{
-	PrlHandleSmartPtr<PrlHandleIOJob> ioJob =
-		PRL_OBJECT_BY_HANDLE<PrlHandleIOJob>( ioJobPtr->GetHandle() );
-
-	Q_ASSERT( ioJob.getHandle() );
-
-	QWriteLocker locker( &m_ioJobsListRWLock );
-
-	// Clean jobs which are released by SDK client (refs == 1)
-	QList< PrlHandleSmartPtr<PrlHandleIOJob> >::Iterator it =
-		m_ioJobsList.begin();
-	while ( it != m_ioJobsList.end() ) {
-		PrlHandleSmartPtr<PrlHandleIOJob>& job = *it;
-		if ( job->GetRefCount() == 1 ||
-			 job->GetHandle() == ioJob->GetHandle() )
-			it = m_ioJobsList.erase(it);
-		else
-			++it;
-	}
-}
-
-void PrlHandleVm::CleanAllIOJobs ()
-{
-	QWriteLocker locker( &m_ioJobsListRWLock );
-	m_ioJobsList.clear();
 }
 
 QList< PrlHandleSmartPtr<PrlHandleIOJob> > PrlHandleVm::GetRegisteredIOJobs ()
