@@ -152,21 +152,6 @@ public:
 	void ProcessVmEvent( PrlHandleBasePtr pEvent );
 
 	/**
-	 * Registers interested IO job to listen to some IO callbacks.
-	 */
-	void RegisterIOJob ( PrlHandleIOJob* );
-
-	/**
-	 * Deregisters interested IO job.
-	 */
-	void DeregisterIOJob ( PrlHandleIOJob* );
-
-	/**
-	 * Cleans all IO jobs
-	 */
-	void CleanAllIOJobs ();
-
-	/**
 	 * Returns registered IO jobs
 	 */
 	QList< PrlHandleSmartPtr<PrlHandleIOJob> > GetRegisteredIOJobs ();
