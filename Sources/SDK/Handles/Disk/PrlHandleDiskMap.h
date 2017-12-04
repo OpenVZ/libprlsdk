@@ -26,7 +26,7 @@
 #ifndef __PARALLELS_HANDLE_DISK_MAP_H__
 #define __PARALLELS_HANDLE_DISK_MAP_H__
 
-#include "PrlHandleBase.h"
+#include "PrlHandleDisk.h"
 
 /**
  * Handle object represents a map of altered blocks of a virtual disk.

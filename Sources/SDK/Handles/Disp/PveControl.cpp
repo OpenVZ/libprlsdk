@@ -2973,3 +2973,20 @@ QString CPveControl::DspCmdCtReinstall(PRL_CONST_STR sVmUuid,
 
 	return SendRequestToServer(pRequest);
 }
+
+QString CPveControl::DspCmdBeginVmBackup(const QString& vm_, const QString& map_, PRL_UINT32 flags_)
+{
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithTwoStrParams(
+			PVE::DspCmdBeginVmBackup, vm_, map_, false,
+			flags_);
+
+	return SendRequestToServer(pRequest);
+}
+
+QString CPveControl::DspCmdEndVmBackup(const QString& vm_, PRL_UINT32 flags_)
+{
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithOneStrParam(
+			PVE::DspCmdEndVmBackup, vm_, false, flags_);
+
+	return SendRequestToServer(pRequest);
+}

@@ -63,6 +63,8 @@
 #include "PrlHandleCpuFeatures.h"
 #include "PrlHandleCpuPool.h"
 #include "PrlHandleVcmmdConfig.h"
+#include "PrlHandleVm.h"
+#include "PrlHandleBackup.h"
 
 #include "Build/Current.ver"
 
@@ -5501,3 +5503,152 @@ PRL_ASYNC_METHOD( PrlSrv_SetVcmmdConfig ) (
 	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_STORE_VALUE_BY_KEY)
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_SetVcmmdConfig, (hServer, hVcmmdConfig, nFlags))
 }
+
+PRL_HANDLE PrlVm_BeginBackup_Impl(PRL_HANDLE hVm, PRL_UINT32 nFlags)
+{
+	if (PRL_WRONG_HANDLE(hVm, PHT_VIRTUAL_MACHINE))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_BEGIN_VM_BACKUP))
+
+	PrlHandleVmPtr m = PRL_OBJECT_BY_HANDLE<PrlHandleVm>(hVm);
+	if (!m.isValid() || !m->GetServer().isValid())
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_BEGIN_VM_BACKUP))
+
+	PrlHandleJobPtr j = m->GetServer()->BeginBackup(*m, nFlags | PACF_CANCEL_TASK_ON_END_SESSION);
+	if (!j.isValid())
+		RETURN_RES(PRL_INVALID_HANDLE)
+
+	j->SetVmHandle(hVm);
+	RETURN_RES(j->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlVm_BeginBackup ) (
+		PRL_HANDLE hVm,
+		PRL_UINT32 nFlags
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_BEGIN_VM_BACKUP)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_BeginBackup, (hVm, nFlags))
+}
+
+PRL_HANDLE PrlVmBackup_Commit_Impl(PRL_HANDLE hBackup)
+{
+	if (PRL_WRONG_HANDLE(hBackup, PHT_BACKUP))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_END_BACKUP))
+
+	PrlHandleBackupPtr b = PRL_OBJECT_BY_HANDLE<PrlHandleBackup>(hBackup);
+	if (!b.isValid() || !b->getVm().isValid() || !b->getVm()->GetServer().isValid())
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_END_BACKUP))
+
+	PrlHandleJobPtr j = b->getVm()->GetServer()->EndBackup(*b, 0);
+	if (!j.isValid())
+		RETURN_RES(PRL_INVALID_HANDLE)
+
+	RETURN_RES(j->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlVmBackup_Commit ) (
+		PRL_HANDLE hBackup
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_END_BACKUP)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVmBackup_Commit, (hBackup))
+}
+
+PRL_HANDLE PrlVmBackup_Rollback_Impl(PRL_HANDLE hBackup)
+{
+	if (PRL_WRONG_HANDLE(hBackup, PHT_BACKUP))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_END_BACKUP))
+
+	PrlHandleBackupPtr b = PRL_OBJECT_BY_HANDLE<PrlHandleBackup>(hBackup);
+	if (!b.isValid() || !b->getVm().isValid() || !b->getVm()->GetServer().isValid())
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_VM_END_BACKUP))
+
+	PrlHandleJobPtr j = b->getVm()->GetServer()
+		->EndBackup(*b, PEMBF_FAILURE_CLEANUP);
+	if (!j.isValid())
+		RETURN_RES(PRL_INVALID_HANDLE)
+
+	RETURN_RES(j->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlVmBackup_Rollback ) (
+		PRL_HANDLE hBackup
+	)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_END_BACKUP)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVmBackup_Rollback, (hBackup))
+}
+
+PRL_METHOD( PrlVmBackup_GetDisksCount ) (
+		PRL_HANDLE hBackup,
+		PRL_UINT32_PTR pnDisksCount
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hBackup=%.8X, pnDisksCount=%.8X)",
+		__FUNCTION__,
+		hBackup,
+		pnDisksCount
+	);
+
+	if (PRL_WRONG_HANDLE(hBackup, PHT_BACKUP) || pnDisksCount == NULL)
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleBackupPtr b = PRL_OBJECT_BY_HANDLE<PrlHandleBackup>( hBackup );
+	if (!b.isValid())
+		return PRL_INVALID_HANDLE;
+
+	return b->getDisksCount(*pnDisksCount);
+}
+
+PRL_METHOD( PrlVmBackup_GetUuid ) (
+		PRL_HANDLE hBackup,
+		PRL_STR sUuid,
+		PRL_UINT32_PTR pnUuidBufLength
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hBackup=%.8X, sUuid=%.8X, pnUuidBufLength=%.8X)",
+		__FUNCTION__,
+		hBackup,
+		sUuid,
+		pnUuidBufLength
+	);
+
+	if (PRL_WRONG_HANDLE(hBackup, PHT_BACKUP))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleBackupPtr b = PRL_OBJECT_BY_HANDLE<PrlHandleBackup>( hBackup );
+	if (!b.isValid())
+		return PRL_INVALID_HANDLE;
+
+	return b->getUuid(sUuid, pnUuidBufLength);
+}
+
+PRL_METHOD( PrlVmBackup_GetDisk ) (
+		PRL_HANDLE hBackup,
+		PRL_UINT32 nDiskIndex,
+		PRL_HANDLE_PTR phDisk
+		)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	LOG_MESSAGE( DBG_DEBUG, "%s (hBackup=%.8X, nDiskIndex=%.8X, phDisk=%.8X)",
+		__FUNCTION__,
+		hBackup,
+		nDiskIndex,
+		phDisk
+	);
+
+	if (PRL_WRONG_HANDLE(hBackup, PHT_BACKUP) || phDisk == NULL)
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleBackupPtr b = PRL_OBJECT_BY_HANDLE<PrlHandleBackup>( hBackup );
+	if (!b.isValid())
+		return PRL_INVALID_HANDLE;
+
+	return b->getDisk(nDiskIndex, *phDisk);
+}
+

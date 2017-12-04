@@ -7047,6 +7047,111 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
 		PRL_CONST_STR sPolicy
 		) );
 
+/* Launches a backup activity for the virtual machine.
+ *
+   Parameters
+   hVm :  A handle of type PHT_VIRTUAL_MACHINE identifying a virtual
+		machine to backup.
+   nFlags  :  use PBMBF_CREATE_MAP to request a disk map.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.
+*/
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVm_BeginBackup, (
+		PRL_HANDLE hVm,
+		PRL_UINT32 nFlags
+		) );
+
+/* Shuts down successful backup activity.
+ *
+   Parameters
+   hBackup :  A handle of type PHT_BACKUP identifying a backup
+		activity.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.
+*/
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmBackup_Commit, (
+		PRL_HANDLE hBackup
+		) );
+
+
+/* Shuts down failed backup activity.
+ *
+   Parameters
+   hBackup :  A handle of type PHT_BACKUP identifying a backup
+		activity.
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.
+*/
+PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmBackup_Rollback, (
+		PRL_HANDLE hBackup
+		) );
+
+/* Reports the number of virtual machine disks available for backup.
+ *
+   Parameters
+   hBackup :  A handle of type PHT_BACKUP identifying a backup
+		activity.
+   pnDisksCount : A pointer to a variable which receives the
+		 result.
+   Returns
+   PRL_RESULT.
+*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmBackup_GetDisksCount, (
+		PRL_HANDLE hBackup,
+		PRL_UINT32_PTR pnDisksCount
+		) );
+
+/* Reports the UUID of the backup activity.
+ *
+   Parameters
+   hBackup :  A handle of type PHT_BACKUP identifying a backup
+		activity.
+   sUuid : A pointer to a buffer that receives the result
+		(an UTF-8 encoded, null-terminated string).
+   pnUuidBufLength : The size of the output buffer (in
+		bytes). Set the buffer pointer to null
+		and this parameter's value to zero to
+		receive the required size.
+   Returns
+   PRL_RESULT.
+*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmBackup_GetUuid, (
+		PRL_HANDLE hBackup,
+		PRL_STR sUuid,
+		PRL_UINT32_PTR pnUuidBufLength
+		) );
+
+/* Returns a disk for backup. The call always fails if executed
+ * outside of the host where the vm being backed up resides.
+ *
+   Parameters
+   hBackup :  A handle of type PHT_BACKUP identifying a backup
+		activity.
+   nDiskIndex : The desired disk index.
+   phDisk : A pointer to a buffer that receives the result
+		(a handle of type PHT_VIRTUAL_DISK).
+   Returns
+   PRL_RESULT.
+*/
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+			PrlVmBackup_GetDisk, (
+		PRL_HANDLE hBackup,
+		PRL_UINT32 nDiskIndex,
+		PRL_HANDLE_PTR phDisk
+		) );
+
+
 #ifdef _WIN_
     #pragma pack(pop, save_api_pack)
 #endif

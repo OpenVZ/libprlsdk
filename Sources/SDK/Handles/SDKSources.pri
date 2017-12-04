@@ -212,6 +212,8 @@ SOURCES += \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleRemoteFsEntry.h \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleDispNet.h \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleCpuFeatures.h \
+		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleBackup.h \
+		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleDiskMap.h \
 		\
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleServerVm.h \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVmSrv.h \
@@ -289,6 +291,7 @@ SOURCES += \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleRemoteFsEntry.cpp \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleDispNet.cpp \
 		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleCpuFeatures.cpp \
+		$$SRC_LEVEL/SDK/Handles/Disp/PrlHandleBackup.cpp \
 		\
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleServerVm.cpp \
 		$$SRC_LEVEL/SDK/Handles/Vm/PrlHandleVmSrv.cpp \

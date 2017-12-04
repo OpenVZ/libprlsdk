@@ -627,6 +627,24 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		PRL_DISK_PARAMETERS_PTR pDiskParameters,
 		// Parameter value buffer size
 		PRL_UINT32_PTR BufferSize) );
+/*
+   Builds a map of the disk contents changes between 2 PITs.
+   Parameters
+   hDisk :       A handle of type PHT_VIRTUAL_DISK identifying
+                 the virtual disk.
+   sPit1Uuid :   Uuid of the older PIT.
+   sPit2Uuid :   Uuid of the later PIT.
+   phMap :       A pointer to a variable which receives the
+                 result (a handle of type PHT_VIRTUAL_DISK_MAP).
+   Returns
+   PRL_RESULT.
+*/
+PRL_METHOD_DECL( PARALLELS_API_VER_5,
+			PrlDisk_GetChangesMap_Local, (
+		PRL_HANDLE hDisk,
+		PRL_CONST_STR sPit1Uuid,
+		PRL_CONST_STR sPit2Uuid,
+		PRL_HANDLE_PTR phMap) );
 
 /*	Reports the number of significant bits in the map.
 	Parameters

@@ -165,6 +165,11 @@ public:
 	 */
 	PRL_RESULT CreateEvent(PRL_HANDLE_PTR phEvent);
 
+	/**
+	 * Returns VM uuid
+	 */
+	QString GetUuid();
+
 private slots:
 
     void IOStateChanged ( IOService::Channel::State );
