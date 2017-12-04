@@ -840,3 +840,11 @@ void PrlHandleVm::StartComplete( CResult* pResult )
 		m_bStartInProgress = false;
 	}
 }
+
+QString PrlHandleVm::GetUuid()
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	if (m_VmConfig.getVmIdentification())
+		return (m_VmConfig.getVmIdentification()->getVmUuid());
+	return (QString());
+}

@@ -30,12 +30,14 @@
 #include "PrlContextSwitcher.h"
 #include "PrlHandleProblemReportBase.h"
 #include "PrlHandleCpuPool.h"
+#include "PrlHandleBackup.h"
 
 #include <prlcommon/Messaging/CVmBinaryEventParameter.h>
 
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/PrlUuid/Uuid.h>
 #include <prlcommon/Std/PrlAssert.h>
+#include <prlcommon/ProtoSerializer/CProtoSerializer.h>
 
 #ifdef _WIN_
 #include <windows.h>
@@ -590,4 +592,22 @@ PrlHandleJobPtr PrlHandleServer::RecalculateCPUPool(PRL_CONST_STR sCpuPool)
 
     return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
 							PJOC_SRV_CPU_POOLS_RECALCULATE)));
+}
+
+PrlHandleJobPtr PrlHandleServer::BeginBackup(PrlHandleVm& vm_, PRL_UINT32 flags_)
+{
+	QString x;
+	if (0 != (flags_ & PBMBF_CREATE_MAP))
+		x = Uuid::createUuid().toString();
+
+	QString y = m_pPveControl->DspCmdBeginVmBackup(vm_.GetUuid(), x, flags_);
+	return PrlHandleJobPtr(new PrlHandleServerJob(PrlHandleServerPtr(this), y,
+				PJOC_SRV_BEGIN_VM_BACKUP));
+}
+
+PrlHandleJobPtr PrlHandleServer::EndBackup(const PrlHandleBackup& backup_, PRL_UINT32 flags_)
+{
+	QString x = m_pPveControl->DspCmdEndVmBackup(backup_.getVm()->GetUuid(), flags_);
+	return PrlHandleJobPtr(new PrlHandleServerJob(PrlHandleServerPtr(this), x,
+				PJOC_VM_END_BACKUP));
 }

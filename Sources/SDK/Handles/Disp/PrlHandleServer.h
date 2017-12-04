@@ -35,6 +35,7 @@
 #include <prlcommon/PrlCommonUtilsBase/CFeaturesMatrix.h>
 #include "PrlHandleGuestOsesMatrix.h"
 
+class PrlHandleBackup;
 
 /**
  * Base handle object - all objects representation on the client
@@ -256,6 +257,16 @@ public://VM operations calls
 	 * Recalculates cpu pool features
 	 */
 	PrlHandleJobPtr RecalculateCPUPool(PRL_CONST_STR sCpuPool);
+
+	/**
+	 * Starts backup activity
+	 */
+	PrlHandleJobPtr BeginBackup(PrlHandleVm& vm_, PRL_UINT32 flags_);
+
+	/**
+	 * Ends backup activity
+	 */
+	PrlHandleJobPtr EndBackup(const PrlHandleBackup& backup_, PRL_UINT32 flags_);
 
 protected:
 	/// Flag to determine which connection is used: local or remote

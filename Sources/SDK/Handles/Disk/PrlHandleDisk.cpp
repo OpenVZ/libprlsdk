@@ -28,6 +28,9 @@
 #include "PrlHandleDisk.h"
 #include "PrlHandleDiskOpenPolicy.h"
 #include <prlcommon/VirtualDisk/Qcow2Disk.h>
+#include <prlcommon/VirtualDisk/SparseBitmap.h>
+
+#include "PrlHandleDiskMap.h"
 
 using namespace VirtualDisk;
 
@@ -271,3 +274,66 @@ PRL_RESULT PrlHandleDisk::GetDiskInfo(
 	*BufferSize = params.value().getBufferSize();
 	return PRL_ERR_SUCCESS;
 };
+
+/**
+ * Builds a map of the disk contents changes between 2 PITs.
+ * @param Uuid of the oldest PIT.
+ * @param Uuid of the later PIT.
+ * @param Variable which receives the result.
+ *
+ * @return Error code in PRL_RESULT format
+ */
+PRL_RESULT PrlHandleDisk::GetChanges(
+		// Uuid of the oldest PIT
+		PRL_CONST_STR sPit1Uuid,
+		// Uuid of the later PIT
+		PRL_CONST_STR sPit2Uuid,
+		// Result
+		PrlHandleDiskMap*& dst_)
+{
+	Q_UNUSED(sPit2Uuid);
+	// Unimplemented for non local objects
+	if (!m_bLocalObject)
+		return PRL_ERR_UNIMPLEMENTED;
+
+	// Check up
+	if (NULL == m_pDisk)
+		return PRL_ERR_UNINITIALIZED;
+
+	VirtualDisk::Parameters::disk_type params = m_pDisk->getInfo();
+	if (params.isFailed())
+		return params.error().code();
+
+	PRL_RESULT e;
+	const CSparseBitmap* m = NULL;
+	QScopedPointer<CSparseBitmap> r;
+	if (NULL == sPit1Uuid)
+	{
+		r.reset(m_pDisk->getUsedBlocksBitmap(1 << 7, e));
+		m = r.data();
+	}
+	else
+	{
+		m = m_pDisk->getTrackingBitmap();
+		if (NULL != m && m->GetUid() != Uuid(sPit1Uuid))
+			e = PRL_ERR_NO_DATA;
+	}
+	if (PRL_FAILED(e))
+		return e;
+	if (NULL == m)
+		return PRL_ERR_NO_DATA;
+
+	PRL_UINT32 g = m->GetGranularity() * SECTOR_SIZE;
+	PRL_UINT32 z = (params.value().getSizeInSectors() * SECTOR_SIZE + g - 1) / g;
+	QByteArray d(((z + 7) & ~7) >> 3, 0);
+	if (PRL_FAILED(e = m->GetRange((UINT8* )d.data(), g / SECTOR_SIZE, 0,
+		params.value().getSizeInSectors())))
+		return e;
+
+	dst_ = new(std::nothrow) PrlHandleDiskMap(d, z, g);
+	if (NULL == dst_)
+		return PRL_ERR_OUT_OF_MEMORY;
+
+	return PRL_ERR_SUCCESS;
+}
+

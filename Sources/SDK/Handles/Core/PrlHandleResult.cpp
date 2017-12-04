@@ -57,6 +57,7 @@
 #include "PrlHandleServerInfo.h"
 #include "PrlHandleVmEvent.h"
 #include "PrlHandleVcmmdConfig.h"
+#include "PrlHandleBackup.h"
 
 #include <prlcommon/Messaging/CResult.h>
 #include <prlcommon/Messaging/CVmEvent.h>
@@ -430,6 +431,13 @@ PRL_HANDLE PrlHandleResult::ResultAsHandle()
 				return PRL_INVALID_HANDLE;
 
 			res_handle = pConfig->GetHandle();
+			break;
+		}
+		case PVE::DspCmdBeginVmBackup:
+		{
+			QString x = m_Result.m_hashResultSet[GetHashIdByOperationCode(m_Result.getOpCode())];
+			PrlHandleBackup* h = new PrlHandleBackup(m_pVm, x);
+			res_handle = h->GetHandle();
 			break;
 		}
 		case PVE::DspCmdSMCGetDispatcherRTInfo:

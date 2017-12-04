@@ -348,6 +348,45 @@ PRL_METHOD(PrlDisk_GetDiskInfo) (
 }
 
 /**
+ * Builds a map of the disk contents changes between 2 PITs.
+ *
+ * @param Disk handle.
+ * @param Uuid of the oldest PIT.
+ * @param Uuid of the later PIT.
+ * @param Pointer to a variable which receives the map handle.
+ *
+ * @return Error code in PRL_RESULT format
+ */
+PRL_METHOD( PrlDisk_GetChangesMap_Local ) (
+	// Disk handle
+	PRL_HANDLE hDisk,
+	// Uuid of the oldest PIT
+	PRL_CONST_STR sPit1Uuid,
+	// Uuid of the later PIT
+	PRL_CONST_STR sPit2Uuid,
+	// Pointer to a variable which receives the map handle
+	PRL_HANDLE_PTR phMap)
+{
+	if (PRL_WRONG_HANDLE(hDisk, PHT_VIRTUAL_DISK))
+		return PRL_ERR_INVALID_ARG;
+
+	if (PRL_WRONG_PTR(phMap))
+		return PRL_ERR_INVALID_ARG;
+
+	PrlHandleDiskPtr d = PRL_OBJECT_BY_HANDLE<PrlHandleDisk>(hDisk);
+	if (!d.isValid())
+		return PRL_INVALID_HANDLE;
+
+	PrlHandleDiskMap* m;
+	PRL_RESULT e = d->GetChanges(sPit1Uuid, sPit2Uuid, m);
+	if (PRL_FAILED(e))
+		return e;
+
+	*phMap = m->GetHandle();
+	return PRL_ERR_SUCCESS;
+}
+
+/**
  * Reports the number of significant bits in the map.
  *
  * @param Map handle.
@@ -367,7 +406,12 @@ PRL_METHOD(PrlDiskMap_GetSize) (
 	if (PRL_WRONG_PTR(pnSize))
 		return PRL_ERR_INVALID_ARG;
 
-	return PRL_ERR_UNIMPLEMENTED;
+	PrlHandleDiskMapPtr m = PRL_OBJECT_BY_HANDLE<PrlHandleDiskMap>(hMap);
+	if (!m.isValid())
+		return PRL_INVALID_HANDLE;
+
+	*pnSize = m->getSize();
+	return PRL_ERR_SUCCESS;
 }
 
 /**
@@ -391,7 +435,12 @@ PRL_METHOD(PrlDiskMap_GetGranularity) (
 	if (PRL_WRONG_PTR(pnSize))
 		return PRL_ERR_INVALID_ARG;
 
-	return PRL_ERR_UNIMPLEMENTED;
+	PrlHandleDiskMapPtr m = PRL_OBJECT_BY_HANDLE<PrlHandleDiskMap>(hMap);
+	if (!m.isValid())
+		return PRL_INVALID_HANDLE;
+
+	*pnSize = m->getGranularity();
+	return PRL_ERR_SUCCESS;
 }
 
 /**
@@ -407,7 +456,7 @@ PRL_METHOD(PrlDiskMap_Read) (
 		// Map handle
 		PRL_HANDLE hMap,
 		// Pointer to a store
-		PRL_VOID_PTR /*pBuffer*/,
+		PRL_VOID_PTR pBuffer,
 		// Pointer to a variable holding the size of the store
 		PRL_UINT32_PTR pnCapacity)
 {
@@ -417,6 +466,9 @@ PRL_METHOD(PrlDiskMap_Read) (
 	if (PRL_WRONG_PTR(pnCapacity))
 		return PRL_ERR_INVALID_ARG;
 
-	return PRL_ERR_UNIMPLEMENTED;
-}
+	PrlHandleDiskMapPtr m = PRL_OBJECT_BY_HANDLE<PrlHandleDiskMap>(hMap);
+	if (!m.isValid())
+		return PRL_INVALID_HANDLE;
 
+	return m->getBits(pBuffer, *pnCapacity);
+}

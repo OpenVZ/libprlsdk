@@ -34,6 +34,7 @@
 #include "PrlHandleDiskMap.h"
 #include <prlcommon/VirtualDisk/VirtualDisk.h>
 
+class PrlHandleDiskMap;
 /**
  * VM disk management object
  */

@@ -1448,6 +1448,19 @@ public://Protocol methods
 	QString DspCmdCtReinstall(PRL_CONST_STR strVmUuid, PRL_CONST_STR sOs,
 			PRL_UINT32 nFlags);
 
+	/**
+	 * FIXME
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdBeginVmBackup(const QString& vm_, const QString& map_,
+			PRL_UINT32 flags_);
+
+	/**
+	 * FIXME
+	 * @return id of performed asynchronous request
+	 */
+	QString DspCmdEndVmBackup(const QString& vm_, PRL_UINT32 flags_);
+
 private:
 	/**
 	 * Checks connection status
