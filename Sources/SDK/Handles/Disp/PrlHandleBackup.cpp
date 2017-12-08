@@ -81,15 +81,6 @@ PRL_RESULT PrlHandleBackup::getDisk(int index_, PRL_HANDLE& dst_) const
 			PRL_DISK_READ | PRL_DISK_WRITE, NULL);
 	if (PRL_FAILED(e))
 		return e;
-
-	PRL_GUID w = u.toGuid();
-	e = PrlDisk_SwitchToState(d, qPrintable(s), &w, &handleState, NULL);
-	if (PRL_FAILED(e))
-	{
-		PrlDisk_WaitForCompletion(d);
-		PrlHandle_Free(d);
-		return e;
-	}
 	dst_ = d;
 	return PRL_ERR_SUCCESS;
 }
