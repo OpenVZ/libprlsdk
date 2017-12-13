@@ -304,6 +304,15 @@ PRL_METHOD(PrlDisk_Read) (
 	return pDisk->Read(pBlock, uiSize, uiBlockOffset);
 }
 
+PRL_METHOD( PrlDisk_FlushCache ) (
+		const PRL_HANDLE Handle)
+{
+	if (PRL_WRONG_HANDLE(Handle, PHT_VIRTUAL_DISK))
+		return PRL_ERR_INVALID_ARG;
+
+	return PRL_ERR_SUCCESS;
+}
+
 /**
  * Get disk information
  *

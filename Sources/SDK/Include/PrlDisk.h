@@ -602,6 +602,21 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 		// Offset of block (in sectors)
 		const PRL_UINT64 uiBlockOffset) );
 
+
+/* data from a virtual disk cache to the real storage.
+   Parameters
+   Handle :  A handle of type PHT_VIRTUAL_DISK identifying the
+             virtual disk.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid argument values.
+
+   PRL_ERR_SUCCESS - function completed successfully.          */
+PRL_METHOD_DECL( PARALLELS_API_VER_7,
+				PrlDisk_FlushCache, (
+		const PRL_HANDLE Handle) );
+
 /* Obtains the information about the specified virtual disk.
    Parameters
    Handle :           A handle of type PHT_VIRTUAL_DISK
