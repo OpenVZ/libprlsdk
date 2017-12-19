@@ -78,7 +78,7 @@ PRL_RESULT PrlHandleBackup::getDisk(int index_, PRL_HANDLE& dst_) const
 
 	PRL_HANDLE d = PRL_INVALID_HANDLE;
 	PRL_RESULT e = PrlDisk_OpenDisk_Local(&d, qPrintable(s),
-			PRL_DISK_READ | PRL_DISK_WRITE, NULL);
+			PRL_DISK_READ, NULL);
 	if (PRL_FAILED(e))
 		return e;
 	dst_ = d;
