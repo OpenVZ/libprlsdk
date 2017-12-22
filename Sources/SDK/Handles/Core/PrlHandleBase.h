@@ -181,7 +181,7 @@ public:
 		{
 			QMutexLocker _lock(PrlHandleBase::s_pHandlesMapMutex);
 			HandlesMap::const_iterator it = PrlHandleBase::s_pHandlesMap->find( pHandle->GetHandle() );
-			if ( it != PrlHandleBase::s_pHandlesMap->end() )
+			if (it != PrlHandleBase::s_pHandlesMap->end() && it.value().get() == pHandle)
 				m_pHandle = it.value();
 		}
 		if (m_pHandle) m_pHandle->AddRef();
@@ -247,7 +247,7 @@ public:
 		{
 			QMutexLocker _lock(PrlHandleBase::s_pHandlesMapMutex);
 			HandlesMap::const_iterator it = PrlHandleBase::s_pHandlesMap->find( pHandle->GetHandle() );
-			if ( it != PrlHandleBase::s_pHandlesMap->end() )
+			if (it != PrlHandleBase::s_pHandlesMap->end() && it.value().get() == pHandle)
 				pWrappedHandle = it.value();
 		}
 		ASSIGN_POINTER(pWrappedHandle)
