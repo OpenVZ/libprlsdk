@@ -52,9 +52,16 @@ PrlHandleBase::PrlHandleBase( PRL_HANDLE_TYPE type )
 
 	// Object is always being created with reference count = 1
 	m_RefCount = 1;
-	ULONG_PTR id = (s_UniqueHandle++ | (g_SdkSequenceNum << 29));
-	m_Handle = (PRL_HANDLE)id;
-
+	forever
+	{
+		ULONG_PTR id = (s_UniqueHandle++ | (g_SdkSequenceNum << 29));
+		PRL_HANDLE h = (PRL_HANDLE)id;
+		if (!s_pHandlesMap->contains(h))
+		{
+			m_Handle = h;
+			break;
+		}
+	}
 	// Registering handle in the map of handles
 	(*s_pHandlesMap)[ m_Handle ] = SmartPtr<PrlHandleBase>(this);
 
