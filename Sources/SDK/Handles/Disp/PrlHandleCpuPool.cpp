@@ -67,6 +67,7 @@ PRL_RESULT PrlHandleCpuPool::GetCpuFeaturesMask(PRL_HANDLE_PTR phCpuFeatures) co
 	pCpuFeaturesHandle->SetValue(PCFE_EXT_80000007_EDX, mask->getEXT_80000007_EDX());
 	pCpuFeaturesHandle->SetValue(PCFE_EXT_80000008_EAX, mask->getEXT_80000008_EAX());
 	pCpuFeaturesHandle->SetValue(PCFE_EXT_00000007_EBX, mask->getEXT_00000007_EBX());
+	pCpuFeaturesHandle->SetValue(PCFE_EXT_00000007_EDX, mask->getEXT_00000007_EDX());
 	pCpuFeaturesHandle->SetValue(PCFE_EXT_0000000D_EAX, mask->getEXT_0000000D_EAX());
 
 	*phCpuFeatures = pCpuFeaturesHandle->GetHandle();
