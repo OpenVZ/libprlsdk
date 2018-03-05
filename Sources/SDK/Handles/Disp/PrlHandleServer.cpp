@@ -197,7 +197,7 @@ void PrlHandleServer::RegisterThreadToDelete ( SmartPtr<CNotificationThread> &th
 	if ( QThread::currentThread() == thread.getImpl() ) {
 		// Lock
 		QMutexLocker locker(mutex);
-		if ( !list->contains(thread) )
+		if (NULL != list && !list->contains(thread))
 			list->append( thread );
 
 		// Unlock
@@ -228,7 +228,7 @@ void PrlHandleServer::RegisterThreadToDeleteFinMech(SmartPtr<CNotificationThread
 
 	// Lock
 	QMutexLocker locker(mutex);
-	if ( !list->contains(thread) )
+	if (NULL != list && !list->contains(thread))
 		list->append( thread );
 
 	// Unlock
@@ -249,15 +249,18 @@ void PrlHandleServer::CleanRegisteredThreads()
 	// Lock
 	QMutexLocker locker(mutex);
 
-	QList<SmartPtr<CNotificationThread> >::Iterator it = list->begin();
-	while ( it != list->end() ) {
-		SmartPtr<CNotificationThread> &thread = *it;
-		if ( thread->isRunning() ) {
-			bCallAgain = true;
-			++it;
-		}
-		else {
-			it = list->erase(it);
+	if (NULL != list)
+	{
+		QList<SmartPtr<CNotificationThread> >::Iterator it = list->begin();
+		while ( it != list->end() ) {
+			SmartPtr<CNotificationThread> &thread = *it;
+			if ( thread->isRunning() ) {
+				bCallAgain = true;
+				++it;
+			}
+			else {
+				it = list->erase(it);
+			}
 		}
 	}
 
