@@ -10751,7 +10751,8 @@ void PrlErrStringsStorage::Initialize()
 			" 2) run the following commands:\n"
 			"\trmmod kvm_intel\n"
 			"\techo 'options kvm-intel nested=y' >> /etc/modprobe.d/dist.conf\n"
-			"\tmodprobe kvm_intel"),
+			"\tmodprobe kvm_intel\n"
+			" 3) restart libvirtd or reboot host"),
 		false,
 		PMT_WARNING
 		);
