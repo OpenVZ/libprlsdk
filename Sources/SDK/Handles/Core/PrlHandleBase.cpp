@@ -56,7 +56,7 @@ PrlHandleBase::PrlHandleBase( PRL_HANDLE_TYPE type )
 	{
 		ULONG_PTR id = (s_UniqueHandle++ | (g_SdkSequenceNum << 29));
 		PRL_HANDLE h = (PRL_HANDLE)id;
-		if (!s_pHandlesMap->contains(h))
+		if (PRL_INVALID_HANDLE != h && !s_pHandlesMap->contains(h))
 		{
 			m_Handle = h;
 			break;
