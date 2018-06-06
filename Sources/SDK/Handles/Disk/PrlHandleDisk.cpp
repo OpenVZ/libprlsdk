@@ -314,7 +314,7 @@ PRL_RESULT PrlHandleDisk::GetChanges(
 	}
 	else
 	{
-		m = m_pDisk->getTrackingBitmap();
+		m = m_pDisk->getTrackingBitmap(sPit1Uuid);
 		if (NULL != m && m->GetUid() != Uuid(sPit1Uuid))
 			e = PRL_ERR_NO_DATA;
 	}
