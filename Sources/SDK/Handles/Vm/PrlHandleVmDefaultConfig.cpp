@@ -1240,6 +1240,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultNetwork ( CVmConfiguration& cfg, PRL_HA
 	network->setConnected( PVE::DeviceConnected );
 	network->setEnabled( PVE::DeviceEnabled );
 	network->setMacAddress( macAddress );
+	network->setStaticAddress(false);
 	network->setBoundAdapterIndex( -1 );
 	network->setBoundAdapterName( QObject::tr( DEFAULT_NETWORK_ADAPTER_NAME ) );
 	network->setSystemName( systemName );

@@ -210,6 +210,7 @@ PRL_RESULT PrlHandleVmDeviceNetAdapter::SetMacAddress(PRL_CONST_STR sNewMacAddre
 		return (PRL_ERR_INVALID_ARG);
 
 	m_pVmNetAdapter->setMacAddress(sNewMacAddressUtf8);
+	m_pVmNetAdapter->setStaticAddress(true);
 	return (PRL_ERR_SUCCESS);
 }
 
@@ -218,6 +219,7 @@ PRL_RESULT PrlHandleVmDeviceNetAdapter::GenerateMacAddress()
 	SYNCHRO_VMDEV_DATA_ACCESS
 	CHECK_NET_ADAPTER
 	m_pVmNetAdapter->setMacAddress(HostUtils::generateMacAddress());
+	m_pVmNetAdapter->setStaticAddress(false);
 	return (PRL_ERR_SUCCESS);
 }
 
