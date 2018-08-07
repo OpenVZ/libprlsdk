@@ -558,8 +558,10 @@ QString CPveControl::SendRequestToServer(CProtoCommandPtr pRequest)
 
 QString CPveControl::PostNotConnected(const QString &strErrorSource)
 {
-	QString strUuid = (Uuid::createUuid()).toString();
-	QString rem = m_ioClient->remoteHostName();
+	QString strUuid = (Uuid::createUuid()).toString(), rem;
+	if (NULL != m_ioClient)
+		rem = m_ioClient->remoteHostName();
+
 	QStringList p;
 
 	if (rem.startsWith('/'))
