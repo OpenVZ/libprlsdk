@@ -161,7 +161,7 @@ PrlHandleVm::~PrlHandleVm ()
 PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 {
 	{
-		QMutexLocker g(&m_HandleMutex);
+		QMutexLocker g(&m_conMutex);
 		if (m_ioConnection.isValid())
 			return m_ioConnection->Attach(pJob);
 	}
@@ -261,7 +261,7 @@ PRL_RESULT PrlHandleVm::VmDisconnect ()
 {
 	SmartPtr<IOService::ExecChannel> x;
 	{
-		QMutexLocker g(&m_HandleMutex);
+		QMutexLocker g(&m_conMutex);
 		if (!m_ioConnection.isValid())
 			return PRL_ERR_SUCCESS;
 		m_ioConnection->Detach();
@@ -284,7 +284,7 @@ PRL_RESULT PrlHandleVm::VmDisconnectForcibly ()
 {
 	SmartPtr<IOService::ExecChannel> x;
 	{
-		QMutexLocker g(&m_HandleMutex);
+		QMutexLocker g(&m_conMutex);
 		x = m_ioExecChannel;
 		m_ioConnection.reset();
 		m_ioExecChannel.reset();
@@ -344,7 +344,7 @@ void PrlHandleVm::IOStateChanged (  IOService::Channel::State s )
 	}
 	if (m_ioConnection.isValid())
 	{
-		QMutexLocker g(&m_HandleMutex);
+		QMutexLocker g(&m_conMutex);
 		m_bStartInProgress = false;
 		if (m_ioConnection.isValid())
 			m_ioConnection->SetState(s);
