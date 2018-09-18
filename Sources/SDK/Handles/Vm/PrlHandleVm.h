@@ -247,6 +247,7 @@ protected:
 	bool m_bStartInProgress;    // true if VM start operation is in progress
 	CVmConfiguration m_VmConfig;
 
+	mutable QMutex m_conMutex;
 	SmartPtr<IODisplay::Connection> m_ioConnection;
 };
 
