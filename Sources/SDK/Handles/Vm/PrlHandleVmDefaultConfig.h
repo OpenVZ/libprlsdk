@@ -222,6 +222,13 @@ private:
 	 */
 	bool AddDefaultSerial ( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice = 0 );
 
+        /**
+	 * @brief Adds default Generic pci device to the VM configuration.
+	 *
+	 * @param cfg - configuration to add device
+	 */
+        void AddDefaultGenericPciDevice(CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice = NULL);
+ 
 	/**
 	 * Setup default runtime options.
 	 */

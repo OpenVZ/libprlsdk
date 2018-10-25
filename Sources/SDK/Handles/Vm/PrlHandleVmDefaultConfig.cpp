@@ -1406,6 +1406,41 @@ bool PrlHandleVmDefaultConfig::AddDefaultSerial ( CVmConfiguration& cfg, PRL_HAN
 	return true;
 }
 
+void PrlHandleVmDefaultConfig::AddDefaultGenericPciDevice(CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice)
+{
+	CVmGenericPciDevice* genericPci = new CVmGenericPciDevice();
+	genericPci->setEnabled(PVE::DeviceEnabled);
+	genericPci->setIndex(GetUnusedDeviceIndex(cfg.getVmHardwareList()->m_lstGenericPciDevices));
+
+	if (IsServerPresent())
+	{
+		QList<CHwGenericPciDevice*> lstDevs;
+		foreach (CHwGenericPciDevice* pciDevice, m_pSrvConfig->GetSrvConfig().m_lstGenericPciDevices)
+		{
+			if (NULL == pciDevice)
+				continue;
+			if (PGD_PCI_OTHER == pciDevice->getType())
+				lstDevs << pciDevice;
+		}
+		if (!lstDevs.isEmpty() && lstDevs[0])
+		{
+			genericPci->setUserFriendlyName(lstDevs[0]->getDeviceName());
+			genericPci->setSystemName(lstDevs[0]->getDeviceId());
+		}
+	}
+
+	cfg.getVmHardwareList()->addGenericPciDevice(genericPci);
+	SortDeviceListByIndex<CVmGenericPciDevice >(cfg.getVmHardwareList()->m_lstGenericPciDevices);
+
+	if (phDevice)
+	{
+		*phDevice = PRL_INVALID_HANDLE;
+		PrlHandleVmDevice* pVmDevice = new PrlHandleVmDeviceGenericPci(m_pVm, genericPci);
+		if (pVmDevice)
+			*phDevice = pVmDevice->GetHandle();
+	}
+}
+
 bool PrlHandleVmDefaultConfig::AddDefaultDevice( CVmConfiguration& cfg,
 												 PRL_DEVICE_TYPE devType,
 												 PRL_HANDLE_PTR phDevice)
@@ -1437,6 +1472,10 @@ bool PrlHandleVmDefaultConfig::AddDefaultDevice( CVmConfiguration& cfg,
 
 		case PDE_USB_DEVICE:
 			return AddDefaultUsb( cfg, phDevice );
+
+		case PDE_GENERIC_PCI_DEVICE:
+			AddDefaultGenericPciDevice(cfg, phDevice);
+			return true;
 
 		default:
 			return false;
