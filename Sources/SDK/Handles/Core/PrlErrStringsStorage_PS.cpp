@@ -535,7 +535,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SAVE_VM_CONFIG,
 		tr("The virtual machine \"%1\" cannot be saved."),
-		tr("You do not have the permission to write to the folder %2. Contact your " PRODUCT_NAME_SHORT " administrator for assistance."),
+		tr("Contact your " PRODUCT_NAME_SHORT " administrator for assistance with the folder %2."),
 		false,
 		PMT_WARNING
 		);
