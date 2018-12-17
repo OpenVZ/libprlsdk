@@ -89,6 +89,9 @@ m_JobStatus(PJS_RUNNING)
 	m_Uuid = job_uuid;
 
 	QMutexLocker _lock(::getJobUuidMapMutex());
+	if (NULL == _lock.mutex())
+		return;
+
 	// Registering object in the map
 	(*::getJobUuidMap())[ m_Uuid ] = this;
 	//Register job at notification awaiting jobs list
@@ -100,7 +103,8 @@ m_JobStatus(PJS_RUNNING)
 PrlHandleServerJob::~PrlHandleServerJob()
 {
 	QMutexLocker _lock(::getJobUuidMapMutex());
-	::getJobUuidMap()->erase( m_Uuid );
+	if (NULL != _lock.mutex())
+		::getJobUuidMap()->erase( m_Uuid );
 }
 
 QString PrlHandleServerJob::GetJobUuid() const
@@ -246,6 +250,9 @@ void PrlHandleServerJob::InitializeError(const QString &strUuid, PRL_RESULT erro
 PrlHandleServerJobPtr PrlHandleServerJob::GetJobByUuid( QString job_uuid )
 {
 	QMutexLocker _lock(::getJobUuidMapMutex());
+	if (NULL == _lock.mutex())
+		return PrlHandleServerJobPtr((PrlHandleServerJob *)0);
+
 	JobUuidMap::iterator it = ::getJobUuidMap()->find( job_uuid );
 
 	if ( it == ::getJobUuidMap()->end() )
