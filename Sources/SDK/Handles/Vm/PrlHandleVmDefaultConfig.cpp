@@ -161,6 +161,7 @@ uint PrlHandleVmDefaultConfig::GetDefaultRamSize (uint osVersion, uint hostRam )
 
 	case PVS_GUEST_VER_WIN_WINDOWS10:
 	case PVS_GUEST_VER_WIN_2016:
+	case PVS_GUEST_VER_WIN_2019:
 		return 2048;
 
 	case PVS_GUEST_VER_OS2_ECS11:
