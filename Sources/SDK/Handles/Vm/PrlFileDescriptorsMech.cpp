@@ -325,27 +325,6 @@ void MarkReadyToAcceptStdin( const QString &sRequestId )
 //Implementation of full write to descriptor
 namespace {
 /**
- * Safe write to descriptor which wrapping EINTR and EINVAL errors
- * @param descriptor to which write
- * @param pointer to the buffer
- * @param buffer size
- * @return actual num bytes written or -1 in error case
- */
-size_t safe_write(int fd, void const *buf, size_t count)
-{
-	for (;;)
-	{
-		ssize_t ret = write(fd, buf, count);
-
-		if (0 <= ret)
-			return ret;
-		else if (EINTR == errno)
-			continue;
-		else
-			return ret;
-	}
-}
-/**
  * Complete write of specified buffer to the descriptor.
  * Wrapping EAGAIN and another staffs.
  * @param descriptor to which write
@@ -353,36 +332,35 @@ size_t safe_write(int fd, void const *buf, size_t count)
  * @param buffer size
  * @return actual num bytes written or -1 in error case
  */
-size_t full_write(int fd, const void *buf, size_t count)
+static ssize_t full_write(int fd, const void *buf, size_t count)
 {
 	size_t total_bytes = 0;
 	const char *p = (const char *) buf;
+	ssize_t nWritten = 0;
 
 	while (count > 0)
 	{
-		size_t nWritten = safe_write(fd, p, count);
-		if (nWritten == (size_t) -1 && EAGAIN != errno)
+		nWritten = TEMP_FAILURE_RETRY(write(fd, p, count));
+		if (nWritten < 0 && EAGAIN != errno)
 			break;
-		if (nWritten == 0)
-		{
+		if (nWritten == 0) {
 			errno = ENOSPC;
+			nWritten = -1;
 			break;
-		}
-		if ((size_t)-1 != nWritten)
-		{
+		} else if (nWritten > 0) {
 			total_bytes += nWritten;
 			p += nWritten;
 			count -= nWritten;
 		}
 	}
 
-	return total_bytes;
+	return total_bytes ? total_bytes : nWritten;
 }
 
 }
 #endif
 
-bool ProcessStdoutStderrEvent( const SmartPtr<IOPackage> &p )
+PRL_RESULT ProcessStdoutStderrEvent( const SmartPtr<IOPackage> &p )
 {
 	QReadLocker _lock( FileDescriptorsMapLocker() );
 	TFileDescriptorsMap::const_iterator _it = FileDescriptorsMap()->find( Uuid::toString( p->header.parentUuid ) );
@@ -395,12 +373,15 @@ bool ProcessStdoutStderrEvent( const SmartPtr<IOPackage> &p )
 #ifndef _WIN_
 				int ret = full_write( _it.value().first, p->buffers[0].getImpl(), p->data[0].bufferSize );
 				if (int(p->data[0].bufferSize) != ret)
+				{
 					WRITE_TRACE(DBG_DEBUG, "Couldn't to write data due: '%s' written bytes: %d", strerror(errno), ret);
+					return PRL_ERR_FAILURE;
+				}
 #else
 				DWORD ret = 0;
 				WriteFile( _it.value().first, p->buffers[0].getImpl(), p->data[0].bufferSize, &ret, 0 );
 #endif
-				return ( true );
+				return PRL_ERR_SUCCESS;
 			}
 		}
 		else if ( PET_IO_STDERR_PORTION == p->header.type )
@@ -409,17 +390,19 @@ bool ProcessStdoutStderrEvent( const SmartPtr<IOPackage> &p )
 			{
 #ifndef _WIN_
 				int ret = full_write( _it.value().second, p->buffers[0].getImpl(), p->data[0].bufferSize );
-				if (int(p->data[0].bufferSize) != ret)
+				if (int(p->data[0].bufferSize) != ret) {
 					WRITE_TRACE(DBG_DEBUG, "Couldn't to write data due: '%s' written bytes: %d", strerror(errno), ret);
+					return PRL_ERR_FAILURE;
+				}
 #else
 				DWORD ret = 0;
 				WriteFile( _it.value().second, p->buffers[0].getImpl(), p->data[0].bufferSize, &ret, 0 );
 #endif
-				return ( true );
+				return PRL_ERR_SUCCESS;
 			}
 		}
 	}
-	return ( false );
+	return PRL_ERR_FILE_NOT_FOUND;
 }
 
 void ProcessFinPackage( const SmartPtr<IOPackage> &p )

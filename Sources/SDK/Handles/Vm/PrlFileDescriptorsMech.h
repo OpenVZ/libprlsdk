@@ -68,7 +68,7 @@ private:
 	 * @param pointer to the received package
 	 * @return sign whether package was properly processed
 	 */
-	bool ProcessStdoutStderrEvent( const SmartPtr<IOPackage> &p );
+	PRL_RESULT ProcessStdoutStderrEvent( const SmartPtr<IOPackage> &p );
 	/**
 	 * Processes finalize stdin/stdout/stderr interoperation package
 	 * @param pointer on the received package
