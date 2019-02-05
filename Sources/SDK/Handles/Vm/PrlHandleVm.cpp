@@ -569,7 +569,12 @@ void PrlHandleVm::IOPackageReceived ( const SmartPtr<IOPackage> p )
 	case PET_IO_STDOUT_PORTION:
 	case PET_IO_STDERR_PORTION:
 	{
-		if (!PrlFileDescriptorsMech::ProcessStdoutStderrEvent(p))
+		switch(PrlFileDescriptorsMech::ProcessStdoutStderrEvent(p))
+		{
+		case PRL_ERR_SUCCESS:
+			break;
+
+		case PRL_ERR_FILE_NOT_FOUND:
 		{
 			event = new PrlHandleIOEvent( m_pServer, PRL_EVENT_TYPE(p->header.type),
 									   p->data[0].bufferSize,
@@ -591,6 +596,20 @@ void PrlHandleVm::IOPackageReceived ( const SmartPtr<IOPackage> p )
 			else
 				::memcpy( pDataBuffer, p->buffers[0].getImpl(),
 						p->data[0].bufferSize );
+		}
+		break;
+
+		case PRL_ERR_FAILURE:
+		{
+			PrlHandleServerJobPtr pJob = PrlHandleServerJob::GetJobByUuid( Uuid::toString( p->header.parentUuid ) );
+			PrlRunProgramInGuestJob *pRunProgramJob = dynamic_cast<PrlRunProgramInGuestJob *>( pJob.getHandle() );
+			if ( pRunProgramJob )
+			{
+				pRunProgramJob->Cancel();
+				UnregisterJob( pRunProgramJob );
+			}
+		}
+		break;
 		}
 	}
 	break;
