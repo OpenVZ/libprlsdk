@@ -779,8 +779,10 @@ PRL_RESULT PrlHandleVm::fromString(PRL_CONST_STR vm_config)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	NotifyControlValidity();
+	QString u = m_VmConfig.getVmIdentification()->getVmUuid();
 	if (IS_OPERATION_SUCCEEDED(m_VmConfig.fromString(UTF8_2QSTR(vm_config))))
 	{
+		m_pServerVm->UnregisterVm(u, GetHandle());
 		m_pServerVm->RegisterVm(m_VmConfig.getVmIdentification()->getVmUuid(), GetHandle());
 		return PRL_ERR_SUCCESS;
 	}
@@ -819,10 +821,14 @@ PRL_RESULT PrlHandleVm::SetUuid(PRL_CONST_STR sNewVmUuid)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	QString sNewVmUuidUtf8 = UTF8_2QSTR(sNewVmUuid);
+	QString u = m_VmConfig.getVmIdentification()->getVmUuid();
 	m_VmConfig.getVmIdentification()->setVmUuid(sNewVmUuidUtf8);
-	if (sNewVmUuidUtf8.size())
+	if (!sNewVmUuidUtf8.isEmpty())
 		m_pServerVm->RegisterVm(m_VmConfig.getVmIdentification()->getVmUuid(), GetHandle());
-	return (PRL_ERR_SUCCESS);
+
+	m_pServerVm->UnregisterVm(u, GetHandle());
+
+	return PRL_ERR_SUCCESS;
 }
 
 PRL_RESULT PrlHandleVm::CreateAnswerEvent(PRL_HANDLE_PTR phEvent, PRL_RESULT nAnswer)
