@@ -779,11 +779,14 @@ PRL_RESULT PrlHandleVm::fromString(PRL_CONST_STR vm_config)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	NotifyControlValidity();
-	QString u = m_VmConfig.getVmIdentification()->getVmUuid();
+	QString o = m_VmConfig.getVmIdentification()->getVmUuid();
 	if (IS_OPERATION_SUCCEEDED(m_VmConfig.fromString(UTF8_2QSTR(vm_config))))
 	{
-		m_pServerVm->UnregisterVm(u, GetHandle());
-		m_pServerVm->RegisterVm(m_VmConfig.getVmIdentification()->getVmUuid(), GetHandle());
+		QString n = m_VmConfig.getVmIdentification()->getVmUuid();
+		m_pServerVm->RegisterVm(n, GetHandle());
+		if (0 != n.compare(o, Qt::CaseInsensitive))
+			m_pServerVm->UnregisterVm(o, GetHandle());
+
 		return PRL_ERR_SUCCESS;
 	}
     
@@ -826,7 +829,8 @@ PRL_RESULT PrlHandleVm::SetUuid(PRL_CONST_STR sNewVmUuid)
 	if (!sNewVmUuidUtf8.isEmpty())
 		m_pServerVm->RegisterVm(m_VmConfig.getVmIdentification()->getVmUuid(), GetHandle());
 
-	m_pServerVm->UnregisterVm(u, GetHandle());
+	if (0 != sNewVmUuidUtf8.compare(u, Qt::CaseInsensitive))
+		m_pServerVm->UnregisterVm(u, GetHandle());
 
 	return PRL_ERR_SUCCESS;
 }
