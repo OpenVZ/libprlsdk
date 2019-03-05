@@ -199,11 +199,8 @@ void CStdinMaintainer::concreteRun()
 // 1 Mb
 #define MAX_STDIN_PORTION 1048576
 						QByteArray _buffer;
+#ifdef _WIN_
 						char nChar = 0;
-#ifndef _WIN_
-						int nCharNums = read( _it.value().first, &nChar, sizeof(nChar) );
-						int nRetCode = errno;
-#else
 						DWORD nCharNums = 0;
 						PeekNamedPipe( _it.value().first, &nChar, sizeof(nChar), &nCharNums, 0, 0 );
 						//Under Win platform we have to process console events explicitly
@@ -224,19 +221,13 @@ void CStdinMaintainer::concreteRun()
 									ReadConsoleInput( _it.value().first, &_record, 1, &nNumOfEvents);
 							}
 						}
-#endif
 						while( sizeof(nChar) == nCharNums )
 						{
 							_buffer.append( nChar );
 							if ( _buffer.size() >= MAX_STDIN_PORTION )
 								break;
-#ifndef _WIN_
-							nCharNums = read( _it.value().first, &nChar, sizeof(nChar) );
-							nRetCode = errno;
-#else
 							ReadFile( _it.value().first, &nChar, sizeof(nChar), &nCharNums, 0 );
 							PeekNamedPipe( _it.value().first, &nChar, sizeof(nChar), &nCharNums, 0, 0 );
-#endif
 						}
 						if (_buffer.size())
 						{
@@ -250,18 +241,28 @@ void CStdinMaintainer::concreteRun()
 						//Process broken pipe case
 						else if ( 0 == nCharNums || -1 == nCharNums )
 						{
-#ifndef _WIN_
+						}
+#else // _WIN_
+						_buffer.resize(MAX_STDIN_PORTION);
+						int nCharNums = read(_it.value().first, _buffer.data(), _buffer.size());
+						int nRetCode = errno;
+						if (0 < nCharNums)
+						{
+							SmartPtr<IOPackage> p = IOPackage::createInstance( PET_IO_STDIN_PORTION, 1);
+							p->fillBuffer(0, IOPackage::RawEncoding, _buffer.constData(), nCharNums);
+							Uuid_t parentUuid;
+							Uuid::dump( _it.key(), parentUuid );
+							::memcpy( p->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
+							pVm->GetIOChannel()->sendPackage(p);
+						}
+						//Process broken pipe case
+						else if ( 0 == nCharNums || -1 == nCharNums )
+						{
 							if ( ( 0 == nCharNums ) || ( nRetCode != EAGAIN && nRetCode != EINTR ) )
-#else
-							//FIXME: need to investigate correspond errors
-							//codes for Windows platform
-							if ( false )
-#endif
 							{
-#ifndef _WIN_
 								if ( -1 == nCharNums )
 									WRITE_TRACE( DBG_FATAL, "Failed to read from stdin with error: %d", nRetCode );
-#endif
+
 								SmartPtr<IOPackage> p = IOPackage::createInstance( PET_IO_STDIN_WAS_CLOSED, 0);
 								Uuid_t parentUuid;
 								Uuid::dump( _it.key(), parentUuid );
@@ -271,6 +272,7 @@ void CStdinMaintainer::concreteRun()
 								continue;
 							}
 						}
+#endif //_WIN_
 					}
 				}
 			}
