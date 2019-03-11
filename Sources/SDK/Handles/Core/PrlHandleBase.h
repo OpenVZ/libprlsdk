@@ -133,13 +133,6 @@ public:
 
 private:
 	PRL_HANDLE_TYPE m_HandleType;
-
-protected://Close global methods for processing common handles map
-	/**
-	 * Unregisteres specified handle from comman handles map
-	 * @param unregistering handle value
-	 */
-	static void UnregisterHandle(PRL_HANDLE _handle);
 };
 
 typedef QMap< PRL_HANDLE, SmartPtr<PrlHandleBase> > HandlesMap;
