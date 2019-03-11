@@ -69,8 +69,11 @@ PrlHandleBase::PrlHandleBase( PRL_HANDLE_TYPE type )
 		// Registering handle in the map of handles
 		(*s_pHandlesMap)[ m_Handle ] = SmartPtr<PrlHandleBase>(this);
 	}
+	else
+		m_HandleType = (PRL_HANDLE_TYPE)-m_HandleType;
+
 	LOG_MESSAGE( DBG_DEBUG, "OBJ_CREATED: type=%s(%.8X) handle=%.8X this=%.8X",
-		PRL_HANDLE_TYPE_TO_STRING(m_HandleType), m_HandleType, m_Handle, this );
+		PRL_HANDLE_TYPE_TO_STRING(type), type, m_Handle, this );
 }
 
 
@@ -85,7 +88,7 @@ PrlHandleBase::~PrlHandleBase()
 	}
 
 	LOG_MESSAGE( DBG_DEBUG, "OBJ_DELETED: type=%s(%.8X) handle=%.8X this=%.8X",
-		PRL_HANDLE_TYPE_TO_STRING(m_HandleType), m_HandleType, m_Handle, this );
+		PRL_HANDLE_TYPE_TO_STRING(GetType()), GetType(), m_Handle, this );
 }
 
 /**
@@ -112,7 +115,7 @@ PRL_UINT32 PrlHandleBase::Release()
 	{
 		QMutexLocker _lock(s_pHandlesMapMutex);
 		// Removing object from the handles list
-		if (0 == s_pHandlesMap->remove(m_Handle))
+		if (0 == s_pHandlesMap->remove(m_Handle) && m_HandleType < 0)
 			SmartPtr<PrlHandleBase>(this);
 
 		return 0;
@@ -127,7 +130,7 @@ PRL_UINT32 PrlHandleBase::Release()
  */
 PRL_HANDLE_TYPE PrlHandleBase::GetType() const
 {
-	return m_HandleType;
+	return (PRL_HANDLE_TYPE)abs(m_HandleType);
 }
 
 
