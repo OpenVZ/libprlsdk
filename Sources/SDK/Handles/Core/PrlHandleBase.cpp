@@ -24,6 +24,7 @@
  */
 
 
+#include "PrlCommon.h"
 #include "PrlHandleBase.h"
 #include "PrlHandleHandlesList.h"
 
@@ -62,9 +63,12 @@ PrlHandleBase::PrlHandleBase( PRL_HANDLE_TYPE type )
 			break;
 		}
 	}
-	// Registering handle in the map of handles
-	(*s_pHandlesMap)[ m_Handle ] = SmartPtr<PrlHandleBase>(this);
-
+	PrlSdkStatusReader r;
+	if (r.IsSdkInitialized())
+	{
+		// Registering handle in the map of handles
+		(*s_pHandlesMap)[ m_Handle ] = SmartPtr<PrlHandleBase>(this);
+	}
 	LOG_MESSAGE( DBG_DEBUG, "OBJ_CREATED: type=%s(%.8X) handle=%.8X this=%.8X",
 		PRL_HANDLE_TYPE_TO_STRING(m_HandleType), m_HandleType, m_Handle, this );
 }
@@ -82,13 +86,6 @@ PrlHandleBase::~PrlHandleBase()
 
 	LOG_MESSAGE( DBG_DEBUG, "OBJ_DELETED: type=%s(%.8X) handle=%.8X this=%.8X",
 		PRL_HANDLE_TYPE_TO_STRING(m_HandleType), m_HandleType, m_Handle, this );
-}
-
-void PrlHandleBase::UnregisterHandle(PRL_HANDLE _handle)
-{
-	QMutexLocker _lock(s_pHandlesMapMutex);
-	// Removing object from the handles list
-	s_pHandlesMap->remove( _handle );
 }
 
 /**
@@ -109,11 +106,15 @@ PRL_UINT32 PrlHandleBase::Release()
 {
 	// Object with zero reference count
 	// are supposed to delete themselves
-    PRL_UINT32 uOldVal = AtomicDec( (unsigned int*) &m_RefCount );
+	PRL_UINT32 uOldVal = AtomicDec( (unsigned int*) &m_RefCount );
 
 	if ( uOldVal == 1 )
 	{
-		UnregisterHandle(m_Handle);
+		QMutexLocker _lock(s_pHandlesMapMutex);
+		// Removing object from the handles list
+		if (0 == s_pHandlesMap->remove(m_Handle))
+			SmartPtr<PrlHandleBase>(this);
+
 		return 0;
 	}
 
