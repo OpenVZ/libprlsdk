@@ -70,6 +70,9 @@ PrlHandleJobPtr CreateErrorHandle(PRL_RESULT error_code,
 	QString strUuid = Uuid::createUuid().toString();
 	PrlHandleServerJobPtr pJob(new PrlHandleServerJob(PrlHandleServerPtr((PrlHandleServer *)0),
                                                       strUuid, nJobOpCode, false));
+	if (!pJob.isValid())
+		return PrlHandleJobPtr();
+
 	pJob->InitializeError(strUuid, error_code, strErrorSource);
 	return (PrlHandleJobPtr(pJob.getHandle()));
 }
