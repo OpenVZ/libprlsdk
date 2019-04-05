@@ -31,7 +31,7 @@
 #include "PrlHandleBase.h"
 
 #define GENERATE_ERROR_HANDLE(error_code, job_type)\
-			CreateErrorHandle(error_code, (PRL_CONST_STR)__FUNCTION__, job_type)->GetHandle()
+	craftError(error_code, __FUNCTION__, job_type)
 
 /**
  * Generates job handle that contains error description
@@ -178,6 +178,12 @@ private:
 };
 
 typedef PrlHandleSmartPtr<PrlHandleJob> PrlHandleJobPtr;
+
+inline PRL_HANDLE craftError(PRL_RESULT code_, PRL_CONST_STR text_, PRL_JOB_OPERATION_CODE type_)
+{
+	PrlHandleJobPtr h(CreateErrorHandle(code_, text_, type_));
+	return h.isValid() ? h->GetHandle() : PRL_INVALID_HANDLE;
+}
 
 #endif // __PARALLELS_HANDLE_JOB_H__
 
