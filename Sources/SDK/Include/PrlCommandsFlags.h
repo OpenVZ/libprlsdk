@@ -193,6 +193,7 @@ typedef enum _PRL_VM_BACKUP_FLAGS
 	PBT_CHAIN		= 1<<(PACF_MAX+10),
 	PBT_KEEP_CHAIN		= 1<<(PACF_MAX+11),
 	PBT_DIRECT_DATA_CONNECTION = 1<<(PACF_MAX+12),
+	PBT_RESTORE_RUNNING	= 1<<(PACF_MAX+13),
 } PRL_VM_BACKUP_FLAGS;
 
 /* App execution result extraction moderators:
