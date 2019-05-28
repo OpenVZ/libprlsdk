@@ -4,8 +4,9 @@
 # AddMethod.py
 #
 # Copyright (c) 1999-2017, Parallels International GmbH
+# Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved
 #
-# This file is part of Parallels SDK. Parallels SDK is free
+# This file is part of Virtuozzo SDK. Virtuozzo SDK is free
 # software; you can redistribute it and/or modify it under the
 # terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation; either version 2.1 of the License,
@@ -21,8 +22,8 @@
 # <http://www.gnu.org/licenses/> or write to Free Software Foundation,
 # 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
 #
-# Our contact details: Parallels International GmbH, Vordergasse 59, 8200
-# Schaffhausen, Switzerland; http://www.parallels.com/.
+# Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
+# Schaffhausen, Switzerland; http://www.virtuozzo.com/.
 #
 
 import os
@@ -938,8 +939,9 @@ class Handle(object):
  * {0}.h
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
+ * Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved
  *
- * This file is part of Parallels SDK. Parallels SDK is free
+ * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation; either version 2.1 of the License,
@@ -955,8 +957,8 @@ class Handle(object):
  * <http://www.gnu.org/licenses/> or write to Free Software Foundation,
  * 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
  *
- * Our contact details: Parallels International GmbH, Vordergasse 59, 8200
- * Schaffhausen, Switzerland; http://www.parallels.com/.
+ * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
+ * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
 
@@ -1023,8 +1025,9 @@ typedef PrlHandleSmartPtr<{0}> {0}Ptr;
  * {0}.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
+ * Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved
  *
- * This file is part of Parallels SDK. Parallels SDK is free
+ * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation; either version 2.1 of the License,
@@ -1040,8 +1043,8 @@ typedef PrlHandleSmartPtr<{0}> {0}Ptr;
  * <http://www.gnu.org/licenses/> or write to Free Software Foundation,
  * 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
  *
- * Our contact details: Parallels International GmbH, Vordergasse 59, 8200
- * Schaffhausen, Switzerland; http://www.parallels.com/.
+ * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
+ * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
 

@@ -2,8 +2,9 @@
  * main.cpp: Python composition utility.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
+ * Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved
  *
- * This file is part of Parallels SDK. Parallels SDK is free
+ * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation; either version 2.1 of the License,
@@ -19,8 +20,8 @@
  * <http://www.gnu.org/licenses/> or write to Free Software Foundation,
  * 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
  *
- * Our contact details: Parallels International GmbH, Vordergasse 59, 8200
- * Schaffhausen, Switzerland; http://www.parallels.com/.
+ * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
+ * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
 
@@ -29,7 +30,7 @@
 
 
 #define HELP \
-	"Usage: sdk2python <Parallels SDK include directory> <output directory>\n" \
+	"Usage: sdk2python <Virtuozzo SDK include directory> <output directory>\n" \
 	"                  [<XML document file>] [<Parsing log file>]\n" \
 	"\n" \
 	"-v, --version,      Utility version.\n" \
@@ -77,7 +78,7 @@ int main(int argc, const char** argv)
 	QString qsSdkIncludeDir = QFileInfo(argv[1]).absoluteFilePath();
 	if ( ! QDir().exists(qsSdkIncludeDir) )
 	{
-		print_err(("The Parallels SDK include directoy \""
+		print_err(("The Virtuozzo SDK include directoy \""
 					+ qsSdkIncludeDir
 					+ "\" doesn't exist!").toUtf8().data());
 		return -1;
