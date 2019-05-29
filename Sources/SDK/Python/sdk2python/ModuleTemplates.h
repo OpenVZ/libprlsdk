@@ -3,7 +3,7 @@
  * composer.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved
+ * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -41,7 +41,7 @@
 	"/// ***IT IS GENERATED AUTOMATICALLY BY sdk2python UTILITY***\n" \
 	"///\n" \
 	"/// Copyright (c) 1999-2017, Parallels International GmbH.\n" \
-	"/// Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved\n" \
+/// Copyright (c) 2017-2019 Virtuozzo International GmbH, All rights reserved.
 	"/// All rights reserved.\n" \
 	"/// http://www.virtuozzo.com\n" \
 	"///\n" \
