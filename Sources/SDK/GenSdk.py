@@ -5,8 +5,9 @@
 # GenSdk.py
 #
 # Copyright (c) 1999-2017, Parallels International GmbH
+# Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved
 #
-# This file is part of Parallels SDK. Parallels SDK is free
+# This file is part of Virtuozzo SDK. Virtuozzo SDK is free
 # software; you can redistribute it and/or modify it under the
 # terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation; either version 2.1 of the License,
@@ -21,8 +22,8 @@
 # License along with this library.  If not, see
 # <http://www.gnu.org/licenses/>.
 #
-# Our contact details: Parallels International GmbH, Vordergasse 59, 8200
-# Schaffhausen, Switzerland; http://www.parallels.com/.
+# Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
+# Schaffhausen, Switzerland; http://www.virtuozzo.com/.
 #
 
 import os, sys, string, re
@@ -61,7 +62,7 @@ HEADER_FILE_HEADER = """/*
  * Please, do not modify header directly - instead use description text file.
  * call Sources/Gen.py or Sources/SDK/GenSdk.py to generate
  *
- * This file is part of Parallels SDK. Parallels SDK is free
+ * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation; either version 2.1 of the License,
@@ -77,8 +78,8 @@ HEADER_FILE_HEADER = """/*
  * <http://www.gnu.org/licenses/> or write to Free Software Foundation,
  * 51 Franklin Street, Fifth Floor Boston, MA 02110, USA.
  *
- * Our contact details: Parallels International GmbH, Vordergasse 59, 8200
- * Schaffhausen, Switzerland; http://www.parallels.com/.
+ * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
+ * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 """
 
@@ -96,10 +97,11 @@ STRINGIFY_CONSTS_TMPL = """/////////////////////////////////////////////////////
 /// @author maximk
 ///
 /// Copyright (c) 1999-2017, Parallels International GmbH
+/// Copyright (c) 2017-2019, Virtuozzo International GmbH, All rights reserved
 /// All rights reserved.
 ///
-/// Our contact details: Parallels International GmbH, Vordergasse 59, 8200
-/// Schaffhausen, Switzerland; http://www.parallels.com/.
+/// Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
+/// Schaffhausen, Switzerland; http://www.virtuozzo.com/.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 
