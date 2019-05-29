@@ -2116,6 +2116,7 @@ typedef enum _PRL_CT_FEATURES
 	PCF_FEATURE_IPGRE        = (1 << 6),
 	PCF_FEATURE_BRIDGE       = (1 << 7),
 	PCF_FEATURE_NFSD         = (1 << 8),
+	PCF_FEATURE_TIME         = (1 << 9),
 } PRL_CT_FEATURES;
 
 
