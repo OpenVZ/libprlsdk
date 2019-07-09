@@ -176,6 +176,7 @@ typedef enum _PRL_VM_MIGRATION_FLAGS
    PBT_KEEP_CHAIN	: preserve the rest of the backup chain on backup removal
    PBT_DIRECT_DATA_CONNECTION  : disables tunneling for backup (a laissez-fair
                           data transfer)
+   PBT_DIRECT_DELTA	: disable intermediate image for reversed delta writes
 */
 typedef enum _PRL_VM_BACKUP_FLAGS
 {
@@ -195,6 +196,7 @@ typedef enum _PRL_VM_BACKUP_FLAGS
 	PBT_KEEP_CHAIN		= 1<<(PACF_MAX+11),
 	PBT_DIRECT_DATA_CONNECTION = 1<<(PACF_MAX+12),
 	PBT_RESTORE_RUNNING	= 1<<(PACF_MAX+13),
+	PBT_DIRECT_DELTA	= 1<<(PACF_MAX+14),
 } PRL_VM_BACKUP_FLAGS;
 
 /* App execution result extraction moderators:
