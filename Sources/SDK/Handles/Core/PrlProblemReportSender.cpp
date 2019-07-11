@@ -26,8 +26,8 @@
  */
 
 
+#include "Build/Current.ver"
 #include "PrlProblemReportSender.h"
-
 #include <prlxmlmodel/ProblemReport/CProblemReport.h>
 #include <prlcommon/Messaging/CVmEvent.h>
 #include <prlcommon/Messaging/CVmEventParameter.h>

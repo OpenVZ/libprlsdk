@@ -31,8 +31,8 @@
 
 #include "PrlHandleLocalJob.h"
 #include "PrlCommon.h"
-#include "Libraries/ProblemReportUtils/CPackedProblemReport.h"
 
+class CProblemReport;
 /**
  * Problem report assembler thread implementation
  */

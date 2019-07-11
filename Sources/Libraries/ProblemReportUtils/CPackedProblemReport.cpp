@@ -59,7 +59,7 @@
 #include <QFile>
 #include <QString>
 #include <QSysInfo>
-
+#include "Build/Current.ver"
 #include "CPackedProblemReport.h"
 
 #include "CProblemReportUtils.h"

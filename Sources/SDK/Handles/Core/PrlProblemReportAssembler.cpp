@@ -25,12 +25,13 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-
+#include "Build/Current.ver"
 #include "PrlProblemReportAssembler.h"
 #include "Libraries/ProblemReportUtils/CProblemReportUtils.h"
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/HostUtils/PrlMiscellaneous.h>
 #include <prlxmlmodel/DispConfig/CDispatcherConfig.h>
+#include "Libraries/ProblemReportUtils/CPackedProblemReport.h"
 
 using namespace PrlMiscellaneous;
 

@@ -24,7 +24,7 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-
+#include "Build/Current.ver"
 #include "Libraries/ProblemReportUtils/CPackedProblemReport.h"
 #include "PrlHandleProblemReport.h"
 #include "PrlHandleLocalJob.h"
