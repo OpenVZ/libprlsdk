@@ -38,7 +38,7 @@
 #include <QtNetwork/QHostInfo>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QSslError>
-
+#include "Build/Current.ver"
 #include "Libraries/ProblemReportUtils/CPackedProblemReport.h"
 
 

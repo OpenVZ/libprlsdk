@@ -37,7 +37,7 @@
 #include <QtConcurrentRun>
 #include <QFutureWatcher>
 #include <QFuture>
-
+#include "Build/Current.ver"
 #include "CProblemReportUtils.h"
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/Interfaces/ParallelsQt.h>
