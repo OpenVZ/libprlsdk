@@ -29,6 +29,7 @@
  */
 
 
+#include "Build/Current.ver"
 #include <prlxmlmodel/ProblemReport/CProblemReport.h>
 #include "PrlHandleProblemReportBase.h"
 #include "PrlHandleLocalJob.h"

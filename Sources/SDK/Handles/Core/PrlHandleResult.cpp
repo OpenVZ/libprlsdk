@@ -48,7 +48,7 @@
 #include "PrlHandlePluginInfo.h"
 #include "PrlHandleBackupResult.h"
 #include "PrlHandleCpuPool.h"
-
+#include "Build/Current.ver"
 #include "PrlHandleServer.h"
 #include "PrlHandleServerJob.h"
 #include "PrlHandleResult.h"

@@ -35,7 +35,7 @@
 #include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkRequest>
 #include <QStringList>
-
+#include "Build/Current.ver"
 #include "CProblemReportUtils_common.h"
 #include <prlcommon/Interfaces/ParallelsNamespace.h>
 #include <prlcommon/Std/PrlAssert.h>
