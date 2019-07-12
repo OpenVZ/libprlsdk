@@ -282,12 +282,14 @@ typedef PRL_TOOLS_UTILITY_COMMAND_FLAG* PRL_TOOLS_UTILITY_COMMAND_FLAG_PTR;
  *  PPRF_ADD_CLIENT_PART : specifies to add client information to problem report
  *  PPRF_ADD_SERVER_PART : specifies to add server information to problem report
  *  PPRF_DO_NOT_CREATE_HOST_SCREENSHOT : specifies do not create and add host screenshot to generating problem report
+ *  PPRF_DUMP_FULL_REPORT : dump full report, include all logs without timeout
  */
 typedef enum _PRL_PROBLEM_REPORT_FLAGS
 {
 	PPRF_ADD_CLIENT_PART				= 1 << (PACF_MAX+1),
 	PPRF_ADD_SERVER_PART				= 1 << (PACF_MAX+2),
 	PPRF_DO_NOT_CREATE_HOST_SCREENSHOT	= 1 << (PACF_MAX+3),
+	PPRF_DUMP_FULL_REPORT				= 1 << (PACF_MAX+4),
 } PRL_PROBLEM_REPORT_FLAGS;
 typedef PRL_PROBLEM_REPORT_FLAGS* PRL_PROBLEM_REPORT_FLAGS_PTR;
 
