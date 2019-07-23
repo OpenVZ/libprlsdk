@@ -103,6 +103,8 @@
 #define PRL_GUEST_RAM_MAJOR_FAULT			"guest.ram.major_fault"
 //Guest OS balloon sizes in megabytes
 #define PRL_GUEST_RAM_BALLOON_ACTUAL			"guest.ram.balloon_actual"
+//Guest OS estimate of how much memory is available, without swapping
+#define PRL_GUEST_RAM_AVAILABLE				"guest.ram.available"
 
 // Mounted filesystems statistics
 // Filesystem device name, as it is seen inside guest
