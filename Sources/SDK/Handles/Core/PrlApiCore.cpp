@@ -50,7 +50,7 @@
 
 #include "PrlErrStringsStorage.h"
 #include "HandleInterface/GetHandleInterface.h"
-
+#include <prlcommon/IOService/IOCommunication/IOSSLInterface.h>
 #include "Build/Current.ver"
 
 #include "PrlContextSwitcher.h"
@@ -124,16 +124,19 @@ INSTALL_LOGGING_QT_MSG_HANDLER(PrlApiHandler)
  */
 static PRL_RESULT InitApi(PRL_UINT32 version, PRL_APPLICATION_MODE nAppMode, PRL_UINT32 nFlags)
 {
-    QMutexLocker _lock(&apiRefCountLock);
+	QMutexLocker _lock(&apiRefCountLock);
 
-    apiRefCount++;
-    if (apiRefCount > 1)
-        return PRL_ERR_SUCCESS;
-
+	if (apiRefCount > 0)
+	{
+		++apiRefCount;
+		return PRL_ERR_SUCCESS;
+	}
 	// API version check
 	if ( (version & ~0xE0000000) > PARALLELS_API_VER ) {
 		return PRL_ERR_API_INCOMPATIBLE;
 	}
+	if (!IOService::initSSLLibrary())
+		return PRL_ERR_OUT_OF_MEMORY;
 
 	// Store SDK application mode
 	s_SdkAppMode = nAppMode;
@@ -148,13 +151,23 @@ static PRL_RESULT InitApi(PRL_UINT32 version, PRL_APPLICATION_MODE nAppMode, PRL
 	SetConsoleLogging(nConsoleLogging);
 
 	// We're not allowed to create multiple instances of the application
-	if ( QMainThread::IsInitialized() )
+	if (QMainThread::IsInitialized())
+	{
+		// NB. this means it's ok actually thus a client will
+		// call deinit in the end and therefore an SSL fini is a
+		// bad idea here because it'll result in early finalize
+		// of the SSL
+		apiRefCount = 1;
 		return PRL_ERR_DOUBLE_INIT;
+	}
 
 	// Creating SDK central object
-	if ( !QMainThread::Instance() )
+	if (!QMainThread::Instance())
+	{
+		IOService::deinitSSLLibrary();
 		return PRL_ERR_OUT_OF_MEMORY;
-
+	}
+	apiRefCount = 1;
 	// Actually this is a hack which is used only for SDK manager
 	// to store SDK sequence number.
 	g_SdkSequenceNum = version >> 29;
@@ -205,11 +218,11 @@ PRL_METHOD( PrlApi_InitEx ) (
 
 PRL_METHOD( PrlApi_Deinit ) ()
 {
-    QMutexLocker _lock(&apiRefCountLock);
+	QMutexLocker _lock(&apiRefCountLock);
 
-    apiRefCount--;
-    if (apiRefCount > 0)
-        return PRL_ERR_SUCCESS;
+	apiRefCount--;
+	if (apiRefCount > 0)
+		return PRL_ERR_SUCCESS;
 
 	// Logging API calls for the possibility of debug trace
 	LOG_MESSAGE( DBG_DEBUG, "%s ()",
@@ -223,6 +236,8 @@ PRL_METHOD( PrlApi_Deinit ) ()
 	// We need to stop the main event loop and deinit the library
 	QMainThread::Instance()->stop();
 	QMainThread::Deinit();
+
+	IOService::deinitSSLLibrary();
 
 	return PRL_ERR_SUCCESS;
 }
