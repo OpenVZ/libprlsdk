@@ -659,6 +659,8 @@ PRL_RESULT CPackedProblemReport::packReport()
 		return PRL_ERR_FAILURE;
 	}
 
+	QDir reportParentDir(m_strTempDirPath);
+	reportParentDir.cdUp();
 	foreach(const QString& f, lstFiles)
 	{
 		if(m_bQuitFromPack)
@@ -666,7 +668,7 @@ PRL_RESULT CPackedProblemReport::packReport()
 				m_bQuitFromPack = false;
 				return PRL_ERR_OPERATION_WAS_CANCELED;
 		}
-		QString p = QDir(QFileInfo(m_strTempDirPath).fileName()).filePath(QFileInfo(f).fileName());
+		QString p = reportParentDir.relativeFilePath(QFileInfo(f).filePath());
 		if (PRL_FAILED(w->append(f, p)))
 			WRITE_TRACE(DBG_FATAL, "unable to write file '%s' to problem report", qPrintable(f));
 	}
