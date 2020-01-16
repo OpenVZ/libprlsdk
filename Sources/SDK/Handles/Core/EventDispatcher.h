@@ -53,6 +53,9 @@ private:
 
 	class Handler;
 	class Private;
-
+#if __USE_ISOCXX11
+	const std::unique_ptr<Private> m_p;
+#else
 	const std::auto_ptr<Private> m_p;
+#endif
 };

@@ -439,7 +439,7 @@ bool SDKParser::ParseAllFunctions()
 	WriteLineInLog(  "###### DB LIST OF FUNCTIONS #######");
 	WriteLineInLog(  "###################################\n");
 
-	re.setPattern( "\\(\\s*"WHOLE_WORD_PN"\\s*\\)" );
+	re.setPattern( "\\(\\s*" WHOLE_WORD_PN "\\s*\\)" );
 
 	pos = 0;
 	while((pos = re.indexIn(m_qsPrlApiMacro, pos)) != -1)
@@ -670,7 +670,7 @@ bool SDKParser::ParseEnums()
 
 	if ( m_lstEnums.isEmpty() )
 	{
-		m_qsErrorMessage = "Wrong format of the \""PRL_ENUMS_H"\" file: no one enum was found!";
+		m_qsErrorMessage = "Wrong format of the \"" PRL_ENUMS_H "\" file: no one enum was found!";
 		return false;
 	}
 
@@ -678,7 +678,7 @@ bool SDKParser::ParseEnums()
 	WriteLineInLog(  "######## ENUMERATION TYPES ########");
 	WriteLineInLog(  "###################################\n");
 
-	re.setPattern("\\}\\s*"WHOLE_WORD_PN"\\s*;");
+	re.setPattern("\\}\\s*" WHOLE_WORD_PN "\\s*;");
 	pos = 0;
 	while((pos = re.indexIn(m_qsPrlEnums, pos)) != -1)
 	{
@@ -707,7 +707,7 @@ bool SDKParser::ParseSessionConsts()
 	WriteLineInLog(  "########## PARSE SESSIONS ###########");
 	WriteLineInLog(  "###################################\n");
 
-	QRegExp re("\\#\\s*define\\s+("WHOLE_WORD_PN")\\s+("WHOLE_UUID_PN")");
+	QRegExp re("\\#\\s*define\\s+(" WHOLE_WORD_PN ")\\s+(" WHOLE_UUID_PN ")");
 
 	int pos = 0;
 	while((pos = re.indexIn(m_qsPrlEnums, pos)) != -1)
@@ -734,7 +734,7 @@ bool SDKParser::ParseOses()
 	WriteLineInLog(  "########### OS VERSIONS ###########");
 	WriteLineInLog(  "###################################\n");
 
-	QRegExp re("\\#\\s*define\\s+"WHOLE_WORD_PN"\\s+"WHOLE_WORD_PN);
+	QRegExp re("\\#\\s*define\\s+" WHOLE_WORD_PN "\\s+" WHOLE_WORD_PN);
 
 	int pos = 0;
 	while((pos = re.indexIn(m_qsPrlOses, pos)) != -1)
@@ -759,7 +759,7 @@ bool SDKParser::ParseOses()
 
 	if ( m_lstOsVersions.isEmpty() )
 	{
-		m_qsErrorMessage = "Wrong format of the \""PRL_OSES_H"\" file: no one #define was found!";
+		m_qsErrorMessage = "Wrong format of the \"" PRL_OSES_H "\" file: no one #define was found!";
 		return false;
 	}
 
@@ -772,7 +772,7 @@ bool SDKParser::ParseKeys()
 	WriteLineInLog(  "########### SCAN CODES ############");
 	WriteLineInLog(  "###################################\n");
 
-	QRegExp re("\\#\\s*define\\s+"WHOLE_WORD_PN"\\s*\\{.+\\}");
+	QRegExp re("\\#\\s*define\\s+" WHOLE_WORD_PN "\\s*\\{.+\\}");
 	re.setMinimal(true);
 
 	int pos = 0;
@@ -799,7 +799,7 @@ bool SDKParser::ParseKeys()
 
 	if ( m_mapScanCodes.isEmpty() )
 	{
-		m_qsErrorMessage = "Wrong format of the \""PRL_KEYS_H"\" file: no one #define was found!";
+		m_qsErrorMessage = "Wrong format of the \"" PRL_KEYS_H "\" file: no one #define was found!";
 		return false;
 	}
 
@@ -812,7 +812,7 @@ bool SDKParser::ParseErrors()
 	WriteLineInLog(  "########## ERROR VALUES ###########");
 	WriteLineInLog(  "###################################\n");
 
-	QRegExp re("\\#\\s*define\\s+"WHOLE_WORD_PN);
+	QRegExp re("\\#\\s*define\\s+" WHOLE_WORD_PN);
 	re.setMinimal(true);
 
 	int pos = 0;
@@ -836,7 +836,7 @@ bool SDKParser::ParseErrors()
 
 	if ( m_lstErrors.isEmpty() )
 	{
-		m_qsErrorMessage = "Wrong format of the \""PRL_ERRORS_VALUES_H"\" file: no one #define was found!";
+		m_qsErrorMessage = "Wrong format of the \"" PRL_ERRORS_VALUES_H "\" file: no one #define was found!";
 		return false;
 	}
 
