@@ -126,7 +126,7 @@ protected:
 
 public:
 	/** Statical map holding all handles by their identifiers. */
-	typedef QMap< PRL_HANDLE, SmartPtr<PrlHandleBase> > HandleObjMap;
+	typedef QHash< PRL_HANDLE, SmartPtr<PrlHandleBase> > HandleObjMap;
 	static HandleObjMap *s_pHandlesMap;
 
 	/** Object for synchronizing access to handles list */
@@ -136,7 +136,7 @@ private:
 	PRL_HANDLE_TYPE m_HandleType;
 };
 
-typedef QMap< PRL_HANDLE, SmartPtr<PrlHandleBase> > HandlesMap;
+typedef PrlHandleBase::HandleObjMap HandlesMap;
 
 /**
  * Temporary class that can be using in debug cases

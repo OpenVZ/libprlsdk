@@ -35,7 +35,7 @@
 #include "PrlHandleBase.h"
 
 typedef QSet<PRL_HANDLE> PrlControlValiditySet;
-typedef QMap<void *, PrlControlValiditySet> PrlControlValidityMap;
+typedef QHash<void *, PrlControlValiditySet> PrlControlValidityMap;
 
 /**
  * This class let to control instances validity.
