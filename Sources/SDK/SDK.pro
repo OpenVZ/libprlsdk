@@ -27,7 +27,7 @@ TEMPLATE = subdirs
 
 LEVEL = ../..
 include($$LEVEL/Sources/Build/Options.pri)
-include($$LEVEL/Sources/Parallels.pri)
+include($$LEVEL/Sources/Virtuozzo.pri)
 include($$SRC_LEVEL/SDK/Handles/SDK.deps)
 
 CHECK_INC_PATH='/usr/include'

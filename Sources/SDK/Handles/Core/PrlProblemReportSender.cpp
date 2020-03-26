@@ -48,7 +48,7 @@
 #endif
 #endif
 
-using namespace Parallels;
+using namespace Virtuozzo;
 
 PrlProblemReportSender::PrlProblemReportSender(const PrlHandleLocalJobPtr &pSendReportJob,
 		PRL_CONST_STR sProblemReport,

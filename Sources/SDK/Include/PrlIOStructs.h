@@ -1,5 +1,5 @@
 /*
- * PrlIOStructs.h: This file is the part of parallels public sdk
+ * PrlIOStructs.h: This file is the part of virtuozzo public sdk
  * library.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
@@ -26,8 +26,8 @@
  */
 
 
-#ifndef __PARALLELS_IO_STRUCTS_H__
-#define __PARALLELS_IO_STRUCTS_H__
+#ifndef __VIRTUOZZO_IO_STRUCTS_H__
+#define __VIRTUOZZO_IO_STRUCTS_H__
 
 #include "PrlTypes.h"
 #include "PrlEnums.h"
@@ -653,4 +653,4 @@ typedef const PRL_MEMGUARANTEE_DATA* PRL_CONST_MEMGUARANTEE_DATA_PTR;
 #pragma pack(pop, save_pack)
 #endif
 
-#endif//__PARALLELS_IO_STRUCTS_H__
+#endif//__VIRTUOZZO_IO_STRUCTS_H__

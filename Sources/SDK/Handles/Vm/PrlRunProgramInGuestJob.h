@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_CUSTOM_JOBS_H__
-#define __PARALLELS_CUSTOM_JOBS_H__
+#ifndef __VIRTUOZZO_CUSTOM_JOBS_H__
+#define __VIRTUOZZO_CUSTOM_JOBS_H__
 
 #include "PrlHandleServerJob.h"
 
@@ -109,5 +109,5 @@ private:
 #endif
 };
 
-#endif // __PARALLELS_CUSTOM_JOBS_H__
+#endif // __VIRTUOZZO_CUSTOM_JOBS_H__
 

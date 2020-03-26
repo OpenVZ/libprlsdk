@@ -1,6 +1,6 @@
 /*
  * CProblemReportUtils_common.h: Helper class for getting default
- * parallels urls locations.
+ * virtuozzo urls locations.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
  * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
@@ -26,8 +26,8 @@
  */
 
 
-#ifndef __PARALLELS_URLS_COMMON_H__
-#define __PARALLELS_URLS_COMMON_H__
+#ifndef __VIRTUOZZO_URLS_COMMON_H__
+#define __VIRTUOZZO_URLS_COMMON_H__
 
 #include <QString>
 #include <QSet>
@@ -113,4 +113,4 @@ namespace CProblemReportUtils
 	QString generateComputerModel();
 }
 
-#endif //__PARALLELS_URLS_COMMON_H__
+#endif //__VIRTUOZZO_URLS_COMMON_H__

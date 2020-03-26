@@ -27,13 +27,13 @@
  */
 
 
-#ifndef __PARALLELS_SDK_HANDLE_WRAP_H__
-#define __PARALLELS_SDK_HANDLE_WRAP_H__
+#ifndef __VIRTUOZZO_SDK_HANDLE_WRAP_H__
+#define __VIRTUOZZO_SDK_HANDLE_WRAP_H__
 
 #ifdef DYN_API_WRAP
 #include "SdkWrap.h"
 #else
-#include "Parallels.h"
+#include "Virtuozzo.h"
 #endif
 
 /**
@@ -216,4 +216,4 @@ private:
 
 typedef t_SdkHandleWrap<0> SdkHandleWrap;
 
-#endif // __SDK_MACRO_WRAPSPARALLELS_SDK_WRAP_H__
+#endif // __SDK_MACRO_WRAPSVIRTUOZZO_SDK_WRAP_H__

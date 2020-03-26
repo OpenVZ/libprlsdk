@@ -37,7 +37,7 @@
 #include <QAtomicInt>
 #include <QReadWriteLock>
 #include <QObjectCleanupHandler>
-#include "Parallels.h"
+#include "Virtuozzo.h"
 
 #define PRL_STACK_SIZE 1024*1024
 
@@ -380,7 +380,7 @@ PRL_UINT32 PrlGetDefaultListenPort();
 
 /**
 * Implementation of the main thread with the event loop for our library.
-* Parallels API is designed to be used by 3d party developers
+* Virtuozzo API is designed to be used by 3d party developers
 * so we embed Qt application functionality to the library.
 */
 class QMainThread : public QThread

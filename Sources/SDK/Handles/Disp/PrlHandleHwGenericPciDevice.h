@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_HW_GENERIC_PCI_DEVICE_H__
-#define __PARALLELS_HANDLE_HW_GENERIC_PCI_DEVICE_H__
+#ifndef __VIRTUOZZO_HANDLE_HW_GENERIC_PCI_DEVICE_H__
+#define __VIRTUOZZO_HANDLE_HW_GENERIC_PCI_DEVICE_H__
 
 
 #include "PrlHandleHwGenericDevice.h"
@@ -75,5 +75,5 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleHwGenericPciDevice> PrlHandleHwGenericPciDevicePtr;
 
-#endif // __PARALLELS_HANDLE_HW_GENERIC_PCI_DEVICE_H__
+#endif // __VIRTUOZZO_HANDLE_HW_GENERIC_PCI_DEVICE_H__
 

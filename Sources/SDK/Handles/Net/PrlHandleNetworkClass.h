@@ -24,8 +24,8 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-#ifndef __PARALLELS_HANDLE_NETWORKCLASS_H__
-#define __PARALLELS_HANDLE_NETWORKCLASS_H__
+#ifndef __VIRTUOZZO_HANDLE_NETWORKCLASS_H__
+#define __VIRTUOZZO_HANDLE_NETWORKCLASS_H__
 
 
 #include "PrlHandleBase.h"
@@ -72,4 +72,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandleNetworkClass> PrlHandleNetworkClassPtr;
 
 
-#endif	// __PARALLELS_HANDLE_NETWORKCLASS_H__
+#endif	// __VIRTUOZZO_HANDLE_NETWORKCLASS_H__

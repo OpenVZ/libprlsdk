@@ -25,13 +25,13 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_DISP_CONFIG_H__
-#define __PARALLELS_HANDLE_DISP_CONFIG_H__
+#ifndef __VIRTUOZZO_HANDLE_DISP_CONFIG_H__
+#define __VIRTUOZZO_HANDLE_DISP_CONFIG_H__
 
 
 #include "PrlHandleBase.h"
 #include <prlxmlmodel/DispConfig/CDispCommonPreferences.h>
-#include <prlxmlmodel/NetworkConfig/CParallelsNetworkConfig.h>
+#include <prlxmlmodel/NetworkConfig/CVirtuozzoNetworkConfig.h>
 #include "PrlHandleCpuFeatures.h"
 
 #define SYNCHRO_PARENT_DISP_CONFIG QMutexLocker _lock(m_pDispCfg->GetSynchroObject());
@@ -727,9 +727,9 @@ private:
 
 	/// DispConfig object
 	CDispCommonPreferences m_DispConfig;
-	CParallelsNetworkConfig m_NetworkConfig;
+	CVirtuozzoNetworkConfig m_NetworkConfig;
 };
 
 typedef PrlHandleSmartPtr<PrlHandleDispConfig> PrlHandleDispConfigPtr;
 
-#endif // __PARALLELS_HANDLE_DISP_CONFIG_H__
+#endif // __VIRTUOZZO_HANDLE_DISP_CONFIG_H__

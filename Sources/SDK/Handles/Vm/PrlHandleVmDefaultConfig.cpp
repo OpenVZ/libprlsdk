@@ -48,14 +48,14 @@
 #include "PrlHandleVmDeviceDisplay.h"
 #include "ConfigDefaults.h"
 
-#include <prlxmlmodel/ParallelsObjects/CXmlModelHelper.h>
+#include <prlxmlmodel/VirtuozzoObjects/CXmlModelHelper.h>
 #include <prlxmlmodel/VmConfig/CVmConfiguration.h>
 #include <prlxmlmodel/VmConfig/CVmSoundInputs.h>
 #include <prlxmlmodel/VmConfig/CVmSoundOutputs.h>
 #include <prlxmlmodel/HostHardwareInfo/CHostHardwareInfo.h>
 #include <prlcommon/Std/PrlTime.h>
-#include <prlcommon/Interfaces/ParallelsSdk.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/Interfaces/VirtuozzoSdk.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 #include <prlcommon/PrlCommonUtilsBase/CHardDiskHelper.h>
 #include <prlcommon/HostUtils/HostUtils.h>
 
@@ -751,11 +751,11 @@ bool PrlHandleVmDefaultConfig::AddDefaultFloppy( CVmConfiguration& cfg, PRL_HAND
 	QString systemName;
 	if (t == PVS_GUEST_TYPE_OS2)
 	{
-		systemName = ParallelsDirs::getFddToolsImageBaseName(t);
+		systemName = VirtuozzoDirs::getFddToolsImageBaseName(t);
 	}
 	else if (IS_WINDOWS(v))
 	{
-		systemName = ParallelsDirs::getWindowsUnattendedFloppy(v);
+		systemName = VirtuozzoDirs::getWindowsUnattendedFloppy(v);
 		QFileInfo f(systemName);
 		if (!f.exists())
 		{

@@ -272,7 +272,7 @@ void PrlErrStringsStorage::InitializePSErrorMessages()
 	REGISTER_ERROR_STRING(
 		PET_QUESTION_OLD_CONFIG_CONVERTION,
 		tr("Attention! " PRODUCT_NAME_SHORT " is going to update your virtual machine to a new format."),
-		tr("This operation is irreversible. After the update, you will not be able to use this virtual machine with Parallels Desktop 3.0 and its earlier versions.<br><br>We recommend that you create a backup copy of this virtual machine before starting the update."),
+		tr("This operation is irreversible. After the update, you will not be able to use this virtual machine with Virtuozzo Desktop 3.0 and its earlier versions.<br><br>We recommend that you create a backup copy of this virtual machine before starting the update."),
 		true,
 		PMT_QUESTION
 		);

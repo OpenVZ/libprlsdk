@@ -23,8 +23,8 @@
  */
 
 
-#ifndef __PARALLELS_API_CT_H__
-#define __PARALLELS_API_CT_H__
+#ifndef __VIRTUOZZO_API_CT_H__
+#define __VIRTUOZZO_API_CT_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,7 +53,7 @@ extern "C" {
    enough memory to instantiate the job object.
 
 */
-PRL_ASYNC_SRV_METHOD_DECL(PARALLELS_API_VER_7,
+PRL_ASYNC_SRV_METHOD_DECL(VIRTUOZZO_API_VER_7,
 	PrlCt_Reinstall, (
 		PRL_HANDLE hVm,
 		PRL_CONST_STR sOsTemplate,
@@ -65,4 +65,4 @@ PRL_ASYNC_SRV_METHOD_DECL(PARALLELS_API_VER_7,
 }
 #endif
 
-#endif // __PARALLELS_API_CT_H_
+#endif // __VIRTUOZZO_API_CT_H_

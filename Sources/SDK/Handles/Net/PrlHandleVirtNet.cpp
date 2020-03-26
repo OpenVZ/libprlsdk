@@ -127,7 +127,7 @@ namespace {
 
 QString getAdapterName(const CVirtualNetwork& net)
 {
-	return net.getHostOnlyNetwork()->getParallelsAdapter()->getName();
+	return net.getHostOnlyNetwork()->getVirtuozzoAdapter()->getName();
 }
 
 } // anonymouse namespace
@@ -143,7 +143,7 @@ PRL_RESULT PrlHandleVirtNet::SetAdapterName(PRL_CONST_STR sAdapterName)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	m_VirtualNetwork.getHostOnlyNetwork()->
-						getParallelsAdapter()->setName(UTF8_2QSTR(sAdapterName));
+						getVirtuozzoAdapter()->setName(UTF8_2QSTR(sAdapterName));
 	return PRL_ERR_SUCCESS;
 }
 
@@ -151,7 +151,7 @@ PRL_RESULT PrlHandleVirtNet::GetAdapterIndex(PRL_UINT32_PTR pnAdapterIndex)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	*pnAdapterIndex = m_VirtualNetwork.getHostOnlyNetwork()->
-						getParallelsAdapter()->getPrlAdapterIndex();
+						getVirtuozzoAdapter()->getPrlAdapterIndex();
 	return PRL_ERR_SUCCESS;
 }
 
@@ -159,7 +159,7 @@ PRL_RESULT PrlHandleVirtNet::SetAdapterIndex(PRL_UINT32 nAdapterIndex)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	m_VirtualNetwork.getHostOnlyNetwork()->
-						getParallelsAdapter()->setPrlAdapterIndex(nAdapterIndex);
+						getVirtuozzoAdapter()->setPrlAdapterIndex(nAdapterIndex);
 	return PRL_ERR_SUCCESS;
 }
 
@@ -370,14 +370,14 @@ PRL_RESULT PrlHandleVirtNet::SetEnabled(PRL_BOOL bEnabled)
 PRL_RESULT PrlHandleVirtNet::IsAdapterEnabled(PRL_BOOL_PTR pbEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	*pbEnabled = PRL_BOOL(m_VirtualNetwork.getHostOnlyNetwork()->getParallelsAdapter()->isEnabled());
+	*pbEnabled = PRL_BOOL(m_VirtualNetwork.getHostOnlyNetwork()->getVirtuozzoAdapter()->isEnabled());
 	return PRL_ERR_SUCCESS;
 }
 
 PRL_RESULT PrlHandleVirtNet::SetAdapterEnabled(PRL_BOOL bEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
-	m_VirtualNetwork.getHostOnlyNetwork()->getParallelsAdapter()->setEnabled((bool )bEnabled);
+	m_VirtualNetwork.getHostOnlyNetwork()->getVirtuozzoAdapter()->setEnabled((bool )bEnabled);
 	return PRL_ERR_SUCCESS;
 }
 

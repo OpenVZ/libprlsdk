@@ -1,6 +1,6 @@
 /*
  * PrlPython.h: Python programming language extension library that
- * serves as a wrapper to the native parallels SDK library
+ * serves as a wrapper to the native virtuozzo SDK library
  * functions.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH

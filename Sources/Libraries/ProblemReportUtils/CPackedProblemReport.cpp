@@ -26,7 +26,7 @@
  */
 
 
-#include <prlcommon/Interfaces/ParallelsTypes.h>
+#include <prlcommon/Interfaces/VirtuozzoTypes.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/PrlCommonUtilsBase/Archive.h>
 
@@ -63,7 +63,7 @@
 #include "CPackedProblemReport.h"
 
 #include "CProblemReportUtils.h"
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 #include <prlcommon/PrlCommonUtilsBase/CSimpleFileHelper.h>
 
 #ifndef PRL_REPORT_READ_FILE_BUFFER_SIZE
@@ -271,7 +271,7 @@ QString CPackedProblemReport::getPathToSave( packedReportSide side, const QStrin
 		if (QSysInfo::windowsVersion() == QSysInfo::WV_XP || QSysInfo::windowsVersion() == QSysInfo::WV_2003)
 		{
 			QString strTemp =
-				QFileInfo( ParallelsDirs::getCommonDocumentsDirectory() ).absoluteDir().absolutePath();
+				QFileInfo( VirtuozzoDirs::getCommonDocumentsDirectory() ).absoluteDir().absolutePath();
 			strTemp = CProblemReportUtils::GetProblemReportPath( strTemp );
 			if( ! strTemp.isEmpty() )
 			{
@@ -294,7 +294,7 @@ QString CPackedProblemReport::getPathToSave( packedReportSide side, const QStrin
 #endif //_WIN_
 	case VmSide:
 		{
-			strPath = ParallelsDirs::getCommonDefaultVmCatalogue();
+			strPath = VirtuozzoDirs::getCommonDefaultVmCatalogue();
 			// GetPathDorSelfSave returns empty string if path is not exist/not available
 			strPath = CProblemReportUtils::GetPathForSelfSave( strPath );
 		}
@@ -302,7 +302,7 @@ QString CPackedProblemReport::getPathToSave( packedReportSide side, const QStrin
 		// In case of Cloud Storage, VmCatalogue directory could be unaccesible
 		// Fallback to system temporary directory
 		if( strPath.isEmpty() )
-			strPath = CProblemReportUtils::GetPathForSelfSave(ParallelsDirs::getSystemTempDir());
+			strPath = CProblemReportUtils::GetPathForSelfSave(VirtuozzoDirs::getSystemTempDir());
 
 		break;
 	case ClientSide:
@@ -310,10 +310,10 @@ QString CPackedProblemReport::getPathToSave( packedReportSide side, const QStrin
 #ifdef _WIN_
 		// FIX ME it temporal fix - the reason- on localized win this path contains unicode symbols
 		// but libtar cannot works with unicode :(
-		strPath = QFileInfo( ParallelsDirs::getCommonDocumentsDirectory() ).absoluteDir().absolutePath();
+		strPath = QFileInfo( VirtuozzoDirs::getCommonDocumentsDirectory() ).absoluteDir().absolutePath();
 		strPath = CProblemReportUtils::GetPathForSelfSave( strPath );
 #else
-		strPath = CProblemReportUtils::GetPathForSelfSave( ParallelsDirs::getSystemTempDir() );
+		strPath = CProblemReportUtils::GetPathForSelfSave( VirtuozzoDirs::getSystemTempDir() );
 #endif
 		break;
 

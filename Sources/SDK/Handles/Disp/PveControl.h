@@ -33,7 +33,7 @@
 #include <QMutex>
 #include <QObject>
 #include <QStringList>
-#include <prlcommon/Interfaces/ParallelsNamespace.h>
+#include <prlcommon/Interfaces/VirtuozzoNamespace.h>
 #include <prlcommon/Std/SmartPtr.h>
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/IOService/IOCommunication/IOClient.h>
@@ -42,7 +42,7 @@
 #include "PrlHandleBase.h"
 
 using namespace IOService;
-using Parallels::CProtoCommandPtr;
+using Virtuozzo::CProtoCommandPtr;
 
 /**
  * PVE control connection timeout - legacy.
@@ -1349,7 +1349,7 @@ public://Protocol methods
 	QString DspCmdGetIPPrivateNetworksList(PRL_UINT32 nFlags);
 
 	/**
-	 * Performs refresh states of installed parallels plugins.
+	 * Performs refresh states of installed virtuozzo plugins.
 	 * @return id of performed asynchronous request
 	 */
 	QString DspCmdRefreshPlugins(PRL_UINT32 nFlags);

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_EVENT_PARAM_H__
-#define __PARALLELS_HANDLE_EVENT_PARAM_H__
+#ifndef __VIRTUOZZO_HANDLE_EVENT_PARAM_H__
+#define __VIRTUOZZO_HANDLE_EVENT_PARAM_H__
 
 
 #include "PrlHandleVmEvent.h"
@@ -203,4 +203,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleEventParam> PrlHandleEventParamPtr;
 
-#endif // __PARALLELS_HANDLE_EVENT_PARAM_H__
+#endif // __VIRTUOZZO_HANDLE_EVENT_PARAM_H__

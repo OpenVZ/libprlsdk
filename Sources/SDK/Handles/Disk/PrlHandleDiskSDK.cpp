@@ -24,7 +24,7 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-#include "SDK/Include/Parallels.h"
+#include "SDK/Include/Virtuozzo.h"
 #include "SDK/Include/PrlErrors.h"
 #include "PrlHandleBase.h"
 #include "PrlHandleDisk.h"

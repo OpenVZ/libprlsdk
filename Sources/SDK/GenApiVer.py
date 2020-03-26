@@ -83,19 +83,19 @@ HEADER = """\
 DEF_MACROSES = """\
 /* Converts major and minor versions of the API to the format
    understood by SDK library. */
-#define TO_PARALLELS_API_VER(majorV, minorV) \\
+#define TO_VIRTUOZZO_API_VER(majorV, minorV) \\
      ((PRL_UINT32)(((PRL_UINT32)majorV) << 16 | ((PRL_UINT16)minorV)))
 
 /* Converts API version from the library native format to
    major and minor values. */
-#define FROM_PARALLELS_API_VER(version, majorV, minorV) \\
+#define FROM_VIRTUOZZO_API_VER(version, majorV, minorV) \\
      majorV = ((PRL_UINT32)version) >> 16; \\
      minorV = ((PRL_UINT32)version) & 0x0000FFFF
 """
 
-PRL_API_VER_MACRO = '#define PARALLELS_API_VER_%u TO_PARALLELS_API_VER(%u,%u)'
-CURR_VER_MACRO = '#define PARALLELS_API_VER PARALLELS_API_VER_%u'
-CURR_SDK_LIB_MAJ = '#define PARALLELS_SDK_LIB_MAJ "%u"'
+PRL_API_VER_MACRO = '#define VIRTUOZZO_API_VER_%u TO_VIRTUOZZO_API_VER(%u,%u)'
+CURR_VER_MACRO = '#define VIRTUOZZO_API_VER VIRTUOZZO_API_VER_%u'
+CURR_SDK_LIB_MAJ = '#define VIRTUOZZO_SDK_LIB_MAJ "%u"'
 
 def gen_sdk_api_ver(sdk_major):
     target_header = join(__full_file_path__, 'Include/PrlApiVersion.h')

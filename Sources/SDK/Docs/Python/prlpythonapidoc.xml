@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<parallels_python_api>
+<virtuozzo_python_api>
 	<symbol>
 		<type>class</type>
 		<name>StatCpu</name>
@@ -8234,7 +8234,7 @@
 	</symbol>
 	<symbol>
 		<type>method</type>
-		<name>PrlSrv_CheckParallelsServerAlive</name>
+		<name>PrlSrv_CheckVirtuozzoServerAlive</name>
 		<shortcomment>Determine if the Dispatcher Service on the specified host is running.</shortcomment>
 		<longcomment>
 			<line_1>@param timeout: The desired operation timeout (in milliseconds).</line_1>
@@ -9270,7 +9270,7 @@
 	</symbol>
 	<symbol>
 		<type>method</type>
-		<name>PrlSrv_LookupParallelsServers</name>
+		<name>PrlSrv_LookupVirtuozzoServers</name>
 		<shortcomment>Searches the network for running Dispatcher Services.</shortcomment>
 		<longcomment>
 			<line_1/>
@@ -24192,4 +24192,4 @@
 		</longcomment>
 		<group>ApiHelper</group>
 	</symbol>
-</parallels_python_api>
+</virtuozzo_python_api>

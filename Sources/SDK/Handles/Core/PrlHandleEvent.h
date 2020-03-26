@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_EVENT_H__
-#define __PARALLELS_HANDLE_EVENT_H__
+#ifndef __VIRTUOZZO_HANDLE_EVENT_H__
+#define __VIRTUOZZO_HANDLE_EVENT_H__
 
 
 #include "PrlHandleServer.h"
@@ -255,4 +255,4 @@ protected:
 
 };
 
-#endif // __PARALLELS_HANDLE_EVENT_H__
+#endif // __VIRTUOZZO_HANDLE_EVENT_H__

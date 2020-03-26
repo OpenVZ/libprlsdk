@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_DEVICE_USB_PORT_H__
-#define __PARALLELS_HANDLE_VM_DEVICE_USB_PORT_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_DEVICE_USB_PORT_H__
+#define __VIRTUOZZO_HANDLE_VM_DEVICE_USB_PORT_H__
 
 
 #include "PrlHandleVmDevice.h"
@@ -133,4 +133,4 @@ private://Internal class helpers
 
 typedef PrlHandleSmartPtr<PrlHandleVmDeviceUsbPort> PrlHandleVmDeviceUsbPortPtr;
 
-#endif // __PARALLELS_HANDLE_VM_DEVICE_USB_PORT_H__
+#endif // __VIRTUOZZO_HANDLE_VM_DEVICE_USB_PORT_H__

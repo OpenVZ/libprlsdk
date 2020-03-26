@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_FILE_DESCRIPTORS_MECH_H__
-#define __PARALLELS_FILE_DESCRIPTORS_MECH_H__
+#ifndef __VIRTUOZZO_FILE_DESCRIPTORS_MECH_H__
+#define __VIRTUOZZO_FILE_DESCRIPTORS_MECH_H__
 
 #include "PrlRunProgramInGuestJob.h"
 

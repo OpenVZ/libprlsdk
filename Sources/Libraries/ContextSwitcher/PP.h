@@ -25,8 +25,8 @@
  */
 
 
-#ifndef PARALLELS_TRANSPORTER_AGENT_API_PP_H
-#define PARALLELS_TRANSPORTER_AGENT_API_PP_H
+#ifndef VIRTUOZZO_TRANSPORTER_AGENT_API_PP_H
+#define VIRTUOZZO_TRANSPORTER_AGENT_API_PP_H
 
 /// Preprocessor helpers
 
@@ -84,4 +84,4 @@
 #define PP_MAKE_12(m, d) m(0, d) m(1, d) m(2, d) m(3, d) m(4, d) m(5, d) m(6, d) m(7, d) m(8, d) m(9, d) m(10, d) m(11, d)
 
 
-#endif // PARALLELS_TRANSPORTER_AGENT_API_PP_H
+#endif // VIRTUOZZO_TRANSPORTER_AGENT_API_PP_H

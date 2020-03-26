@@ -24,8 +24,8 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-#ifndef __PARALLELS_HANDLE_FIREWALL_RULE_H__
-#define __PARALLELS_HANDLE_FIREWALL_RULE_H__
+#ifndef __VIRTUOZZO_HANDLE_FIREWALL_RULE_H__
+#define __VIRTUOZZO_HANDLE_FIREWALL_RULE_H__
 
 
 #include "PrlHandleBase.h"
@@ -135,4 +135,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandleFirewallRule> PrlHandleFirewallRulePtr;
 
 
-#endif	// __PARALLELS_HANDLE_FIREWALL_RULE_H__
+#endif	// __VIRTUOZZO_HANDLE_FIREWALL_RULE_H__

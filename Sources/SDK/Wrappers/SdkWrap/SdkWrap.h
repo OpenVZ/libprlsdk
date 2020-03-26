@@ -26,10 +26,10 @@
  */
 
 
-#ifndef __PARALLELS_DLL_WRAP_H__
-#define __PARALLELS_DLL_WRAP_H__
+#ifndef __VIRTUOZZO_DLL_WRAP_H__
+#define __VIRTUOZZO_DLL_WRAP_H__
 
-#include "Parallels.h"
+#include "Virtuozzo.h"
 
 /**
  * Checking compile-time compatibility
@@ -75,7 +75,7 @@ extern PRL_BOOL SdkWrap_IsLoaded();
  * operating system. At first method tries to load SDK library using standard
  * environment that specifies paths to all system dynamically linking libraries.
  * If it fails method tries to load library from current executable directory.
- * At last method tries to load SDK library from Parallels product installation
+ * At last method tries to load SDK library from Virtuozzo product installation
  * path. If all three attempts fail then method fails.
  *
  * Note: if SDK library was already loaded then it won't be reloaded. Use SdkWrap_Unload
@@ -124,4 +124,4 @@ inline const char * event_type_to_string(PRL_EVENT_TYPE value)
     return result ;
 }
 
-#endif // __PARALLELS_DLL_WRAP_H__
+#endif // __VIRTUOZZO_DLL_WRAP_H__

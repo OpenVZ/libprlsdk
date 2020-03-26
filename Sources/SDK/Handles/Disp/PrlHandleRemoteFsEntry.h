@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_REMOTE_FS_ENTRY_H__
-#define __PARALLELS_HANDLE_REMOTE_FS_ENTRY_H__
+#ifndef __VIRTUOZZO_HANDLE_REMOTE_FS_ENTRY_H__
+#define __VIRTUOZZO_HANDLE_REMOTE_FS_ENTRY_H__
 
 
 #include "PrlHandleRemoteFsInfo.h"
@@ -117,4 +117,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleRemoteFsEntry> PrlHandleRemoteFsEntryPtr;
 
-#endif // __PARALLELS_HANDLE_REMOTE_FS_ENTRY_H__
+#endif // __VIRTUOZZO_HANDLE_REMOTE_FS_ENTRY_H__

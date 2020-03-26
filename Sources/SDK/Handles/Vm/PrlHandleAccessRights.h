@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_ACCESS_RIGHTS_H__
-#define __PARALLELS_HANDLE_ACCESS_RIGHTS_H__
+#ifndef __VIRTUOZZO_HANDLE_ACCESS_RIGHTS_H__
+#define __VIRTUOZZO_HANDLE_ACCESS_RIGHTS_H__
 
 #include "PrlHandleBase.h"
 #include <prlxmlmodel/VmConfig/CVmSecurity.h>
@@ -92,4 +92,4 @@ private:
 };
 typedef PrlHandleSmartPtr<class PrlHandleAccessRights> PrlHandleAccessRightsPtr;
 
-#endif // __PARALLELS_HANDLE_VM_H__
+#endif // __VIRTUOZZO_HANDLE_VM_H__

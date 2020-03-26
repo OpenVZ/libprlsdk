@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_CFG_H__
-#define __PARALLELS_HANDLE_VM_CFG_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_CFG_H__
+#define __VIRTUOZZO_HANDLE_VM_CFG_H__
 
 #include "PrlHandleVm.h"
 
@@ -2536,4 +2536,4 @@ public:
 	PRL_RESULT GetOnCrashOptions(PRL_UINT32_PTR pnFlags);
 };
 
-#endif // __PARALLELS_HANDLE_VM_CFG_H__
+#endif // __VIRTUOZZO_HANDLE_VM_CFG_H__

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_IO_JOB_H__
-#define __PARALLELS_HANDLE_IO_JOB_H__
+#ifndef __VIRTUOZZO_HANDLE_IO_JOB_H__
+#define __VIRTUOZZO_HANDLE_IO_JOB_H__
 
 #include <QObject>
 #include <QString>
@@ -166,4 +166,4 @@ private:
 };
 
 
-#endif // __PARALLELS_HANDLE_IO_JOB_H__
+#endif // __VIRTUOZZO_HANDLE_IO_JOB_H__

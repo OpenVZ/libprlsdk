@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_FS_H__
-#define __PARALLELS_API_FS_H__
+#ifndef __VIRTUOZZO_API_FS_H__
+#define __VIRTUOZZO_API_FS_H__
 
 
 #define FS_PERM_EXECUTE					0x1
@@ -45,4 +45,4 @@
 #define SET_FS_READ_DISABLED(x)			(x) & ~FS_PERM_READ;
 #define SET_FS_WRITE_DISABLED(x)		(x) & ~FS_PERM_WRITE;
 
-#endif//__PARALLELS_API_FS_H__
+#endif//__VIRTUOZZO_API_FS_H__

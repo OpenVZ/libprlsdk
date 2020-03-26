@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_REMOTE_FS_INFO_H__
-#define __PARALLELS_HANDLE_REMOTE_FS_INFO_H__
+#ifndef __VIRTUOZZO_HANDLE_REMOTE_FS_INFO_H__
+#define __VIRTUOZZO_HANDLE_REMOTE_FS_INFO_H__
 
 
 #include "PrlHandleBase.h"
@@ -104,4 +104,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleRemoteFsInfo> PrlHandleRemoteFsInfoPtr;
 
-#endif // __PARALLELS_HANDLE_REMOTE_FS_INFO_H__
+#endif // __VIRTUOZZO_HANDLE_REMOTE_FS_INFO_H__

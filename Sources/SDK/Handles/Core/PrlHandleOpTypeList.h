@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_OP_TYPE_LIST_H__
-#define __PARALLELS_HANDLE_OP_TYPE_LIST_H__
+#ifndef __VIRTUOZZO_HANDLE_OP_TYPE_LIST_H__
+#define __VIRTUOZZO_HANDLE_OP_TYPE_LIST_H__
 
 
 #include "PrlHandleBase.h"
@@ -113,5 +113,5 @@ private:
 };
 
 
-#endif // __PARALLELS_HANDLE_OP_TYPE_LIST_H__
+#endif // __VIRTUOZZO_HANDLE_OP_TYPE_LIST_H__
 

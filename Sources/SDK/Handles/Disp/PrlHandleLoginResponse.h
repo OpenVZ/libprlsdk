@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_LOGIN_RESPONSE_H__
-#define __PARALLELS_HANDLE_LOGIN_RESPONSE_H__
+#ifndef __VIRTUOZZO_HANDLE_LOGIN_RESPONSE_H__
+#define __VIRTUOZZO_HANDLE_LOGIN_RESPONSE_H__
 
 
 #include "PrlHandleBase.h"
@@ -131,4 +131,4 @@ private:
 	CVmEvent m_evtLoginResponse;
 };
 
-#endif // __PARALLELS_HANDLE_LOGIN_RESPONSE_H__
+#endif // __VIRTUOZZO_HANDLE_LOGIN_RESPONSE_H__

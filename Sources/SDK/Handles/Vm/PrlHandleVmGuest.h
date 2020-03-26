@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_GUEST_H__
-#define __PARALLELS_HANDLE_VM_GUEST_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_GUEST_H__
+#define __VIRTUOZZO_HANDLE_VM_GUEST_H__
 
 #include "PrlHandleVmSrv.h"
 #include <QString>
@@ -86,5 +86,5 @@ private:
 	QString m_sVmGuestUuid;
 };
 
-#endif // __PARALLELS_HANDLE_VM_GUEST_H__
+#endif // __VIRTUOZZO_HANDLE_VM_GUEST_H__
 

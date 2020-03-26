@@ -280,7 +280,7 @@ class Method(object):
    nFlags  :  Reserved parameter.
    Returns
        FIXME There should be information about return values */
-%s( PARALLELS_API_VER_5,\n\t\t\t%s, (\n%s\n\t\t) );\n\n""" % \
+%s( VIRTUOZZO_API_VER_5,\n\t\t\t%s, (\n%s\n\t\t) );\n\n""" % \
         (method_decl, self.method_name, self.args_hdr)
 
         hdr = locate(self.subsystem)[0]
@@ -675,11 +675,11 @@ PRL_RESULT PrlHandle%s::%s(%s)
     def add_iface(self):
         '''
         Add DspCmdMethodName definition
-        to Interfaces/ParallelsNamespace.h.
+        to Interfaces/VirtuozzoNamespace.h.
         '''
 
         rc = False
-        f = os.path.join(INTERFACES_PATH, "ParallelsNamespace.h")
+        f = os.path.join(INTERFACES_PATH, "VirtuozzoNamespace.h")
         sys.stdout.write("%s..." % f)
 
         with open(f) as src:
@@ -740,11 +740,11 @@ PRL_RESULT PrlHandle%s::%s(%s)
     def add_std(self):
         '''
         Add CASE_DISPATCHER_COMMAND( PVE::DspCmdMethodName )
-        to Libraries/Std/ParallelsNamespace.cpp.
+        to Libraries/Std/VirtuozzoNamespace.cpp.
         '''
 
         rc = False
-        f = os.path.join(LIBRARIES_PATH, "Std", "ParallelsNamespace.cpp")
+        f = os.path.join(LIBRARIES_PATH, "Std", "VirtuozzoNamespace.cpp")
         sys.stdout.write("%s..." % f)
 
         with open(f) as src:
@@ -962,8 +962,8 @@ class Handle(object):
  */
 
 
-#ifndef __PARALLELS_HANDLE_{1}_H__
-#define __PARALLELS_HANDLE_{1}_H__
+#ifndef __VIRTUOZZO_HANDLE_{1}_H__
+#define __VIRTUOZZO_HANDLE_{1}_H__
 
 
 #include "PrlHandleBase.h"
@@ -1006,7 +1006,7 @@ private:
 typedef PrlHandleSmartPtr<{0}> {0}Ptr;
 
 
-#endif\t// __PARALLELS_HANDLE_{1}_H__
+#endif\t// __VIRTUOZZO_HANDLE_{1}_H__
 '''.format(self.class_name, self.short_name, self.class_subname)
 
         with open(hdr, 'w') as dst:

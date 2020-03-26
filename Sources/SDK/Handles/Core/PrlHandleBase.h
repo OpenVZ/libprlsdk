@@ -25,11 +25,11 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_BASE_H__
-#define __PARALLELS_HANDLE_BASE_H__
+#ifndef __VIRTUOZZO_HANDLE_BASE_H__
+#define __VIRTUOZZO_HANDLE_BASE_H__
 
 
-#include "SDK/Include/Parallels.h"
+#include "SDK/Include/Virtuozzo.h"
 #include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
 #include <prlcommon/IOService/IOCommunication/IOProtocol.h>
 
@@ -474,4 +474,4 @@ QString PrlGetHostComputerName();
 */
 QString PrlGetTrashName();
 
-#endif // __PARALLELS_HANDLE_BASE_H__
+#endif // __VIRTUOZZO_HANDLE_BASE_H__

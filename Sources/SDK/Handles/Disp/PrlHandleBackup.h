@@ -19,8 +19,8 @@
  * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
  * Schaffhausen, Switzerland.
  */
-#ifndef __PARALLELS_HANDLE_BACKUP_H__
-#define __PARALLELS_HANDLE_BACKUP_H__
+#ifndef __VIRTUOZZO_HANDLE_BACKUP_H__
+#define __VIRTUOZZO_HANDLE_BACKUP_H__
 
 #include <prlxmlmodel/BackupActivity/BackupActivity.h>
 #include "PrlHandleBase.h"
@@ -75,4 +75,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandleBackup> PrlHandleBackupPtr;
 
 
-#endif	// __PARALLELS_HANDLE_BACKUP_H__
+#endif	// __VIRTUOZZO_HANDLE_BACKUP_H__

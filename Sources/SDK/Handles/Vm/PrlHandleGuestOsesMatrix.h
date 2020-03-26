@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_GUEST_OSES_MATRIX_H__
-#define __PARALLELS_HANDLE_GUEST_OSES_MATRIX_H__
+#ifndef __VIRTUOZZO_HANDLE_GUEST_OSES_MATRIX_H__
+#define __VIRTUOZZO_HANDLE_GUEST_OSES_MATRIX_H__
 
 #include "PrlHandleBase.h"
 #include <prlcommon/PrlCommonUtilsBase/CGuestOsesHelper.h>
@@ -96,5 +96,5 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleGuestOsesMatrix> PrlHandleGuestOsesMatrixPtr;
 
-#endif // __PARALLELS_HANDLE_GUEST_OSES_MATRIX_H__
+#endif // __VIRTUOZZO_HANDLE_GUEST_OSES_MATRIX_H__
 

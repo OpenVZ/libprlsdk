@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_ENUMS_H__
-#define __PARALLELS_API_ENUMS_H__
+#ifndef __VIRTUOZZO_API_ENUMS_H__
+#define __VIRTUOZZO_API_ENUMS_H__
 
 /* The _PRL_HANDLE_TYPE enumeration defines handle types. Each
    handle type and the functions that operate on it is described
@@ -774,7 +774,7 @@ typedef PRL_PRODUCT_ENUM* PRL_PRODUCT_ENUM_PTR;
 typedef enum _PRL_LICENSE_RESTRICTION_KEY
 {
 	/* NOTE to Developers:
-	* DO NOT CHANGE ANY MEMBER NAME BECAUSE IT USES IN INTERNAL PROTOCOL( ParallelsDomModel.h )
+	* DO NOT CHANGE ANY MEMBER NAME BECAUSE IT USES IN INTERNAL PROTOCOL( VirtuozzoDomModel.h )
 	*/
 
 	PLRK_UNKNOWN					= 0,
@@ -1148,7 +1148,7 @@ typedef enum _PRL_JOB_OPERATION_CODE
 {
 	PJOC_UNKNOWN									= 0,
 	PJOC_JOB_CANCEL									= 1,
-	PJOC_SRV_LOOKUP_PARALLELS_SERVERS				= 2,
+	PJOC_SRV_LOOKUP_VIRTUOZZO_SERVERS				= 2,
 	PJOC_SRV_LOGIN									= 3,
 	PJOC_SRV_LOGIN_LOCAL							= 4,
 	PJOC_SRV_LOGOFF									= 5,
@@ -1702,7 +1702,7 @@ typedef enum _PRL_PROBLEM_REPORT_REASON
 	PRR_HANG_LOCKUP				= 2,
 	PRR_KEYBOARD				= 3,
 	PRR_NETWORK					= 4,
-	PRR_PARALLELS_TOOLS			= 5,
+	PRR_VIRTUOZZO_TOOLS			= 5,
 	PRR_PERFORMANCE				= 6,
 	PRR_PRODUCT_REGISTRATION	= 7,
 	PRR_SNAPSHOTS				= 8,
@@ -2290,4 +2290,4 @@ enum _PRL_PASSWD_LENGTH
 
 #include "PrlCommandsFlags.h"
 
-#endif // __PARALLELS_API_ENUMS_H__
+#endif // __VIRTUOZZO_API_ENUMS_H__

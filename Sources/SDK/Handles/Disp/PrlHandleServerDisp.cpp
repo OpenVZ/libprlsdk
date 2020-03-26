@@ -26,7 +26,7 @@
 
 
 #include <prlcommon/Std/PrlAssert.h>
-#include <prlcommon/Interfaces/ParallelsSdk.h>
+#include <prlcommon/Interfaces/VirtuozzoSdk.h>
 
 #include "PrlHandleServerJob.h"
 #include "PrlHandleLoginLocalHelperJob.h"

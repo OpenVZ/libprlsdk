@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_SHARE_H__
-#define __PARALLELS_HANDLE_VM_SHARE_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_SHARE_H__
+#define __VIRTUOZZO_HANDLE_VM_SHARE_H__
 
 
 #include "PrlHandleVm.h"
@@ -196,4 +196,4 @@ private://Internal class helpers
 
 typedef PrlHandleSmartPtr<PrlHandleVmShare> PrlHandleVmSharePtr;
 
-#endif // __PARALLELS_HANDLE_VM_SHARE_H__
+#endif // __VIRTUOZZO_HANDLE_VM_SHARE_H__

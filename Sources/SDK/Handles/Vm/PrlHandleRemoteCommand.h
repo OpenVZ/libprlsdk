@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_REMOTE_COMMAND_H__
-#define __PARALLELS_HANDLE_REMOTE_COMMAND_H__
+#ifndef __VIRTUOZZO_HANDLE_REMOTE_COMMAND_H__
+#define __VIRTUOZZO_HANDLE_REMOTE_COMMAND_H__
 
 #include "PrlHandleEvent.h"
 //#include "PrlHandleServer.h"
@@ -96,4 +96,4 @@ protected:
 	PRL_IO_GENERIC_BUFFER	m_ioBuffer;
 };
 
-#endif	// __PARALLELS_HANDLE_IO_REMOTE_COMMAND_H__
+#endif	// __VIRTUOZZO_HANDLE_IO_REMOTE_COMMAND_H__

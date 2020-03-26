@@ -238,8 +238,8 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F005D13D
 	#define SDK_LIB_NAME "libprl_sdk"
 
 	#define SDK_LIB_PATH \
-		"${ORIGIN}/../../../parallels-virtualization-sdk/libs/libprl_sdk.so." PARALLELS_SDK_LIB_MAJ "/"
-	#define SDK_LIB_NAME_WITH_MAJOR SDK_LIB_NAME LIB_FILE_EXT "." PARALLELS_SDK_LIB_MAJ
+		"${ORIGIN}/../../../virtuozzo-virtualization-sdk/libs/libprl_sdk.so." VIRTUOZZO_SDK_LIB_MAJ "/"
+	#define SDK_LIB_NAME_WITH_MAJOR SDK_LIB_NAME LIB_FILE_EXT "." VIRTUOZZO_SDK_LIB_MAJ
 
 #endif
 

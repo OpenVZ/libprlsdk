@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VCMMD_CONFIG_H__
-#define __PARALLELS_HANDLE_VCMMD_CONFIG_H__
+#ifndef __VIRTUOZZO_HANDLE_VCMMD_CONFIG_H__
+#define __VIRTUOZZO_HANDLE_VCMMD_CONFIG_H__
 
 
 #include <prlxmlmodel/VcmmdConfig/CVcmmdConfig.h>
@@ -80,4 +80,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandleVcmmdConfig> PrlHandleVcmmdConfigPtr;
 
 
-#endif	// __PARALLELS_HANDLE_VCMMD_CONFIG_H__
+#endif	// __VIRTUOZZO_HANDLE_VCMMD_CONFIG_H__

@@ -28,7 +28,7 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL	DBG_DEBUG
 
-#include "SDK/Include/Parallels.h"
+#include "SDK/Include/Virtuozzo.h"
 
 #include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
 #include <prlcommon/Std/PrlAssert.h>

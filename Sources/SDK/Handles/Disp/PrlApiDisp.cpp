@@ -28,8 +28,8 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL	DBG_DEBUG
 
-#include <prlcommon/Interfaces/ParallelsSdk.h>
-#include "SDK/Include/Parallels.h"
+#include <prlcommon/Interfaces/VirtuozzoSdk.h>
+#include "SDK/Include/Virtuozzo.h"
 
 #include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
 #include <prlcommon/Std/PrlAssert.h>
@@ -75,7 +75,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-PRL_ASYNC_METHOD( PrlSrv_CheckParallelsServerAliveEx ) (
+PRL_ASYNC_METHOD( PrlSrv_CheckVirtuozzoServerAliveEx ) (
 		PRL_CONST_STR sServerHostname,
 		PRL_UINT16 nServerPort,
 		PRL_UINT32 timeout,

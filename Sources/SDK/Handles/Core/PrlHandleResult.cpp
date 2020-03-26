@@ -67,7 +67,7 @@
 
 #include "Libraries/ProblemReportUtils/CPackedProblemReport.h"
 
-using namespace Parallels;
+using namespace Virtuozzo;
 
 #ifdef ENABLE_MALLOC_DEBUG
     // By adding this interface we enable allocations tracing in the module
@@ -696,7 +696,7 @@ PRL_RESULT PrlHandleResult::GetParamByIndex(PRL_UINT32 nIndex, PRL_HANDLE_PTR ph
 
 		*phParam = pVm->GetHandle();
 	}
-	else if ( m_Result.getOpCode() == PVE::DspCmdLookupParallelsServers )
+	else if ( m_Result.getOpCode() == PVE::DspCmdLookupVirtuozzoServers )
 	{
 		PrlHandleServerInfo *pServerInfo = new PrlHandleServerInfo(m_Result.GetParamToken(nIndex));
 		*phParam = pServerInfo->GetHandle();

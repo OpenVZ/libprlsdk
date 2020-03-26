@@ -28,10 +28,10 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL	DBG_DEBUG
 
-#include "SDK/Include/Parallels.h"
+#include "SDK/Include/Virtuozzo.h"
 
 #include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/Logging/Logging.h>
 
@@ -1482,14 +1482,14 @@ PRL_METHOD( PrlApi_SetLogPath ) ( PRL_CONST_STR sLogPath )
 {
 	if ( sLogPath && sLogPath[0] )
 	{
-		ParallelsDirs::setLogPath(sLogPath);
+		VirtuozzoDirs::setLogPath(sLogPath);
 		return PRL_ERR_SUCCESS;
 	}
 
-	PRL_APPLICATION_MODE nAppMode = ParallelsDirs::getAppExecuteMode();
+	PRL_APPLICATION_MODE nAppMode = VirtuozzoDirs::getAppExecuteMode();
 	if (nAppMode != PAM_UNKNOWN)
 	{
-		ParallelsDirs::setLogPath(GetUserHomeDir());
+		VirtuozzoDirs::setLogPath(GetUserHomeDir());
 		return PRL_ERR_SUCCESS;
 	}
 

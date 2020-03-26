@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_JOB_H__
-#define __PARALLELS_HANDLE_JOB_H__
+#ifndef __VIRTUOZZO_HANDLE_JOB_H__
+#define __VIRTUOZZO_HANDLE_JOB_H__
 
 
 #include "PrlHandleBase.h"
@@ -186,5 +186,5 @@ inline PRL_HANDLE craftError(PRL_RESULT code_, PRL_CONST_STR text_, PRL_JOB_OPER
 	return h.isValid() ? h->GetHandle() : PRL_INVALID_HANDLE;
 }
 
-#endif // __PARALLELS_HANDLE_JOB_H__
+#endif // __VIRTUOZZO_HANDLE_JOB_H__
 

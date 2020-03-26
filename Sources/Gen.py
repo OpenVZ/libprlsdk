@@ -154,7 +154,7 @@ GenApiVer.gen_sdk_api_ver(cfg.getint('sdk', 'major'))
 ver = "%d.%d.%d" % (cfg.getint('sdk', 'major'),
 		cfg.getint('sdk', 'minor'),
 		cfg.getint('sdk', 'version_patch'))
-parallels_sdk_pc = """prefix=%(prefix)s
+virtuozzo_sdk_pc = """prefix=%(prefix)s
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib64
@@ -167,6 +167,6 @@ Libs: -L${libdir} -l:libprl_sdk.so.%(version)s
 """ % {'prefix': cfg.get('Build.cfg', 'install_prefix'),
 	'version': ver}
 
-fd = open("SDK/Handles/parallels-sdk.pc", 'w')
-fd.write(parallels_sdk_pc)
+fd = open("SDK/Handles/virtuozzo-sdk.pc", 'w')
+fd.write(virtuozzo_sdk_pc)
 fd.close()

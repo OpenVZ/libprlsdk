@@ -1,6 +1,6 @@
 /*
  * CProblemReportUtils_common.cpp: Helper class for getting default
- * parallels urls locations.
+ * virtuozzo urls locations.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
  * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
@@ -37,7 +37,7 @@
 #include <QStringList>
 #include "Build/Current.ver"
 #include "CProblemReportUtils_common.h"
-#include <prlcommon/Interfaces/ParallelsNamespace.h>
+#include <prlcommon/Interfaces/VirtuozzoNamespace.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include "Build/Current.ver"
 #include "Build/Current-locale.ver"
@@ -46,7 +46,7 @@
 
 #include "CInstalledSoftwareCollector.h"
 #include <prlcommon/HostUtils/HostUtils.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 
 #ifdef _WIN_
 #include "Libraries/WmiWrap/WmiWrap.h"
@@ -60,7 +60,7 @@ namespace CProblemReportUtils
 *   Build/CrashServer/CrashServer.py
 */
 #define CRASH_REPORT_PATH "/post"
-#define CRASH_REPORT_PATH_OLD "/parallels/crash_report"
+#define CRASH_REPORT_PATH_OLD "/virtuozzo/crash_report"
 #define CRASH_REPORT_PORT "8080"
 #define CRASH_REPORT_SERVER	"http://" CRASH_REPORT_SERVER_BASE ":" CRASH_REPORT_PORT CRASH_REPORT_PATH
 
@@ -294,7 +294,7 @@ void addClientInformation( CProblemReport & cReport, PRL_APPLICATION_MODE nAppMo
      * fill client info
      */
 	ClientInfo * pInfo = new ClientInfo();
-	QSettings appSettings(QSettings().organizationName(), ParallelsDirs::getAppGuiName(nAppMode));
+	QSettings appSettings(QSettings().organizationName(), VirtuozzoDirs::getAppGuiName(nAppMode));
 	QStringList lstKeys = appSettings.allKeys();
 	QString strResult;
 	QString strValue;
@@ -310,7 +310,7 @@ void addClientInformation( CProblemReport & cReport, PRL_APPLICATION_MODE nAppMo
 	CorrectNonPrintableSymbols( strResult );
 	pInfo->setClientSettings( strResult );
     
-	addSystemLogWithSuffix( cReport, ParallelsDirs::getClientLogPath(), "-client" );
+	addSystemLogWithSuffix( cReport, VirtuozzoDirs::getClientLogPath(), "-client" );
     
 	if ( PAM_SERVER == nAppMode )
 	{
@@ -332,25 +332,25 @@ void addCommonLogFiles( CProblemReport & cReport )
      * First we try to read the overall system log file
      */
     
-	QString strParallelsLogPath = ParallelsDirs::getSystemLogPath();
+	QString strVirtuozzoLogPath = VirtuozzoDirs::getSystemLogPath();
     
-	addSystemLogWithSuffix( cReport, strParallelsLogPath, "-system", 2 );
+	addSystemLogWithSuffix( cReport, strVirtuozzoLogPath, "-system", 2 );
     
 #ifndef _WIN_
     
 #	ifdef _LIN_
-	strParallelsLogPath = "/var/log/messages";
+	strVirtuozzoLogPath = "/var/log/messages";
 #	else
-	strParallelsLogPath = "/var/log/system.log";
+	strVirtuozzoLogPath = "/var/log/system.log";
 #	endif
 
 	int iSystemLogFilesCount = 2; // by default
-	cReport.appendTemplateSystemLog( strParallelsLogPath,
-                                    QFileInfo(strParallelsLogPath).fileName(), iSystemLogFilesCount );
+	cReport.appendTemplateSystemLog( strVirtuozzoLogPath,
+                                    QFileInfo(strVirtuozzoLogPath).fileName(), iSystemLogFilesCount );
     
 #endif//ifndef _WIN_
     
-	lstLogPaths += ParallelsDirs::getInstallationLogFilePaths();
+	lstLogPaths += VirtuozzoDirs::getInstallationLogFilePaths();
 
 
 	foreach( QString strlogPath, lstLogPaths )
@@ -380,11 +380,11 @@ QString generateComputerModel()
 QString generateHostInfo()
 {
     QString qsHostInfo =
-    "<ParallelsHostInfo>"
+    "<VirtuozzoHostInfo>"
     "\t<OsVersion>"
     "\t\t<StringPresentation>%1</StringPresentation>"
     "\t</OsVersion>"
-    "</ParallelsHostInfo>";
+    "</VirtuozzoHostInfo>";
 
     QString qsOsVersion;
 

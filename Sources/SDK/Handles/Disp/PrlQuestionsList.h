@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_QUESTIONS_LIST_H__
-#define __PARALLELS_QUESTIONS_LIST_H__
+#ifndef __VIRTUOZZO_QUESTIONS_LIST_H__
+#define __VIRTUOZZO_QUESTIONS_LIST_H__
 
 
 #include <QList>
@@ -82,4 +82,4 @@ private:
 	QMutex m_QuestionsListMutex;
 };
 
-#endif // __PARALLELS_QUESTIONS_LIST_H__
+#endif // __VIRTUOZZO_QUESTIONS_LIST_H__

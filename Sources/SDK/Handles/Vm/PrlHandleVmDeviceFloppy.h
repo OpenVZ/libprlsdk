@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_DEVICE_FLOPPY_H__
-#define __PARALLELS_HANDLE_VM_DEVICE_FLOPPY_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_DEVICE_FLOPPY_H__
+#define __VIRTUOZZO_HANDLE_VM_DEVICE_FLOPPY_H__
 
 
 #include "PrlHandleVmDevice.h"
@@ -125,4 +125,4 @@ private://Internal class helpers
 	void TryToRestoreObjectElement();
 };
 
-#endif // __PARALLELS_HANDLE_VM_DEVICE_FLOPPY_H__
+#endif // __VIRTUOZZO_HANDLE_VM_DEVICE_FLOPPY_H__

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_HW_NET_ADAPTER_H__
-#define __PARALLELS_HANDLE_HW_NET_ADAPTER_H__
+#ifndef __VIRTUOZZO_HANDLE_HW_NET_ADAPTER_H__
+#define __VIRTUOZZO_HANDLE_HW_NET_ADAPTER_H__
 
 
 #include "PrlHandleHwGenericDevice.h"
@@ -158,4 +158,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleHwNetAdapter> PrlHandleHwNetAdapterPtr;
 
-#endif // __PARALLELS_HANDLE_HW_NET_ADAPTER_H__
+#endif // __VIRTUOZZO_HANDLE_HW_NET_ADAPTER_H__

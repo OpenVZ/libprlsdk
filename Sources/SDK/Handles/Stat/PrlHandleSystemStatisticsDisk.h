@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_SYSTEM_STATISTICS_DISK_H__
-#define __PARALLELS_HANDLE_SYSTEM_STATISTICS_DISK_H__
+#ifndef __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_DISK_H__
+#define __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_DISK_H__
 
 
 #include "PrlHandleSystemStatistics.h"
@@ -100,4 +100,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleSystemStatisticsDisk> PrlHandleSystemStatisticsDiskPtr;
 
-#endif // __PARALLELS_HANDLE_SYSTEM_STATISTICS_DISK_H__
+#endif // __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_DISK_H__

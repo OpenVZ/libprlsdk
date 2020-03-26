@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_FOUND_VM_INFO_H__
-#define __PARALLELS_HANDLE_FOUND_VM_INFO_H__
+#ifndef __VIRTUOZZO_HANDLE_FOUND_VM_INFO_H__
+#define __VIRTUOZZO_HANDLE_FOUND_VM_INFO_H__
 
 #include "PrlHandleBase.h"
 #include <prlcommon/Messaging/CVmEvent.h>
@@ -104,4 +104,4 @@ private:
 };
 typedef PrlHandleSmartPtr<PrlHandleFoundVmInfo> PrlHandleFoundVmInfoPtr;
 
-#endif // __PARALLELS_HANDLE_FOUND_VM_INFO_H__
+#endif // __VIRTUOZZO_HANDLE_FOUND_VM_INFO_H__

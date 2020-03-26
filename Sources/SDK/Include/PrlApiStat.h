@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_STATISTIC_H__
-#define __PARALLELS_API_STATISTIC_H__
+#ifndef __VIRTUOZZO_API_STATISTIC_H__
+#define __VIRTUOZZO_API_STATISTIC_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -79,7 +79,7 @@ extern "C" {
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                     */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_GetStatistics, (
 		PRL_HANDLE hServer
 		) );
@@ -118,7 +118,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                     */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_SubscribeToHostStatistics, (
 		PRL_HANDLE hServer
 		) );
@@ -139,7 +139,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                    */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_UnsubscribeFromHostStatistics, (
 		PRL_HANDLE hServer
 		) );
@@ -180,7 +180,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                   */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlSrv_SubscribeToPerfStats, (
                            PRL_HANDLE hServer, PRL_CONST_STR sFilter
                            ) );
@@ -201,7 +201,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                    */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlSrv_UnsubscribeFromPerfStats, (
 		PRL_HANDLE hServer
 		) );
@@ -233,7 +233,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                     */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlSrv_GetPerfStats, (
                            PRL_HANDLE hServer, PRL_CONST_STR sFilter
                            ) );
@@ -255,7 +255,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.        */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetTotalRamSize, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnSize
@@ -273,7 +273,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.        */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetUsageRamSize, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnSize
@@ -291,7 +291,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.               */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetFreeRamSize, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnSize
@@ -310,7 +310,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.               */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				 PrlStat_GetRealRamSize, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnSize
@@ -331,7 +331,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully. */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetOsUptime, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnUptime
@@ -355,7 +355,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlStat_GetCpuStat                                         */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetCpusStatsCount, (
 		PRL_HANDLE hStat,
 		PRL_UINT32_PTR pnCount
@@ -378,7 +378,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetCpuStat, (
 		PRL_HANDLE hStat,
 		PRL_UINT32 nIndex,
@@ -403,7 +403,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatCpu_GetCpuUsage, (
 		PRL_HANDLE hCpuStat,
 		PRL_UINT32_PTR pnPercents
@@ -422,7 +422,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatCpu_GetTotalTime, (
 		PRL_HANDLE hCpuStat,
 		PRL_UINT64_PTR pnTime
@@ -441,7 +441,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatCpu_GetUserTime, (
 		PRL_HANDLE hCpuStat,
 		PRL_UINT64_PTR pnTime
@@ -459,7 +459,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatCpu_GetSystemTime, (
 		PRL_HANDLE hCpuStat,
 		PRL_UINT64_PTR pnTime
@@ -473,4 +473,4 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 }
 #endif
 
-#endif // __PARALLELS_API_STATISTIC_H__
+#endif // __VIRTUOZZO_API_STATISTIC_H__

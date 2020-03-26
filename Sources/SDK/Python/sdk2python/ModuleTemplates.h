@@ -232,7 +232,7 @@
 	"\t\t\tprlResult = SdkWrap_LoadLibFromStdPaths() ? PRL_ERR_SUCCESS : PRL_ERR_FAILURE;\n" \
 	"\t\telse\n" \
 	"\t\t\tprlResult = SdkWrap_Load(s_strSdkLibraryPath.c_str());\n\n" \
-	"\t\tprlResult = PRL_SUCCEEDED(prlResult) ? PrlApi_InitEx(PARALLELS_API_VER, nMode, 0, 0) : prlResult;\n" \
+	"\t\tprlResult = PRL_SUCCEEDED(prlResult) ? PrlApi_InitEx(VIRTUOZZO_API_VER, nMode, 0, 0) : prlResult;\n" \
 	"\t\ts_bIsSDKInitialized = PRL_SUCCEEDED(prlResult);\n\n" \
 	"\t\tif (PRL_FAILED(prlResult))\n" \
 	"\t\t{\n" \

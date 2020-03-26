@@ -107,7 +107,7 @@ STRINGIFY_CONSTS_TMPL = """/////////////////////////////////////////////////////
 
 #include "PrlStringifyConsts.h"
 #include "Libraries/Logging/Logging.h"
-#include "Interfaces/ParallelsTypes.h"
+#include "Interfaces/VirtuozzoTypes.h"
 
 #define CASE_VALUE_TO_STRING( r ) \
     case ((unsigned int) r) : return #r ;
@@ -243,8 +243,8 @@ def parse_template_file(file_data, writer, err_flags = AllErrors):
     for txt, row_type in parser(file_data):
         if not row_type:
             if err_flags == PrivateErrors:
-                txt = txt.replace('__PARALLELS_API_ERRORS_VALUES_H__', \
-			    '__PARALLELS_API_PRIVATE_ERRORS_VALUES_H__')
+                txt = txt.replace('__VIRTUOZZO_API_ERRORS_VALUES_H__', \
+			    '__VIRTUOZZO_API_PRIVATE_ERRORS_VALUES_H__')
             writer.write_line(txt, True)
         if row_type == '.err' and err_flags & PublicErrors:
             writer.write_err(txt)

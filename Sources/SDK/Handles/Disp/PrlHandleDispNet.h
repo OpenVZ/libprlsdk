@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_DISP_NET_H__
-#define __PARALLELS_HANDLE_DISP_NET_H__
+#ifndef __VIRTUOZZO_HANDLE_DISP_NET_H__
+#define __VIRTUOZZO_HANDLE_DISP_NET_H__
 
 #include <prlxmlmodel/DispConfig/CDispNetAdapter.h>
 
@@ -412,4 +412,4 @@ private://Internal class helpers
 
 typedef PrlHandleSmartPtr<PrlHandleDispNet> PrlHandleDispNetPtr;
 
-#endif // __PARALLELS_HANDLE_DISP_NET_H__
+#endif // __VIRTUOZZO_HANDLE_DISP_NET_H__

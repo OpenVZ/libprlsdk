@@ -25,8 +25,8 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-#if !defined(__PARALLELS_API_DEPRECATED_H__)
-#define __PARALLELS_API_DEPRECATED_H__
+#if !defined(__VIRTUOZZO_API_DEPRECATED_H__)
+#define __VIRTUOZZO_API_DEPRECATED_H__
 
 #include "PrlIOStructs.h"
 
@@ -41,7 +41,7 @@
  * representation string was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlUsrCfg_FromString, (
 		PRL_HANDLE hUsrCfg,
 		PRL_CONST_STR sUsrCfg
@@ -58,7 +58,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * PRL_ERR_INVALID_ARG				- non valid PHT_DISP_CONFIG handle or non valid (NULL) pointer to storing result was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlUsrCfg_ToString, (
 		PRL_HANDLE hUsrCfg,
 		PRL_VOID_PTR_PTR pUsrCfg
@@ -86,7 +86,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  *
  * PRL_ERR_SUCCESS - function completed successfully.
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				PrlUsrCfg_AddProxy, (
 		PRL_HANDLE hUserProfile,
 		PRL_CONST_STR sProxyHost,
@@ -107,7 +107,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
  * representation string was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispCfg_FromString, (
 		PRL_HANDLE hDispCfg,
 		PRL_CONST_STR sDispCfg
@@ -124,7 +124,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * PRL_ERR_INVALID_ARG				- non valid PHT_DISP_CONFIG handle or non valid (NULL) pointer to storing result was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispCfg_ToString, (
 		PRL_HANDLE hDispCfg,
 		PRL_VOID_PTR_PTR pDispCfg
@@ -141,7 +141,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * representation string was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlVm_FromString, (
 		PRL_HANDLE hVm,
 		PRL_CONST_STR vm_config
@@ -158,7 +158,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * PRL_ERR_INVALID_ARG				- non valid PHT_VIRTUAL_MACHINE handle or non valid (NULL) pointer to storing result was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlVm_ToString, (
 		PRL_HANDLE hVm,
 		PRL_VOID_PTR_PTR vm_config
@@ -176,7 +176,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * or handle of already removed VM device was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlVmDev_FromString, (
 		PRL_HANDLE hVmDev,
 		PRL_CONST_STR sXml
@@ -194,7 +194,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * or handle of already removed VM device was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlVmDev_ToString, (
 		PRL_HANDLE hVmDev,
 		PRL_VOID_PTR_PTR sXml
@@ -212,7 +212,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 * virtual device object
 * PRL_ERR_SUCCESS						- operation successfully completed
 */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlVmDev_UpdateInfo, (
 				PRL_HANDLE hServer,
 				PRL_HANDLE hVmInputDev
@@ -229,7 +229,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
  * index was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_GetParamToken, (
 				 PRL_HANDLE hResult,
 				 PRL_UINT32 index,
@@ -246,7 +246,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * @param pointer for getting result
  * @return PRL_ERR_SUCCESS if the method succeeds
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_GetError, (
 				 PRL_HANDLE hResult,
 				 PRL_VOID_PTR_PTR data_ptr
@@ -264,7 +264,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * representation string was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				 PrlLic_FromString, (
 		PRL_HANDLE hLicense,
 		PRL_CONST_STR sLic
@@ -280,7 +280,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
  * PRL_ERR_INVALID_ARG				- non valid PHT_LICENSE handle or non valid (NULL) pointer to storing result was passed
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlLic_ToString, (
 					 PRL_HANDLE hLicense,
 					 PRL_VOID_PTR_PTR pLicStr
@@ -290,7 +290,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /**
  * Creates a new handle of type PHT_PHT_LICENSE.
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				 PrlLic_Create, (
 					 PRL_HANDLE_PTR phLic
 					 ) );
@@ -306,7 +306,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 * PRL_ERR_SUCCESS						- operation successfully completed
 */
 
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlLoginResponse_ToString, (
 	PRL_HANDLE hLoginResp,
 	PRL_VOID_PTR_PTR pLoginRespStr
@@ -317,7 +317,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /**
 * This is no longer supported. Use PrlDevDisplay_IsSlidingMouseEnabled()
 */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_3,
 						   PrlVm_GetVirtDevInfo, (
 		PRL_HANDLE hVm,
 		PRL_UINT32 nFlags
@@ -326,7 +326,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
 /**
 * This is no longer supported. Use PrlDevDisplay_IsSlidingMouseEnabled()
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlVmVirtDevInfo_GetUsbMouseState, (
 		PRL_HANDLE handle,
 		PRL_VOID_PTR pVmUsbMouseState
@@ -348,7 +348,7 @@ call. Possible values:
 PRL_ERR_INVALID_ARG - non valid PHT_VIRTUAL_MACHINE handle was passed
 PRL_ERR_UNINITIALIZED - unexpected error: uninitialized with server connection or non identified VM object
 */
-PRL_ASYNC_SRV_METHOD_DECL(  PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL(  VIRTUOZZO_API_VER_2,
 							PrlVm_UpdateToolsSection, (
 					  PRL_HANDLE hVm,
 					  PRL_CONST_STR sToolsSection
@@ -367,7 +367,7 @@ PRL_ASYNC_SRV_METHOD_DECL(  PARALLELS_API_VER_2,
  *									  class data) was passed
  * PRL_ERR_SUCCESS					- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_FromString, (
 		PRL_HANDLE hResult,
 		PRL_CONST_STR sResult
@@ -385,7 +385,7 @@ PRL_RESULT. Possible values:
 PRL_ERR_INVALID_ARG - non valid PHT_VIRTUAL_MACHINE handle was specified
 PRL_ERR_SUCCESS - operation successfully completed
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlVm_SetCpuVtxEnabled, (
 		PRL_HANDLE hVm,
 		PRL_BOOL bVmCpuVtxEnabled
@@ -416,7 +416,7 @@ PRL_UNINITIALIZED
 PRL_ERR_FAILURE
 or PRL_ERR_SUCCESS if success.
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlVm_SendToolsGeneralCommand, (
 	PRL_HANDLE			hVm,
 	PRL_UINT32			command,
@@ -440,7 +440,7 @@ call. Possible values:
 PRL_ERR_INVALID_ARG - non valid PHT_SERVER handle	or non valid PHT_STRINGS_LIST handle was passed
 PRL_ERR_SUCCESS - task was started successfully
 */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_StartConvertHdd, (
 					  PRL_HANDLE hServer,
 					  PRL_HANDLE hStringsList
@@ -460,7 +460,7 @@ PRL_ERR_INVALID_ARG - non valid PHT_SERVER handle was passed
 PRL_ERR_ACCESS_TOKEN_INVALID - current user session seems to be not valid to perform SMC command
 PRL_ERR_SUCCESS - operation completed successfully
 */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_SmcGetRuntimeInfo, (
 		PRL_HANDLE hServer
 		) );
@@ -477,7 +477,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    buffer was specified PRL_ERR_OUT_OF_MEMORY - not enough
    memory to instantiate VM event object PRL_ERR_SUCCESS -
    operation successfully completed                             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlVm_CreateAnswerEvent, (
 		PRL_HANDLE hVm,
 		PRL_HANDLE_PTR phEvent,
@@ -495,7 +495,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 * representation string was passed
 * PRL_ERR_SUCCESS						- operation successfully completed
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlDispNet_PortForwardingFromString, (
 				PRL_HANDLE hDispNet,
 				PRL_CONST_STR sPortForwarding
@@ -511,7 +511,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 * PRL_ERR_INVALID_ARG				- non valid PHT_DISP_NET_ADAPTER handle or non valid (NULL) pointer to storing result was passed
 * PRL_ERR_SUCCESS						- operation successfully completed
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlDispNet_PortForwardingToString, (
 				PRL_HANDLE hDispNet,
 				PRL_VOID_PTR_PTR pPortForwarding
@@ -526,7 +526,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    (NULL) pointer for storing result was passed
    PRL_ERR_OUT_OF_MEMORY - not enough memory to create server
    object PRL_ERR_SUCCESS - operation successfully completed    */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlUsr_GetClientConfig, (
 		PRL_HANDLE_PTR phConfig
 		) );
@@ -554,7 +554,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                  */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlSrv_PrepareForHibernate, (
 		PRL_HANDLE hServer,
 		PRL_UINT32 nFlags
@@ -583,7 +583,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                  */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlSrv_AfterHostResume, (
 		PRL_HANDLE hServer,
 		PRL_UINT32 nFlags
@@ -613,7 +613,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_INVALID_ARG - invalid handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_Remove, (
 		PRL_HANDLE hDispNet
 		) );
@@ -636,7 +636,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetEnabled                                          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_IsEnabled, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL_PTR pbEnabled
@@ -658,7 +658,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_IsEnabled                                          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetEnabled, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL bEnabled
@@ -681,7 +681,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetEnabled                                          */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlDispNet_IsHidden, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL_PTR pbHidden
@@ -703,7 +703,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_IsHidden                                          */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlDispNet_SetHidden, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL bHidden
@@ -727,7 +727,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcpEnabled                                      */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_IsDhcpEnabled, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL_PTR pbDhcpEnabled
@@ -748,7 +748,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_IsDhcpEnabled                                       */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetDhcpEnabled, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL bDhcpEnabled
@@ -770,7 +770,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetNetworkType                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetNetworkType, (
 		PRL_HANDLE hDispNet,
 		PRL_NET_ADAPTER_EMULATED_TYPE_PTR pnNetworkType
@@ -793,7 +793,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetNetworkType                                      */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetNetworkType, (
 		PRL_HANDLE hDispNet,
 		PRL_NET_ADAPTER_EMULATED_TYPE nNetworkType
@@ -825,7 +825,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetName                                             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetName, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetName,
@@ -847,7 +847,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetName                                           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetName, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetName
@@ -877,7 +877,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetUuid, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetUuid,
@@ -913,7 +913,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetSysName                                          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetSysName, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetSysName,
@@ -934,7 +934,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetSysName                                       */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetSysName, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetSysName
@@ -956,7 +956,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetIndex                                           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetIndex, (
 		PRL_HANDLE hDispNet,
 		PRL_UINT32_PTR pnIndex
@@ -979,7 +979,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetIndex                                           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetIndex, (
 		PRL_HANDLE hDispNet,
 		PRL_UINT32 nIndex
@@ -1018,7 +1018,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcpScopeStartIp                                  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetDhcpScopeStartIp, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetDhcpScopeStartIp,
@@ -1044,7 +1044,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetDhcpScopeStartIp                                */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetDhcpScopeStartIp, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetDhcpScopeStartIp
@@ -1081,7 +1081,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcpScopeEndIp                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetDhcpScopeEndIp, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetDhcpScopeEndIp,
@@ -1106,7 +1106,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetDhcpScopeEndIp                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetDhcpScopeEndIp, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetDhcpScopeEndIp
@@ -1143,7 +1143,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcpScopeMask                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_GetDhcpScopeMask, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetDhcpScopeMask,
@@ -1168,7 +1168,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetDhcpScopeMask                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispNet_SetDhcpScopeMask, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetDhcpScopeMask
@@ -1195,7 +1195,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcpEnabled                                      */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_IsDhcp6Enabled, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL_PTR pbDhcpEnabled
@@ -1216,7 +1216,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_IsDhcpEnabled                                       */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_SetDhcp6Enabled, (
 		PRL_HANDLE hDispNet,
 		PRL_BOOL bDhcpEnabled
@@ -1256,7 +1256,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcp6ScopeStartIp                                  */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_GetDhcp6ScopeStartIp, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetDhcpScopeStartIp,
@@ -1282,7 +1282,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetDhcpScopeStartIp                                */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_SetDhcp6ScopeStartIp, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetDhcpScopeStartIp
@@ -1319,7 +1319,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcp6ScopeEndIp                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_GetDhcp6ScopeEndIp, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetDhcpScopeEndIp,
@@ -1344,7 +1344,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetDhcp6ScopeEndIp                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_SetDhcp6ScopeEndIp, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetDhcpScopeEndIp
@@ -1381,7 +1381,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_SetDhcp6ScopeMask                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_GetDhcp6ScopeMask, (
 		PRL_HANDLE hDispNet,
 		PRL_STR sDispNetDhcpScopeMask,
@@ -1406,7 +1406,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispNet_GetDhcp6ScopeMask                                    */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlDispNet_SetDhcp6ScopeMask, (
 		PRL_HANDLE hDispNet,
 		PRL_CONST_STR sNewDispNetDhcpScopeMask
@@ -1430,7 +1430,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                    */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_AddNetAdapter, (
 		PRL_HANDLE hServer,
 		PRL_HANDLE hNetAdapter
@@ -1456,7 +1456,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                     */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_DeleteNetAdapter, (
 		PRL_HANDLE hServer,
 		PRL_UINT32 nIndex
@@ -1480,7 +1480,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                   */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_1,
 						   PrlSrv_UpdateNetAdapter, (
 		PRL_HANDLE hServer,
 		PRL_HANDLE hNetAdapter
@@ -1506,7 +1506,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_1,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                   */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlSrv_StoreValueByKey, (
 		PRL_HANDLE hServer,
 		PRL_CONST_STR sKey,
@@ -1533,7 +1533,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                   */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlVm_StoreValueByKey, (
 		PRL_HANDLE hVm,
 		PRL_CONST_STR sKey,
@@ -1559,7 +1559,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispCfg_CreateDispNet, (
 		PRL_HANDLE hDispConfig,
 		PRL_HANDLE_PTR phDispNet
@@ -1578,7 +1578,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispCfg_GetDispNetCount, (
 		PRL_HANDLE hDispCfg,
 		PRL_UINT32_PTR pnDispNetCount
@@ -1609,7 +1609,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDispCfg_GetDispNet, (
 		PRL_HANDLE hDispCfg,
 		PRL_UINT32 nDispNetIndex,
@@ -1621,7 +1621,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    client log path will be set.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 					 PrlApi_SetLogPath, (
 		PRL_CONST_STR sLogPath
 		) );
@@ -1660,7 +1660,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    object.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlVmCfg_GetDevsList, (
 		PRL_HANDLE hVmCfg,
 		PRL_HANDLE_PTR vmdev_handles,
@@ -1680,7 +1680,7 @@ PRL_ERR_INVALID_ARG - null pointer was
 passed.
 
 PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				PrlSrv_SendClientStatistics, (
 				PRL_HANDLE hServer,
 				PRL_CONST_STR sStatistics,
@@ -1715,7 +1715,7 @@ Returns
 A handle of type PHT_JOB containing the results of this
 asynchronous operation or PRL_INVALID_HANDLE if there's not
 enough memory to instantiate the job object.                   */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						  PrlSrv_UpdateUsbDevicesAssociationsList, (
 						  PRL_HANDLE hServer,
 						  PRL_HANDLE hStringsList,
@@ -1745,7 +1745,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                   */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlVm_RunCompressor, (
 		PRL_HANDLE hVm
 		) );
@@ -1766,13 +1766,13 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                   */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlVm_CancelCompressor, (
 		PRL_HANDLE hVm
 		) );
 
 
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_3,
 					   PrlVm_InternalCommand, (
 		PRL_HANDLE hVm,
 		PRL_CONST_STR sCmdName,
@@ -1801,7 +1801,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PrlSrv_GetNetworkClassesList
 
 */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_3,
 					PrlSrv_RestartNetworkShaping, (
 		PRL_HANDLE hServer,
 		PRL_UINT32 nFlags
@@ -1830,7 +1830,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    See Also
    PrlSrv_GetNetworkShapingList
 */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_3,
 						PrlSrv_UpdateNetworkShapingList, (
 		PRL_HANDLE hServer,
 		PRL_HANDLE hNetworkShapingList,
@@ -1863,7 +1863,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                  */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_3,
 						PrlSrv_GetNetworkShapingList, (
 		PRL_HANDLE hServer,
 		PRL_UINT32 nFlags
@@ -1884,7 +1884,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlVmCfg_SetDefaultGateway, (
 		PRL_HANDLE hVmCfg,
 		PRL_CONST_STR sNewVmDefaultGateway
@@ -1906,7 +1906,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlVmCfg_SetDefaultGatewayIPv6, (
 		PRL_HANDLE hVmCfg,
 		PRL_CONST_STR sNewVmDefaultGateway
@@ -1938,7 +1938,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlVmCfg_GetDefaultGateway, (
 		PRL_HANDLE hVmCfg,
 		PRL_STR sVmDefaultGateway,
@@ -1970,7 +1970,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlVmCfg_GetDefaultGatewayIPv6, (
 		PRL_HANDLE hVmCfg,
 		PRL_STR sVmDefaultGateway,
@@ -2021,7 +2021,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_OUT_OF_MEMORY - when failed to allocate memory
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 				PrlVm_SSOSendEventCredentials, (
 				PRL_HANDLE hVm,
 				PRL_HANDLE hEvent,
@@ -2048,7 +2048,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    PRL_ERR_OUT_OF_MEMORY - when failed to allocate memory
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 			PrlVm_SSOSendEventSettingsChanged, (
 			PRL_HANDLE hVm,
 			PRL_BOOL bEnabled,
@@ -2071,7 +2071,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    PRL_ERR_OUT_OF_MEMORY - when failed to allocate memory
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 				PrlVm_SSOSendEventLockState, (
 				PRL_HANDLE hVm,
 				PRL_BOOL bLocked
@@ -2092,7 +2092,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlVmDevHd_SetDiskSize                                         */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 				 PrlVmDevHd_GetBlockSize, (
 		PRL_HANDLE hVmDev,
 		PRL_UINT32_PTR pnBytes
@@ -2114,7 +2114,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlVmDevHd_GetDiskSize                                        */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 				 PrlVmDevHd_SetBlockSize, (
 		PRL_HANDLE hVmDev,
 		PRL_UINT32 nBytes
@@ -2136,7 +2136,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    NULL pointer to the output buffer was specified.
 
    PRL_ERR_SUCCESS - operation completed successfully             */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlVmCfg_Is3DAccelerationEnabled, (
 		PRL_HANDLE hVmCfg,
 		PRL_BOOL_PTR pbVm3DAccelerationEnabled
@@ -2157,7 +2157,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    NULL pointer to the output buffer was specified.
 
    PRL_ERR_SUCCESS - operation completed successfully             */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlVmCfg_Set3DAccelerationEnabled, (
 		PRL_HANDLE hVmCfg,
 		PRL_BOOL bVm3DAccelerationEnabled
@@ -2176,7 +2176,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_3,
                                  PrlSrv_StartClusterService, (
                 PRL_HANDLE hServer,
                 PRL_CONST_STR sServiceName,
@@ -2192,7 +2192,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_3,
                                  PrlSrv_StopClusterService, (
                 PRL_HANDLE hServer,
                 PRL_CONST_STR sServiceName,
@@ -2211,7 +2211,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_INVALID_ARG - invalid handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully. */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
                         PrlDispCfg_SetClusterMode, (
                 PRL_HANDLE hDispConfig,
                 PRL_BOOL bClusterMode
@@ -2229,7 +2229,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully. */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
                         PrlDispCfg_IsClusterMode, (
                 PRL_HANDLE hDispConfig,
                 PRL_BOOL_PTR pbClusterMode
@@ -2255,7 +2255,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
    PRL_ERR_SUCCESS - function completed successfully.
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 			PrlDispCfg_GetHostId, (
 		PRL_HANDLE hDispConfig,
 		PRL_STR sHostId,
@@ -2274,7 +2274,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 
    PRL_ERR_SUCCESS - function completed successfully.
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 			PrlDispCfg_SetHostId, (
 		PRL_HANDLE hDispConfig,
 		PRL_CONST_STR sHostId
@@ -2301,7 +2301,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 
     Returns:
     PRL_HANDLE - handle to the job generated					*/
-PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_ASYNC_METHOD_DECL( VIRTUOZZO_API_VER_5,
                  PrlVm_SendProblemReport, (
         PRL_HANDLE hVm,
         PRL_HANDLE hProblemReport,
@@ -2320,7 +2320,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_5,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispCfg_SetCpuFeaturesMask	*/
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 			PrlDispCfg_GetCpuFeaturesMask, (
 		PRL_HANDLE hDispConfig,
 		PRL_CPU_FEATURES_MASK_PTR pMasks
@@ -2339,7 +2339,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDispCfg_GetCpuFeaturesMask */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 			PrlDispCfg_SetCpuFeaturesMask, (
 		PRL_HANDLE hDispConfig,
 		PRL_CONST_CPU_FEATURES_MASK_PTR pMasks
@@ -2361,7 +2361,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_GetEnvId, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnEnvId
@@ -2384,7 +2384,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    the virtual machine configuration.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_GetHostMemQuotaMin, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnHostMemQuotaMin
@@ -2403,7 +2403,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_SetHostMemQuotaMin, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32 nHostMemQuotaMin
@@ -2426,7 +2426,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    the virtual machine configuration.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_GetHostMemQuotaMax, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnHostMemQuotaMax
@@ -2445,7 +2445,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_SetHostMemQuotaMax, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32 nHostMemQuotaMax
@@ -2469,7 +2469,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    the virtual machine configuration.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_GetHostMemQuotaPriority, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnHostMemQuotaPriority
@@ -2489,7 +2489,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_SetHostMemQuotaPriority, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32 nHostMemQuotaPriority
@@ -2512,7 +2512,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    the virtual machine configuration.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_IsHostMemAutoQuota, (
 		PRL_HANDLE hVmCfg,
 		PRL_BOOL_PTR pbHostMemAutoQuota
@@ -2533,7 +2533,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_SetHostMemAutoQuota, (
 		PRL_HANDLE hVmCfg,
 		PRL_BOOL bHostMemAutoQuota
@@ -2557,7 +2557,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    the virtual machine configuration.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_GetMaxBalloonSize, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnMaxBalloonSize
@@ -2576,7 +2576,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 			PrlVmCfg_SetMaxBalloonSize, (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32 nMaxBalloonSize
@@ -2613,7 +2613,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
    See Also
    PrlVm_LoginInGuest                                             */
-PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 						   PrlVmGuest_SetUserPasswd, (
 		PRL_HANDLE hVmGuest,
 		PRL_CONST_STR sUserName,
@@ -2633,7 +2633,7 @@ PRL_ASYNC_SRV_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetDispUptime, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnUptime
@@ -2651,7 +2651,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.        */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetTotalSwapSize, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnSize
@@ -2669,7 +2669,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetUsageSwapSize, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnSize
@@ -2687,7 +2687,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.               */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetFreeSwapSize, (
 		PRL_HANDLE hStat,
 		PRL_UINT64_PTR pnSize
@@ -2714,7 +2714,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlStat_GetIfaceStat                                       */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetIfacesStatsCount, (
 		PRL_HANDLE hStat,
 		PRL_UINT32_PTR pnCount
@@ -2737,7 +2737,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.d            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetIfaceStat, (
 		PRL_HANDLE hStat,
 		PRL_UINT32 nIndex,
@@ -2769,7 +2769,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatIface_GetSystemName, (
 		PRL_HANDLE hIfaceStat,
 		PRL_STR	sSystemName,
@@ -2790,7 +2790,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatIface_GetInDataSize, (
 		PRL_HANDLE hIfaceStat,
 		PRL_UINT64_PTR pnDataSize
@@ -2810,7 +2810,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatIface_GetOutDataSize, (
 		PRL_HANDLE hIfaceStat,
 		PRL_UINT64_PTR pnDataSize
@@ -2830,7 +2830,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatIface_GetInPkgsCount, (
 		PRL_HANDLE hIfaceStat,
 		PRL_UINT64_PTR pnPkgsCount
@@ -2850,7 +2850,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatIface_GetOutPkgsCount, (
 		PRL_HANDLE hIfaceStat,
 		PRL_UINT64_PTR pnPkgsCount
@@ -2877,7 +2877,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlStat_GetUserStat                                           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetUsersStatsCount, (
 		PRL_HANDLE hStat,
 		PRL_UINT32_PTR pnCount
@@ -2900,7 +2900,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.d           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetUserStat, (
 		PRL_HANDLE hStat,
 		PRL_UINT32 nIndex,
@@ -2931,7 +2931,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatUser_GetUserName, (
 		PRL_HANDLE hUserStat,
 		PRL_STR	sUserName,
@@ -2964,7 +2964,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatUser_GetServiceName, (
 		PRL_HANDLE hUserStat,
 		PRL_STR	sServiceName,
@@ -2996,7 +2996,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatUser_GetHostName, (
 		PRL_HANDLE hUserStat,
 		PRL_STR	sHostName,
@@ -3017,7 +3017,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatUser_GetSessionTime, (
 		PRL_HANDLE hUserStat,
 		PRL_UINT64_PTR pnTime
@@ -3045,7 +3045,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlStat_GetDiskStat                                        */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetDisksStatsCount, (
 		PRL_HANDLE hStat,
 		PRL_UINT32_PTR pnCount
@@ -3068,7 +3068,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.d           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetDiskStat, (
 		PRL_HANDLE hStat,
 		PRL_UINT32 nIndex,
@@ -3100,7 +3100,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDisk_GetSystemName, (
 		PRL_HANDLE hDiskStat,
 		PRL_STR	sSystemName,
@@ -3121,7 +3121,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDisk_GetUsageDiskSpace, (
 		PRL_HANDLE hDiskStat,
 		PRL_UINT64_PTR pnSize
@@ -3140,7 +3140,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDisk_GetFreeDiskSpace, (
 		PRL_HANDLE hDiskStat,
 		PRL_UINT64_PTR pnSize
@@ -3159,7 +3159,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlStatDisk_GetPartStat                                      */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDisk_GetPartsStatsCount, (
 		PRL_HANDLE hDiskStat,
 		PRL_UINT32_PTR pnCount
@@ -3184,7 +3184,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.                        */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDisk_GetPartStat, (
 		PRL_HANDLE hDiskStat,
 		PRL_UINT32 nIndex,
@@ -3220,7 +3220,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDiskPart_GetSystemName, (
 		PRL_HANDLE hPartStat,
 		PRL_STR	sSystemName,
@@ -3242,7 +3242,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDiskPart_GetUsageDiskSpace, (
 		PRL_HANDLE hPartStat,
 		PRL_UINT64_PTR pnSize
@@ -3263,7 +3263,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatDiskPart_GetFreeDiskSpace, (
 		PRL_HANDLE hPartStat,
 		PRL_UINT64_PTR pnSize
@@ -3290,7 +3290,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlStat_GetProcStat                                         */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetProcsStatsCount, (
 		PRL_HANDLE hStat,
 		PRL_UINT32_PTR pnCount
@@ -3313,7 +3313,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStat_GetProcStat, (
 		PRL_HANDLE hStat,
 		PRL_UINT32 nIndex,
@@ -3345,7 +3345,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetCommandName, (
 		PRL_HANDLE hProcStat,
 		PRL_STR	sCommandName,
@@ -3365,7 +3365,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetId, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT32_PTR pnId
@@ -3395,7 +3395,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetOwnerUserName, (
 		PRL_HANDLE hProcStat,
 		PRL_STR	sOwnerName,
@@ -3415,7 +3415,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetTotalMemUsage, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT64_PTR pnSize
@@ -3434,7 +3434,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetRealMemUsage, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT64_PTR pnSize
@@ -3453,7 +3453,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetVirtMemUsage, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT64_PTR pnSize
@@ -3473,7 +3473,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetStartTime, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT64_PTR pnTime
@@ -3492,7 +3492,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetTotalTime, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT64_PTR pnTime
@@ -3511,7 +3511,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetUserTime, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT64_PTR pnTime
@@ -3530,7 +3530,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetSystemTime, (
 		PRL_HANDLE hProcStat,
 		PRL_UINT64_PTR pnTime
@@ -3549,7 +3549,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetState, (
 		PRL_HANDLE hProcStat,
 		PRL_PROCESS_STATE_TYPE_PTR pnState
@@ -3568,7 +3568,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStatProc_GetCpuUsage, (
 				PRL_HANDLE hProcStat,
 				PRL_UINT32_PTR pnPercents
@@ -3591,7 +3591,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 				 PrlStat_GetVmDataStat, (
 		PRL_HANDLE hStat,
 		PRL_HANDLE_PTR phVmDataStat
@@ -3613,11 +3613,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    PRL_ERR_NO_DATA - no data for given segment.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 				 PrlStatVmData_GetSegmentCapacity, (
 				PRL_HANDLE hVmDataStat,
 				PRL_DATA_STATISTIC_SEGMENTS nSegment,
 				PRL_UINT64_PTR pnCapacity
 				) );
 
-#endif //__PARALLELS_API_DEPRECATED_H__
+#endif //__VIRTUOZZO_API_DEPRECATED_H__

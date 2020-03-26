@@ -24,7 +24,7 @@
 #
 
 LEVEL = ../../../..
-include($$LEVEL/Sources/Parallels.pri)
+include($$LEVEL/Sources/Virtuozzo.pri)
 
 TEMPLATE	= app
 TARGET		= sdk2python

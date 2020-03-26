@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_SYSTEM_STATISTICS_CPU_H__
-#define __PARALLELS_HANDLE_SYSTEM_STATISTICS_CPU_H__
+#ifndef __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_CPU_H__
+#define __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_CPU_H__
 
 
 #include "PrlHandleSystemStatistics.h"
@@ -87,4 +87,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleSystemStatisticsCpu> PrlHandleSystemStatisticsCpuPtr;
 
-#endif // __PARALLELS_HANDLE_SYSTEM_STATISTICS_CPU_H__
+#endif // __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_CPU_H__

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_TYPES_H__
-#define __PARALLELS_API_TYPES_H__
+#ifndef __VIRTUOZZO_API_TYPES_H__
+#define __VIRTUOZZO_API_TYPES_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -345,4 +345,4 @@ typedef PRL_METHOD_PTR( PRL_EVENT_HANDLER_PTR ) (
 }
 #endif
 
-#endif // __PARALLELS_API_TYPES_H__
+#endif // __VIRTUOZZO_API_TYPES_H__

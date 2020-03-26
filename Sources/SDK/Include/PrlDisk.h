@@ -25,8 +25,8 @@
  */
 
 
-#ifndef ___PARALLELS_DISK_SDK_DEFINITIONS___
-#define ___PARALLELS_DISK_SDK_DEFINITIONS___
+#ifndef ___VIRTUOZZO_DISK_SDK_DEFINITIONS___
+#define ___VIRTUOZZO_DISK_SDK_DEFINITIONS___
 
 #ifdef __cplusplus
 extern "C" {
@@ -384,7 +384,7 @@ typedef PRL_CHS* PRL_CHS_PTR;
    PrlDisk_CreateDisk
 
    PrlDisk_Free                                                   */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				PrlDisk_CreateDisk_Local, (
 	// Handle to receive data
 	PRL_HANDLE_PTR pHandle,
@@ -433,7 +433,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PrlDisk_OpenDisk
 
    PrlDisk_Free                                                         */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				PrlDisk_OpenDisk_Local, (
 	// Handle to receive data
 	PRL_HANDLE_PTR pHandle,
@@ -458,7 +458,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
                        \result in memory leak.
    uiOffset :          Offset value in bytes. This value is
                        added to each read/write operation offset.       */
-PRL_METHOD_DECL( PARALLELS_API_VER_7,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 				PrlDiskOpenPolicy_CreateOffset, (
 	// Handle to receive data
 	PRL_HANDLE_PTR pHandle,
@@ -483,7 +483,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
    PRL_ERR_INVALID_ARG - invalid argument values.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				PrlDisk_WaitForCompletion, (
 		// Disk handle
 		const PRL_HANDLE Handle) );
@@ -519,7 +519,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PrlDisk_DeleteState
 
    PrlDisk_GetSnapshotsTree                                       */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				PrlDisk_SwitchToState, (
 		// Disk handle
 		const PRL_HANDLE Handle,
@@ -544,7 +544,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_INVALID_ARG - invalid handle was passed.
 
    PRL_ERR_SUCCESS - operation completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
                                 PrlDisk_Free, (
                 // Disk handle
                 const PRL_HANDLE Handle) );
@@ -565,7 +565,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDisk_Read                                                   */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				PrlDisk_Write, (
 		// Disk handle
 		const PRL_HANDLE Handle,
@@ -592,7 +592,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlDisk_Write                                                  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				PrlDisk_Read, (
 		// Disk handle
 		const PRL_HANDLE Handle,
@@ -614,7 +614,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_INVALID_ARG - invalid argument values.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_7,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 				PrlDisk_FlushCache, (
 		const PRL_HANDLE Handle) );
 
@@ -635,7 +635,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_7,
    PRL_ERR_INVALID_ARG - invalid argument values.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				PrlDisk_GetDiskInfo, (
 		// Disk handle
 		const PRL_HANDLE Handle,
@@ -655,7 +655,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    Returns
    PRL_RESULT.
 */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 			PrlDisk_GetChangesMap_Local, (
 		PRL_HANDLE hDisk,
 		PRL_CONST_STR sPit1Uuid,
@@ -670,7 +670,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 					result.
 	Returns
 	PRL_RESULT. */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				PrlDiskMap_GetSize, (
 		PRL_HANDLE hMap,
 		PRL_UINT32_PTR pnSize) );
@@ -684,7 +684,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 					result.
 	Returns
 	PRL_RESULT. */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				PrlDiskMap_GetGranularity, (
 		PRL_HANDLE hMap,
 		PRL_UINT32_PTR pnSize) );
@@ -699,7 +699,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
 					bytes actually written.
 	Returns
 	PRL_RESULT. */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				PrlDiskMap_Read, (
 		PRL_HANDLE hMap,
 		PRL_VOID_PTR pBuffer,
