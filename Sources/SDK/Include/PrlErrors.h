@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_ERRORS_H__
-#define __PARALLELS_API_ERRORS_H__
+#ifndef __VIRTUOZZO_API_ERRORS_H__
+#define __VIRTUOZZO_API_ERRORS_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -74,4 +74,4 @@ extern "C" {
 }
 #endif
 
-#endif // __PARALLELS_API_ERRORS_H__
+#endif // __VIRTUOZZO_API_ERRORS_H__

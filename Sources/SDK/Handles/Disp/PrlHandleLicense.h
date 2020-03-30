@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_LICENSE_H__
-#define __PARALLELS_HANDLE_LICENSE_H__
+#ifndef __VIRTUOZZO_HANDLE_LICENSE_H__
+#define __VIRTUOZZO_HANDLE_LICENSE_H__
 
 
 #include "PrlHandleBase.h"
@@ -129,4 +129,4 @@ private:
 	CVmEvent m_evtLicense;
 };
 
-#endif // __PARALLELS_HANDLE_LICENSE_H__
+#endif // __VIRTUOZZO_HANDLE_LICENSE_H__

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_DEVICE_H__
-#define __PARALLELS_HANDLE_DEVICE_H__
+#ifndef __VIRTUOZZO_HANDLE_DEVICE_H__
+#define __VIRTUOZZO_HANDLE_DEVICE_H__
 
 #include "PrlHandleVmSrv.h"
 #include "PrlControlValidity.h"
@@ -440,4 +440,4 @@ private:
 	virtual quint32 ConcreteGenerateHashCode();
 };
 
-#endif // __PARALLELS_HANDLE_DEVICE_H__
+#endif // __VIRTUOZZO_HANDLE_DEVICE_H__

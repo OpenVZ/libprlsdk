@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_CORE_H__
-#define __PARALLELS_API_CORE_H__
+#ifndef __VIRTUOZZO_API_CORE_H__
+#define __VIRTUOZZO_API_CORE_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -79,8 +79,8 @@ extern "C" {
    PrlApi_Deinit
    Parameters
    version :  Library version number. This should be
-               PARALLELS_API_VER.                              */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+               VIRTUOZZO_API_VER.                              */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_Init, (
 		PRL_UINT32 version
 		) );
@@ -104,11 +104,11 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PrlApi_Deinit PrlApi_Init
    Parameters
    nVersion :    Library version number. This should be
-                 PARALLELS_API_VER.
+                 VIRTUOZZO_API_VER.
    nAppMode :    API library application mode.
    nFlags   :    Flags as mask ( from enums PRL_API_INIT_FLAGS and PRL_API_COMMAND_FLAGS )
    nReserved :  reserved parameter for future purposes.         */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlApi_InitEx, (
 		PRL_UINT32 nVersion,
     PRL_APPLICATION_MODE nAppMode,
@@ -130,7 +130,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    See Also
    PrlApi_Init                                                  */
 
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_Deinit, (void) );
 
 /* \Returns the API version number. Version number is
@@ -147,7 +147,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_GetVersion, (
 		PRL_UINT32_PTR current_version
 		) );
@@ -162,7 +162,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.       */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlApi_GetAppMode, (
 		PRL_APPLICATION_MODE_PTR app_mode
 		) );
@@ -209,7 +209,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_GetResultDescription, (
 		PRL_RESULT nErrCode,
 		PRL_BOOL bIsBriefMessage,
@@ -230,7 +230,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_INVALID_ARG - null pointer was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_GetMessageType, (
 		PRL_RESULT nErrCode,
 		PRL_MESSAGE_TYPE_ENUM_PTR pnMsgType
@@ -253,7 +253,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_MsgCanBeIgnored, (
 		PRL_RESULT nErrCode,
 		PRL_BOOL_PTR pbCanBeIgnored
@@ -290,7 +290,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_SUCCESS - function completed successfully.
    See Also
    PrlHandle_Free                                                */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlHandle_AddRef, (
 		PRL_HANDLE handle
 		) );
@@ -314,7 +314,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_INVALID_ARG - invalid handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlHandle_Free, (
 		PRL_HANDLE handle
 		) );
@@ -336,7 +336,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlHandle_GetType, (
 		PRL_HANDLE handle,
 		PRL_HANDLE_TYPE_PTR type
@@ -357,7 +357,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_INVALID_ARG - specified arguments are invalid.
    PRL_ERR_OUT_OF_MEMORY - not enough memory.
    PRL_ERR_SUCCESS - function completed successfully.                         */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 			PrlHandle_RegEventHandler, (
 		PRL_HANDLE hObj,
 		PRL_EVENT_HANDLER_PTR handler,
@@ -380,7 +380,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    PRL_ERR_INVALID_ARG - specified arguments are invalid.
    PRL_ERR_OUT_OF_MEMORY - not enough memory.
    PRL_ERR_SUCCESS - function completed successfully.                         */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 			PrlHandle_UnregEventHandler, (
 		PRL_HANDLE hObj,
 		PRL_EVENT_HANDLER_PTR handler,
@@ -403,7 +403,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    desktop now available. I.e. PrlDevDisplay_ConnectToVm was not called.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_4,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 				 PrlHandle_GetChannelStatistics, (
 		PRL_HANDLE hObj,
 		PRL_IO_CHANNEL_STAT_PTR channelStat
@@ -433,7 +433,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_4,
    See Also
    PrlSrvInfo_GetStartTime
    PrlSrvInfo_GetStartTimeMonotonic                             */
-PRL_METHOD_DECL( PARALLELS_API_VER_5,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 				 PrlHandle_GetPackageId, (
 		PRL_HANDLE hObj,
 		PRL_UINT64_PTR id
@@ -452,7 +452,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_5,
  * PRL_ERR_UNIMPLEMENTED            - method is not implemented or does not supported XML serialization
  * PRL_ERR_SUCCESS					- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlHandle_FromString, (
 		PRL_HANDLE hHandle,
 		PRL_CONST_STR sXml
@@ -471,7 +471,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
  * PRL_ERR_UNIMPLEMENTED            - method is not implemented or does not supported XML serialization
  * PRL_ERR_SUCCESS                  - operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlHandle_ToString, (
 		PRL_HANDLE hHandle,
 		PRL_VOID_PTR_PTR ppXml
@@ -495,7 +495,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    handle.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_CreateStringsList, (
 		PRL_HANDLE_PTR phStringsList
 		) );
@@ -514,7 +514,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStrList_GetItemsCount, (
 		PRL_HANDLE hStringsList,
 		PRL_UINT32_PTR pnItemsCount
@@ -535,7 +535,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStrList_AddItem, (
 		PRL_HANDLE hStringsList,
 		PRL_CONST_STR sItem
@@ -569,7 +569,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.                            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStrList_GetItem, (
 		PRL_HANDLE hStringsList,
 		PRL_UINT32 nItemIndex,
@@ -596,7 +596,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlStrList_RemoveItem, (
 		PRL_HANDLE hStringsList,
 		PRL_UINT32 nItemIndex
@@ -620,7 +620,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    handle.
 
    PRL_ERR_SUCCESS - operation completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlApi_CreateHandlesList, (
 		PRL_HANDLE_PTR phHandlesList
 		) );
@@ -642,7 +642,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    value was passed.
 
    PRL_ERR_SUCCESS - operation completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlHndlList_GetItemsCount, (
 		PRL_HANDLE hHandlesList,
 		PRL_UINT32_PTR pnItemsCount
@@ -662,7 +662,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_ERR_INVALID_ARG - invalid handle was passed.
 
    PRL_ERR_SUCCESS - operation completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlHndlList_AddItem, (
 		PRL_HANDLE hHandlesList,
 		PRL_HANDLE hItem
@@ -686,7 +686,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    value was passed.
 
    PRL_ERR_SUCCESS - operation completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlHndlList_GetItem, (
 		PRL_HANDLE hHandlesList,
 		PRL_UINT32 nItemIndex,
@@ -709,7 +709,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    value was passed.
 
    PRL_ERR_SUCCESS - operation completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlHndlList_RemoveItem, (
 		PRL_HANDLE hHandlesList,
 		PRL_UINT32 nItemIndex
@@ -742,7 +742,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 						   list object.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlApi_CreateOpTypeList, (
 		PRL_HANDLE_PTR phOpTypeList,
 		PRL_SIZE nTypeSize
@@ -762,7 +762,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlOpTypeList_GetItemsCount, (
 		PRL_HANDLE hOpTypeList,
 		PRL_UINT32_PTR pnItemsCount
@@ -783,7 +783,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_INVALID_ARG - invalid handle or null pointer to value variable was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlOpTypeList_AddItem, (
 		PRL_HANDLE hOpTypeList,
 		PRL_CONST_VOID_PTR pnItem
@@ -806,7 +806,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    out of range index was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.                            */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlOpTypeList_GetItem, (
 		PRL_HANDLE hOpTypeList,
 		PRL_UINT32 nItemIndex,
@@ -831,7 +831,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_INVALID_ARG - invalid handle or out of range index was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlOpTypeList_RemoveItem, (
 		PRL_HANDLE hOpTypeList,
 		PRL_UINT32 nItemIndex
@@ -849,7 +849,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.                            */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlOpTypeList_GetTypeSize, (
 		PRL_HANDLE hOpTypeList,
 		PRL_SIZE_PTR pnTypeSize
@@ -889,7 +889,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_TIMEOUT - the specified timeout limit was reached.
 
    PRL_ERR_SUCCESS - operation completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_Wait, (
 		PRL_HANDLE hJob,
 		PRL_UINT32 msecs
@@ -914,7 +914,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 
    PRL_ERR_UNINITIALIZED - job instance was not bound to Dispatcher Service
    connection.                                                  */
-PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_ASYNC_METHOD_DECL( VIRTUOZZO_API_VER_1,
 					   PrlJob_Cancel, (
 		PRL_HANDLE hJob
 		) );
@@ -931,7 +931,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.        */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_GetStatus, (
 		PRL_HANDLE hJob,
 		PRL_JOB_STATUS_PTR status
@@ -950,7 +950,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_GetProgress, (
 		PRL_HANDLE hJob,
 		PRL_UINT32_PTR percentage
@@ -975,7 +975,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_GetRetCode, (
 		PRL_HANDLE hJob,
 		PRL_RESULT_PTR retcode
@@ -1007,7 +1007,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_GetDataPtr, (
 		PRL_HANDLE hJob,
 		PRL_VOID_PTR data_ptr,
@@ -1034,7 +1034,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    this job refers to is still in progress.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_GetResult, (
 		PRL_HANDLE hJob,
 		PRL_HANDLE_PTR handle
@@ -1066,7 +1066,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    for this job type.
 
    PRL_ERR_SUCCESS - function completed successfully.                         */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_GetError, (
 		PRL_HANDLE hJob,
 		PRL_HANDLE_PTR phError
@@ -1093,7 +1093,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlJob_GetOpCode, (
 		PRL_HANDLE hJob,
 		PRL_JOB_OPERATION_CODE_PTR pnOpCode
@@ -1114,7 +1114,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlJob_IsRequestWasSent, (
 		PRL_HANDLE hJob,
 		PRL_BOOL_PTR pbIsRequestWasSent
@@ -1135,7 +1135,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_GetParamsCount, (
 		PRL_HANDLE hResult,
 		PRL_UINT32_PTR pCount
@@ -1166,7 +1166,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_GetParamByIndex, (
 		PRL_HANDLE hResult,
 		PRL_UINT32 nIndex,
@@ -1199,7 +1199,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    handle.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_GetParam, (
 				 PRL_HANDLE hResult,
 				 PRL_HANDLE_PTR pHandle
@@ -1237,7 +1237,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_GetParamByIndexAsString, (
 				 PRL_HANDLE hResult,
 				 PRL_UINT32 nIndex,
@@ -1273,7 +1273,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlResult_GetParamAsString, (
 				 PRL_HANDLE hResult,
 				 PRL_STR sParamBuf,
@@ -1301,7 +1301,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.               */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetType, (
 		PRL_HANDLE hEvent,
 		PRL_EVENT_TYPE_PTR type
@@ -1320,7 +1320,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetDataPtr, (
 		PRL_HANDLE hEvent,
 		PRL_VOID_PTR_PTR data_ptr
@@ -1342,7 +1342,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetServer, (
 		PRL_HANDLE hEvent,
 		PRL_HANDLE_PTR server
@@ -1366,7 +1366,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetVm, (
 		PRL_HANDLE hEvent,
 		PRL_HANDLE_PTR pVm
@@ -1385,7 +1385,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetJob, (
 		PRL_HANDLE hEvent,
 		PRL_HANDLE_PTR pJob
@@ -1411,7 +1411,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    this functionality.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetParamsCount, (
 		PRL_HANDLE hEvent,
 		PRL_UINT32_PTR pnParamsCount
@@ -1440,7 +1440,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    this functionality.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetParam, (
 		PRL_HANDLE hEvent,
 		PRL_UINT32 nIndex,
@@ -1470,7 +1470,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    exist.
 
    PRL_ERR_SUCCESS - function completed successfully.              */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetParamByName, (
 		PRL_HANDLE hEvent,
 		PRL_CONST_STR sParamName,
@@ -1489,7 +1489,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetErrCode, (
 		PRL_HANDLE hEvent,
 		PRL_RESULT_PTR pnErrCode
@@ -1527,7 +1527,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetErrString, (
 		PRL_HANDLE hEvent,
 		PRL_BOOL bIsBriefMessage,
@@ -1554,7 +1554,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_CanBeIgnored, (
 		PRL_HANDLE hEvent,
 		PRL_BOOL_PTR pbCanBeIgnored
@@ -1577,7 +1577,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_IsAnswerRequired, (
 		PRL_HANDLE hEvent,
 		PRL_BOOL_PTR pbIsAnswerRequired
@@ -1597,7 +1597,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetIssuerType, (
 		PRL_HANDLE hEvent,
 		PRL_EVENT_ISSUER_TYPE_PTR pnIssuerType
@@ -1627,7 +1627,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_GetIssuerId, (
 		PRL_HANDLE hEvent,
 		PRL_STR	sIssuerId,
@@ -1679,7 +1679,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    event object.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_CreateAnswerEvent, (
 		PRL_HANDLE hEvent,
 		PRL_HANDLE_PTR phEvent,
@@ -1699,7 +1699,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
  * PRL_ERR_UNIMPLEMENTED			- event object isn't supporting functionality
  * PRL_ERR_SUCCESS						- operation successfully completed
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvent_FromString, (
 		PRL_HANDLE hEvent,
 		PRL_CONST_STR sEvent
@@ -1733,7 +1733,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_GetName, (
 		PRL_HANDLE hEventParam,
 		PRL_STR	sParamName,
@@ -1754,7 +1754,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_GetType, (
 		PRL_HANDLE hEventParam,
 		PRL_PARAM_FIELD_DATA_TYPE_PTR pnParamType
@@ -1785,7 +1785,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_ToString, (
 		PRL_HANDLE hEventParam,
 		PRL_STR	sParamValue,
@@ -1816,7 +1816,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_ToCData, (
 				PRL_HANDLE hEventParam,
 				PRL_STR	sParamValue,
@@ -1836,7 +1836,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_ToUint32, (
 		PRL_HANDLE hEventParam,
 		PRL_UINT32_PTR pnParamValue
@@ -1856,7 +1856,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_ToInt32, (
 		PRL_HANDLE hEventParam,
 		PRL_INT32_PTR pnParamValue
@@ -1876,7 +1876,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlEvtPrm_ToUint64, (
 		PRL_HANDLE hEventParam,
 		PRL_UINT64_PTR pnParamValue
@@ -1896,7 +1896,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlEvtPrm_ToInt64, (
 		PRL_HANDLE hEventParam,
 		PRL_INT64_PTR pnParamValue
@@ -1916,7 +1916,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.          */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_ToBoolean, (
 		PRL_HANDLE hEventParam,
 		PRL_BOOL_PTR pbParamValue
@@ -1937,7 +1937,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlEvtPrm_ToHandle, (
 		PRL_HANDLE hEventParam,
 		PRL_HANDLE_PTR phParamValue
@@ -1967,7 +1967,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlEvtPrm_GetBuffer, (
 		PRL_HANDLE hEventParam,
 		PRL_VOID_PTR pParamValue,
@@ -2001,7 +2001,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.            */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlApi_GetCrashDumpsPath, (
 		PRL_STR sPath,
 		PRL_UINT32_PTR pnPathBufLength
@@ -2024,7 +2024,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_RESULT. Possible values are:
 
    PRL_ERR_SUCCESS - function completed successfully.                  */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlApi_InitCrashHandler, (
 		PRL_CONST_STR sCrashDumpFileSuffix
 		) );
@@ -2049,7 +2049,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_OUT_OF_MEMORY - not enough memory to create the problem report object.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlApi_CreateProblemReport, (
 					PRL_PROBLEM_REPORT_SCHEME nReportScheme,
 					PRL_HANDLE_PTR phProblemReport
@@ -2094,7 +2094,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
 
    PRL_ERR_SUCCESS - function completed successfully.            */
 
-PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlApi_SendProblemReport, (
 		PRL_CONST_STR sProblemReport,
 		PRL_BOOL bUseProxy,
@@ -2145,7 +2145,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_2,
 
    PRL_ERR_SUCCESS - function completed successfully.            */
 
-PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_ASYNC_METHOD_DECL( VIRTUOZZO_API_VER_2,
 				 PrlApi_SendPackedProblemReport, (
 		PRL_HANDLE hProblemReport,
 		PRL_BOOL bUseProxy,
@@ -2172,7 +2172,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_2,
    PRL_ERR_INVALID_ARG - null pointer or wrong handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetScheme, (
 					PRL_HANDLE hProblemReport,
 					PRL_PROBLEM_REPORT_SCHEME_PTR pnReportScheme
@@ -2203,7 +2203,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetArchiveFileName, (
 		PRL_HANDLE hProblemReport,
 		PRL_STR sArchiveFileName,
@@ -2222,7 +2222,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_INVALID_ARG - wrong handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_SetType, (
 					PRL_HANDLE hProblemReport,
 					PRL_PROBLEM_REPORT_TYPE nReportType
@@ -2240,7 +2240,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_INVALID_ARG - null pointer or wrong handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetType, (
 					PRL_HANDLE hProblemReport,
 					PRL_PROBLEM_REPORT_TYPE_PTR pnReportType
@@ -2258,7 +2258,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_INVALID_ARG - wrong handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_SetReason, (
 					PRL_HANDLE hProblemReport,
 					PRL_PROBLEM_REPORT_REASON nReportReason
@@ -2276,7 +2276,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    PRL_ERR_INVALID_ARG - null pointer or wrong handle was passed.
 
    PRL_ERR_SUCCESS - function completed successfully.           */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetReason, (
 					PRL_HANDLE hProblemReport,
 					PRL_PROBLEM_REPORT_REASON_PTR pnReportReason
@@ -2305,7 +2305,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetUserName, (
 		PRL_HANDLE hProblemReport,
 		PRL_STR sUserName,
@@ -2325,7 +2325,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_SetUserName, (
 		PRL_HANDLE hProblemReport,
 		PRL_CONST_STR sNewUserName
@@ -2354,7 +2354,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetUserEmail, (
 		PRL_HANDLE hProblemReport,
 		PRL_STR sUserEmail,
@@ -2374,7 +2374,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_SetUserEmail, (
 		PRL_HANDLE hProblemReport,
 		PRL_CONST_STR sNewUserEmail
@@ -2403,7 +2403,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetDescription, (
 		PRL_HANDLE hProblemReport,
 		PRL_STR sDescription,
@@ -2423,7 +2423,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    passed.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_SetDescription, (
 		PRL_HANDLE hProblemReport,
 		PRL_CONST_STR sNewDescription
@@ -2452,7 +2452,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_GetData, (
 		PRL_HANDLE hProblemReport,
 		PRL_VOID_PTR pBuffer,
@@ -2481,7 +2481,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    will contain the required size.
 
    PRL_ERR_SUCCESS - function completed successfully.             */
-PRL_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_AsString, (
 		PRL_HANDLE hProblemReport,
 		PRL_STR sBuffer,
@@ -2499,7 +2499,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_3,
    A handle of type PHT_JOB containing the results of this
    asynchronous operation or PRL_INVALID_HANDLE if there's not
    enough memory to instantiate the job object.                   */
-PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_Assembly, (
 		PRL_HANDLE hProblemReport,
 		PRL_UINT32 nFlags
@@ -2546,7 +2546,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_3,
 
    PRL_ERR_SUCCESS - function completed successfully.            */
 
-PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_3,
+PRL_ASYNC_METHOD_DECL( VIRTUOZZO_API_VER_3,
 				 PrlReport_Send, (
 		PRL_HANDLE hProblemReport,
 		PRL_BOOL bUseProxy,
@@ -2579,7 +2579,7 @@ PRL_ASYNC_METHOD_DECL( PARALLELS_API_VER_3,
    specified.
 
    PRL_ERR_SUCCESS - operation completed successfully.        */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlBuffer_Free, (
 		PRL_VOID_PTR buffer
 		) );
@@ -2615,7 +2615,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    PRL_RESULT. Possible values: PRL_ERR_INVALID_ARG - non valid
    (NULL) pointer for storing result was passed PRL_ERR_SUCCESS
    \- operation completed successfully                             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDbg_GetHandlesNum, (
 		PRL_UINT32_PTR handles_num,
 		PRL_HANDLE_TYPE type
@@ -2628,7 +2628,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    result\ :  [out] The PRL_RESULT value as a string.
    Returns
    PRL_ERR_SUCCESS                                             */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDbg_PrlResultToString, (
 		PRL_RESULT value,
 		PRL_CONST_STR_PTR result
@@ -2641,7 +2641,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    result\ :      [out] Handle type as a string.
    Returns
    PRL_ERR_SUCCESS                                            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDbg_HandleTypeToString, (
 		PRL_HANDLE_TYPE handle_type,
 		PRL_CONST_STR_PTR result
@@ -2653,7 +2653,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
    result\ :     [out] Event type as a string.
    Returns
    PRL_ERR_SUCCESS                                            */
-PRL_METHOD_DECL( PARALLELS_API_VER_1,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
 				 PrlDbg_EventTypeToString, (
 		PRL_EVENT_TYPE event_type,
 		PRL_CONST_STR_PTR result
@@ -2662,7 +2662,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_1,
 /* Turn on/off print logging messages on console
  *    PRL_ERR_SUCCESS - function completed successfully
  */
-PRL_METHOD_DECL( PARALLELS_API_VER_2,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 					 PrlApi_SwitchConsoleLogging, (
 		PRL_BOOL bSwitchOn
 		) );
@@ -2680,7 +2680,7 @@ PRL_METHOD_DECL( PARALLELS_API_VER_2,
 	passed.
 
 	PRL_ERR_SUCCESS - function completed successfully.			*/
-PRL_METHOD_DECL( PARALLELS_API_VER_7,
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 				PrlApi_GuestToString, (
 		PRL_UINT32 nGuestId,
 		PRL_STR sGuestString,
@@ -2732,4 +2732,4 @@ static inline const char * event_type_to_string(PRL_EVENT_TYPE value)
 }
 #endif
 
-#endif // __PARALLELS_API_CORE_H__
+#endif // __VIRTUOZZO_API_CORE_H__

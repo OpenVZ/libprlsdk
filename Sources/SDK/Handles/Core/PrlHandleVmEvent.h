@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_EVENT_H__
-#define __PARALLELS_HANDLE_VM_EVENT_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_EVENT_H__
+#define __VIRTUOZZO_HANDLE_VM_EVENT_H__
 
 
 #include "PrlHandleEvent.h"
@@ -242,4 +242,4 @@ private:
 	QString err_string ;
 };
 
-#endif // __PARALLELS_HANDLE_VM_EVENT_H__
+#endif // __VIRTUOZZO_HANDLE_VM_EVENT_H__

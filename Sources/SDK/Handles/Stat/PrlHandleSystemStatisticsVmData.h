@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__
-#define __PARALLELS_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__
+#ifndef __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__
+#define __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__
 
 #include <prlxmlmodel/VmDataStatistic/CVmDataStatistic.h>
 #include "PrlHandleSystemStatistics.h"
@@ -67,4 +67,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleSystemStatisticsVmData> PrlHandleSystemStatisticsVmDataPtr;
 
-#endif	// __PARALLELS_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__
+#endif	// __VIRTUOZZO_HANDLE_SYSTEM_STATISTICS_VM_DATA_H__

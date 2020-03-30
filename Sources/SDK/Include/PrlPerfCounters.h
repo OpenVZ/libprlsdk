@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_PERF_COUNTERS_H__
-#define __PARALLELS_PERF_COUNTERS_H__
+#ifndef __VIRTUOZZO_PERF_COUNTERS_H__
+#define __VIRTUOZZO_PERF_COUNTERS_H__
 
 //Total count of read requests to IDE controller
 #define PRL_IDE_READ_REQUESTS_PTRN			"devices.ide#.read_requests"

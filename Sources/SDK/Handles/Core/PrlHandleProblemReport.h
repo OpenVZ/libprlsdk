@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_PROBLEM_REPORT_H__
-#define __PARALLELS_HANDLE_PROBLEM_REPORT_H__
+#ifndef __VIRTUOZZO_HANDLE_PROBLEM_REPORT_H__
+#define __VIRTUOZZO_HANDLE_PROBLEM_REPORT_H__
 
 #include "PrlHandleBase.h"
 #include "PrlHandleProblemReportBase.h"
@@ -126,5 +126,5 @@ public://API helpers
 
 typedef PrlHandleSmartPtr<PrlHandleProblemReport> PrlHandleProblemReportPtr;
 
-#endif // __PARALLELS_HANDLE_PROBLEM_REPORT_H__
+#endif // __VIRTUOZZO_HANDLE_PROBLEM_REPORT_H__
 

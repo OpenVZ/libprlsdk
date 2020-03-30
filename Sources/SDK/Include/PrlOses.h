@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_OSES_H__
-#define __PARALLELS_API_OSES_H__
+#ifndef __VIRTUOZZO_API_OSES_H__
+#define __VIRTUOZZO_API_OSES_H__
 
 #include "PrlTypes.h"
 
@@ -283,7 +283,7 @@
 #define PVS_GUEST_VER_NAME_LIN_CLOUDLINUX	"CloudLinux"
 #define PVS_GUEST_VER_NAME_LIN_RH_LEGACY	"Red Hat Linux"
 #define PVS_GUEST_VER_NAME_LIN_OPENSUSE		"OpenSUSE Linux"
-#define PVS_GUEST_VER_NAME_LIN_PSBM			"Parallels Cloud Server"
+#define PVS_GUEST_VER_NAME_LIN_PSBM			"Virtuozzo Cloud Server"
 #define PVS_GUEST_VER_NAME_LIN_MAGEIA		"Mageia Linux"
 #define PVS_GUEST_VER_NAME_LIN_MINT			"Mint Linux"
 #define PVS_GUEST_VER_NAME_LIN_OTHER		"Other Linux"
@@ -434,4 +434,4 @@ PRL_UNUSED static const char* PVS_GUEST_TO_STRING( unsigned int id )
 	return "unknown";
 }
 
-#endif // __PARALLELS_API_OSES_H__
+#endif // __VIRTUOZZO_API_OSES_H__

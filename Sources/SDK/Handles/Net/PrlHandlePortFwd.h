@@ -24,8 +24,8 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-#ifndef __PARALLELS_HANDLE_PORT_FWD_H__
-#define __PARALLELS_HANDLE_PORT_FWD_H__
+#ifndef __VIRTUOZZO_HANDLE_PORT_FWD_H__
+#define __VIRTUOZZO_HANDLE_PORT_FWD_H__
 
 #include "PrlHandleBase.h"
 #include <prlxmlmodel/NetworkConfig/CPortForwardEntry.h>
@@ -119,4 +119,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandlePortFwd> PrlHandlePortFwdPtr;
 
 
-#endif	// __PARALLELS_HANDLE_PORT_FWD_H__
+#endif	// __VIRTUOZZO_HANDLE_PORT_FWD_H__

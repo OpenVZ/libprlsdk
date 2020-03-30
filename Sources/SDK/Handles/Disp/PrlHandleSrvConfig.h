@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_SRV_CONFIG_H__
-#define __PARALLELS_HANDLE_SRV_CONFIG_H__
+#ifndef __VIRTUOZZO_HANDLE_SRV_CONFIG_H__
+#define __VIRTUOZZO_HANDLE_SRV_CONFIG_H__
 
 
 #include "PrlHandleBase.h"
@@ -502,4 +502,4 @@ private:
 	CHostHardwareInfo m_SrvConfig;
 };
 
-#endif // __PARALLELS_HANDLE_SRV_CONFIG_H__
+#endif // __VIRTUOZZO_HANDLE_SRV_CONFIG_H__

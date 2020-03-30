@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_KEYS_H__
-#define __PARALLELS_API_KEYS_H__
+#ifndef __VIRTUOZZO_API_KEYS_H__
+#define __VIRTUOZZO_API_KEYS_H__
 
 
 /**
@@ -393,5 +393,5 @@ typedef enum _PRL_KEY
 } PRL_KEY;
 
 
-#endif // __PARALLELS_API_KEYS_H__
+#endif // __VIRTUOZZO_API_KEYS_H__
 //EOF

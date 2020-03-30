@@ -1,6 +1,6 @@
 /*
  * PrlPythonSDK_entry.c: Python programming language extension
- * library that serves as a wrapper to the native parallels SDK
+ * library that serves as a wrapper to the native virtuozzo SDK
  * library functions. Entry point to the module - packed as a "pure
  * C" library to define correct exported entry point to the clients.
  *

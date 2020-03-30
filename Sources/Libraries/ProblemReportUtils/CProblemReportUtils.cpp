@@ -1,6 +1,6 @@
 /*
  * CProblemReportUtils.cpp: Helper class for getting default
- * parallels urls locations.
+ * virtuozzo urls locations.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
  * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
@@ -43,8 +43,8 @@
 
 #include "Build/Current.ver"
 #include "Build/Current-locale.ver"
-#include <prlcommon/Interfaces/ParallelsQt.h>
-#include <prlcommon/Interfaces/ParallelsNamespace.h>
+#include <prlcommon/Interfaces/VirtuozzoQt.h>
+#include <prlcommon/Interfaces/VirtuozzoNamespace.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include "CProblemReportUtils.h"
 
@@ -59,13 +59,13 @@
 #include "CPackedProblemReport.h"
 #include <prlcommon/PrlCommonUtilsBase/CSimpleFileHelper.h>
 #include <prlcommon/HostUtils/HostUtils.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 
 #ifdef _WIN_
 #include "Libraries/WmiWrap/WmiWrap.h"
 #endif
 
-using namespace Parallels;
+using namespace Virtuozzo;
 
 namespace BinDumpPatterns {
 
@@ -79,7 +79,7 @@ const char* g_prl_naptd = "prl_naptd";
 const char* g_prl_net_start = "prl_net_start";
 const char* g_prlctl = "prlctl";
 const char* g_prlsrvctl = "prlsrvctl";
-const char* g_parallels_im = "ParallelsIM";
+const char* g_virtuozzo_im = "VirtuozzoIM";
 const char* g_prl_disk_tool = "prl_disk_tool";
 const char* g_prl_mkiso = "prl_mkiso";
 const char* g_prl_deactivation_id = "prl_deactivation_id";
@@ -96,10 +96,10 @@ const char* g_prl_shappgroup_bridge = "prl_shappgroup_bridge";
 const char* g_prl_deskctl_agent = "prl_deskctl_agent";
 const char* g_prl_deskctl_wizard = "prl_deskctl_wizard";
 const char* g_prl_SharedAppStub = "WinAppHelper";
-const char* g_parallels_mounter = "Parallels Mounter";
+const char* g_virtuozzo_mounter = "Virtuozzo Mounter";
 const char* g_lsregappbundle = "lsregappbundle";
 const char* g_pefs_util = "PEFSUtil";
-const char* g_parallels_explorer = "Parallels Explorer";
+const char* g_virtuozzo_explorer = "Virtuozzo Explorer";
 const char* g_low_memory_file = "LowMemory";
 const char* g_prl_procdump = "prl_procdump";
 }
@@ -287,7 +287,7 @@ QString GetUserSideBaseDir()
 {
 	QString strBaseDir;
 
-	strBaseDir = ParallelsDirs::getCallerUserPreferencesDir();
+	strBaseDir = VirtuozzoDirs::getCallerUserPreferencesDir();
 
 	if (   ! QFileInfo( strBaseDir ).exists()
 		&& ! QDir().mkpath( strBaseDir ) )
@@ -452,7 +452,7 @@ void fillDesktopProblemReportOnDisconnectServer( CProblemReport & cReport,
 
 	// try load DISPATCHER_CONFIGURATION_DESKTOP_XML_FILE to get information
 	CDispatcherConfig cDispConfig;
-	QString strPrefPath = ParallelsDirs::getDispatcherConfigFilePath();
+	QString strPrefPath = VirtuozzoDirs::getDispatcherConfigFilePath();
 	if( cDispConfig.loadFromFile( strPrefPath ) == PRL_ERR_SUCCESS )
 	{
 		// set dispatcher config data
@@ -469,8 +469,8 @@ void fillDesktopProblemReportOnDisconnectServer( CProblemReport & cReport,
 	{
 		QStringList crashDirList;
 
-		crashDirList << ParallelsDirs::getCrashDumpsPath();
-		QStringList strLogs = getListOfParallelsCrashedLogs( crashDirList );
+		crashDirList << VirtuozzoDirs::getCrashDumpsPath();
+		QStringList strLogs = getListOfVirtuozzoCrashedLogs( crashDirList );
 
 		for (int i = 0 ; i < strLogs.size() ; i++)
 		{
@@ -531,7 +531,7 @@ void fillInstallationsData( CRepAutoStatisticInfo* pAutoStatInfo )
 		pAutoStatInfo->setInstallationsData( pInstallations );
 }
 
-QStringList getListOfParallelsCrashedLogs( const QStringList&, int )
+QStringList getListOfVirtuozzoCrashedLogs( const QStringList&, int )
 {
 	QStringList lststrFiles;
 	return lststrFiles;
@@ -674,13 +674,13 @@ bool getDrvVersionFromLineOfMacPanicDump(
 	const QString& line, QString& outBuildNum, QString& outRevision  )
 {
 	// Example:
-	// "com.parallels.kext.hypervisor	6.0 11828.615184"
-	QRegExp pd9("^com\\.parallels\\.kext\\..+\\s+\\d+\\.\\d+\\s+(\\d+\\.\\d+)\\s*$");
+	// "com.virtuozzo.kext.hypervisor	6.0 11828.615184"
+	QRegExp pd9("^com\\.virtuozzo\\.kext\\..+\\s+\\d+\\.\\d+\\s+(\\d+\\.\\d+)\\s*$");
 	// Do '.*' rule no greedy
 	pd9.setMinimal(true);
 
-	// "com.parallels.kext.hypervisor	10.0.0 23456"
-	QRegExp pd10("^com\\.parallels\\.kext\\..+\\s+\\d+\\.\\d+\\.\\d+\\s+(\\d+)\\s*$");
+	// "com.virtuozzo.kext.hypervisor	10.0.0 23456"
+	QRegExp pd10("^com\\.virtuozzo\\.kext\\..+\\s+\\d+\\.\\d+\\.\\d+\\s+(\\d+)\\s*$");
 	// Do '.*' rule no greedy
 	pd10.setMinimal(true);
 
@@ -718,8 +718,8 @@ bool isJettisonedMobileApp_fromLineOfLowMemoryDump(
 	const QString& line )
 {
 	// For example: RemoteClient <da377209df383c908f2466b856748f12> 11858 (jettisoned) (active)
-	QRegExp ParallelsMobileExp( QString( "^.*%1\\s+.*jettisoned.*" ).arg(mobileAppName) );
-	if( ParallelsMobileExp.indexIn(line)!= -1 )
+	QRegExp VirtuozzoMobileExp( QString( "^.*%1\\s+.*jettisoned.*" ).arg(mobileAppName) );
+	if( VirtuozzoMobileExp.indexIn(line)!= -1 )
 		return true;
 
 	return false;

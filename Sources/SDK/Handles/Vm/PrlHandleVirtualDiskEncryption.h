@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VIRTUAL_DISK_ENCRYPTION_H__
-#define __PARALLELS_HANDLE_VIRTUAL_DISK_ENCRYPTION_H__
+#ifndef __VIRTUOZZO_HANDLE_VIRTUAL_DISK_ENCRYPTION_H__
+#define __VIRTUOZZO_HANDLE_VIRTUAL_DISK_ENCRYPTION_H__
 
 
 #include "PrlHandleBase.h"
@@ -74,4 +74,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandleVirtualDiskEncryption> PrlHandleVirtualDiskEncryptionPtr;
 
 
-#endif	// __PARALLELS_HANDLE_VIRTUAL_DISK_ENCRYPTION_H__
+#endif	// __VIRTUOZZO_HANDLE_VIRTUAL_DISK_ENCRYPTION_H__

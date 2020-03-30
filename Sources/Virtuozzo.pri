@@ -1,5 +1,5 @@
 #
-# Parallels.pri
+# Virtuozzo.pri
 #
 # Copyright (c) 1999-2017, Parallels International GmbH
 # Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
@@ -23,8 +23,8 @@
 # Schaffhausen, Switzerland; http://www.virtuozzo.com/.
 #
 
-isEmpty(__PARALLELS_PRI__) {
-__PARALLELS_PRI__ = 1
+isEmpty(__VIRTUOZZO_PRI__) {
+__VIRTUOZZO_PRI__ = 1
 
 include(Makefile.incl)
 
@@ -270,8 +270,8 @@ contains(SANITIZE, TRUE) {
 
 # Switch gcc into deterministic mode
 unix {
-	QMAKE_CFLAGS += -frandom-seed=parallels
-	QMAKE_CXXFLAGS += -frandom-seed=parallels
+	QMAKE_CFLAGS += -frandom-seed=virtuozzo
+	QMAKE_CXXFLAGS += -frandom-seed=virtuozzo
 }
 
 INCLUDEPATH += . $$SRC_LEVEL $$SRC_LEVEL/Interfaces $$SRC_LEVEL/SDK/Include

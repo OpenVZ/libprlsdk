@@ -28,16 +28,16 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL DBG_DEBUG
 
-#include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/VirtuozzoQt.h>
 #include <prlcommon/PrlUuid/Uuid.h>
 #include "PveControl.h"
-#include <prlcommon/Interfaces/ParallelsNamespace.h>
+#include <prlcommon/Interfaces/VirtuozzoNamespace.h>
 #include <prlcommon/Messaging/CResult.h>
 #include <prlcommon/Messaging/CVmEvent.h>
 #include <prlcommon/Messaging/CVmEventParameter.h>
 #include <prlcommon/Messaging/CVmBinaryEventParameter.h>
 #include <prlcommon/Std/SmartPtr.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 #include <prlcommon/IOService/IOCommunication/IORoutingTableHelper.h>
 #include <prlcommon/IOService/IOCommunication/IOSSLInterface.h>
 #include "PrlHandleLoginHelperJob.h"
@@ -59,7 +59,7 @@
 // By adding this interface we enable allocations tracing in the module
 #include "Interfaces/Debug.h"
 
-using namespace Parallels;
+using namespace Virtuozzo;
 
 CPveControl::CPveControl(QObject *pEventReceiverObj)
 : m_bUseSSL(IOService::initSSLLibrary()),
@@ -780,7 +780,7 @@ void CPveControl::DspCmdUserLoginLocal ( PrlHandleLoginLocalHelperJobPtr pJob,
     m_ioClient = new IOClient(
 			IORoutingTableHelper::GetClientRoutingTable(connSec),
 			IOSender::Client,
-			ParallelsDirs::getDispatcherLocalSocketPath(),
+			VirtuozzoDirs::getDispatcherLocalSocketPath(),
 			0, true );
 #else
     quint32 port = (nPort ? nPort : PrlGetDefaultListenPort());

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_USER_PROFILE_H__
-#define __PARALLELS_HANDLE_USER_PROFILE_H__
+#ifndef __VIRTUOZZO_HANDLE_USER_PROFILE_H__
+#define __VIRTUOZZO_HANDLE_USER_PROFILE_H__
 
 
 #include "PrlHandleBase.h"
@@ -155,4 +155,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleUserProfile> PrlHandleUserProfilePtr;
 
-#endif // __PARALLELS_HANDLE_USER_PROFILE_H__
+#endif // __VIRTUOZZO_HANDLE_USER_PROFILE_H__

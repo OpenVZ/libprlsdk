@@ -27,7 +27,7 @@
 
 #include "PrlHandleStringsList.h"
 
-#include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/VirtuozzoQt.h>
 
 PrlHandleStringsList::PrlHandleStringsList()
 : PrlHandleBase(PHT_STRINGS_LIST)

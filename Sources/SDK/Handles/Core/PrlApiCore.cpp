@@ -28,10 +28,10 @@
 //#define FORCE_LOGGING_ON
 //#define FORCE_LOGGING_LEVEL	DBG_DEBUG
 
-#include "SDK/Include/Parallels.h"
+#include "SDK/Include/Virtuozzo.h"
 
 #include <prlcommon/PrlCommonUtilsBase/PrlStringifyConsts.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 #include <prlcommon/Std/PrlAssert.h>
 #include <prlcommon/Logging/Logging.h>
 
@@ -60,7 +60,7 @@
 
 
 PRL_UINT32 g_SdkSequenceNum = 0;
-static PRL_UINT32 s_SdkVersion = PARALLELS_API_VER;
+static PRL_UINT32 s_SdkVersion = VIRTUOZZO_API_VER;
 static PRL_APPLICATION_MODE s_SdkAppMode = PAM_SERVER;
 static QMutex apiRefCountLock;
 static long apiRefCount = 0;
@@ -132,7 +132,7 @@ static PRL_RESULT InitApi(PRL_UINT32 version, PRL_APPLICATION_MODE nAppMode, PRL
 		return PRL_ERR_SUCCESS;
 	}
 	// API version check
-	if ( (version & ~0xE0000000) > PARALLELS_API_VER ) {
+	if ( (version & ~0xE0000000) > VIRTUOZZO_API_VER ) {
 		return PRL_ERR_API_INCOMPATIBLE;
 	}
 	if (!IOService::initSSLLibrary())
@@ -143,11 +143,11 @@ static PRL_RESULT InitApi(PRL_UINT32 version, PRL_APPLICATION_MODE nAppMode, PRL
 
 	// Temporally disable console output, only log file
 	int nConsoleLogging = SetConsoleLogging(0);
-	ParallelsDirs::InitOptions	nSubMode = (nFlags & PAIF_INIT_AS_APPSTORE_CLIENT)
-			? ParallelsDirs::smAppStoreMode
-			: ParallelsDirs::smNormalMode;
+	VirtuozzoDirs::InitOptions	nSubMode = (nFlags & PAIF_INIT_AS_APPSTORE_CLIENT)
+			? VirtuozzoDirs::smAppStoreMode
+			: VirtuozzoDirs::smNormalMode;
 
-	ParallelsDirs::Init(nAppMode, nSubMode, true );
+	VirtuozzoDirs::Init(nAppMode, nSubMode, true );
 	SetConsoleLogging(nConsoleLogging);
 
 	// We're not allowed to create multiple instances of the application
@@ -2251,7 +2251,7 @@ PRL_METHOD( PrlApi_GetCrashDumpsPath ) (
 	if ( PRL_WRONG_PTR(pnPathBufLength) )
 		return (PRL_ERR_INVALID_ARG);
 
-	return (CopyStringValue(ParallelsDirs::getCrashDumpsPath(), sPath, pnPathBufLength));
+	return (CopyStringValue(VirtuozzoDirs::getCrashDumpsPath(), sPath, pnPathBufLength));
 }
 
 PRL_METHOD( PrlApi_InitCrashHandler ) (

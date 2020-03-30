@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_HW_HARD_DISK_H__
-#define __PARALLELS_HANDLE_HW_HARD_DISK_H__
+#ifndef __VIRTUOZZO_HANDLE_HW_HARD_DISK_H__
+#define __VIRTUOZZO_HANDLE_HW_HARD_DISK_H__
 
 
 #include "PrlHandleSrvConfig.h"
@@ -126,4 +126,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleHwHardDisk> PrlHandleHwHardDiskPtr;
 
-#endif // __PARALLELS_HANDLE_HW_HARD_DISK_H__
+#endif // __VIRTUOZZO_HANDLE_HW_HARD_DISK_H__

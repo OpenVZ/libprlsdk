@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_IO_REMOTE_COMMAND_H__
-#define __PARALLELS_HANDLE_IO_REMOTE_COMMAND_H__
+#ifndef __VIRTUOZZO_HANDLE_IO_REMOTE_COMMAND_H__
+#define __VIRTUOZZO_HANDLE_IO_REMOTE_COMMAND_H__
 
 #include <QBuffer>
 #include <QByteArray>
@@ -75,4 +75,4 @@ private:
 	SmartPtr<IOService::IOPackage>	m_spPackage;
 };
 
-#endif	// __PARALLELS_HANDLE_IO_REMOTE_COMMAND_H__
+#endif	// __VIRTUOZZO_HANDLE_IO_REMOTE_COMMAND_H__

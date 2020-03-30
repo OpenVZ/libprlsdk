@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_HANDLES_LIST_H__
-#define __PARALLELS_HANDLE_HANDLES_LIST_H__
+#ifndef __VIRTUOZZO_HANDLE_HANDLES_LIST_H__
+#define __VIRTUOZZO_HANDLE_HANDLES_LIST_H__
 
 
 #include "PrlHandleBase.h"
@@ -104,4 +104,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleHandlesList> PrlHandleHandlesListPtr;
 
-#endif // __PARALLELS_HANDLE_HANDLES_LIST_H__
+#endif // __VIRTUOZZO_HANDLE_HANDLES_LIST_H__

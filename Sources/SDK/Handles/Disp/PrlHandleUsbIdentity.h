@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_USB_IDENTITY_H__
-#define __PARALLELS_HANDLE_USB_IDENTITY_H__
+#ifndef __VIRTUOZZO_HANDLE_USB_IDENTITY_H__
+#define __VIRTUOZZO_HANDLE_USB_IDENTITY_H__
 
 
 #include "PrlHandleBase.h"
@@ -81,4 +81,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleUsbIdentity> PrlHandleUsbIdentityPtr;
 
-#endif // __PARALLELS_HANDLE_USB_IDENTITY_H__
+#endif // __VIRTUOZZO_HANDLE_USB_IDENTITY_H__

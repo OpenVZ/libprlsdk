@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_EVENTS_HANDLER_H__
-#define __PARALLELS_EVENTS_HANDLER_H__
+#ifndef __VIRTUOZZO_EVENTS_HANDLER_H__
+#define __VIRTUOZZO_EVENTS_HANDLER_H__
 
 #include <QList>
 #include <QHash>
@@ -164,4 +164,4 @@ private:
 	QMutex m_Mutex;
 };
 
-#endif // __PARALLELS_EVENTS_HANDLER_H__
+#endif // __VIRTUOZZO_EVENTS_HANDLER_H__

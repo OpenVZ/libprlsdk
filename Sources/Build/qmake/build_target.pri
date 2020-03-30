@@ -40,7 +40,7 @@ isEmpty(NON_SUBDIRS) {
 
 _TARGET_IS_SET = 1
 
-!include(../../../Sources/Parallels.pri): error(Cannot include Parallels.pri)
+!include(../../../Sources/Virtuozzo.pri): error(Cannot include Virtuozzo.pri)
 
 equals(TEMPLATE, subdirs) {
 	win32-msvc2013: wdkruntime: isEmpty(_msvcrt_compat_internal) {

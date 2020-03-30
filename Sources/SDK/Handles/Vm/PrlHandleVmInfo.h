@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_INFO_H__
-#define __PARALLELS_HANDLE_VM_INFO_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_INFO_H__
+#define __VIRTUOZZO_HANDLE_VM_INFO_H__
 
 #include "PrlHandleBase.h"
 #include <prlcommon/Messaging/CVmEvent.h>
@@ -112,4 +112,4 @@ private:
 	CVmEvent m_VmEvent;
 };
 
-#endif // __PARALLELS_HANDLE_VM_H__
+#endif // __VIRTUOZZO_HANDLE_VM_H__

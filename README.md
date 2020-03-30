@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/CloudServer/parallels-sdk.svg?branch=master)](https://travis-ci.org/CloudServer/parallels-sdk)
+[![Build Status](https://travis-ci.org/CloudServer/virtuozzo-sdk.svg?branch=master)](https://travis-ci.org/CloudServer/virtuozzo-sdk)
 
 Virtuozzo SDK
 =============

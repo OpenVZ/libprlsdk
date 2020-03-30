@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_API_COMMANDS_FLAGS_H__
-#define __PARALLELS_API_COMMANDS_FLAGS_H__
+#ifndef __VIRTUOZZO_API_COMMANDS_FLAGS_H__
+#define __VIRTUOZZO_API_COMMANDS_FLAGS_H__
 
 /* Security level enumeration. Defines levels of security that
    can be used in client/server communications.
@@ -668,4 +668,4 @@ typedef enum _PRL_CT_REINSTALL_OPTIONS
 	REINSTALL_RESET_PWDB	= 3<<(PACF_MAX+1),
 } PRL_CT_REINSTALL_OPTIONS;
 typedef PRL_CT_REINSTALL_OPTIONS* PRL_CT_REINSTALL_OPTIONS_PTR;
-#endif // __PARALLELS_API_COMMANDS_FLAGS_H__
+#endif // __VIRTUOZZO_API_COMMANDS_FLAGS_H__

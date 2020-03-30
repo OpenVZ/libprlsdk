@@ -1,6 +1,6 @@
 /*
  * PrlHandleSystemStatisticsVmData.cpp: This file is the part of
- * parallels public sdk library
+ * virtuozzo public sdk library
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
  * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.

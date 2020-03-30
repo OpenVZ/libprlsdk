@@ -25,8 +25,8 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-#ifndef __PARALLELS_HANDLE_PLUGIN_INFO_H__
-#define __PARALLELS_HANDLE_PLUGIN_INFO_H__
+#ifndef __VIRTUOZZO_HANDLE_PLUGIN_INFO_H__
+#define __VIRTUOZZO_HANDLE_PLUGIN_INFO_H__
 
 
 #include "PrlHandleBase.h"
@@ -99,4 +99,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandlePluginInfo> PrlHandlePluginInfoPtr;
 
 
-#endif	// __PARALLELS_HANDLE_PLUGIN_INFO_H__
+#endif	// __VIRTUOZZO_HANDLE_PLUGIN_INFO_H__

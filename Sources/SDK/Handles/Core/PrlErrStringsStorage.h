@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_ERR_STRINGS_STORAGE_H__
-#define __PARALLELS_ERR_STRINGS_STORAGE_H__
+#ifndef __VIRTUOZZO_ERR_STRINGS_STORAGE_H__
+#define __VIRTUOZZO_ERR_STRINGS_STORAGE_H__
 
 #include "SDK/Include/PrlErrors.h"
 #include "SDK/Include/PrlPrivateErrorsValues.h"
@@ -182,4 +182,4 @@ private://Global objects
 	static QMutex *g_pErrorsStringsStorageMutex;
 };
 
-#endif // __PARALLELS_ERR_STRINGS_STORAGE_H__
+#endif // __VIRTUOZZO_ERR_STRINGS_STORAGE_H__

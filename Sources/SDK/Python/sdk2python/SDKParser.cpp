@@ -29,7 +29,7 @@
 #include <QtXml>
 #include "ModuleTemplates.h"
 #include "CustomFunctions.h"
-#include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/VirtuozzoQt.h>
 
 
 #define PRL_API_MACRO_H			"PrlApiMacro.h"
@@ -638,7 +638,7 @@ bool SDKParser::ParseEnums()
 	WriteLineInLog(  "########## ENUMERATIONS ###########");
 	WriteLineInLog(  "###################################\n");
 
-	m_lstEnums << "PARALLELS_API_VER";
+	m_lstEnums << "VIRTUOZZO_API_VER";
 	WriteLineInLog(m_lstEnums[0]);
 	m_lstEnums << "PRL_INVALID_HANDLE";
 	WriteLineInLog(m_lstEnums[1]);
@@ -876,7 +876,7 @@ bool SDKParser::ParseDocumentation()
 		return false;
 	}
 
-	QDomElement root = doc.firstChildElement("parallels_python_api");
+	QDomElement root = doc.firstChildElement("virtuozzo_python_api");
 	if (root.isNull())
 	{
 		m_qsErrorMessage = QString("XML documentation file \"%1\" has wrong format!").arg(m_qsDocFile);

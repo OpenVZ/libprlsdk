@@ -26,8 +26,8 @@
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
 
-#ifndef __PARALLELS_HANDLE_DISK__
-#define __PARALLELS_HANDLE_DISK__
+#ifndef __VIRTUOZZO_HANDLE_DISK__
+#define __VIRTUOZZO_HANDLE_DISK__
 
 #include "PrlHandleBase.h"
 #include "PrlHandleVm.h"
@@ -198,4 +198,4 @@ private:
 
 typedef PrlHandleSmartPtr<class PrlHandleDisk> PrlHandleDiskPtr;
 
-#endif // __PARALLELS_HANDLE_DISK__
+#endif // __VIRTUOZZO_HANDLE_DISK__

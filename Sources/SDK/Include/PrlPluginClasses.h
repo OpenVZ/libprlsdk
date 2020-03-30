@@ -1,6 +1,6 @@
 /*
  * PrlPluginClasses.h: Definitions of supported classes and their
- * interfaces used in Parallels plugins mechanic.
+ * interfaces used in Virtuozzo plugins mechanic.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
  * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_CPU_POOL_H__
-#define __PARALLELS_HANDLE_CPU_POOL_H__
+#ifndef __VIRTUOZZO_HANDLE_CPU_POOL_H__
+#define __VIRTUOZZO_HANDLE_CPU_POOL_H__
 
 #include "PrlHandleBase.h"
 #include "PrlHandleCpuFeatures.h"
@@ -83,4 +83,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleCpuPool> PrlHandleCpuPoolPtr;
 
-#endif // __PARALLELS_HANDLE_CPU_POOL_H__
+#endif // __VIRTUOZZO_HANDLE_CPU_POOL_H__

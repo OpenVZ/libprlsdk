@@ -36,9 +36,9 @@
 #		define OBJC_BOOL_DEFINED
 #	endif // _OBC_OBJC_H_
 
-#include <prlcommon/Interfaces/ParallelsNamespace.h>
-#include <prlcommon/Interfaces/ParallelsDomModel.h>
-#include <SDK/Include/Parallels.h>
+#include <prlcommon/Interfaces/VirtuozzoNamespace.h>
+#include <prlcommon/Interfaces/VirtuozzoDomModel.h>
+#include <SDK/Include/Virtuozzo.h>
 #include <SDK/Wrappers/SdkWrap/SdkHandleWrap.h>
 
 #endif //Precomp_h__

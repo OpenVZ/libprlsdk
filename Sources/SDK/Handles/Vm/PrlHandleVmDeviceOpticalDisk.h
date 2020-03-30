@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_DEVICE_OPTICAL_DISK_H__
-#define __PARALLELS_HANDLE_VM_DEVICE_OPTICAL_DISK_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_DEVICE_OPTICAL_DISK_H__
+#define __VIRTUOZZO_HANDLE_VM_DEVICE_OPTICAL_DISK_H__
 
 
 #include "PrlHandleVmDevice.h"
@@ -132,4 +132,4 @@ private://Internal class helpers
 
 typedef PrlHandleSmartPtr<PrlHandleVmDeviceOpticalDisk> PrlHandleVmDeviceOpticalDiskPtr;
 
-#endif // __PARALLELS_HANDLE_VM_DEVICE_OPTICAL_DISK_H__
+#endif // __VIRTUOZZO_HANDLE_VM_DEVICE_OPTICAL_DISK_H__

@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_HW_HARD_DISK_PARTITION_H__
-#define __PARALLELS_HANDLE_HW_HARD_DISK_PARTITION_H__
+#ifndef __VIRTUOZZO_HANDLE_HW_HARD_DISK_PARTITION_H__
+#define __VIRTUOZZO_HANDLE_HW_HARD_DISK_PARTITION_H__
 
 
 #include "PrlHandleHwHardDisk.h"
@@ -135,4 +135,4 @@ private:
 
 typedef PrlHandleSmartPtr<PrlHandleHwHddPart> PrlHandleHwHddPartPtr;
 
-#endif // __PARALLELS_HANDLE_HW_HARD_DISK_PARTITION_H__
+#endif // __VIRTUOZZO_HANDLE_HW_HARD_DISK_PARTITION_H__

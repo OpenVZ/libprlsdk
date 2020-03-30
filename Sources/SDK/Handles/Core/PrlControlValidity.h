@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_CONTROL_VALIDITY_H__
-#define __PARALLELS_CONTROL_VALIDITY_H__
+#ifndef __VIRTUOZZO_CONTROL_VALIDITY_H__
+#define __VIRTUOZZO_CONTROL_VALIDITY_H__
 
 #include <QMap>
 #include <QSet>
@@ -129,4 +129,4 @@ private:
 	PRL_HANDLE m_handle;
 };
 
-#endif // __PARALLELS_CONTROL_VALIDITY_H__
+#endif // __VIRTUOZZO_CONTROL_VALIDITY_H__

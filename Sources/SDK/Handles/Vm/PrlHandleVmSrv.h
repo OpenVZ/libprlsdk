@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_VM_SRV_H__
-#define __PARALLELS_HANDLE_VM_SRV_H__
+#ifndef __VIRTUOZZO_HANDLE_VM_SRV_H__
+#define __VIRTUOZZO_HANDLE_VM_SRV_H__
 
 #include "PrlHandleVm.h"
 
@@ -505,4 +505,4 @@ public:
 	PrlHandleJobPtr Reinstall(PRL_CONST_STR sOs, PRL_UINT32 nFlags);
 };
 
-#endif // __PARALLELS_HANDLE_VM_SRV_H__
+#endif // __VIRTUOZZO_HANDLE_VM_SRV_H__

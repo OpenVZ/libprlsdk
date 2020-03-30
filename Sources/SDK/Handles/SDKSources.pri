@@ -37,7 +37,7 @@ INCLUDEPATH +=	$$SRC_LEVEL/SDK/Handles \
 		$$PWD/Deprecated \
 		$$PWD/Disk
 
-INSTALL_HEADERS = $$SRC_LEVEL/SDK/Include/Parallels.h \
+INSTALL_HEADERS = $$SRC_LEVEL/SDK/Include/Virtuozzo.h \
 	$$SRC_LEVEL/SDK/Include/PrlApi.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiMacro.h \
 	$$SRC_LEVEL/SDK/Include/PrlApiVersion.h \
@@ -333,7 +333,7 @@ SOURCES += \
                 $$SRC_LEVEL/SDK/Handles/Deprecated/PrlApiDeprecated.cpp \
                 $$SRC_LEVEL/SDK/Handles/Deprecated/PrlHandleServerDeprecated.cpp \
 
-pkgconfig.files = parallels-sdk.pc
+pkgconfig.files = virtuozzo-sdk.pc
 #FIXME: where should we install this file?
 pkgconfig.path = /usr/lib64/pkgconfig
 INSTALLS += pkgconfig

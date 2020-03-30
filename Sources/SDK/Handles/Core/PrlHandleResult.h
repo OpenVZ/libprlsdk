@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_RESULT_H__
-#define __PARALLELS_HANDLE_RESULT_H__
+#ifndef __VIRTUOZZO_HANDLE_RESULT_H__
+#define __VIRTUOZZO_HANDLE_RESULT_H__
 
 
 #include "PrlHandleBase.h"
@@ -142,4 +142,4 @@ private:
 	PrlHandleVmPtr m_pVm;
 };
 
-#endif // __PARALLELS_HANDLE_RESULT_H__
+#endif // __VIRTUOZZO_HANDLE_RESULT_H__

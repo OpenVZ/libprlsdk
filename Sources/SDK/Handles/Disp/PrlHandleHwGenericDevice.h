@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_HW_GENERIC_DEVICE_H__
-#define __PARALLELS_HANDLE_HW_GENERIC_DEVICE_H__
+#ifndef __VIRTUOZZO_HANDLE_HW_GENERIC_DEVICE_H__
+#define __VIRTUOZZO_HANDLE_HW_GENERIC_DEVICE_H__
 
 
 #include "PrlHandleSrvConfig.h"
@@ -145,4 +145,4 @@ protected:
 
 typedef PrlHandleSmartPtr<PrlHandleHwGenericDevice> PrlHandleHwGenericDevicePtr;
 
-#endif // __PARALLELS_HANDLE_HW_GENERIC_DEVICE_H__
+#endif // __VIRTUOZZO_HANDLE_HW_GENERIC_DEVICE_H__

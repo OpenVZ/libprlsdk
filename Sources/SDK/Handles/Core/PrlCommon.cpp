@@ -34,7 +34,7 @@
 #include <boost/foreach.hpp>
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/Std/PrlAssert.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 
 #include "SDK/Include/PrlTypes.h"
 #include "SDK/Include/PrlEnums.h"

@@ -40,7 +40,7 @@
 #include <prlcommon/Logging/Logging.h>
 #include <prlcommon/PrlUuid/Uuid.h>
 #include <prlcommon/PrlCommonUtilsBase/countof.h>
-#include <prlcommon/PrlCommonUtilsBase/ParallelsDirs.h>
+#include <prlcommon/PrlCommonUtilsBase/VirtuozzoDirs.h>
 #include <prlcommon/Std/PrlAssert.h>
 
 #include <prlcommon/Messaging/CResult.h>
@@ -190,7 +190,7 @@ PRL_RESULT PrlHandleVm::VmConnect ( PrlHandleJob **const pJob )
 				m_pServer->GetSessionUuid(),
 				vmId,
 				true,
-				ParallelsDirs::getDispatcherLocalSocketPath(),
+				VirtuozzoDirs::getDispatcherLocalSocketPath(),
 				port,
 				m_pServer->GetSecurityLevel(),
 				true));

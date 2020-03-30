@@ -34,7 +34,7 @@
 #include <unistd.h>
 #endif
 
-using namespace Parallels;
+using namespace Virtuozzo;
 
 #define DELAYED_CONNECTION_TIMEOUT_MSECS	50
 

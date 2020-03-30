@@ -1444,7 +1444,7 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_INVALID_PARALLELS_DISK,
+		PRL_ERR_INVALID_VIRTUOZZO_DISK,
 		tr("%1 does not exist or the specified hard disk image file is not valid."),
 		tr("Specify the correct path to a valid " PRODUCT_NAME_SHORT " virtual hard disk image file."),
 		false,
@@ -5727,7 +5727,7 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_ERR_PARALLELS_IMAGE_INTERNET_LOCATION,
+		GUI_ERR_VIRTUOZZO_IMAGE_INTERNET_LOCATION,
 		tr("The image file \"%1\" cannot be used because it is stored on an Internet location."),
 		tr("Please specify another file and try again."),
 		false,
@@ -5735,7 +5735,7 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_ERR_PARALLELS_OUTPUT_FILE_INTERNET_LOCATION,
+		GUI_ERR_VIRTUOZZO_OUTPUT_FILE_INTERNET_LOCATION,
 		tr("The output file \"%1\" cannot be used because it is stored on an Internet location."),
 		tr("Please specify another file and try again."),
 		false,
@@ -10347,7 +10347,7 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_QUIT_PARALLELS_ACCESS,
+		GUI_QUESTION_QUIT_VIRTUOZZO_ACCESS,
 		tr( "Are you sure you want to exit @PRL_PRODUCT_NAME?" ),
 		tr( "If you exit @PRL_PRODUCT_NAME, your computer will not be accessible from your iPad." ),
 		false,

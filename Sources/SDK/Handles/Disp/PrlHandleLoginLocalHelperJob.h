@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_LOGIN_LOCAL_HELPER_JOB_H__
-#define __PARALLELS_HANDLE_LOGIN_LOCAL_HELPER_JOB_H__
+#ifndef __VIRTUOZZO_HANDLE_LOGIN_LOCAL_HELPER_JOB_H__
+#define __VIRTUOZZO_HANDLE_LOGIN_LOCAL_HELPER_JOB_H__
 
 #include "PrlHandleLocalJob.h"
 #include "PrlHandleServer.h"
@@ -98,4 +98,4 @@ private:
 };
 
 
-#endif	// __PARALLELS_HANDLE_LOGIN_LOCAL_HELPER_JOB_H__
+#endif	// __VIRTUOZZO_HANDLE_LOGIN_LOCAL_HELPER_JOB_H__

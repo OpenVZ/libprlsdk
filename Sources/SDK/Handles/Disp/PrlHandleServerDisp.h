@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_SERVER_DISP_H__
-#define __PARALLELS_HANDLE_SERVER_DISP_H__
+#ifndef __VIRTUOZZO_HANDLE_SERVER_DISP_H__
+#define __VIRTUOZZO_HANDLE_SERVER_DISP_H__
 
 #include "PrlHandleServer.h"
 
@@ -395,4 +395,4 @@ public:
 
 };
 
-#endif // __PARALLELS_HANDLE_SERVER_DISP_H__
+#endif // __VIRTUOZZO_HANDLE_SERVER_DISP_H__

@@ -25,12 +25,12 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_USER_INFO_H__
-#define __PARALLELS_HANDLE_USER_INFO_H__
+#ifndef __VIRTUOZZO_HANDLE_USER_INFO_H__
+#define __VIRTUOZZO_HANDLE_USER_INFO_H__
 
 
 #include "PrlHandleBase.h"
-#include <prlxmlmodel/UserInformation/ParallelsUserInformation.h>
+#include <prlxmlmodel/UserInformation/VirtuozzoUserInformation.h>
 
 
 /**
@@ -123,4 +123,4 @@ private:
 typedef PrlHandleSmartPtr<PrlHandleUserInfo> PrlHandleUserInfoPtr;
 
 
-#endif	/* __PARALLELS_HANDLE_USER_INFO_H__ */
+#endif	/* __VIRTUOZZO_HANDLE_USER_INFO_H__ */

@@ -26,11 +26,11 @@
 
 
 #include "PrlHandleLoginHelperJob.h"
-#include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/VirtuozzoQt.h>
 #include <prlcommon/ProtoSerializer/CProtoSerializer.h>
 #include "SDK/Wrappers/SdkWrap/SdkHandleWrap.h"
 
-using namespace Parallels;
+using namespace Virtuozzo;
 enum
 {
 	CLIENT =

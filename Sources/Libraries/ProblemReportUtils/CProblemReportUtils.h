@@ -1,5 +1,5 @@
 /*
- * CProblemReportUtils.h: Helper class for getting default parallels
+ * CProblemReportUtils.h: Helper class for getting default virtuozzo
  * urls locations.
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
@@ -26,8 +26,8 @@
  */
 
 
-#ifndef __PARALLELS_URLS_H__
-#define __PARALLELS_URLS_H__
+#ifndef __VIRTUOZZO_URLS_H__
+#define __VIRTUOZZO_URLS_H__
 
 #include "CProblemReportUtils_common.h"
 
@@ -100,7 +100,7 @@ namespace CProblemReportUtils
 	* @param const QStringList& listOfCrashDirs list of dirs to search
 	* @param int iDaysOld - days old from create if parameter == -1 - collect all logs
 	*/
-	QStringList getListOfParallelsCrashedLogs( const QStringList& listOfCrashDirs, int iDaysOld = 3 );
+	QStringList getListOfVirtuozzoCrashedLogs( const QStringList& listOfCrashDirs, int iDaysOld = 3 );
 
 	/**
 	 * Adds specified crash dump to problem report
@@ -169,4 +169,4 @@ namespace CProblemReportUtils
 										quint32 nBackupsCount = 0 );
 }
 
-#endif //__PARALLELS_URLS_H__
+#endif //__VIRTUOZZO_URLS_H__

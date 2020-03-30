@@ -40,7 +40,7 @@
 #include "Build/Current.ver"
 #include "CProblemReportUtils.h"
 #include <prlcommon/Std/PrlAssert.h>
-#include <prlcommon/Interfaces/ParallelsQt.h>
+#include <prlcommon/Interfaces/VirtuozzoQt.h>
 #include <prlcommon/PrlCommonUtilsBase/StringUtils.h>
 
 class CInstalledSoftwareCollectorPrivate : public QObject

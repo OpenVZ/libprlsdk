@@ -26,7 +26,7 @@
 
 
 #include <prlcommon/PrlCommonUtilsBase/StringUtils.h>
-#include <prlxmlmodel/ParallelsObjects/CVmProfileHelper.h>
+#include <prlxmlmodel/VirtuozzoObjects/CVmProfileHelper.h>
 
 #include "PrlHandleVmCfg.h"
 #include "PrlHandleSrvConfig.h"
@@ -1511,7 +1511,7 @@ PRL_RESULT PrlHandleVmCfg::SetCpuMask(PRL_CONST_STR sCpuMask)
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	QString sMask = sCpuMask == NULL ? "" : sCpuMask;
 	CVmCpu *pVmCpu = m_VmConfig.getVmHardwareList()->getCpu();
-	if (Parallels::parseCpuMask(QString(sMask)))
+	if (Virtuozzo::parseCpuMask(QString(sMask)))
 		return PRL_ERR_INVALID_ARG;
 	pVmCpu->setCpuMask(sMask);
 	return (PRL_ERR_SUCCESS);
@@ -1530,7 +1530,7 @@ PRL_RESULT PrlHandleVmCfg::SetNodeMask(PRL_CONST_STR sNodeMask)
 
 	QString sMask = sNodeMask;
 
-	if (Parallels::parseNodeMask(QString(sMask)))
+	if (Virtuozzo::parseNodeMask(QString(sMask)))
 		return PRL_ERR_INVALID_ARG;
 
 	m_VmConfig.getVmHardwareList()->getCpu()->setNodeMask(sMask);
@@ -2524,7 +2524,7 @@ PRL_RESULT PrlHandleVmCfg::GetVmInfo(PRL_HANDLE_PTR phVmInfo)
 	SYNCHRO_INTERNAL_DATA_ACCESS;
 	CVmEvent *pVmEvent =
 		m_VmConfig.getVmSettings()->getVmRuntimeOptions()
-			->getInternalVmInfo()->getParallelsEvent();
+			->getInternalVmInfo()->getVirtuozzoEvent();
 
 	// XXX: #483252
 	if (!pVmEvent || pVmEvent->m_lstEventParameters.empty())

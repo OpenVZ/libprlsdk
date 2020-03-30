@@ -25,8 +25,8 @@
  * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
-#ifndef __PARALLELS_API_EVENTS_VALUES_H__
-#define __PARALLELS_API_EVENTS_VALUES_H__
+#ifndef __VIRTUOZZO_API_EVENTS_VALUES_H__
+#define __VIRTUOZZO_API_EVENTS_VALUES_H__
 
 /**
  * Different event types are identified by these event codes.
@@ -437,4 +437,4 @@ typedef enum _PRL_PRIVATE_EVENT_TYPE
 typedef PRL_PRIVATE_EVENT_TYPE* PRL_PRIVATE_EVENT_TYPE_PTR;
 
 
-#endif // __PARALLELS_API_EVENTS_VALUES_H__
+#endif // __VIRTUOZZO_API_EVENTS_VALUES_H__

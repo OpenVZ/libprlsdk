@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_RUNNING_TASK_H__
-#define __PARALLELS_HANDLE_RUNNING_TASK_H__
+#ifndef __VIRTUOZZO_HANDLE_RUNNING_TASK_H__
+#define __VIRTUOZZO_HANDLE_RUNNING_TASK_H__
 
 
 #include "PrlHandleBase.h"
@@ -90,4 +90,4 @@ private:
 	CVmEvent m_evt;
 };
 
-#endif // __PARALLELS_HANDLE_RUNNING_TASK_H__
+#endif // __VIRTUOZZO_HANDLE_RUNNING_TASK_H__

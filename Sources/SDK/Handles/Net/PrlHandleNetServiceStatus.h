@@ -25,8 +25,8 @@
  */
 
 
-#ifndef __PARALLELS_HANDLE_NET_STATUS_H__
-#define __PARALLELS_HANDLE_NET_STATUS_H__
+#ifndef __VIRTUOZZO_HANDLE_NET_STATUS_H__
+#define __VIRTUOZZO_HANDLE_NET_STATUS_H__
 
 #include "PrlHandleBase.h"
 
@@ -58,4 +58,4 @@ private:
 	QString m_qsStatus;
 };
 
-#endif // __PARALLELS_HANDLE_NET_STATUS_H__
+#endif // __VIRTUOZZO_HANDLE_NET_STATUS_H__
