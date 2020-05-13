@@ -15673,6 +15673,57 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 		PRL_UINT32 nVmCpuSocketsCount
 		) );
 
+/* Obtains the backup directory path of the specified virtual machine.
+   Parameters
+   hVmCfg :             A handle of type PHT_VM_CONFIGURATION
+                        identifying the virtual machine
+                        configuration.
+   sVmBackupDirectory:  [out] A pointer to a buffer that receives
+                        the result (a UTF\-8 encoded,
+                        null\-terminated string).
+   pnVmBackupDirectoryBufLength:  [in] The size of the output buffer
+                        (in bytes). Set the buffer pointer to null
+                        and this parameter's value to zero to
+                        receive the required size. [out] The
+                        required output buffer size.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_BUFFER_OVERRUN - the size of the output buffer is not
+   large enough. The pnVmNameBufLength parameter will contain
+   the required size.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
+				 PrlVmCfg_GetDefaultBackupDirectory, (
+		PRL_HANDLE hVmCfg,
+		PRL_STR sVmBackupDirectory,
+		PRL_UINT32_PTR pnVmBackupDirectoryBufLength
+		) );
+
+/* Sets the specified virtual machine backup directory path.
+   Parameters
+   hVmCfg :      A handle of type PHT_VM_CONFIGURATION
+                 identifying the virtual machine configuration.
+   sVmBackupDirectory:  The backup directory path to set.
+                 The value must be a a UTF\-8
+                 encoded, null\-terminated string.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.              */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
+				 PrlVmCfg_SetDefaultBackupDirectory, (
+		PRL_HANDLE hVmCfg,
+		PRL_CONST_STR sNewVmBackupDirectory
+		) );
+
 #ifdef _WIN_
     #pragma pack(pop, save_api_pack)
 #endif
