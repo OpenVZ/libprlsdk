@@ -12015,6 +12015,53 @@ PRL_METHOD( PrlVmCfg_GetOptionsOnGuestCrash ) (
 	return pVm->GetOnCrashOptions(pnOptions);
 }
 
+PRL_METHOD( PrlVmCfg_GetDefaultBackupDirectory) (
+		PRL_HANDLE hVmCfg,
+		PRL_STR sVmBackupDirectory,
+		PRL_UINT32_PTR pnVmBackupDirectoryBufLength
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sVmBackupDirectory=%s, pnVmBackupDirectoryBufLength=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		sVmBackupDirectory,
+		pnVmBackupDirectoryBufLength
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnVmBackupDirectoryBufLength))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetDefaultBackupDirectory(sVmBackupDirectory, pnVmBackupDirectoryBufLength));
+}
+
+
+PRL_METHOD( PrlVmCfg_SetDefaultBackupDirectory) (
+		PRL_HANDLE hVmCfg,
+		PRL_CONST_STR sNewVmBackupDirectory
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, sNewVmBackupDirectory=%s)",
+		__FUNCTION__,
+		hVmCfg,
+		sNewVmBackupDirectory
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(sNewVmBackupDirectory))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->SetDefaultBackupDirectory(sNewVmBackupDirectory));
+}
+
 PRL_HANDLE PrlCt_Reinstall_Impl(
 		PRL_HANDLE hVm,
 		PRL_CONST_STR sOsTemplate,

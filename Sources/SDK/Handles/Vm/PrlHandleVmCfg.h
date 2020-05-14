@@ -2534,6 +2534,19 @@ public:
 	 * @param pointer to output buffer for storing result.
 	 */
 	PRL_RESULT GetOnCrashOptions(PRL_UINT32_PTR pnFlags);
+
+	/**
+	 * Returns VM backup directory path
+	 * @param [out] buffer string
+	 * @param [in/out] buffer size
+	 */
+	PRL_RESULT GetDefaultBackupDirectory(PRL_STR sVmBackupDirectory, PRL_UINT32_PTR pnVmBackupDirectoryBufLength);
+
+	/**
+	 * Sets new VM backup directory path
+	 * @param [in] new VM backup directory path string
+	 */
+	PRL_RESULT SetDefaultBackupDirectory(PRL_CONST_STR sNewVmBackupDirectory);
 };
 
 #endif // __VIRTUOZZO_HANDLE_VM_CFG_H__

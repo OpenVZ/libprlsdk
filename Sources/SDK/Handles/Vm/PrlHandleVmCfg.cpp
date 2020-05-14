@@ -2795,3 +2795,19 @@ PRL_RESULT PrlHandleVmCfg::GetOnCrashOptions(PRL_UINT32_PTR pnFlags)
 	*pnFlags = m_VmConfig.getVmSettings()->getVmRuntimeOptions()->getOnCrash()->getOptions();
 	return PRL_ERR_SUCCESS;
 }
+
+PRL_RESULT PrlHandleVmCfg::GetDefaultBackupDirectory(PRL_STR sVmBackupDirectoryBuf, PRL_UINT32_PTR pnVmBackupDirectoryBufLength)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	return CopyStringValue(m_VmConfig.getVmSettings()->getVmCommonOptions()->getBackupTargetPreferences()->
+		getDefaultBackupDirectory(), sVmBackupDirectoryBuf, pnVmBackupDirectoryBufLength);
+}
+
+PRL_RESULT PrlHandleVmCfg::SetDefaultBackupDirectory(PRL_CONST_STR sNewVmBackupDirectory)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	QString sNewVmBackupDirectoryUtf8 = UTF8_2QSTR(sNewVmBackupDirectory);
+	m_VmConfig.getVmSettings()->getVmCommonOptions()->getBackupTargetPreferences()
+		->setDefaultBackupDirectory(sNewVmBackupDirectoryUtf8);
+	return (PRL_ERR_SUCCESS);
+}
