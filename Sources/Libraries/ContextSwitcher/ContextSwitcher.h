@@ -152,7 +152,7 @@ public:
 	* Declare template Invoke(...) functions,
 	* those accept up to 12 arguments.
 	*/
-	PP_MAKE_12(DECL_INVOKE_FUNC_N_PARAMS, _)
+	PP_MAKE_13(DECL_INVOKE_FUNC_N_PARAMS, _)
 
 #undef DECL_INVOKE_FUNC_N_PARAMS
 #undef NAME_COMMA_SEP_I

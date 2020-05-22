@@ -922,6 +922,7 @@ public://Protocol methods
 	 * @param VM UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param description
 	 * @param flags
@@ -932,6 +933,7 @@ public://Protocol methods
 		const char *strVmUuid,
 		const char *strServerHostname,
 		quint32 nServerPort,
+		const char *strServerDirectory,
 		const char *strServerSessionUuid,
 		const char *strDescription,
 		quint32 nBackupFlags,
@@ -944,6 +946,7 @@ public://Protocol methods
 	 * @param Backup UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param target VM home path
 	 * @param flags
@@ -954,6 +957,7 @@ public://Protocol methods
 		const char *strBackupUuid,
 		const char *strServerHostname,
 		quint32 nServerPort,
+		const char *strServerDirectory,
 		const char *strServerSessionUuid,
 		const char *strTargetVmHomePath,
 		const char *strTargetVmName,
@@ -965,6 +969,7 @@ public://Protocol methods
 	 * @param VM UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param flags
 	 * @param reserved flags
@@ -974,6 +979,7 @@ public://Protocol methods
 		const char *strVmUuid,
 		const char *strServerHostname,
 		quint32 nServerPort,
+		const char *strServerDirectory,
 		const char *strServerSessionUuid,
 		quint32 nBackupFlags,
 		quint32 nReservedFlags,
@@ -985,6 +991,7 @@ public://Protocol methods
 	 * @param Backup UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param flags
 	 * @param reserved flags
@@ -995,6 +1002,7 @@ public://Protocol methods
 		const char *strBackupUuid,
 		const char *strServerHostname,
 		quint32 nServerPort,
+		const char *strServerDirectory,
 		const char *strServerSessionUuid,
 		quint32 nRestoreFlags,
 		quint32 nReservedFlags,

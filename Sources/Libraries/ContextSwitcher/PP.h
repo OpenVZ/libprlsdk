@@ -43,6 +43,7 @@
 # define PT_PP_BOOL_10 1
 # define PT_PP_BOOL_11 1
 # define PT_PP_BOOL_12 1
+# define PT_PP_BOOL_13 1
 
 # define PT_PP_COMMA() ,
 # define PT_PP_EMPTY()
@@ -82,6 +83,7 @@
 #define PP_MAKE_10(m, d) m(0, d) m(1, d) m(2, d) m(3, d) m(4, d) m(5, d) m(6, d) m(7, d) m(8, d) m(9, d)
 #define PP_MAKE_11(m, d) m(0, d) m(1, d) m(2, d) m(3, d) m(4, d) m(5, d) m(6, d) m(7, d) m(8, d) m(9, d) m(10, d)
 #define PP_MAKE_12(m, d) m(0, d) m(1, d) m(2, d) m(3, d) m(4, d) m(5, d) m(6, d) m(7, d) m(8, d) m(9, d) m(10, d) m(11, d)
+#define PP_MAKE_13(m, d) m(0, d) m(1, d) m(2, d) m(3, d) m(4, d) m(5, d) m(6, d) m(7, d) m(8, d) m(9, d) m(10, d) m(11, d) m(12, d)
 
 
 #endif // VIRTUOZZO_TRANSPORTER_AGENT_API_PP_H

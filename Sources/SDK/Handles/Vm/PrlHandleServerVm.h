@@ -118,6 +118,7 @@ public:
 	 * @param VM UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param backup description
 	 * @param flags
@@ -128,6 +129,7 @@ public:
 			PRL_CONST_STR sVmUuid,
 			PRL_CONST_STR sServerHostname,
 			PRL_UINT32 nServerPort,
+			PRL_CONST_STR sServerDirectory,
 			PRL_CONST_STR sServerSessionUuid,
 			PRL_CONST_STR strDescription,
 			PRL_UINT32 nBackupFlags,
@@ -141,6 +143,7 @@ public:
 	 * @param backup UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param target VM home path
 	 * @param flags
@@ -151,6 +154,7 @@ public:
 			PRL_CONST_STR sBackupUuid,
 			PRL_CONST_STR sServerHostname,
 			PRL_UINT32 nServerPort,
+			PRL_CONST_STR sServerDirectory,
 			PRL_CONST_STR sServerSessionUuid,
 			PRL_CONST_STR sTargetVmHomePath,
 			PRL_CONST_STR sTargetVmName,
@@ -163,6 +167,7 @@ public:
 	 * @param VM UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param flags
 	 * @param reserved flags
@@ -172,6 +177,7 @@ public:
 			PRL_CONST_STR sVmUuid,
 			PRL_CONST_STR sServerHostname,
 			PRL_UINT32 nServerPort,
+			PRL_CONST_STR sServerDirectory,
 			PRL_CONST_STR sServerSessionUuid,
 			PRL_UINT32 nBackupFlags,
 			PRL_UINT32 nReservedFlags,
@@ -184,6 +190,7 @@ public:
 	 * @param backup UUID
 	 * @param target server hostname
 	 * @param target server port
+	 * @param target server backup directory
 	 * @param target server session UUID
 	 * @param flags
 	 * @param reserved flags
@@ -194,6 +201,7 @@ public:
 		PRL_CONST_STR sBackupUuid,
 		PRL_CONST_STR sServerHostname,
 		PRL_UINT32 nServerPort,
+		PRL_CONST_STR sServerDirectory,
 		PRL_CONST_STR sServerSessionUuid,
 		PRL_UINT32 nRestoreFlags,
 		PRL_UINT32 nReservedFlags,
