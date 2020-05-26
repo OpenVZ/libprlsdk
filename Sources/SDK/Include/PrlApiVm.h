@@ -777,6 +777,237 @@ PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_2,
 		) );
 
 
+/* Backup an existing virtual machine to backup server.
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Note: errors are the same as for VmMigrate activity
+
+   Parameters
+   hSourceServer :     A handle of type PHT_SERVER
+                       identifying the source Dispatcher Service.
+   sVmUuid :           A virtual machine uuid
+   sTargetHost:        The name of the target host machine.
+   nTargetPort:        The port number on the target host.
+   sTargetSessionId:   The target Dispatcher Service session ID.
+   sDescription:       The backup description.
+   backup_flags :      Flags that specify backup type and etc. Acceptable flags:
+   PBT_FULL		: full backup
+   PBT_INCREMENTAL	: incremental backup
+   PBT_DIFFERENTIAL	: differental backup
+   PBT_UNCOMPRESSED	: uncompressed backup (by default fast zip compression used)
+                       PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   PBT_DIRECT_DATA_CONNECTION  : Disables tunneling for backup (a laissez-fair
+                       data transfer).
+   reserved_flags :    Reserved flags.
+   force_operation :   Specifies to process VM backup action without asking
+                       any additional questions from the Dispatcher Service side
+                       (non-interactive clients should use this option).
+   pExtra :            Extra params, e.g. backup_directory
+
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_7,
+						   PrlSrv_CreateVmBackupEx, (
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_CONST_STR strDescription,
+		PRL_UINT32 backup_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra
+		) );
+
+/* Restore backup of the virtual machine from backup server.
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Note: errors are the same as for VmMigrate activity
+
+   Parameters
+   hSourceServer :     A handle of type PHT_SERVER
+                       identifying the source Dispatcher Service.
+   sVmUuid :           A virtual machine uuid
+   sBackupUuid :       A backup uuid
+   sTargetHost:        The name of the target host machine.
+   nTargetPort:        The port number on the target host.
+   sTargetSessionId:   The target Dispatcher Service session ID.
+   sTargetVmHomePath : Home directory of the target virtual machine.
+   restore_flags :     Flags that specify restore type and etc. Acceptable flags:
+   PBT_RESTORE_TO_COPY	: change Vm name/uuid/MAC address on restore
+                       PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   reserved_flags :    Reserved flags.
+   force_operation :   Specifies to process VM backup action without asking
+                       any additional questions from the Dispatcher Service side
+                       (non-interactive clients should use this option).
+
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_7,
+						   PrlSrv_RestoreVmBackupEx, (
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sBackupUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_CONST_STR sTargetVmHomePath,
+		PRL_CONST_STR sTargetVmName,
+		PRL_UINT32 restore_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra
+		) );
+
+/* Get backups tree from backup server.
+
+   Some of the important XML elements are:
+
+   \<VmItem\> - root element of a branch containing
+   information about a virtual machine. This element, in turn, may contain
+   a set of elements describing full backups of this virtual machine.
+
+   \<BackupItem\> - root element of a branch containing
+   information about a full backup. This element, in turn, may contain a set
+   of elements describing incremental backups of this full backup.
+
+   \<PartialBackupItem\> - root element of a branch containing
+   information about an incremental backup.
+
+   \<Id\> - the backup ID. The ID is required when performing other
+   operations on a backup.
+
+   \<DateTime\> - the backup creation date and time.
+
+   \<Type> - backup type {'f' - full, 'i' - incremental}
+
+   \<Size> Backup size in bytes
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_INVALID_PARAM - invalid combination of backup_flags was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+
+   To get a backup tree from the PHT_JOB object:
+     1. Use the PrlJob_GetResult function to obtain a handle to
+        the PHT_RESULT object.
+     2. Use the PrlResult_GetParamAsString function to obtain a
+        string value containing the backup tree XML data.
+   Please note that no parser is provided to traverse the
+   returned XML. To use this functionality, you will have to
+   parse the returned XML yourself.
+
+   Parameters
+   hSourceServer :     A handle of type PHT_SERVER
+                       identifying the source Dispatcher Service.
+   sUuid :             A virtual machine or a backup ID. If it is empty,
+                       the tree will be built for backups of all virtual machines.
+                       When PBT_BACKUP_ID or PBT_CHAIN flag is specified in
+                       the backup_flags argument, then the value of this argument
+                       is treated as a backup ID, otherwise - as a virtual machine UUID.
+   sTargetHost:        The name of the target host machine.
+   nTargetPort:        The port number on the target host.
+   sTargetSessionId:   The target Dispatcher Service session ID.
+   backup_flags :      Flags that specify backup type and etc. Acceptable flags:
+                                           PBT_VM - include only virtual machine backups (used by default
+                                           if PBT_VM and PBT_CT flags are not specified)
+                                           PBT_CT - include only container backups
+                       PBT_BACKUP_ID - get information about the backup, which identifier is
+                       specified in sUuid parameter. Note that if an identifier of an
+                       incremental backup is passed in the sUuid parameter, then
+                       the output tree would also contain the corresponding full backup element.
+                       PBT_CHAIN - get information about the whole backup chain, which
+                       is dependent on the backup identifier, specified in sUuid parameter.
+                       Note that if an identifier of an incremental backup is passed in
+                       the sUuid parameter, then the output tree would also contain
+                       the corresponding full backup element.
+
+                       PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   reserved_flags :    Reserved flags.
+   force_operation :   Specifies to process VM backup action without asking
+                       any additional questions from the Dispatcher Service side
+                       (non-interactive clients should use this option).
+
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_7,
+						   PrlSrv_GetBackupTreeEx, (
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_UINT32 backup_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra
+		) );
+
+/* Remove backup of the virtual machine from backup server.
+
+   To get the return code from the PHT_JOB object, use the
+   PrlJob_GetRetCode function. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.
+   Note: errors are the same as for VmMigrate activity
+
+   Parameters
+   hSourceServer :     A handle of type PHT_SERVER
+                       identifying the source Dispatcher Service.
+   sVmUuid :           A virtual machine uuid
+   sBackupUuid :       A backup uuid
+   sTargetHost:        The name of the target host machine.
+   nTargetPort:        The port number on the target host.
+   sTargetSessionId:   The target Dispatcher Service session ID.
+   remove_flags :      Flags that specify remove type and etc. Acceptable flags:
+                       PVMSL_LOW_SECURITY, PVMSL_NORMAL_SECURITY, PVMSL_HIGH_SECURITY
+   reserved_flags :    Reserved flags.
+   force_operation :   Specifies to process VM backup action without asking
+                       any additional questions from the Dispatcher Service side
+                       (non-interactive clients should use this option).
+
+   Returns
+   A handle of type PHT_JOB containing the results of this
+   asynchronous operation or PRL_INVALID_HANDLE if there's not
+   enough memory to instantiate the job object.                   */
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_7,
+						   PrlSrv_RemoveVmBackupEx, (
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sBackupUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_UINT32 remove_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra
+		) );
+
+
 /* %VM_ONLY%
 
    Creates a bootable ISO-image for unattended Linux installation.

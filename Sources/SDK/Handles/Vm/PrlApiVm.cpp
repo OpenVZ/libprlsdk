@@ -5615,6 +5615,7 @@ PRL_HANDLE PrlSrv_CreateVmBackup_Impl(
 			sVmUuid,
 			sTargetHost,
 			nTargetPort,
+			NULL,
 			sTargetSessionId,
 			strDescription,
 			backup_flags,
@@ -5668,6 +5669,7 @@ PRL_HANDLE PrlSrv_RestoreVmBackup_Impl(
 			sBackupUuid,
 			sTargetHost,
 			nTargetPort,
+			NULL,
 			sTargetSessionId,
 			sTargetVmHomePath,
 			sTargetVmName,
@@ -5718,6 +5720,7 @@ PRL_HANDLE PrlSrv_GetBackupTree_Impl(
 			sUuid,
 			sTargetHost,
 			nTargetPort,
+			NULL,
 			sTargetSessionId,
 			backup_flags,
 			reserved_flags,
@@ -5766,6 +5769,7 @@ PRL_HANDLE PrlSrv_RemoveVmBackup_Impl(
 			sBackupUuid,
 			sTargetHost,
 			nTargetPort,
+			NULL,
 			sTargetSessionId,
 			remove_flags,
 			reserved_flags,
@@ -5793,6 +5797,219 @@ PRL_ASYNC_METHOD( PrlSrv_RemoveVmBackup ) (
 		PrlSrv_RemoveVmBackup,
 		(hSourceServer, sVmUuid, sBackupUuid, sTargetHost, nTargetPort, sTargetSessionId,
 			restore_flags, reserved_flags, force_operation))
+}
+
+PRL_HANDLE PrlSrv_CreateVmBackupEx_Impl(
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_CONST_STR strDescription,
+		PRL_UINT32 backup_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra)
+
+{
+	if (PRL_WRONG_HANDLE(hSourceServer, PHT_SERVER) || PRL_WRONG_PTR(sVmUuid) ||
+			PRL_WRONG_PTR(sTargetHost) || PRL_WRONG_PTR(sTargetSessionId))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_CREATE_VM_BACKUP))
+	PrlHandleServerVmPtr pSourceServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerVm>(hSourceServer);
+	PrlHandleJobPtr pJob = pSourceServer->DspCmdCreateVmBackup(
+			sVmUuid,
+			sTargetHost,
+			nTargetPort,
+			pExtra ? pExtra->backup_directory : NULL,
+			sTargetSessionId,
+			strDescription,
+			backup_flags,
+			reserved_flags,
+			force_operation);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_CreateVmBackupEx ) (
+	PRL_HANDLE hSourceServer,
+	PRL_CONST_STR sVmUuid,
+	PRL_CONST_STR sTargetHost,
+	PRL_UINT32 nTargetPort,
+	PRL_CONST_STR sTargetSessionId,
+	PRL_CONST_STR sDescription,
+	PRL_UINT32 backup_flags,
+	PRL_UINT32 reserved_flags,
+	PRL_BOOL force_operation,
+	const PRL_BACKUP_PARAM *pExtra
+)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_CREATE_VM_BACKUP)
+	CALL_THROUGH_CTXT_SWITCHER(
+		PrlContextSwitcher::Instance(),
+		PrlSrv_CreateVmBackupEx,
+		(hSourceServer, sVmUuid, sTargetHost, nTargetPort, sTargetSessionId, sDescription,
+			backup_flags, reserved_flags, force_operation, pExtra))
+}
+
+PRL_HANDLE PrlSrv_RestoreVmBackupEx_Impl(
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sBackupUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_CONST_STR sTargetVmHomePath,
+		PRL_CONST_STR sTargetVmName,
+		PRL_UINT32 restore_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra)
+{
+	PRL_UNUSED_PARAM(force_operation);
+	if (PRL_WRONG_HANDLE(hSourceServer, PHT_SERVER) || PRL_WRONG_PTR(sVmUuid) || PRL_WRONG_PTR(sBackupUuid) ||
+			PRL_WRONG_PTR(sTargetHost) || PRL_WRONG_PTR(sTargetSessionId))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_RESTORE_VM_BACKUP))
+	PrlHandleServerVmPtr pSourceServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerVm>(hSourceServer);
+	PrlHandleJobPtr pJob = pSourceServer->DspCmdRestoreVmBackup(
+			sVmUuid,
+			sBackupUuid,
+			sTargetHost,
+			nTargetPort,
+			pExtra ? pExtra->backup_directory : NULL,
+			sTargetSessionId,
+			sTargetVmHomePath,
+			sTargetVmName,
+			restore_flags,
+			reserved_flags);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_RestoreVmBackupEx ) (
+	PRL_HANDLE hSourceServer,
+	PRL_CONST_STR sVmUuid,
+	PRL_CONST_STR sBackupUuid,
+	PRL_CONST_STR sTargetHost,
+	PRL_UINT32 nTargetPort,
+	PRL_CONST_STR sTargetSessionId,
+	PRL_CONST_STR sTargetVmHomePath,
+	PRL_CONST_STR sTargetVmName,
+	PRL_UINT32 restore_flags,
+	PRL_UINT32 reserved_flags,
+	PRL_BOOL force_operation,
+	const PRL_BACKUP_PARAM *pExtra
+)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_RESTORE_VM_BACKUP)
+	CALL_THROUGH_CTXT_SWITCHER(
+		PrlContextSwitcher::Instance(),
+		PrlSrv_RestoreVmBackupEx,
+		(hSourceServer, sVmUuid, sBackupUuid, sTargetHost, nTargetPort, sTargetSessionId,
+			sTargetVmHomePath, sTargetVmName, restore_flags, reserved_flags, force_operation, pExtra))
+}
+
+
+PRL_HANDLE PrlSrv_GetBackupTreeEx_Impl(
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_UINT32 backup_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra)
+{
+	if (PRL_WRONG_HANDLE(hSourceServer, PHT_SERVER) || PRL_WRONG_PTR(sUuid) ||
+			PRL_WRONG_PTR(sTargetHost) || PRL_WRONG_PTR(sTargetSessionId))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_GET_BACKUP_TREE))
+	PrlHandleServerVmPtr pSourceServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerVm>(hSourceServer);
+	PrlHandleJobPtr pJob = pSourceServer->DspCmdGetBackupTree(
+			sUuid,
+			sTargetHost,
+			nTargetPort,
+			pExtra ? pExtra->backup_directory : NULL,
+			sTargetSessionId,
+			backup_flags,
+			reserved_flags,
+			force_operation);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_GetBackupTreeEx ) (
+	PRL_HANDLE hSourceServer,
+	PRL_CONST_STR sUuid,
+	PRL_CONST_STR sTargetHost,
+	PRL_UINT32 nTargetPort,
+	PRL_CONST_STR sTargetSessionId,
+	PRL_UINT32 backup_flags,
+	PRL_UINT32 reserved_flags,
+	PRL_BOOL force_operation,
+	const PRL_BACKUP_PARAM *pExtra
+)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_GET_BACKUP_TREE)
+	CALL_THROUGH_CTXT_SWITCHER(
+		PrlContextSwitcher::Instance(),
+		PrlSrv_GetBackupTreeEx,
+		(hSourceServer, sUuid, sTargetHost, nTargetPort, sTargetSessionId,
+			backup_flags, reserved_flags, force_operation, pExtra))
+}
+
+PRL_HANDLE PrlSrv_RemoveVmBackupEx_Impl(
+		PRL_HANDLE hSourceServer,
+		PRL_CONST_STR sVmUuid,
+		PRL_CONST_STR sBackupUuid,
+		PRL_CONST_STR sTargetHost,
+		PRL_UINT32 nTargetPort,
+		PRL_CONST_STR sTargetSessionId,
+		PRL_UINT32 remove_flags,
+		PRL_UINT32 reserved_flags,
+		PRL_BOOL force_operation,
+		const PRL_BACKUP_PARAM *pExtra)
+{
+	if (PRL_WRONG_HANDLE(hSourceServer, PHT_SERVER) || PRL_WRONG_PTR(sVmUuid) || PRL_WRONG_PTR(sBackupUuid) ||
+			PRL_WRONG_PTR(sTargetHost) || PRL_WRONG_PTR(sTargetSessionId))
+		RETURN_RES(GENERATE_ERROR_HANDLE(PRL_ERR_INVALID_ARG, PJOC_SRV_REMOVE_VM_BACKUP))
+	PrlHandleServerVmPtr pSourceServer = PRL_OBJECT_BY_HANDLE<PrlHandleServerVm>(hSourceServer);
+	PrlHandleJobPtr pJob = pSourceServer->DspCmdRemoveVmBackup(
+			sVmUuid,
+			sBackupUuid,
+			sTargetHost,
+			nTargetPort,
+			pExtra ? pExtra->backup_directory : NULL,
+			sTargetSessionId,
+			remove_flags,
+			reserved_flags,
+			force_operation);
+	if (!pJob)
+		RETURN_RES(PRL_INVALID_HANDLE)
+	RETURN_RES(pJob->GetHandle())
+}
+
+PRL_ASYNC_METHOD( PrlSrv_RemoveVmBackupEx ) (
+	PRL_HANDLE hSourceServer,
+	PRL_CONST_STR sVmUuid,
+	PRL_CONST_STR sBackupUuid,
+	PRL_CONST_STR sTargetHost,
+	PRL_UINT32 nTargetPort,
+	PRL_CONST_STR sTargetSessionId,
+	PRL_UINT32 restore_flags,
+	PRL_UINT32 reserved_flags,
+	PRL_BOOL force_operation,
+	const PRL_BACKUP_PARAM *pExtra
+)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_REMOVE_VM_BACKUP)
+	CALL_THROUGH_CTXT_SWITCHER(
+		PrlContextSwitcher::Instance(),
+		PrlSrv_RemoveVmBackupEx,
+		(hSourceServer, sVmUuid, sBackupUuid, sTargetHost, nTargetPort, sTargetSessionId,
+			restore_flags, reserved_flags, force_operation, pExtra))
 }
 
 PRL_ASYNC_METHOD( PrlVm_LoginInGuest ) (

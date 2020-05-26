@@ -649,6 +649,13 @@ typedef struct _PRL_MEMGUARANTEE_DATA
 typedef PRL_MEMGUARANTEE_DATA* PRL_MEMGUARANTEE_DATA_PTR;
 typedef const PRL_MEMGUARANTEE_DATA* PRL_CONST_MEMGUARANTEE_DATA_PTR;
 
+typedef struct _PRL_BACKUP_PARAM
+{
+	// @brief additional params for PrmVM_...Backup/Restore.. api
+	PRL_CONST_STR backup_directory;
+} PRL_STRUCT( PRL_BACKUP_PARAM );
+typedef PRL_BACKUP_PARAM* PRL_BACKUP_PARAM_PTR;
+
 #ifdef _WIN_
 #pragma pack(pop, save_pack)
 #endif
