@@ -237,7 +237,9 @@ void CStdinMaintainer::concreteRun()
 							Uuid_t parentUuid;
 							Uuid::dump( _it.key(), parentUuid );
 							::memcpy( p->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
-							pVm->GetIOChannel()->sendPackage(p);
+							IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(p);
+							if (!job.isValid())
+								WRITE_TRACE(DBG_FATAL, "sendPackage: size=%d failed", _buffer.size());
 						}
 						//Process broken pipe case
 						else if ( 0 == nCharNums || -1 == nCharNums )
@@ -254,7 +256,9 @@ void CStdinMaintainer::concreteRun()
 							Uuid_t parentUuid;
 							Uuid::dump( _it.key(), parentUuid );
 							::memcpy( p->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
-							pVm->GetIOChannel()->sendPackage(p);
+							IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(p);
+							if (!job.isValid())
+								WRITE_TRACE(DBG_FATAL, "sendPackage: size=%d failed", nCharNums);
 						}
 						//Process broken pipe case
 						else if ( 0 == nCharNums || -1 == nCharNums )
@@ -269,7 +273,9 @@ void CStdinMaintainer::concreteRun()
 								Uuid::dump( _it.key(), parentUuid );
 								::memcpy( p->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
 								_it = m_StdinDescsMap.erase( _it );
-								pVm->GetIOChannel()->sendPackage(p);
+								IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(p);
+								if (!job.isValid())
+									WRITE_TRACE(DBG_FATAL, "sendPackage: stdin closed failed");
 								continue;
 							}
 						}
