@@ -101,6 +101,7 @@ public:
 private:
 	/** Overridden template thread function */
 	void concreteRun();
+	PRL_RESULT sendData(PrlHandleVmPtr pVm, const SmartPtr<IOPackage>& pkg) const;
 
 private:
 	/** List of stdin descriptors */
@@ -175,6 +176,33 @@ CStdinMaintainer::CStdinMaintainer(): m_bFinalizeWork(false)
 {
 }
 
+PRL_RESULT CStdinMaintainer::sendData(PrlHandleVmPtr pVm, const SmartPtr<IOPackage>& pkg) const
+{
+	IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(pkg);
+	if (!job.isValid())
+	{
+		WRITE_TRACE(DBG_FATAL, "sendPackage: failed");
+		return PRL_ERR_FAILURE;
+	}
+
+	IOSendJob::Result r;
+	r = pVm->GetIOChannel()->waitForSend(job);
+	if (r != IOSendJob::Success)
+	{
+		WRITE_TRACE(DBG_FATAL, "waitForSend: failed %d", r);
+		return PRL_ERR_FAILURE;
+	}
+
+	r = pVm->GetIOChannel()->getSendResult(job);
+	if (r != IOSendJob::Success)
+	{
+		WRITE_TRACE(DBG_FATAL, "sendPackage: failed %d", r);
+		return PRL_ERR_FAILURE;
+	}
+
+	return PRL_ERR_SUCCESS;
+}
+
 #define STDIN_THREAD_TIMEOUT 50
 void CStdinMaintainer::concreteRun()
 {
@@ -237,9 +265,7 @@ void CStdinMaintainer::concreteRun()
 							Uuid_t parentUuid;
 							Uuid::dump( _it.key(), parentUuid );
 							::memcpy( p->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
-							IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(p);
-							if (!job.isValid())
-								WRITE_TRACE(DBG_FATAL, "sendPackage: size=%d failed", _buffer.size());
+							sendData(pVm, p);
 						}
 						//Process broken pipe case
 						else if ( 0 == nCharNums || -1 == nCharNums )
@@ -256,9 +282,8 @@ void CStdinMaintainer::concreteRun()
 							Uuid_t parentUuid;
 							Uuid::dump( _it.key(), parentUuid );
 							::memcpy( p->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
-							IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(p);
-							if (!job.isValid())
-								WRITE_TRACE(DBG_FATAL, "sendPackage: size=%d failed", nCharNums);
+
+							sendData(pVm, p);
 						}
 						//Process broken pipe case
 						else if ( 0 == nCharNums || -1 == nCharNums )
@@ -273,9 +298,9 @@ void CStdinMaintainer::concreteRun()
 								Uuid::dump( _it.key(), parentUuid );
 								::memcpy( p->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
 								_it = m_StdinDescsMap.erase( _it );
-								IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(p);
-								if (!job.isValid())
-									WRITE_TRACE(DBG_FATAL, "sendPackage: stdin closed failed");
+
+								sendData(pVm, p);
+
 								continue;
 							}
 						}
@@ -429,7 +454,9 @@ void ProcessFinPackage( const SmartPtr<IOPackage> &p )
 			Uuid_t parentUuid;
 			Uuid::dump( pRunProgramJob->GetJobUuid(), parentUuid );
 			::memcpy( pResponse->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
-			pVm->GetIOChannel()->sendPackage(pResponse);
+			IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(pResponse);
+			if (job.isValid())
+				pVm->GetIOChannel()->waitForSend(job);
 		}
 	}
 }
