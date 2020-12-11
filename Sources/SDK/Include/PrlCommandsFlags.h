@@ -599,6 +599,7 @@ typedef PRL_VIRTUAL_NETWORK_FLAGS* PRL_VIRTUAL_NETWORK_FLAGS_PTR;
 typedef enum _PRL_BEGIN_VM_BACKUP_FLAGS
 {
 	PBMBF_CREATE_MAP	= 1 << (PACF_MAX+1), /* Create a disk map */
+	PBMBF_FSSYNC		= 2 << (PACF_MAX+1), /* Sync guest fs */
 } PRL_BEGIN_VM_BACKUP_FLAGS;
 
 /*
