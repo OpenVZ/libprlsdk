@@ -10764,4 +10764,11 @@ void PrlErrStringsStorage::Initialize()
 		true,
 		PMT_WARNING
 		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_MIGRATE_SNAPSHOT_DETECTED,
+		tr( "Cannot migrate VMs with snapshots." ),
+		tr( "" ),
+		false,
+		PMT_CRITICAL
+		);
 }
