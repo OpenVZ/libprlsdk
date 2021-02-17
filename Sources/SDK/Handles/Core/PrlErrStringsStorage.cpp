@@ -10765,6 +10765,41 @@ void PrlErrStringsStorage::Initialize()
 		PMT_WARNING
 		);
 	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_INCONSISTENT_FILTERS,
+		tr("Custom and built-in filters are enabled at the same time."),
+		tr("Disable either custom or all built-in filters."),
+		true,
+		PMT_WARNING
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_UNSUPPORTED_PROTOCOL,
+		tr("This protocol is not currently supported by the basic firewall."),
+		tr("Use either TCP, UDP or ICMP with the basic firewall."),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_INVALID_PORT_NUMBER,
+		tr("Invalid port number."),
+		tr("Port number cannot exceed 65535."),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_INVALID_IP_ADDRESS,
+		tr("Invalid IP address."),
+		tr("The provided IP address is not a valid IPv4/IPv6 address."),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_PORT_NOT_USED,
+		tr("The specified port will not be used, because this setting is disabled for the selected protocol."),
+		tr("Use ports only with TCP/UDP."),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_SNAPSHOT_DETECTED,
 		tr( "Cannot migrate VMs with snapshots." ),
 		tr( "" ),
