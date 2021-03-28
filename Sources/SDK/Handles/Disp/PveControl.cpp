@@ -263,6 +263,16 @@ void CPveControl::handleResponsePackage ( IOSendJob::Handle hJob, const SmartPtr
 				return;
 		}
 
+		if (m_pLoginHelperJob && nOpCode == PVE::DspCmdUserLogin)
+		{
+			if (!m_pLoginHelperJob->wasCanceled() &&
+				PRL_SUCCEEDED(pResponseCmd->GetRetCode())
+				)
+				m_pLoginHelperJob->processPublicKeyAuth(pResponseCmd);
+			emit cleanupLoginHelperJob();
+			return;
+		}
+
 		// Pass event to client
 		if (m_pEventReceiverObj)
 			QCoreApplication::postEvent(m_pEventReceiverObj, pResult);
@@ -391,8 +401,6 @@ void CPveControl::connectionStateChanged (IOSender::State _state)
 		{
 			m_pLoginHelperJob->doJob();
 		}
-
-		emit cleanupLoginHelperJob();
 	}
 	else if (m_pLoginLocalHelperJob)
 	{
