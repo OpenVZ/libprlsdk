@@ -585,6 +585,16 @@ typedef enum _PRL_LOGIN_LOCAL_FLAGS
 typedef PRL_LOGIN_LOCAL_FLAGS* PRL_LOGIN_LOCAL_FLAGS_PTR;
 
 /*
+ * PrlSrv_Login flags
+ */
+typedef enum _PRL_LOGIN_FLAGS
+{
+	// Start from 4, cause client identifier is also used during login
+	PLLF_LOGIN_WITH_RSA_KEYS		         = 1 << (PACF_MAX+4),
+} PRL_LOGIN_FLAGS;
+typedef PRL_LOGIN_FLAGS* PRL_LOGIN_FLAGS_PTR;
+
+/*
  * PrlSrv_AddVirtualNetwork flangs
  */
 typedef enum _PRL_VIRTUAL_NETWORK_FLAGS
