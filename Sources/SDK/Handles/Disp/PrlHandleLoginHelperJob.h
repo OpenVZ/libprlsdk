@@ -30,6 +30,7 @@
 
 #include "PrlHandleLocalJob.h"
 #include "PrlHandleServer.h"
+#include "prlcommon/ProtoSerializer/CProtoCommands.h"
 
 /**
  * Class that let emulates asynchronous job object for some local purposes.
@@ -61,6 +62,7 @@ public:
 	void SetHost( const QString &host ) { m_sHost = host; }
 	QString GetHost() const { return m_sHost; }
 	PRL_UINT32 GetFlags() const { return m_flags; }
+	void processPublicKeyAuth(Virtuozzo::CProtoCommandDspWsResponse* pResponseCommand);
 
 private:
 	QString EncodePassword(const QString &sPassword);

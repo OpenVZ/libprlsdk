@@ -28,6 +28,8 @@
 #include "PrlHandleLoginHelperJob.h"
 #include <prlcommon/Interfaces/VirtuozzoQt.h>
 #include <prlcommon/ProtoSerializer/CProtoSerializer.h>
+#include <prlcommon/PrlCommonUtilsBase/CRsaHelper.hpp>
+#include <prlcommon/PrlCommonUtilsBase/CFileHelper.h>
 #include "SDK/Wrappers/SdkWrap/SdkHandleWrap.h"
 
 using namespace Virtuozzo;
@@ -50,6 +52,7 @@ m_pServer(pServer), m_sUser(UTF8_2QSTR(user)), m_sPassword(UTF8_2QSTR(passwd)),
 m_sPrevSessionUuid(UTF8_2QSTR(sPrevSessionUuid)), m_bLoginRequestWasSent(false),
 m_flags(flags | CLIENT)
 {
+	m_pServer->AddJobToResponseAwaitingList(PrlHandleServerJobPtr(this));
 }
 
 PRL_HANDLE PrlHandleLoginHelperJob::Cancel()
@@ -99,7 +102,7 @@ void PrlHandleLoginHelperJob::doJob()
 												m_flags);
 		SmartPtr<IOPackage> pPackage = DispatcherPackage::createInstance(pRequest->GetCommandId(),
 																			pRequest->GetCommand()->toString());
-		//Replace package UUID with already created one before
+		// Replace package UUID with already created one before
 		Uuid _uuid( GetJobUuid() );
 		_uuid.dump( pPackage->header.uuid );
 
@@ -108,3 +111,35 @@ void PrlHandleLoginHelperJob::doJob()
 	}
 }
 
+void PrlHandleLoginHelperJob::processPublicKeyAuth(CProtoCommandDspWsResponse* pResponseCommand)
+{
+	if (!pResponseCommand->IsValid() ||
+		pResponseCommand->GetRetCode() != PRL_ERR_SUCCESS ||
+		pResponseCommand->GetStandardParamsCount() != 1 ||
+		wasCanceled())
+		return;
+
+	QString encrypted_session = pResponseCommand->GetStandardParam(0);
+
+	auto session = CRsaHelper().Decrypt(encrypted_session);
+	if (session.isFailed())
+		return;
+
+	m_flags &= ~PLLF_LOGIN_WITH_RSA_KEYS;
+	auto pAuthorizeCmd = CProtoSerializer::CreateDspCmdUserLoginCommand(
+		m_sUser,
+		QString(),
+		session.value(),
+		m_flags
+	);
+
+	auto pPackage =
+		DispatcherPackage::createInstance(pAuthorizeCmd->GetCommandId(),
+										  pAuthorizeCmd->GetCommand()->toString());
+
+	// Replace package UUID with already created one before
+	Uuid _uuid(GetJobUuid());
+	_uuid.dump(pPackage->header.uuid);
+
+	m_pServer->GetPveControl()->SendRequestToServer(pPackage);
+}
