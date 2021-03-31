@@ -67,7 +67,8 @@ typedef enum _PRL_API_COMMAND_FLAGS
 	 * with own flags
 	 */
 	PACF_MAX                           = 10,
-	PACF_LAST                          = 1<<PACF_MAX
+	PACF_LAST                          = 1<<PACF_MAX,
+	PACF_MASK						   = 2*PACF_LAST-1
 } PRL_API_COMMAND_FLAGS;
 typedef PRL_API_COMMAND_FLAGS* PRL_API_COMMAND_FLAGS_PTR;
 
