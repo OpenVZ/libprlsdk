@@ -268,9 +268,11 @@ void CPveControl::handleResponsePackage ( IOSendJob::Handle hJob, const SmartPtr
 			if (!m_pLoginHelperJob->wasCanceled() &&
 				PRL_SUCCEEDED(pResponseCmd->GetRetCode())
 				)
+			{
 				m_pLoginHelperJob->processPublicKeyAuth(pResponseCmd);
+				return;
+			}
 			emit cleanupLoginHelperJob();
-			return;
 		}
 
 		// Pass event to client
