@@ -512,7 +512,11 @@ bool PythonComposer::AddArgDefaultValue(const QString& qsFunc, int nArgIndex, QS
 	IF_FUNC_IS( "PrlJob_Wait" )
 	{
 		if (nArgIndex == 1)
+#if (VZ_PY_VER < 3)
 			qsMethArg += " = sys.maxint";	// timeout
+#else
+			qsMethArg += " = sys.maxsize";	// timeout
+#endif
 	}
 
 	IF_FUNC_IS( "PrlSrv_RegisterVm" )

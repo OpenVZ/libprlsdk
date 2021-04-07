@@ -29,7 +29,7 @@
 #ifndef PYTHON_TEMPLATES_H
 #define PYTHON_TEMPLATES_H
 
-#define PTN_PRL_PYTHON_SDK_PY	"prlsdkapi.py"
+#define PTN_PRL_PYTHON_SDK_PY	VZ_API_FNAME
 
 #define PTN_CAPTION \
 	"#///////////////////////////////////////////////////////////////////////////////\n" \
@@ -44,21 +44,40 @@
 	"#//\n" \
 	"#///////////////////////////////////////////////////////////////////////////////\n\n"
 
+#if (VZ_PY_VER < 3)
 #define PTN_IMPORT_MODULES \
 	"import os, sys, imp, string, time\n\n" \
 	"prlsdk = None\n" \
 	"try:\n" \
 	"\timport prlsdk\n" \
-	"except Exception, e:\n" \
+	"except Exception as e:\n" \
 	"\ttry:\n" \
 	"\t\tprlsdk_module = os.environ['PRLSDK']\n" \
 	"\t\tsdklib = os.environ['SDKLIB']\n" \
 	"\t\tprlsdk = imp.load_dynamic('prlsdk', prlsdk_module)\n" \
 	"\t\tprlsdk.SetSDKLibraryPath(sdklib)\n" \
 	"\texcept:\n" \
-	"\t\tprint e\n" \
+	"\t\tprint(e)\n" \
 	"\t\terr = 'Cannot import module \"prlsdk\" !'\n" \
-	"\t\traise ImportError, err\n\n"
+	"\t\traise ImportError(err)\n\n"
+
+#else
+#define PTN_IMPORT_MODULES \
+	"import os, sys, imp, string, time\n\n" \
+	"prlsdk = None\n" \
+	"try:\n" \
+	"\timport prlsdkapi.prlsdk as prlsdk\n" \
+	"except Exception as e:\n" \
+	"\ttry:\n" \
+	"\t\tprlsdk_module = os.environ['PRLSDK']\n" \
+	"\t\tsdklib = os.environ['SDKLIB']\n" \
+	"\t\tprlsdk = imp.load_dynamic('prlsdk', prlsdk_module)\n" \
+	"\t\tprlsdk.SetSDKLibraryPath(sdklib)\n" \
+	"\texcept:\n" \
+	"\t\tprint(e)\n" \
+	"\t\terr = 'Cannot import module \"prlsdk\" !'\n" \
+	"\t\traise ImportError(err)\n\n"
+#endif
 
 #define PTN_SDK_MODULE \
 	"SDK = prlsdk\n" \
@@ -96,7 +115,7 @@
 	"\treturn err\n" \
 	"def sdk_check_result(result, err_obj = None):\n" \
 	"\tif result != errors.PRL_ERR_SUCCESS:\n" \
-	"\t\traise PrlSDKError, (result, conv_error(result), err_obj)\n\n"
+	"\t\traise PrlSDKError(result, conv_error(result), err_obj)\n\n"
 
 #define PTN_DEINIT_SDK \
 	"class __DeinitSDK:\n" \
@@ -107,7 +126,7 @@
 	"\t\tif self.SDK != None and self.SDK.IsSDKInitialized()[1]:\n" \
 	"\t\t\tres = self.SDK.DeinitializeSDK()[0]\n" \
 	"\t\t\tif res:\n" \
-	"\t\t\t\traise Exception, ('SDK deinitialization failed! Error = 0x%.8X' % conv_error(res))\n" \
+	"\t\t\t\traise Exception('SDK deinitialization failed! Error = 0x%.8X' % conv_error(res))\n" \
 	"\t\t\tself.id += 1\n" \
 	"\tdef __del__(self):\n" \
 	"\t\tself.__call__()\n\n" \
@@ -164,7 +183,7 @@
 
 #define PTN_PRIVATE_CLASS \
 	"\t\tif self.__class__ is %1:\n" \
-	"\t\t\traise TypeError, 'class %2 is a private class'\n\n"
+	"\t\t\traise TypeError('class %2 is a private class')\n\n"
 #define PTN_PRIVATE_CLASS_INIT \
 	"\tdef __init__(self):\n" \
 	PTN_PRIVATE_CLASS
@@ -238,6 +257,7 @@
 	"\t\tsdk_check_result(self.get_ret_code(), err_obj)\n" \
 	"\t\treturn self.get_result()\n\n"
 
+#if (VZ_PY_VER < 3)
 #define PTN_ITER_METHODS \
 	"\tdef __len__(self):\n" \
 	"\t\treturn self.%1()\n\n" \
@@ -248,6 +268,18 @@
 	"\tdef __iter__(self):\n" \
 	"\t\tfor i in xrange(self.__len__()):\n" \
 	"\t\t\tyield self.__getitem__(i)\n\n"
+#else
+#define PTN_ITER_METHODS \
+	"\tdef __len__(self):\n" \
+	"\t\treturn self.%1()\n\n" \
+	"\tdef __getitem__(self, index):\n" \
+	"\t\tif index < 0 or index >= self.__len__():\n" \
+	"\t\t\traise IndexError\n" \
+	"\t\treturn self.%2(index)\n\n" \
+	"\tdef __iter__(self):\n" \
+	"\t\tfor i in range(self.__len__()):\n" \
+	"\t\t\tyield self.__getitem__(i)\n\n"
+#endif
 
 #define PTN_PRL_IO_DISPLAY_SCREEN_SIZE \
 	"class IoDisplayScreenSize:\n\n" \
