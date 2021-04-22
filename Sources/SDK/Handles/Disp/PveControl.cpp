@@ -269,8 +269,12 @@ void CPveControl::handleResponsePackage ( IOSendJob::Handle hJob, const SmartPtr
 				PRL_SUCCEEDED(pResponseCmd->GetRetCode())
 				)
 			{
-				m_pLoginHelperJob->processPublicKeyAuth(pResponseCmd);
-				return;
+				PRL_RESULT helper_res = m_pLoginHelperJob->processPublicKeyAuth(pResponseCmd);
+				// if second stage request is send successfully, wait for reply
+				if (PRL_SUCCEEDED(helper_res))
+					return;
+				else
+					pResult->setReturnCode(helper_res);
 			}
 			emit cleanupLoginHelperJob();
 		}
