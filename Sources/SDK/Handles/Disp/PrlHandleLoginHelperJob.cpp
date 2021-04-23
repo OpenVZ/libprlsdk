@@ -111,19 +111,25 @@ void PrlHandleLoginHelperJob::doJob()
 	}
 }
 
-void PrlHandleLoginHelperJob::processPublicKeyAuth(CProtoCommandDspWsResponse* pResponseCommand)
+PRL_RESULT PrlHandleLoginHelperJob::processPublicKeyAuth(CProtoCommandDspWsResponse* pResponseCommand)
 {
 	if (!pResponseCommand->IsValid() ||
 		pResponseCommand->GetRetCode() != PRL_ERR_SUCCESS ||
 		pResponseCommand->GetStandardParamsCount() != 1 ||
 		wasCanceled())
-		return;
+	{
+		m_pServer->RemoveJobFromResponseAwaitingList(PrlHandleServerJobPtr(this));
+		return PRL_ERR_AUTHENTICATION_FAILED;
+	}
 
 	QString encrypted_session = pResponseCommand->GetStandardParam(0);
 
 	auto session = CRsaHelper().Decrypt(encrypted_session);
 	if (session.isFailed())
-		return;
+	{
+		m_pServer->RemoveJobFromResponseAwaitingList(PrlHandleServerJobPtr(this));
+		return PRL_ERR_RSA_DECRYPTION_FAILED;
+	}
 
 	m_flags &= ~PLLF_LOGIN_WITH_RSA_KEYS;
 	auto pAuthorizeCmd = CProtoSerializer::CreateDspCmdUserLoginCommand(
@@ -142,4 +148,5 @@ void PrlHandleLoginHelperJob::processPublicKeyAuth(CProtoCommandDspWsResponse* p
 	_uuid.dump(pPackage->header.uuid);
 
 	m_pServer->GetPveControl()->SendRequestToServer(pPackage);
+	return PRL_ERR_SUCCESS;
 }

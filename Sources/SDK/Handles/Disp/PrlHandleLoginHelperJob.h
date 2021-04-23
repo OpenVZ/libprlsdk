@@ -62,7 +62,7 @@ public:
 	void SetHost( const QString &host ) { m_sHost = host; }
 	QString GetHost() const { return m_sHost; }
 	PRL_UINT32 GetFlags() const { return m_flags; }
-	void processPublicKeyAuth(Virtuozzo::CProtoCommandDspWsResponse* pResponseCommand);
+	PRL_RESULT processPublicKeyAuth(Virtuozzo::CProtoCommandDspWsResponse* pResponseCommand);
 
 private:
 	QString EncodePassword(const QString &sPassword);
