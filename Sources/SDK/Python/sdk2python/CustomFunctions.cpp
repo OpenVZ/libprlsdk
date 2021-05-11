@@ -420,14 +420,28 @@ static PyObject* sdk_PrlReport_GetData(PyObject* /*self*/, PyObject* args)
 #else
 			int nBufSize = (int )nBufLength;
 #endif
+#if (VZ_PY_VER < 3)
 			pBufObj = PyBuffer_New( nBufSize );
+#else
+			pBufObj = PyByteArray_FromStringAndSize(NULL, nBufSize);
+#endif
 			if ( ! pBufObj )
 				return NULL;
+
+#if (VZ_PY_VER < 3)
 			PRL_VOID_PTR pBuf = NULL;
 			if ( PyObject_AsWriteBuffer(pBufObj, &pBuf, &nBufSize) )
+#else
+			Py_buffer *pBuf = NULL;
+			if ( PyObject_GetBuffer(pBufObj, pBuf, PyBUF_WRITABLE | PyBUF_C_CONTIGUOUS ) )
+#endif
 				return NULL;
 			Py_BEGIN_ALLOW_THREADS
+#if (VZ_PY_VER < 3)
 			prlResult = PrlReport_GetData(hHandle, pBuf, &nBufLength);
+#else
+			prlResult = PrlReport_GetData(hHandle, (PRL_VOID_PTR)pBuf, &nBufLength);
+#endif
 			Py_END_ALLOW_THREADS
 		}
 
@@ -554,14 +568,27 @@ static PyObject* sdk_PrlDiskMap_Read(PyObject* /*self*/, PyObject* args)
 #else
 			int nBufSize = (int )nBufLength;
 #endif
+#if (VZ_PY_VER < 3)
 			pBufObj = PyBuffer_New( nBufSize );
+#else
+			pBufObj = PyByteArray_FromStringAndSize(NULL, nBufSize);
+#endif
 			if ( ! pBufObj )
 				return NULL;
+#if (VZ_PY_VER < 3)
 			PRL_VOID_PTR pBuf = NULL;
 			if ( PyObject_AsWriteBuffer(pBufObj, &pBuf, &nBufSize) )
+#else
+			Py_buffer *pBuf = NULL;
+			if ( PyObject_GetBuffer(pBufObj, pBuf, PyBUF_WRITABLE | PyBUF_C_CONTIGUOUS ) )
+#endif
 				return NULL;
 			Py_BEGIN_ALLOW_THREADS
+#if (VZ_PY_VER < 3)
 			prlResult = PrlDiskMap_Read(hHandle, pBuf, &nBufLength);
+#else
+			prlResult = PrlDiskMap_Read(hHandle, (PRL_VOID_PTR)pBuf, &nBufLength);
+#endif
 			Py_END_ALLOW_THREADS
 		}
 

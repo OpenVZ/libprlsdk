@@ -35,19 +35,28 @@
 	#error "Unknown python module name!"
 #endif
 
+#if (VZ_PY_VER < 3)
 #define ENTRY_F2(t) init##t
+#else
+#define ENTRY_F2(t) PyInit_##t
+#endif
+
 #define ENTRY_F(t) ENTRY_F2(t)
 #define ENTRY_FUNCTION(x) ENTRY_F(x)
 
-#if !defined(_WIN_) && __GNUC__ >= 4
+#if !defined(_WIN_) && __GNUC__ >= 4 && VZ_PY_VER < 3
 	#define ENTRY_FUNC_PUBLIC __attribute__ ((visibility("default")))
 #else
 	#define ENTRY_FUNC_PUBLIC
 #endif
 
-extern void entry(void );
+extern PyMODINIT_FUNC entry(void );
 
 PyMODINIT_FUNC ENTRY_FUNC_PUBLIC ENTRY_FUNCTION(PYTHON_MODULE_NAME)(void )
 {
+#if (VZ_PY_VER < 3)
 	entry();
+#else
+	return entry();
+#endif
 }

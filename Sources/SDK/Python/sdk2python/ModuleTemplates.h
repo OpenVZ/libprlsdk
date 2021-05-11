@@ -131,15 +131,38 @@
 	"#define TO_STR2(t) #t\n" \
 	"#define TO_STR(t) TO_STR2(t)\n" \
 	"#define ENTRY_MODULE_NAME(x) TO_STR(x)\n\n" \
-	"extern \"C\" void entry(void )\n" \
+	"extern \"C\" PyMODINIT_FUNC entry(void )\n" \
 	"{\n"
+
+#if (VZ_PY_VER < 3)
 #define MDL_INIT_MODULE \
 	"\tPyObject* parent_module = Py_InitModule( ENTRY_MODULE_NAME(PYTHON_MODULE_NAME), SdkPythonBundle );\n" \
 	"\tstd::string parent_name = PyModule_GetName(parent_module);\n" \
 	"\tPyObject* module = NULL;\n" \
 	"\tstd::string name;\n\n"
+#else
+#define MDL_INIT_MODULE \
+	"\tstatic struct PyModuleDef moduledef = {\n" \
+	"\t  PyModuleDef_HEAD_INIT,\n" \
+	"\t  ENTRY_MODULE_NAME(PYTHON_MODULE_NAME),\n" \
+	"\t  NULL,\n" \
+	"\t  -1,\n" \
+	"\t  SdkPythonBundle,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL\n" \
+	"\t};\n"\
+	"\tPyObject* parent_module = PyModule_Create(&moduledef);\n" \
+	"\tstd::string parent_name = PyModule_GetName(parent_module);\n" \
+	"\tPyObject* module = NULL;\n" \
+	"\tstd::string name;\n\n"
+#endif
+
 #define MDL_INIT_GIL \
 	"\tPyEval_InitThreads();\n\n"
+
+#if (VZ_PY_VER < 3)
 #define MDL_ADD_MODULE \
 	"\tmodule = Py_InitModule( (char* )(parent_name + \".\" + name).c_str(), NULL );\n" \
 	"\tPy_INCREF(module);\n" \
@@ -150,6 +173,42 @@
 #define MDL_INIT_ERRORS_MODULE \
 	"\tname = \"errors\";\n" \
 	MDL_ADD_MODULE
+
+#else
+#define MDL_INIT_CONSTS_MODULE \
+	"\tname = \"consts\";\n" \
+	"\tstatic struct PyModuleDef moduledef_consts = {\n" \
+	"\t  PyModuleDef_HEAD_INIT,\n" \
+	"\t  (char*)(name).c_str(),\n" \
+	"\t  NULL,\n" \
+	"\t  -1,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL\n" \
+	"\t};\n" \
+	"\tmodule = PyModule_Create(&moduledef_consts);\n" \
+	"\tPy_INCREF(module);\n" \
+	"\tPyModule_AddObject( parent_module, (char* )name.c_str(), module );\n\n"
+#define MDL_INIT_ERRORS_MODULE \
+	"\tname = \"errors\";\n" \
+	"\tstatic struct PyModuleDef moduledef_errors = {\n" \
+	"\t  PyModuleDef_HEAD_INIT,\n" \
+	"\t  (char*)(name).c_str(),\n" \
+	"\t  NULL,\n" \
+	"\t  -1,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL,\n" \
+	"\t  NULL\n" \
+	"\t};\n" \
+	"\tmodule =  PyModule_Create(&moduledef_errors);\n" \
+	"\tPy_INCREF(module);\n" \
+	"\tPyModule_AddObject( parent_module, (char* )name.c_str(), module );\n\n"
+#endif
+
 #define MDL_REGISTER_CONSTANT \
 	"\tPyModule_AddIntConstant( module, \"%1\", %2 );\n"
 #define MDL_REGISTER_SIGNED_INT_CONSTANT \
@@ -161,8 +220,15 @@
 	"\tPyModule_AddObject( module, \"ScanCodesList\", scan_codes );\n\n"
 #define MDL_ADD_SCAN_CODE \
 	"\tPyDict_SetItemString( scan_codes, \"%1\", Py_BuildValue( \"%2\", %3 ) );\n"
+
+#if (VZ_PY_VER < 3)
 #define MDL_END_ENTRY_FUNCTION \
 	"}\n"
+#else
+#define MDL_END_ENTRY_FUNCTION \
+	"\treturn parent_module;\n" \
+	"}\n"
+#endif
 
 // Extention
 

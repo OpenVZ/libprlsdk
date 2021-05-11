@@ -25,6 +25,7 @@
 
 LEVEL = ../../../..
 include($$LEVEL/Sources/Virtuozzo.pri)
+include(../PrlPython.pri)
 
 TEMPLATE	= app
 TARGET		= sdk2python
