@@ -70,8 +70,9 @@
 #define PVS_GUEST_VER_WIN_WINDOWS_10		0x080F
 #define PVS_GUEST_VER_WIN_2016			0x0810
 #define PVS_GUEST_VER_WIN_2019			0x0811
+#define PVS_GUEST_VER_WIN_2022			0x0812
 // Add here a new OS version and assign it to PVS_GUEST_VER_WIN_LAST
-#define PVS_GUEST_VER_WIN_LAST			PVS_GUEST_VER_WIN_2019
+#define PVS_GUEST_VER_WIN_LAST			PVS_GUEST_VER_WIN_2022
 #define PVS_GUEST_VER_WIN_OTHER			0x08FF
 
 // PVS_GUEST_VER_WIN_OTHER is used for legacy guest OS (9x and below), but has maximal number 0xFF.
@@ -261,6 +262,7 @@
 #define PVS_GUEST_VER_NAME_WIN_WINDOWS8_1	"Windows 8.1"
 #define PVS_GUEST_VER_NAME_WIN_2016			"Windows Server 2016"
 #define PVS_GUEST_VER_NAME_WIN_2019			"Windows Server 2019"
+#define PVS_GUEST_VER_NAME_WIN_2022			"Windows Server 2022"
 #define PVS_GUEST_VER_NAME_WIN_OTHER		"Other Windows"
 
 #define PVS_GUEST_VER_NAME_LIN_REDHAT_OLD	"Red Hat Enterprise Linux 6 and older"
@@ -367,6 +369,7 @@ PRL_UNUSED static const char* PVS_GUEST_TO_STRING( unsigned int id )
 	case PVS_GUEST_VER_WIN_WINDOWS8_1:	return PVS_GUEST_VER_NAME_WIN_WINDOWS8_1;
 	case PVS_GUEST_VER_WIN_2016:		return PVS_GUEST_VER_NAME_WIN_2016;
 	case PVS_GUEST_VER_WIN_2019:		return PVS_GUEST_VER_NAME_WIN_2019;
+	case PVS_GUEST_VER_WIN_2022:		return PVS_GUEST_VER_NAME_WIN_2022;
 	case PVS_GUEST_VER_WIN_OTHER:		return PVS_GUEST_VER_NAME_WIN_OTHER;
 
 	case PVS_GUEST_VER_LIN_REDHAT:		return PVS_GUEST_VER_NAME_LIN_REDHAT_OLD;
