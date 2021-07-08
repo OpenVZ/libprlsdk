@@ -908,8 +908,8 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 																	int & interfaceSlot,
 																	PRL_MASS_STORAGE_INTERFACE_TYPE & interfaceType )
 {
-	bool bTryAddToIde = false;
-	interfaceType = PMS_IDE_DEVICE;
+	bool bTryAddToSata = false;
+	interfaceType = PMS_SATA_DEVICE;
 	unsigned int v = cfg.getVmSettings()->getVmCommonOptions()->getOsVersion();
 
 	// For Windows guest CD drive must be connected to IDE bus during
@@ -920,7 +920,7 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 		&& !(v == PVS_GUEST_VER_LIN_DEBIAN && devType == PDE_OPTICAL_DISK))
 	{
 		interfaceType = PMS_SCSI_DEVICE;
-		bTryAddToIde = true;
+		bTryAddToSata = true;
 	}
 
 	StackIndexLimit limit(cfg, devType);
@@ -931,12 +931,12 @@ bool PrlHandleVmDefaultConfig::calculateInterfaceParamsForHddCdrom( const CVmCon
 		interfaceSlot = GetFreeStackIndex( cfg, interfaceType, &limit );
 		if ( interfaceSlot < 0 )
 		{
-			if( bTryAddToIde )
+			if( bTryAddToSata )
 			{
 				if ( IS_VALID_MACOS_VERSION(v) )
 					return false;
 
-				interfaceType = PMS_IDE_DEVICE;
+				interfaceType = PMS_SATA_DEVICE;
 				interfaceSlot = GetFreeStackIndex( cfg, interfaceType, &limit );
 				if ( interfaceSlot < 0 )
 					return false;
