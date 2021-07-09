@@ -166,11 +166,11 @@ private:
 	static void SetupDeviceDefaults ( CVmConfiguration& cfg, DeviceList& devList );
 
 	/**
-	 * Adds default floppy to the VM configuration.
+	 * Adds default HDD with usb bus to the VM configuration.
 	 *
 	 * @param cfg - configuration to add device
 	 */
-	bool AddDefaultFloppy ( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice = 0);
+	bool AddDefaultUsbForUnattented ( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice = 0);
 
 	/**
 	 * Adds default CD-ROM to the VM configuration.
@@ -278,15 +278,6 @@ private:
 	 * @param devList - device list to add index
 	 */
 	static void SetupHardDiskDefaults ( uint osVersion, DeviceList& devList );
-
-	/**
-	 * Add floppy disk index into device list, if it should present in the OS
-	 * type and version, provided in the configuration.
-	 *
-	 * @param osVersion - version of the OS to setup defaults for
-	 * @param devList - device list to add index
-	 */
-	static void SetupFloppyDefaults ( uint osVersion, DeviceList& devList );
 
 	/**
 	 * Add CD-ROM disk index into device list, if it should present in the OS
