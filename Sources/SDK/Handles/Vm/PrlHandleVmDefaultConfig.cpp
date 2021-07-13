@@ -565,7 +565,6 @@ void PrlHandleVmDefaultConfig::SetupDeviceDefaults ( CVmConfiguration& cfg, Devi
 	uint osVersion = GetOsVersion( cfg );
 
 	SetupHardDiskDefaults( osVersion, devList );
-	SetupFloppyDefaults( osVersion, devList );
 	SetupCdRomDefaults( osVersion, devList );
 	SetupSerialPortDefaults( osVersion, devList );
 	SetupSoundDefaults( osVersion, devList );
@@ -594,28 +593,6 @@ void PrlHandleVmDefaultConfig::SetupHardDiskDefaults( uint, DeviceList& devList 
 {
 	devList.append( PDE_HARD_DISK );
 }
-
-
-void PrlHandleVmDefaultConfig::SetupFloppyDefaults( uint osVersion, DeviceList& devList )
-{
-	switch( PVS_GET_GUEST_TYPE(osVersion) )
-	{
-		case PVS_GUEST_TYPE_SOLARIS:
-			break;
-
-		case PVS_GUEST_TYPE_LINUX:
-			break;
-
-		// XXX: disable floppy in default MacOS configuration
-		case PVS_GUEST_TYPE_MACOS:
-			break;
-
-		default:
-			devList.append( PDE_FLOPPY_DISK );
-			break;
-	}
-}
-
 
 void PrlHandleVmDefaultConfig::SetupCdRomDefaults( uint, DeviceList& devList )
 {
@@ -706,8 +683,8 @@ void PrlHandleVmDefaultConfig::SetupUsbDefaults( uint osVersion, DeviceList& dev
         case PVS_GUEST_VER_WIN_OTHER:
             return ;
 
-        case PVS_GUEST_VER_OS2_ECS11:
-        case PVS_GUEST_VER_OS2_ECS12:
+		case PVS_GUEST_VER_OS2_ECS11:
+		case PVS_GUEST_VER_OS2_ECS12:
             devList.append( PDE_USB_DEVICE );
             return;
 
@@ -724,8 +701,9 @@ void PrlHandleVmDefaultConfig::SetupUsbDefaults( uint osVersion, DeviceList& dev
             break;
 
 		case PVS_GUEST_TYPE_WINDOWS:
-            devList.append( PDE_USB_DEVICE );
-            break;
+			devList.append( PDE_USB_DEVICE );
+			devList.append( PDE_USB_HARD_DISK);
+			break;
 
 		case PVS_GUEST_TYPE_MACOS:
 			devList.append( PDE_USB_DEVICE );
@@ -739,17 +717,13 @@ void PrlHandleVmDefaultConfig::SetupUsbDefaults( uint osVersion, DeviceList& dev
 	}
 }
 
-bool PrlHandleVmDefaultConfig::AddDefaultFloppy( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice )
+bool PrlHandleVmDefaultConfig::AddDefaultUsbForUnattented( CVmConfiguration& cfg, PRL_HANDLE_PTR phDevice )
 {
-	CVmFloppyDisk* floppy = new CVmFloppyDisk();
-
-	PVE::FloppyEmulatedType emulType = PVE::FloppyDiskImage;
-
-	uint devIdx = GetUnusedDeviceIndex<CVmFloppyDisk >(cfg.getVmHardwareList()->m_lstFloppyDisks);
+	uint devIdx = GetUnusedDeviceIndex<CVmHardDisk >(cfg.getVmHardwareList()->m_lstHardDisks);
 
 	unsigned int t = GetOsType(cfg);
 	unsigned int v = GetOsVersion(cfg);
-	// Set default floppy image path
+
 	QString systemName;
 	if (t == PVS_GUEST_TYPE_OS2)
 	{
@@ -774,39 +748,43 @@ bool PrlHandleVmDefaultConfig::AddDefaultFloppy( CVmConfiguration& cfg, PRL_HAND
 
 	QString friendlyName = systemName;
 
-	PVE::DeviceConnectedState connectState = PVE::DeviceDisconnected;
-	if ((t == PVS_GUEST_TYPE_MSDOS) ||
-		(t == PVS_GUEST_TYPE_OS2) ||
-		IS_WINDOWS(v))
+	PRL_MASS_STORAGE_INTERFACE_TYPE interfaceType = PMS_SCSI_DEVICE;
+	int interfaceSlot = -1;
+
+	// Here we are using the PMS_SCSI_DEVICE interface type to correctly count the interfaceSlot,
+	// this allows us to avoid duplicate names for usb and scsi.
+	// We cannot create two sda disks for usb and scsi respectivly
+	if( !calculateInterfaceParamsForHddCdrom( cfg, PDE_HARD_DISK, interfaceSlot, interfaceType ) )
 	{
-		connectState = PVE::DeviceConnected;
+		return false;
 	}
 
-	if (IsServerPresent() && (t != PVS_GUEST_TYPE_OS2) && !IS_WINDOWS(v))
-	{
-		if (m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.size())
-		{
-			friendlyName = m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.value(0)->getDeviceName();
-			systemName = m_pSrvConfig->GetSrvConfig().m_lstFloppyDisks.value(0)->getDeviceId();
-			emulType = PVE::RealFloppyDisk;
-		}
-	}
+	CVmHardDisk* hdd = new CVmHardDisk();
 
-	floppy->setIndex(devIdx);
-	floppy->setEmulatedType(emulType);
-	floppy->setEnabled(PVE::DeviceEnabled);
-	floppy->setConnected(connectState);
-	floppy->setUserFriendlyName(friendlyName);
-	floppy->setSystemName(systemName);
+	int hddSize = 2048;
 
-	cfg.getVmHardwareList()->addFloppyDisk(floppy);
+	hdd->setIndex( devIdx );
+	hdd->setEnabled( PVE::DeviceEnabled );
+	hdd->setInterfaceType( PMS_USB_DEVICE );
 
-	SortDeviceListByIndex<CVmFloppyDisk >(cfg.getVmHardwareList()->m_lstFloppyDisks);
+	PRL_BOOL bPlainDisk = PRL_FALSE;
+
+	(void) m_pVm->GetServerDisp()->IsFeatureSupported( PFSM_DEFAULT_PLAINDISK_ALLOWED, &bPlainDisk );
+
+	hdd->setDiskType( bPlainDisk ? PHD_PLAIN_HARD_DISK: PHD_EXPANDING_HARD_DISK );
+	hdd->setStackIndex( interfaceSlot );
+	hdd->setSize( hddSize );
+	hdd->setUserFriendlyName( friendlyName );
+	hdd->setSystemName( systemName );
+
+	cfg.getVmHardwareList()->addHardDisk( hdd );
+
+	SortDeviceListByIndex<CVmHardDisk >(cfg.getVmHardwareList()->m_lstHardDisks);
 
 	if (phDevice)
 	{
 		*phDevice = PRL_INVALID_HANDLE;
-		PrlHandleVmDevice* pVmDevice = new PrlHandleVmDeviceFloppy(m_pVm, floppy);
+		PrlHandleVmDevice* pVmDevice = new PrlHandleVmDeviceHardDrive(m_pVm, hdd);
 		if (pVmDevice)
 			*phDevice = pVmDevice->GetHandle();
 	}
@@ -1453,8 +1431,8 @@ bool PrlHandleVmDefaultConfig::AddDefaultDevice( CVmConfiguration& cfg,
 {
 	switch ( devType )
 	{
-		case PDE_FLOPPY_DISK:
-			return AddDefaultFloppy( cfg, phDevice );
+		case PDE_USB_HARD_DISK:
+			return AddDefaultUsbForUnattented( cfg, phDevice );
 
 		case PDE_OPTICAL_DISK:
 			return AddDefaultCdRom( cfg, phDevice );
@@ -1496,10 +1474,6 @@ bool PrlHandleVmDefaultConfig::IsDefaultDeviceNeeded( PRL_UINT32 osVersion,
 
 	switch ( deviceType )
 	{
-		case PDE_FLOPPY_DISK:
-			SetupFloppyDefaults( osVersion, devList );
-			break;
-
 		case PDE_OPTICAL_DISK:
 			SetupCdRomDefaults( osVersion, devList );
 			break;
