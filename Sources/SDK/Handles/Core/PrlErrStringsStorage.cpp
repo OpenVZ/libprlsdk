@@ -10806,4 +10806,53 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_RSA_ENCRYPTION_FAILED,
+		tr( "Internal encryption failure." ),
+		tr( "Verify RSA keys deployment." ),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_RSA_DECRYPTION_FAILED,
+		tr( "Internal decryption failure." ),
+		tr( "Verify RSA keys deployment." ),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_PUBLIC_KEY_NOT_AUTHORIZED,
+		tr( "Public key not authorized on the destination." ),
+		tr( "Append it to authorized_keys file to permit access." ),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_PUBLIC_KEY_NOT_EXISTS,
+		tr( "Public key file does not exist." ),
+		tr( "Generate it to use RSA authentication." ),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_INVALID_PUBLIC_KEY,
+		tr( "Public key file is corrupted." ),
+		tr( "Regenerate it using ssh-keygen utility." ),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_PRIVATE_KEY_NOT_EXISTS,
+		tr( "Private key file does not exist." ),
+		tr( "Generate it to use RSA authentication." ),
+		false,
+		PMT_CRITICAL
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_INVALID_PRIVATE_KEY,
+		tr( "Private key file is corrupted." ),
+		tr( "Regenerate it in the PEM format using the ssh-keygen utility." ),
+		false,
+		PMT_CRITICAL
+		);
 }
