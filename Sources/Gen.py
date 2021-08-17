@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 #
 # Gen.py
 #
@@ -25,7 +25,7 @@
 
 import os
 import sys
-import ConfigParser
+import configparser
 import time
 import subprocess
 import optparse
@@ -43,7 +43,7 @@ file_path = os.path.split(os.path.abspath(__file__))[0]
 if file_path == '':
 	file_path = os.path.abspath(os.path.getcwd())
 
-cfg = ConfigParser.ConfigParser()
+cfg = configparser.ConfigParser()
 cfg.readfp(open('Build/Build.cfg'))
 
 fd = open('../Makefile.version')
@@ -57,7 +57,7 @@ fd.close()
 try:
 	fd = open('Build/Build.pri', 'w')
 except IOError:
-	print 'Failed to open "Build/Build.pri"'
+	print('Failed to open "Build/Build.pri"')
 	sys.exit(1)
 
 fd.write("DEFINES += PRL_PROD_SERVER=1\n")
@@ -112,7 +112,7 @@ if opts.pysdk:
 	try:
 		fd = open('SDK/Python/PrlPython.pri', 'w')
 	except IOError:
-		print 'Failed to open "SDK/Python/PrlPython.pri"'
+		print('Failed to open "SDK/Python/PrlPython.pri"')
 		sys.exit(1)
 
 	fd.write('\n')
@@ -130,12 +130,12 @@ if opts.pysdk:
 	python_include_path = os.path.abspath(python_include_path)
 
 	if not os.path.exists(os.path.join(python_include_path, 'Python.h')):
-		print
-		print 'Error (!) Python headers were not found at path (%s)' % python_include_path
-		print 'Description:'
-		print 'You probably need to install python-devel package or update this script'
-		print 'to choose your python package from the correct path'
-		print
+		print('')
+		print('Error (!) Python headers were not found at path (%s)' % python_include_path)
+		print('Description:')
+		print('You probably need to install python-devel package or update this script')
+		print('to choose your python package from the correct path')
+		print('')
 
 		sys.exit(1)
 

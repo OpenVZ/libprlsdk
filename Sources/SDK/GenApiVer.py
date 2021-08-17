@@ -27,7 +27,7 @@
 #
 
 import sys
-import ConfigParser
+import configparser
 from datetime import datetime
 from os.path import dirname, abspath, join, basename
 
@@ -102,11 +102,11 @@ def gen_sdk_api_ver(sdk_major):
     guard_def = '__%s__' % basename(target_header).upper().replace('.', '_')
 
     ver_macroses = [PRL_API_VER_MACRO % (1, 0, 1)]
-    for i in xrange(2, sdk_major + 1):
+    for i in range(2, sdk_major + 1):
         ver_macroses.append(PRL_API_VER_MACRO % (i, i, 0))
     ver_macroses = '\n'.join(ver_macroses)
 
-    f = open(target_header, 'wb')
+    f = open(target_header, 'w')
     f.write(GLOBAL_TEMPLATE % {
         'header': HEADER % (basename(target_header), datetime.now().year),
         'guard_def': guard_def,
@@ -119,7 +119,7 @@ def gen_sdk_api_ver(sdk_major):
 
 def main():
     build_cfg = join(__full_file_path__, '../Build/Build.cfg')
-    cfg = ConfigParser.ConfigParser()
+    cfg = configparser.ConfigParser()
     cfg.readfp(open(build_cfg, 'r'))
     gen_sdk_api_ver(int(cfg.get('sdk', 'major')))
     return 0

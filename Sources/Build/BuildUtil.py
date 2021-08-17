@@ -59,15 +59,9 @@ import fileinput
 import getpass
 import socket
 import random
-import ConfigParser
 import re
 import xml.dom.minidom
 import multiprocessing
-
-try:
-    import cStringIO as StringIO
-except:
-    import StringIO
 
 
 #: Full path of this python file module
@@ -90,7 +84,7 @@ def TRACE(msg=""):
         time.strftime('%H:%M:%S', time.localtime()),
         callersname(),
         msg)
-    print message
+    print(message)
     return message + '\n'
 
 def os_exec(str, silent = True, envp = None):
@@ -100,7 +94,7 @@ def os_exec(str, silent = True, envp = None):
     """
 
     if not silent:
-        print 'cmd "%s" ...' % str
+        print('cmd "%s" ...' % str)
 
     cmd = subprocess.Popen(
         args = str,
@@ -112,8 +106,8 @@ def os_exec(str, silent = True, envp = None):
     ret = cmd.returncode
 
     if ret and not silent: # - No matter if its silent of not we print an error
-        print '  (!) cmd result = %i ' % (ret)
-        print
+        print('  (!) cmd result = %i ' % (ret))
+        print('')
 
     return ret
 
@@ -127,7 +121,7 @@ def os_exec_pipe(str, silent = True, envp = None):
     """
 
     if not silent:
-        print 'cmd "%s" ...' % str
+        print('cmd "%s" ...' % str)
 
     cmd = subprocess.Popen(
         args = str,
@@ -139,8 +133,8 @@ def os_exec_pipe(str, silent = True, envp = None):
     ret = cmd.returncode
 
     if ret and not silent: # - No matter if its silent of not we print an error
-        print '  (!) cmd result = %i ' % (ret)
-        print
+        print('  (!) cmd result = %i ' % (ret))
+        print('')
 
     return ret, out
 
@@ -198,9 +192,9 @@ def mkdir_ensure(path):
         try:
             os.mkdir(p)
 
-        except Exception, e:
-            print ' FAILED to create directory %s ' % p
-            print e
+        except Exception as e:
+            print(' FAILED to create directory %s ' % p)
+            print(e)
             pass
 
 def get_cpu_number():
@@ -235,8 +229,8 @@ def get_cpu_number():
                 if line.find('processor', 0) != -1:
                     ret = ret + 1
             fd.close()
-    except Exception, err:
-        print 'Unable get number of CPUs \'%s\', use default value (1)' % err
+    except Exception as err:
+        print('Unable get number of CPUs \'%s\', use default value (1)' % err)
         ret = 1
         pass
 
@@ -245,5 +239,5 @@ def get_cpu_number():
 
 if __name__ == '__main__':
 
-    print 'This module is not supposed to be run inteructivally.'
+    print('This module is not supposed to be run inteructivally.')
 

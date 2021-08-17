@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 #
 # BuildPyPrlSdk.py
 #
@@ -44,7 +44,7 @@ def generate_pri(include_path, py_ver, lflags=None):
 	try:
 		fd = open( 'PrlPython.pri', 'w' )
 	except IOError:
-		print 'Failed to open "PrlPython.pri"'
+		print('Failed to open "PrlPython.pri"')
 		sys.exit(1)
 
 	fd.write( '\n' )
@@ -99,9 +99,9 @@ if '__main__' == __name__:
 	cwd = os.getcwd()
 	os.chdir(__full_file_path__)
 
-	print '\nBuilding binding for %s\n' % py_ver
+	print('\nBuilding binding for %s\n' % py_ver)
 	lflags = None
-	if 'linux2' == sys.platform:
+	if sys.platform.startswith('linux'):
 		python_path = os.path.join('/usr/include', py_ver)
 	elif 'darwin' == sys.platform:
 		# py_ver is smth. like python2.x
@@ -116,7 +116,7 @@ if '__main__' == __name__:
 				_winreg.HKEY_LOCAL_MACHINE,
 				r'Software\Python\PythonCore\%s\InstallPath' % py_ver[6:])
 		except WindowsError:
-			print 'Failed to open registry key for %s' % py_ver
+			print('Failed to open registry key for %s' % py_ver)
 			sys.exit(2)
 		python_inst_dir = _winreg.EnumValue(h, 0)[1]
 		python_path = escape_backslash(
@@ -127,7 +127,7 @@ if '__main__' == __name__:
 		RuntimeError('Unsupported platform for "%s" script' % __full_file_path__)
 	python_header = os.path.join(python_path, 'Python.h')
 	if not os.path.isfile(python_header):
-		print 'Path doesnt exist: "%s"' % python_header
+		print('Path doesnt exist: "%s"' % python_header)
 		sys.exit(1)
 	check_retcode(BuildUtil.os_exec('qmake-qt4'))
 	check_retcode(BuildUtil.os_exec('%s distclean' % make_cmd))
