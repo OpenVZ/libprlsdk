@@ -161,6 +161,7 @@ uint PrlHandleVmDefaultConfig::GetDefaultRamSize (uint osVersion, uint hostRam )
 		return CalculateDefaultWindowsRamSize( hostRam );
 
 	case PVS_GUEST_VER_WIN_WINDOWS10:
+	case PVS_GUEST_VER_WIN_WINDOWS11:
 	case PVS_GUEST_VER_WIN_2016:
 	case PVS_GUEST_VER_WIN_2019:
 	case PVS_GUEST_VER_WIN_2022:
