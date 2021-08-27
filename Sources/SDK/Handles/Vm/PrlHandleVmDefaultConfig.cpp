@@ -767,6 +767,7 @@ bool PrlHandleVmDefaultConfig::AddDefaultUsbForUnattented( CVmConfiguration& cfg
 	hdd->setIndex( devIdx );
 	hdd->setEnabled( PVE::DeviceEnabled );
 	hdd->setInterfaceType( PMS_USB_DEVICE );
+	hdd->setRemovable(true);
 
 	PRL_BOOL bPlainDisk = PRL_FALSE;
 
