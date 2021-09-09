@@ -4106,6 +4106,46 @@ PRL_METHOD( PrlDispCfg_SetDefaultBackupDirectory ) (
 	return (pDispConfig->SetDefaultBackupDirectory(sBackupDirectory));
 }
 
+PRL_METHOD( PrlDispCfg_SetBackupMode ) (
+		PRL_HANDLE hDispConfig,
+		PRL_VM_BACKUP_MODE sBackupMode)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, sBackupMode=%.8X)",
+		__FUNCTION__,
+		hDispConfig,
+		sBackupMode
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->SetBackupMode(sBackupMode));
+}
+
+PRL_METHOD( PrlDispCfg_GetBackupMode ) (
+		PRL_HANDLE hDispConfig,
+		PRL_VM_BACKUP_MODE_PTR pnBackupMode)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, pnBackupMode=%.8X)",
+		__FUNCTION__,
+		hDispConfig,
+		pnBackupMode
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) || PRL_WRONG_PTR(pnBackupMode))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->GetBackupMode(pnBackupMode));
+}
+
 PRL_METHOD( PrlDispCfg_GetBackupTimeout ) (
 	PRL_HANDLE hDispConfig,
 	PRL_UINT32_PTR pnBackupTimeout

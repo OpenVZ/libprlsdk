@@ -391,6 +391,8 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsBackupUserPasswordEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetBackupUserPasswordEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetDefaultBackupDirectory ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetDefaultBackupDirectory ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR(	PrlDispCfg_SetBackupMode ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR(	PrlDispCfg_GetBackupMode ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetBackupTimeout ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetBackupTimeout ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_ArePluginsEnabled ) \
