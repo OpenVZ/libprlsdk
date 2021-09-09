@@ -443,6 +443,31 @@ PRL_RESULT PrlHandleDispConfig::SetDefaultBackupDirectory(PRL_CONST_STR sBackupD
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleDispConfig::SetBackupMode(PRL_VM_BACKUP_MODE sBackupMode)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	if (sBackupMode != PBM_PUSH && sBackupMode != PBM_PUSH_REVERSED_DELTA)
+		return (PRL_ERR_INVALID_ARG);
+
+	if (m_DispConfig.getBackupSourcePreferences()->getBackupMode() == nullptr)
+		return PRL_ERR_BACKUP_UNSUPPORTED_SETTING;
+
+	m_DispConfig.getBackupSourcePreferences()->getBackupMode()->setMode(sBackupMode);
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleDispConfig::GetBackupMode(PRL_VM_BACKUP_MODE_PTR pnBackupMode)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+
+	if (m_DispConfig.getBackupSourcePreferences()->getBackupMode() == nullptr)
+		return PRL_ERR_BACKUP_UNSUPPORTED_SETTING;
+
+	*pnBackupMode = m_DispConfig.getBackupSourcePreferences()->getBackupMode()->getMode();
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleDispConfig::GetBackupTimeout(PRL_UINT32_PTR pnTimeout)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

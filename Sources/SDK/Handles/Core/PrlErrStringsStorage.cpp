@@ -10572,6 +10572,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_BACKUP_UNSUPPORTED_SETTING,
+		tr( "This backup setting is not supported by the server." ),
+		tr( ""),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_BUSE_NOT_MOUNTED,
 		tr( "The BUSE filesystem is not mounted." ),
 		tr( "Make sure that the \"buse\" package is installed and the \"bused\" daemon is running." ),
