@@ -1969,6 +1969,16 @@ typedef enum _PRL_VM_BACKUP_TYPE
 } PRL_VM_BACKUP_TYPE;
 typedef PRL_VM_BACKUP_TYPE* PRL_VM_BACKUP_TYPE_PTR;
 
+/**
+ * Information about used backup algorithm
+ */
+typedef enum _PRL_VM_BACKUP_MODE
+{
+	PBM_PUSH  = 0,
+	PBM_PUSH_REVERSED_DELTA = 1
+} PRL_VM_BACKUP_MODE;
+typedef PRL_VM_BACKUP_MODE* PRL_VM_BACKUP_MODE_PTR;
+
 /*
  * Proxy connection status
  */
