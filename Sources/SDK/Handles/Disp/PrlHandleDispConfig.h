@@ -459,6 +459,22 @@ public:
 	PRL_RESULT SetDefaultBackupDirectory(PRL_CONST_STR sBackupServer);
 
 	/**
+	 * Sets backup mode
+	 * @param [in] setting value
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetBackupMode(PRL_VM_BACKUP_MODE sBackupMode);
+
+	/**
+	 * Gets backup mode
+	 * @param [out] buffer for store result
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetBackupMode(PRL_VM_BACKUP_MODE_PTR pnBackupMode);
+
+	/**
 	 * Get backup timeout
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:

@@ -5391,6 +5391,41 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_2,
 		PRL_CONST_STR sBackupDirectory
 		) );
 
+/* \Sets backup mode for the Dispatcher Service.
+   Parameters
+   hDispConfig :                A handle of type PHT_DISP_CONFIG.
+   nBackupMode :                [in] backup algorithm to use for backups via Dispatcher Service.
+                                PBM_PUSH and PBM_PUSH_REVERSED_DELTA values.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlDispCfg_SetBackupMode, (
+		PRL_HANDLE hDispConfig,
+		PRL_VM_BACKUP_MODE nBackupMode
+		) );
+
+
+/* \Gets backup mode for the Dispatcher Service.
+   Parameters
+   hDispConfig :                A handle of type PHT_DISP_CONFIG.
+   pnBackupMode :               [out] A pointer to a buffer that receives
+                                the result.
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlDispCfg_GetBackupMode, (
+		PRL_HANDLE hDispConfig,
+		PRL_VM_BACKUP_MODE_PTR pnBackupMode
+		) );
+
 /* Get backup timeout in seconds.
    Parameters
    hDispConfig :             A handle of type PHT_DISP_CONFIG.
