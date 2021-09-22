@@ -10580,6 +10580,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_BACKUP_O_DIRECT_CANNOT_BE_ENABLED_IN_DIR,
+		tr( "The specified directory resides on a filesystem that does not support non-cached I/O operations." ),
+		tr( ""),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_BUSE_NOT_MOUNTED,
 		tr( "The BUSE filesystem is not mounted." ),
 		tr( "Make sure that the \"buse\" package is installed and the \"bused\" daemon is running." ),
@@ -10860,6 +10868,14 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_INVALID_PRIVATE_KEY,
 		tr( "Private key file is corrupted." ),
 		tr( "Regenerate it in the PEM format using the ssh-keygen utility." ),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DIRECTORY_ACCESS_DENIED,
+		tr( "The access to the directory is denied." ),
+		tr( "The access to the directory is not allowed, or search permission is denied for one of the directories in the path." ),
 		false,
 		PMT_CRITICAL
 		);
