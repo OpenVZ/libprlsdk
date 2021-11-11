@@ -29,10 +29,6 @@
 #include "PrlHandleVmEvent.h"
 #include <prlcommon/Std/PrlAssert.h>
 
-PrlQuestionsList::PrlQuestionsList()
-: m_QuestionsListMutex(QMutex::Recursive)
-{}
-
 void PrlQuestionsList::RegisterQuestionObject(const PrlHandleVmEventPtr &pQuestion)
 {
 	QMutexLocker _lock(&m_QuestionsListMutex);

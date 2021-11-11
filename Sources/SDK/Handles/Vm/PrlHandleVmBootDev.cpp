@@ -120,11 +120,6 @@ PRL_RESULT PrlHandleVmBootDev::GetSequenceIndex(PRL_UINT32_PTR pnSequenceIndex)
 	return (PRL_ERR_SUCCESS);
 }
 
-static bool bootingNumberLessThan(const CVmBootDeviceBase* pBD1, const CVmBootDeviceBase* pBD2)
-{
-	return pBD1->getBootingNumber() < pBD2->getBootingNumber();
-}
-
 PRL_RESULT PrlHandleVmBootDev::SetSequenceIndex(PRL_UINT32 nSequenceIndex)
 {
 	SYNCHRO_PARENT_VM_CONFIG
@@ -133,9 +128,12 @@ PRL_RESULT PrlHandleVmBootDev::SetSequenceIndex(PRL_UINT32 nSequenceIndex)
 
 	BootingOrder* pBO = m_pVm->GetVmConfig()
 							.getVmSettings()->getVmStartupOptions()->getBootingOrder();
-	qSort(pBO->m_lstBootDevice.begin(),
-		  pBO->m_lstBootDevice.end(),
-		  bootingNumberLessThan);
+
+	std::sort(pBO->m_lstBootDevice.begin(), pBO->m_lstBootDevice.end(),
+			  [](const CVmBootDeviceBase* lhs, const CVmBootDeviceBase* rhs)
+	{
+		return lhs->getBootingNumber() < rhs->getBootingNumber();
+	});
 
 	return (PRL_ERR_SUCCESS);
 }

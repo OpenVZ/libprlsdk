@@ -27,7 +27,7 @@ TEMPLATE = lib
 CONFIG += shared
 CONFIG -= static
 
-QT = core network xml
+QT = core network xml http
 
 include(SDK.deps)
 include(SDKConfig.pri)

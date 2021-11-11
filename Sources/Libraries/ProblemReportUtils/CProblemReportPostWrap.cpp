@@ -29,7 +29,7 @@
 #include <QtCore/QUrl>
 #include <QtCore/QPointer>
 #include <QtCore/QStringList>
-#include <QtCore/QtConcurrentRun>
+#include <QtConcurrent/QtConcurrent>
 #include <QtNetwork/QNetworkProxy>
 #include <QtNetwork/QAuthenticator>
 #include <QtNetwork/QNetworkRequest>
@@ -416,7 +416,7 @@ void CProblemReportPostWrap::onRequestFinished( QNetworkReply * pReply )
 			{
 				QString strResponce = pReply->readAll();
 				WRITE_TRACE( DBG_FATAL, "request finished with data = %s", QSTR2UTF8( strResponce ) );
-				m_lststrResponceParams = strResponce.split(";", QString::SkipEmptyParts);
+				m_lststrResponceParams = strResponce.split(";", Qt::SkipEmptyParts);
 				res = PRL_ERR_SUCCESS;
 			}
 			break;

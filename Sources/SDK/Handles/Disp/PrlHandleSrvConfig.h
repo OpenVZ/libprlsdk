@@ -481,7 +481,7 @@ public:
 	/**
 	 * Returns pointer to internal server config data synchronization object
 	 */
-	inline QMutex *GetSynchroObject() {return (&m_HandleMutex);}
+	inline QRecursiveMutex *GetSynchroObject() {return (&m_HandleMutex);}
 	/**
 	 * Returns host hardware info object for internal SDK purposes
 	 */

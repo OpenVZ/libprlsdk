@@ -48,7 +48,7 @@ public:
 	 */
 	PrlProblemReportAssembler(const PrlHandleLocalJobPtr &pAssemblyReportJob,
 			SmartPtr<CProblemReport> pProblemReport,
-			QMutex *pMutex,
+			QRecursiveMutex *pMutex,
 			PRL_UINT32 nFlags);
 
 private:
@@ -65,7 +65,7 @@ private:
 	/** Pointer to the processing problem report object */
 	SmartPtr<CProblemReport> m_pProblemReport;
 	/** Pointer to the synchronization access to problem report object mutex */
-	QMutex *m_pMutex;
+	QRecursiveMutex *m_pMutex;
 	/** Bitset of flags which contains actions to be applied to problem report object */
 	PRL_UINT32 m_nFlags;
 	/** Sign which indicates that job was cancelled */

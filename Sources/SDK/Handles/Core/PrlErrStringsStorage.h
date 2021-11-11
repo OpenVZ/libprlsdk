@@ -33,6 +33,7 @@
 #include "SDK/Include/PrlEnums.h"
 #include <QMap>
 #include <QMutex>
+#include <QRecursiveMutex>
 #include <QString>
 #include <QObject>
 
@@ -179,7 +180,7 @@ private://Global objects
 	/** Pointer to global errors strings storage object */
 	static PrlErrStringsStorage *g_pErrStringsStorage;
 	/** Global errors strings storage access synchronization object */
-	static QMutex *g_pErrorsStringsStorageMutex;
+	static QRecursiveMutex *g_pErrorsStringsStorageMutex;
 };
 
 #endif // __VIRTUOZZO_ERR_STRINGS_STORAGE_H__

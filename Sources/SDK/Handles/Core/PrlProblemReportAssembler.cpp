@@ -38,7 +38,7 @@ using namespace PrlMiscellaneous;
 namespace {
 struct CSimpleReportWrapper
 {
-	CSimpleReportWrapper(const SmartPtr<CProblemReport> &pReport, QMutex *pMutex)
+	CSimpleReportWrapper(const SmartPtr<CProblemReport> &pReport, QRecursiveMutex *pMutex)
 	: m_lock(pMutex), m_pProblemReport(pReport)
 	{}
 	CProblemReport &GetReportReference()
@@ -55,7 +55,7 @@ private:
 
 PrlProblemReportAssembler::PrlProblemReportAssembler(const PrlHandleLocalJobPtr &pAssemblyReportJob,
 		SmartPtr<CProblemReport> pProblemReport,
-		QMutex *pMutex,
+		QRecursiveMutex *pMutex,
 		PRL_UINT32 nFlags)
 :
 m_pAssemblyReportJob(pAssemblyReportJob), m_pProblemReport(pProblemReport), m_pMutex(pMutex), m_nFlags(nFlags),

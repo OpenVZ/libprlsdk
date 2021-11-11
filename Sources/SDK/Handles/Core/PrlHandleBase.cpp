@@ -41,14 +41,14 @@ static PRL_UINT32 s_UniqueHandle = 0x0000FACE;
 extern PRL_UINT32 g_SdkSequenceNum;
 
 HandlesMap *PrlHandleBase::s_pHandlesMap = new HandlesMap;
-QMutex *PrlHandleBase::s_pHandlesMapMutex = new QMutex(QMutex::Recursive);
+QRecursiveMutex *PrlHandleBase::s_pHandlesMapMutex = new QRecursiveMutex{};
 
 /**
  * Object's constructor is protected to prevent direct
  * object creation in non-inherited blocks of code.
  */
 PrlHandleBase::PrlHandleBase( PRL_HANDLE_TYPE type )
-:	m_HandleMutex(QMutex::Recursive), m_HandleType( type )
+:	m_HandleType( type )
 {
 	QMutexLocker _lock(s_pHandlesMapMutex);
 

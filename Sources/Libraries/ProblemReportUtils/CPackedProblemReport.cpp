@@ -643,7 +643,7 @@ QStringList CPackedProblemReport::createReportFilesList()
 	lstFiles += QFileInfo(m_strTempDirPath + QString("/") + PR_PACKED_REP_MAIN_XML).absoluteFilePath();
 
 	lstFiles.remove( QString() );
-	return lstFiles.toList();
+	return lstFiles.values();
 }
 
 PRL_RESULT CPackedProblemReport::packReport()

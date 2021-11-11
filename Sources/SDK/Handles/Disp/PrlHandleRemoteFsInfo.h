@@ -95,7 +95,7 @@ public:
 	/**
 	 * Returns pointer to internal VM event data synchronization object
 	 */
-	inline QMutex *GetSynchroObject() {return (&m_HandleMutex);}
+	inline QRecursiveMutex *GetSynchroObject() {return (&m_HandleMutex);}
 
 private:
 	/// RemoteFsInfo object

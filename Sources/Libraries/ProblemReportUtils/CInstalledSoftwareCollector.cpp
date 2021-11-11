@@ -34,7 +34,7 @@
 #include <QTimer>
 #include <QString>
 #include <QDir>
-#include <QtConcurrentRun>
+#include <QtConcurrent/QtConcurrent>
 #include <QFutureWatcher>
 #include <QFuture>
 #include "Build/Current.ver"
@@ -75,7 +75,7 @@ public:
 	bool							m_deleteOnComplete;
 	bool							m_isRunning;
 #ifdef _LIN_
-	QWeakPointer<QProcess>			m_shelProcess;
+	QSharedPointer<QProcess>			m_shelProcess;
 #endif//_LIN_
 #ifdef _WIN_
 	QFutureWatcher<QString>			m_appListSearchWatcher;
@@ -264,7 +264,7 @@ static QString getInstalledSoftwareListLin()
 static QProcess* executeShellCommandASync( const QString& command, QObject* parent )
 {
 	QProcess* process = new QProcess( parent );
-	process->start( command );
+	process->start( command, QStringList{} );
 	if ( ! process->waitForStarted() )
 		return NULL;
 
@@ -321,9 +321,9 @@ bool CInstalledSoftwareCollectorPrivate::startCollecting()
 #endif
 #ifdef _LIN_
 	// for first valid command from list
-	foreach( const QString& command, g_LIST_SHELL_COMMANDS_GET_INSTALLED_LIST )
+	for( const QString& command : g_LIST_SHELL_COMMANDS_GET_INSTALLED_LIST )
 	{
-		m_shelProcess = executeShellCommandASync( command, this );
+		m_shelProcess = QSharedPointer<QProcess>{executeShellCommandASync( command, this )};
 		if ( m_shelProcess.data() )
 		{
 			bool connected = connect( m_shelProcess.data(), SIGNAL(finished(int,QProcess::ExitStatus)),

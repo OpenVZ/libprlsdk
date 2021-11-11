@@ -43,7 +43,7 @@ public:
 	/**
 	 * Default class constructor
 	 */
-	PrlQuestionsList();
+	PrlQuestionsList() = default;
 
 	/**
 	 * Registries question handle at questions list
@@ -79,7 +79,7 @@ private:
 	/**
 	 * Questions list access synchronization object
 	 */
-	QMutex m_QuestionsListMutex;
+	QRecursiveMutex m_QuestionsListMutex;
 };
 
 #endif // __VIRTUOZZO_QUESTIONS_LIST_H__

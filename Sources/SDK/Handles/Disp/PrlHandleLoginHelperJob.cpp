@@ -84,7 +84,7 @@ QString PrlHandleLoginHelperJob::EncodePassword(const QString &sPassword)
     if (pClient && pClient->serverProtocolVersion(ver) && IOPROTOCOL_NEW_LOGIN_SUPPORT(ver))
 	{
 		QByteArray b;
-		b.append(sPassword.leftJustified(MAX_PASSWORD_LENGTH, QChar::Null));
+		b.append(sPassword.leftJustified(MAX_PASSWORD_LENGTH, QChar::Null).toUtf8());
 		return b.toBase64();
 	}
 	return sPassword;

@@ -107,7 +107,7 @@ private:
 	/** Control instances validity map */
 	static PrlControlValidityMap g_ControlValidityMap;
 	/** Control instances validity map access synchronization object */
-	static QMutex g_ControlValidityMapMutex;
+	static QRecursiveMutex g_ControlValidityMapMutex;
 
 private:
 	/**

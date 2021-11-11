@@ -27,6 +27,7 @@
 
 #include <QList>
 #include <QMutex>
+#include <QRecursiveMutex>
 #include "PrlHandleBase.h"
 #include "EventDispatcher.h"
 
@@ -77,14 +78,12 @@ public:
 private:
 	Private(const Private &);
 	const Private &operator=(const Private &);
-	QMutex m_handlersLock;
+	QRecursiveMutex m_handlersLock;
 	QList<Handler> m_handlers;
 };
 
-EventDispatcher::Private::Private():
-	m_handlersLock(QMutex::Recursive)
-{
-}
+EventDispatcher::Private::Private()
+{}
 
 void EventDispatcher::Private::regHandler(void *const owner,
 										  const PRL_EVENT_HANDLER_PTR handler,

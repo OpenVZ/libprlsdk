@@ -34,7 +34,7 @@
 #include <QString>
 
 #define SYNCHRO_VMDEV_DATA_ACCESS\
-	QMutex *pSynchroAccessObject = NULL;\
+	QRecursiveMutex *pSynchroAccessObject = NULL;\
 	if(m_pVm.getHandle())\
 		pSynchroAccessObject = m_pVm->GetSynchroObject();\
 	else\

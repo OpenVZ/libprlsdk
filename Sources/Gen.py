@@ -44,7 +44,7 @@ if file_path == '':
 	file_path = os.path.abspath(os.path.getcwd())
 
 cfg = configparser.ConfigParser()
-cfg.readfp(open('Build/Build.cfg'))
+cfg.read_file(open('Build/Build.cfg'))
 
 fd = open('../Makefile.version')
 versionfile = fd.read().strip().split('.')
