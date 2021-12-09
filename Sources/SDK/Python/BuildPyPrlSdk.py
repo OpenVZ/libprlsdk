@@ -80,7 +80,7 @@ def escape_backslash(path):
 def parse_args():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("python_ver",
-						choices=["python2.6", "python2.7", "python3.6m"],
+						choices=["python2.6", "python2.7", "python3.9"],
 						help="Python version")
 	build_type_group = parser.add_mutually_exclusive_group()
 	build_type_group.add_argument("--debug", dest="build_type", action="store_const", const="debug", default="release",
@@ -129,10 +129,10 @@ if '__main__' == __name__:
 	if not os.path.isfile(python_header):
 		print('Path doesnt exist: "%s"' % python_header)
 		sys.exit(1)
-	check_retcode(BuildUtil.os_exec('qmake-qt4'))
+	check_retcode(BuildUtil.os_exec('qmake-qt5'))
 	check_retcode(BuildUtil.os_exec('%s distclean' % make_cmd))
 	generate_pri(python_path, py_ver, lflags)
-	check_retcode(BuildUtil.os_exec('qmake-qt4'))
+	check_retcode(BuildUtil.os_exec('qmake-qt5'))
 	check_retcode(BuildUtil.os_exec('%s %s' % (make_cmd, build_type)))
 
 	os.chdir(cwd)

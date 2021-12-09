@@ -159,8 +159,14 @@
 	"\tstd::string name;\n\n"
 #endif
 
+
+#if (VZ_PY_VER < 3)
 #define MDL_INIT_GIL \
 	"\tPyEval_InitThreads();\n\n"
+#else
+#define MDL_INIT_GIL \
+	"\tPy_Initialize();\n\n"
+#endif
 
 #if (VZ_PY_VER < 3)
 #define MDL_ADD_MODULE \

@@ -66,7 +66,7 @@ bool Composer::Save(QString qsFileName, const QString& content)
 		return false;
 	}
 
-	file.write(content.toAscii());
+	file.write(content.toUtf8());
 
 	return true;
 }
