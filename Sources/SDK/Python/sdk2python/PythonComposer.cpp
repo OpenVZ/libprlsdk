@@ -146,11 +146,14 @@ PythonComposer::PythonComposer(const SDKParser& sdk_parser, const QString& qsOut
 
 bool PythonComposer::CompositePython()
 {
-	QSet<QString > setUnusedClasses = m_sdk_parser.GetAllClasses().toSet()
-										.subtract( m_lstClasses.toSet() );
+	QStringList AllClasses = m_sdk_parser.GetAllClasses();
+	QSet<QString> first(AllClasses.begin(), AllClasses.end());
+	QSet<QString> second(m_lstClasses.begin(), m_lstClasses.end());
+	QSet<QString> setUnusedClasses = first.subtract(second);
+
 	if ( ! setUnusedClasses.isEmpty() )
 	{
-		QStringList lstUnusedClasses = setUnusedClasses.toList();
+		QStringList lstUnusedClasses = setUnusedClasses.values();
 		m_qsErrorMessage = QString("The class(es) %1 are unused!").arg(lstUnusedClasses.join(", "));
 		return false;
 	}
