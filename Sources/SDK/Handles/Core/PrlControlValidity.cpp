@@ -29,7 +29,7 @@
 #include <prlcommon/Std/PrlAssert.h>
 
 PrlControlValidityMap PrlControlValidity::g_ControlValidityMap;
-QMutex PrlControlValidity::g_ControlValidityMapMutex(QMutex::Recursive);
+QRecursiveMutex PrlControlValidity::g_ControlValidityMapMutex;
 
 PrlControlValidity::PrlControlValidity(PRL_HANDLE h)
 : m_nHashCode(0), m_handle(h)

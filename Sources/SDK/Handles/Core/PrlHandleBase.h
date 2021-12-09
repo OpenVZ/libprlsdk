@@ -120,7 +120,7 @@ protected:
 
 protected:
 	/** Object for synchronizing access to personal handle data */
-	mutable QMutex m_HandleMutex;
+	mutable QRecursiveMutex m_HandleMutex;
 	PRL_UINT32		m_RefCount;
 	PRL_HANDLE		m_Handle;
 
@@ -130,7 +130,7 @@ public:
 	static HandleObjMap *s_pHandlesMap;
 
 	/** Object for synchronizing access to handles list */
-	static QMutex *s_pHandlesMapMutex;
+	static QRecursiveMutex *s_pHandlesMapMutex;
 
 private:
 	PRL_HANDLE_TYPE m_HandleType;

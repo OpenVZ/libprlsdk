@@ -184,8 +184,11 @@ void PrlSdkThreadsDestructor::WaitAllThreadsAndCleanup()
 	QMutexLocker _lock(&m_ThreadsListMutex);
 	if (!m_lstThreadObjs.isEmpty())
 		m_event.wait(&m_ThreadsListMutex);
-	std::for_each(m_pending.constBegin(), m_pending.constEnd(),
-		boost::bind(&QThread::wait, _1, ULONG_MAX));
+	std::for_each(m_pending.constBegin(), m_pending.constEnd(), [](QThread* thread_ptr)
+	{
+		thread_ptr->wait(ULONG_MAX);
+	});
+
 	m_pending.clear();
 	BOOST_FOREACH(QObject* q, m_heappies)
 	{

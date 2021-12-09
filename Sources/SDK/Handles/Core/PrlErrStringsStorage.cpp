@@ -45,7 +45,7 @@
 
 PrlErrStringsStorage *PrlErrStringsStorage::g_pErrStringsStorage = NULL;
 
-QMutex *PrlErrStringsStorage::g_pErrorsStringsStorageMutex = new QMutex(QMutex::Recursive);
+QRecursiveMutex *PrlErrStringsStorage::g_pErrorsStringsStorageMutex = new QRecursiveMutex{};
 
 PrlErrStringsStorage::PrlErrStringsStorage()
 {

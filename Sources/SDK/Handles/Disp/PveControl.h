@@ -1585,7 +1585,7 @@ private:
 	/** Question requests packages hash */
 	QHash<QString, SmartPtr<IOPackage> > m_QuestionsRequestPkgsHash;
 	/** Sended jobs handles hash access synchronization object */
-	QMutex m_JobsHandlesHashMutex;
+	QRecursiveMutex m_JobsHandlesHashMutex;
 	/** Pointer to client connection object */
 	IOClient* m_ioClient;
 	/** Remote login helper object */

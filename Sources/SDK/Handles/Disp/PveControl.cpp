@@ -64,7 +64,6 @@ using namespace Virtuozzo;
 CPveControl::CPveControl(QObject *pEventReceiverObj)
 : m_bUseSSL(IOService::initSSLLibrary()),
   m_pEventReceiverObj(pEventReceiverObj),
-  m_JobsHandlesHashMutex(QMutex::Recursive),
   m_ioClient(0)
 {
 	m_rl.rate = 1;

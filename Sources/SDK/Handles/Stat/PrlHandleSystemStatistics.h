@@ -136,7 +136,7 @@ public:
 	/**
 	 * Returns pointer to internal dispatcher config data synchronization object
 	 */
-	inline QMutex *GetSynchroObject() {return (&m_HandleMutex);}
+	inline QRecursiveMutex *GetSynchroObject() {return (&m_HandleMutex);}
 
 	/**
 	 * Returns CPUs statistics elements count

@@ -74,7 +74,6 @@ PrlHandleServer::PrlHandleServer()
   m_pEventsHandler( new CEventsHandler(GetHandle()) ),
   m_nManagePort(0),
   m_nSecurityLevel(PSL_LOW_SECURITY),
-  m_MembersMutex( QMutex::Recursive ),
   m_bNonInteractiveSession(PRL_FALSE),
   m_bConfirmationModeEnabled(PRL_FALSE),
   m_nServerAppExecuteMode(PAM_UNKNOWN),

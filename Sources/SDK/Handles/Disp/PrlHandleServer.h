@@ -295,7 +295,7 @@ protected:
 	PRL_SECURITY_LEVEL m_nSecurityLevel;
 
 	/// Object for synchronizing remote host name and IO port values access
-	mutable QMutex m_MembersMutex;
+	mutable QRecursiveMutex m_MembersMutex;
 
 	/**
 	 * Map holding all VM handle objects by their uuid's.
