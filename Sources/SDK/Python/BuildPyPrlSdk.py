@@ -130,7 +130,7 @@ if '__main__' == __name__:
 		print('Path doesnt exist: "%s"' % python_header)
 		sys.exit(1)
 	check_retcode(BuildUtil.os_exec('qmake-qt5'))
-	check_retcode(BuildUtil.os_exec('%s distclean' % make_cmd))
+	check_retcode(BuildUtil.os_exec('%s clean' % make_cmd))
 	generate_pri(python_path, py_ver, lflags)
 	check_retcode(BuildUtil.os_exec('qmake-qt5'))
 	check_retcode(BuildUtil.os_exec('%s %s' % (make_cmd, build_type)))
