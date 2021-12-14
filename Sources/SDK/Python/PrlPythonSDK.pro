@@ -89,6 +89,9 @@ include(PrlPython.pri)
 	DESTDIR = $$join(DESTDIR, "", "", /$$PYTHON_VER)
 }
 
+DISTFILES  += $$join(DESTDIR, "", "", "/python3.9/prlsdk.so")
+DISTFILES  += $$join(DESTDIR, "", "", "/python2.7/prlsdk.so")
+
 # For developers need both dll and pyd
 win32 {
 	SRC_FILE = $$DESTDIR"/"$$MODULE_NAME".dll"
