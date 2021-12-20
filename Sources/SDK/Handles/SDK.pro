@@ -56,19 +56,5 @@ exists(/usr/lib64/libboost_system-mt*) : BOOST_SYSTEM = -lboost_system-mt
 
 LIBS += -lprl_xml_model -lprlcommon $${BOOST_FILESYSTEM} $${BOOST_SYSTEM}
 
-libsdk_only {
-	# set up rpath to qt libs
-	QMAKE_RPATHDIR =
-	rpath_cmd =
-	# starting from version 4.6.2 qt libs have infix 'Prl' in their names
-	infix = 'Prl'
-	lessThan(QT_MINOR_VERSION, 6) | equals(QT_VERSION, '4.6.1') : infix =
-	qtlibs = Core Xml Gui Network
-	for(qtlib, qtlibs) {
-		rpath_cmd = $${rpath_cmd}'\\\$\${ORIGIN}/../libQt'$${qtlib}$${infix}'.so.4/:'
-	}
-	QMAKE_LFLAGS += -Wl,-rpath,$$rpath_cmd
-}
-
 include(SDKSources.pri)
 

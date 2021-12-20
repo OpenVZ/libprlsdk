@@ -81,13 +81,8 @@ PrlSdkStatusWriter::PrlSdkStatusWriter()
 {
 	if ( QThread::currentThread() == s_QMainThread )
 	{
-		while ( ! InitStatusLocker()->tryLockForWrite() )
-		{
-#if QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 )
+		while ( ! InitStatusLocker()->tryLockForWrite() ){
 			QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents | QEventLoop::ExcludeSocketNotifiers, 50);
-#else
-			QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents | QEventLoop::ExcludeSocketNotifiers | QEventLoop::DeferredDeletion, 50);
-#endif // QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 )
 		}
 	}
 	else
