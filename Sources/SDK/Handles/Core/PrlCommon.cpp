@@ -331,6 +331,8 @@ void QMainThread::DeinitSdkParts()
 #else
 		QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents | QEventLoop::ExcludeSocketNotifiers | QEventLoop::DeferredDeletion, 50);
 #endif // QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 )
+
+		 PrlHandleServer::CleanRegisteredThreads();
 	}
 
 	QMutexLocker _lock(&m_MainThreadMutex);
