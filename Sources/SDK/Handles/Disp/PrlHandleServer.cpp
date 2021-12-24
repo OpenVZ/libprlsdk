@@ -91,6 +91,8 @@ bool PrlHandleServer::isStarted() const
 
 PrlHandleServer::~PrlHandleServer()
 {
+	if (QCoreApplication::closingDown())
+		return;
 	if (m_pPveControl)
 	{
 		m_pPveControl->stopTransport();
