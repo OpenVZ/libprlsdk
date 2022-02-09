@@ -48,9 +48,6 @@
 #include <prlcommon/Std/PrlAssert.h>
 #include "CProblemReportUtils.h"
 
-#include <qt5/QtHttp/QHttp>
-#include <qt5/QtHttp/QHttpResponseHeader>
-
 #include "CInstalledSoftwareCollector.h"
 #include <prlxmlmodel/DispConfig/CDispatcherConfig.h>
 #include <prlxmlmodel/VmConfig/CVmConfiguration.h>
@@ -155,96 +152,6 @@ QStringList GetCrashDumpsTemplates(const QString& qsPatternSuffix, bool bAddLowM
 	}
 
 	return filters;
-}
-
-int postReport ( CProblemReport & pReport, QHttp & http )
-{
-	WRITE_TRACE( DBG_DEBUG, "user = %s", pReport.getContactInfo()->getName().toUtf8().data() );
-	WRITE_TRACE( DBG_DEBUG, "user e-mail = %s", pReport.getContactInfo()->getEMail().toUtf8().data() );
-
-	QString strReport = pReport.toString();
-	CorrectNonPrintableSymbols( strReport );
-	QByteArray param_msg_data = strReport.toUtf8();
-
-	return postReport( param_msg_data, http, pReport.getProductName(), pReport.getReportType() );
-}
-
-QHttpRequestHeader createMultipartRequestHeader( QByteArray & content/*IN - OUT*/)
-{
-	fillContentWithRequestData( content );
-
-	QHttpRequestHeader header( "POST", "/post" );
-	header.setContentType( "multipart/form-data; boundary=" + PRL_PROBLEM_REPORT_REQUEST_BOUNDARY );
-	header.setContentLength( content.length() );
-	return header;
-}
-
-int postReport( const QString& strFilePath /*IN*/, QHttp &http/*IN*/,
-			PRL_PROBLEM_REPORT_TYPE reportType/*IN*/ )
-{
-	QByteArray data;
-	getDataFromFile( strFilePath, data );
-
-	return postReport( http, data, reportType );
-}
-
-int postReport( QHttp & http/*IN*/, const QByteArray & data/*IN*/,
-			PRL_PROBLEM_REPORT_TYPE reportType/*IN*/ )
-{
-	bool bSupportSsl = false;
-
-#ifndef QT_NO_OPENSSL
-	if ( QSslSocket::supportsSsl() )
-	{
-		WRITE_TRACE(DBG_DEBUG, "this system supports ssl");
-		bSupportSsl = true;
-	}
-#endif
-	QUrl url = getCrashReportServerUrlSync( bSupportSsl, false, reportType );
-
-	http.setHost( url.host(),
-		bSupportSsl ? QHttp::ConnectionModeHttps : QHttp::ConnectionModeHttp,
-		url.port( 0 )  );
-
-	WRITE_TRACE( DBG_FATAL, "url = %s", QSTR2UTF8( url.toString() ) );
-	// create http header
-	QByteArray content = data;
-	QHttpRequestHeader header = createMultipartRequestHeader( content );
-	header.setValue( "host",url.host() );
-
-	WRITE_TRACE( DBG_FATAL, "header = %s", QSTR2UTF8( header.toString() ) );
-	// Sending http request to the server for analysis
-	int iRequestId = http.request( header , content );
-	return iRequestId;
-}
-
-int postReport( const QByteArray & param_msg_data, QHttp & http, const QString & productName,
-				     PRL_PROBLEM_REPORT_TYPE reportType )
-{
-	bool bSupportSsl = false;
-
-#ifndef QT_NO_OPENSSL
-	if ( QSslSocket::supportsSsl() )
-	{
-		WRITE_TRACE(DBG_DEBUG, "this system supports ssl");
-		bSupportSsl = true;
-	}
-#endif
-
-	QByteArray param_total;
-	formDataToHttpPost( param_msg_data, param_total, productName );
-
-	QUrl url = getCrashReportServerUrlSync( bSupportSsl, true, reportType );
-
-	quint16 port = url.port( 0 ); // local variable to easy debug sending through proxy
-	http.setHost( url.host(),
-		bSupportSsl ? QHttp::ConnectionModeHttps : QHttp::ConnectionModeHttp,
-		port  );
-
-
-	// Sending http request to the server for analysis
-	int iRequestId = http.post( url.path(), param_total );
-	return iRequestId;
 }
 
 // forms path to save guest screenshot

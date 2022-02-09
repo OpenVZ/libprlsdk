@@ -45,13 +45,11 @@ extern const char* g_prl_SharedAppStub;
 
 using namespace BinDumpPatterns;
 
-class QHttp;
 class QStringList;
 class QByteArray;
 class CProblemReport;
 class CRepScreenShot;
 class CPackedProblemReport;
-class QHttpRequestHeader;
 class QNetworkAccessManager;
 class QNetworkReply;
 class QNetworkRequest;
