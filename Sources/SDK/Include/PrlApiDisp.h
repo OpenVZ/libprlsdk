@@ -4949,6 +4949,40 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 		PRL_UINT32_PTR pnPort
 		) );
 
+/* Returns for VNC is clipboard enabled (copy/paste mode)..
+   Parameters
+   hDispConfig :  A handle of type PHT_DISP_CONFIG.
+   pbFlag : [out] A pointer to a variable that receives the
+                  EnableClipboard flag, PRL_FALSE means Disable, PRL_TRUE means Enable.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlDispCfg_IsVNCEnableClipboard, (
+		PRL_HANDLE hDispConfig,
+		PRL_BOOL_PTR pbFlag
+		) );
+
+/* Sets for VNC enabled clipboard (copy/paste mode).
+   Parameters
+   hDispConfig :  A handle of type PHT_DISP_CONFIG.
+   bFlag :        Flag number to set. PRL_FALSE means Disable, PRL_TRUE - Enable
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle.
+
+   PRL_ERR_SUCCESS - function completed successfully. */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_1,
+				 PrlDispCfg_SetVNCEnableClipboard, (
+		PRL_HANDLE hDispConfig,
+		PRL_BOOL bFlag
+		) );
+
 /* Determines if new users have the right to modify Dispatcher
    Service preferences. By default, only administrators of the
    host machine can modify Dispatcher Service preferences. When a

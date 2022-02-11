@@ -233,6 +233,22 @@ public:
 	PRL_RESULT GetRemoteDisplayMaxPort(PRL_UINT32_PTR pnPort);
 
 	/**
+	 * Returns flag whether Clipboard feature is enabled for Remote Display
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT IsRemoteDisplayEnableClipboard(PRL_BOOL_PTR pbFlag);
+
+	/**
+	 * Sets flag whether Clipboard feature is enabled for Remote Display
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetRemoteDisplayEnableClipboard(PRL_BOOL bFlag);
+
+	/**
 	 * Gets remote desktop base host name
 	 * @param [out] buffer for storing result
 	 * @param [out] buffer size (on in - how much symbols can be placed into buffer;
