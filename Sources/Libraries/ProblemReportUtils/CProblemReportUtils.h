@@ -34,25 +34,6 @@
 
 namespace CProblemReportUtils
 {
-	//
-	/**
-	* post report to server
-	* @param CProblemReport & pReport - this function is not change object content
-	*/
-	int postReport( CProblemReport & pReport/*IN*/, QHttp & http/*IN*/);
-	int postReport( QHttp & http/*IN*/, const QByteArray & data/*IN*/,
-			       PRL_PROBLEM_REPORT_TYPE reportType = PRT_REPORT_TYPE_UNDEFINED );
-	int postReport( const QByteArray & param_msg_data/*IN*/, QHttp & http/*IN*/,
-			       const QString & productName = QString(),
-			       PRL_PROBLEM_REPORT_TYPE reportType = PRT_REPORT_TYPE_UNDEFINED );
-
-	QNetworkReply * postReport( QNetworkAccessManager & /*IN*/, QByteArray & /*IN*/ );
-	QNetworkReply * postReport( const QString& /*IN*/, QNetworkAccessManager &/*IN*/);
-
-	QHttpRequestHeader createMultipartRequestHeader( QByteArray & param_msg_data/*IN-OUT*/);
-	int postReport( const QString& strFilePath /*IN*/, QHttp & http/*IN*/,
-			       PRL_PROBLEM_REPORT_TYPE reportType = PRT_REPORT_TYPE_UNDEFINED );
-
 	// return list of crash-files templates to use in QDir::setNameFilters()
 	QStringList GetCrashDumpsTemplates(const QString& qsPatternSuffix = "*.*",
 											  bool bAddLowMemoryDumps = true);
