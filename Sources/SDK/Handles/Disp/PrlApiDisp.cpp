@@ -3709,6 +3709,43 @@ PRL_METHOD( PrlDispCfg_GetVNCMaxPort ) (
 	return (pDispConfig->GetRemoteDisplayMaxPort(pnPort));
 }
 
+PRL_METHOD( PrlDispCfg_IsVNCEnableClipboard ) (
+	PRL_HANDLE hDispConfig,
+	PRL_BOOL_PTR pbFlag
+	)
+{
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) ||
+		PRL_WRONG_PTR(pbFlag))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->IsRemoteDisplayEnableClipboard(pbFlag));
+}
+
+PRL_METHOD( PrlDispCfg_SetVNCEnableClipboard ) (
+	PRL_HANDLE hDispConfig,
+	PRL_BOOL bFlag
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, bFlag=%.8X)",
+		__FUNCTION__,
+		hDispConfig,
+		bFlag
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->SetRemoteDisplayEnableClipboard(bFlag));
+}
+
 PRL_METHOD( PrlDispCfg_CanChangeDefaultSettings ) (
 	PRL_HANDLE hDispConfig,
 	PRL_BOOL_PTR pbDefaultChangeSettings

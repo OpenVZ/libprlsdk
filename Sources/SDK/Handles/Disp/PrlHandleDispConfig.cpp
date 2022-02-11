@@ -199,6 +199,20 @@ PRL_RESULT PrlHandleDispConfig::GetRemoteDisplayMaxPort(PRL_UINT32_PTR pnPort)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleDispConfig::IsRemoteDisplayEnableClipboard(PRL_BOOL_PTR pbFlag)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pbFlag = m_DispConfig.getRemoteDisplayPreferences()->isEnableClipboard();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleDispConfig::SetRemoteDisplayEnableClipboard(PRL_BOOL bFlag)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_DispConfig.getRemoteDisplayPreferences()->setEnableClipboard(bFlag);
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleDispConfig::GetRemoteDisplayBaseHostName(PRL_STR sHostNameBuf, PRL_UINT32_PTR pnHostNameBufLength)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

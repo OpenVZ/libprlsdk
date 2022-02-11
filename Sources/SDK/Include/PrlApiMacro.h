@@ -376,6 +376,8 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetDefaultVNCHostName ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetVNCBasePort ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetVNCBasePort ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetVNCMaxPort ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsVNCEnableClipboard ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetVNCEnableClipboard ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_CanChangeDefaultSettings ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetCanChangeDefaultSettings ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetMinSecurityLevel ) \
