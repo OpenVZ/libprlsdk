@@ -1143,5 +1143,6 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmBackup_GetUuid ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmBackup_GetDisk ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetDefaultBackupDirectory ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetDefaultBackupDirectory ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_GetCpuMaskSupport ) \
 
 #endif // PRL_SDK_WRAP_FOR_EACH

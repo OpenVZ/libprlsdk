@@ -1450,6 +1450,12 @@ public://Protocol methods
 	QString DspCmdGetVcmmdConfig(PRL_UINT32 nFlags);
 
 	/**
+	 * Get cpu masking feature support flag
+	 * @param nFlags
+	 */
+	QString DspCmdGetCpuMaskSupport(PRL_UINT32 nFlags);
+
+	/**
 	 * Reinstall
 	 * @param 
 	 * @param nFlags

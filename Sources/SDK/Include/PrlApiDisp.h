@@ -5747,6 +5747,22 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 		PRL_HANDLE hCpuFeatures
 		) );
 
+/*
+ * Allows to get the CPU features masking support from dispatcher
+ * Parameters
+ * hServer : A handle of type PHT_SERVER.
+ * nFlags  : A flags for future purposes. Unused for now.
+ * Returns
+ * A handle of type PHT_JOB containing the results of this
+ * asynchronous operation or PRL_INVALID_HANDLE if there's not
+ * enough memory to instantiate the job object.
+ */
+PRL_ASYNC_METHOD_DECL( VIRTUOZZO_API_VER_7,
+		PrlSrv_GetCpuMaskSupport, (
+		PRL_HANDLE hServer,
+		PRL_UINT32 nFlags
+		) );
+
 /* Creates a new handle of type PHT_CPU_FEATURES.
    Parameters
    phCpuFeatures :  [out] A pointer to a variable that receives

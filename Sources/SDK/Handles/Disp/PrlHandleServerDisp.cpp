@@ -535,6 +535,14 @@ PrlHandleJobPtr PrlHandleServerDisp::GetVcmmdConfig(PRL_UINT32 nFlags)
 							PJOC_SRV_GET_VCMMD_CONFIG)));
 }
 
+PrlHandleJobPtr PrlHandleServerDisp::GetCpuMaskSupport(PRL_UINT32 nFlags)
+{
+	QString job_uuid = m_pPveControl->DspCmdGetCpuMaskSupport(nFlags);
+
+	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+			PJOC_SRV_GET_CPU_MASKING_FEATURE_SUPPORT)));
+}
+
 PrlHandleJobPtr PrlHandleServerDisp::SetVcmmdConfig(PRL_CONST_STR sConfig, PRL_UINT32 nFlags)
 {
 	QString job_uuid = m_pPveControl->DspCmdStorageSetValue(PRL_KEY_SET_VCMMD_CONFIG_VALUE, sConfig, nFlags);
