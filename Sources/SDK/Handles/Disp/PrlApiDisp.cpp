@@ -4579,6 +4579,23 @@ PRL_METHOD( PrlDispCfg_SetCpuFeaturesMaskEx ) (
 	return pDispConfig->SetCpuFeaturesMaskEx(hCpuFeatures);
 }
 
+PRL_HANDLE PrlSrv_GetCpuMaskSupport_Impl (
+		PRL_HANDLE hServer,
+		PRL_UINT32 nFlags
+		)
+{
+	ONE_HANDLE_SRV_DISP_METH_IMPLEMENTATION_WITH_FLAGS(GetCpuMaskSupport, nFlags, PJOC_SRV_GET_CPU_MASKING_FEATURE_SUPPORT)
+}
+
+PRL_ASYNC_METHOD( PrlSrv_GetCpuMaskSupport ) (
+		PRL_HANDLE hServer,
+		PRL_UINT32 nFlags
+		)
+{
+	ASYNC_CHECK_API_INITIALIZED(PJOC_SRV_GET_CPU_MASKING_FEATURE_SUPPORT)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlSrv_GetCpuMaskSupport, (hServer, nFlags))
+}
+
 PRL_METHOD( PrlCpuFeatures_Create ) (
 		PRL_HANDLE_PTR phCpuFeatures
 		)

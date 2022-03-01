@@ -387,6 +387,12 @@ public:
 	PrlHandleJobPtr GetVcmmdConfig(PRL_UINT32 nFlags);
 
 	/**
+	 * Get cpu mask support
+	 * @param nFlags
+	 */
+	PrlHandleJobPtr GetCpuMaskSupport(PRL_UINT32 nFlags);
+
+	/**
 	 * Set vcmmd config
 	 * @param sConfig
 	 * @param nFlags
