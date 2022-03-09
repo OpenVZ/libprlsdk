@@ -2985,6 +2985,18 @@ QString CPveControl::DspCmdGetVcmmdConfig(PRL_UINT32 nFlags)
 	return SendRequestToServer(pRequest);
 }
 
+QString CPveControl::DspCmdGetCpuMaskSupport(PRL_UINT32 nFlags)
+{
+	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdGetCpuMaskSupport()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoCommandWithoutParams(
+		PVE::DspCmdGetCpuMaskSupport,
+		false,
+		nFlags);
+
+	return SendRequestToServer(pRequest);
+}
+
 QString CPveControl::DspCmdCtReinstall(PRL_CONST_STR sVmUuid,
 		PRL_CONST_STR sOs, PRL_UINT32 nFlags)
 {
