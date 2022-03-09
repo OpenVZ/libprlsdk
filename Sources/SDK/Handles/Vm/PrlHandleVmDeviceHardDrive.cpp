@@ -327,7 +327,7 @@ PRL_RESULT PrlHandleVmDeviceHardDrive::GetStorageURL(PRL_STR sURL, PRL_UINT32_PT
 {
 	SYNCHRO_VMDEV_DATA_ACCESS
 	CHECK_HARD_DISK_ELEM
-	return CopyStringValue(m_pVmHardDisk->getStorageURL().toString(), sURL, pnURLBufLength);
+	return CopyStringValue(m_pVmHardDisk->getStorageURL().toString(QUrl::DecodeReserved), sURL, pnURLBufLength);
 }
 
 PRL_RESULT PrlHandleVmDeviceHardDrive::SetStorageURL(PRL_CONST_STR sURL)
