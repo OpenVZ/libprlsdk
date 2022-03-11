@@ -180,10 +180,8 @@ static void REGISTER_ERROR_STRING2(PRL_RESULT error_code
 			, can_be_ignored_sign, message_type));
 }
 
-void PrlErrStringsStorage::Initialize()
+void PrlErrStringsStorage::InitializeAnswers()
 {
-	InitializePSErrorMessages();
-
 	REGISTER_ERROR_STRING(
 		PET_ANSWER_OK,
 		tr("OK"),
@@ -391,6 +389,86 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_ANSWER
 		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_COPIED,
+		tr("Copied"),
+		tr("Copied"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_MOVED,
+		tr("Moved"),
+		tr("Moved"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_COMMIT,
+		tr("Apply"),
+		tr("Apply"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_REVERT,
+		tr("Discard"),
+		tr("Discard"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_STOP_AND_RESTORE,
+		tr("Stop and Restore"),
+		tr("Stop and Restore"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_RESTART,
+		tr("Restart"),
+		tr("Restart"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_RESTORE,
+		tr("Restore"),
+		tr("Restore"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_RESUME,
+		tr("Resume"),
+		tr("Resume"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_DISCONNECT_ANYWAY,
+		tr("Disconnect Anyway"),
+		tr("Disconnect Anyway"),
+		false,
+		PMT_ANSWER
+		);
+
+}
+
+void PrlErrStringsStorage::Initialize()
+{
+	InitializePSErrorMessages();
+	InitializeAnswers();
+
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SUCCESS,
@@ -4069,22 +4147,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PET_ANSWER_COPIED,
-		tr("Copied"),
-		tr("Copied"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_MOVED,
-		tr("Moved"),
-		tr("Moved"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_COMPRESSOR_UNSUPPORTED_GUEST,
 		tr(PRODUCT_NAME_SHORT " Compressor cannot be started."),
 		tr("Your virtual machine's operating system is \"%1\". This operating system is not supported by " PRODUCT_NAME_SHORT " Compressor."),
@@ -4888,54 +4950,6 @@ void PrlErrStringsStorage::Initialize()
 
 
 	REGISTER_ERROR_STRING(
-		PET_ANSWER_COMMIT,
-		tr("Apply"),
-		tr("Apply"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_REVERT,
-		tr("Discard"),
-		tr("Discard"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_STOP_AND_RESTORE,
-		tr("Stop and Restore"),
-		tr("Stop and Restore"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_RESTART,
-		tr("Restart"),
-		tr("Restart"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_RESTORE,
-		tr("Restore"),
-		tr("Restore"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_RESUME,
-		tr("Resume"),
-		tr("Resume"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_SNAPSHOT_IN_UNDO_DISKS_MODE,
 		tr("You cannot work with snapshots in Rollback mode."),
 		tr("Disable Rollback mode in the virtual machine configuration to manage snapshots."),
@@ -4980,14 +4994,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("The capacity of your virtual hard disk is larger than the maximum file size allowed by the filesystem. This may lead to data loss as the virtual disk grows in size. Split the disk by editing its settings in the Virtual Machine Configuration > Hardware > Hard Disk."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_DISCONNECT_ANYWAY,
-		tr("Disconnect Anyway"),
-		tr("Disconnect Anyway"),
-		false,
-		PMT_ANSWER
 		);
 
 	REGISTER_ERROR_STRING(
