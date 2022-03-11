@@ -123,6 +123,11 @@ private:
 	void InitializeAnswers();
 
 	/**
+	 * Initializes all questions strings database
+	 */
+	void InitializeQuestions();
+
+	/**
 	 * Initializes Dispatcher Server specific errors strings database
 	 */
 	void InitializePSErrorMessages();
