@@ -2130,12 +2130,8 @@ void PrlErrStringsStorage::InitializeQuestions()
 
 }
 
-void PrlErrStringsStorage::Initialize()
+void PrlErrStringsStorage::InitializeInformations()
 {
-	InitializePSErrorMessages();
-	InitializeAnswers();
-	InitializeQuestions();
-
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_SUCCESS,
@@ -2144,6 +2140,560 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_INFORMATION
 		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_ALREADY_CONNECTED,
+		tr("A device connecting error occurred."),
+		tr("The device %1 %2 is already connected."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_APPLY_CONFIG_NEEDS_REBOOT,
+		tr("The changes will take effect after you restart the virtual machine."),
+		tr("To apply the changes, shut down your guest operating system and then start the virtual machine again." ),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_SPECIFY_GUEST_INSTALL_FILES,
+		tr("You need to specify the path to the installation source."),
+		tr("Specify the path to the guest operating system installation disc or another source of installation and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_TOOLS_WIN,
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine and start the installation."),
+		tr("If the installation does not start automatically, open your CD/DVD drive in Windows and double-click \"Setup.exe\"."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_TOOLS_LIN,
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install " PRODUCT_NAME_SHORT " Tools."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_TOOLS_MAC,
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, open the " PRODUCT_NAME_SHORT " Tools CD in the virtual machine and double-click \"Install\"."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_GHOSTSCRIPT_ON_HOST,
+		tr("The document has been sent to a printer that is shared with the host computer."),
+		tr("To ensure proper printing from the virtual machine, it is recommended that you install a PostScript interpreter as described on the " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>" ),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PROBLEM_REPORT_POST_SUCCESS,
+		tr("A problem report with the ID number %1 has been sent to " PRODUCT_NAME_SHORT " to help us improve the product. Thank you for your feedback."),
+		tr("If you'd like to contact our support team to request help with your problem, please copy the problem report ID number, %1, and submit a support ticket to " PRODUCT_NAME_SHORT " Support."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_PD3_COMPAT_MODE,
+		tr("The virtual machine is running in compatibility mode. A newer version of " PRODUCT_NAME_SHORT " Tools needs to be installed. The installation will start automatically."),
+			tr("Please wait for the guest operating system to boot and start the " PRODUCT_NAME_SHORT " Tools installation, it might take a while. If the installation of " PRODUCT_NAME_SHORT " Tools does not start automatically, select Install " PRODUCT_NAME_SHORT " Tools on the Virtual Machine menu to start the installation manually."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_PD3_COMPAT_NO_MOUSE,
+		tr("The mouse in your virtual machine may work incorrectly. The problem will be solved automatically after the restart."),
+		tr("Windows requires some time to initialize the newly found devices after the virtual machine upgrade. During this time, your mouse may work incorrectly. If you need to log in to your virtual machine, use the keyboard."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_BOOTCAMP_MODE,
+		tr("You are booting from your Boot Camp partition inside a virtual machine."),
+		tr("You will need to reactivate Windows and Microsoft Office. Do not change the virtual machine configuration without necessity as it may require another reactivation."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SWITCH_TO_FULLSCREEN,
+		tr("The virtual machine is about to enter the full screen mode."),
+		tr("Press <b>%1</b> to exit the full screen mode or press <b>%2</b> to release the mouse and keyboard from the virtual machine."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PRODUCT_ACTIVATED_SUCCESSFULLY,
+		tr("The current copy of @PRL_PRODUCT_NAME%1 was successfully activated."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_RUN_COMPRESSOR_WIN,
+		tr(PRODUCT_NAME_SHORT " Compressor helps you keep your virtual machine compact and efficient."),
+		tr(PRODUCT_NAME_SHORT " Compressor is an easy-to-use tool allowing you to clean up unused disk space in the virtual machine. Using this tool, you can significantly reduce the size of your virtual machine hard disks files and use the resources of your physical hard disks more efficiently."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_COHERENCE_NOTIFICATION,
+		tr("Your virtual machine is running in Coherence mode."),
+		tr("In this mode Windows applications are fully integrated into Mac OS X. Click the @PRL_PRODUCT_NAME icon in the Dock to open the Windows Start menu. For more information on Coherence and other view modes, <a href=\"%1\">read the online help</a> or <a href=\"%2\">watch the demo</a>." ),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_VM_HW_UPGRADE_COMPLETED,
+		tr("The virtual machine \"%1\" has been successfully upgraded."),
+		tr("You can now use this virtual machine."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_VM_HW_UPGRADE_VMXPHY_COMPLETED,
+		tr("The virtual machine \"%1\" has been successfully configured."),
+		tr("You can now use this virtual machine."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_NO_TEMPLATE_SUPPORT_IN_PLAYER_MODE,
+		tr("You are trying to open a virtual machine template."),
+		tr("Virtual machine templates cannot be used in " PRODUCT_NAME_SHORT " Desktop Express."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_NO_PVS_FILE_SPECIFIED_IN_PLAYER_MODE,
+		tr("You did not specify the virtual machine file you want to open."),
+		tr("Please type the path to the virtual machine file after the --openvm option."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_FEATURE_RESTRICTED,
+		tr("This feature is not available in this edition of " PRODUCT_NAME_SHORT " Desktop."),
+		tr("This edition contains only features that are necessary for working with Windows XP applications and files on Windows 7."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_ISIGHT_CAMERA_CONNECT_TO_VM,
+		tr("To use iSight camera in Windows, iSight drivers must be installed."),
+		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleiSightInstaller.exe to install iSight drivers. For details, see <a href=\"%1\">%2</a>."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_BLUETOOTH_USB_CONTROLLER_CONNECT_TO_VM,
+		tr("To use Apple Bluetooth USB controller in Windows, Apple Bluetooth drivers must be installed."),
+		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleBluetoothInstaller.exe to install Apple Bluetooth drivers. For details, see <a href=\"%1\">%2</a>."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_CTRL_ALT_DEL_PRESSED,
+		tr("The \"Ctrl+Alt+Delete\" command is processed by both the host and guest operating systems."),
+		tr("To send the \"Ctrl+Alt+Delete\" command only to the virtual machine, press Ctrl+Alt+Insert instead."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_HIDDEN_MESSAGES_RESTORED,
+		tr("Hidden messages were restored."),
+		tr("All warning messages, that were disabled by checking <i>\'Do not show this message again\'</i> option are now enabled, and will be shown the next time they are applicable."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_USER_REGISTRATION_DLG_SEND_OK,
+		tr("Thank you for trying @PRL_PRODUCT_NAME"),
+		tr("A trial activation key was sent to your e-mail address."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SHARED_PROFILE_FOR_BOOTCAMP_VM,
+		tr("You have enabled Shared Profile for a Boot Camp virtual machine."),
+		tr("If you boot natively from the Boot Camp partition, Shared Profile will be automatically disabled."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_CONVERT_SUCCEDED_OTHER_OS,
+		tr("The virtual machine has been successfully converted."),
+		tr("You can now use this virtual machine with @PRL_PRODUCT_NAME."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_LOWMEMORY,
+		tr("Unable to switch to Coherence."),
+		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_STOPPED_LOWMEMORY,
+		tr("Coherence mode has been turned off."),
+		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and switch to the Coherence mode again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_SMOFF,
+		tr("Unable to switch to Coherence."),
+		tr("The " PRODUCT_NAME_SHORT " mouse synchronization service is not started. Reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_SMDISABLED,
+		tr("Unable to switch to Coherence."),
+		tr("Shut down the virtual machine, then choose Virtual Machine > Configure > Options > Advanced, and set <b>SmartMouse</b> mode to <b>On</b> or <b>Auto</b>."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_GUEST,
+		tr("Unable to switch to Coherence."),
+		tr("The virtual machine display configuration could not be applied. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_HOST,
+		tr("Unable to switch to Coherence."),
+		tr("The information about your display configuration could not be retrieved. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_STOPPED_DSPCFGERROR_GUEST,
+		tr("Coherence mode has been turned off."),
+		tr("The virtual machine display configuration could not be applied. Please try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_NOTENOUGHDISPLAYS,
+		tr("Unable to switch to Coherence."),
+		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_SERVERBUSY,
+		tr("An error occurred while switching to Coherence. Please try again."),
+		tr("If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_LINUX_3D,
+		tr("Unable to switch to Coherence."),
+		tr("Please disable Linux desktop visual effects."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_STOPPED_LINUX_3D,
+		tr("Coherence mode has been turned off."),
+		tr("Coherence is not available when Linux desktop visual effects are enabled."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REMAP_VM_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
+		tr("This key sequence is already used to perform the \"%1\" action."),
+		tr("Before you can configure this key sequence to perform another action, you should assign a different key combination to the \"%1\" action."),
+		false,
+		PMT_INFORMATION
+		);
+
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_VM_SHORTCUT,
+		tr("This key sequence is already in use by the shortcut <br>\"%1\"."),
+		tr("Configure the shortcut to use another key sequence or remove the shortcut and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
+		tr("This key sequence is already used to perform the \"%1\" action."),
+		tr("Configure the shortcut to use another key sequence."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK,
+		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK_NO_SUPPORT_CODE,
+		tr("Your copy of @PRL_PRODUCT_NAME has been successfully registered, but the support code could not be created at the moment. To get the support code later, please log in to your account on the " PRODUCT_NAME_SHORT " website and browse to <a href=\"%1\">the support options area</a>."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED,
+		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED_NO_SUPPORT_CODE,
+		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account, but the support code could not be created. To get the support code, please log in to your account on the <a href=\"%1\">" PRODUCT_NAME_SHORT " website</a> and browse to the registered products area."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_ACCOUNT_SUCCESSFULLY_UPDATED,
+		tr("This key is already registered to your account. Changes to your account information have been applied."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_UNINSTALLING_HOST_ANTIVIRUS_SUCCESS,
+		tr("%1 for Mac was removed successfully."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SOFTWARE_UP_TO_DATE,
+		tr("You have the latest version of @PRL_PRODUCT_NAME."),
+		tr("There are no new software updates available at this time."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PASSWORD_RESET_ENTER_EMAIL,
+		tr("Please enter your email address."),
+		tr("We will send you an email with a link to reset your password."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PASSWORD_RESET_CHECK_EMAIL,
+		tr("The instructions on resetting your password have been sent to your email address."),
+		tr("Please check your email and follow those instructions."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_ACCOUNT_ALREADY_USED,
+		tr("There is an existing account associated with this email. To register your copy, please log in to this account."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_OK,
+		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_INVALID_KEY,
+		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please follow the link to learn more: <a href=\"%1\">" PRODUCT_NAME_SHORT " Knowledge Base</a>."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_INVALID_EMAIL,
+		tr("The e-mail address you have specified is invalid. Correct the address and try again."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_ALREADY_REGISTERED,
+		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_REQUIRED_FIELDS,
+		tr("Not all required fields are filled."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_INVALID_USER,
+		tr("Your activation key for @PRL_PRODUCT_NAME is already registered by another user. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_CONNECTION,
+		tr("Please check your Internet connection and try again."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INVALID_LOGIN_OR_PASS,
+		tr("The email or password you entered is invalid. Please check your email and password and try again."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_GENERAL_ERROR,
+		tr("Check your Internet connection and try again. If the problem persists, follow <a href=\"%1\">this link</a> to register your copy of @PRL_PRODUCT_NAME."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SHARED_GUEST_APPS_OPEN_DOC_NEED_ADD_USER_SHARED_FOLDER,
+		tr("To be able to access \"%1\" from the virtual machine, you need to share the folder containing this file with the virtual machine."),
+		tr("To add a shared folder, open the virtual machine configuration, choose Options > Shared Folders, and specify the folder you want to share."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_FIREWALL_MAY_BLOCK_REMOTE_MANAGE,
+		tr("@PRL_PRODUCT_NAME will be allowed to communicate through firewall."),
+		tr("If you are unable to connect to @PRL_PRODUCT_NAME remotely, please open the firewall settings and make sure that @PRL_PRODUCT_NAME is allowed to accept incoming connections and port %1 is not blocked by the firewall."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_VM_CLEANUP_NOTHING_TO_DO,
+		tr( "%1 doesn't take any additional disk space."),
+		tr("@PRL_PRODUCT_NAME could not find any data to compress or remove to free up the space used by this virtual machine."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_USB3_DRIVERS_REQUIRED_WIN,
+		tr("\"%1\" may not have USB 3.0 drivers installed."),
+		tr("To use USB 3.0 devices with this virtual machine, please download the USB 3.0 driver and install it in Windows."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_USB3_DRIVERS_REQUIRED_OTHER,
+		tr("\"%1\" may not have USB 3.0 drivers installed."),
+		tr("To use USB 3.0 devices with this virtual machine, you may need to configure it to support USB 3.0."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_IPN_MESSAGE,
+		tr( "%1" ),
+		tr( "%1" ),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALLED_GUEST_APPS_DIALOG,
+		tr( "We noticed that you have just installed new applications. Do you want to add them to the Mac Launchpad?" ),
+		tr( "Please choose which apps you want to add." ),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_FEEDBACK_SUCCESS,
+		tr( "Thank you. Your feedback has been successfully sent to " PRODUCT_NAME_SHORT "." ),
+		tr( "" ),
+		false,
+		PMT_INFORMATION
+		);
+}
+
+void PrlErrStringsStorage::Initialize()
+{
+	InitializePSErrorMessages();
+	InitializeAnswers();
+	InitializeQuestions();
+	InitializeInformations();
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNEXPECTED,
@@ -2346,14 +2896,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_ALREADY_CONNECTED,
-		tr("A device connecting error occurred."),
-		tr("The device %1 %2 is already connected."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_DEV_SERIAL_PORT_PIPE_CONNECT_FAILED,
 		tr("Unable to connect the serial port %1. The connection status for this device is set to Disconnected."),
 		tr("The socket required by the serial port %1 is used by another process or you do not have the permission to access it. The virtual machine will continue running, but the serial port will be disconnected."),
@@ -2525,14 +3067,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_APPLY_CONFIG_NEEDS_REBOOT,
-		tr("The changes will take effect after you restart the virtual machine."),
-		tr("To apply the changes, shut down your guest operating system and then start the virtual machine again." ),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_CANT_DELETE_RUNNING,
 		tr("Cannot delete the virtual machine because it is running."),
 		tr("Stop the virtual machine and try again."),
@@ -2642,14 +3176,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("You cannot add more devices to this type of interface."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_SPECIFY_GUEST_INSTALL_FILES,
-		tr("You need to specify the path to the installation source."),
-		tr("Specify the path to the guest operating system installation disc or another source of installation and try again."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -3349,38 +3875,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_TOOLS_WIN,
-		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine and start the installation."),
-		tr("If the installation does not start automatically, open your CD/DVD drive in Windows and double-click \"Setup.exe\"."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_TOOLS_LIN,
-		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
-		tr("To install " PRODUCT_NAME_SHORT " Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install " PRODUCT_NAME_SHORT " Tools."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_TOOLS_MAC,
-		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
-		tr("To install " PRODUCT_NAME_SHORT " Tools, open the " PRODUCT_NAME_SHORT " Tools CD in the virtual machine and double-click \"Install\"."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_GHOSTSCRIPT_ON_HOST,
-		tr("The document has been sent to a printer that is shared with the host computer."),
-		tr("To ensure proper printing from the virtual machine, it is recommended that you install a PostScript interpreter as described on the " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>" ),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_QUEST_HDD_SAME_IMAGE,
 		tr("The virtual hard disk image file %1 is already used by virtual hard disk %2."),
 		tr("Specify another virtual hard disk image file and try again."),
@@ -3499,14 +3993,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("The virtual machine processor was disabled by the operating system."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PROBLEM_REPORT_POST_SUCCESS,
-		tr("A problem report with the ID number %1 has been sent to " PRODUCT_NAME_SHORT " to help us improve the product. Thank you for your feedback."),
-		tr("If you'd like to contact our support team to request help with your problem, please copy the problem report ID number, %1, and submit a support ticket to " PRODUCT_NAME_SHORT " Support."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -4780,30 +5266,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_PD3_COMPAT_MODE,
-		tr("The virtual machine is running in compatibility mode. A newer version of " PRODUCT_NAME_SHORT " Tools needs to be installed. The installation will start automatically."),
-			tr("Please wait for the guest operating system to boot and start the " PRODUCT_NAME_SHORT " Tools installation, it might take a while. If the installation of " PRODUCT_NAME_SHORT " Tools does not start automatically, select Install " PRODUCT_NAME_SHORT " Tools on the Virtual Machine menu to start the installation manually."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_PD3_COMPAT_NO_MOUSE,
-		tr("The mouse in your virtual machine may work incorrectly. The problem will be solved automatically after the restart."),
-		tr("Windows requires some time to initialize the newly found devices after the virtual machine upgrade. During this time, your mouse may work incorrectly. If you need to log in to your virtual machine, use the keyboard."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_BOOTCAMP_MODE,
-		tr("You are booting from your Boot Camp partition inside a virtual machine."),
-		tr("You will need to reactivate Windows and Microsoft Office. Do not change the virtual machine configuration without necessity as it may require another reactivation."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		PET_DSP_EVT_DISP_SHUTDOWN,
 		tr(PRODUCT_NAME_SHORT " Service will be stopped."),
 		tr("After Dispatcher Service is stopped, you will not be able to manage your virtual machines."),
@@ -5157,35 +5619,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_SWITCH_TO_FULLSCREEN,
-		tr("The virtual machine is about to enter the full screen mode."),
-		tr("Press <b>%1</b> to exit the full screen mode or press <b>%2</b> to release the mouse and keyboard from the virtual machine."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PRODUCT_ACTIVATED_SUCCESSFULLY,
-		tr("The current copy of @PRL_PRODUCT_NAME%1 was successfully activated."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_ANOTHER_TOOLS_IN_USE,
 		tr(PRODUCT_NAME_SHORT " Tools cannot be mounted to the virtual machine."),
 		tr("Another ISO image with " PRODUCT_NAME_SHORT " Tools is mounted to the CD/DVD device of this virtual machine. Unmount this image, then try again."),
 		false,
 		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_RUN_COMPRESSOR_WIN,
-		tr(PRODUCT_NAME_SHORT " Compressor helps you keep your virtual machine compact and efficient."),
-		tr(PRODUCT_NAME_SHORT " Compressor is an easy-to-use tool allowing you to clean up unused disk space in the virtual machine. Using this tool, you can significantly reduce the size of your virtual machine hard disks files and use the resources of your physical hard disks more efficiently."),
-		true,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -6101,14 +6539,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_COHERENCE_NOTIFICATION,
-		tr("Your virtual machine is running in Coherence mode."),
-		tr("In this mode Windows applications are fully integrated into Mac OS X. Click the @PRL_PRODUCT_NAME icon in the Dock to open the Windows Start menu. For more information on Coherence and other view modes, <a href=\"%1\">read the online help</a> or <a href=\"%2\">watch the demo</a>." ),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_SAVE_VM_CATALOG,
 		tr("Unable to update the virtual machines registry."),
 		tr("The virtual machines registry file is not found or corrupt. Reinstall @PRL_PRODUCT_NAME and try again."),
@@ -6698,38 +7128,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>."),
 		false,
 		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_HW_UPGRADE_COMPLETED,
-		tr("The virtual machine \"%1\" has been successfully upgraded."),
-		tr("You can now use this virtual machine."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_HW_UPGRADE_VMXPHY_COMPLETED,
-		tr("The virtual machine \"%1\" has been successfully configured."),
-		tr("You can now use this virtual machine."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_NO_TEMPLATE_SUPPORT_IN_PLAYER_MODE,
-		tr("You are trying to open a virtual machine template."),
-		tr("Virtual machine templates cannot be used in " PRODUCT_NAME_SHORT " Desktop Express."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_NO_PVS_FILE_SPECIFIED_IN_PLAYER_MODE,
-		tr("You did not specify the virtual machine file you want to open."),
-		tr("Please type the path to the virtual machine file after the --openvm option."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7870,13 +8268,6 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL );
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_FEATURE_RESTRICTED,
-		tr("This feature is not available in this edition of " PRODUCT_NAME_SHORT " Desktop."),
-		tr("This edition contains only features that are necessary for working with Windows XP applications and files on Windows 7."),
-		false,
-		PMT_INFORMATION );
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_RESUME_FAILED,
 		tr("The virtual machine was not migrated, because it could not be resumed on the destination server."),
 		tr("Shut down the virtual machine and start the migration again."),
@@ -8488,46 +8879,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_ISIGHT_CAMERA_CONNECT_TO_VM,
-		tr("To use iSight camera in Windows, iSight drivers must be installed."),
-		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleiSightInstaller.exe to install iSight drivers. For details, see <a href=\"%1\">%2</a>."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_BLUETOOTH_USB_CONTROLLER_CONNECT_TO_VM,
-		tr("To use Apple Bluetooth USB controller in Windows, Apple Bluetooth drivers must be installed."),
-		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleBluetoothInstaller.exe to install Apple Bluetooth drivers. For details, see <a href=\"%1\">%2</a>."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_CTRL_ALT_DEL_PRESSED,
-		tr("The \"Ctrl+Alt+Delete\" command is processed by both the host and guest operating systems."),
-		tr("To send the \"Ctrl+Alt+Delete\" command only to the virtual machine, press Ctrl+Alt+Insert instead."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_HIDDEN_MESSAGES_RESTORED,
-		tr("Hidden messages were restored."),
-		tr("All warning messages, that were disabled by checking <i>\'Do not show this message again\'</i> option are now enabled, and will be shown the next time they are applicable."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_USER_REGISTRATION_DLG_SEND_OK,
-		tr("Thank you for trying @PRL_PRODUCT_NAME"),
-		tr("A trial activation key was sent to your e-mail address."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_PORT_FORWARD_OUT_OF_SCOPE,
 		tr("The specified port forwarding IP address is invalid."),
 		tr("Indicate an IP address that lies within the scope defined in the Start address and End address fields."),
@@ -8752,14 +9103,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_SHARED_PROFILE_FOR_BOOTCAMP_VM,
-		tr("You have enabled Shared Profile for a Boot Camp virtual machine."),
-		tr("If you boot natively from the Boot Camp partition, Shared Profile will be automatically disabled."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_IVALID_VM_UUID_MISMATCH,
 		tr("The specified location contains another virtual machine."),
 		tr("The path you have specified contains the files that belong to another virtual machine."),
@@ -8888,14 +9231,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_CONVERT_SUCCEDED_OTHER_OS,
-		tr("The virtual machine has been successfully converted."),
-		tr("You can now use this virtual machine with @PRL_PRODUCT_NAME."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_CONVERT_FAILED,
 		tr("Failed to convert the virtual machine."),
 		tr("The virtual machine could not be converted to the new format."),
@@ -8912,94 +9247,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_LOWMEMORY,
-		tr("Unable to switch to Coherence."),
-		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_STOPPED_LOWMEMORY,
-		tr("Coherence mode has been turned off."),
-		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and switch to the Coherence mode again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_SMOFF,
-		tr("Unable to switch to Coherence."),
-		tr("The " PRODUCT_NAME_SHORT " mouse synchronization service is not started. Reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_SMDISABLED,
-		tr("Unable to switch to Coherence."),
-		tr("Shut down the virtual machine, then choose Virtual Machine > Configure > Options > Advanced, and set <b>SmartMouse</b> mode to <b>On</b> or <b>Auto</b>."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_GUEST,
-		tr("Unable to switch to Coherence."),
-		tr("The virtual machine display configuration could not be applied. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_HOST,
-		tr("Unable to switch to Coherence."),
-		tr("The information about your display configuration could not be retrieved. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_STOPPED_DSPCFGERROR_GUEST,
-		tr("Coherence mode has been turned off."),
-		tr("The virtual machine display configuration could not be applied. Please try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_NOTENOUGHDISPLAYS,
-		tr("Unable to switch to Coherence."),
-		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_SERVERBUSY,
-		tr("An error occurred while switching to Coherence. Please try again."),
-		tr("If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_LINUX_3D,
-		tr("Unable to switch to Coherence."),
-		tr("Please disable Linux desktop visual effects."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_STOPPED_LINUX_3D,
-		tr("Coherence mode has been turned off."),
-		tr("Coherence is not available when Linux desktop visual effects are enabled."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_UNABLE_START_TRANSPORTER,
 		tr("Unable to start %1."),
 		tr("Make sure that %1 is installed in %2 on your computer and try again."),
@@ -9013,32 +9260,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Copy this video tutorial to the Applications folder on your Mac to be able to watch it without the disc."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REMAP_VM_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
-		tr("This key sequence is already used to perform the \"%1\" action."),
-		tr("Before you can configure this key sequence to perform another action, you should assign a different key combination to the \"%1\" action."),
-		false,
-		PMT_INFORMATION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_VM_SHORTCUT,
-		tr("This key sequence is already in use by the shortcut <br>\"%1\"."),
-		tr("Configure the shortcut to use another key sequence or remove the shortcut and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
-		tr("This key sequence is already used to perform the \"%1\" action."),
-		tr("Configure the shortcut to use another key sequence."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9081,53 +9302,12 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK,
-		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK_NO_SUPPORT_CODE,
-		tr("Your copy of @PRL_PRODUCT_NAME has been successfully registered, but the support code could not be created at the moment. To get the support code later, please log in to your account on the " PRODUCT_NAME_SHORT " website and browse to <a href=\"%1\">the support options area</a>."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED,
-		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED_NO_SUPPORT_CODE,
-		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account, but the support code could not be created. To get the support code, please log in to your account on the <a href=\"%1\">" PRODUCT_NAME_SHORT " website</a> and browse to the registered products area."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
 	REGISTER_ERROR_STRING(
 		GUI_ERR_REGISTRATION_PRODUCT_ALREADY_REGISTERED_ON_ANOTHER_USER,
 		tr("This copy of @PRL_PRODUCT_NAME is already registered to another user account."),
 		tr(""),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_ACCOUNT_SUCCESSFULLY_UPDATED,
-		tr("This key is already registered to your account. Changes to your account information have been applied."),
-		tr(""),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9176,14 +9356,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_UNINSTALLING_HOST_ANTIVIRUS_SUCCESS,
-		tr("%1 for Mac was removed successfully."),
-		tr(""),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9420,38 +9592,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_SOFTWARE_UP_TO_DATE,
-		tr("You have the latest version of @PRL_PRODUCT_NAME."),
-		tr("There are no new software updates available at this time."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PASSWORD_RESET_ENTER_EMAIL,
-		tr("Please enter your email address."),
-		tr("We will send you an email with a link to reset your password."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PASSWORD_RESET_CHECK_EMAIL,
-		tr("The instructions on resetting your password have been sent to your email address."),
-		tr("Please check your email and follow those instructions."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_ACCOUNT_ALREADY_USED,
-		tr("There is an existing account associated with this email. To register your copy, please log in to this account."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_WRN_KEY_NOT_BE_AUTO_REGISTRED,
 		tr("The upgrade key could not be registered automatically."),
 		tr("You can register it by logging into your " PRODUCT_NAME_SHORT " account."),
@@ -9481,86 +9621,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("The installation will proceed in standard mode. Manual intervention will be required at certain steps."),
 		false,
 		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_OK,
-		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_INVALID_KEY,
-		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please follow the link to learn more: <a href=\"%1\">" PRODUCT_NAME_SHORT " Knowledge Base</a>."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_INVALID_EMAIL,
-		tr("The e-mail address you have specified is invalid. Correct the address and try again."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_ALREADY_REGISTERED,
-		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_REQUIRED_FIELDS,
-		tr("Not all required fields are filled."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_INVALID_USER,
-		tr("Your activation key for @PRL_PRODUCT_NAME is already registered by another user. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_CONNECTION,
-		tr("Please check your Internet connection and try again."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INVALID_LOGIN_OR_PASS,
-		tr("The email or password you entered is invalid. Please check your email and password and try again."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_GENERAL_ERROR,
-		tr("Check your Internet connection and try again. If the problem persists, follow <a href=\"%1\">this link</a> to register your copy of @PRL_PRODUCT_NAME."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_SHARED_GUEST_APPS_OPEN_DOC_NEED_ADD_USER_SHARED_FOLDER,
-		tr("To be able to access \"%1\" from the virtual machine, you need to share the folder containing this file with the virtual machine."),
-		tr("To add a shared folder, open the virtual machine configuration, choose Options > Shared Folders, and specify the folder you want to share."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10123,14 +10183,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_FIREWALL_MAY_BLOCK_REMOTE_MANAGE,
-		tr("@PRL_PRODUCT_NAME will be allowed to communicate through firewall."),
-		tr("If you are unable to connect to @PRL_PRODUCT_NAME remotely, please open the firewall settings and make sure that @PRL_PRODUCT_NAME is allowed to accept incoming connections and port %1 is not blocked by the firewall."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_APP_COULD_NOT_BE_STARTED,
 		tr("@PRL_PRODUCT_NAME could not be started."),
 		tr("Please try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
@@ -10184,14 +10236,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Remove the HDD %1 from the virtual machine configuration and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_CLEANUP_NOTHING_TO_DO,
-		tr( "%1 doesn't take any additional disk space."),
-		tr("@PRL_PRODUCT_NAME could not find any data to compress or remove to free up the space used by this virtual machine."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10295,22 +10339,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_USB3_DRIVERS_REQUIRED_WIN,
-		tr("\"%1\" may not have USB 3.0 drivers installed."),
-		tr("To use USB 3.0 devices with this virtual machine, please download the USB 3.0 driver and install it in Windows."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_USB3_DRIVERS_REQUIRED_OTHER,
-		tr("\"%1\" may not have USB 3.0 drivers installed."),
-		tr("To use USB 3.0 devices with this virtual machine, you may need to configure it to support USB 3.0."),
-		true,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10504,30 +10532,6 @@ void PrlErrStringsStorage::Initialize()
 		tr( "You have reached your limit of computers registered with " PRODUCT_NAME_SHORT " Access."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_IPN_MESSAGE,
-		tr( "%1" ),
-		tr( "%1" ),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALLED_GUEST_APPS_DIALOG,
-		tr( "We noticed that you have just installed new applications. Do you want to add them to the Mac Launchpad?" ),
-		tr( "Please choose which apps you want to add." ),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_FEEDBACK_SUCCESS,
-		tr( "Thank you. Your feedback has been successfully sent to " PRODUCT_NAME_SHORT "." ),
-		tr( "" ),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(

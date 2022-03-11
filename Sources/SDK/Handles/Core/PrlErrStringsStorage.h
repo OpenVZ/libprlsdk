@@ -128,6 +128,11 @@ private:
 	void InitializeQuestions();
 
 	/**
+	 * Initializes all informations strings database
+	 */
+	void InitializeInformations();
+
+	/**
 	 * Initializes Dispatcher Server specific errors strings database
 	 */
 	void InitializePSErrorMessages();
