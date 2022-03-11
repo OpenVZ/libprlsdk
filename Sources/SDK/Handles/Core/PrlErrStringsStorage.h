@@ -138,6 +138,11 @@ private:
 	void InitializeWarnings();
 
 	/**
+	 * Initializes all warnings strings database
+	 */
+	void InitializeCritical();
+
+	/**
 	 * Initializes Dispatcher Server specific errors strings database
 	 */
 	void InitializePSErrorMessages();
