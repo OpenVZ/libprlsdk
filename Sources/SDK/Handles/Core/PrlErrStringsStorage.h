@@ -133,6 +133,11 @@ private:
 	void InitializeInformations();
 
 	/**
+	 * Initializes all warnings strings database
+	 */
+	void InitializeWarnings();
+
+	/**
 	 * Initializes Dispatcher Server specific errors strings database
 	 */
 	void InitializePSErrorMessages();
