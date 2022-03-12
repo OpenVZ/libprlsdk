@@ -180,10 +180,2649 @@ static void REGISTER_ERROR_STRING2(PRL_RESULT error_code
 			, can_be_ignored_sign, message_type));
 }
 
-void PrlErrStringsStorage::Initialize()
+void PrlErrStringsStorage::InitializeWarnings()
 {
-	InitializePSErrorMessages();
+	REGISTER_ERROR_STRING(
+		PRL_WARN_UNABLE_OPEN_DEVICE,
+		tr("Unable to connect %1 %2."),
+		tr("A file or device required for the operation of %1 %2 does not exist or is used by another process, or you have no permission to access it. The virtual machine will continue running, but the device will be disconnected."),
+		false,
+		PMT_WARNING
+		);
 
+	REGISTER_ERROR_STRING(
+		PRL_WARN_TARGET_HOST_DISK_IS_FULL,
+		tr("PRL_WARN_TARGET_HOST_DISK_IS_FULL"),
+		tr("PRL_WARN_TARGET_HOST_DISK_IS_FULL"),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_ALREADY_REGISTERED_VM_PATH,
+		tr("The virtual machine \"%1\" already exists in \"%2\"."),
+		tr("Specify another name or location for the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_IMAGE_IS_STOLEN,
+		tr("Unable to access the image file."),
+		tr("Make sure that the path to the image file %1 is correct and the target location is accessible."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_UNABLE_OPEN_DEVICE_NAME,
+		tr("Unable to connect the device."),
+		tr("A file or device required for the %1 %2 operation does not exist or is used by another process, or you have insufficient access permissions. The virtual machine will continue running with the device disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_SERIAL_PORT_PIPE_CONNECT_FAILED,
+		tr("Unable to connect the serial port %1. The connection status for this device is set to Disconnected."),
+		tr("The socket required by the serial port %1 is used by another process or you do not have the permission to access it. The virtual machine will continue running, but the serial port will be disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_SERIAL_PORT_PHYSICAL_CONNECT_FAILED,
+		tr("Unable to connect the serial port %1. The connection status for this device is set to Disconnected."),
+		tr("The socket required by the serial port %1 is used by another process or you do not have the permission to access it. The virtual machine will continue running, but the serial port will be disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_SERIAL_PORT_FILE_CONNECT_FAILED,
+		tr("Unable to connect the serial port %1. The connection status for this device is set to Disconnected."),
+		tr("The file required by the serial port %1 is used by another process or you do not have the permission to access it. The virtual machine will continue running, but the serial port will be disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_PARALLEL_PORT_PRINTER_CONNECT_FAILED,
+		tr("Unable to connect the printer port %1. The connection status for this device is set to Disconnected."),
+		tr("The printer used by the printer port %1 is not available or you have insufficient privileges to access it. "\
+		   "The virtual machine will continue running, but the printer port will be disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_PARALLEL_PORT_PHYSICAL_CONNECT_FAILED,
+		tr("Unable to connect the printer port %1. The connection status for this device is set to Disconnected."),
+		tr("The physical resource used by the printer port %1 is used by another process or you have insufficient privileges to access it. "\
+		   "The virtual machine will continue running, but the printer port will be disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_PARALLEL_PORT_FILE_CONNECT_FAILED,
+		tr("Unable to connect the printer port %1. The connection status for this device is set to Disconnected."),
+		tr("The file used by the printer port %1 is used by another process or you have insufficient privileges to access it. "\
+		   "The virtual machine will continue running, but the printer port will be disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_NET_CABLE_DISCONNECTED,
+		tr("The real network adapter <b>%2</b> used by the virtual adapter %1 is not connected to the network."),
+		tr("Make sure the real adapter is connected to a wireless or wired network."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_NET_IPADDRESS_MODIFY_FAILED_WARNING,
+		tr("The IP address of the " PRODUCT_NAME_SHORT " network adapter has not been changed."),
+		tr("There was a failure changing the IP address of the " PRODUCT_NAME_SHORT " network adapter. The other network parameters have been modified successfully."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_CANT_DELETE_RUNNING,
+		tr("Cannot delete the virtual machine because it is running."),
+		tr("Stop the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_CANT_CLONE_RUNNING,
+		tr("Cannot clone the virtual machine because it is running."),
+		tr("Stop the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_NAME_IS_EMPTY,
+		tr("The virtual machine name is not specified."),
+		tr("Specify a name for the virtual machine to proceed."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_CANT_UNREG_RUNNING,
+		tr("Cannot unregister the virtual machine because it is running."),
+		tr("Stop the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_PARSE_VM_CONFIG,
+		tr("The configuration file you specified is invalid."),
+		tr("Make sure that the specified file is a valid " PRODUCT_NAME_SHORT " virtual machine configuration file and it is not corrupt, or select another file."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_XML_WRITE_FILE,
+		tr("Failed to save the configuration file."),
+		tr("The configuration file could not be saved on the hard disk. Make sure you are authorized to write to the disk."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_CONFIG_ALREADY_EXISTS,
+		tr("A virtual machine with this name already exists."),
+		tr("Specify another name for your virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_DIR_CONFIG_ALREADY_EXISTS,
+		tr("A virtual machine folder with this name already exists."),
+		tr("Specify another name for your virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMDIR_PATH_IS_NOT_ABSOLUTE,
+		tr("The path you specified is not valid."),
+		tr("Specify a valid virtual machine path and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_UNABLE_DROP_SUSPENDED_STATE,
+		tr("Unable to change the virtual machine state."),
+		tr("Some files have not been deleted either because they were in use or because you do not have the permission to delete them. You may try to delete these files manually."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_MUST_BE_STOPPED_BEFORE_RENAMING,
+		tr("You cannot rename the virtual machine when it is running."),
+		tr("Stop the virtual machine \"%1\" and try again."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CDD_IMAGE_NOT_SPECIFIED,
+		tr("The virtual machine configuration is invalid."),
+		tr("Specify a valid CD/DVD disc image and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUEST_HDD_IMAGE_NOT_EXIST,
+		tr("The virtual machine configuration is invalid."),
+		tr("The virtual hard disk image file \"%1\" is not found. Check the virtual machine configuration and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_HDD_IMAGE_NOT_SPECIFIED,
+		tr("The virtual machine configuration is invalid."),
+		tr("Specify a valid hard disk image file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUEST_CDD_IMAGE_NOT_EXIST,
+		tr("The virtual machine configuration is invalid."),
+		tr("The virtual CD/DVD disc image file \"%1\" is not found. Check the virtual machine configuration and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_FLOPPY_IMAGE_NOT_EXIST,
+		tr("The virtual machine configuration is invalid."),
+		tr("The virtual floppy disk image file \"%1\" is not found. Check the virtual machine configuration and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_FDD_IMAGE_NOT_SPECIFIED,
+		tr("The virtual machine configuration is invalid."),
+		tr("Specify a valid floppy disk image file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_ADD_HW_FLOPPY_IMAGE_NOT_SPECIFYED,
+		tr("The path to the floppy disk image file is not specified."),
+		tr("Specify the path and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_HDD_IMAGE_NOT_EXIST,
+		tr("Unable to find the specified virtual hard disk file."),
+		tr("Make sure that the file exists or specify another one."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_AUTHENTICATION_FAILED,
+		tr("Incorrect user name or password."),
+		tr("Type a valid user name and password and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LOCAL_AUTHENTICATION_FAILED,
+		tr("Incorrect user name or password."),
+		tr("Type a valid user name and password and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_CONF_CHANGED_INVALID_ARG,
+		tr("Cannot change the virtual machine configuration because the \"%1\" with image path \"%2\" is incorrect."),
+		tr("Make sure that the file name is correct or specify another one."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_WINDOWS_EXPRESS_INSTALL_USER_NAME_EMPTY,
+		tr("The user name is not specified."),
+		tr("Type a user name to proceed."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_FILE_NOT_EXIST,
+		tr("The file %1 does not exist."),
+		tr("Make sure the file name is correct or specify another %2 file."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_NOT_ENOUGH_DISK_FREE_SPACE,
+		tr("The size specified for this virtual hard disk exceeds the free space available on the physical hard disk."),
+		tr("Choose a different physical volume on which this hard disk image file is to be stored or specify a smaller disk size."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISK_INSUFFICIENT_SPACE,
+		tr("The size specified for this virtual hard disk exceeds the free space available on the physical hard disk."),
+		tr("Choose a different physical volume on which this hard disk image file is to be stored or specify a smaller disk size."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_MAC_ADDRESS_INCORRECT,
+		tr("Unable to save the configuration because it is invalid."),
+		tr("The MAC address of the network adapter %1 is invalid. Correct the MAC address and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CANT_RECREATE_HDD,
+		tr("Unable to recreate the virtual hard disk."),
+		tr("The virtual hard disk cannot be recreated because the virtual machine that uses this disk is not stopped. Shut down the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CANT_RESIZE_HDD,
+		tr("Unable to resize the virtual hard disk."),
+		tr("The virtual hard disk cannot be resized because the virtual machine that uses this disk is not stopped. Shut down the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_INVALID_VIRTUOZZO_DISK,
+		tr("%1 does not exist or the specified hard disk image file is not valid."),
+		tr("Specify the correct path to a valid " PRODUCT_NAME_SHORT " virtual hard disk image file."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMDIR_INVALID_PATH,
+		tr("The path you specified is incorrect."),
+		tr("Type a full path or use the <b>Choose</b> button to locate the folder."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_FDD_IMAGE_ALREADY_EXIST,
+		tr("An older floppy disk image file %1 already exists in this location. Do you want to replace it with a blank floppy image?"),
+		tr("If you click Replace, all the data on the image file will be lost."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_NO_BOOTING_DEVICE_SELECTED,
+		tr("No boot device was selected. Select the device you want the virtual machine to boot from."),
+		tr("At least one boot device must be selected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_REMOTE_DISPLAY_HOST_NOT_SPECIFIED,
+		tr("Invalid IP Address."),
+		tr("An IP address must consist of four numbers, each ranging from 0 to 255, separated by dots."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_REMOTE_DISPLAY_WRONG_PORT_NUMBER,
+		tr("The port number is invalid."),
+		tr("The allowed Remote Display port number range is %1:%2. Enter a valid number and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_REMOTE_DISPLAY_PASSWORD_TOO_LONG,
+		tr("The specified VNC password is too long."),
+		tr("The VNC password must not exceed %1 characters."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_INCORRECT_FDD_PATH,
+		tr("The file you specified cannot be used as a floppy disk image file."),
+		tr("Specify another floppy disk image file."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DIRECTORY_DOES_NOT_EXIST,
+		tr("The folder %1 does not exist."),
+		tr("Specify another folder and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_TO_REGISTER_IS_NOT_SPECIFIED,
+		tr("You have not selected any virtual machines."),
+		tr("Please select one or more virtual machines to add and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_ALREADY_REGISTERED_UNIQUE_PARAMS,
+		tr("The name you specified for this virtual machine is already taken."),
+		tr("Specify another name and location for the new virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUEST_EXCEED_RECOMMENDED_MEMORY,
+		tr("The amount of memory allocated to this virtual machine exceeds the recommended maximum of <b>%2 MB</b>."),
+		tr("Allocating more than <b>%2 MB</b> of memory to a virtual machine may affect the overall system performance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SHARED_FOLDER_NAME_EXISTS,
+		tr("The \"%1\" name is already taken by the shared folder \"%2\"."),
+		tr("Type a different name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SHARED_FOLDER_PATH_EXISTS,
+		tr("The folder \"%1\" is already shared under the \"%2\" name."),
+		tr("Choose a different folder and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SHARED_FOLDER_NAME_IS_NOT_SPECIFIED,
+		tr("The folder name is not specified."),
+		tr("Specify an arbitrary name for the folder and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SHARED_FOLDER_PATH_IS_NOT_SPECIFIED,
+		tr("The folder path is not specified."),
+		tr("Specify the path to the folder and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_INCORRECT_SHARED_FOLDER_NAME,
+		tr("The shared folder name \"%1\" is invalid."),
+		tr("A shared folder name cannot contain any of the following characters: \\/:*?\"&lt;&gt;|."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_INCORRECT_SHARED_FOLDER_PATH,
+		tr("The shared folder path is invalid."),
+		tr("The path cannot contain references to the current (.) or parent (..) folder. Specify a valid path and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SHARED_FOLDER_NAME_IS_RESERVED_BY_SYSTEM,
+		tr("The shared folder cannot use the \"%1\" name because this name is reserved by the software internally."),
+		tr("Specify a different folder name. Keep in mind that a shared folder name cannot contain any of the following characters: \\/:*?\"&lt;&gt;|."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_INVALID_SHARED_FOLDER_PATH,
+		tr("Unable to add the folder \"%1\" because it does not exist or is not accessible."),
+		tr("Make sure that the folder path is correct and the target location is accessible."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_CANT_CHANGE_SHARED_FOLDER,
+		tr("Unable to select the folder \"%1\" because it does not exist or is not accessible."),
+		tr("Make sure that the folder path is correct and the target location is accessible."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_ZERO_FIRST_OCTET_IN_START_IP,
+		tr("The DHCP scope start address is incorrect."),
+		tr("The first number of a network address should be greater than zero. Specify a valid number."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_ZERO_FIRST_OCTET_IN_END_IP,
+		tr("The DHCP scope end address is incorrect."),
+		tr("The first number of a network address should be greater than zero. Specify a valid number."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_ZERO_FIRST_OCTET_IN_MASK_IP,
+		tr("The DHCP scope mask is incorrect."),
+		tr("The DHCP scope mask must be 255.0.0.0, 255.255.0.0, or 255.255.255.0. Specify a valid value."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_INCORRECT_START_IP,
+		tr("The DHCP scope start address is incorrect."),
+		tr("The specified address cannot be used as the start address of the DHCP scope. Specify a valid address or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_INCORRECT_END_IP,
+		tr("The DHCP scope end address is incorrect."),
+		tr("The specified address cannot be used as the end address of the DHCP scope. Specify a valid address or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_INCORRECT_MASK_IP,
+		tr("The DHCP scope mask is incorrect."),
+		tr("The DHCP scope mask must be 255.0.0.0, 255.255.0.0, or 255.255.255.0. Specify a valid value."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_ZERO_LAST_OCTET_IN_START_IP,
+		tr("The DHCP scope start address is incorrect."),
+		tr("The last number of the DHCP scope start address must be in the range from 1 to 255. Specify a valid address."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_ZERO_LAST_OCTET_IN_END_IP,
+		tr("The DHCP scope end address is incorrect."),
+		tr("The last number of the DHCP scope end address must be in the range from 1 to 255. Specify a valid address."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_SCOPE_END_OUT_OF_SUBNET,
+		tr("The DHCP scope end address is out of the subnet range."),
+		tr("The DHCP scope end address must be within the subnet range based on the start address. Specify a valid address."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_DHCP_START_IP_IS_LESS_THAN_END_IP,
+		tr("The DHCP scope is incorrect."),
+		tr("The DHCP scope must comprise a continuous range of at least 16 IP addresses from the start address to the end address. Adjust the start and end address values and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_INVALID_IPV6_ADDRESS,
+		tr("Invalid IP address"),
+		tr("The IPv6 address must consist of 8 hexadecimal numbers from 0x0 to 0xffff, separated by colons."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_INVALID_VM_NAME_SPECIFIED,
+		tr("The virtual machine name \"%1\" is invalid."),
+		tr("A virtual machine name cannot contain any of the following characters: [/:*?\"<>|%] Specify a valid name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_INVALID_MAC_ADDRESS,
+		tr("The MAC address of the network adapter is invalid."),
+		tr("Specify a valid MAC address for this network adapter."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_PRL_TOOLS_BETA,
+		tr("Automatic installation of " PRODUCT_NAME_SHORT " Tools is not supported in this Beta. Please install " PRODUCT_NAME_SHORT " Tools manually."),
+		tr(PRODUCT_NAME_SHORT " Tools are available from the image file \"%1\". Connect this image to the virtual machine and install " PRODUCT_NAME_SHORT " Tools."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUEST_HDD_SAME_IMAGE,
+		tr("The virtual hard disk image file %1 is already used by virtual hard disk %2."),
+		tr("Specify another virtual hard disk image file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CANT_TO_START_VM_TEMPLATE,
+		tr("You cannot start virtual machine templates."),
+		tr("You can either deploy or convert this template to a virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_IDE_NODE_ALREADY_TAKEN,
+		tr("The %1 position is already in use."),
+		tr("Specify another IDE position for the device."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SCSI_NODE_ALREADY_TAKEN,
+		tr("The %1 position is already in use."),
+		tr("Specify another SCSI position for the device."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_INVALID_IMAGE_PATH,
+		tr("The specified path to the image file is invalid."),
+		tr("Check the path to the file and try again, making sure to type the path correctly."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_INVALID_OUTPUT_PATH,
+		tr("The specified path to the output file is invalid."),
+		tr("Check the path to the file and try again, making sure to type the path correctly."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SHORTCUT_EXISTS,
+		tr("The %1 shortcut is already used for another action."),
+		tr("The %1 shortcut cannot simultaneously be assigned to two actions - %2. Correct the assignments and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SHORTCUT_HAS_EMPTY_MODIFIERS,
+		tr("The following keyboard shortcuts are invalid: %1."),
+		tr("Shortcuts must contain two or more keys. Add one or more modifier keys to each of the listed shortcuts and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VM_NAME_NOT_SPECIFIED,
+		tr("The virtual machine name is not specified."),
+		tr("Specify an arbitrary name for your virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VM_DIR_NOT_SPECIFIED,
+		tr("The virtual machine folder is not specified."),
+		tr("Specify a folder for storing the virtual machine files and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISK_IMAGE_BUSY,
+		tr("Unable to recreate the image file %1."),
+		tr("The specified image file %1 is currently in use by another application. Specify a different file name and try again." ),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISK_XML_INVALID,
+		tr("The hard disk image file used by the hard disk %1 (%2) is corrupt and its data cannot be recovered."),
+		tr("To recreate the image file, open the hard disk properties pane, enable the \"Show advanced settings\" option, and click Recreate. After recreating the disk image, all data on this disk will be lost."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_WRONG_CDD_IMAGE_PATH_SPECIFIED,
+		tr("The image file is not specified."),
+		tr("Specify the path to the appropriate CD/DVD image file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	// NOTE: this error is currently unused and replaced by the error
+	// PRL_ERR_VMCONF_CPU_COUNT_MORE_MAX_CPU_COUNT
+	REGISTER_ERROR_STRING(
+		GUI_ERR_WRONG_NUMBER_OF_CPU,
+		tr("The specified number of CPUs is incorrect."),
+		tr("The maximum allowed number of CPUs cannot exceed %1. Specify a correct value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_SUSPEND_REJECTED_BY_GUEST,
+		tr("Unable to suspend the virtual machine."),
+		tr("The virtual machine cannot be suspended because some operations have not been completed in its operating system."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_PLAYER_CANT_SUSPEND_IN_PAUSE,
+		tr("This virtual machine is paused and cannot be suspended."),
+		tr("Resume the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_FILE_OR_DIR_ALREADY_EXISTS,
+		tr("A virtual machine or folder with the name of \"%1\" already exists in %2."),
+		tr("Specify another name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LPT_OUTPUT_FILE_IS_NOT_SPECIFIED,
+		tr("The path to the printer port output file %1 is not specified."),
+		tr("Specify a path to the output file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_COM_OUTPUT_FILE_IS_NOT_SPECIFIED,
+		tr("The path to the serial port output file %1 is not specified."),
+		tr("Specify a path to the output file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CANT_EDIT_SUSPENDED_VM,
+		tr("This virtual machine is suspended."),
+		tr("To be able to edit the configuration of this virtual machine, you need to stop it."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_APPLY_CHANGES_PENDING,
+		tr("Unable to change the device state."),
+		tr("The device state cannot be modified because there are some pending changes that require the virtual machine to be restarted. Restart the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_ACCES_DENIED_FILE_TO_PARENT_PARENT_DIR,
+		tr("The file %1 cannot be created in the specified folder."),
+		tr("You do not have the permission to create files in this folder. Choose another folder and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_VM_SHUTDOWN_CONDITIONS,
+		tr("The virtual machine can be shut down if its operating system is loaded and supports Advanced Configuration and Power Interface (ACPI)."),
+		tr("If the virtual machine does not shut down after you click OK, perform a shutdown from within the virtual machine."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_ALREADY_REGISTERED_VM_NAME,
+		tr("The name %1 is already used by another virtual machine or template."),
+		tr("Specify another name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_DVD_DISCONNECTED_BY_GUEST,
+		tr("The CD/DVD disc was ejected from the guest operating system."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMDIR_PATH_IS_NOT_ABSOLUTE,
+		tr("The specified path is incorrect."),
+		tr("Type the absolute path or use the <b>Choose</b> button to locate the folder."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_IMAGE_PATH_NOT_SPECIFIED,
+		tr("The image file path is invalid."),
+		tr("Please specify a valid image file path and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_SOCKET_NOT_SPECIFIED,
+		tr("The socket location is invalid."),
+		tr("Specify a valid location for the socket and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_OUTPUT_PATH_NOT_SPECIFIED,
+		tr("The output file path is not specified or invalid."),
+		tr("Specify a valid path for the output file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_CANT_CHANGE_CDROM_CONNECT_OPTION,
+		tr("The \"Connected\" option is unavailable because no hard disk image file is specified."),
+		tr("Specify a virtual hard disk image file to enable this option."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_FILE_DISK_SPACE_ERROR,
+		tr("Not enough free space on the physical disk drive %1."),
+		tr("Free some space on this disk drive or select another location and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_CANT_CLONE_SUSPENDED_VM,
+		tr("You cannot %1 the virtual machine \"%2\"."),
+		tr("The virtual machine \"%1\" is currently suspended. Resume the virtual machine, shut it down, and try to %2 it again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_INCORRECT_CDROM_PATH,
+		tr("The specified file cannot be used as a CD/DVD image file."),
+		tr("Specify another CD/DVD image file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISP_VM_IS_NOT_STARTED,
+		tr("Unable to perform the operation because the virtual machine \"%1\" is not started."),
+		tr("This operation can be performed for running virtual machines only."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISP_VM_IS_NOT_STOPPED,
+		tr("Unable to perform the operation because the virtual machine \"%1\" is not stopped."),
+		tr("This operation can be performed for stopped virtual machines only."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_VM_NAME_IS_EMPTY,
+		tr("The virtual machine name is not specified."),
+		tr("Enter a unique name for the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_VM_NAME_HAS_INVALID_SYMBOL,
+		tr("The virtual machine name \"%1\" is invalid."),
+		tr("A virtual machine name cannot contain any of the following characters: [/:*?\"<>|%]"),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NO_HD_IMAGES_IN_SAFE_MODE,
+		tr("Unable to start the virtual machine in Rollback Mode."),
+		tr("The virtual machine does not have any virtual hard disk in its configuration."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_BOOT_OPTION_INVALID_DEVICE_TYPE,
+		tr("The virtual machine has one or more invalid boot devices."),
+		tr("Only hard disks, floppy disks, CD/DVD drives, and network adapters can be used as boot devices. Remove the inappropriate devices from the Boot Order list and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_BOOT_OPTION_DUPLICATE_DEVICE,
+		tr("One or more duplicate devices are present in the boot sequence."),
+		tr("Each device can be included in the boot sequence only once. Remove the duplicate devices from the boot sequence and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_BOOT_OPTION_DEVICE_NOT_EXISTS,
+		tr("The boot sequence contains a device that does not exist."),
+		tr("Make sure that the specified boot devices exist in the virtual machine configuration. Remove the missing device from the boot sequence and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_REMOTE_DISPLAY_PORT_NUMBER_IS_ZERO,
+		tr("An incorrect port number is specified for Remote Display."),
+		tr("The port number must be greater than 0. Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SHARED_FOLDERS_EMPTY_FOLDER_NAME,
+		tr("The shared folder name is not specified."),
+		tr("Enter a unique name for the shared folder and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SHARED_FOLDERS_DUPLICATE_FOLDER_NAME,
+		tr("One or more duplicate shared folder names have been detected."),
+		tr("Make sure that each shared folder has a unique name. Remove the duplicate folders and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SHARED_FOLDERS_INVALID_FOLDER_PATH,
+		tr("The \"%1\" shared folder is not accessible."),
+		tr("Make sure that its path is correct: %2."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SHARED_FOLDERS_DUPLICATE_FOLDER_PATH,
+		tr("One or more duplicate paths for your shared folders have been detected."),
+		tr("Make sure that each shared folder has a unique path. Remove the duplicate folders and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CPU_ZERO_COUNT,
+		tr("The specified CPUs number is invalid."),
+		tr("The number of CPUs must be greater than 0. Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CPU_COUNT_MORE_MAX_CPU_COUNT,
+		tr("The specified CPUs number is invalid."),
+		tr("The number of CPUs cannot exceed %1. Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CPU_MASK_INVALID,
+		tr("The specified CPU mask is invalid."),
+		tr("Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CPU_NODE_MASK_INVALID,
+		tr("The specified NUMA node mask is invalid."),
+		tr("Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_MAIN_MEMORY_ZERO_SIZE,
+		tr("The specified main memory size is invalid."),
+		tr("The memory size must be greater than 0. Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_MAIN_MEMORY_OUT_OF_RANGE,
+		tr("The specified main memory size is invalid."),
+		tr("The memory size must be a number between %1 and %2 MB. Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_MAIN_MEMORY_NOT_4_RATIO_SIZE,
+		tr("The specified main memory size is invalid."),
+		tr("The memory size must be a multiple of 4. Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_VIDEO_MEMORY_OUT_OF_RANGE,
+		tr("The specified video memory size is invalid."),
+		tr("The memory size must be a number between %1 and %2 MB. Correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_FLOPPY_DISK_SYS_NAME_HAS_INVALID_SYMBOL,
+		tr("The floppy disk drive name \"%1\" is invalid."),
+		tr("A floppy disk drive name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_FLOPPY_DISK_URL_FORMAT_SYS_NAME,
+		tr("The image file \"%1\" used by the Floppy Disk device is stored on an Internet location."),
+		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for the Floppy Disk device."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_WRONG_TYPE_BOOTCAMP_PARTITION,
+		tr("The Boot Camp partition \"%1\" used by Hard Disk %2 is not supported."),
+		tr("Please open the virtual machine configuration and select a supported Boot Camp partition in the Hard Disk %2 settings."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_MISS_BOOTCAMP_PARTITION,
+		tr("The Boot Camp partition \"%1\" used by Hard Disk %2 is missing."),
+		tr("Please open the virtual machine configuration and select an existing Boot Camp partition in the Hard Disk %2 settings."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CD_DVD_ROM_URL_FORMAT_SYS_NAME,
+		tr("The image file \"%1\" used by CD/DVD %2 is stored on an Internet location."),
+		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for CD/DVD %2."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_SYS_NAME_HAS_INVALID_SYMBOL,
+		tr("The hard disk drive name \"%1\" is invalid."),
+		tr("A hard disk drive name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_IMAGE_IS_NOT_EXIST,
+		tr("The image file \"%1\" used by hard disk %2 does not exist."),
+		tr("Hard disk %2 will not be connected at the virtual machine startup."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_IMAGE_IS_NOT_VALID,
+		tr("The specified hard disk image file is invalid."),
+		tr("The virtual hard disk will not be connected at the virtual machine startup."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_URL_FORMAT_SYS_NAME,
+		tr("The image file \"%1\" used by Hard Disk %2 is stored on an Internet location."),
+		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for Hard Disk %2."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_MAC_ADDRESS,
+		tr("The MAC address assigned to Network Adapter %1 is invalid."),
+		tr("Specify a valid MAC address for this network adapter. "\
+		   "A valid MAC address should be six groups of two hexadecimal digits, without any colons or hyphens, beginning with 001C42."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_ROUTED_NO_STATIC_ADDRESS,
+		tr("Network Adapter %1 operating in the routed mode must have at least one static IP address assigned."),
+		tr("If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SERIAL_PORT_SYS_NAME_HAS_INVALID_SYMBOL,
+		tr("The serial port name \"%1\" is invalid."),
+		tr("A serial port name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SERIAL_PORT_URL_FORMAT_SYS_NAME,
+		tr("The output file \"%1\" used by Serial Port %2 is stored on an Internet location."),
+		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for Serial Port %2."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_PARALLEL_PORT_SYS_NAME_HAS_INVALID_SYMBOL,
+		tr("The printer port name \"%1\" is invalid."),
+		tr("A printer port name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_PARALLEL_PORT_URL_FORMAT_SYS_NAME,
+		tr("The output file \"%1\" used by Printer Port %2 is stored on an Internet location."),
+		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for Printer Port %2."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_IDE_DEVICES_COUNT_OUT_OF_RANGE,
+		tr("The allowed number of IDE devices for this virtual machine has been exceeded."),
+		tr("The total number of IDE devices in the virtual machine configuration cannot be greater than %1. Remove some of the devices and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_IDE_DEVICES_DUPLICATE_STACK_INDEX,
+		tr("This virtual machine has two or more devices with the same IDE position."),
+		tr("Make sure that each device has a unique position on the IDE bus and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SATA_DEVICES_COUNT_OUT_OF_RANGE,
+		tr("The allowed number of SATA devices for this virtual machine has been exceeded."),
+		tr("The total number of SATA devices in the virtual machine configuration cannot be greater than %1. Remove some of the devices and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SATA_DEVICES_DUPLICATE_STACK_INDEX,
+		tr("This virtual machine has two or more devices with the same SATA position."),
+		tr("Make sure that each device has a unique position on the SATA bus and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_VIRTIO_BLOCK_DEVICES_DUPLICATE_STACK_INDEX,
+		tr("This virtual machine has two or more devices sharing the same virtio-block position."),
+		tr("Make sure that each device has a unique position on the virtio-block bus and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SCSI_DEVICES_COUNT_OUT_OF_RANGE,
+		tr("The allowed number of SCSI devices for this virtual machine has been exceeded."),
+				tr("The total number of SCSI devices in the virtual machine configuration cannot be greater than %1. Remove some of the devices and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SCSI_DEVICES_DUPLICATE_STACK_INDEX,
+		tr("This virtual machine has two or more devices with the same SCSI position."),
+		tr("Make sure that each device has a unique position on the SCSI bus and try again."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SCSI_BUSLOGIC_WITH_EFI_NOT_SUPPORTED,
+		tr("Virtual machines cannot use both the BusLogic SCSI controller and EFI firmware at the same time."),
+		tr("Specify another SCSI controller or disable the EFI firmware."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_GENERIC_PCI_DEVICE_NOT_CONNECTED,
+		tr("This device is reserved for use by the host computer only and cannot be added."),
+		tr("You can change this setting in <b>File</b> > <b>Preferences</b> > <b>Intel VT-d</b>."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_GENERIC_PCI_DUPLICATE_SYS_NAME,
+		tr("This device is already present in the virtual machine configuration."),
+		tr("Specify another device and try again."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NO_IP_ADDRESSES_SPECIFIED_FOR_OFFLINE_MANAGEMENT,
+		tr("This virtual machine configuration contains no host-only network adapter which is required for offline management."),
+		tr("To be able to manage this virtual machine offline, you need to add at least one host-only network adapter with at least one IP address to its configuration."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_NO_SHARED_NETWORK_FOR_OFFLINE_MANAGEMENT,
+		tr("Shared virtual network required for offline management is missing from this server network configuration."),
+		tr("To be able to manage virtual machines on this server while they are offline, you need to add a shared virtual network by editing the server's network settings."),
+		false,
+		PMT_WARNING
+		);
+
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_DESKTOP_MODE_REMOTE_DEVICES,
+		tr("@PRL_PRODUCT_NAME does not support using remote devices."),
+		tr("Check the virtual machine configuration and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_MUST_BE_STOPPED_FOR_CHANGE_DEVICES,
+		tr("The device cannot be added or removed while the virtual machine is running."),
+		tr("Stop the virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_HDD_IMAGE_COPY,
+		tr("Unable to copy the hard disk image file '%1' to '%2'."),
+		tr("Make sure that you have the necessary permissions for the source file and the target folder. Verify that the source file is not in use and the target folder is available."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_USER_AUTHENTICATION_FAILED,
+		tr("Unable to authenticate the user."),
+		tr("Make sure that the specified credentials are correct and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_NO_FREE_PORTS,
+		tr("The USB device cannot be connected."),
+		tr("There are no virtual USB host controller ports available in the virtual "
+		"machine for the \"%1\" device to be connected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_DEV_USB_OPEN_FAILED,
+		tr("Unable to find any drivers for this USB device."),
+		tr("Please try to update the USB drivers installed on the host computer using Device Manager."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_DEV_USB_CONNECT_FAILED,
+		tr("Unable to connect the USB device to your virtual machine."),
+		tr("The device cannot be connected now. Please try again later."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_NOT_CONFIGURED,
+		tr("Unable to connect the USB device to your virtual machine."),
+		tr("Virtual USB controller is not present. Please check USB settings in the virtual machine configuration."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_INCORRECT_PATH,
+		tr("The folder \"%1\" does not exist."),
+		tr("Specify an existing folder and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_DSP_EVT_DISP_SHUTDOWN,
+		tr(PRODUCT_NAME_SHORT " Service will be stopped."),
+		tr("After Dispatcher Service is stopped, you will not be able to manage your virtual machines."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_ALREADY_RUNNING,
+		tr("The virtual machine \"%1\" is running."),
+		tr("You or another user have already started this virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_GUEST_TOOLS_NOT_INSTALLED,
+		tr(PRODUCT_NAME_SHORT " Tools are not installed in this virtual machine."),
+		tr("Start the installation now by choosing Install " PRODUCT_NAME_SHORT " Tools from the Virtual Machine menu."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_IPHONE_PROXY_CANNOT_STOP,
+		tr("The iPhone service cannot be stopped."),
+		tr("An error occurred when stopping the iPhone service."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_IPHONE_PROXY_ALREADY_STARTED,
+		tr("The iPhone service has already been started."),
+		tr("The iPhone service has already been started. No additional actions are required to start it."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_IS_NOT_SUSPENDED,
+		tr("The virtual machine is not suspended."),
+		tr("The requested operation cannot be performed as it is applicable to virtual machines in the suspended state only."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_ANOTHER_TOOLS_IN_USE,
+		tr(PRODUCT_NAME_SHORT " Tools cannot be mounted to the virtual machine."),
+		tr("Another ISO image with " PRODUCT_NAME_SHORT " Tools is mounted to the CD/DVD device of this virtual machine. Unmount this image, then try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ERR_WARN_REACH_OVERCOMMIT_STATE_ON_SETMEM,
+		tr("Setting this memory amount may slow down the performance of your running virtual machines."),
+		tr("Your running virtual machines are consuming more memory together than the total amount you are allocating. Increase this amount or shut down or suspend some of your running virtual machines."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_MOUSE_SYNC_OFF_FOR_LINUX_WITH3D,
+		tr("SmartMouse is disabled in this virtual machine configuration, which may cause graphical artifacts to appear while working in it."),
+		tr("To enable SmartMouse, shut down the virtual machine, open its configuration and edit the Services settings on the Options tab."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_NOT_VALID,
+		tr("This product could not be activated because your activation key is invalid."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_EXPIRED,
+		tr("This product was activated for a limited period of time that has now expired."),
+		tr("Make sure you typed the key correctly or purchase another key."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_NOT_STARTED,
+		tr("Your activation key covers a period in the future, so it cannot be validated at the moment."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_WRONG_VERSION,
+		tr("This product could not be activated because your activation key is not valid for this version of @PRL_PRODUCT_NAME."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_WRONG_PRODUCT,
+		tr("This product could not be activated because your activation key is designed for use with another " PRODUCT_NAME_SHORT " product."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_WRONG_PLATFORM,
+		tr("This product could not be activated because your activation key is designed for using @PRL_PRODUCT_NAME on another platform."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_WRONG_LANGUAGE,
+		tr("This product could not be activated because your activation key is designed for use with another language version."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_WRONG_DISTRIBUTOR,
+		tr("This product could not be activated because your activation key distributor does not match that of the product itself."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_IS_NOT_VOLUME,
+		tr("This product could not be activated because your activation key is not supported special flags."),
+		tr("In this screen, you can enter an activation key only for " PRODUCT_NAME_SHORT " Desktop Enterprise Edition."),
+		false,
+		PMT_WARNING
+		);
+
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_BETA_KEY_RELEASE_PRODUCT,
+		tr("This product could not be activated because your activation key is designed for use with the Beta version of @PRL_PRODUCT_NAME."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_RELEASE_KEY_BETA_PRODUCT,
+		tr("This product could not be activated because your activation key is not designed for use with the Beta version of @PRL_PRODUCT_NAME."),
+		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_BLACKLISTED,
+		tr("Your activation key has been disabled due to security reasons: someone might have attempted to use the same activation key."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for further assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_BLACKLISTED_TO_VM_OPERATION,
+		tr("Your activation key has been disabled due to security reasons: someone might have attempted to use the same activation key."),
+		tr("Please contact the " PRODUCT_NAME_SHORT " support team for further assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VOLUME_LICENSE_EXCEEDED_LIMIT,
+		tr("The maximum number of installations available for your activation key has been reached."),
+		tr("This key cannot be used with any additional installations. For more information, please contact your system administrator."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_TOO_MANY_VCPUS,
+		tr("This virtual machine has more than %1 CPUs and cannot be started."),
+		tr("The activation key you used to activate the product allows a maximum of %1 CPUs for each virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_TOO_MANY_MEMORY,
+		tr("This virtual machine has more than %1 MB of memory and cannot be started."),
+		tr("The activation key you used to activate the product allows a maximum of	%1 MB of memory for each virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_VM_HAS_VTD_DEVICES,
+		tr("This virtual machine cannot be started because its configuration includes a directly assigned PCIe device."),
+		tr("The activation key you used to activate the product does not allow direct assignment of PCIe devices to virtual machines."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_LICENSE_GRACED,
+		tr("You've reached the maximum limit of simultaneously running virtual machines."),
+		tr("The virtual machine will be stopped in %1 hours."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VZLICENSE_KA_LICENSE_IS_UP_TO_DATE,
+		tr("Unable to update the product license."),
+		tr("Your license is already up to date. For more detailed information, please contact the " PRODUCT_NAME_SHORT " support team."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_LICENSE_RESTRICTED_RKU,
+		tr("Failed to suspend virtual machines to PRAM."),
+		tr("Your license does not support suspending virtual machines to PRAM. The virtual machines will be suspended to the hard disk drive."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_OPERATION_WAS_CANCELED,
+		tr("Operation canceled."),
+		tr("The operation has been canceled."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CLONE_OPERATION_CANCELED,
+		tr("Operation canceled."),
+		tr("The cloning operation was canceled by the user."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_COMPACT_THROUGH_COPY,
+		tr(PRODUCT_NAME_SHORT " Compressor will temporarily use the free space on the physical hard disk."),
+		tr("Compressing the disk will be performed with the help of the free space on your physical hard disk. Make sure that you do not occupy this space with extra files during the compression."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_RESTART_GUEST_FAILED,
+		tr("Unable to restart the virtual machine operating system."),
+		tr("Check that " PRODUCT_NAME_SHORT " Tools are installed in the virtual machine. As an alternative, you can restart the operating system from within the virtual machine."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_HARD_DEVICE_INSERTED,
+		tr("A Palm device has been connected to this virtual machine."),
+		tr("If you try to synchronize the device, it will be synchronized with the virtual machine. If the Palm device synchronization has already started, you need to stop it by tapping Cancel on the device's screen. Stopping the synchronization may take a while."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_HARD_DEVICE_INSERTED2,
+		tr("You need to reconnect the USB device to the host computer."),
+		tr("Unplug the USB device from the host computer and plug it back to the same port. The device will be automatically connected to your virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_BUSY,
+		tr("The USB device %1 cannot be disconnected from the host computer."),
+		tr("To be able to connect this device to the virtual machine, you need to disconnect it from the host computer operating system first,​ which may require administrator rights."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CANNOT_PROCESSING_UNDO_DISKS_FOR_INVALID_VM,
+		tr("Failed to apply the Rollback mode option to the virtual machine."),
+		tr("The virtual machine's hard disk could not be found. All your unsaved data might be lost."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CANNOT_PROCESSING_SAFE_MODE_FOR_INVALID_VM,
+		tr("Failed to apply the Rollback Mode option to the virtual machine."),
+		tr("The virtual machine's hard disk could not be found. All your unsaved data might be lost."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_SNAPSHOT_NAME_IS_EMPTY,
+		tr("The snapshot name cannot be empty."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_CANT_CLOSE_CONVERSION_IN_PROGRESS,
+		tr("Cannot close the \"%1\" virtual machine window."),
+		tr("The virtual machine is being converted to the new format. Wait until the operation is complete and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_CANT_CLOSE_SNAPSHOTING_IN_PROGRESS,
+		tr("Cannot close the \"%1\" virtual machine window."),
+		tr("The operation of creating a virtual machine snapshot is currently in progress. Wait until it is complete and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_CANT_CLOSE_REVERTING_IN_PROGRESS,
+		tr("Cannot close the \"%1\" virtual machine window."),
+		tr("The operation of restoring the virtual machine from its snapshot is currently in progress. Wait until it is complete and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_CANT_CLOSE_DELETING_STATE_IN_PROGRESS,
+		tr("Cannot close the \"%1\" virtual machine window."),
+		tr("The operation of deleting a virtual machine snapshot is currently in progress. Wait until it is complete and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_BACKUP_FAILED_TOO_LARGE_FOR_FAT,
+		tr("Unable to back up the virtual machine."),
+		tr("One of the virtual machine's files exceeds 4 GB, which is the maximum allowed size for the FAT32 file system on your destination drive. Select another destination for the backup."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_BACKUP_FAILED_NOT_ENOUGH_SPACE,
+		tr("Not enough free space for creating the backup."),
+		tr("Free some space on the destination drive and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_BACKUP_FAILED_GENERAL_MSG,
+		tr("Failed to back up the virtual machine."),
+		tr("There is no more free space for a virtual machine backup. Free some disk space or select another destination for the backup."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_CONFIG_IS_ALREADY_VALID,
+		tr("This virtual machine does not need to be restored."),
+		tr("The virtual machine configuration is valid and does not need to be restored from backup."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_FAILED_TO_START_VNC_SERVER,
+		tr("Unable to start the VNC server in this virtual machine."),
+		tr("Change the VNC server port number in the virtual machine configuration and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VTD_DEVICE_DOES_NOT_EXIST,
+		tr("The %1 PCIe device is not found."),
+		tr("Make sure this device is plugged into the host computer or specify another PCIe device."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VTD_HOOK_AFTER_INSTALL_NEED_REBOOT,
+		tr("You need to restart your computer to complete the pass-through driver installation."),
+		tr("You will be able to use the respective PCIe device with your virtual machines only after you restart the host computer."),
+		false,
+		PMT_WARNING	);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VTD_HOOK_AFTER_REVERT_NEED_REBOOT,
+		tr("You need to restart your computer to complete the removal of the pass-through driver."),
+		tr("You will be able to use the respective PCIe device with the host computer only after you restart it."),
+		false,
+		PMT_WARNING	);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VTD_INSTALLATION_FAILED_FOR_DEVICES,
+		tr("Unable to install the pass-through drivers."),
+		tr("Pass-through drivers for the following PCIe devices have not been installed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VTD_HOOK_DEVICE_CURRENTLY_IN_USE,
+		tr("Pass-through drivers for some of the PCIe devices could not be installed or removed because these devices are currently in use."),
+		tr("The following PCIe devices are currently in use by your virtual machines: <br>%1<br>"
+		   "Stop or suspend the virtual machines that are using these devices and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VTD_REVERT_FAILED_FOR_DEVICES,
+		tr("Unable to remove the pass-through drivers."),
+		tr("The pass-through drivers for the following PCIe devices could not be removed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VIRTUOZZO_IMAGE_INTERNET_LOCATION,
+		tr("The image file \"%1\" cannot be used because it is stored on an Internet location."),
+		tr("Please specify another file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VIRTUOZZO_OUTPUT_FILE_INTERNET_LOCATION,
+		tr("The output file \"%1\" cannot be used because it is stored on an Internet location."),
+		tr("Please specify another file and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_VM_HW_UPGRADING_IN_PROGRESS,
+		tr("Cannot close the \"%1\" virtual machine window."),
+		tr("The virtual machine is currently being upgraded. Wait until the operation is complete and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_VM_HW_UPGRADING_VMXPHY_IN_PROGRESS,
+		tr("Cannot close the \"%1\" virtual machine window."),
+		tr("The virtual machine is currently being configured. Wait until the operation is complete and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VM_HW_UPGRADE_INIT_TIMEOUT,
+		tr("You need to log in to Windows to complete upgrading your virtual machine."),
+		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_VM_HW_UPGRADE_VMXPHY_INIT_TIMEOUT,
+		tr("You need to log in to Windows to complete configuring your virtual machine."),
+		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_RUNNING_UNDER_UNSUPPORTED_WM,
+		tr("This application supports only GNOME and KDE desktop environments."),
+		tr("Using this application in other desktop environments may result in unexpected behavior."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_DSP_EVT_REBOOT_HOST_MANUAL_TO_INIT_VTD_DEVICES,
+		tr("You need to restart the physical server to apply the changes you made to the Intel VT-d preferences."),
+		tr("If you need assistance in restarting the server, please contact your system administrator."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISK_UNCOMMITED_OPERATION,
+		tr("The previous operation needs to be completed before you can perform any actions on your snapshots. This operation will be completed automatically."),
+		tr("The required action will be performed after the previous operation is completed."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISP_CANNOT_COMPACT_VM_HARD_DISK,
+		tr("The disk cannot be compressed because it is used by the \"%1\" virtual machine that is in Rollback mode, or has snapshots."),
+		tr("Please make sure that the virtual machine is not running in Rollback mode is disabled in its configuration, and it has no snapshots."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_HARD_DISK_NOT_COMPACTABLE,
+		tr("Hard disk %1 used by the virtual machine \"%2\" cannot be compressed."),
+		tr("The disk is either plain, or dynamic, or contains no data. Such disks cannot be compressed."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_HARD_DISK_NOT_VIRTUAL_OR_DISABLED,
+		tr("Hard disk %1 used by the virtual machine \"%2\" cannot be compressed."),
+		tr("This disk is either a real hard disk or it is not connected in the virtual machine configuration. Real hard disks and Boot Camp partitions cannot be compressed."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_AUTO_COMPRESS_TASK_ALREADY_RUN,
+		tr("The virtual hard disk used by the \"%1\" virtual machine is already being compressed."),
+		tr("Please wait until the operation is complete and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_USER_NO_AUTH_TO_CREATE_VM_IN_DIR,
+		tr("You do not have the permission to create a virtual machine in the \"%1\" folder."),
+		tr("Select another location and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_USER_NO_AUTH_TO_CREATE_ROOT_VM_DIR,
+		tr("Unable to create the folder \"%1\"."),
+		tr("You might not have permission to create a folder in this location. Select another location and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_SHUTDOWN_FAILED,
+		tr("Unable to shut down this virtual machine."),
+		tr("Try to shut down this virtual machine through the operating system installed in it."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_SHUTDOWN_HIBERNATE_NOT_SUPPORTED,
+		tr("This virtual machine cannot be suspended."),
+		tr("The operating system installed in this virtual machine does not support hibernation."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_SHUTDOWN_SUSPEND_NOT_SUPPORTED,
+		tr("This virtual machine cannot be suspended."),
+		tr("The operating system installed in this virtual machine does not support suspend state."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_SHUTDOWN_HIBERNATE_FAILED,
+		tr("Unable to put this virtual machine into hibernation."),
+		tr("Try to put this virtual machine into hibernation through the operating system installed in it."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_SHUTDOWN_MACHINE_LOCKED,
+		tr("This virtual machine cannot be shut down because it is locked."),
+		tr("Unlock the operating system installed in this virtual machine and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WNG_NO_FREE_NETWORK_ADAPTERS_FOR_HOST,
+		tr("This network adapter is used by the physical server."),
+		tr("If you assign this adapter to virtual machines, the physical server network connections will be lost."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_NOT_SYMMETRIC_CPU,
+		tr("Your configuration of the CPUs is not symmetric. @PRL_PRODUCT_NAME may work not properly on computers with such configuration."),
+		tr("To avoid this problem in future, try to disable the Limit CPUID Value option in BIOS."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_PREPARE_FOR_HIBERNATE_UNABLE_SUSPEND_DO_STOP,
+		tr("The virtual machine \"%1\" has been stopped."),
+		tr("The virtual machine was forcibly stopped due to an error in its operating system. The error occurred while pausing the virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_SMP_NOT_SUPPORTED_HVT_NOT_PRESENT,
+		tr("Your virtual machine will use only 1 CPU when running."),
+		tr("This virtual machine cannot run with 2 or more CPUs, because hardware virtualization is not supported on the host computer."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_SMP_NOT_SUPPORTED_HVT_DISABLED,
+		tr("Your virtual machine will use only 1 CPU when running."),
+		tr("This virtual machine cannot run with 2 or more CPUs, because hardware virtualization is turned off on the host computer."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_BACKUP_HAS_NOT_FULL_BACKUP,
+		tr("A full backup is being created for this virtual environment."),
+		tr("Though an incremental backup is created by default, it cannot be made because the virtual environment has no full backups."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_BACKUP_GUEST_SYNCHRONIZATION_FAILED,
+		tr("Unable to synchronize the virtual machine's file system."),
+		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that " PRODUCT_NAME_SHORT " Tools are properly installed in the virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_BACKUP_DEVICE_IMAGE_NOT_FOUND,
+		tr("The image file \"%1\" used by %2 could not be found."),
+		tr("This device will appear as disabled in the virtual machine configuration. You will need to enable it manually."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_RESTRICTED_OS_VERSION,
+		tr("A wrong version of guest operating system is specified."),
+		tr("Virtual machines with this type of guest OS cannot be used in this edition of @PRL_PRODUCT_NAME."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_RESTRICTED_SMART_GUARD,
+		tr("Could not enable SmartGuard."),
+		tr("SmartGuard is not available in this edition of @PRL_PRODUCT_NAME."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_RESTRICTED_UNDO_DISKS,
+		tr("Could not enable Rollback mode."),
+		tr("Rollback mode is not available in this edition of @PRL_PRODUCT_NAME."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISP_TIME_MACHINE_IS_RUNNING,
+		tr("Time Machine backup is in progress."),
+		tr("Your virtual machines may work slower during the backup."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_CANNOT_MOVE_DISK_TO_TRASH,
+		tr("Unable to move the virtual hard disk file to @PRL_TRASH_NAME."),
+		tr("A system error occurred or @PRL_TRASH_NAME folder was deleted or moved."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_CANNOT_DELETE_DISK_FILES,
+		tr("Unable to delete the virtual hard disk file."),
+		tr("This file is in use or you do not have enough permissions to delete it."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_CANNOT_MOVE_VM_TO_TRASH,
+		tr("Unable to move the \"%1\" files to @PRL_TRASH_NAME."),
+		tr("A system error occurred or @PRL_TRASH_NAME folder was deleted or moved."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_BACKUP_SP_GUEST_SYNCHRONIZATION_FAILED,
+		tr("Unable to synchronize the file system of the virtual machine, because it is suspended or paused."),
+		tr("The backup process will continue without synchronization. To avoid this problem in future, shut down or start the virtual machine before backing it up."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_APPLIANCE_INSTALL_WAS_NOT_STARTED,
+		tr("The installation cannot be canceled as it has not yet been started."),
+		tr("You need to start the installation to be able to cancel it."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_BACKUP_GUEST_UNABLE_TO_SYNCHRONIZE,
+		tr("Unable to synchronize the virtual machine's file system because the virtual machine is suspended or paused."),
+		tr("The backup process will continue without synchronization. To avoid this problem in the future, please shut down or resume the virtual machine before backup."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CONV_HD_NO_ONE_DISK_FOR_CONVERSION,
+		tr("There are no virtual hard disks that can be converted."),
+		tr("The disk you selected cannot be converted."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CONV_HD_CONFLICT,
+		tr("The conversion settings are specified not correctly."),
+		tr("The virtual hard disk can be either plain or expanding by type, and either split or non-split by the type of data organization."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_BOOT_CAMP_NEEDS_FREE_SLOT,
+		tr("The Boot Camp partition option is unavailable."),
+		tr("You cannot connect the Boot Camp partition to the virtual machine because all the IDE and SATA slots are occupied by other devices."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_BOOT_CAMP_NEEDS_FREE_SLOT_IDE,
+		tr("The Boot Camp partition option is unavailable."),
+		tr("You cannot connect the Boot Camp partition to the virtual machine because all the IDE slots are occupied by other devices."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_REGISTER_VM_WIZ_COMPLETE_PAGE_TITLE_CREATION_FAILED,
+		tr("Adding Failed"),
+		tr("%1"),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_PARTITION_NOT_SPECIFIED	,
+		tr("Hard disk partition wasn't specified."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_PRODUCT_KEY_INCOMPLETE,
+		tr("The product key is incomplete."),
+		tr("Make sure that all the fields of the product key are filled in completely and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_USER_NAME_NOT_SPECIFIED,
+		tr("<nobr>User name was not specified.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_USER_NAME_ILLEGAL,
+		tr("The user name you entered is invalid. Note that a user name must start with a lower case letter which can be followed by any combination of numbers and lower case letters."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_USER_NAME_RESERVED_BY_GUEST,
+		tr("This user name is reserved by the guest OS. Please try another name."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_USER_PASS_NOT_SPECIFIED,
+		tr("<nobr>Password was not specified.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_USER_PASS_DO_NOT_MATCH,
+		tr("<nobr>Passwords do not match.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_USER_PASS_TOO_SHORT,
+		tr("You entered a password that consists of less than %1 characters, which is considered too weak. You should choose a stronger password."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_LOCAL_PATH_NOT_SPECIFIED,
+		tr("<nobr>The local path is not specified.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_LOCAL_PATH_WRONG,
+		tr("<nobr>The specified local path is invalid.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_SERVER_NAME_NOT_SPECIFIED,
+		tr("<nobr>The server name is not specified.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_SERVER_NAME_WRONG,
+		tr("<nobr>The specified server name is invalid.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_SERVER_ALREADY_CONNECTED,
+		tr("Connection to this server is already established."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_HOST_IP_ADDRESS,
+		tr("<nobr>The specified " PRODUCT_NAME_SHORT " adapter IP address is invalid.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_SUBNET_MASK,
+		tr("<nobr>The specified subnet mask is invalid.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_DHCP_START_IP_ADDRESS,
+		tr("<nobr>The specified DHCP start IP address is invalid.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_DHCP_END_IP_ADDRESS,
+		tr("<nobr>The specified DHCP end IP address is invalid.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_DUPLICATE_VIRTUAL_NETWORK,
+		tr("<nobr>Two or more virtual networks have the same name. Each of the virtual networks should have a unique name.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_VIRTUAL_NETWORK_WRONG,
+		tr("<nobr>One or more virtual networks have invalid names.</nobr>"),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_CANT_REVERT_ABSENT_SNAPSHOT,
+		tr("@PRL_PRODUCT_NAME cannot revert to the snapshot because the snapshot doesn't exist."),
+		tr("Revert to snapshot - %1"),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_PRODUCT_KEY_WRONG_LENGTH,
+		tr("The product key has an incorrect length."),
+		tr("Make sure that all the fields of the product key are filled in completely and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_DEVICE_ALREADY_EXIST,
+		tr("Device %1 already exists in current configuration."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_INVALID_VM_BUNDLE,
+		tr("The specified bundle is invalid."),
+		tr("The bundle does not contain a valid " PRODUCT_NAME_SHORT " virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_INVALID_VM_FOLDER,
+		tr("The specified folder is invalid."),
+		tr("The folder does not contain a valid " PRODUCT_NAME_SHORT " virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_PORT_MAPPING_INC_PORT_INCORRECT,
+		tr("The incoming port number is incorrect."),
+		tr("Specify a number in this range: 1-65535 and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_PORT_MAPPING_VM_PORT_INCORRECT,
+		tr("The virtual machine port number is incorrect."),
+		tr("Specify a number in this range: 1-65535 and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_PORT_MAPPING_IP_INCORRECT,
+		tr("The specified IP address is incorrect."),
+		tr("Specify another IP address and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_NO_USB_DEVICES_AVAILABLE,
+		tr("No USB devices are available."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_NO_BACKUP_FOLDER,
+		tr("You have not specified any folder."),
+		tr("Please specify a folder to store the backup copy of your virtual machine."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_NEW_PROFILE_NAME_EMPTY,
+		tr("The profile name cannot be empty."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_PROFILE_NAME_ALREADY_IN_USE,
+		tr("A profile with the name of %1 already exists."),
+		tr("Specify another name and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_DESKTOP_IS_TRIAL,
+		tr("This copy of @PRL_PRODUCT_NAME is activated with a trial activation key and cannot be updated."),
+		tr("Updates will become available after you activate @PRL_PRODUCT_NAME with a permanent activation key."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_UNABLE_OPEN_FEEDBACK_DLG,
+		tr("Unable to open the feedback dialog."),
+		tr("Please check your network connection and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_UNABLE_REQUEST_TRIAL_KEY,
+		tr("Unable to request a trial key."),
+		tr("Please check your network connection and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_KEY_NOT_BE_AUTO_REGISTRED,
+		tr("The upgrade key could not be registered automatically."),
+		tr("You can register it by logging into your " PRODUCT_NAME_SHORT " account."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_SOURCE_FOR_DEVICE_IS_USED,
+		tr("The specified source %1 is already used by %2."),
+		tr("Specify any other available source for this device or change the source for %1 and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_UNATTENDED_LINUX_NO_IMAGE,
+		tr("Could not create the optical disc image required for unattended installation of Linux."),
+		tr("The installation will proceed in standard mode. Manual intervention will be required at certain steps."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_UNATTENDED_WINDOWS_NO_IMAGE,
+		tr("Could not create the floppy disk image required for unattended installation of Windows."),
+		tr("The installation will proceed in standard mode. Manual intervention will be required at certain steps."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_LINK_TO_OUTSIDED_HDD_WILL_BE_DROPPED_AFTER_CLONE,
+		tr("Hard Disk %1 will be disconnected from the clone of the \"%2\" virtual machine."),
+		tr("If you want to use this hard disk with the clone, you should copy it or connect it manually."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_OUTSIDED_HDD_WILL_BE_ONLY_LINKED_AFTER_CLONE,
+		tr("When the cloning is complete, Hard Disk %1 will be used both by the \"%2\" virtual machine and its clone."),
+		tr("If you want the clone to use a separate hard disk, please create a copy of Hard Disk %1 and connect it manually to the clone."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_UNABLE_OPEN_DEVICE_ON_START_VM,
+		tr("Unable to connect %1 %2."),
+		tr("A file or device required for the operation of %1 %2 does not exist or is used by another process, or you have no permission to access it. The virtual machine will continue running, but the device will be disconnected."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_MSG_START_32BIT_VM_ON_64BIT_HOST,
+		tr("The virtual machine process cannot be run in native mode due to the host OS problems."),
+		tr("The compatibility mode that may slow down the virtual machine performance will be used instead."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_SYNC_DEFAULT_PRINTER_DISABLED,
+		tr("Your %1 default printer is no longer synchronized with your host computer default printer."),
+		tr("The default printer might have changed. To restore synchronization, edit Printer settings in the virtual machine configuration accessible through the Virtual Machine > Configure menu."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_TIME_MACHINE_EXCLUDED_LIST_OP,
+		tr("Wrong directory is specified."),
+		tr("Please specify the correct directory and try again."),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_START_SAFE_MODE_UNSUPPORTED,
+		tr("Failed to start the virtual machine."),
+		tr("You are trying to start the virtual machine in Rollback Mode. This mode is not supported in @PRL_PRODUCT_NAME."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_MIGRATE_PC_FAILED_TO_REGISTER_VM,
+		tr("Unable to register the migrated virtual machine."),
+		tr("Your Windows applications were successfully transferred to a virtual machine on your Mac, but the virtual machine was not registered in @PRL_PRODUCT_NAME. Please locate the virtual machine file and open it with @PRL_PRODUCT_NAME. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_MIGRATE_ERROR_DELETE_VM,
+		tr("The virtual machine was successfully migrated to the target PSBM server, but there was an error while deleting it from the source server."),
+		tr("You can delete the virtual machine left on the source server manually."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_MIGRATE_ERROR_UNREGISTER_VM,
+		tr("The virtual machine was successfully copied to the target PSBM server, but there was an error while removing it from the virtual machines list on the source server."),
+		tr("You can remove it from the virtual machines list manually."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_FS_RESIZE_NOT_SUPPORTED,
+		tr("Unable to resize the last volume. The file system on that volume might be corrupted or not supported."),
+		tr("Please try to open the virtual machine and check the file system for errors."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_UPGRADE_PURCHASE_MISSING_KEY,
+		tr("Your purchase was successful, but the activation key could not be retrieved automatically."),
+		tr("When the upgrade is complete, please activate @PRL_PRODUCT_NAME using the activation key found in the purchase order confirmation sent to your email."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VZLICENSE_KA_LICENSE_EXPIRED,
+		tr("The product license has expired."),
+		tr("To continue using @PRL_PRODUCT_NAME, you need to purchase a license renewal."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_MAKE_BACKUP_BEFORE_DISK_RESIZE,
+		tr("It is highly recommended to make a backup of the virtual machine before the operation."),
+		tr("Resizing the disk is sensitive to power failures and similar events. For more details on how to resize the disk properly, please see <a href=\"%1\">here</a>."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_HYPERVISOR_HVT_ENABLED_ON_HYPERSWITCH,
+		tr("An incompatible virtualization application is running."),
+		tr("Don't use your " PRODUCT_NAME_SHORT " virtual machines until you quit that application."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_SUSPEND_WITH_USB_BOOTDISK,
+		tr( "Unable to perform the operation." ),
+		tr( "You cannot suspend or create snapshots of this virtual machine because it is running from an external storage device." ),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DISK_TRUNCATE_FAILED,
+		tr( "Some virtual hard disk operation cannot be completed because there is not enough free disk space on your Mac's hard disk." ),
+		tr( "Please free some disk space. Until this operation is completed, you will not be able to continue working with the virtual machine." ),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_BACKUP_NON_IMAGE_HDD,
+		tr( "The contents of physical hard disks cannot be backed up." ),
+		tr( "Only virtual hard disks can be backed up." ),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_EXPIRATION_VM_IS_IN_OFFLINE_GRACE_PERIOD,
+		tr("This virtual machine cannot contact the time server to check date and time."),
+		tr("Please contact your administrator for assistance. If the virtual machine cannot check the date, it will stop working at %1 on %2."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_EXPIRATION_VM_IS_ABOUT_TO_EXPIRE,
+		tr("The usage period for this virtual machine is about to expire."),
+		tr("The virtual machine will stop working at %1 on %2. To extend the usage period, please contact your administrator for assistance."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_EXPIRATION_TIME_CHECK_INTERVAL_OUT_OF_RANGE,
+		tr("The specified data check frequency is invalid."),
+		tr("The interval must be a number between %1 and %2 seconds. Please correct the value and try again."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CPUFEATURES_NO_BINARY,
+		tr( "Cannot find the cpufeatures binary." ),
+		tr( "Install the cpufeatures package to change CPU features mask." ),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_DELETE_NO_CONFIG_UNREGISTER,
+		tr( "VM config was not found. Unregistering the VM." ),
+		tr( "" ),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_NESTED_VIRT_NOT_ENABLED,
+		tr("Nested virtualization isn't enabled on host."),
+		tr("To enable nested virtualization on host,\n"
+			" 1) stop all running or paused VMs\n"
+			" 2) run the following commands:\n"
+			"\trmmod kvm_intel\n"
+			"\techo 'options kvm-intel nested=y' >> /etc/modprobe.d/dist.conf\n"
+			"\tmodprobe kvm_intel\n"
+			" 3) restart libvirtd or reboot host"),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SCSI_HYPERV_LINUX_NOT_SUPPORTED,
+		tr( "Hyper-V devices are not supported in Linux virtual machines." ),
+		tr( "" ),
+		true,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_INCONSISTENT_FILTERS,
+		tr("Custom and built-in filters are enabled at the same time."),
+		tr("Disable either custom or all built-in filters."),
+		true,
+		PMT_WARNING
+		);
+}
+
+void PrlErrStringsStorage::InitializeAnswers()
+{
 	REGISTER_ERROR_STRING(
 		PET_ANSWER_OK,
 		tr("OK"),
@@ -393,12 +3032,81 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_SUCCESS,
-		tr("Success."),
-		tr("The operation was successfully completed."),
+		PET_ANSWER_COPIED,
+		tr("Copied"),
+		tr("Copied"),
 		false,
-		PMT_INFORMATION
+		PMT_ANSWER
 		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_MOVED,
+		tr("Moved"),
+		tr("Moved"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_COMMIT,
+		tr("Apply"),
+		tr("Apply"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_REVERT,
+		tr("Discard"),
+		tr("Discard"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_STOP_AND_RESTORE,
+		tr("Stop and Restore"),
+		tr("Stop and Restore"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_RESTART,
+		tr("Restart"),
+		tr("Restart"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_RESTORE,
+		tr("Restore"),
+		tr("Restore"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_RESUME,
+		tr("Resume"),
+		tr("Resume"),
+		false,
+		PMT_ANSWER
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_ANSWER_DISCONNECT_ANYWAY,
+		tr("Disconnect Anyway"),
+		tr("Disconnect Anyway"),
+		false,
+		PMT_ANSWER
+		);
+
+}
+
+void PrlErrStringsStorage::InitializeCritical()
+{
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_UNEXPECTED,
@@ -529,46 +3237,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PET_QUESTION_SAMPLE_1,
-		tr("Just a simple question."),
-		tr("This simple question for you to know the answer... What is your name? \nparam0:%1 \nparam1:%2 \nparam2:%3 \nparam0:%1"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_SAMPLE_2,
-		tr("This is another question."),
-		tr("This question has only one parameter '%1' in the message... Agree?"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_TXT_ERROR,
-		tr(PRODUCT_NAME_SHORT " Warning Message."),
-		tr("%1"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_RESTORE_VM_CONFIG_FROM_BACKUP,
-		tr("Do you want to restore the configuration file of the '%1' virtual machine from backup?"),
-		tr("The configuration file of this virtual machine was damaged due to some reason. You can restore it from a backup copy made earlier."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_UNABLE_OPEN_DEVICE,
-		tr("Unable to connect %1 %2."),
-		tr("A file or device required for the operation of %1 %2 does not exist or is used by another process, or you have no permission to access it. The virtual machine will continue running, but the device will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_SHARED_BLOCK,
 		tr("The virtual disk %1 %2 is corrupt. Please check it for errors."),
 		tr("To check the disk, use the prl_disk_tool command line utility."),
@@ -585,22 +3253,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PET_QUESTION_COMMON_HDD_ERROR,
-		tr("An error occurred while accessing the Hard Disk %1 used by \"%2\"."),
-		tr("Click <b>Retry</b> to try again or click <b>Stop</b> to forcibly stop the virtual machine. If this error persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance.<br><br><b>Note</b>: If you stop the virtual machine \"%2\" now, you will lose all unsaved data.<br><br><b>Error ID:</b> %3."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_FAT32_FILE_OVERRUN,
-		tr("FAT32 Error."),
-		tr("FAT32 File Overrun (%1)."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_WARN_UNKNOWN_HDD_REQUEST_TYPE,
 		tr("Unable to perform the operation."),
 		tr("The requested operation is not supported for this hard disk drive."),
@@ -609,126 +3261,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_TARGET_HOST_DISK_IS_FULL,
-		tr("PRL_WARN_TARGET_HOST_DISK_IS_FULL"),
-		tr("PRL_WARN_TARGET_HOST_DISK_IS_FULL"),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_DEV_FLOPPY_CONNECT_FAILED,
 		tr("PRL_ERR_DEV_FLOPPY_CONNECT_FAILED"),
 		tr("PRL_ERR_DEV_FLOPPY_CONNECT_FAILED %1"),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_ALREADY_REGISTERED_VM_PATH,
-		tr("The virtual machine \"%1\" already exists in \"%2\"."),
-		tr("Specify another name or location for the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_IMAGE_IS_STOLEN,
-		tr("Unable to access the image file."),
-		tr("Make sure that the path to the image file %1 is correct and the target location is accessible."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_UNABLE_OPEN_DEVICE_NAME,
-		tr("Unable to connect the device."),
-		tr("A file or device required for the %1 %2 operation does not exist or is used by another process, or you have insufficient access permissions. The virtual machine will continue running with the device disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_ALREADY_CONNECTED,
-		tr("A device connecting error occurred."),
-		tr("The device %1 %2 is already connected."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_SERIAL_PORT_PIPE_CONNECT_FAILED,
-		tr("Unable to connect the serial port %1. The connection status for this device is set to Disconnected."),
-		tr("The socket required by the serial port %1 is used by another process or you do not have the permission to access it. The virtual machine will continue running, but the serial port will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_SERIAL_PORT_PHYSICAL_CONNECT_FAILED,
-		tr("Unable to connect the serial port %1. The connection status for this device is set to Disconnected."),
-		tr("The socket required by the serial port %1 is used by another process or you do not have the permission to access it. The virtual machine will continue running, but the serial port will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_DO_YOU_WANT_TO_OVERWRITE_FILE,
-		tr("The output file already exists. Do you want to append data to this file or replace the file?"),
-		tr("Click Append to continue using the existing output file for %1 %2. Click Replace to overwrite it."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_SERIAL_PORT_FILE_CONNECT_FAILED,
-		tr("Unable to connect the serial port %1. The connection status for this device is set to Disconnected."),
-		tr("The file required by the serial port %1 is used by another process or you do not have the permission to access it. The virtual machine will continue running, but the serial port will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_PARALLEL_PORT_PRINTER_CONNECT_FAILED,
-		tr("Unable to connect the printer port %1. The connection status for this device is set to Disconnected."),
-		tr("The printer used by the printer port %1 is not available or you have insufficient privileges to access it. "\
-		   "The virtual machine will continue running, but the printer port will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_PARALLEL_PORT_PHYSICAL_CONNECT_FAILED,
-		tr("Unable to connect the printer port %1. The connection status for this device is set to Disconnected."),
-		tr("The physical resource used by the printer port %1 is used by another process or you have insufficient privileges to access it. "\
-		   "The virtual machine will continue running, but the printer port will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_PARALLEL_PORT_FILE_CONNECT_FAILED,
-		tr("Unable to connect the printer port %1. The connection status for this device is set to Disconnected."),
-		tr("The file used by the printer port %1 is used by another process or you have insufficient privileges to access it. "\
-		   "The virtual machine will continue running, but the printer port will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_NET_CABLE_DISCONNECTED,
-		tr("The real network adapter <b>%2</b> used by the virtual adapter %1 is not connected to the network."),
-		tr("Make sure the real adapter is connected to a wireless or wired network."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_NET_IPADDRESS_MODIFY_FAILED_WARNING,
-		tr("The IP address of the " PRODUCT_NAME_SHORT " network adapter has not been changed."),
-		tr("There was a failure changing the IP address of the " PRODUCT_NAME_SHORT " network adapter. The other network parameters have been modified successfully."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -836,78 +3373,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_TOO_LOW_HDD_SIZE,
-		tr("You are running out of free hard disk space."),
-		tr("Free some disk space on the hard disk and click <b>Retry</b>.<br><br>Note: If you stop the virtual machine \"%1\" now, you will lose all unsaved data."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_CANT_CONNECT_VOLUME,
-		tr("Failed to connect to the \"%1\" volume. Click Continue to try again."),
-		tr("This virtual machine is stored on the \"%1\" volume. You need to connect to this volume to be able to start this virtual machine."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_APPLY_CONFIG_NEEDS_REBOOT,
-		tr("The changes will take effect after you restart the virtual machine."),
-		tr("To apply the changes, shut down your guest operating system and then start the virtual machine again." ),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_CANT_DELETE_RUNNING,
-		tr("Cannot delete the virtual machine because it is running."),
-		tr("Stop the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_CANT_CLONE_RUNNING,
-		tr("Cannot clone the virtual machine because it is running."),
-		tr("Stop the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_NAME_IS_EMPTY,
-		tr("The virtual machine name is not specified."),
-		tr("Specify a name for the virtual machine to proceed."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_CANT_UNREG_RUNNING,
-		tr("Cannot unregister the virtual machine because it is running."),
-		tr("Stop the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_PARSE_VM_CONFIG,
-		tr("The configuration file you specified is invalid."),
-		tr("Make sure that the specified file is a valid " PRODUCT_NAME_SHORT " virtual machine configuration file and it is not corrupt, or select another file."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_XML_WRITE_FILE,
-		tr("Failed to save the configuration file."),
-		tr("The configuration file could not be saved on the hard disk. Make sure you are authorized to write to the disk."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_CONFIG_WAS_CHANGED,
 		tr("The virtual machine configuration cannot be saved due to a user activity conflict. Your changes will be discarded."),
 		tr("Another user saved the configuration while you were editing it. Try to edit the configuration again."),
@@ -924,35 +3389,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_CONFIG_ALREADY_EXISTS,
-		tr("A virtual machine with this name already exists."),
-		tr("Specify another name for your virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_DIR_CONFIG_ALREADY_EXISTS,
-		tr("A virtual machine folder with this name already exists."),
-		tr("Specify another name for your virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_LOAD_BINARY_FAILED,
 		tr("The operation cannot be completed because one or more binary files are missing."),
 		tr("Reinstall the application and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMDIR_PATH_IS_NOT_ABSOLUTE,
-		tr("The path you specified is not valid."),
-		tr("Specify a valid virtual machine path and try again."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -969,111 +3410,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("You cannot add more devices to this type of interface."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_SPECIFY_GUEST_INSTALL_FILES,
-		tr("You need to specify the path to the installation source."),
-		tr("Specify the path to the guest operating system installation disc or another source of installation and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_UNABLE_DROP_SUSPENDED_STATE,
-		tr("Unable to change the virtual machine state."),
-		tr("Some files have not been deleted either because they were in use or because you do not have the permission to delete them. You may try to delete these files manually."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_MUST_BE_STOPPED_BEFORE_RENAMING,
-		tr("You cannot rename the virtual machine when it is running."),
-		tr("Stop the virtual machine \"%1\" and try again."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CDD_IMAGE_NOT_SPECIFIED,
-		tr("The virtual machine configuration is invalid."),
-		tr("Specify a valid CD/DVD disc image and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUEST_HDD_IMAGE_NOT_EXIST,
-		tr("The virtual machine configuration is invalid."),
-		tr("The virtual hard disk image file \"%1\" is not found. Check the virtual machine configuration and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_HDD_IMAGE_NOT_SPECIFIED,
-		tr("The virtual machine configuration is invalid."),
-		tr("Specify a valid hard disk image file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUEST_CDD_IMAGE_NOT_EXIST,
-		tr("The virtual machine configuration is invalid."),
-		tr("The virtual CD/DVD disc image file \"%1\" is not found. Check the virtual machine configuration and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_FLOPPY_IMAGE_NOT_EXIST,
-		tr("The virtual machine configuration is invalid."),
-		tr("The virtual floppy disk image file \"%1\" is not found. Check the virtual machine configuration and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_FDD_IMAGE_NOT_SPECIFIED,
-		tr("The virtual machine configuration is invalid."),
-		tr("Specify a valid floppy disk image file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_FLOPPY_IMAGE_ALREADY_EXIST,
-		tr("A floppy disk image file \"%1\" already exists."),
-		tr("Do you want to replace the existing floppy disk image file \"%1\" with a new one?"),
-		false,
-		PMT_QUESTION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PRL_QUEST_POWER_OFF,
-		tr("Are you sure you want to stop the virtual machine?"),
-		tr("The virtual machine is running. If you stop it now, you may lose all unsaved data."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUEST_RESET,
-		tr("Are you sure you want to reset the virtual machine?"),
-		tr("The virtual machine is running. If you reset it now, you may lose all unsaved data."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUEST_RESTART,
-		tr("Are you sure you want to restart the virtual machine?"),
-		tr("If you click Yes now, the virtual machine will be shut down and then started again."),
-		true,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -1244,51 +3580,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_ADD_HW_FLOPPY_IMAGE_NOT_SPECIFYED,
-		tr("The path to the floppy disk image file is not specified."),
-		tr("Specify the path and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_HDD_IMAGE_NOT_EXIST,
-		tr("Unable to find the specified virtual hard disk file."),
-		tr("Make sure that the file exists or specify another one."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_AUTHENTICATION_FAILED,
-		tr("Incorrect user name or password."),
-		tr("Type a valid user name and password and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LOCAL_AUTHENTICATION_FAILED,
-		tr("Incorrect user name or password."),
-		tr("Type a valid user name and password and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_MOBILE_ADVANCED_AUTH_REQUIRED,
 		tr("Authentication Required."),
 		tr("Enter your user authentication."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_DELETE_FILES_OUT_OF_VM_DIR,
-		tr("Are you sure you want to delete the selected files?"),
-		tr("Some of the listed files are located outside the virtual machine folder. These files may be used by other virtual machines or applications. Deleting these files may affect the work of these virtual machines and applications. Click <b>No</b> to cancel the deleting."),
-		true,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -1300,139 +3596,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_CONF_CHANGED_INVALID_ARG,
-		tr("Cannot change the virtual machine configuration because the \"%1\" with image path \"%2\" is incorrect."),
-		tr("Make sure that the file name is correct or specify another one."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_WINDOWS_EXPRESS_INSTALL_USER_NAME_EMPTY,
-		tr("The user name is not specified."),
-		tr("Type a user name to proceed."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_FILE_NOT_EXIST,
-		tr("The file %1 does not exist."),
-		tr("Make sure the file name is correct or specify another %2 file."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CANCEL_CLONE_OPERATION,
-		tr("The virtual machine is being cloned. Are you sure you want to stop the process?"),
-		tr("The cloning has not been completed. If you stop the process now, you won't be able to use the resulting virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CANCEL_IMPORT_BOOTCAMP_OPERATION,
-		tr("The import is in progress. Are you sure you want to stop it?"),
-		tr("If you cancel the import now, no " PRODUCT_NAME_SHORT " virtual machine will be created."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CANCEL_CONVERT_3RD_VM_OPERATION,
-		tr("The conversion is in progress. Are you sure you want to cancel it?"),
-		tr("If you cancel the conversion now, no " PRODUCT_NAME_SHORT " virtual machine will be created."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CANCEL_CLONE_TO_TEMPLATE_OPERATION,
-		tr("The template is being created. Are you sure you want to stop the process?"),
-		tr("The process is not complete. If you stop it now, you won't be able to use the resulting template."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CANCEL_DEPLOY_OPERATION,
-		tr("The virtual machine is being deployed. Are you sure you want to stop the process?"),
-		tr("The deployment has not been completed. If you stop it now, you won't be able to use the resulting virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_FREE_SIZE_FOR_COMPRESSED_DISK,
-		tr("The virtual hard disk size exceeds the free space available on the physical hard disk. Do you want to create it anyway?"),
-		tr("If you use up the free space on the physical hard disk, you will not be able to add data to this virtual disk."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_COMPRESSED_DISK_IN_EXPRESS_MODE,
-		tr("The default capacity of this virtual machine's hard disk is greater than the free space available on the physical hard disk. Do you want to create the virtual machine anyway?"),
-		tr("If you use up the free space on the physical hard disk, you will not be able to add new data to this virtual machine's hard disk. To set a different capacity for the virtual hard disk, go back and select the Custom mode of creating a virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_NOT_ENOUGH_DISK_FREE_SPACE,
-		tr("The size specified for this virtual hard disk exceeds the free space available on the physical hard disk."),
-		tr("Choose a different physical volume on which this hard disk image file is to be stored or specify a smaller disk size."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISK_INSUFFICIENT_SPACE,
-		tr("The size specified for this virtual hard disk exceeds the free space available on the physical hard disk."),
-		tr("Choose a different physical volume on which this hard disk image file is to be stored or specify a smaller disk size."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_MAC_ADDRESS_INCORRECT,
-		tr("Unable to save the configuration because it is invalid."),
-		tr("The MAC address of the network adapter %1 is invalid. Correct the MAC address and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SWAP_SLOTS,
-		tr("The NODENAME_X position is already used by DEVICENAME_X. Do you want to assign this INTERFACE position to DEVICENAME_Y?"),
-		tr("If you assign the NODENAME_X position to DEVICENAME_Y, DEVICENAME_X will use the NODENAME_Y position."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONVERT_VM_CONFIG_DUE_UNDO_SNAPSHOTS_PRESENT,
 		tr("Unable to add the virtual machine in %1."),
 		tr("This virtual machine was created with an earlier version of " PRODUCT_NAME_SHORT " virtualization software and has a number of snapshots in it. Before adding this virtual machine, open it with the application you used to create it and delete all snapshots."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_RECREATE_HDD,
-		tr("Unable to recreate the virtual hard disk."),
-		tr("The virtual hard disk cannot be recreated because the virtual machine that uses this disk is not stopped. Shut down the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_RESIZE_HDD,
-		tr("Unable to resize the virtual hard disk."),
-		tr("The virtual hard disk cannot be resized because the virtual machine that uses this disk is not stopped. Shut down the virtual machine and try again."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -1444,37 +3612,13 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_INVALID_VIRTUOZZO_DISK,
-		tr("%1 does not exist or the specified hard disk image file is not valid."),
-		tr("Specify the correct path to a valid " PRODUCT_NAME_SHORT " virtual hard disk image file."),
-		false,
-		PMT_WARNING
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMDIR_INVALID_PATH,
-		tr("The path you specified is incorrect."),
-		tr("Type a full path or use the <b>Choose</b> button to locate the folder."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_RESTORE_DEFAULT_SETTINGS,
-		tr("Do you want to restore the default settings?"),
-		tr("Your current settings will be discarded and replaced with the default ones."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CREATE_FLOPPY_IMAGE,
 		tr("The floppy disk image file \"%1\" cannot be created."),
 		tr("Make sure that you have the permission to create it."),
 		false,
 		PMT_CRITICAL
 		);
+
 	REGISTER_ERROR_STRING(
 		PRL_ERR_INVALID_CREATE_FLOPPY_IMAGE_PARAMETERS,
 		tr("The floppy disk image file \"%1\" cannot be created."),
@@ -1492,284 +3636,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_FDD_IMAGE_ALREADY_EXIST,
-		tr("An older floppy disk image file %1 already exists in this location. Do you want to replace it with a blank floppy image?"),
-		tr("If you click Replace, all the data on the image file will be lost."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_NO_BOOTING_DEVICE_SELECTED,
-		tr("No boot device was selected. Select the device you want the virtual machine to boot from."),
-		tr("At least one boot device must be selected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_REMOTE_DISPLAY_HOST_NOT_SPECIFIED,
-		tr("Invalid IP Address."),
-		tr("An IP address must consist of four numbers, each ranging from 0 to 255, separated by dots."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_REMOTE_DISPLAY_WRONG_PORT_NUMBER,
-		tr("The port number is invalid."),
-		tr("The allowed Remote Display port number range is %1:%2. Enter a valid number and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_REMOTE_DISPLAY_PASSWORD_TOO_LONG,
-		tr("The specified VNC password is too long."),
-		tr("The VNC password must not exceed %1 characters."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_INCORRECT_FDD_PATH,
-		tr("The file you specified cannot be used as a floppy disk image file."),
-		tr("Specify another floppy disk image file."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DIRECTORY_DOES_NOT_EXIST,
-		tr("The folder %1 does not exist."),
-		tr("Specify another folder and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_TO_REGISTER_IS_NOT_SPECIFIED,
-		tr("You have not selected any virtual machines."),
-		tr("Please select one or more virtual machines to add and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_ALREADY_REGISTERED_UNIQUE_PARAMS,
-		tr("The name you specified for this virtual machine is already taken."),
-		tr("Specify another name and location for the new virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_WARN_ALLOCATE_MEM,
-		tr("Are you sure you want to allocate %1 of memory to the virtual machine?"),
-		tr("Allocating more than %1 of memory to a virtual machine may significantly decrease its performance."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUEST_EXCEED_RECOMMENDED_MEMORY,
-		tr("The amount of memory allocated to this virtual machine exceeds the recommended maximum of <b>%2 MB</b>."),
-		tr("Allocating more than <b>%2 MB</b> of memory to a virtual machine may affect the overall system performance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONFIGURE_PHYSICAL_HDD,
 		tr("Unable to configure the hard disk settings."),
 		tr("You do not have the permission to read the disk or an error occurred when reading the disk."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SHARED_FOLDER_NAME_EXISTS,
-		tr("The \"%1\" name is already taken by the shared folder \"%2\"."),
-		tr("Type a different name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SHARED_FOLDER_PATH_EXISTS,
-		tr("The folder \"%1\" is already shared under the \"%2\" name."),
-		tr("Choose a different folder and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SHARED_FOLDER_NAME_IS_NOT_SPECIFIED,
-		tr("The folder name is not specified."),
-		tr("Specify an arbitrary name for the folder and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SHARED_FOLDER_PATH_IS_NOT_SPECIFIED,
-		tr("The folder path is not specified."),
-		tr("Specify the path to the folder and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_INCORRECT_SHARED_FOLDER_NAME,
-		tr("The shared folder name \"%1\" is invalid."),
-		tr("A shared folder name cannot contain any of the following characters: \\/:*?\"&lt;&gt;|."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_INCORRECT_SHARED_FOLDER_PATH,
-		tr("The shared folder path is invalid."),
-		tr("The path cannot contain references to the current (.) or parent (..) folder. Specify a valid path and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SHARED_FOLDER_NAME_IS_RESERVED_BY_SYSTEM,
-		tr("The shared folder cannot use the \"%1\" name because this name is reserved by the software internally."),
-		tr("Specify a different folder name. Keep in mind that a shared folder name cannot contain any of the following characters: \\/:*?\"&lt;&gt;|."),
-		false,
-		PMT_WARNING
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_INVALID_SHARED_FOLDER_PATH,
-		tr("Unable to add the folder \"%1\" because it does not exist or is not accessible."),
-		tr("Make sure that the folder path is correct and the target location is accessible."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_CANT_CHANGE_SHARED_FOLDER,
-		tr("Unable to select the folder \"%1\" because it does not exist or is not accessible."),
-		tr("Make sure that the folder path is correct and the target location is accessible."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_ZERO_FIRST_OCTET_IN_START_IP,
-		tr("The DHCP scope start address is incorrect."),
-		tr("The first number of a network address should be greater than zero. Specify a valid number."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_ZERO_FIRST_OCTET_IN_END_IP,
-		tr("The DHCP scope end address is incorrect."),
-		tr("The first number of a network address should be greater than zero. Specify a valid number."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_ZERO_FIRST_OCTET_IN_MASK_IP,
-		tr("The DHCP scope mask is incorrect."),
-		tr("The DHCP scope mask must be 255.0.0.0, 255.255.0.0, or 255.255.255.0. Specify a valid value."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_INCORRECT_START_IP,
-		tr("The DHCP scope start address is incorrect."),
-		tr("The specified address cannot be used as the start address of the DHCP scope. Specify a valid address or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_INCORRECT_END_IP,
-		tr("The DHCP scope end address is incorrect."),
-		tr("The specified address cannot be used as the end address of the DHCP scope. Specify a valid address or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_INCORRECT_MASK_IP,
-		tr("The DHCP scope mask is incorrect."),
-		tr("The DHCP scope mask must be 255.0.0.0, 255.255.0.0, or 255.255.255.0. Specify a valid value."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_ZERO_LAST_OCTET_IN_START_IP,
-		tr("The DHCP scope start address is incorrect."),
-		tr("The last number of the DHCP scope start address must be in the range from 1 to 255. Specify a valid address."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_ZERO_LAST_OCTET_IN_END_IP,
-		tr("The DHCP scope end address is incorrect."),
-		tr("The last number of the DHCP scope end address must be in the range from 1 to 255. Specify a valid address."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_SCOPE_END_OUT_OF_SUBNET,
-		tr("The DHCP scope end address is out of the subnet range."),
-		tr("The DHCP scope end address must be within the subnet range based on the start address. Specify a valid address."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_DHCP_START_IP_IS_LESS_THAN_END_IP,
-		tr("The DHCP scope is incorrect."),
-		tr("The DHCP scope must comprise a continuous range of at least 16 IP addresses from the start address to the end address. Adjust the start and end address values and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_INVALID_IPV6_ADDRESS,
-		tr("Invalid IP address"),
-		tr("The IPv6 address must consist of 8 hexadecimal numbers from 0x0 to 0xffff, separated by colons."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_INVALID_VM_NAME_SPECIFIED,
-		tr("The virtual machine name \"%1\" is invalid."),
-		tr("A virtual machine name cannot contain any of the following characters: [/:*?\"<>|%] Specify a valid name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_INVALID_MAC_ADDRESS,
-		tr("The MAC address of the network adapter is invalid."),
-		tr("Specify a valid MAC address for this network adapter."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_PRL_TOOLS_BETA,
-		tr("Automatic installation of " PRODUCT_NAME_SHORT " Tools is not supported in this Beta. Please install " PRODUCT_NAME_SHORT " Tools manually."),
-		tr(PRODUCT_NAME_SHORT " Tools are available from the image file \"%1\". Connect this image to the virtual machine and install " PRODUCT_NAME_SHORT " Tools."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -1797,139 +3668,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_TOOLS_WIN,
-		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine and start the installation."),
-		tr("If the installation does not start automatically, open your CD/DVD drive in Windows and double-click \"Setup.exe\"."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_TOOLS_LIN,
-		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
-		tr("To install " PRODUCT_NAME_SHORT " Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install " PRODUCT_NAME_SHORT " Tools."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_TOOLS_MAC,
-		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
-		tr("To install " PRODUCT_NAME_SHORT " Tools, open the " PRODUCT_NAME_SHORT " Tools CD in the virtual machine and double-click \"Install\"."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALL_GHOSTSCRIPT_ON_HOST,
-		tr("The document has been sent to a printer that is shared with the host computer."),
-		tr("To ensure proper printing from the virtual machine, it is recommended that you install a PostScript interpreter as described on the " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>" ),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUEST_HDD_SAME_IMAGE,
-		tr("The virtual hard disk image file %1 is already used by virtual hard disk %2."),
-		tr("Specify another virtual hard disk image file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_REGISTER_VM_TEMPLATE,
-		tr("You have selected the virtual machine template %1. Do you want to add it?"),
-		tr("You can use the template only for deploying new virtual machines based on it. You cannot run the template as a virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CREATE_NEW_MAC_ADDRESS,
-		tr("Duplicate MAC addresses detected. Do you want to recreate the MAC address for the virtual machine \"%1\" or use the current MAC address anyway?"),
-		tr("The MAC address of the network adapter of the virtual machine \"%1\" to be registered is already in use."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_TO_START_VM_TEMPLATE,
-		tr("You cannot start virtual machine templates."),
-		tr("You can either deploy or convert this template to a virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_IDE_NODE_ALREADY_TAKEN,
-		tr("The %1 position is already in use."),
-		tr("Specify another IDE position for the device."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_SCSI_NODE_ALREADY_TAKEN,
-		tr("The %1 position is already in use."),
-		tr("Specify another SCSI position for the device."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_INFO_CANT_DISPLAY_HELP_FILE,
 		tr("Unable to open the help file."),
 		tr("Make sure the file exists and you have the means to open it. If the file doesn't exist, reinstall the product and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_INVALID_IMAGE_PATH,
-		tr("The specified path to the image file is invalid."),
-		tr("Check the path to the file and try again, making sure to type the path correctly."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_INVALID_OUTPUT_PATH,
-		tr("The specified path to the output file is invalid."),
-		tr("Check the path to the file and try again, making sure to type the path correctly."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SHORTCUT_EXISTS,
-		tr("The %1 shortcut is already used for another action."),
-		tr("The %1 shortcut cannot simultaneously be assigned to two actions - %2. Correct the assignments and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SHORTCUT_HAS_EMPTY_MODIFIERS,
-		tr("The following keyboard shortcuts are invalid: %1."),
-		tr("Shortcuts must contain two or more keys. Add one or more modifier keys to each of the listed shortcuts and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VM_NAME_NOT_SPECIFIED,
-		tr("The virtual machine name is not specified."),
-		tr("Specify an arbitrary name for your virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VM_DIR_NOT_SPECIFIED,
-		tr("The virtual machine folder is not specified."),
-		tr("Specify a folder for storing the virtual machine files and try again."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -1966,38 +3709,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DELETE_NET_ADAPTER,
-		tr("Are you sure you want to delete the virtual network adapter %1?"),
-		tr("This operation is irreversible."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PROBLEM_REPORT_POST_SUCCESS,
-		tr("A problem report with the ID number %1 has been sent to " PRODUCT_NAME_SHORT " to help us improve the product. Thank you for your feedback."),
-		tr("If you'd like to contact our support team to request help with your problem, please copy the problem report ID number, %1, and submit a support ticket to " PRODUCT_NAME_SHORT " Support."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISK_IMAGE_BUSY,
-		tr("Unable to recreate the image file %1."),
-		tr("The specified image file %1 is currently in use by another application. Specify a different file name and try again." ),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISK_XML_INVALID,
-		tr("The hard disk image file used by the hard disk %1 (%2) is corrupt and its data cannot be recovered."),
-		tr("To recreate the image file, open the hard disk properties pane, enable the \"Show advanced settings\" option, and click Recreate. After recreating the disk image, all data on this disk will be lost."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_XML_MISSING,
 		tr("The specified file cannot be used as a virtual hard disk."),
 		tr("Please specify another file."),
@@ -2014,45 +3725,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_ERR_WRONG_CDD_IMAGE_PATH_SPECIFIED,
-		tr("The image file is not specified."),
-		tr("Specify the path to the appropriate CD/DVD image file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	// NOTE: this error is currently unused and replaced by the error
-	// PRL_ERR_VMCONF_CPU_COUNT_MORE_MAX_CPU_COUNT
-	REGISTER_ERROR_STRING(
-		GUI_ERR_WRONG_NUMBER_OF_CPU,
-		tr("The specified number of CPUs is incorrect."),
-		tr("The maximum allowed number of CPUs cannot exceed %1. Specify a correct value and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_SUSPEND_FAILED,
 		tr("The virtual machine %1 will continue running."),
 		tr("The virtual machine state cannot be saved due to an unrecoverable error. You can only shut down the virtual machine."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_SUSPEND_REJECTED_BY_GUEST,
-		tr("Unable to suspend the virtual machine."),
-		tr("The virtual machine cannot be suspended because some operations have not been completed in its operating system."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_PLAYER_CANT_SUSPEND_IN_PAUSE,
-		tr("This virtual machine is paused and cannot be suspended."),
-		tr("Resume the virtual machine and try again."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -2069,55 +3746,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Virtual machines that use Boot Camp partitions as hard disks cannot be suspended because the operation may damage the Boot Camp partition."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_ALLOW_TO_SUSPEND_VM_WITH_BOOTCAMP_DISK,
-		tr("%1 is using Boot Camp as one of its hard disks. Are you sure you want to suspend this virtual machine?"),
-		tr("Do not work with Boot Camp natively while the virtual machine is suspended, or you will lose all unsaved data when resuming the virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CORE_STATE_VM_WOULD_STOP,
-		tr("Do you want to restore the virtual machine as running or stop it while reverting to this snapshot?"),
-		tr("This snapshot was created when the virtual machine was running. If you restore the virtual machine as running, it may work not properly until you restart it."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_SUSPEND_STATE_INCOMPATIBLE_CPU,
-		tr("Do you want to resume the virtual machine as running or restart it?"),
-		tr("The virtual machine was suspended on another computer. If you resume it as running, it may work incorrectly until you restart it."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_SNAPSHOT_STATE_INCOMPATIBLE_CPU,
-		tr("Do you want to restore the virtual machine as running or stop it while reverting to this snapshot?"),
-		tr("This snapshot was created on another computer. If you restore the virtual machine, it may work incorrectly until you restart it."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_SUSPEND_STATE_INCOMPATIBLE,
-		tr("Unable to resume this virtual machine because it was suspended in a newer version of your " PRODUCT_NAME_SHORT " software."),
-		tr("Do you want to restart the virtual machine to be able to use it in this version? Note: If you restart the virtual machine now, all unsaved data will be lost."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_SNAPSHOT_STATE_INCOMPATIBLE,
-		tr("Unable to restore this virtual machine as running because the snapshot was created in a newer version of your " PRODUCT_NAME_SHORT " software."),
-		tr("Do you want to stop the virtual machine while reverting? Note: If you stop the virtual machine now, all the data that was not saved at the time the snapshot was taken will be lost."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -2329,70 +3957,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_FILE_OR_DIR_ALREADY_EXISTS,
-		tr("A virtual machine or folder with the name of \"%1\" already exists in %2."),
-		tr("Specify another name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LPT_OUTPUT_FILE_IS_NOT_SPECIFIED,
-		tr("The path to the printer port output file %1 is not specified."),
-		tr("Specify a path to the output file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_COM_OUTPUT_FILE_IS_NOT_SPECIFIED,
-		tr("The path to the serial port output file %1 is not specified."),
-		tr("Specify a path to the output file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANT_EDIT_SUSPENDED_VM,
-		tr("This virtual machine is suspended."),
-		tr("To be able to edit the configuration of this virtual machine, you need to stop it."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_EDIT_SUSPENDED_VM,
-		tr("This virtual machine is suspended."),
-		tr("You can view the configuration of a suspended virtual machine but cannot edit it. To stop the virtual machine and edit its configuration, click <b>Stop and Edit</b>. To keep the suspended state and view the configuration in read-only mode, click <b>View</b>."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_STOP_SUSPENDED_VM,
-		tr("This virtual machine is suspended and may contain unsaved data. Are you sure you want to stop it?"),
-		tr("If you stop the virtual machine now, all unsaved data will be lost."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CHANGE_VM_MIGRATION_TYPE,
-		tr("Unable to move the virtual machine %1 using the specified migration type. Do you want to migrate it anyway?"),
-		tr("The CPUs on the source and destination servers are incompatible. If you continue, the virtual machine will be stopped during the migration."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_APPLY_CHANGES_PENDING,
-		tr("Unable to change the device state."),
-		tr("The device state cannot be modified because there are some pending changes that require the virtual machine to be restarted. Restart the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_GUEST_MAC_INVALID_VERSION,
 		tr("An invalid Mac OS version is installed."),
 		tr("Mac OS X virtual machines can have only the Mac OS X Server Leopard or Mac OS X Server Snow Leopard operating system installed. Other versions of Mac OS are not supported."),
@@ -2409,27 +3973,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_ACCES_DENIED_FILE_TO_PARENT_PARENT_DIR,
-		tr("The file %1 cannot be created in the specified folder."),
-		tr("You do not have the permission to create files in this folder. Choose another folder and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CREATE_PARALLEL_PORT_IMAGE,
 		tr("Unable to create the printer port output file %1."),
 		tr("Make sure that the specified path is correct and you have the permission to write to the specified folder."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_OVERWRITE_HDD_IMAGE,
-		tr("The virtual hard disk image file %1 already exists. Do you want to replace it with a new one?"),
-		tr("If you replace the image file, all the data on the original virtual hard disk will be lost."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -2441,14 +3989,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_SHUTDOWN_CONDITIONS,
-		tr("The virtual machine can be shut down if its operating system is loaded and supports Advanced Configuration and Power Interface (ACPI)."),
-		tr("If the virtual machine does not shut down after you click OK, perform a shutdown from within the virtual machine."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_CONFIG_DOESNT_EXIST,
 		tr("Unable to complete the action for the virtual machine %1."),
 		tr("No virtual machine configuration file could be found in the location \"%2\"."),
@@ -2457,35 +3997,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_ALREADY_REGISTERED_VM_NAME,
-		tr("The name %1 is already used by another virtual machine or template."),
-		tr("Specify another name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_ALREADY_REGISTERED,
 		tr("The virtual machine \"%1\" is already registered."),
 		tr("You cannot register a virtual machine more than once."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_DVD_DISCONNECTED_BY_GUEST,
-		tr("The CD/DVD disc was ejected from the guest operating system."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMDIR_PATH_IS_NOT_ABSOLUTE,
-		tr("The specified path is incorrect."),
-		tr("Type the absolute path or use the <b>Choose</b> button to locate the folder."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -2512,30 +4028,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_ERR_IMAGE_PATH_NOT_SPECIFIED,
-		tr("The image file path is invalid."),
-		tr("Please specify a valid image file path and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_SOCKET_NOT_SPECIFIED,
-		tr("The socket location is invalid."),
-		tr("Specify a valid location for the socket and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_OUTPUT_PATH_NOT_SPECIFIED,
-		tr("The output file path is not specified or invalid."),
-		tr("Specify a valid path for the output file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_GUEST_MAC_NOT_ENOUGH_MEMORY,
 		tr("Not enough memory to start the virtual machine."),
 		tr("Increase the amount of memory allocated to the virtual machine. To this effect, select <b>Virtual Machine</b> > <b>Edit Configuration...</b> and change the settings on the <b>Memory</b> pane."),
@@ -2552,54 +4044,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_ERR_CANT_CHANGE_CDROM_CONNECT_OPTION,
-		tr("The \"Connected\" option is unavailable because no hard disk image file is specified."),
-		tr("Specify a virtual hard disk image file to enable this option."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_FILE_DISK_SPACE_ERROR,
-		tr("Not enough free space on the physical disk drive %1."),
-		tr("Free some space on this disk drive or select another location and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_CANT_CLONE_SUSPENDED_VM,
-		tr("You cannot %1 the virtual machine \"%2\"."),
-		tr("The virtual machine \"%1\" is currently suspended. Resume the virtual machine, shut it down, and try to %2 it again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_INCORRECT_CDROM_PATH,
-		tr("The specified file cannot be used as a CD/DVD image file."),
-		tr("Specify another CD/DVD image file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISP_VM_IS_NOT_STARTED,
-		tr("Unable to perform the operation because the virtual machine \"%1\" is not started."),
-		tr("This operation can be performed for running virtual machines only."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISP_VM_IS_NOT_STOPPED,
-		tr("Unable to perform the operation because the virtual machine \"%1\" is not stopped."),
-		tr("This operation can be performed for stopped virtual machines only."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_GET_DISK_FREE_SPACE_FAILED,
 		tr("Unable to get disk information."),
 		tr("An error occurred while retrieving the disk information. Please try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
@@ -2607,13 +4051,6 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 
-	REGISTER_ERROR_STRING(
-		PRL_QUESTION_CAN_NOT_GET_DISK_FREE_SPACE,
-		tr("Not enough free space on the physical hard disk. Do you want to create the virtual hard disk anyway?"),
-		tr("The operation may fail if the amount of free space on the physical hard disk proves insufficient."),
-		true,
-		PMT_QUESTION
-		);
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_CONFIG_INVALID_VM_UUID,
 		tr("Unable to complete the operation for the virtual machine \"%1\"."),
@@ -2630,40 +4067,7 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_GOING_TO_TAKE_SMART_GUARD_SNAPSHOT,
-		tr("SmartGuard is ready to create a scheduled snapshot of the virtual machine \"%1\". Do you want to create it now?"),
-		tr("If no action is taken, the snapshot will be created automatically in @PRL_GUI_STD_SECONDS_TIMER seconds."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_GOING_TO_TAKE_SMART_GUARD_SNAPSHOT,
-		tr("An automatic snapshot is going to be taken."),
-		tr("SmartGuard is about to start creating a scheduled snapshot of the virtual machine \"%1\". Click <b>Create</b> to create a snapshot now, or click <b>Skip</b> to do without.<br><br>Note: To disable this notification, edit the SmartGuard settings in the virtual machine configuration."),
-		false,
-		PMT_QUESTION
-		);
-
 	///// Config validation ///////////////////////////////////////////////////////
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_VM_NAME_IS_EMPTY,
-		tr("The virtual machine name is not specified."),
-		tr("Enter a unique name for the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_VM_NAME_HAS_INVALID_SYMBOL,
-		tr("The virtual machine name \"%1\" is invalid."),
-		tr("A virtual machine name cannot contain any of the following characters: [/:*?\"<>|%]"),
-		false,
-		PMT_WARNING
-		);
-
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_INVALID_DEVICE_MAIN_INDEX,
 		tr("The virtual machine configuration is invalid."),
@@ -2761,14 +4165,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NO_HD_IMAGES_IN_SAFE_MODE,
-		tr("Unable to start the virtual machine in Rollback Mode."),
-		tr("The virtual machine does not have any virtual hard disk in its configuration."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_BOOTCAMP_HARD_DISK_SMART_GUARD_NOT_ALLOW,
 		tr("Unable to turn on the SmartGuard option."),
 		tr("The SmartGuard option cannot be enabled because the virtual machine uses the Boot Camp partition as its virtual hard disk."),
@@ -2793,159 +4189,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NO_AUTO_COMPRESS_WITH_UNDO_DISKS,
-		tr("AutoCompress cannot be used with Rollback mode. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the AutoCompress feature will not work."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NO_AUTO_COMPRESS_WITH_SMART_GUARD,
-		tr("AutoCompress cannot be used with SmartGuard. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the AutoCompress feature will only work while there are no snapshots. If at least one snapshot is created, AutoCompress will stop functioning."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NO_SMART_GUARD_WITH_UNDO_DISKS,
-		tr("Both Rollback mode and SmartGuard are enabled. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, SmartGuard will not work because snapshots cannot be created when Rollback mode is enabled."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_BOOT_OPTION_INVALID_DEVICE_TYPE,
-		tr("The virtual machine has one or more invalid boot devices."),
-		tr("Only hard disks, floppy disks, CD/DVD drives, and network adapters can be used as boot devices. Remove the inappropriate devices from the Boot Order list and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_BOOT_OPTION_DUPLICATE_DEVICE,
-		tr("One or more duplicate devices are present in the boot sequence."),
-		tr("Each device can be included in the boot sequence only once. Remove the duplicate devices from the boot sequence and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_BOOT_OPTION_DEVICE_NOT_EXISTS,
-		tr("The boot sequence contains a device that does not exist."),
-		tr("Make sure that the specified boot devices exist in the virtual machine configuration. Remove the missing device from the boot sequence and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_REMOTE_DISPLAY_PORT_NUMBER_IS_ZERO,
-		tr("An incorrect port number is specified for Remote Display."),
-		tr("The port number must be greater than 0. Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_REMOTE_DISPLAY_EMPTY_PASSWORD,
-		tr("The password for the Remote Display access is not specified. Are you sure you want to save the settings?"),
-		tr("If you do not specify the password, other users will be able to access this virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SHARED_FOLDERS_EMPTY_FOLDER_NAME,
-		tr("The shared folder name is not specified."),
-		tr("Enter a unique name for the shared folder and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SHARED_FOLDERS_DUPLICATE_FOLDER_NAME,
-		tr("One or more duplicate shared folder names have been detected."),
-		tr("Make sure that each shared folder has a unique name. Remove the duplicate folders and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SHARED_FOLDERS_INVALID_FOLDER_PATH,
-		tr("The \"%1\" shared folder is not accessible."),
-		tr("Make sure that its path is correct: %2."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SHARED_FOLDERS_DUPLICATE_FOLDER_PATH,
-		tr("One or more duplicate paths for your shared folders have been detected."),
-		tr("Make sure that each shared folder has a unique path. Remove the duplicate folders and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CPU_ZERO_COUNT,
-		tr("The specified CPUs number is invalid."),
-		tr("The number of CPUs must be greater than 0. Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CPU_COUNT_MORE_MAX_CPU_COUNT,
-		tr("The specified CPUs number is invalid."),
-		tr("The number of CPUs cannot exceed %1. Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CPU_MASK_INVALID,
-		tr("The specified CPU mask is invalid."),
-		tr("Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_CPU_MASK_INVALID_CPU_NUM,
 		tr("The specified CPU mask is invalid."),
 		tr("The CPU number cannot exceed mask size (%1). Correct the value and try again."),
 		true,
 		PMT_CRITICAL
-		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CPU_NODE_MASK_INVALID,
-		tr("The specified NUMA node mask is invalid."),
-		tr("Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_MAIN_MEMORY_ZERO_SIZE,
-		tr("The specified main memory size is invalid."),
-		tr("The memory size must be greater than 0. Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_MAIN_MEMORY_OUT_OF_RANGE,
-		tr("The specified main memory size is invalid."),
-		tr("The memory size must be a number between %1 and %2 MB. Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_MAIN_MEMORY_NOT_4_RATIO_SIZE,
-		tr("The specified main memory size is invalid."),
-		tr("The memory size must be a multiple of 4. Correct the value and try again."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -2997,155 +4245,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_VIDEO_MEMORY_OUT_OF_RANGE,
-		tr("The specified video memory size is invalid."),
-		tr("The memory size must be a number between %1 and %2 MB. Correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_FLOPPY_DISK_SYS_NAME_IS_EMPTY,
-		tr("No image file is specified for the floppy disk drive. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the floppy disk drive will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_FLOPPY_DISK_SYS_NAME_HAS_INVALID_SYMBOL,
-		tr("The floppy disk drive name \"%1\" is invalid."),
-		tr("A floppy disk drive name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_FLOPPY_DISK_IMAGE_IS_NOT_EXIST,
-		tr("The floppy disk image file \"%1\" does not exist. Do you want to save the virtual machine configuration anyway?"),
-		tr("Make sure that the path to the floppy disk image file is correct and try again."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_FLOPPY_DISK_IS_NOT_ACCESSIBLE,
-		tr("The physical floppy disk drive used to simulate your virtual floppy disk drive is not accessible. Do you want to save the virtual machine configuration anyway?"),
-		tr("Make sure that the physical floppy disk drive is available or disable the floppy disk drive in the virtual machine configuration."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_FLOPPY_DISK_IMAGE_IS_NOT_VALID,
-		tr("The floppy disk image file \"%1\" is not valid. Do you want to save the configuration of the virtual machine anyway?"),
-		tr("Make sure that the file is valid or select another image file for Floppy Disk."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_FLOPPY_DISK_URL_FORMAT_SYS_NAME,
-		tr("The image file \"%1\" used by the Floppy Disk device is stored on an Internet location."),
-		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for the Floppy Disk device."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_WRONG_TYPE_BOOTCAMP_PARTITION,
-		tr("The Boot Camp partition \"%1\" used by Hard Disk %2 is not supported."),
-		tr("Please open the virtual machine configuration and select a supported Boot Camp partition in the Hard Disk %2 settings."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_MISS_BOOTCAMP_PARTITION,
-		tr("The Boot Camp partition \"%1\" used by Hard Disk %2 is missing."),
-		tr("Please open the virtual machine configuration and select an existing Boot Camp partition in the Hard Disk %2 settings."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CD_DVD_ROM_SYS_NAME_IS_EMPTY,
-		tr("No image file is specified for CD/DVD drive %1. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, CD/DVD drive %1 will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CD_DVD_ROM_DUPLICATE_SYS_NAME,
-		tr("The specified CD/DVD drive is already used by another virtual CD/DVD drive. Do you want to connect it to CD/DVD drive %1 anyway?"),
-		tr("If you click Yes now, the physical CD/DVD drive will be disconnected from the virtual CD/DVD drive that is currently using it."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CD_DVD_ROM_IMAGE_IS_NOT_EXIST,
-		tr("The image file \"%1\" used by CD/DVD drive %2 does not exist. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, CD/DVD drive %2 will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CD_DVD_ROM_URL_FORMAT_SYS_NAME,
-		tr("The image file \"%1\" used by CD/DVD %2 is stored on an Internet location."),
-		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for CD/DVD %2."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_SYS_NAME_IS_EMPTY,
-		tr("No image file is specified for hard disk %1. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, hard disk %1 will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_SYS_NAME_HAS_INVALID_SYMBOL,
-		tr("The hard disk drive name \"%1\" is invalid."),
-		tr("A hard disk drive name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_IMAGE_IS_NOT_EXIST,
-		tr("The image file \"%1\" used by hard disk %2 does not exist."),
-		tr("Hard disk %2 will not be connected at the virtual machine startup."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_IMAGE_IS_NOT_VALID,
-		tr("The specified hard disk image file is invalid."),
-		tr("The virtual hard disk will not be connected at the virtual machine startup."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_HARD_DISK_DUPLICATE_SYS_NAME,
 		tr("The specified source is already used by hard disk %1."),
 		tr("Specify any other available source for this device and try again."),
 		true,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_URL_FORMAT_SYS_NAME,
-		tr("The image file \"%1\" used by Hard Disk %2 is stored on an Internet location."),
-		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for Hard Disk %2."),
-		true,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -3158,276 +4262,12 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_BOUND_INDEX,
-		tr("The physical network adapter connected to virtual network adapter %1 does not exist. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, this virtual network adapter will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_MAC_ADDRESS,
-		tr("The MAC address assigned to Network Adapter %1 is invalid."),
-		tr("Specify a valid MAC address for this network adapter. "\
-		   "A valid MAC address should be six groups of two hexadecimal digits, without any colons or hyphens, beginning with 001C42."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_DUPLICATE_MAC_ADDRESS,
-		tr("One or more duplicate addresses of your network adapters have been detected. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapters with conflicting MAC addresses may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_DUPLICATE_IP_ADDRESS,
-		tr("One or more duplicate IP addresses of your network adapters have been detected. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapters with conflicting IP addresses may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_DUPLICATE_IP_ADDRESS,
 		tr("The following duplicated IP addresses have been detected: '%1'"),
 		tr("Saving the configuration may cause the network adapters with conflicting"
 			" IP addresses to work incorrectly."),
 		false,
 		PMT_CRITICAL
-		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
-				tr("The virtual machine does not have " PRODUCT_NAME_SHORT " Tools installed."
-				   " Do you want to save the configuration anyway?"),
-				tr("If you save the configuration now, the network adapter may work incorrectly."
-				   " Install " PRODUCT_NAME_SHORT " Tools and configure the network adapter settings again."),
-		true,
-		PMT_QUESTION
-		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_ETHLIST_CREATE_ERROR,
-		tr("Failed to obtain a list of physical network adapters. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the virtual machine networking will be disabled."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_IP_ADDRESS,
-		tr("The \"IP address/subnet MASK\" \"%1\" assigned to Network Adapter %2 is invalid. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_MULTICAST_IP_ADDRESS,
-		tr("The IP address \"%1\" assigned to Network Adapter %2 is a multicast IP address. Do you want to save the virtual machine configuration anyway?"),
-		tr("IP addresses in the range from 224.0.0.0 to 239.255.255.255 are reserved as multicast addresses. If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_BROADCAST_IP_ADDRESS,
-		tr("The IP address \"%1\" assigned to Network Adapter %2 is a broadcast IP address. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_GATEWAY_IP_ADDRESS,
-		tr("The IP address \"%1\" assigned to Network Adapter %2 is an invalid gateway IP address. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_GATEWAY_NOT_IN_SUBNET,
-		tr("The IP address \"%1\" assigned to Network Adapter %2 does not belong to any subnet. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_DNS_IP_ADDRESS,
-		tr("The IP address \"%1\" assigned to Network Adapter %2 is an invalid DNS IP address. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_SEARCH_DOMAIN_NAME,
-		tr("The domain name \"%1\" assigned to Network Adapter %2 contains invalid symbols. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_ADAPTER_ROUTED_NO_STATIC_ADDRESS,
-		tr("Network Adapter %1 operating in the routed mode must have at least one static IP address assigned."),
-		tr("If you save the configuration, the network adapter may work incorrectly."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SOUND_MIXER_IS_EMPTY,
-		tr("The sound input device name is not specified. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the sound input device will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SOUND_OUTPUT_IS_EMPTY,
-		tr("The sound output device name is not specified. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the sound output device will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SERIAL_PORT_SYS_NAME_IS_EMPTY,
-		tr("No output file is specified for Serial Port %1. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, Serial Port %1 will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SERIAL_PORT_SYS_NAME_HAS_INVALID_SYMBOL,
-		tr("The serial port name \"%1\" is invalid."),
-		tr("A serial port name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SERIAL_PORT_IMAGE_IS_NOT_EXIST,
-		tr("The output file of the Serial Port does not exist. Do you want to save the configuration of the virtual machine anyway?"),
-		tr("If you continue the Serial Port will be disconnected at virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SERIAL_PORT_URL_FORMAT_SYS_NAME,
-		tr("The output file \"%1\" used by Serial Port %2 is stored on an Internet location."),
-		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for Serial Port %2."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_PARALLEL_PORT_SYS_NAME_IS_EMPTY,
-		tr("No output file is specified for Printer Port %1. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, Printer Port %1 will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_PARALLEL_PORT_SYS_NAME_HAS_INVALID_SYMBOL,
-		tr("The printer port name \"%1\" is invalid."),
-		tr("A printer port name cannot contain any of the following characters: :*?\"&lt;&gt;|. Specify a different name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_PARALLEL_PORT_IMAGE_IS_NOT_EXIST,
-		tr("The output file used by the printer port does not exist. Do you want to save the virtual machine configuration anyway?"),
-		tr("If you click Yes now, the printer port will not be connected at the virtual machine startup."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_PARALLEL_PORT_URL_FORMAT_SYS_NAME,
-		tr("The output file \"%1\" used by Printer Port %2 is stored on an Internet location."),
-		tr("Virtual devices cannot use files stored on Internet locations. Please specify another file for Printer Port %2."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_IDE_DEVICES_COUNT_OUT_OF_RANGE,
-		tr("The allowed number of IDE devices for this virtual machine has been exceeded."),
-		tr("The total number of IDE devices in the virtual machine configuration cannot be greater than %1. Remove some of the devices and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_IDE_DEVICES_DUPLICATE_STACK_INDEX,
-		tr("This virtual machine has two or more devices with the same IDE position."),
-		tr("Make sure that each device has a unique position on the IDE bus and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SATA_DEVICES_COUNT_OUT_OF_RANGE,
-		tr("The allowed number of SATA devices for this virtual machine has been exceeded."),
-		tr("The total number of SATA devices in the virtual machine configuration cannot be greater than %1. Remove some of the devices and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SATA_DEVICES_DUPLICATE_STACK_INDEX,
-		tr("This virtual machine has two or more devices with the same SATA position."),
-		tr("Make sure that each device has a unique position on the SATA bus and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_VIRTIO_BLOCK_DEVICES_DUPLICATE_STACK_INDEX,
-		tr("This virtual machine has two or more devices sharing the same virtio-block position."),
-		tr("Make sure that each device has a unique position on the virtio-block bus and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SCSI_DEVICES_COUNT_OUT_OF_RANGE,
-		tr("The allowed number of SCSI devices for this virtual machine has been exceeded."),
-				tr("The total number of SCSI devices in the virtual machine configuration cannot be greater than %1. Remove some of the devices and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SCSI_DEVICES_DUPLICATE_STACK_INDEX,
-		tr("This virtual machine has two or more devices with the same SCSI position."),
-		tr("Make sure that each device has a unique position on the SCSI bus and try again."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SCSI_BUSLOGIC_WITH_EFI_NOT_SUPPORTED,
-		tr("Virtual machines cannot use both the BusLogic SCSI controller and EFI firmware at the same time."),
-		tr("Specify another SCSI controller or disable the EFI firmware."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_GENERIC_PCI_DEVICE_CANNOT_BE_ADDED,
-		tr("The PCIe device you are trying to add cannot be used by this virtual machine. Do you want to add it anyway?"),
-		tr("Virtual machines can use PCIe devices only when they are running on a host computer whose processor supports the Intel VT-d technology."),
-		true,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -3439,22 +4279,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_GENERIC_PCI_DEVICE_NOT_CONNECTED,
-		tr("This device is reserved for use by the host computer only and cannot be added."),
-		tr("You can change this setting in <b>File</b> > <b>Preferences</b> > <b>Intel VT-d</b>."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_GENERIC_PCI_DEVICE_DUPLICATE_IN_ANOTHER_VM,
-		tr("The device %1 is already assigned to another virtual machine. Do you want to save the virtual machine configuration anyway?" ),
-		tr("This device can be used only by a single running virtual machine at a time. If you start this virtual machine, the device will become unavailable to other virtual machines."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_GENERIC_PCI_WRONG_DEVICE,
 		tr("The device you are trying to add belongs to another class of devices."),
 		tr("Specify another device and try again."),
@@ -3463,44 +4287,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_GENERIC_PCI_DUPLICATE_SYS_NAME,
-		tr("This device is already present in the virtual machine configuration."),
-		tr("Specify another device and try again."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_GENERIC_PCI_VIDEO_WRONG_COUNT,
 		tr("You cannot assign more than two PCIe video adapters to a single virtual machine."),
 		tr("Make sure that only two PCIe video adapters are added to this virtual machine configuration and try again."),
 		true,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NO_IP_ADDRESSES_SPECIFIED_FOR_OFFLINE_MANAGEMENT,
-		tr("This virtual machine configuration contains no host-only network adapter which is required for offline management."),
-		tr("To be able to manage this virtual machine offline, you need to add at least one host-only network adapter with at least one IP address to its configuration."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_NO_SHARED_NETWORK_FOR_OFFLINE_MANAGEMENT,
-		tr("Shared virtual network required for offline management is missing from this server network configuration."),
-		tr("To be able to manage virtual machines on this server while they are offline, you need to add a shared virtual network by editing the server's network settings."),
-		false,
-		PMT_WARNING
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_DESKTOP_MODE_REMOTE_DEVICES,
-		tr("@PRL_PRODUCT_NAME does not support using remote devices."),
-		tr("Check the virtual machine configuration and try again."),
-		false,
-		PMT_WARNING
 		);
 ////
 ////////////////////////////////////////////////////////////////////////////////
@@ -3530,30 +4321,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_MUST_BE_STOPPED_FOR_CHANGE_DEVICES,
-		tr("The device cannot be added or removed while the virtual machine is running."),
-		tr("Stop the virtual machine and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_HDD_IMAGE_COPY,
-		tr("Unable to copy the hard disk image file '%1' to '%2'."),
-		tr("Make sure that you have the necessary permissions for the source file and the target folder. Verify that the source file is not in use and the target folder is available."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_USER_AUTHENTICATION_FAILED,
-		tr("Unable to authenticate the user."),
-		tr("Make sure that the specified credentials are correct and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_COULDNT_BE_STARTED_UNDER_SPECIFIED_USER,
 		tr("The user \"%1\" does not have the permission to start this virtual machine."),
 		tr("Open the Virtual Machine Configuration dialog and enable the View and run option on the Permissions tab. Make sure that the user has the read and execute permissions for the virtual machine folder. Contact your " PRODUCT_NAME_SHORT " administrator for further assistance."),
@@ -3562,116 +4329,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_INSTALL_DRIVER_FAILED,
-		tr("Do you want to disconnect the %1 device from your physical computer?"),
-		tr("This device is in use by your physical computer. For the device to be connected to the virtual machine, it should be forcefully disconnected from your physical computer, which might cause data loss or corruption."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_NO_FREE_PORTS,
-		tr("The USB device cannot be connected."),
-		tr("There are no virtual USB host controller ports available in the virtual "
-		"machine for the \"%1\" device to be connected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_DEV_USB_OPEN_FAILED,
-		tr("Unable to find any drivers for this USB device."),
-		tr("Please try to update the USB drivers installed on the host computer using Device Manager."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_DEV_USB_CONNECT_FAILED,
-		tr("Unable to connect the USB device to your virtual machine."),
-		tr("The device cannot be connected now. Please try again later."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_NOT_CONFIGURED,
-		tr("Unable to connect the USB device to your virtual machine."),
-		tr("Virtual USB controller is not present. Please check USB settings in the virtual machine configuration."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_AUTOSTART_FROM_CURRENT_USER_FORBIDDEN,
 		tr("You cannot edit the virtual machine startup options with your current user account."),
 		tr("To be able to edit these options, specify the credentials of another user account on the Startup and Shutdown pane."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_INCORRECT_PATH,
-		tr("The folder \"%1\" does not exist."),
-		tr("Specify an existing folder and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_PD3_COMPAT_MODE,
-		tr("The virtual machine is running in compatibility mode. A newer version of " PRODUCT_NAME_SHORT " Tools needs to be installed. The installation will start automatically."),
-			tr("Please wait for the guest operating system to boot and start the " PRODUCT_NAME_SHORT " Tools installation, it might take a while. If the installation of " PRODUCT_NAME_SHORT " Tools does not start automatically, select Install " PRODUCT_NAME_SHORT " Tools on the Virtual Machine menu to start the installation manually."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_PD3_COMPAT_NO_MOUSE,
-		tr("The mouse in your virtual machine may work incorrectly. The problem will be solved automatically after the restart."),
-		tr("Windows requires some time to initialize the newly found devices after the virtual machine upgrade. During this time, your mouse may work incorrectly. If you need to log in to your virtual machine, use the keyboard."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_BOOTCAMP_MODE,
-		tr("You are booting from your Boot Camp partition inside a virtual machine."),
-		tr("You will need to reactivate Windows and Microsoft Office. Do not change the virtual machine configuration without necessity as it may require another reactivation."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_DSP_EVT_DISP_SHUTDOWN,
-		tr(PRODUCT_NAME_SHORT " Service will be stopped."),
-		tr("After Dispatcher Service is stopped, you will not be able to manage your virtual machines."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_ALREADY_RUNNING,
-		tr("The virtual machine \"%1\" is running."),
-		tr("You or another user have already started this virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DROP_SUSPEND_FOR_HDD_QUEST_CFG_EDITOR,
-		tr("The image file %1 emulating hard disk %2 is used by a suspended virtual machine. Are you sure you want to use this image file?"),
-		tr("If you click Yes now, all unsaved data of the suspended virtual machine may get lost and the data of the image file may become damaged."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DROP_SUSPEND_FOR_HDD_QUEST_WIZARDS,
-		tr("The hard disk image file %1 is used by a suspended virtual machine. Are you sure you want to use this image file?"),
-		tr("If you click Yes now, all unsaved data of the suspended virtual machine may get lost and the data of the image file may become damaged."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -3778,15 +4440,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("The hard disk storing the virtual machine \"%1\" is slow. The virtual machine will be paused until disk reading speed is increased."),
 		false,
 		PMT_CRITICAL);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CANT_USE_DEVICE_CLIENT_OPTION_ON_HOST,
-		tr("Unable to browse the image files on the client computer. Do you want to browse the files on the host computer?" ),
-		tr("This device is set to use image files stored on the client computer."),
-		false,
-		PMT_QUESTION
-		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISP2DISP_SESSION_ALREADY_AUTHORIZED,
@@ -3981,30 +4634,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_GUEST_TOOLS_NOT_INSTALLED,
-		tr(PRODUCT_NAME_SHORT " Tools are not installed in this virtual machine."),
-		tr("Start the installation now by choosing Install " PRODUCT_NAME_SHORT " Tools from the Virtual Machine menu."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_IPHONE_PROXY_CANNOT_STOP,
-		tr("The iPhone service cannot be stopped."),
-		tr("An error occurred when stopping the iPhone service."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_IPHONE_PROXY_ALREADY_STARTED,
-		tr("The iPhone service has already been started."),
-		tr("The iPhone service has already been started. No additional actions are required to start it."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CANT_CONFIGURE_PARTITION_HDD,
 		tr("One of the physical hard disk partitions is in use and cannot be connected."),
 		tr("One of the disk partitions is currently used by the host computer. You need to unmount this partition in the primary OS before connecting it to the virtual machine."),
@@ -4013,91 +4642,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_IS_NOT_SUSPENDED,
-		tr("The virtual machine is not suspended."),
-		tr("The requested operation cannot be performed as it is applicable to virtual machines in the suspended state only."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_GLOBAL_HOST_SHARING,
-		tr("Do you want to enable access to Mac OS X files and folders from Windows?"),
-		tr("Click Yes to allow Windows to access files and folders on your Mac.<br>Click No to allow only copying files and folders from your Mac to Windows.<br>You can change these settings later on the Sharing pane of Virtual Machine Configuration."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_LOCAL_HOST_SHARING,
-		tr("Do you want to enable access to Mac OS X files and folders from Windows?"),
-		tr("Click Yes to allow Windows to access the files in your Mac OS X home folder.<br>Click No to allow only copying files and folders from your Mac to Windows.<br>You can change these settings later on the Sharing pane of Virtual Machine Configuration."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_SWITCH_TO_FULLSCREEN,
-		tr("The virtual machine is about to enter the full screen mode."),
-		tr("Press <b>%1</b> to exit the full screen mode or press <b>%2</b> to release the mouse and keyboard from the virtual machine."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PRODUCT_ACTIVATED_SUCCESSFULLY,
-		tr("The current copy of @PRL_PRODUCT_NAME%1 was successfully activated."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_ANOTHER_TOOLS_IN_USE,
-		tr(PRODUCT_NAME_SHORT " Tools cannot be mounted to the virtual machine."),
-		tr("Another ISO image with " PRODUCT_NAME_SHORT " Tools is mounted to the CD/DVD device of this virtual machine. Unmount this image, then try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_RUN_COMPRESSOR_WIN,
-		tr(PRODUCT_NAME_SHORT " Compressor helps you keep your virtual machine compact and efficient."),
-		tr(PRODUCT_NAME_SHORT " Compressor is an easy-to-use tool allowing you to clean up unused disk space in the virtual machine. Using this tool, you can significantly reduce the size of your virtual machine hard disks files and use the resources of your physical hard disks more efficiently."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_COPIED,
-		tr("Copied"),
-		tr("Copied"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_MOVED,
-		tr("Moved"),
-		tr("Moved"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_COMPRESSOR_UNSUPPORTED_GUEST,
 		tr(PRODUCT_NAME_SHORT " Compressor cannot be started."),
 		tr("Your virtual machine's operating system is \"%1\". This operating system is not supported by " PRODUCT_NAME_SHORT " Compressor."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_REACH_OVERCOMMIT_STATE_ON_SETMEM,
-		tr("Setting this memory amount may slow down the performance of your running virtual machines."),
-		tr("Your running virtual machines are consuming more memory together than the total amount you are allocating. Increase this amount or shut down or suspend some of your running virtual machines."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -4117,205 +4666,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PET_ERR_WARN_REACH_OVERCOMMIT_STATE_ON_SETMEM,
-		tr("Setting this memory amount may slow down the performance of your running virtual machines."),
-		tr("Your running virtual machines are consuming more memory together than the total amount you are allocating. Increase this amount or shut down or suspend some of your running virtual machines."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_APPLY_WHEN_HYP_CANNOT_ALLOC_VMS_MEM,
-		tr("Are you sure you want to set this memory amount?"),
-		tr("Unable to apply the changes right now because the specified amount of memory is less than the sum of all virtual machine guarantees and overhead.If you click Yes, the changes will take effect only after server restart. Or you can also suspend or stop some of the virtual machines and try again."),
-		false,
-		PMT_QUESTION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_WNG_STOP_VM_WITH_BOOTCAMP,
-		tr("Are you sure you want to stop the virtual machine?"),
-		tr("The virtual machine uses the Boot Camp partition as its virtual hard disk. If you stop the virtual machine now, you may lose unsaved data or corrupt the data on the Boot Camp partition. Perform a shutdown from within the virtual machine instead."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_SNAPSHOT_VM_WITH_BOOTCAMP,
 		tr("A virtual machine snapshot cannot be created."),
 		tr("You cannot create snapshots of the virtual machines that use the Boot Camp partition as their virtual hard disk."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_BOOTCAMP_HELPER_INIT_FAILURE,
-		tr("An unexpected error occurred when initializing " PRODUCT_NAME_SHORT " Tools."),
-		tr("The virtual machine is booting from a Boot Camp partition. If you continue, you may encounter problems with Microsoft Windows or Office activation."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_BOOTCAMP_HELPER_OS_UNSUPPORTED,
-		tr("The Windows version is not supported by Boot Camp."),
-		tr("The virtual machine is booting from a Boot Camp partition. The version of Windows installed in the virtual machine is not officially supported by Boot Camp. If you continue, you may encounter problems with Microsoft Windows or Office activation."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_VIDEO_MEMORY_IS_TOO_LOW,
-		tr("Not enough video memory for 3D acceleration."),
-		tr("%1 MB of video memory is recommended for 3D acceleration. Do you want to increase the video memory up to %1 MB?"),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_MOUSE_SYNC_OFF_FOR_LINUX_WITH3D,
-		tr("SmartMouse is disabled in this virtual machine configuration, which may cause graphical artifacts to appear while working in it."),
-		tr("To enable SmartMouse, shut down the virtual machine, open its configuration and edit the Services settings on the Options tab."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_NOT_VALID,
-		tr("This product could not be activated because your activation key is invalid."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_EXPIRED,
-		tr("This product was activated for a limited period of time that has now expired."),
-		tr("Make sure you typed the key correctly or purchase another key."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_NOT_STARTED,
-		tr("Your activation key covers a period in the future, so it cannot be validated at the moment."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_WRONG_VERSION,
-		tr("This product could not be activated because your activation key is not valid for this version of @PRL_PRODUCT_NAME."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_WRONG_PRODUCT,
-		tr("This product could not be activated because your activation key is designed for use with another " PRODUCT_NAME_SHORT " product."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_WRONG_PLATFORM,
-		tr("This product could not be activated because your activation key is designed for using @PRL_PRODUCT_NAME on another platform."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_WRONG_LANGUAGE,
-		tr("This product could not be activated because your activation key is designed for use with another language version."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_WRONG_DISTRIBUTOR,
-		tr("This product could not be activated because your activation key distributor does not match that of the product itself."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_IS_NOT_VOLUME,
-		tr("This product could not be activated because your activation key is not supported special flags."),
-		tr("In this screen, you can enter an activation key only for " PRODUCT_NAME_SHORT " Desktop Enterprise Edition."),
-		false,
-		PMT_WARNING
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_BETA_KEY_RELEASE_PRODUCT,
-		tr("This product could not be activated because your activation key is designed for use with the Beta version of @PRL_PRODUCT_NAME."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_RELEASE_KEY_BETA_PRODUCT,
-		tr("This product could not be activated because your activation key is not designed for use with the Beta version of @PRL_PRODUCT_NAME."),
-		tr("Make sure you typed the key correctly or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_BLACKLISTED,
-		tr("Your activation key has been disabled due to security reasons: someone might have attempted to use the same activation key."),
-		tr("Please contact the " PRODUCT_NAME_SHORT " support team for further assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_BLACKLISTED_TO_VM_OPERATION,
-		tr("Your activation key has been disabled due to security reasons: someone might have attempted to use the same activation key."),
-		tr("Please contact the " PRODUCT_NAME_SHORT " support team for further assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VOLUME_LICENSE_EXCEEDED_LIMIT,
-		tr("The maximum number of installations available for your activation key has been reached."),
-		tr("This key cannot be used with any additional installations. For more information, please contact your system administrator."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_TOO_MANY_VCPUS,
-		tr("This virtual machine has more than %1 CPUs and cannot be started."),
-		tr("The activation key you used to activate the product allows a maximum of %1 CPUs for each virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_TOO_MANY_MEMORY,
-		tr("This virtual machine has more than %1 MB of memory and cannot be started."),
-		tr("The activation key you used to activate the product allows a maximum of	%1 MB of memory for each virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_VM_HAS_VTD_DEVICES,
-		tr("This virtual machine cannot be started because its configuration includes a directly assigned PCIe device."),
-		tr("The activation key you used to activate the product does not allow direct assignment of PCIe devices to virtual machines."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -4519,14 +4874,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_LICENSE_GRACED,
-		tr("You've reached the maximum limit of simultaneously running virtual machines."),
-		tr("The virtual machine will be stopped in %1 hours."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VZLICENSE_UNSUPPORTED_APP_MODE,
 		tr("Failed to perform this operation."),
 		tr("Use the appropriate " PRODUCT_NAME_SHORT " product to manage the license."),
@@ -4548,14 +4895,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please wait for the operation to finish."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VZLICENSE_KA_LICENSE_IS_UP_TO_DATE,
-		tr("Unable to update the product license."),
-		tr("Your license is already up to date. For more detailed information, please contact the " PRODUCT_NAME_SHORT " support team."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -4839,14 +5178,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_LICENSE_RESTRICTED_RKU,
-		tr("Failed to suspend virtual machines to PRAM."),
-		tr("Your license does not support suspending virtual machines to PRAM. The virtual machines will be suspended to the hard disk drive."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_LICENSE_DEFERRED_LICENSE_NOT_FOUND,
 		tr("License operation failed."),
 		tr("Unable to find the pre-cached license. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
@@ -4860,79 +5191,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("'%1' is not a valid " PRODUCT_NAME_SHORT " virtual disk. Specify another disk."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_UNDO_DISKS_MODE,
-		tr("Apply the changes to the virtual machine's hard disks?"),
-		tr("Click Apply to apply the changes or Discard to revert to the original state of the virtual machine."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_MAC_PHYSICAL_MEMORY_MAP_BUG,
-		tr("Starting the virtual machine may cause your Mac to malfunction. Are you sure you want to start it?"),
-		tr("If you start the virtual machine now, your Mac may work unstable. It is recommended to update your system to Mac OS X 10.5.5 or later before starting your virtual machines."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CREATE_OS2_GUEST_WITHOUT_FDD_IMAGE,
-		tr("The required floppy image file was not found."),
-		tr("If you continue, the resulting OS/2 virtual machine may work incorrectly. Please reinstall @PRL_PRODUCT_NAME, then try to create the virtual machine again."),
-		true,
-		PMT_QUESTION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_COMMIT,
-		tr("Apply"),
-		tr("Apply"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_REVERT,
-		tr("Discard"),
-		tr("Discard"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_STOP_AND_RESTORE,
-		tr("Stop and Restore"),
-		tr("Stop and Restore"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_RESTART,
-		tr("Restart"),
-		tr("Restart"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_RESTORE,
-		tr("Restore"),
-		tr("Restore"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_RESUME,
-		tr("Resume"),
-		tr("Resume"),
-		false,
-		PMT_ANSWER
 		);
 
 	REGISTER_ERROR_STRING(
@@ -4952,22 +5210,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_OPERATION_WAS_CANCELED,
-		tr("Operation canceled."),
-		tr("The operation has been canceled."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CLONE_OPERATION_CANCELED,
-		tr("Operation canceled."),
-		tr("The cloning operation was canceled by the user."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_HYP_ALLOC_VMS_MEMORY,
 		tr("The operation could not be completed."),
 		tr("The memory amount you are allocating is not enough for starting another virtual machine. Increase this amount."),
@@ -4980,30 +5222,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("The capacity of your virtual hard disk is larger than the maximum file size allowed by the filesystem. This may lead to data loss as the virtual disk grows in size. Split the disk by editing its settings in the Virtual Machine Configuration > Hardware > Hard Disk."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_ANSWER_DISCONNECT_ANYWAY,
-		tr("Disconnect Anyway"),
-		tr("Disconnect Anyway"),
-		false,
-		PMT_ANSWER
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_DVD_DISCONNECT_LOCKED_DEV,
-		tr("The CD/DVD disc is mounted inside the guest operating system."),
-		tr("If you disconnect this disc now, the guest operating system will not recognize its absence, which may lead to system errors. It is recommended to eject this disc by means of the guest operating system."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_DISCONNECT_SATA_HDD,
-		tr("The SATA hard disk is mounted inside the guest operating system."),
-		tr("If you disconnect this disk now, the guest operating system will not recognize its absence, which may lead to system errors. It is recommended to eject this disk by means of the guest operating system."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -5038,29 +5256,6 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 
-	REGISTER_ERROR_STRING(
-		GUI_INFO_TOOLS_INSTALL_OTHER,
-		tr(PRODUCT_NAME_SHORT " Tools are a set of useful add-in features, like automatic mouse capture and dynamic screen resolution adjustment."),
-		tr("To install " PRODUCT_NAME_SHORT " Tools, click Continue, make sure your CD/DVD drive is mounted, go to the CD/DVD root directory, and install the available drivers."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_COMPACT_THROUGH_COPY,
-		tr(PRODUCT_NAME_SHORT " Compressor will temporarily use the free space on the physical hard disk."),
-		tr("Compressing the disk will be performed with the help of the free space on your physical hard disk. Make sure that you do not occupy this space with extra files during the compression."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_COMPACT_DESTRUCTIVE,
-		tr("It is highly recommended to make a backup of the virtual machine before the operation."),
-		tr("Compressing the disk is sensitive to power failures and similar events. If you have a backup copy of your virtual machine, click OK. Otherwise, click Cancel, shut down the virtual machine, create a backup copy, then run " PRODUCT_NAME_SHORT " Compressor again."),
-		true,
-		PMT_QUESTION
-		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_RESTORE_STATE_FAILED,
@@ -5111,78 +5306,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_RESTART_GUEST_FAILED,
-		tr("Unable to restart the virtual machine operating system."),
-		tr("Check that " PRODUCT_NAME_SHORT " Tools are installed in the virtual machine. As an alternative, you can restart the operating system from within the virtual machine."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_HARD_DEVICE_INSERTED,
-		tr("A Palm device has been connected to this virtual machine."),
-		tr("If you try to synchronize the device, it will be synchronized with the virtual machine. If the Palm device synchronization has already started, you need to stop it by tapping Cancel on the device's screen. Stopping the synchronization may take a while."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_HARD_DEVICE_INSERTED2,
-		tr("You need to reconnect the USB device to the host computer."),
-		tr("Unplug the USB device from the host computer and plug it back to the same port. The device will be automatically connected to your virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_BUSY,
-		tr("The USB device %1 cannot be disconnected from the host computer."),
-		tr("To be able to connect this device to the virtual machine, you need to disconnect it from the host computer operating system first,​ which may require administrator rights."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_REUSE,
-		tr("\"%1\" USB device is in use. Are you sure you want to connect it to the virtual machine?"),
-		tr("If you connect this USB device to this virtual machine, it will be disconnected from the %2 host computer or another virtual machine using it."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DEV_USB_CHANGEPID,
-		tr("Do you want to retain USB device \"%1\" for this VM?"),
-		tr("If you did not replace this device you might want to leave it connected to VM."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANNOT_PROCESSING_UNDO_DISKS_FOR_INVALID_VM,
-		tr("Failed to apply the Rollback mode option to the virtual machine."),
-		tr("The virtual machine's hard disk could not be found. All your unsaved data might be lost."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CANNOT_PROCESSING_SAFE_MODE_FOR_INVALID_VM,
-		tr("Failed to apply the Rollback Mode option to the virtual machine."),
-		tr("The virtual machine's hard disk could not be found. All your unsaved data might be lost."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_COHERENCE_NOTIFICATION,
-		tr("Your virtual machine is running in Coherence mode."),
-		tr("In this mode Windows applications are fully integrated into Mac OS X. Click the @PRL_PRODUCT_NAME icon in the Dock to open the Windows Start menu. For more information on Coherence and other view modes, <a href=\"%1\">read the online help</a> or <a href=\"%2\">watch the demo</a>." ),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_SAVE_VM_CATALOG,
 		tr("Unable to update the virtual machines registry."),
 		tr("The virtual machines registry file is not found or corrupt. Reinstall @PRL_PRODUCT_NAME and try again."),
@@ -5228,94 +5351,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Free up some space on the physical hard disk and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_SNAPSHOT_NAME_IS_EMPTY,
-		tr("The snapshot name cannot be empty."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_CANT_CLOSE_CONVERSION_IN_PROGRESS,
-		tr("Cannot close the \"%1\" virtual machine window."),
-		tr("The virtual machine is being converted to the new format. Wait until the operation is complete and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_CANT_CLOSE_SNAPSHOTING_IN_PROGRESS,
-		tr("Cannot close the \"%1\" virtual machine window."),
-		tr("The operation of creating a virtual machine snapshot is currently in progress. Wait until it is complete and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_CANT_CLOSE_REVERTING_IN_PROGRESS,
-		tr("Cannot close the \"%1\" virtual machine window."),
-		tr("The operation of restoring the virtual machine from its snapshot is currently in progress. Wait until it is complete and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_CANT_CLOSE_DELETING_STATE_IN_PROGRESS,
-		tr("Cannot close the \"%1\" virtual machine window."),
-		tr("The operation of deleting a virtual machine snapshot is currently in progress. Wait until it is complete and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_BACKUP_FAILED_TOO_LARGE_FOR_FAT,
-		tr("Unable to back up the virtual machine."),
-		tr("One of the virtual machine's files exceeds 4 GB, which is the maximum allowed size for the FAT32 file system on your destination drive. Select another destination for the backup."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_BACKUP_FAILED_NOT_ENOUGH_SPACE,
-		tr("Not enough free space for creating the backup."),
-		tr("Free some space on the destination drive and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_BACKUP_FAILED_GENERAL_MSG,
-		tr("Failed to back up the virtual machine."),
-		tr("There is no more free space for a virtual machine backup. Free some disk space or select another destination for the backup."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_REVERT_TO_SPECIFIED_SNAPSHOT,
-		tr("Do you want to proceed?"),
-		tr("If you revert to the specified snapshot, you will lose all the changes in the current state of the virtual machine."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_REVERT_TO_LAST_SNAPSHOT,
-		tr("Are you sure you want to revert to the previous virtual machine snapshot?"),
-		tr("If you revert to this snapshot, you will lose all the changes made to the virtual machine state since the snapshot creation."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_CONFIG_IS_ALREADY_VALID,
-		tr("This virtual machine does not need to be restored."),
-		tr("The virtual machine configuration is valid and does not need to be restored from backup."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -5430,14 +5465,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_FAILED_TO_START_VNC_SERVER,
-		tr("Unable to start the VNC server in this virtual machine."),
-		tr("Change the VNC server port number in the virtual machine configuration and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_GUEST_PROGRAM_EXECUTION_FAILED,
 		tr("The operation was completed with an error."),
 		tr("The operation you performed in the virtual machine was completed with this error: %1: '%2'."),
@@ -5467,14 +5494,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please wait for the pass-through driver installation to finish."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VTD_DEVICE_DOES_NOT_EXIST,
-		tr("The %1 PCIe device is not found."),
-		tr("Make sure this device is plugged into the host computer or specify another PCIe device."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -5614,20 +5633,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VTD_HOOK_AFTER_INSTALL_NEED_REBOOT,
-		tr("You need to restart your computer to complete the pass-through driver installation."),
-		tr("You will be able to use the respective PCIe device with your virtual machines only after you restart the host computer."),
-		false,
-		PMT_WARNING	);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VTD_HOOK_AFTER_REVERT_NEED_REBOOT,
-		tr("You need to restart your computer to complete the removal of the pass-through driver."),
-		tr("You will be able to use the respective PCIe device with the host computer only after you restart it."),
-		false,
-		PMT_WARNING	);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VTD_HOOK_INSTALLATION_FAILED,
 		tr("Unable to install the pass-through drivers for the directly assigned PCIe devices."),
 		tr("The installation of the pass-through drivers failed. Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
@@ -5649,31 +5654,6 @@ void PrlErrStringsStorage::Initialize()
 		tr( "This device is currently used by a running virtual machine and cannot be configured. Stop or suspend this virtual machine and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VTD_INSTALLATION_FAILED_FOR_DEVICES,
-		tr("Unable to install the pass-through drivers."),
-		tr("Pass-through drivers for the following PCIe devices have not been installed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VTD_HOOK_DEVICE_CURRENTLY_IN_USE,
-		tr("Pass-through drivers for some of the PCIe devices could not be installed or removed because these devices are currently in use."),
-		tr("The following PCIe devices are currently in use by your virtual machines: <br>%1<br>"
-		   "Stop or suspend the virtual machines that are using these devices and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VTD_REVERT_FAILED_FOR_DEVICES,
-		tr("Unable to remove the pass-through drivers."),
-		tr("The pass-through drivers for the following PCIe devices could not be removed: <br>%1<br>Restart the computer and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -5727,38 +5707,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_ERR_VIRTUOZZO_IMAGE_INTERNET_LOCATION,
-		tr("The image file \"%1\" cannot be used because it is stored on an Internet location."),
-		tr("Please specify another file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VIRTUOZZO_OUTPUT_FILE_INTERNET_LOCATION,
-		tr("The output file \"%1\" cannot be used because it is stored on an Internet location."),
-		tr("Please specify another file and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_VM_HW_UPGRADING_IN_PROGRESS,
-		tr("Cannot close the \"%1\" virtual machine window."),
-		tr("The virtual machine is currently being upgraded. Wait until the operation is complete and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_VM_HW_UPGRADING_VMXPHY_IN_PROGRESS,
-		tr("Cannot close the \"%1\" virtual machine window."),
-		tr("The virtual machine is currently being configured. Wait until the operation is complete and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_VM_HW_UPGRADE_UNKNOWN_ERROR,
 		tr("Manual interaction is required to complete the upgrading of the \"%1\" virtual machine."),
 		tr("For information on how to complete the upgrade manually, follow <a href=\"%1\">this link</a>."),
@@ -5772,150 +5720,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("For information on how to complete the configuration manually, follow <a href=\"%1\">this link</a>."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VM_HW_UPGRADE_INIT_TIMEOUT,
-		tr("You need to log in to Windows to complete upgrading your virtual machine."),
-		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_VM_HW_UPGRADE_VMXPHY_INIT_TIMEOUT,
-		tr("You need to log in to Windows to complete configuring your virtual machine."),
-		tr("If autorun is disabled, you will also need to open My Computer and run the Setup.exe file located on the CD, ignoring any Windows notifications. For more information, visit " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_HW_UPGRADE_COMPLETED,
-		tr("The virtual machine \"%1\" has been successfully upgraded."),
-		tr("You can now use this virtual machine."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_HW_UPGRADE_VMXPHY_COMPLETED,
-		tr("The virtual machine \"%1\" has been successfully configured."),
-		tr("You can now use this virtual machine."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_NO_TEMPLATE_SUPPORT_IN_PLAYER_MODE,
-		tr("You are trying to open a virtual machine template."),
-		tr("Virtual machine templates cannot be used in " PRODUCT_NAME_SHORT " Desktop Express."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_NO_PVS_FILE_SPECIFIED_IN_PLAYER_MODE,
-		tr("You did not specify the virtual machine file you want to open."),
-		tr("Please type the path to the virtual machine file after the --openvm option."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_LEAVE_AUTO_HW_UPGRADING,
-		tr("Are you sure you want to switch to the manual upgrade mode for the \"%1\" virtual machine?"),
-		tr("It is highly recommended to continue upgrading the virtual machine in automatic mode. For more information on upgrading your virtual machines, <a href=\"%1\">visit the upgrade page</a> on the " PRODUCT_NAME_SHORT " website." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_LEAVE_AUTO_HW_UPGRADING_VMXPHY,
-		tr("Are you sure you want to switch to the manual configuration mode for the \"%1\" virtual machine?"),
-		tr("It is highly recommended to continue configuring the virtual machine in automatic mode. For more information on configuring your virtual machines, <a href=\"%1\">visit the configuration page</a> on the " PRODUCT_NAME_SHORT " website." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_RUNNING_UNDER_UNSUPPORTED_WM,
-		tr("This application supports only GNOME and KDE desktop environments."),
-		tr("Using this application in other desktop environments may result in unexpected behavior."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_REBOOT_HOST_ON_PCI_DRIVER_INSTALL_OR_REVERT,
-		tr("You need to restart your computer to apply the changes you made to the Intel VT-d preferences."),
-		tr(""),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_DSP_EVT_REBOOT_HOST_MANUAL_TO_INIT_VTD_DEVICES,
-		tr("You need to restart the physical server to apply the changes you made to the Intel VT-d preferences."),
-		tr("If you need assistance in restarting the server, please contact your system administrator."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISK_UNCOMMITED_OPERATION,
-		tr("The previous operation needs to be completed before you can perform any actions on your snapshots. This operation will be completed automatically."),
-		tr("The required action will be performed after the previous operation is completed."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_VM_ROOT_DIRECTORY_NOT_EXISTS,
-		tr("The folder \"%1\" does not exist."),
-		tr("Do you want to create it?"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_STOP_VM_TO_COMPACT,
-		tr("You need to shut down the virtual machine to complete the compression process. Do you want to shut it down now?"),
-		tr("If you want to cancel the operation, click Cancel."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_COMPACT_VM_DISKS,
-		tr("Unused space on the \"%1\" virtual machine hard disk has significantly increased. Do you want to compress the disk?"),
-		tr("When the compression is over, the space initially occupied by the virtual hard disk(s) will be reduced from %2 GB to %3 GB."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_FORCE_COMPACT_VM_DISKS,
-		tr("Would you like to compress the disk of the \"%1\" virtual machine?"),
-		tr("When the compression is over, the space initially occupied by the virtual machine will be reduced from %2 GB to %3 GB."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_SWITCH_OFF_AUTO_COMPRESS,
-		tr("Do you want to disable the AutoCompress feature for the \"%1\" virtual machine?"),
-		tr("If you click Yes now, AutoCompress will be disabled. To enable it again, go to Virtual Machine Configuration > Options > Optimization and select the AutoCompress option."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_DELAYED_COMPACT_VM_DISKS,
-		tr("You have scheduled the virtual disk compacting. Do you want to start this procedure now?"),
-		tr("After compacting the virtual disk, the virtual machine will occupy less space on the physical hard disk drive."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -5935,35 +5739,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_DISP_CANNOT_COMPACT_VM_HARD_DISK,
-		tr("The disk cannot be compressed because it is used by the \"%1\" virtual machine that is in Rollback mode, or has snapshots."),
-		tr("Please make sure that the virtual machine is not running in Rollback mode is disabled in its configuration, and it has no snapshots."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_COMPACT_HARD_DISK_FAILED,
 		tr("Could not compress the Hard Disk %1 used by the \"%2\" virtual machine."),
 		tr("The disk is corrupt or has snapshots. Delete the snapshots and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_HARD_DISK_NOT_COMPACTABLE,
-		tr("Hard disk %1 used by the virtual machine \"%2\" cannot be compressed."),
-		tr("The disk is either plain, or dynamic, or contains no data. Such disks cannot be compressed."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_HARD_DISK_NOT_VIRTUAL_OR_DISABLED,
-		tr("Hard disk %1 used by the virtual machine \"%2\" cannot be compressed."),
-		tr("This disk is either a real hard disk or it is not connected in the virtual machine configuration. Real hard disks and Boot Camp partitions cannot be compressed."),
-		false,
-		PMT_WARNING
 		);
 
 	// Copied error for fast resolving problem (bug #446007)
@@ -5981,70 +5761,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please resume the virtual machine or shut it down, and then try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_AUTO_COMPRESS_TASK_ALREADY_RUN,
-		tr("The virtual hard disk used by the \"%1\" virtual machine is already being compressed."),
-		tr("Please wait until the operation is complete and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_USER_NO_AUTH_TO_CREATE_VM_IN_DIR,
-		tr("You do not have the permission to create a virtual machine in the \"%1\" folder."),
-		tr("Select another location and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_USER_NO_AUTH_TO_CREATE_ROOT_VM_DIR,
-		tr("Unable to create the folder \"%1\"."),
-		tr("You might not have permission to create a folder in this location. Select another location and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_SHUTDOWN_FAILED,
-		tr("Unable to shut down this virtual machine."),
-		tr("Try to shut down this virtual machine through the operating system installed in it."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_SHUTDOWN_HIBERNATE_NOT_SUPPORTED,
-		tr("This virtual machine cannot be suspended."),
-		tr("The operating system installed in this virtual machine does not support hibernation."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_SHUTDOWN_SUSPEND_NOT_SUPPORTED,
-		tr("This virtual machine cannot be suspended."),
-		tr("The operating system installed in this virtual machine does not support suspend state."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_SHUTDOWN_HIBERNATE_FAILED,
-		tr("Unable to put this virtual machine into hibernation."),
-		tr("Try to put this virtual machine into hibernation through the operating system installed in it."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_SHUTDOWN_MACHINE_LOCKED,
-		tr("This virtual machine cannot be shut down because it is locked."),
-		tr("Unlock the operating system installed in this virtual machine and try again."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -6077,29 +5793,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SAME_FUNCTION_NET_ASSIGN,
-		tr("This PCIe network card has a number of PCIe functions. Changing the assignment for this network card will affect all these functions. Do you want to apply this assignment to all the PCIe functions?"),
-		tr("If you click No, the current assignments for these PCIe functions will not change."),
-		false,
-		PMT_QUESTION
-		);
-	REGISTER_ERROR_STRING(
-		GUI_WNG_NO_FREE_NETWORK_ADAPTERS_FOR_HOST,
-		tr("This network adapter is used by the physical server."),
-		tr("If you assign this adapter to virtual machines, the physical server network connections will be lost."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_NOT_SYMMETRIC_CPU,
-		tr("Your configuration of the CPUs is not symmetric. @PRL_PRODUCT_NAME may work not properly on computers with such configuration."),
-		tr("To avoid this problem in future, try to disable the Limit CPUID Value option in BIOS."),
-		true,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -6462,14 +6155,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_PREPARE_FOR_HIBERNATE_UNABLE_SUSPEND_DO_STOP,
-		tr("The virtual machine \"%1\" has been stopped."),
-		tr("The virtual machine was forcibly stopped due to an error in its operating system. The error occurred while pausing the virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_LOCKED_CTL_FOR_BACKUP,
 		tr("Unable to perform the action because the virtual machine is busy."),
 		tr("The virtual machine is being backed up. Please try again later."),
@@ -6543,22 +6228,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_RECONNECT_USB_TO_ANOTHER_VM,
-		tr("You are trying to connect a USB device that is already connected to another virtual machine (%1)."),
-		tr("If you continue, the device will be disconnected from that virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_TRY_DISCONNECT_CONNECTING_USB,
-		tr("This USB device is being connected to the virtual machine. Do you want to connect it to the host computer?"),
-		tr("If you connect this device to the host computer, you will not be able to use it in the virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_CANNOT_RUN_SNAPSHOT_OPERATION_ON_VM_BACKUP,
 		tr("Cannot perform any operations on snapshots because the virtual machine is being backed up."),
 		tr("Please wait until the backup process is complete and try again."),
@@ -6625,20 +6294,7 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_REMOVE_BACKUP,
-		tr("Are you sure you want to delete the selected backup?"),
-		tr("This operation is irreversible."),
-		true,
-		PMT_QUESTION
-		);
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_RESTORE_FROM_BACKUP,
-		tr("Are you sure you want to restore the virtual machine from backup?"),
-		tr("This operation is irreversible. The current state of the virtual machine will be lost."),
-		true,
-		PMT_QUESTION
-		);
+
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_RESIZE_SIZE_TOO_LOW,
 		tr("Unable to resize the disk."),
@@ -6654,37 +6310,6 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_REMOTE_DISPLAY_EMPTY_PASSWORD,
-		tr("The password for the Remote Display settings is not specified. Are you sure you want to save the settings?"),
-		tr("If you do not specify the password, other users will be able to access this virtual machine."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_CONTINUE_IF_HVT_DISABLED,
-		tr("Hardware virtualization support is disabled in BIOS settings. Are you sure you want to continue?"),
-		tr("If you do not enable hardware virtualization support, your virtual machines performance may be degraded."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_SMP_NOT_SUPPORTED_HVT_NOT_PRESENT,
-		tr("Your virtual machine will use only 1 CPU when running."),
-		tr("This virtual machine cannot run with 2 or more CPUs, because hardware virtualization is not supported on the host computer."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_SMP_NOT_SUPPORTED_HVT_DISABLED,
-		tr("Your virtual machine will use only 1 CPU when running."),
-		tr("This virtual machine cannot run with 2 or more CPUs, because hardware virtualization is turned off on the host computer."),
-		true,
-		PMT_WARNING
-		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_DISK_RESIZE_FAILED,
@@ -6699,14 +6324,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please try again. If the problem persists, contact your system administrator for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_BACKUP_HAS_NOT_FULL_BACKUP,
-		tr("A full backup is being created for this virtual environment."),
-		tr("Though an incremental backup is created by default, it cannot be made because the virtual environment has no full backups."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -6760,14 +6377,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_BACKUP_GUEST_SYNCHRONIZATION_FAILED,
-		tr("Unable to synchronize the virtual machine's file system."),
-		tr("The backup process will continue without synchronization. To avoid this problem in the future, make sure that " PRODUCT_NAME_SHORT " Tools are properly installed in the virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_SNAPSHOT_OF_PAUSED_VM,
 		tr("The virtual machine \"%1\" could not be backed up because it is currently paused."),
 		tr("Shut down the virtual machine and try again."),
@@ -6789,22 +6398,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("The remote server does not support the requested operation."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DELETE_VM_IMMEDIATELY,
-		tr("The item \"%1\" will be deleted immediately."),
-		tr("Are you sure you want to continue?"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_BACKUP_DEVICE_IMAGE_NOT_FOUND,
-		tr("The image file \"%1\" used by %2 could not be found."),
-		tr("This device will appear as disabled in the virtual machine configuration. You will need to enable it manually."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -6869,30 +6462,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_AUTOSTART,
-		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
-		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_AUTOSTOP,
-		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
-		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_KEEP_VM_ALIVE_ON_GUI_EXIT,
-		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
-		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_VM_NAME_IS_TOO_LONG,
 		tr("The specified virtual machine name is too long."),
 		tr("The virtual machine name must not exceed %1 characters."),
@@ -6948,64 +6517,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_RESTRICTED_OS_VERSION,
-		tr("A wrong version of guest operating system is specified."),
-		tr("Virtual machines with this type of guest OS cannot be used in this edition of @PRL_PRODUCT_NAME."),
-		false,
-		PMT_WARNING
-		);
-
-	// PMT_QUESTION to allow to skip
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_RESTRICTED_CPU_COUNT,
-		tr("The virtual machine will not be started. Are you sure you want to continue?"),
-		tr("This virtual machine has %2 CPUs, but your @PRL_PRODUCT_NAME license allows any virtual machine to have no more than %1 CPUs."),
-		true,
-		PMT_QUESTION
-		);
-
-	// PMT_QUESTION to allow to skip
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_RESTRICTED_MEMORY_SIZE,
-		tr("The virtual machine will not be started. Are you sure you want to continue?"),
-		tr("This virtual machine has %2 MB of memory, but your @PRL_PRODUCT_NAME license allows any virtual machine to have no more than %1 MB of memory."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_RESTRICTED_SMART_GUARD,
-		tr("Could not enable SmartGuard."),
-		tr("SmartGuard is not available in this edition of @PRL_PRODUCT_NAME."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_RESTRICTED_UNDO_DISKS,
-		tr("Could not enable Rollback mode."),
-		tr("Rollback mode is not available in this edition of @PRL_PRODUCT_NAME."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_HARD_DISK_SET_SATA_FOR_UNSUPPORTED_OS,
-		tr("SATA locations are supported for Windows versions starting from Windows Vista. Do you want to change the location for Hard Disk %1?" ),
-		tr("If you use an earlier version of Windows, you will have to install SATA drivers manually to be able to use this disk." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_CD_DVD_ROM_SET_SATA_FOR_UNSUPPORTED_OS,
-		tr("SATA locations are supported for Windows versions starting from Windows Vista. Do you want to change the location for CD/DVD %1?" ),
-		tr("If you use an earlier version of Windows, you will have to install SATA drivers manually to be able to use this CD/DVD drive." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_HARD_DISK_SET_SATA_FOR_OLD_CHIPSET,
 		tr("Unable to use the SATA interface for Hard Disk %1." ),
 		tr("The virtual machine is obsolete and doesn't support the SATA interface. Choose any other supported interface type for this hard disk." ),
@@ -7027,46 +6538,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("An error occurred while restoring the virtual machine state."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISP_TIME_MACHINE_IS_RUNNING,
-		tr("Time Machine backup is in progress."),
-		tr("Your virtual machines may work slower during the backup."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_TRIAL_EXPIRES_TEXT1,
-		tr("Your trial activation key will expire in %1 day."),
-		tr("<a href=\"%1\">Purchase a permanent activation key</a> in order to ensure continuous use of the product after the trial period expires."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_TRIAL_EXPIRES_TEXT2,
-		tr("Your trial activation key will expire in %1 days."),
-		tr("<a href=\"%1\">Purchase a permanent activation key</a> in order to ensure continuous use of the product after the trial period expires."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_TRIAL_EXPIRES_TEXT3,
-		tr("Your trial activation key expires today."),
-		tr("<a href=\"%1\">Purchase a permanent activation key</a> in order to ensure continuous use of the product after the trial period expires."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_TRIAL_EXPIRES_TEXT4,
-		tr("Your trial activation key has expired."),
-		tr("<a href=\"%1\">Purchase a permanent activation key</a> to continue using the product."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7099,46 +6570,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_CANNOT_MOVE_DISK_TO_TRASH,
-		tr("Unable to move the virtual hard disk file to @PRL_TRASH_NAME."),
-		tr("A system error occurred or @PRL_TRASH_NAME folder was deleted or moved."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_CANNOT_DELETE_DISK_FILES,
-		tr("Unable to delete the virtual hard disk file."),
-		tr("This file is in use or you do not have enough permissions to delete it."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_MOVE_TO_TRASH_DISK,
-		tr("Do you want to keep the virtual hard disk file or move it to @PRL_TRASH_NAME?"),
-		tr("Keep the file to be able to use this disk in future. If you move the file to @PRL_TRASH_NAME, the virtual hard disk will be deleted."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_MOVE_TO_TRASH_VM,
-		tr("Do you want to keep the \"%1\" files or move them to @PRL_TRASH_NAME?"),
-		tr("Keep the files to be able to use this virtual machine in future. If you move the files to @PRL_TRASH_NAME, the virtual machine will be deleted."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_CANNOT_MOVE_VM_TO_TRASH,
-		tr("Unable to move the \"%1\" files to @PRL_TRASH_NAME."),
-		tr("A system error occurred or @PRL_TRASH_NAME folder was deleted or moved."),
-		true,
-		PMT_WARNING
 		);
 
 #define LICENSE_RESTRICTED_ERR_STR( err ) \
@@ -7197,26 +6628,11 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL );
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_FEATURE_RESTRICTED,
-		tr("This feature is not available in this edition of " PRODUCT_NAME_SHORT " Desktop."),
-		tr("This edition contains only features that are necessary for working with Windows XP applications and files on Windows 7."),
-		false,
-		PMT_INFORMATION );
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_RESUME_FAILED,
 		tr("The virtual machine was not migrated, because it could not be resumed on the destination server."),
 		tr("Shut down the virtual machine and start the migration again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_BACKUP_SP_GUEST_SYNCHRONIZATION_FAILED,
-		tr("Unable to synchronize the file system of the virtual machine, because it is suspended or paused."),
-		tr("The backup process will continue without synchronization. To avoid this problem in future, shut down or start the virtual machine before backing it up."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7319,20 +6735,6 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 	REGISTER_ERROR_STRING(
-		PET_QUESTION_BACKUP_RESTORE_NOT_ENOUGH_FREE_DISK_SPACE,
-		tr("Not enough disk space to restore the virtual machine. Do you want to restore the virtual machine anyway?"),
-		tr("Restoring this virtual machine requires %1 GB of free disk space, while only %2 GB are available on the server."),
-		true,
-		PMT_QUESTION
-		);
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_BACKUP_CREATE_NOT_ENOUGH_FREE_DISK_SPACE,
-		tr("Not enough free disk space on the backup server. Do you want to create the virtual machine backup anyway?"),
-		tr("Backing up this virtual machine requires %1 GB of free disk space, while only %2 GB are available on the server."),
-		true,
-		PMT_QUESTION
-		);
-	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_RESTORE_NOT_ENOUGH_FREE_DISK_SPACE,
 		tr("Not enough disk space to restore the virtual machine."),
 		tr("Restoring this virtual machine requires %1 GB of free disk space, while only %2 GB are available on the server."),
@@ -7387,14 +6789,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_APPLIANCE_INSTALL_WAS_NOT_STARTED,
-		tr("The installation cannot be canceled as it has not yet been started."),
-		tr("You need to start the installation to be able to cancel it."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_APPLIANCE_CANNOT_CALCULATE_MD5,
 		tr("Unable to read the appliance file \"%1\"."),
 		tr("Try to download the appliance again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
@@ -7408,14 +6802,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Try to download the appliance again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_APPLIANCE_CORRUPTED_INSTALLATION,
-		tr("The folder \"%1\" does not exist."),
-		tr("Do you want to cancel the download?"),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7444,14 +6830,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_BACKUP_GUEST_UNABLE_TO_SYNCHRONIZE,
-		tr("Unable to synchronize the virtual machine's file system because the virtual machine is suspended or paused."),
-		tr("The backup process will continue without synchronization. To avoid this problem in the future, please shut down or resume the virtual machine before backup."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_PATH_IS_NOT_DIRECTORY,
 		tr("\"%1\" is not a folder."),
 		tr("Please select another location."),
@@ -7465,22 +6843,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please select another location or contact the " PRODUCT_NAME_SHORT " administrator for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_ON_QUERY_END_SESSION,
-		tr("What do you want to do with your virtual machine before logging out?"),
-		tr("Please select <b>Suspend</b>, <b>Shutdown</b>, or <b>Stop</b>. If you click <b>Stop</b>, you will lose all unsaved data. To preserve the unsaved data and put the virtual machine to sleep, click <b>Suspend</b>. To preserve the unsaved data and shut down the virtual machine correctly, click <b>Shutdown</b>."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_ON_QUERY_END_SESSION_RESTRICTED,
-		tr("What do you want to do with your virtual machine before logging out?"),
-		tr("Please select <b>Shutdown</b> or <b>Stop</b>. If you click <b>Stop</b>, you will lose all unsaved data. To preserve the unsaved data and shut down the virtual machine correctly, click <b>Shutdown</b>."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7524,27 +6886,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_CONV_HD_NO_ONE_DISK_FOR_CONVERSION,
-		tr("There are no virtual hard disks that can be converted."),
-		tr("The disk you selected cannot be converted."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CONV_HD_DISK_TOOL_NOT_STARTED,
 		tr("The Disk Tool utility %1 could not be started."),
 		tr("Please try to reinstall " PRODUCT_NAME_SHORT " Desktop, or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_CONV_HD_CONFLICT,
-		tr("The conversion settings are specified not correctly."),
-		tr("The virtual hard disk can be either plain or expanding by type, and either split or non-split by the type of data organization."),
-		true,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7588,52 +6934,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_QUESTION_CONVERT_GUEST_OS_IS_HIBERNATED,
-		tr("The guest operating system of this virtual machine is hibernated. Do you want to convert it anyway?"),
-		tr("If you click Yes, all unsaved data may be lost in the resulting virtual machine. To avoid possible data loss, fully shut down this virtual machine and try again."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_IMPORT_BOOTCAMP_VM_FAILED,
 		tr("Failed to import the virtual machine."),
 		tr("An error occurred while trying to import the virtual machine."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUESTION_CONVERT_3RD_PARTY_CANNOT_MIGRATE,
-		tr("The virtual machine you are trying to convert is not stopped. Do you want to convert it anyway?"),
-		tr("The virtual machine may become unusable after the conversion. It is recommended to stop the virtual machine and try again."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUESTION_CONVERT_VM_SPECIFY_DISTRO_PATH,
-		tr("The operating system installation disc is required to proceed."),
-		tr("Please insert the installation disc for the operating system installed in the virtual machine or specify another installation source."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_QUESTION_CONVERT_VM_CANT_DETECT_OS,
-		tr("Failed to detect the operating system installed in the virtual machine. Do you want to convert it anyway?"),
-		tr("The resulting virtual machine may become unusable after the conversion."),
-		false,
-		PMT_QUESTION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		PET_QUESTION_VM_REBOOT_REQUIRED_BY_PRL_TOOLS,
-		tr("The virtual machine needs to be restarted. Do you want to restart it now?"),
-		tr("Restart is required to apply the changes made to the " PRODUCT_NAME_SHORT " Tools settings."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7894,59 +7199,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_ISIGHT_CAMERA_CONNECT_TO_VM,
-		tr("To use iSight camera in Windows, iSight drivers must be installed."),
-		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleiSightInstaller.exe to install iSight drivers. For details, see <a href=\"%1\">%2</a>."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_BLUETOOTH_USB_CONTROLLER_CONNECT_TO_VM,
-		tr("To use Apple Bluetooth USB controller in Windows, Apple Bluetooth drivers must be installed."),
-		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleBluetoothInstaller.exe to install Apple Bluetooth drivers. For details, see <a href=\"%1\">%2</a>."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_CTRL_ALT_DEL_PRESSED,
-		tr("The \"Ctrl+Alt+Delete\" command is processed by both the host and guest operating systems."),
-		tr("To send the \"Ctrl+Alt+Delete\" command only to the virtual machine, press Ctrl+Alt+Insert instead."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_HIDDEN_MESSAGES_RESTORED,
-		tr("Hidden messages were restored."),
-		tr("All warning messages, that were disabled by checking <i>\'Do not show this message again\'</i> option are now enabled, and will be shown the next time they are applicable."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_USER_REGISTRATION_DLG_SEND_OK,
-		tr("Thank you for trying @PRL_PRODUCT_NAME"),
-		tr("A trial activation key was sent to your e-mail address."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_PORT_FORWARD_OUT_OF_SCOPE,
 		tr("The specified port forwarding IP address is invalid."),
 		tr("Indicate an IP address that lies within the scope defined in the Start address and End address fields."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SM_ENABLE_SHARED_APPS,
-		tr("Before switching to Coherence, you need to enable Shared Applications."),
-		tr("Do you want to enable them now and switch to Coherence?"),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -7958,269 +7215,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_WRN_BOOT_CAMP_NEEDS_FREE_SLOT,
-		tr("The Boot Camp partition option is unavailable."),
-		tr("You cannot connect the Boot Camp partition to the virtual machine because all the IDE and SATA slots are occupied by other devices."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_BOOT_CAMP_NEEDS_FREE_SLOT_IDE,
-		tr("The Boot Camp partition option is unavailable."),
-		tr("You cannot connect the Boot Camp partition to the virtual machine because all the IDE slots are occupied by other devices."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ISOLATE_VM,
-		tr("Are you sure you want to isolate the virtual machine from the host computer?"),
-		tr("If you isolate the virtual machine, you will not be able to use Shared Folders, Shared Applications, Shared Profile, SmartMount, and Internet Applications, "\
-		"and you will neither be able to copy or move objects between the virtual machine and the host computer."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ISOLATE_VM_LIN,
-		tr("Are you sure you want to isolate the virtual machine from the host computer?"),
-		tr("If you isolate the virtual machine, you will not be able to use Shared Folders and SmartMount, "\
-		"and you will neither be able to copy or move objects between the virtual machine and the host computer."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_SHARED_APPS,
-		tr("This option requires Windows applications to be shared with Mac. Do you want to share them?"),
-		tr("Click Continue to share Windows applications with your Mac."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DISABLE_OPTIONS,
-		tr("Disabling this option makes %1 unavailable for this virtual machine."),
-		tr("If you choose not to share your Windows applications with Mac, you will automatically disable %1. Do you want to continue?"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_INSTALLATION_CD_IS_NOT_INSERTED,
 		tr("The CD/DVD disc is not yet ready."),
 		tr("Make sure that the %1 installation disc is inserted into the host's CD/DVD drive and this drive is not used by another virtual machine."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_REGISTER_VM_WIZ_COMPLETE_PAGE_TITLE_CREATION_FAILED,
-		tr("Adding Failed"),
-		tr("%1"),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_PARTITION_NOT_SPECIFIED	,
-		tr("Hard disk partition wasn't specified."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_PRODUCT_KEY_INCOMPLETE,
-		tr("The product key is incomplete."),
-		tr("Make sure that all the fields of the product key are filled in completely and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_USER_NAME_NOT_SPECIFIED,
-		tr("<nobr>User name was not specified.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_USER_NAME_ILLEGAL,
-		tr("The user name you entered is invalid. Note that a user name must start with a lower case letter which can be followed by any combination of numbers and lower case letters."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_USER_NAME_RESERVED_BY_GUEST,
-		tr("This user name is reserved by the guest OS. Please try another name."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_USER_PASS_NOT_SPECIFIED,
-		tr("<nobr>Password was not specified.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_USER_PASS_DO_NOT_MATCH,
-		tr("<nobr>Passwords do not match.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_USER_PASS_TOO_SHORT,
-		tr("You entered a password that consists of less than %1 characters, which is considered too weak. You should choose a stronger password."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_LOCAL_PATH_NOT_SPECIFIED,
-		tr("<nobr>The local path is not specified.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_LOCAL_PATH_WRONG,
-		tr("<nobr>The specified local path is invalid.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_SERVER_NAME_NOT_SPECIFIED,
-		tr("<nobr>The server name is not specified.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_SERVER_NAME_WRONG,
-		tr("<nobr>The specified server name is invalid.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_SERVER_ALREADY_CONNECTED,
-		tr("Connection to this server is already established."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_HOST_IP_ADDRESS,
-		tr("<nobr>The specified " PRODUCT_NAME_SHORT " adapter IP address is invalid.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_SUBNET_MASK,
-		tr("<nobr>The specified subnet mask is invalid.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_DHCP_START_IP_ADDRESS,
-		tr("<nobr>The specified DHCP start IP address is invalid.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_DHCP_END_IP_ADDRESS,
-		tr("<nobr>The specified DHCP end IP address is invalid.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_DUPLICATE_VIRTUAL_NETWORK,
-		tr("<nobr>Two or more virtual networks have the same name. Each of the virtual networks should have a unique name.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_VIRTUAL_NETWORK_WRONG,
-		tr("<nobr>One or more virtual networks have invalid names.</nobr>"),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_CANT_REVERT_ABSENT_SNAPSHOT,
-		tr("@PRL_PRODUCT_NAME cannot revert to the snapshot because the snapshot doesn't exist."),
-		tr("Revert to snapshot - %1"),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_PRODUCT_KEY_WRONG_LENGTH,
-		tr("The product key has an incorrect length."),
-		tr("Make sure that all the fields of the product key are filled in completely and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SNAPSHOT_SINGLE_DELETE,
-		tr("Are you sure you want to delete the snapshot?"),
-		tr(""),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SNAPSHOT_DELETE_WITH_CHILDRENS,
-		tr("Are you sure you want to delete the snapshot and its children?"),
-		tr(""),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_DEVICE_ALREADY_EXIST,
-		tr("Device %1 already exists in current configuration."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_SHARED_PROFILE_FOR_BOOTCAMP_VM,
-		tr("You have enabled Shared Profile for a Boot Camp virtual machine."),
-		tr("If you boot natively from the Boot Camp partition, Shared Profile will be automatically disabled."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -8232,35 +7231,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_WRN_INVALID_VM_BUNDLE,
-		tr("The specified bundle is invalid."),
-		tr("The bundle does not contain a valid " PRODUCT_NAME_SHORT " virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_INVALID_VM_FOLDER,
-		tr("The specified folder is invalid."),
-		tr("The folder does not contain a valid " PRODUCT_NAME_SHORT " virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_CANT_START_UTW7_AGENT,
 		tr("Could not launch Upgrade Agent."),
 		tr("If you have an installation CD for Upgrade to Windows 7, insert it into your optical drive to launch the Upgrade Agent. Otherwise, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ASK_TO_CANCEL_TUTORIAL_DOWNLOAD,
-		tr("Are you sure you want to cancel the download?"),
-		tr(""),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -8277,46 +7252,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Specify a name for the virtual network adapter and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_PORT_MAPPING_INC_PORT_INCORRECT,
-		tr("The incoming port number is incorrect."),
-		tr("Specify a number in this range: 1-65535 and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_PORT_MAPPING_VM_PORT_INCORRECT,
-		tr("The virtual machine port number is incorrect."),
-		tr("Specify a number in this range: 1-65535 and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_PORT_MAPPING_IP_INCORRECT,
-		tr("The specified IP address is incorrect."),
-		tr("Specify another IP address and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_NO_USB_DEVICES_AVAILABLE,
-		tr("No USB devices are available."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_RESET_VIRTUAL_NETWORK,
-		tr("Do you want to reset the virtual networks settings now?"),
-		tr("Default settings will be used. This action cannot be undone."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -8360,30 +7295,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_VM_DIR_CANT_START_TEMPLATE,
-		tr("Do you want to create a new virtual machine from this template?"),
-		tr(""),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CONVERT_SUCCEDED,
-		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>" PRODUCT_NAME_SHORT " website</a>."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CONVERT_3RDPARTY_VM_SUCCEDED,
-		tr("You need to start the virtual machine to complete the conversion. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_WRONG_BACKUP_PATH,
 		tr("You cannot save the backup in the virtual machine folder."),
 		tr("The contents of this folder will be modified when the virtual machine is converted to the new format."),
@@ -8392,165 +7303,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CONVERT_AND_BACKUP_SUCCEDED,
-		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
-		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>" PRODUCT_NAME_SHORT " website</a>.<br/><br/>Note: Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
-		false,
-		PMT_QUESTION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_CONVERT_SUCCEDED_OTHER_OS,
-		tr("The virtual machine has been successfully converted."),
-		tr("You can now use this virtual machine with @PRL_PRODUCT_NAME."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CONVERT_AND_BACKUP_OTHER_OS_SUCCEDED,
-		tr("The virtual machine has been successfully backed up and converted."),
-		tr("You can now use this virtual machine with @PRL_PRODUCT_NAME. Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_CONVERT_FAILED,
 		tr("Failed to convert the virtual machine."),
 		tr("The virtual machine could not be converted to the new format."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_NO_BACKUP,
-		tr("Are you sure you want to continue without backing up the virtual machine?"),
-		tr("If you click Yes, you will not be able to use this virtual machine with older versions of " PRODUCT_NAME_SHORT " Desktop."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DELETE_OLD_VM,
-		tr("Delete this virtual machine from the list?"),
-		tr("The virtual machine's files will not be deleted."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_NO_BACKUP_FOLDER,
-		tr("You have not specified any folder."),
-		tr("Please specify a folder to store the backup copy of your virtual machine."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_IMPORT_BOOTCAMP_VM_SUCCEDED_AND_START,
-		tr("You need to start the virtual machine to complete the import. Do you want to start it now?"),
-		tr("When you start the virtual machine, its virtual hardware and " PRODUCT_NAME_SHORT " Tools will be upgraded. The upgrade may take some time to complete, so please do not restart or switch off your Mac during this time."),
-		false,
-		PMT_QUESTION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_IMPORT_BOOTCAMP_VM_COMPLETE,
-		tr("The import was successful. A virtual machine was created. Do you want to start it now?"),
-		tr("Try to reclaim the unused space."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_LOWMEMORY,
-		tr("Unable to switch to Coherence."),
-		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_STOPPED_LOWMEMORY,
-		tr("Coherence mode has been turned off."),
-		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and switch to the Coherence mode again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_SMOFF,
-		tr("Unable to switch to Coherence."),
-		tr("The " PRODUCT_NAME_SHORT " mouse synchronization service is not started. Reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_SMDISABLED,
-		tr("Unable to switch to Coherence."),
-		tr("Shut down the virtual machine, then choose Virtual Machine > Configure > Options > Advanced, and set <b>SmartMouse</b> mode to <b>On</b> or <b>Auto</b>."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_GUEST,
-		tr("Unable to switch to Coherence."),
-		tr("The virtual machine display configuration could not be applied. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_HOST,
-		tr("Unable to switch to Coherence."),
-		tr("The information about your display configuration could not be retrieved. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_STOPPED_DSPCFGERROR_GUEST,
-		tr("Coherence mode has been turned off."),
-		tr("The virtual machine display configuration could not be applied. Please try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_NOTENOUGHDISPLAYS,
-		tr("Unable to switch to Coherence."),
-		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_SERVERBUSY,
-		tr("An error occurred while switching to Coherence. Please try again."),
-		tr("If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_CANNOTSTART_LINUX_3D,
-		tr("Unable to switch to Coherence."),
-		tr("Please disable Linux desktop visual effects."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_COHERENCE_STOPPED_LINUX_3D,
-		tr("Coherence mode has been turned off."),
-		tr("Coherence is not available when Linux desktop visual effects are enabled."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -8567,40 +7324,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Copy this video tutorial to the Applications folder on your Mac to be able to watch it without the disc."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_REMAP_VM_KEY_SEQUENCE_ALREADY_USED_BY_VM_SHORTCUT,
-		tr("Are you sure you want to remap the keyboard shortcut \"%1\"?"),
-		tr("This keyboard shortcut is already used."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REMAP_VM_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
-		tr("This key sequence is already used to perform the \"%1\" action."),
-		tr("Before you can configure this key sequence to perform another action, you should assign a different key combination to the \"%1\" action."),
-		false,
-		PMT_INFORMATION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_VM_SHORTCUT,
-		tr("This key sequence is already in use by the shortcut <br>\"%1\"."),
-		tr("Configure the shortcut to use another key sequence or remove the shortcut and try again."),
-		false,
-		PMT_INFORMATION
-		);
-
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
-		tr("This key sequence is already used to perform the \"%1\" action."),
-		tr("Configure the shortcut to use another key sequence."),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -8643,93 +7366,12 @@ void PrlErrStringsStorage::Initialize()
 		PMT_CRITICAL
 		);
 
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK,
-		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK_NO_SUPPORT_CODE,
-		tr("Your copy of @PRL_PRODUCT_NAME has been successfully registered, but the support code could not be created at the moment. To get the support code later, please log in to your account on the " PRODUCT_NAME_SHORT " website and browse to <a href=\"%1\">the support options area</a>."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED,
-		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED_NO_SUPPORT_CODE,
-		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account, but the support code could not be created. To get the support code, please log in to your account on the <a href=\"%1\">" PRODUCT_NAME_SHORT " website</a> and browse to the registered products area."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
 	REGISTER_ERROR_STRING(
 		GUI_ERR_REGISTRATION_PRODUCT_ALREADY_REGISTERED_ON_ANOTHER_USER,
 		tr("This copy of @PRL_PRODUCT_NAME is already registered to another user account."),
 		tr(""),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_ACCOUNT_SUCCESSFULLY_UPDATED,
-		tr("This key is already registered to your account. Changes to your account information have been applied."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_NEW_PROFILE_NAME_EMPTY,
-		tr("The profile name cannot be empty."),
-		tr(""),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_PROFILE_NAME_ALREADY_IN_USE,
-		tr("A profile with the name of %1 already exists."),
-		tr("Specify another name and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_PROFILE_DELETE,
-		tr("Are you sure you want to delete this profile?"),
-		tr("The profile is used by one or more virtual machines. If you delete it, the virtual machine's settings will be reset to default."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DESKTOP_IS_UNREGISTERED,
-		tr("This copy of @PRL_PRODUCT_NAME is not registered and cannot be updated. Do you want to register it?"),
-		tr("Updates will become available after you register @PRL_PRODUCT_NAME."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_DESKTOP_IS_TRIAL,
-		tr("This copy of @PRL_PRODUCT_NAME is activated with a trial activation key and cannot be updated."),
-		tr("Updates will become available after you activate @PRL_PRODUCT_NAME with a permanent activation key."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -8754,14 +7396,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_UNINSTALLING_HOST_ANTIVIRUS_SUCCESS,
-		tr("%1 for Mac was removed successfully."),
-		tr(""),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -8910,14 +7544,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_PRODUCT_UPGRADE_DOWNLOAD_FAILED,
-		tr("The update could not be downloaded."),
-		tr("Please check your network connection and try again."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_PRODUCT_UPGRADE_PURCHASE_ORDER_FAILED,
 		tr("The purchase request could not be sent."),
 		tr("Please check your network connection and try again."),
@@ -8987,269 +7613,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("If you use multiple email addresses, try entering another email address."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_UNABLE_OPEN_FEEDBACK_DLG,
-		tr("Unable to open the feedback dialog."),
-		tr("Please check your network connection and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_UNABLE_REQUEST_TRIAL_KEY,
-		tr("Unable to request a trial key."),
-		tr("Please check your network connection and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_SOFTWARE_UP_TO_DATE,
-		tr("You have the latest version of @PRL_PRODUCT_NAME."),
-		tr("There are no new software updates available at this time."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PASSWORD_RESET_ENTER_EMAIL,
-		tr("Please enter your email address."),
-		tr("We will send you an email with a link to reset your password."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_PASSWORD_RESET_CHECK_EMAIL,
-		tr("The instructions on resetting your password have been sent to your email address."),
-		tr("Please check your email and follow those instructions."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REGISTRATION_ACCOUNT_ALREADY_USED,
-		tr("There is an existing account associated with this email. To register your copy, please log in to this account."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DONT_USE_DIRECT_CONECTION,
-		tr("Are you sure you don't want to use direct connection for speeding up " PRODUCT_NAME_SHORT " Mobile when possible?"),
-		tr("If you disable the direct connection option, " PRODUCT_NAME_SHORT " Mobile will not be able to connect directly to your computer."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_KEY_NOT_BE_AUTO_REGISTRED,
-		tr("The upgrade key could not be registered automatically."),
-		tr("You can register it by logging into your " PRODUCT_NAME_SHORT " account."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_SOURCE_FOR_DEVICE_IS_USED,
-		tr("The specified source %1 is already used by %2."),
-		tr("Specify any other available source for this device or change the source for %1 and try again."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_UNATTENDED_LINUX_NO_IMAGE,
-		tr("Could not create the optical disc image required for unattended installation of Linux."),
-		tr("The installation will proceed in standard mode. Manual intervention will be required at certain steps."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_UNATTENDED_WINDOWS_NO_IMAGE,
-		tr("Could not create the floppy disk image required for unattended installation of Windows."),
-		tr("The installation will proceed in standard mode. Manual intervention will be required at certain steps."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_OK,
-		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_INVALID_KEY,
-		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please follow the link to learn more: <a href=\"%1\">" PRODUCT_NAME_SHORT " Knowledge Base</a>."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_INVALID_EMAIL,
-		tr("The e-mail address you have specified is invalid. Correct the address and try again."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_ALREADY_REGISTERED,
-		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_REQUIRED_FIELDS,
-		tr("Not all required fields are filled."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_INVALID_USER,
-		tr("Your activation key for @PRL_PRODUCT_NAME is already registered by another user. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_CONNECTION,
-		tr("Please check your Internet connection and try again."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INVALID_LOGIN_OR_PASS,
-		tr("The email or password you entered is invalid. Please check your email and password and try again."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_REG_GENERAL_ERROR,
-		tr("Check your Internet connection and try again. If the problem persists, follow <a href=\"%1\">this link</a> to register your copy of @PRL_PRODUCT_NAME."),
-		tr(""),
-		false,
-		PMT_INFORMATION
-		);
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_GUEST_SHARING,
-		tr(PRODUCT_NAME_SHORT " Desktop is going to enable sharing Windows disks with Mac OS X."),
-		tr("%1"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_GLOBAL_SHARING,
-		tr("Enable Global Sharing to access file \"%1\" from guest OS?"),
-		tr("You need to enable Global Sharing to access file \"%1\" from guest OS."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_LOCAL_SHARING,
-		tr("Enable Local Sharing to access file \"%1\" from guest OS?"),
-		tr("You need to enable Local Sharing to access file \"%1\" from guest OS."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_USER_SHARED_FOLDERS,
-		tr("Enable the user-defined shared folder \"%1\"?"),
-		tr("You need to enable the user-defined shared folder \"%1\" in order to access the \"%2\" file from inside the virtual machine."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SMART_SELECT_ASK_TO_ENABLE_FOR,
-		tr("Enable the SmartSelect?"),
-		tr("It is required to enable SmartSelect to edit file associations. Do you want to do it now?"),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_SHARED_HOST_APPS_ASK_TO_ENABLE_DLG,
-		tr("Do you want to share Mac OS X applications with Windows?"),
-		tr("To open a Mac application from the virtual machine, the <b>Share Mac OS X applications with Windows</b> option must be enabled in the virtual machine configuration."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_SHARED_GUEST_APPS_OPEN_DOC_NEED_ADD_USER_SHARED_FOLDER,
-		tr("To be able to access \"%1\" from the virtual machine, you need to share the folder containing this file with the virtual machine."),
-		tr("To add a shared folder, open the virtual machine configuration, choose Options > Shared Folders, and specify the folder you want to share."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CANCEL_INSTALL_SUSUPEND,
-		tr("Do you want to stop or suspend the installation?"),
-		tr("If you stop the installation, your progress will be lost. If you suspend it, you can continue later."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CANCEL_INSTALL_DELETE,
-		tr("Are you sure you want to stop the installation?"),
-		tr("If you stop the installation, your progress will be lost."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DELETE_CREATED_VM,
-		tr("Are you sure you want to stop the New Virtual Machine Assistant?"),
-		tr("If you stop, your progress will be lost."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_MANUAL_INSTALL,
-		tr("Are you sure you want to continue the installation manually?"),
-		tr("The New Virtual Machine Assistant will quit and you can continue the installation inside the virtual machine. This method can be useful for more experienced users having problems with the installation."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_INVALID_VM_NOT_AVAILABLE,
-		tr("The virtual machine is not available."),
-		tr("The virtual machine's files have been moved or deleted. If the files are on an external device, reconnect the device. You can also remove the virtual machine from the list or manually locate its files."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_INVALID_VM_CORRUPTED,
-		tr("The virtual machine is corrupted."),
-		tr("The virtual machine cannot be used because its files are corrupted."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9363,23 +7726,6 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_LINK_TO_OUTSIDED_HDD_WILL_BE_DROPPED_AFTER_CLONE,
-		tr("Hard Disk %1 will be disconnected from the clone of the \"%2\" virtual machine."),
-		tr("If you want to use this hard disk with the clone, you should copy it or connect it manually."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_OUTSIDED_HDD_WILL_BE_ONLY_LINKED_AFTER_CLONE,
-		tr("When the cloning is complete, Hard Disk %1 will be used both by the \"%2\" virtual machine and its clone."),
-		tr("If you want the clone to use a separate hard disk, please create a copy of Hard Disk %1 and connect it manually to the clone."),
-		false,
-		PMT_WARNING
-		);
-
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_COULD_NOT_START_FIREWALL_TOOL,
@@ -9500,22 +7846,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_WARN_UNABLE_OPEN_DEVICE_ON_START_VM,
-		tr("Unable to connect %1 %2."),
-		tr("A file or device required for the operation of %1 %2 does not exist or is used by another process, or you have no permission to access it. The virtual machine will continue running, but the device will be disconnected."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_MSG_START_32BIT_VM_ON_64BIT_HOST,
-		tr("The virtual machine process cannot be run in native mode due to the host OS problems."),
-		tr("The compatibility mode that may slow down the virtual machine performance will be used instead."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CVSRC_IO_ERROR,
 		tr("Operation failed due to I/O problems."),
 		tr("Operation failed due to I/O problems."),
@@ -9545,22 +7875,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Make sure you have the permission to add new files to this location."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_VM_SYNC_DEFAULT_PRINTER_DISABLED,
-		tr("Your %1 default printer is no longer synchronized with your host computer default printer."),
-		tr("The default printer might have changed. To restore synchronization, edit Printer settings in the virtual machine configuration accessible through the Virtual Machine > Configure menu."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_TIME_MACHINE_EXCLUDED_LIST_OP,
-		tr("Wrong directory is specified."),
-		tr("Please specify the correct directory and try again."),
-		true,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9596,51 +7910,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_START_SAFE_MODE_UNSUPPORTED,
-		tr("Failed to start the virtual machine."),
-		tr("You are trying to start the virtual machine in Rollback Mode. This mode is not supported in @PRL_PRODUCT_NAME."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_DOWNLOADING_APPLIANCE_DESCRIPTOR_FAILED,
 		tr("Unable to connect to the " PRODUCT_NAME_SHORT " appliances server."),
 		tr("Please check your network connection and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_OS_IMG_DWNLD_RETRY_ON_CHECKSUM_MISMATCH,
-		tr("The downloaded image might have been damaged during the operation."),
-		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_OS_IMG_DWNLD_NO_FREE_DISK_SPACE,
-		tr("Not enough free space in %1 to download the installation image."),
-		tr("Please free at least %2."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_OS_IMG_DWNLD_CLOSE_WINDOW,
-		tr("Continue downloading Windows in the background?"),
-		tr("If you stop the installation, your progress will be lost. You can restart the installation later by choosing File > New, clicking Install Windows 7 purchased from " PRODUCT_NAME_SHORT ", and following the onscreen instructions."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_OS_IMG_DWNLD_CLOSE_WINDOW_WIN8,
-		tr("Continue downloading Windows in the background?"),
-		tr("If you stop the installation, your progress will be lost. You can restart the installation later by choosing File > New, clicking Download Windows 8, and following the onscreen instructions."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9716,27 +7990,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CREATE_SNAPSHOT_WITH_ENABLED_AUTOCOMPRESS,
-		tr("Are you sure you want to create a snapshot of %1?"),
-		tr("The virtual machine is set to compress periodically to free up unused space. Creating a snapshot will disable auto-compression. If you delete all snapshots later, you can re-enable auto-compression using the Optimization settings in the virtual machine configuration (Virtual Machine > Configure or " PRODUCT_NAME_SHORT " icon > Configure)."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_MIGRATE_PC_TRANSPORTER_INIT_FAILURE,
 		tr("Some of the components required for migration are missing."),
 		tr("Please reinstall @PRL_PRODUCT_NAME and try again. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_ERR_MIGRATE_PC_FAILED_TO_REGISTER_VM,
-		tr("Unable to register the migrated virtual machine."),
-		tr("Your Windows applications were successfully transferred to a virtual machine on your Mac, but the virtual machine was not registered in @PRL_PRODUCT_NAME. Please locate the virtual machine file and open it with @PRL_PRODUCT_NAME. If the problem persists, contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_WARNING
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9764,22 +8022,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_VIDEO_POWER_OPTIMIZATION,
-		tr("Your Mac is running on batteries. Do you want to enable the power saving option?"),
-		tr("This option ensures longer battery life, however, some 3D graphics intensive applications or games may run slower or fail to start."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_VIDEO_POWER_OPTIMIZATION_ON_BATTERY_SWITCH,
-		tr("Your Mac is running on batteries. Do you want to enable the power saving option?"),
-		tr("This option ensures longer battery life, however, some 3D graphics intensive applications or games may run slower or fail to start.<br><br>Note: If you enable the power saving option, shut down the virtual machine and then start it again for the changes to take effect."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_VM_MIGRATE_ACCESS_TO_VM_DENIED,
 		tr("Failed to migrate the shared virtual machine."),
 		tr("User \"%1\" on the destination server does not have permissions to run this virtual machine. To migrate the virtual machine, suspend or stop it first, or configure the virtual machine permissions."),
@@ -9788,59 +8030,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PET_QUESTION_CREATE_VM_FROM_LION_RECOVERY_PART,
-		tr("Not enough memory to install and run OS X Lion in a virtual machine. Are you sure you want to continue?"),
-		tr("Each installation of OS X Lion requires no less than 2 GB of memory, so your Mac should be equipped with at least 4 GB of memory."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_MIGRATE_ERROR_DELETE_VM,
-		tr("The virtual machine was successfully migrated to the target PSBM server, but there was an error while deleting it from the source server."),
-		tr("You can delete the virtual machine left on the source server manually."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_MIGRATE_ERROR_UNREGISTER_VM,
-		tr("The virtual machine was successfully copied to the target PSBM server, but there was an error while removing it from the virtual machines list on the source server."),
-		tr("You can remove it from the virtual machines list manually."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_RUN_VM_ACTION_SCRIPT,
 		tr("Unable to start the virtual machine."),
 		tr("Script execution failed."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_FS_RESIZE_NOT_SUPPORTED,
-		tr("Unable to resize the last volume. The file system on that volume might be corrupted or not supported."),
-		tr("Please try to open the virtual machine and check the file system for errors."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_NO_FREE_SPACE,
-		tr("Not enough free space on \"%1\"."),
-		tr("Please free some space and try again."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CLOSE_VM_WINDOW,
-		tr("The \"%1\" virtual machine is running. What should be done with it?"),
-		tr("Choose the action to perform on this virtual machine when the @PRL_PRODUCT_NAME window is closed."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9868,99 +8062,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_COPY_APP_TO_LOCAL_FOLDER,
-		tr("@PRL_PRODUCT_NAME needs to be copied to the Applications folder."),
-		tr("@PRL_PRODUCT_NAME will copy itself to your Applications folder and restart automaticallly from the new location."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_DOWNLOAD_NO_FILE_PERMISSION,
 		tr("The file could not be downloaded to \"%1\"."),
 		tr("Please make sure that you have the permission to write to this folder."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DWNLD_RETRY,
-		tr("Unable to download the %1 file."),
-		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DWNLD_RETRY_ON_CANNOT_SAVE,
-		tr("Unable to save the file in %1."),
-		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DWNLD_RETRY_ON_NO_CONNECTION,
-		tr("Unable to download the %1 file."),
-		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DWNLD_RETRY_ON_CHECKSUM_MISMATCH,
-		tr("The downloaded file might have been damaged during the operation."),
-		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CLOSE_UPGRADE_PURCHASE_DIALOG,
-		tr("The upgrade process will be suspended."),
-		tr("You can resume it at any time later by choosing @PRL_PRODUCT_NAME > Upgrade to @PRL_PRODUCT_NAME %1 from the menu."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_CLOSE_UPGRADE_PURCHASE_DIALOG_WHILE_PURCHASE_PROCESSING,
-		tr("Processing your purchase. Please wait."),
-		tr("If you cancel the operation now, you will have to install the upgrade manually. The installation instructions will be sent to your email."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_POSTPONE_UPGRADE,
-		tr("The upgrade process will resume the next time you open @PRL_PRODUCT_NAME."),
-		tr("You can resume it manually at any time by choosing @PRL_PRODUCT_NAME > Upgrade to @PRL_PRODUCT_NAME %1  from the menu."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_UPGRADE_PURCHASE_MISSING_KEY,
-		tr("Your purchase was successful, but the activation key could not be retrieved automatically."),
-		tr("When the upgrade is complete, please activate @PRL_PRODUCT_NAME using the activation key found in the purchase order confirmation sent to your email."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VZLICENSE_KA_LICENSE_EXPIRED,
-		tr("The product license has expired."),
-		tr("To continue using @PRL_PRODUCT_NAME, you need to purchase a license renewal."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_FIREWALL_MAY_BLOCK_REMOTE_MANAGE,
-		tr("@PRL_PRODUCT_NAME will be allowed to communicate through firewall."),
-		tr("If you are unable to connect to @PRL_PRODUCT_NAME remotely, please open the firewall settings and make sure that @PRL_PRODUCT_NAME is allowed to accept incoming connections and port %1 is not blocked by the firewall."),
-		true,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -9985,22 +8091,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("The drivers for some of your virtual machine devices (video, audio, etc.) are not installed in the guest operating system. That's why the virtual machine cannot be suspended. Install all the missing drivers and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_FREE_SIZE_FOR_COMPRESSED_DISK,
-		tr("The free space available on your hard disk is smaller than the recommended for this virtual machine. Do you want to create it anyway?"),
-		tr("You can change the virtual machine's size by editing its hard disk settings before installing the operating system. This won't affect your virtual machine now, but in the future you may need to free up some additional space."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_STOP_APPLIANCE,
-		tr("Are you sure you want to close this window?"),
-		tr("If you close it now, all the changes will be discarded and the appliance won't be added to @PRL_PRODUCT_NAME."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10033,30 +8123,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Remove the HDD %1 from the virtual machine configuration and try again."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_VM_CLEANUP_NOTHING_TO_DO,
-		tr( "%1 doesn't take any additional disk space."),
-		tr("@PRL_PRODUCT_NAME could not find any data to compress or remove to free up the space used by this virtual machine."),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_VM_CLEANUP_CONFIRM,
-		tr("Do you want to reclaim the extra disk space used by \"%1\"?"),
-		tr("If you reclaim the extra space, the virtual machine size will be reduced by %1."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_UPDATER_NO_CONNECTION,
-		tr("There's no Internet connection to check for updates. Do you want to install the current version?"),
-		tr("To be able to download the latest version of @PRL_PRODUCT_NAME, please check your Internet connection and try again."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10131,43 +8197,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_USB_CONTROLLER_REMOVE,
-		tr("Are you sure you want to remove USB from the virtual machine configuration?"),
-		tr("If you agree, your USB and Bluetooth devices may stop working in the virtual machine."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_VIDEO_MEMORY_IS_TOO_LOW_FOR_HIDPI,
-		tr("For the best experience on the external monitor, at least %1 MB of video memory is required."),
-		tr("Do you want to increase the video memory to %1 MB?"),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CT_MIGRATE_TARGET_ALREADY_EXISTS,
 		tr("Unable to migrate the Container."),
 		tr("The migration cannot be performed because a Container with the same ID or with the same private or root path already exists on the destination server."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_VTX_EPT_SUPPORT,
-		tr("Enabling nested virtualization allows you to run virtual machines in %1, however, may slow down %2 performance. Are you sure you want to continue?"),
-		tr("If you enable this option to be able to develop software for Windows Phone, please read <a href=\"%1\">this help topic</a> to learn how to properly configure Windows to run Windows Phone Emulator."),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_PMU_SUPPORT,
-		tr("Enabling this option may slow down the virtual machine's performance. Are you sure you want to continue?"),
-		tr("PMU virtualization allows you to run Intel VTune Amplifier, OProfile, and other performance monitoring tools in a virtual machine."),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10195,75 +8229,11 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_INFO_USB3_DRIVERS_REQUIRED_WIN,
-		tr("\"%1\" may not have USB 3.0 drivers installed."),
-		tr("To use USB 3.0 devices with this virtual machine, please download the USB 3.0 driver and install it in Windows."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_USB3_DRIVERS_REQUIRED_OTHER,
-		tr("\"%1\" may not have USB 3.0 drivers installed."),
-		tr("To use USB 3.0 devices with this virtual machine, you may need to configure it to support USB 3.0."),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_VOLUME_LICENSE_EXPIRED,
 		tr("Your license has expired."),
 		tr("Please ask your system administrator to update the license."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_WRN_MAKE_BACKUP_BEFORE_DISK_RESIZE,
-		tr("It is highly recommended to make a backup of the virtual machine before the operation."),
-		tr("Resizing the disk is sensitive to power failures and similar events. For more details on how to resize the disk properly, please see <a href=\"%1\">here</a>."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_ENABLE_ACCESSIBILITY_MODE,
-		tr("VoiceOver is enabled on your Mac. Do you want to work with \"%1\" in Accessibility mode?"),
-		tr("This mode is specially designed and optimized for using screen readers in virtual machines. For more details, please see <a href=\"%1\">here</a>."),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_HYPERVISOR_HVT_ENABLED_ON_HYPERSWITCH,
-		tr("An incompatible virtualization application is running."),
-		tr("Don't use your " PRODUCT_NAME_SHORT " virtual machines until you quit that application."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DISABLE_HOST_SLEEP,
-		tr( "Would you like to set your computer never to sleep so it's always accessible to @PRL_PRODUCT_NAME?" ),
-		tr( "@PRL_PRODUCT_NAME can't connect to your computer when it's asleep." ),
-		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DISABLE_COPY_PAST_ALL_DISKS,
-		tr( "Your changes will disable copying and pasting files between %1 and the Mac. Are you sure you want to continue?" ),
-		tr( "To enable copying and pasting files between %1 and the Mac, all Mac disks or the Mac home folder must be shared with Windows, and all Windows disks must be shared with the Mac." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DISABLE_COPY_PAST_SHARE_WINDOWS,
-		tr( "Are you sure you only want to share the Mac home folder with Windows?" ),
-		tr( "If you do so, you'll be able to copy and paste files from the Mac to Windows only from the Mac home folder." ),
-		false,
-		PMT_QUESTION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10283,30 +8253,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_OTHER_VM_HAS_SAME_EXTERNAl_BOOT,
-		tr( "The selected external device is already used by %1. Do you want to connect it anyway?" ),
-		tr( "If you click Yes now, the device will be disconnected from the virtual machine that is currently using it." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_INSTALL_MAJOR_UPDATE,
-		tr( "A new version of @PRL_PRODUCT_NAME is available! Would you like to upgrade now?" ),
-		tr( "@PRL_PRODUCT_NAME %1 is now available - you have %2." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_WINDOWS_UPDATE_WORKING,
-		tr("Windows Update"),
-		tr("Your virtual machine may be running slower now as Windows is being updated."),
-		true,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		GUI_ERR_PAX_AGENT_INSTALL_FAILURE,
 		tr( PRODUCT_NAME_SHORT " Access agent could not be installed." ),
 		tr( "Please contact the " PRODUCT_NAME_SHORT " support team for assistance." ),
@@ -10315,66 +8261,10 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DISABLE_WINDOWS7_LOOK,
-		tr( "You will be logged out of the system to disable the Windows 7 look. Are you sure you want to continue?" ),
-		tr( "When you log in again, Windows 8 will have its initial design." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_INSTALL_WINDOWS7_LOOK,
-		tr( "Making Windows 8 work like Windows 7 requires installing the applications Start8&trade; and ModernMix&trade; from Stardock. Do you want to continue?" ),
-		tr( "Updates to these apps are supported by Stardock. For more details, please see <a href=\"%1\">here</a>." ),
+		PRL_WARN_WINDOWS_UPDATE_WORKING,
+		tr("Windows Update"),
+		tr("Your virtual machine may be running slower now as Windows is being updated."),
 		true,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_PAX_ENABLE_REMOTE_ACCESS,
-		tr( "Do you want to install " PRODUCT_NAME_SHORT " Access and work with your Mac and Windows applications from your iPad?" ),
-		tr( "The installation won't affect your work, as it's performed in the background. " PRODUCT_NAME_SHORT " Access can also be installed at a later time using <b>Preferences</b> > <b>Access</b>." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_DISABLE_VERBOSE_LOG,
-		tr( "Would you like to disable detailed log messages?" ),
-		tr( "Using detailed log messages may decrease your system performance and is recommended only when troubleshooting." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_QUESTION_QUIT_VIRTUOZZO_ACCESS,
-		tr( "Are you sure you want to exit @PRL_PRODUCT_NAME?" ),
-		tr( "If you exit @PRL_PRODUCT_NAME, your computer will not be accessible from your iPad." ),
-		false,
-		PMT_QUESTION
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_SUSPEND_WITH_USB_BOOTDISK,
-		tr( "Unable to perform the operation." ),
-		tr( "You cannot suspend or create snapshots of this virtual machine because it is running from an external storage device." ),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_DISK_TRUNCATE_FAILED,
-		tr( "Some virtual hard disk operation cannot be completed because there is not enough free disk space on your Mac's hard disk." ),
-		tr( "Please free some disk space. Until this operation is completed, you will not be able to continue working with the virtual machine." ),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_WARN_BACKUP_NON_IMAGE_HDD,
-		tr( "The contents of physical hard disks cannot be backed up." ),
-		tr( "Only virtual hard disks can be backed up." ),
-		false,
 		PMT_WARNING
 		);
 
@@ -10412,30 +8302,6 @@ void PrlErrStringsStorage::Initialize()
 		tr("Please correct the date and time settings and try again."),
 		false,
 		PMT_CRITICAL);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_EXPIRATION_VM_IS_IN_OFFLINE_GRACE_PERIOD,
-		tr("This virtual machine cannot contact the time server to check date and time."),
-		tr("Please contact your administrator for assistance. If the virtual machine cannot check the date, it will stop working at %1 on %2."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_EXPIRATION_VM_IS_ABOUT_TO_EXPIRE,
-		tr("The usage period for this virtual machine is about to expire."),
-		tr("The virtual machine will stop working at %1 on %2. To extend the usage period, please contact your administrator for assistance."),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VM_EXPIRATION_TIME_CHECK_INTERVAL_OUT_OF_RANGE,
-		tr("The specified data check frequency is invalid."),
-		tr("The interval must be a number between %1 and %2 seconds. Please correct the value and try again."),
-		false,
-		PMT_WARNING
-		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_WEB_PORTAL_INVALID_PASSWORD,
@@ -10489,30 +8355,6 @@ void PrlErrStringsStorage::Initialize()
 		tr( "You have reached your limit of computers registered with " PRODUCT_NAME_SHORT " Access."),
 		false,
 		PMT_CRITICAL
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_IPN_MESSAGE,
-		tr( "%1" ),
-		tr( "%1" ),
-		false,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_INSTALLED_GUEST_APPS_DIALOG,
-		tr( "We noticed that you have just installed new applications. Do you want to add them to the Mac Launchpad?" ),
-		tr( "Please choose which apps you want to add." ),
-		true,
-		PMT_INFORMATION
-		);
-
-	REGISTER_ERROR_STRING(
-		GUI_INFO_FEEDBACK_SUCCESS,
-		tr( "Thank you. Your feedback has been successfully sent to " PRODUCT_NAME_SHORT "." ),
-		tr( "" ),
-		false,
-		PMT_INFORMATION
 		);
 
 	REGISTER_ERROR_STRING(
@@ -10692,14 +8534,6 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
-		PRL_ERR_CPUFEATURES_NO_BINARY,
-		tr( "Cannot find the cpufeatures binary." ),
-		tr( "Install the cpufeatures package to change CPU features mask." ),
-		false,
-		PMT_WARNING
-		);
-
-	REGISTER_ERROR_STRING(
 		PRL_ERR_CPUFEATURES_INCORRECT_MASK,
 		tr( "Cannot mask unmaskable CPU features." ),
 		tr( "Consult 'prlsrvctl info --full' output for list of unmaskable CPU features." ),
@@ -10753,40 +8587,7 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
-	REGISTER_ERROR_STRING(
-		PRL_WARN_DELETE_NO_CONFIG_UNREGISTER,
-		tr( "VM config was not found. Unregistering the VM." ),
-		tr( "" ),
-		false,
-		PMT_WARNING
-		);
-	REGISTER_ERROR_STRING(
-		PRL_WARN_NESTED_VIRT_NOT_ENABLED,
-		tr("Nested virtualization isn't enabled on host."),
-		tr("To enable nested virtualization on host,\n"
-			" 1) stop all running or paused VMs\n"
-			" 2) run the following commands:\n"
-			"\trmmod kvm_intel\n"
-			"\techo 'options kvm-intel nested=y' >> /etc/modprobe.d/dist.conf\n"
-			"\tmodprobe kvm_intel\n"
-			" 3) restart libvirtd or reboot host"),
-		false,
-		PMT_WARNING
-		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_SCSI_HYPERV_LINUX_NOT_SUPPORTED,
-		tr( "Hyper-V devices are not supported in Linux virtual machines." ),
-		tr( "" ),
-		true,
-		PMT_WARNING
-		);
-	REGISTER_ERROR_STRING(
-		PRL_ERR_VMCONF_NETWORK_INCONSISTENT_FILTERS,
-		tr("Custom and built-in filters are enabled at the same time."),
-		tr("Disable either custom or all built-in filters."),
-		true,
-		PMT_WARNING
-		);
+
 	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_NETWORK_UNSUPPORTED_PROTOCOL,
 		tr("This protocol is not currently supported by the basic firewall."),
@@ -10879,4 +8680,2238 @@ void PrlErrStringsStorage::Initialize()
 		false,
 		PMT_CRITICAL
 		);
+}
+
+void PrlErrStringsStorage::InitializeQuestions()
+{
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_SAMPLE_1,
+		tr("Just a simple question."),
+		tr("This simple question for you to know the answer... What is your name? \nparam0:%1 \nparam1:%2 \nparam2:%3 \nparam0:%1"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_SAMPLE_2,
+		tr("This is another question."),
+		tr("This question has only one parameter '%1' in the message... Agree?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_TXT_ERROR,
+		tr(PRODUCT_NAME_SHORT " Warning Message."),
+		tr("%1"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_RESTORE_VM_CONFIG_FROM_BACKUP,
+		tr("Do you want to restore the configuration file of the '%1' virtual machine from backup?"),
+		tr("The configuration file of this virtual machine was damaged due to some reason. You can restore it from a backup copy made earlier."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_COMMON_HDD_ERROR,
+		tr("An error occurred while accessing the Hard Disk %1 used by \"%2\"."),
+		tr("Click <b>Retry</b> to try again or click <b>Stop</b> to forcibly stop the virtual machine. If this error persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance.<br><br><b>Note</b>: If you stop the virtual machine \"%2\" now, you will lose all unsaved data.<br><br><b>Error ID:</b> %3."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_FAT32_FILE_OVERRUN,
+		tr("FAT32 Error."),
+		tr("FAT32 File Overrun (%1)."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_DO_YOU_WANT_TO_OVERWRITE_FILE,
+		tr("The output file already exists. Do you want to append data to this file or replace the file?"),
+		tr("Click Append to continue using the existing output file for %1 %2. Click Replace to overwrite it."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_TOO_LOW_HDD_SIZE,
+		tr("You are running out of free hard disk space."),
+		tr("Free some disk space on the hard disk and click <b>Retry</b>.<br><br>Note: If you stop the virtual machine \"%1\" now, you will lose all unsaved data."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_CANT_CONNECT_VOLUME,
+		tr("Failed to connect to the \"%1\" volume. Click Continue to try again."),
+		tr("This virtual machine is stored on the \"%1\" volume. You need to connect to this volume to be able to start this virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_FLOPPY_IMAGE_ALREADY_EXIST,
+		tr("A floppy disk image file \"%1\" already exists."),
+		tr("Do you want to replace the existing floppy disk image file \"%1\" with a new one?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUEST_POWER_OFF,
+		tr("Are you sure you want to stop the virtual machine?"),
+		tr("The virtual machine is running. If you stop it now, you may lose all unsaved data."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUEST_RESET,
+		tr("Are you sure you want to reset the virtual machine?"),
+		tr("The virtual machine is running. If you reset it now, you may lose all unsaved data."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUEST_RESTART,
+		tr("Are you sure you want to restart the virtual machine?"),
+		tr("If you click Yes now, the virtual machine will be shut down and then started again."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_DELETE_FILES_OUT_OF_VM_DIR,
+		tr("Are you sure you want to delete the selected files?"),
+		tr("Some of the listed files are located outside the virtual machine folder. These files may be used by other virtual machines or applications. Deleting these files may affect the work of these virtual machines and applications. Click <b>No</b> to cancel the deleting."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CANCEL_CLONE_OPERATION,
+		tr("The virtual machine is being cloned. Are you sure you want to stop the process?"),
+		tr("The cloning has not been completed. If you stop the process now, you won't be able to use the resulting virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CANCEL_IMPORT_BOOTCAMP_OPERATION,
+		tr("The import is in progress. Are you sure you want to stop it?"),
+		tr("If you cancel the import now, no " PRODUCT_NAME_SHORT " virtual machine will be created."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CANCEL_CONVERT_3RD_VM_OPERATION,
+		tr("The conversion is in progress. Are you sure you want to cancel it?"),
+		tr("If you cancel the conversion now, no " PRODUCT_NAME_SHORT " virtual machine will be created."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CANCEL_CLONE_TO_TEMPLATE_OPERATION,
+		tr("The template is being created. Are you sure you want to stop the process?"),
+		tr("The process is not complete. If you stop it now, you won't be able to use the resulting template."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CANCEL_DEPLOY_OPERATION,
+		tr("The virtual machine is being deployed. Are you sure you want to stop the process?"),
+		tr("The deployment has not been completed. If you stop it now, you won't be able to use the resulting virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_FREE_SIZE_FOR_COMPRESSED_DISK,
+		tr("The virtual hard disk size exceeds the free space available on the physical hard disk. Do you want to create it anyway?"),
+		tr("If you use up the free space on the physical hard disk, you will not be able to add data to this virtual disk."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_COMPRESSED_DISK_IN_EXPRESS_MODE,
+		tr("The default capacity of this virtual machine's hard disk is greater than the free space available on the physical hard disk. Do you want to create the virtual machine anyway?"),
+		tr("If you use up the free space on the physical hard disk, you will not be able to add new data to this virtual machine's hard disk. To set a different capacity for the virtual hard disk, go back and select the Custom mode of creating a virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SWAP_SLOTS,
+		tr("The NODENAME_X position is already used by DEVICENAME_X. Do you want to assign this INTERFACE position to DEVICENAME_Y?"),
+		tr("If you assign the NODENAME_X position to DEVICENAME_Y, DEVICENAME_X will use the NODENAME_Y position."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_RESTORE_DEFAULT_SETTINGS,
+		tr("Do you want to restore the default settings?"),
+		tr("Your current settings will be discarded and replaced with the default ones."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_WARN_ALLOCATE_MEM,
+		tr("Are you sure you want to allocate %1 of memory to the virtual machine?"),
+		tr("Allocating more than %1 of memory to a virtual machine may significantly decrease its performance."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_REGISTER_VM_TEMPLATE,
+		tr("You have selected the virtual machine template %1. Do you want to add it?"),
+		tr("You can use the template only for deploying new virtual machines based on it. You cannot run the template as a virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CREATE_NEW_MAC_ADDRESS,
+		tr("Duplicate MAC addresses detected. Do you want to recreate the MAC address for the virtual machine \"%1\" or use the current MAC address anyway?"),
+		tr("The MAC address of the network adapter of the virtual machine \"%1\" to be registered is already in use."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DELETE_NET_ADAPTER,
+		tr("Are you sure you want to delete the virtual network adapter %1?"),
+		tr("This operation is irreversible."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_ALLOW_TO_SUSPEND_VM_WITH_BOOTCAMP_DISK,
+		tr("%1 is using Boot Camp as one of its hard disks. Are you sure you want to suspend this virtual machine?"),
+		tr("Do not work with Boot Camp natively while the virtual machine is suspended, or you will lose all unsaved data when resuming the virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_CORE_STATE_VM_WOULD_STOP,
+		tr("Do you want to restore the virtual machine as running or stop it while reverting to this snapshot?"),
+		tr("This snapshot was created when the virtual machine was running. If you restore the virtual machine as running, it may work not properly until you restart it."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_SUSPEND_STATE_INCOMPATIBLE_CPU,
+		tr("Do you want to resume the virtual machine as running or restart it?"),
+		tr("The virtual machine was suspended on another computer. If you resume it as running, it may work incorrectly until you restart it."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_SNAPSHOT_STATE_INCOMPATIBLE_CPU,
+		tr("Do you want to restore the virtual machine as running or stop it while reverting to this snapshot?"),
+		tr("This snapshot was created on another computer. If you restore the virtual machine, it may work incorrectly until you restart it."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_SUSPEND_STATE_INCOMPATIBLE,
+		tr("Unable to resume this virtual machine because it was suspended in a newer version of your " PRODUCT_NAME_SHORT " software."),
+		tr("Do you want to restart the virtual machine to be able to use it in this version? Note: If you restart the virtual machine now, all unsaved data will be lost."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_SNAPSHOT_STATE_INCOMPATIBLE,
+		tr("Unable to restore this virtual machine as running because the snapshot was created in a newer version of your " PRODUCT_NAME_SHORT " software."),
+		tr("Do you want to stop the virtual machine while reverting? Note: If you stop the virtual machine now, all the data that was not saved at the time the snapshot was taken will be lost."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_EDIT_SUSPENDED_VM,
+		tr("This virtual machine is suspended."),
+		tr("You can view the configuration of a suspended virtual machine but cannot edit it. To stop the virtual machine and edit its configuration, click <b>Stop and Edit</b>. To keep the suspended state and view the configuration in read-only mode, click <b>View</b>."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_STOP_SUSPENDED_VM,
+		tr("This virtual machine is suspended and may contain unsaved data. Are you sure you want to stop it?"),
+		tr("If you stop the virtual machine now, all unsaved data will be lost."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CHANGE_VM_MIGRATION_TYPE,
+		tr("Unable to move the virtual machine %1 using the specified migration type. Do you want to migrate it anyway?"),
+		tr("The CPUs on the source and destination servers are incompatible. If you continue, the virtual machine will be stopped during the migration."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_OVERWRITE_HDD_IMAGE,
+		tr("The virtual hard disk image file %1 already exists. Do you want to replace it with a new one?"),
+		tr("If you replace the image file, all the data on the original virtual hard disk will be lost."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUESTION_CAN_NOT_GET_DISK_FREE_SPACE,
+		tr("Not enough free space on the physical hard disk. Do you want to create the virtual hard disk anyway?"),
+		tr("The operation may fail if the amount of free space on the physical hard disk proves insufficient."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_GOING_TO_TAKE_SMART_GUARD_SNAPSHOT,
+		tr("SmartGuard is ready to create a scheduled snapshot of the virtual machine \"%1\". Do you want to create it now?"),
+		tr("If no action is taken, the snapshot will be created automatically in @PRL_GUI_STD_SECONDS_TIMER seconds."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_GOING_TO_TAKE_SMART_GUARD_SNAPSHOT,
+		tr("An automatic snapshot is going to be taken."),
+		tr("SmartGuard is about to start creating a scheduled snapshot of the virtual machine \"%1\". Click <b>Create</b> to create a snapshot now, or click <b>Skip</b> to do without.<br><br>Note: To disable this notification, edit the SmartGuard settings in the virtual machine configuration."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NO_AUTO_COMPRESS_WITH_UNDO_DISKS,
+		tr("AutoCompress cannot be used with Rollback mode. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, the AutoCompress feature will not work."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NO_AUTO_COMPRESS_WITH_SMART_GUARD,
+		tr("AutoCompress cannot be used with SmartGuard. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, the AutoCompress feature will only work while there are no snapshots. If at least one snapshot is created, AutoCompress will stop functioning."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NO_SMART_GUARD_WITH_UNDO_DISKS,
+		tr("Both Rollback mode and SmartGuard are enabled. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, SmartGuard will not work because snapshots cannot be created when Rollback mode is enabled."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_REMOTE_DISPLAY_EMPTY_PASSWORD,
+		tr("The password for the Remote Display access is not specified. Are you sure you want to save the settings?"),
+		tr("If you do not specify the password, other users will be able to access this virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_FLOPPY_DISK_SYS_NAME_IS_EMPTY,
+		tr("No image file is specified for the floppy disk drive. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, the floppy disk drive will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_FLOPPY_DISK_IMAGE_IS_NOT_EXIST,
+		tr("The floppy disk image file \"%1\" does not exist. Do you want to save the virtual machine configuration anyway?"),
+		tr("Make sure that the path to the floppy disk image file is correct and try again."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_FLOPPY_DISK_IS_NOT_ACCESSIBLE,
+		tr("The physical floppy disk drive used to simulate your virtual floppy disk drive is not accessible. Do you want to save the virtual machine configuration anyway?"),
+		tr("Make sure that the physical floppy disk drive is available or disable the floppy disk drive in the virtual machine configuration."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_FLOPPY_DISK_IMAGE_IS_NOT_VALID,
+		tr("The floppy disk image file \"%1\" is not valid. Do you want to save the configuration of the virtual machine anyway?"),
+		tr("Make sure that the file is valid or select another image file for Floppy Disk."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CD_DVD_ROM_SYS_NAME_IS_EMPTY,
+		tr("No image file is specified for CD/DVD drive %1. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, CD/DVD drive %1 will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CD_DVD_ROM_DUPLICATE_SYS_NAME,
+		tr("The specified CD/DVD drive is already used by another virtual CD/DVD drive. Do you want to connect it to CD/DVD drive %1 anyway?"),
+		tr("If you click Yes now, the physical CD/DVD drive will be disconnected from the virtual CD/DVD drive that is currently using it."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CD_DVD_ROM_IMAGE_IS_NOT_EXIST,
+		tr("The image file \"%1\" used by CD/DVD drive %2 does not exist. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, CD/DVD drive %2 will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_SYS_NAME_IS_EMPTY,
+		tr("No image file is specified for hard disk %1. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, hard disk %1 will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_BOUND_INDEX,
+		tr("The physical network adapter connected to virtual network adapter %1 does not exist. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, this virtual network adapter will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_DUPLICATE_MAC_ADDRESS,
+		tr("One or more duplicate addresses of your network adapters have been detected. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapters with conflicting MAC addresses may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_DUPLICATE_IP_ADDRESS,
+		tr("One or more duplicate IP addresses of your network adapters have been detected. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapters with conflicting IP addresses may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_GUEST_TOOLS_NOT_AVAILABLE,
+				tr("The virtual machine does not have " PRODUCT_NAME_SHORT " Tools installed."
+				   " Do you want to save the configuration anyway?"),
+				tr("If you save the configuration now, the network adapter may work incorrectly."
+				   " Install " PRODUCT_NAME_SHORT " Tools and configure the network adapter settings again."),
+		true,
+		PMT_QUESTION
+		);
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_ETHLIST_CREATE_ERROR,
+		tr("Failed to obtain a list of physical network adapters. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, the virtual machine networking will be disabled."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_IP_ADDRESS,
+		tr("The \"IP address/subnet MASK\" \"%1\" assigned to Network Adapter %2 is invalid. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_MULTICAST_IP_ADDRESS,
+		tr("The IP address \"%1\" assigned to Network Adapter %2 is a multicast IP address. Do you want to save the virtual machine configuration anyway?"),
+		tr("IP addresses in the range from 224.0.0.0 to 239.255.255.255 are reserved as multicast addresses. If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_BROADCAST_IP_ADDRESS,
+		tr("The IP address \"%1\" assigned to Network Adapter %2 is a broadcast IP address. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_GATEWAY_IP_ADDRESS,
+		tr("The IP address \"%1\" assigned to Network Adapter %2 is an invalid gateway IP address. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_GATEWAY_NOT_IN_SUBNET,
+		tr("The IP address \"%1\" assigned to Network Adapter %2 does not belong to any subnet. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_DNS_IP_ADDRESS,
+		tr("The IP address \"%1\" assigned to Network Adapter %2 is an invalid DNS IP address. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NETWORK_ADAPTER_INVALID_SEARCH_DOMAIN_NAME,
+		tr("The domain name \"%1\" assigned to Network Adapter %2 contains invalid symbols. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you save the configuration, the network adapter may work incorrectly."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SOUND_MIXER_IS_EMPTY,
+		tr("The sound input device name is not specified. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, the sound input device will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SOUND_OUTPUT_IS_EMPTY,
+		tr("The sound output device name is not specified. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, the sound output device will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SERIAL_PORT_SYS_NAME_IS_EMPTY,
+		tr("No output file is specified for Serial Port %1. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, Serial Port %1 will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_SERIAL_PORT_IMAGE_IS_NOT_EXIST,
+		tr("The output file of the Serial Port does not exist. Do you want to save the configuration of the virtual machine anyway?"),
+		tr("If you continue the Serial Port will be disconnected at virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_PARALLEL_PORT_SYS_NAME_IS_EMPTY,
+		tr("No output file is specified for Printer Port %1. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, Printer Port %1 will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_PARALLEL_PORT_IMAGE_IS_NOT_EXIST,
+		tr("The output file used by the printer port does not exist. Do you want to save the virtual machine configuration anyway?"),
+		tr("If you click Yes now, the printer port will not be connected at the virtual machine startup."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_GENERIC_PCI_DEVICE_CANNOT_BE_ADDED,
+		tr("The PCIe device you are trying to add cannot be used by this virtual machine. Do you want to add it anyway?"),
+		tr("Virtual machines can use PCIe devices only when they are running on a host computer whose processor supports the Intel VT-d technology."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_GENERIC_PCI_DEVICE_DUPLICATE_IN_ANOTHER_VM,
+		tr("The device %1 is already assigned to another virtual machine. Do you want to save the virtual machine configuration anyway?" ),
+		tr("This device can be used only by a single running virtual machine at a time. If you start this virtual machine, the device will become unavailable to other virtual machines."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_INSTALL_DRIVER_FAILED,
+		tr("Do you want to disconnect the %1 device from your physical computer?"),
+		tr("This device is in use by your physical computer. For the device to be connected to the virtual machine, it should be forcefully disconnected from your physical computer, which might cause data loss or corruption."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DROP_SUSPEND_FOR_HDD_QUEST_CFG_EDITOR,
+		tr("The image file %1 emulating hard disk %2 is used by a suspended virtual machine. Are you sure you want to use this image file?"),
+		tr("If you click Yes now, all unsaved data of the suspended virtual machine may get lost and the data of the image file may become damaged."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DROP_SUSPEND_FOR_HDD_QUEST_WIZARDS,
+		tr("The hard disk image file %1 is used by a suspended virtual machine. Are you sure you want to use this image file?"),
+		tr("If you click Yes now, all unsaved data of the suspended virtual machine may get lost and the data of the image file may become damaged."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CANT_USE_DEVICE_CLIENT_OPTION_ON_HOST,
+		tr("Unable to browse the image files on the client computer. Do you want to browse the files on the host computer?" ),
+		tr("This device is set to use image files stored on the client computer."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_GLOBAL_HOST_SHARING,
+		tr("Do you want to enable access to Mac OS X files and folders from Windows?"),
+		tr("Click Yes to allow Windows to access files and folders on your Mac.<br>Click No to allow only copying files and folders from your Mac to Windows.<br>You can change these settings later on the Sharing pane of Virtual Machine Configuration."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_LOCAL_HOST_SHARING,
+		tr("Do you want to enable access to Mac OS X files and folders from Windows?"),
+		tr("Click Yes to allow Windows to access the files in your Mac OS X home folder.<br>Click No to allow only copying files and folders from your Mac to Windows.<br>You can change these settings later on the Sharing pane of Virtual Machine Configuration."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_REACH_OVERCOMMIT_STATE_ON_SETMEM,
+		tr("Setting this memory amount may slow down the performance of your running virtual machines."),
+		tr("Your running virtual machines are consuming more memory together than the total amount you are allocating. Increase this amount or shut down or suspend some of your running virtual machines."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_APPLY_WHEN_HYP_CANNOT_ALLOC_VMS_MEM,
+		tr("Are you sure you want to set this memory amount?"),
+		tr("Unable to apply the changes right now because the specified amount of memory is less than the sum of all virtual machine guarantees and overhead.If you click Yes, the changes will take effect only after server restart. Or you can also suspend or stop some of the virtual machines and try again."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WNG_STOP_VM_WITH_BOOTCAMP,
+		tr("Are you sure you want to stop the virtual machine?"),
+		tr("The virtual machine uses the Boot Camp partition as its virtual hard disk. If you stop the virtual machine now, you may lose unsaved data or corrupt the data on the Boot Camp partition. Perform a shutdown from within the virtual machine instead."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_BOOTCAMP_HELPER_INIT_FAILURE,
+		tr("An unexpected error occurred when initializing " PRODUCT_NAME_SHORT " Tools."),
+		tr("The virtual machine is booting from a Boot Camp partition. If you continue, you may encounter problems with Microsoft Windows or Office activation."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_BOOTCAMP_HELPER_OS_UNSUPPORTED,
+		tr("The Windows version is not supported by Boot Camp."),
+		tr("The virtual machine is booting from a Boot Camp partition. The version of Windows installed in the virtual machine is not officially supported by Boot Camp. If you continue, you may encounter problems with Microsoft Windows or Office activation."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_VIDEO_MEMORY_IS_TOO_LOW,
+		tr("Not enough video memory for 3D acceleration."),
+		tr("%1 MB of video memory is recommended for 3D acceleration. Do you want to increase the video memory up to %1 MB?"),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_UNDO_DISKS_MODE,
+		tr("Apply the changes to the virtual machine's hard disks?"),
+		tr("Click Apply to apply the changes or Discard to revert to the original state of the virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_MAC_PHYSICAL_MEMORY_MAP_BUG,
+		tr("Starting the virtual machine may cause your Mac to malfunction. Are you sure you want to start it?"),
+		tr("If you start the virtual machine now, your Mac may work unstable. It is recommended to update your system to Mac OS X 10.5.5 or later before starting your virtual machines."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CREATE_OS2_GUEST_WITHOUT_FDD_IMAGE,
+		tr("The required floppy image file was not found."),
+		tr("If you continue, the resulting OS/2 virtual machine may work incorrectly. Please reinstall @PRL_PRODUCT_NAME, then try to create the virtual machine again."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_DVD_DISCONNECT_LOCKED_DEV,
+		tr("The CD/DVD disc is mounted inside the guest operating system."),
+		tr("If you disconnect this disc now, the guest operating system will not recognize its absence, which may lead to system errors. It is recommended to eject this disc by means of the guest operating system."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_DISCONNECT_SATA_HDD,
+		tr("The SATA hard disk is mounted inside the guest operating system."),
+		tr("If you disconnect this disk now, the guest operating system will not recognize its absence, which may lead to system errors. It is recommended to eject this disk by means of the guest operating system."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_TOOLS_INSTALL_OTHER,
+		tr(PRODUCT_NAME_SHORT " Tools are a set of useful add-in features, like automatic mouse capture and dynamic screen resolution adjustment."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, click Continue, make sure your CD/DVD drive is mounted, go to the CD/DVD root directory, and install the available drivers."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_COMPACT_DESTRUCTIVE,
+		tr("It is highly recommended to make a backup of the virtual machine before the operation."),
+		tr("Compressing the disk is sensitive to power failures and similar events. If you have a backup copy of your virtual machine, click OK. Otherwise, click Cancel, shut down the virtual machine, create a backup copy, then run " PRODUCT_NAME_SHORT " Compressor again."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_REUSE,
+		tr("\"%1\" USB device is in use. Are you sure you want to connect it to the virtual machine?"),
+		tr("If you connect this USB device to this virtual machine, it will be disconnected from the %2 host computer or another virtual machine using it."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_USB_CHANGEPID,
+		tr("Do you want to retain USB device \"%1\" for this VM?"),
+		tr("If you did not replace this device you might want to leave it connected to VM."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_REVERT_TO_SPECIFIED_SNAPSHOT,
+		tr("Do you want to proceed?"),
+		tr("If you revert to the specified snapshot, you will lose all the changes in the current state of the virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_REVERT_TO_LAST_SNAPSHOT,
+		tr("Are you sure you want to revert to the previous virtual machine snapshot?"),
+		tr("If you revert to this snapshot, you will lose all the changes made to the virtual machine state since the snapshot creation."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_LEAVE_AUTO_HW_UPGRADING,
+		tr("Are you sure you want to switch to the manual upgrade mode for the \"%1\" virtual machine?"),
+		tr("It is highly recommended to continue upgrading the virtual machine in automatic mode. For more information on upgrading your virtual machines, <a href=\"%1\">visit the upgrade page</a> on the " PRODUCT_NAME_SHORT " website." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_LEAVE_AUTO_HW_UPGRADING_VMXPHY,
+		tr("Are you sure you want to switch to the manual configuration mode for the \"%1\" virtual machine?"),
+		tr("It is highly recommended to continue configuring the virtual machine in automatic mode. For more information on configuring your virtual machines, <a href=\"%1\">visit the configuration page</a> on the " PRODUCT_NAME_SHORT " website." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_REBOOT_HOST_ON_PCI_DRIVER_INSTALL_OR_REVERT,
+		tr("You need to restart your computer to apply the changes you made to the Intel VT-d preferences."),
+		tr(""),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_VM_ROOT_DIRECTORY_NOT_EXISTS,
+		tr("The folder \"%1\" does not exist."),
+		tr("Do you want to create it?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_STOP_VM_TO_COMPACT,
+		tr("You need to shut down the virtual machine to complete the compression process. Do you want to shut it down now?"),
+		tr("If you want to cancel the operation, click Cancel."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_COMPACT_VM_DISKS,
+		tr("Unused space on the \"%1\" virtual machine hard disk has significantly increased. Do you want to compress the disk?"),
+		tr("When the compression is over, the space initially occupied by the virtual hard disk(s) will be reduced from %2 GB to %3 GB."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_FORCE_COMPACT_VM_DISKS,
+		tr("Would you like to compress the disk of the \"%1\" virtual machine?"),
+		tr("When the compression is over, the space initially occupied by the virtual machine will be reduced from %2 GB to %3 GB."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_SWITCH_OFF_AUTO_COMPRESS,
+		tr("Do you want to disable the AutoCompress feature for the \"%1\" virtual machine?"),
+		tr("If you click Yes now, AutoCompress will be disabled. To enable it again, go to Virtual Machine Configuration > Options > Optimization and select the AutoCompress option."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_DELAYED_COMPACT_VM_DISKS,
+		tr("You have scheduled the virtual disk compacting. Do you want to start this procedure now?"),
+		tr("After compacting the virtual disk, the virtual machine will occupy less space on the physical hard disk drive."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SAME_FUNCTION_NET_ASSIGN,
+		tr("This PCIe network card has a number of PCIe functions. Changing the assignment for this network card will affect all these functions. Do you want to apply this assignment to all the PCIe functions?"),
+		tr("If you click No, the current assignments for these PCIe functions will not change."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_RECONNECT_USB_TO_ANOTHER_VM,
+		tr("You are trying to connect a USB device that is already connected to another virtual machine (%1)."),
+		tr("If you continue, the device will be disconnected from that virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_TRY_DISCONNECT_CONNECTING_USB,
+		tr("This USB device is being connected to the virtual machine. Do you want to connect it to the host computer?"),
+		tr("If you connect this device to the host computer, you will not be able to use it in the virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_REMOVE_BACKUP,
+		tr("Are you sure you want to delete the selected backup?"),
+		tr("This operation is irreversible."),
+		true,
+		PMT_QUESTION
+		);
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_RESTORE_FROM_BACKUP,
+		tr("Are you sure you want to restore the virtual machine from backup?"),
+		tr("This operation is irreversible. The current state of the virtual machine will be lost."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_REMOTE_DISPLAY_EMPTY_PASSWORD,
+		tr("The password for the Remote Display settings is not specified. Are you sure you want to save the settings?"),
+		tr("If you do not specify the password, other users will be able to access this virtual machine."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CONTINUE_IF_HVT_DISABLED,
+		tr("Hardware virtualization support is disabled in BIOS settings. Are you sure you want to continue?"),
+		tr("If you do not enable hardware virtualization support, your virtual machines performance may be degraded."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DELETE_VM_IMMEDIATELY,
+		tr("The item \"%1\" will be deleted immediately."),
+		tr("Are you sure you want to continue?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_AUTOSTART,
+		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
+		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_AUTOSTOP,
+		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
+		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_NEED_HEADLESS_MODE_FOR_KEEP_VM_ALIVE_ON_GUI_EXIT,
+		tr("For this change to take effect, you must set the " PRODUCT_NAME_SHORT " Desktop service to automatically start on Mac startup. Select anyway?"),
+		tr("To do so, choose <b>Start " PRODUCT_NAME_SHORT " Desktop as a service</b> in General Preferences."),
+		true,
+		PMT_QUESTION
+		);
+
+	// PMT_QUESTION to allow to skip
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_RESTRICTED_CPU_COUNT,
+		tr("The virtual machine will not be started. Are you sure you want to continue?"),
+		tr("This virtual machine has %2 CPUs, but your @PRL_PRODUCT_NAME license allows any virtual machine to have no more than %1 CPUs."),
+		true,
+		PMT_QUESTION
+		);
+
+	// PMT_QUESTION to allow to skip
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_RESTRICTED_MEMORY_SIZE,
+		tr("The virtual machine will not be started. Are you sure you want to continue?"),
+		tr("This virtual machine has %2 MB of memory, but your @PRL_PRODUCT_NAME license allows any virtual machine to have no more than %1 MB of memory."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_HARD_DISK_SET_SATA_FOR_UNSUPPORTED_OS,
+		tr("SATA locations are supported for Windows versions starting from Windows Vista. Do you want to change the location for Hard Disk %1?" ),
+		tr("If you use an earlier version of Windows, you will have to install SATA drivers manually to be able to use this disk." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VMCONF_CD_DVD_ROM_SET_SATA_FOR_UNSUPPORTED_OS,
+		tr("SATA locations are supported for Windows versions starting from Windows Vista. Do you want to change the location for CD/DVD %1?" ),
+		tr("If you use an earlier version of Windows, you will have to install SATA drivers manually to be able to use this CD/DVD drive." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_TRIAL_EXPIRES_TEXT1,
+		tr("Your trial activation key will expire in %1 day."),
+		tr("<a href=\"%1\">Purchase a permanent activation key</a> in order to ensure continuous use of the product after the trial period expires."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_TRIAL_EXPIRES_TEXT2,
+		tr("Your trial activation key will expire in %1 days."),
+		tr("<a href=\"%1\">Purchase a permanent activation key</a> in order to ensure continuous use of the product after the trial period expires."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_TRIAL_EXPIRES_TEXT3,
+		tr("Your trial activation key expires today."),
+		tr("<a href=\"%1\">Purchase a permanent activation key</a> in order to ensure continuous use of the product after the trial period expires."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_TRIAL_EXPIRES_TEXT4,
+		tr("Your trial activation key has expired."),
+		tr("<a href=\"%1\">Purchase a permanent activation key</a> to continue using the product."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_MOVE_TO_TRASH_DISK,
+		tr("Do you want to keep the virtual hard disk file or move it to @PRL_TRASH_NAME?"),
+		tr("Keep the file to be able to use this disk in future. If you move the file to @PRL_TRASH_NAME, the virtual hard disk will be deleted."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_MOVE_TO_TRASH_VM,
+		tr("Do you want to keep the \"%1\" files or move them to @PRL_TRASH_NAME?"),
+		tr("Keep the files to be able to use this virtual machine in future. If you move the files to @PRL_TRASH_NAME, the virtual machine will be deleted."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_BACKUP_RESTORE_NOT_ENOUGH_FREE_DISK_SPACE,
+		tr("Not enough disk space to restore the virtual machine. Do you want to restore the virtual machine anyway?"),
+		tr("Restoring this virtual machine requires %1 GB of free disk space, while only %2 GB are available on the server."),
+		true,
+		PMT_QUESTION
+		);
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_BACKUP_CREATE_NOT_ENOUGH_FREE_DISK_SPACE,
+		tr("Not enough free disk space on the backup server. Do you want to create the virtual machine backup anyway?"),
+		tr("Backing up this virtual machine requires %1 GB of free disk space, while only %2 GB are available on the server."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_APPLIANCE_CORRUPTED_INSTALLATION,
+		tr("The folder \"%1\" does not exist."),
+		tr("Do you want to cancel the download?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_ON_QUERY_END_SESSION,
+		tr("What do you want to do with your virtual machine before logging out?"),
+		tr("Please select <b>Suspend</b>, <b>Shutdown</b>, or <b>Stop</b>. If you click <b>Stop</b>, you will lose all unsaved data. To preserve the unsaved data and put the virtual machine to sleep, click <b>Suspend</b>. To preserve the unsaved data and shut down the virtual machine correctly, click <b>Shutdown</b>."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_ON_QUERY_END_SESSION_RESTRICTED,
+		tr("What do you want to do with your virtual machine before logging out?"),
+		tr("Please select <b>Shutdown</b> or <b>Stop</b>. If you click <b>Stop</b>, you will lose all unsaved data. To preserve the unsaved data and shut down the virtual machine correctly, click <b>Shutdown</b>."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUESTION_CONVERT_GUEST_OS_IS_HIBERNATED,
+		tr("The guest operating system of this virtual machine is hibernated. Do you want to convert it anyway?"),
+		tr("If you click Yes, all unsaved data may be lost in the resulting virtual machine. To avoid possible data loss, fully shut down this virtual machine and try again."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUESTION_CONVERT_3RD_PARTY_CANNOT_MIGRATE,
+		tr("The virtual machine you are trying to convert is not stopped. Do you want to convert it anyway?"),
+		tr("The virtual machine may become unusable after the conversion. It is recommended to stop the virtual machine and try again."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUESTION_CONVERT_VM_SPECIFY_DISTRO_PATH,
+		tr("The operating system installation disc is required to proceed."),
+		tr("Please insert the installation disc for the operating system installed in the virtual machine or specify another installation source."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_QUESTION_CONVERT_VM_CANT_DETECT_OS,
+		tr("Failed to detect the operating system installed in the virtual machine. Do you want to convert it anyway?"),
+		tr("The resulting virtual machine may become unusable after the conversion."),
+		false,
+		PMT_QUESTION
+		);
+
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_VM_REBOOT_REQUIRED_BY_PRL_TOOLS,
+		tr("The virtual machine needs to be restarted. Do you want to restart it now?"),
+		tr("Restart is required to apply the changes made to the " PRODUCT_NAME_SHORT " Tools settings."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SM_ENABLE_SHARED_APPS,
+		tr("Before switching to Coherence, you need to enable Shared Applications."),
+		tr("Do you want to enable them now and switch to Coherence?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ISOLATE_VM,
+		tr("Are you sure you want to isolate the virtual machine from the host computer?"),
+		tr("If you isolate the virtual machine, you will not be able to use Shared Folders, Shared Applications, Shared Profile, SmartMount, and Internet Applications, "\
+		"and you will neither be able to copy or move objects between the virtual machine and the host computer."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ISOLATE_VM_LIN,
+		tr("Are you sure you want to isolate the virtual machine from the host computer?"),
+		tr("If you isolate the virtual machine, you will not be able to use Shared Folders and SmartMount, "\
+		"and you will neither be able to copy or move objects between the virtual machine and the host computer."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_SHARED_APPS,
+		tr("This option requires Windows applications to be shared with Mac. Do you want to share them?"),
+		tr("Click Continue to share Windows applications with your Mac."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DISABLE_OPTIONS,
+		tr("Disabling this option makes %1 unavailable for this virtual machine."),
+		tr("If you choose not to share your Windows applications with Mac, you will automatically disable %1. Do you want to continue?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SNAPSHOT_SINGLE_DELETE,
+		tr("Are you sure you want to delete the snapshot?"),
+		tr(""),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SNAPSHOT_DELETE_WITH_CHILDRENS,
+		tr("Are you sure you want to delete the snapshot and its children?"),
+		tr(""),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ASK_TO_CANCEL_TUTORIAL_DOWNLOAD,
+		tr("Are you sure you want to cancel the download?"),
+		tr(""),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_RESET_VIRTUAL_NETWORK,
+		tr("Do you want to reset the virtual networks settings now?"),
+		tr("Default settings will be used. This action cannot be undone."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_VM_DIR_CANT_START_TEMPLATE,
+		tr("Do you want to create a new virtual machine from this template?"),
+		tr(""),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CONVERT_SUCCEDED,
+		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>" PRODUCT_NAME_SHORT " website</a>."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CONVERT_3RDPARTY_VM_SUCCEDED,
+		tr("You need to start the virtual machine to complete the conversion. Do you want to start it now?"),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CONVERT_AND_BACKUP_SUCCEDED,
+		tr("You need to start the virtual machine to complete the upgrade process. Do you want to start it now?"),
+		tr("Starting the virtual machine will automatically launch the process of upgrading the virtual hardware and " PRODUCT_NAME_SHORT " Tools. This process may take some time to complete. During this time, do not restart or switch off your Mac. For more information on upgrading your virtual machines, visit the upgrade page on the <a href=%1>" PRODUCT_NAME_SHORT " website</a>.<br/><br/>Note: Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CONVERT_AND_BACKUP_OTHER_OS_SUCCEDED,
+		tr("The virtual machine has been successfully backed up and converted."),
+		tr("You can now use this virtual machine with @PRL_PRODUCT_NAME. Click <b>Show backup in Finder</b> to view the location of the original virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_NO_BACKUP,
+		tr("Are you sure you want to continue without backing up the virtual machine?"),
+		tr("If you click Yes, you will not be able to use this virtual machine with older versions of " PRODUCT_NAME_SHORT " Desktop."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DELETE_OLD_VM,
+		tr("Delete this virtual machine from the list?"),
+		tr("The virtual machine's files will not be deleted."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_IMPORT_BOOTCAMP_VM_SUCCEDED_AND_START,
+		tr("You need to start the virtual machine to complete the import. Do you want to start it now?"),
+		tr("When you start the virtual machine, its virtual hardware and " PRODUCT_NAME_SHORT " Tools will be upgraded. The upgrade may take some time to complete, so please do not restart or switch off your Mac during this time."),
+		false,
+		PMT_QUESTION
+		);
+
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_IMPORT_BOOTCAMP_VM_COMPLETE,
+		tr("The import was successful. A virtual machine was created. Do you want to start it now?"),
+		tr("Try to reclaim the unused space."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_REMAP_VM_KEY_SEQUENCE_ALREADY_USED_BY_VM_SHORTCUT,
+		tr("Are you sure you want to remap the keyboard shortcut \"%1\"?"),
+		tr("This keyboard shortcut is already used."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_PROFILE_DELETE,
+		tr("Are you sure you want to delete this profile?"),
+		tr("The profile is used by one or more virtual machines. If you delete it, the virtual machine's settings will be reset to default."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DESKTOP_IS_UNREGISTERED,
+		tr("This copy of @PRL_PRODUCT_NAME is not registered and cannot be updated. Do you want to register it?"),
+		tr("Updates will become available after you register @PRL_PRODUCT_NAME."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_PRODUCT_UPGRADE_DOWNLOAD_FAILED,
+		tr("The update could not be downloaded."),
+		tr("Please check your network connection and try again."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DONT_USE_DIRECT_CONECTION,
+		tr("Are you sure you don't want to use direct connection for speeding up " PRODUCT_NAME_SHORT " Mobile when possible?"),
+		tr("If you disable the direct connection option, " PRODUCT_NAME_SHORT " Mobile will not be able to connect directly to your computer."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_GUEST_SHARING,
+		tr(PRODUCT_NAME_SHORT " Desktop is going to enable sharing Windows disks with Mac OS X."),
+		tr("%1"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_GLOBAL_SHARING,
+		tr("Enable Global Sharing to access file \"%1\" from guest OS?"),
+		tr("You need to enable Global Sharing to access file \"%1\" from guest OS."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_LOCAL_SHARING,
+		tr("Enable Local Sharing to access file \"%1\" from guest OS?"),
+		tr("You need to enable Local Sharing to access file \"%1\" from guest OS."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SHARED_GUEST_APPS_OPEN_DOC_NEED_USER_SHARED_FOLDERS,
+		tr("Enable the user-defined shared folder \"%1\"?"),
+		tr("You need to enable the user-defined shared folder \"%1\" in order to access the \"%2\" file from inside the virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SMART_SELECT_ASK_TO_ENABLE_FOR,
+		tr("Enable the SmartSelect?"),
+		tr("It is required to enable SmartSelect to edit file associations. Do you want to do it now?"),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_SHARED_HOST_APPS_ASK_TO_ENABLE_DLG,
+		tr("Do you want to share Mac OS X applications with Windows?"),
+		tr("To open a Mac application from the virtual machine, the <b>Share Mac OS X applications with Windows</b> option must be enabled in the virtual machine configuration."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CANCEL_INSTALL_SUSUPEND,
+		tr("Do you want to stop or suspend the installation?"),
+		tr("If you stop the installation, your progress will be lost. If you suspend it, you can continue later."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CANCEL_INSTALL_DELETE,
+		tr("Are you sure you want to stop the installation?"),
+		tr("If you stop the installation, your progress will be lost."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DELETE_CREATED_VM,
+		tr("Are you sure you want to stop the New Virtual Machine Assistant?"),
+		tr("If you stop, your progress will be lost."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_MANUAL_INSTALL,
+		tr("Are you sure you want to continue the installation manually?"),
+		tr("The New Virtual Machine Assistant will quit and you can continue the installation inside the virtual machine. This method can be useful for more experienced users having problems with the installation."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_INVALID_VM_NOT_AVAILABLE,
+		tr("The virtual machine is not available."),
+		tr("The virtual machine's files have been moved or deleted. If the files are on an external device, reconnect the device. You can also remove the virtual machine from the list or manually locate its files."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_INVALID_VM_CORRUPTED,
+		tr("The virtual machine is corrupted."),
+		tr("The virtual machine cannot be used because its files are corrupted."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_OS_IMG_DWNLD_RETRY_ON_CHECKSUM_MISMATCH,
+		tr("The downloaded image might have been damaged during the operation."),
+		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_OS_IMG_DWNLD_NO_FREE_DISK_SPACE,
+		tr("Not enough free space in %1 to download the installation image."),
+		tr("Please free at least %2."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_OS_IMG_DWNLD_CLOSE_WINDOW,
+		tr("Continue downloading Windows in the background?"),
+		tr("If you stop the installation, your progress will be lost. You can restart the installation later by choosing File > New, clicking Install Windows 7 purchased from " PRODUCT_NAME_SHORT ", and following the onscreen instructions."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_OS_IMG_DWNLD_CLOSE_WINDOW_WIN8,
+		tr("Continue downloading Windows in the background?"),
+		tr("If you stop the installation, your progress will be lost. You can restart the installation later by choosing File > New, clicking Download Windows 8, and following the onscreen instructions."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CREATE_SNAPSHOT_WITH_ENABLED_AUTOCOMPRESS,
+		tr("Are you sure you want to create a snapshot of %1?"),
+		tr("The virtual machine is set to compress periodically to free up unused space. Creating a snapshot will disable auto-compression. If you delete all snapshots later, you can re-enable auto-compression using the Optimization settings in the virtual machine configuration (Virtual Machine > Configure or " PRODUCT_NAME_SHORT " icon > Configure)."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_VIDEO_POWER_OPTIMIZATION,
+		tr("Your Mac is running on batteries. Do you want to enable the power saving option?"),
+		tr("This option ensures longer battery life, however, some 3D graphics intensive applications or games may run slower or fail to start."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_VIDEO_POWER_OPTIMIZATION_ON_BATTERY_SWITCH,
+		tr("Your Mac is running on batteries. Do you want to enable the power saving option?"),
+		tr("This option ensures longer battery life, however, some 3D graphics intensive applications or games may run slower or fail to start.<br><br>Note: If you enable the power saving option, shut down the virtual machine and then start it again for the changes to take effect."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		PET_QUESTION_CREATE_VM_FROM_LION_RECOVERY_PART,
+		tr("Not enough memory to install and run OS X Lion in a virtual machine. Are you sure you want to continue?"),
+		tr("Each installation of OS X Lion requires no less than 2 GB of memory, so your Mac should be equipped with at least 4 GB of memory."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_NO_FREE_SPACE,
+		tr("Not enough free space on \"%1\"."),
+		tr("Please free some space and try again."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CLOSE_VM_WINDOW,
+		tr("The \"%1\" virtual machine is running. What should be done with it?"),
+		tr("Choose the action to perform on this virtual machine when the @PRL_PRODUCT_NAME window is closed."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_COPY_APP_TO_LOCAL_FOLDER,
+		tr("@PRL_PRODUCT_NAME needs to be copied to the Applications folder."),
+		tr("@PRL_PRODUCT_NAME will copy itself to your Applications folder and restart automaticallly from the new location."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DWNLD_RETRY,
+		tr("Unable to download the %1 file."),
+		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DWNLD_RETRY_ON_CANNOT_SAVE,
+		tr("Unable to save the file in %1."),
+		tr("Make sure you are allowed to write to this location and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DWNLD_RETRY_ON_NO_CONNECTION,
+		tr("Unable to download the %1 file."),
+		tr("Please check your network connection and try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DWNLD_RETRY_ON_CHECKSUM_MISMATCH,
+		tr("The downloaded file might have been damaged during the operation."),
+		tr("Please try to download it again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CLOSE_UPGRADE_PURCHASE_DIALOG,
+		tr("The upgrade process will be suspended."),
+		tr("You can resume it at any time later by choosing @PRL_PRODUCT_NAME > Upgrade to @PRL_PRODUCT_NAME %1 from the menu."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_CLOSE_UPGRADE_PURCHASE_DIALOG_WHILE_PURCHASE_PROCESSING,
+		tr("Processing your purchase. Please wait."),
+		tr("If you cancel the operation now, you will have to install the upgrade manually. The installation instructions will be sent to your email."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_POSTPONE_UPGRADE,
+		tr("The upgrade process will resume the next time you open @PRL_PRODUCT_NAME."),
+		tr("You can resume it manually at any time by choosing @PRL_PRODUCT_NAME > Upgrade to @PRL_PRODUCT_NAME %1  from the menu."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_FREE_SIZE_FOR_COMPRESSED_DISK,
+		tr("The free space available on your hard disk is smaller than the recommended for this virtual machine. Do you want to create it anyway?"),
+		tr("You can change the virtual machine's size by editing its hard disk settings before installing the operating system. This won't affect your virtual machine now, but in the future you may need to free up some additional space."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_STOP_APPLIANCE,
+		tr("Are you sure you want to close this window?"),
+		tr("If you close it now, all the changes will be discarded and the appliance won't be added to @PRL_PRODUCT_NAME."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_VM_CLEANUP_CONFIRM,
+		tr("Do you want to reclaim the extra disk space used by \"%1\"?"),
+		tr("If you reclaim the extra space, the virtual machine size will be reduced by %1."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_UPDATER_NO_CONNECTION,
+		tr("There's no Internet connection to check for updates. Do you want to install the current version?"),
+		tr("To be able to download the latest version of @PRL_PRODUCT_NAME, please check your Internet connection and try again."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_USB_CONTROLLER_REMOVE,
+		tr("Are you sure you want to remove USB from the virtual machine configuration?"),
+		tr("If you agree, your USB and Bluetooth devices may stop working in the virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_WRN_VIDEO_MEMORY_IS_TOO_LOW_FOR_HIDPI,
+		tr("For the best experience on the external monitor, at least %1 MB of video memory is required."),
+		tr("Do you want to increase the video memory to %1 MB?"),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_VTX_EPT_SUPPORT,
+		tr("Enabling nested virtualization allows you to run virtual machines in %1, however, may slow down %2 performance. Are you sure you want to continue?"),
+		tr("If you enable this option to be able to develop software for Windows Phone, please read <a href=\"%1\">this help topic</a> to learn how to properly configure Windows to run Windows Phone Emulator."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_PMU_SUPPORT,
+		tr("Enabling this option may slow down the virtual machine's performance. Are you sure you want to continue?"),
+		tr("PMU virtualization allows you to run Intel VTune Amplifier, OProfile, and other performance monitoring tools in a virtual machine."),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_ENABLE_ACCESSIBILITY_MODE,
+		tr("VoiceOver is enabled on your Mac. Do you want to work with \"%1\" in Accessibility mode?"),
+		tr("This mode is specially designed and optimized for using screen readers in virtual machines. For more details, please see <a href=\"%1\">here</a>."),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DISABLE_HOST_SLEEP,
+		tr( "Would you like to set your computer never to sleep so it's always accessible to @PRL_PRODUCT_NAME?" ),
+		tr( "@PRL_PRODUCT_NAME can't connect to your computer when it's asleep." ),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DISABLE_COPY_PAST_ALL_DISKS,
+		tr( "Your changes will disable copying and pasting files between %1 and the Mac. Are you sure you want to continue?" ),
+		tr( "To enable copying and pasting files between %1 and the Mac, all Mac disks or the Mac home folder must be shared with Windows, and all Windows disks must be shared with the Mac." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DISABLE_COPY_PAST_SHARE_WINDOWS,
+		tr( "Are you sure you only want to share the Mac home folder with Windows?" ),
+		tr( "If you do so, you'll be able to copy and paste files from the Mac to Windows only from the Mac home folder." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_OTHER_VM_HAS_SAME_EXTERNAl_BOOT,
+		tr( "The selected external device is already used by %1. Do you want to connect it anyway?" ),
+		tr( "If you click Yes now, the device will be disconnected from the virtual machine that is currently using it." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_INSTALL_MAJOR_UPDATE,
+		tr( "A new version of @PRL_PRODUCT_NAME is available! Would you like to upgrade now?" ),
+		tr( "@PRL_PRODUCT_NAME %1 is now available - you have %2." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DISABLE_WINDOWS7_LOOK,
+		tr( "You will be logged out of the system to disable the Windows 7 look. Are you sure you want to continue?" ),
+		tr( "When you log in again, Windows 8 will have its initial design." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_INSTALL_WINDOWS7_LOOK,
+		tr( "Making Windows 8 work like Windows 7 requires installing the applications Start8&trade; and ModernMix&trade; from Stardock. Do you want to continue?" ),
+		tr( "Updates to these apps are supported by Stardock. For more details, please see <a href=\"%1\">here</a>." ),
+		true,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_PAX_ENABLE_REMOTE_ACCESS,
+		tr( "Do you want to install " PRODUCT_NAME_SHORT " Access and work with your Mac and Windows applications from your iPad?" ),
+		tr( "The installation won't affect your work, as it's performed in the background. " PRODUCT_NAME_SHORT " Access can also be installed at a later time using <b>Preferences</b> > <b>Access</b>." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_DISABLE_VERBOSE_LOG,
+		tr( "Would you like to disable detailed log messages?" ),
+		tr( "Using detailed log messages may decrease your system performance and is recommended only when troubleshooting." ),
+		false,
+		PMT_QUESTION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_QUIT_VIRTUOZZO_ACCESS,
+		tr( "Are you sure you want to exit @PRL_PRODUCT_NAME?" ),
+		tr( "If you exit @PRL_PRODUCT_NAME, your computer will not be accessible from your iPad." ),
+		false,
+		PMT_QUESTION
+		);
+
+}
+
+void PrlErrStringsStorage::InitializeInformations()
+{
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_SUCCESS,
+		tr("Success."),
+		tr("The operation was successfully completed."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_DEV_ALREADY_CONNECTED,
+		tr("A device connecting error occurred."),
+		tr("The device %1 %2 is already connected."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_APPLY_CONFIG_NEEDS_REBOOT,
+		tr("The changes will take effect after you restart the virtual machine."),
+		tr("To apply the changes, shut down your guest operating system and then start the virtual machine again." ),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_VM_SPECIFY_GUEST_INSTALL_FILES,
+		tr("You need to specify the path to the installation source."),
+		tr("Specify the path to the guest operating system installation disc or another source of installation and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_TOOLS_WIN,
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine and start the installation."),
+		tr("If the installation does not start automatically, open your CD/DVD drive in Windows and double-click \"Setup.exe\"."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_TOOLS_LIN,
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, open a terminal, go to the CD/DVD drive directory and run the following command as root: \"sudo ./install\".<br><br>Note: In some Linux systems, you may need to unmount the installation CD and then mount it again using the following command: \"mount -o exec\", and only after that install " PRODUCT_NAME_SHORT " Tools."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_TOOLS_MAC,
+		tr("Click Continue to connect the " PRODUCT_NAME_SHORT " Tools installation CD to this virtual machine."),
+		tr("To install " PRODUCT_NAME_SHORT " Tools, open the " PRODUCT_NAME_SHORT " Tools CD in the virtual machine and double-click \"Install\"."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALL_GHOSTSCRIPT_ON_HOST,
+		tr("The document has been sent to a printer that is shared with the host computer."),
+		tr("To ensure proper printing from the virtual machine, it is recommended that you install a PostScript interpreter as described on the " PRODUCT_NAME_SHORT " <a href=\"%1\">website</a>" ),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PROBLEM_REPORT_POST_SUCCESS,
+		tr("A problem report with the ID number %1 has been sent to " PRODUCT_NAME_SHORT " to help us improve the product. Thank you for your feedback."),
+		tr("If you'd like to contact our support team to request help with your problem, please copy the problem report ID number, %1, and submit a support ticket to " PRODUCT_NAME_SHORT " Support."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_PD3_COMPAT_MODE,
+		tr("The virtual machine is running in compatibility mode. A newer version of " PRODUCT_NAME_SHORT " Tools needs to be installed. The installation will start automatically."),
+			tr("Please wait for the guest operating system to boot and start the " PRODUCT_NAME_SHORT " Tools installation, it might take a while. If the installation of " PRODUCT_NAME_SHORT " Tools does not start automatically, select Install " PRODUCT_NAME_SHORT " Tools on the Virtual Machine menu to start the installation manually."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_PD3_COMPAT_NO_MOUSE,
+		tr("The mouse in your virtual machine may work incorrectly. The problem will be solved automatically after the restart."),
+		tr("Windows requires some time to initialize the newly found devices after the virtual machine upgrade. During this time, your mouse may work incorrectly. If you need to log in to your virtual machine, use the keyboard."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_WARN_VM_BOOTCAMP_MODE,
+		tr("You are booting from your Boot Camp partition inside a virtual machine."),
+		tr("You will need to reactivate Windows and Microsoft Office. Do not change the virtual machine configuration without necessity as it may require another reactivation."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SWITCH_TO_FULLSCREEN,
+		tr("The virtual machine is about to enter the full screen mode."),
+		tr("Press <b>%1</b> to exit the full screen mode or press <b>%2</b> to release the mouse and keyboard from the virtual machine."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PRODUCT_ACTIVATED_SUCCESSFULLY,
+		tr("The current copy of @PRL_PRODUCT_NAME%1 was successfully activated."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_RUN_COMPRESSOR_WIN,
+		tr(PRODUCT_NAME_SHORT " Compressor helps you keep your virtual machine compact and efficient."),
+		tr(PRODUCT_NAME_SHORT " Compressor is an easy-to-use tool allowing you to clean up unused disk space in the virtual machine. Using this tool, you can significantly reduce the size of your virtual machine hard disks files and use the resources of your physical hard disks more efficiently."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_QUESTION_COHERENCE_NOTIFICATION,
+		tr("Your virtual machine is running in Coherence mode."),
+		tr("In this mode Windows applications are fully integrated into Mac OS X. Click the @PRL_PRODUCT_NAME icon in the Dock to open the Windows Start menu. For more information on Coherence and other view modes, <a href=\"%1\">read the online help</a> or <a href=\"%2\">watch the demo</a>." ),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_VM_HW_UPGRADE_COMPLETED,
+		tr("The virtual machine \"%1\" has been successfully upgraded."),
+		tr("You can now use this virtual machine."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_VM_HW_UPGRADE_VMXPHY_COMPLETED,
+		tr("The virtual machine \"%1\" has been successfully configured."),
+		tr("You can now use this virtual machine."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_NO_TEMPLATE_SUPPORT_IN_PLAYER_MODE,
+		tr("You are trying to open a virtual machine template."),
+		tr("Virtual machine templates cannot be used in " PRODUCT_NAME_SHORT " Desktop Express."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_ERR_NO_PVS_FILE_SPECIFIED_IN_PLAYER_MODE,
+		tr("You did not specify the virtual machine file you want to open."),
+		tr("Please type the path to the virtual machine file after the --openvm option."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_FEATURE_RESTRICTED,
+		tr("This feature is not available in this edition of " PRODUCT_NAME_SHORT " Desktop."),
+		tr("This edition contains only features that are necessary for working with Windows XP applications and files on Windows 7."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_ISIGHT_CAMERA_CONNECT_TO_VM,
+		tr("To use iSight camera in Windows, iSight drivers must be installed."),
+		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleiSightInstaller.exe to install iSight drivers. For details, see <a href=\"%1\">%2</a>."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_BLUETOOTH_USB_CONTROLLER_CONNECT_TO_VM,
+		tr("To use Apple Bluetooth USB controller in Windows, Apple Bluetooth drivers must be installed."),
+		tr("Please insert the Mac OS X installation DVD into your Mac - if it launches the Boot Camp installer in Windows, quit it. In Windows, browse to the /Drivers/Apple folder on the DVD and double-click AppleBluetoothInstaller.exe to install Apple Bluetooth drivers. For details, see <a href=\"%1\">%2</a>."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_CTRL_ALT_DEL_PRESSED,
+		tr("The \"Ctrl+Alt+Delete\" command is processed by both the host and guest operating systems."),
+		tr("To send the \"Ctrl+Alt+Delete\" command only to the virtual machine, press Ctrl+Alt+Insert instead."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_HIDDEN_MESSAGES_RESTORED,
+		tr("Hidden messages were restored."),
+		tr("All warning messages, that were disabled by checking <i>\'Do not show this message again\'</i> option are now enabled, and will be shown the next time they are applicable."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_USER_REGISTRATION_DLG_SEND_OK,
+		tr("Thank you for trying @PRL_PRODUCT_NAME"),
+		tr("A trial activation key was sent to your e-mail address."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SHARED_PROFILE_FOR_BOOTCAMP_VM,
+		tr("You have enabled Shared Profile for a Boot Camp virtual machine."),
+		tr("If you boot natively from the Boot Camp partition, Shared Profile will be automatically disabled."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_CONVERT_SUCCEDED_OTHER_OS,
+		tr("The virtual machine has been successfully converted."),
+		tr("You can now use this virtual machine with @PRL_PRODUCT_NAME."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_LOWMEMORY,
+		tr("Unable to switch to Coherence."),
+		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_STOPPED_LOWMEMORY,
+		tr("Coherence mode has been turned off."),
+		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and switch to the Coherence mode again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_SMOFF,
+		tr("Unable to switch to Coherence."),
+		tr("The " PRODUCT_NAME_SHORT " mouse synchronization service is not started. Reinstall " PRODUCT_NAME_SHORT " Tools and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_SMDISABLED,
+		tr("Unable to switch to Coherence."),
+		tr("Shut down the virtual machine, then choose Virtual Machine > Configure > Options > Advanced, and set <b>SmartMouse</b> mode to <b>On</b> or <b>Auto</b>."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_GUEST,
+		tr("Unable to switch to Coherence."),
+		tr("The virtual machine display configuration could not be applied. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_DSPCFGERROR_HOST,
+		tr("Unable to switch to Coherence."),
+		tr("The information about your display configuration could not be retrieved. Please try again or contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_STOPPED_DSPCFGERROR_GUEST,
+		tr("Coherence mode has been turned off."),
+		tr("The virtual machine display configuration could not be applied. Please try again. If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_NOTENOUGHDISPLAYS,
+		tr("Unable to switch to Coherence."),
+		tr("The amount of video memory set for this virtual machine is too low. Increase the amount and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_SERVERBUSY,
+		tr("An error occurred while switching to Coherence. Please try again."),
+		tr("If the problem persists, please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_CANNOTSTART_LINUX_3D,
+		tr("Unable to switch to Coherence."),
+		tr("Please disable Linux desktop visual effects."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_COHERENCE_STOPPED_LINUX_3D,
+		tr("Coherence mode has been turned off."),
+		tr("Coherence is not available when Linux desktop visual effects are enabled."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REMAP_VM_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
+		tr("This key sequence is already used to perform the \"%1\" action."),
+		tr("Before you can configure this key sequence to perform another action, you should assign a different key combination to the \"%1\" action."),
+		false,
+		PMT_INFORMATION
+		);
+
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_VM_SHORTCUT,
+		tr("This key sequence is already in use by the shortcut <br>\"%1\"."),
+		tr("Configure the shortcut to use another key sequence or remove the shortcut and try again."),
+		false,
+		PMT_INFORMATION
+		);
+
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REMAP_PD_KEY_SEQUENCE_ALREADY_USED_BY_PD_SHORTCUT,
+		tr("This key sequence is already used to perform the \"%1\" action."),
+		tr("Configure the shortcut to use another key sequence."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK,
+		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ACTIVATED_OK_NO_SUPPORT_CODE,
+		tr("Your copy of @PRL_PRODUCT_NAME has been successfully registered, but the support code could not be created at the moment. To get the support code later, please log in to your account on the " PRODUCT_NAME_SHORT " website and browse to <a href=\"%1\">the support options area</a>."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED,
+		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_PRODUCT_ALREADY_REGISTERED_NO_SUPPORT_CODE,
+		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account, but the support code could not be created. To get the support code, please log in to your account on the <a href=\"%1\">" PRODUCT_NAME_SHORT " website</a> and browse to the registered products area."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_ACCOUNT_SUCCESSFULLY_UPDATED,
+		tr("This key is already registered to your account. Changes to your account information have been applied."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_UNINSTALLING_HOST_ANTIVIRUS_SUCCESS,
+		tr("%1 for Mac was removed successfully."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SOFTWARE_UP_TO_DATE,
+		tr("You have the latest version of @PRL_PRODUCT_NAME."),
+		tr("There are no new software updates available at this time."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PASSWORD_RESET_ENTER_EMAIL,
+		tr("Please enter your email address."),
+		tr("We will send you an email with a link to reset your password."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_PASSWORD_RESET_CHECK_EMAIL,
+		tr("The instructions on resetting your password have been sent to your email address."),
+		tr("Please check your email and follow those instructions."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REGISTRATION_ACCOUNT_ALREADY_USED,
+		tr("There is an existing account associated with this email. To register your copy, please log in to this account."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_OK,
+		tr("Thank you for registering your copy of @PRL_PRODUCT_NAME."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_INVALID_KEY,
+		tr("This copy of @PRL_PRODUCT_NAME cannot be registered because it was activated with an invalid product key. Please follow the link to learn more: <a href=\"%1\">" PRODUCT_NAME_SHORT " Knowledge Base</a>."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_INVALID_EMAIL,
+		tr("The e-mail address you have specified is invalid. Correct the address and try again."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_ALREADY_REGISTERED,
+		tr("Your copy of @PRL_PRODUCT_NAME is already registered to this user account."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_REQUIRED_FIELDS,
+		tr("Not all required fields are filled."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_INVALID_USER,
+		tr("Your activation key for @PRL_PRODUCT_NAME is already registered by another user. Please contact the " PRODUCT_NAME_SHORT " support team for assistance."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_CONNECTION,
+		tr("Please check your Internet connection and try again."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INVALID_LOGIN_OR_PASS,
+		tr("The email or password you entered is invalid. Please check your email and password and try again."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_REG_GENERAL_ERROR,
+		tr("Check your Internet connection and try again. If the problem persists, follow <a href=\"%1\">this link</a> to register your copy of @PRL_PRODUCT_NAME."),
+		tr(""),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_SHARED_GUEST_APPS_OPEN_DOC_NEED_ADD_USER_SHARED_FOLDER,
+		tr("To be able to access \"%1\" from the virtual machine, you need to share the folder containing this file with the virtual machine."),
+		tr("To add a shared folder, open the virtual machine configuration, choose Options > Shared Folders, and specify the folder you want to share."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_FIREWALL_MAY_BLOCK_REMOTE_MANAGE,
+		tr("@PRL_PRODUCT_NAME will be allowed to communicate through firewall."),
+		tr("If you are unable to connect to @PRL_PRODUCT_NAME remotely, please open the firewall settings and make sure that @PRL_PRODUCT_NAME is allowed to accept incoming connections and port %1 is not blocked by the firewall."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_VM_CLEANUP_NOTHING_TO_DO,
+		tr( "%1 doesn't take any additional disk space."),
+		tr("@PRL_PRODUCT_NAME could not find any data to compress or remove to free up the space used by this virtual machine."),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_USB3_DRIVERS_REQUIRED_WIN,
+		tr("\"%1\" may not have USB 3.0 drivers installed."),
+		tr("To use USB 3.0 devices with this virtual machine, please download the USB 3.0 driver and install it in Windows."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_USB3_DRIVERS_REQUIRED_OTHER,
+		tr("\"%1\" may not have USB 3.0 drivers installed."),
+		tr("To use USB 3.0 devices with this virtual machine, you may need to configure it to support USB 3.0."),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_IPN_MESSAGE,
+		tr( "%1" ),
+		tr( "%1" ),
+		false,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_INSTALLED_GUEST_APPS_DIALOG,
+		tr( "We noticed that you have just installed new applications. Do you want to add them to the Mac Launchpad?" ),
+		tr( "Please choose which apps you want to add." ),
+		true,
+		PMT_INFORMATION
+		);
+
+	REGISTER_ERROR_STRING(
+		GUI_INFO_FEEDBACK_SUCCESS,
+		tr( "Thank you. Your feedback has been successfully sent to " PRODUCT_NAME_SHORT "." ),
+		tr( "" ),
+		false,
+		PMT_INFORMATION
+		);
+}
+
+void PrlErrStringsStorage::Initialize()
+{
+	InitializePSErrorMessages();
+	InitializeWarnings();
+	InitializeInformations();
+	InitializeCritical();
+	InitializeQuestions();
+	InitializeAnswers();
 }

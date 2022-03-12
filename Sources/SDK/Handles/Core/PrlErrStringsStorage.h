@@ -113,9 +113,35 @@ private:
 	 */
 	PrlErrStringsStorage();
 	/**
-	 * Initializes errors strings database
+	 * Initializes all errors strings database
 	 */
 	void Initialize();
+
+	/**
+	 * Initializes all answers strings database
+	 */
+	void InitializeAnswers();
+
+	/**
+	 * Initializes all questions strings database
+	 */
+	void InitializeQuestions();
+
+	/**
+	 * Initializes all informations strings database
+	 */
+	void InitializeInformations();
+
+	/**
+	 * Initializes all warnings strings database
+	 */
+	void InitializeWarnings();
+
+	/**
+	 * Initializes all warnings strings database
+	 */
+	void InitializeCritical();
+
 	/**
 	 * Initializes Dispatcher Server specific errors strings database
 	 */
