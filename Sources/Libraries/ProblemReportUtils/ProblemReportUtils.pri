@@ -28,4 +28,6 @@ PROJ_FILE = $$PWD/ProblemReportUtils.pro
 QTCONFIG = core xml network
 !include(../../../Sources/Build/qmake/staticlib.pri): error(include error)
 
+include($$EXT_LEVEL/libtar/libtar/libtar.pri)
+unix: include($$EXT_LEVEL/zlib/zlib.pri)
 win32: include($$LIBS_LEVEL/WmiWrap/WmiWrap.pri)
