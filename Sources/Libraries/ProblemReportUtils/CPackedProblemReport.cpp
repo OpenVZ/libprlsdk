@@ -24,6 +24,8 @@
  * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
+#include <libtar.h>
+#include <zlib.h>
 
 #include "External/libtar/libtar/compat/config.h"
 #include "External/libtar/libtar/lib/libtar.h"
