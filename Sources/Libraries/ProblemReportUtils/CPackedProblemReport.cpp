@@ -24,11 +24,9 @@
  * Our contact details: Virtuozzo International GmbH, Vordergasse 59, 8200
  * Schaffhausen, Switzerland; http://www.virtuozzo.com/.
  */
+
 #include <libtar.h>
 #include <zlib.h>
-
-#include "External/libtar/libtar/compat/config.h"
-#include "External/libtar/libtar/lib/libtar.h"
 #include <prlcommon/Interfaces/VirtuozzoTypes.h>
 #include <prlcommon/Std/PrlAssert.h>
 
@@ -44,12 +42,6 @@
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
-
-#ifdef HAVE_LIBZ
-#include "External/zlib/zlib.h"
-#endif
-
-#include "External/libtar/libtar/compat/compat.h"
 
 #ifdef _WIN_
 	#include <io.h>
@@ -80,15 +72,31 @@
 
 const int g_maxSizeToReadFromLog = 16*1024*1024;
 
-static tarfd_t gzopen_frontend(const char *pathname, int oflags, int mode)
+namespace Compressor
+{
+
+struct Zlib : private QMap<int, gzFile>
+{
+	Zlib() : QMap<int, gzFile>(), m_count(0)
+	{
+	}
+
+	int open(const char *path, int oflags, int mode);
+	int close(int index);
+	ssize_t read(int index, void *buf, size_t len);
+	ssize_t write(int index, const void *buf, size_t len);
+
+private:
+	int m_count;
+	QMutex m_lock;
+} s_zlib;
+
+int Zlib::open(const char *pathname, int oflags, int mode)
 {
 	(void)mode;
 	const char *gzoflags = 0;
-	gzFile gzf = 0;
-
-#ifndef _WIN_
-	int fd = -1;
-#endif
+	gzFile gzf;
+	int fd;
 
 	switch (oflags & O_ACCMODE)
 	{
@@ -101,48 +109,92 @@ static tarfd_t gzopen_frontend(const char *pathname, int oflags, int mode)
 	default:
 	case O_RDWR:
 		errno = EINVAL;
-		return TAR_INVALID_FD;
+		return -1;
 	}
 
-#ifndef _WIN_
-	fd = open(pathname, oflags, mode);
+	fd = ::open(pathname, oflags, mode);
 	if (fd == -1)
-		return TAR_INVALID_FD;
+		return -1;
 
 	if ((oflags & O_CREAT) && fchmod(fd, mode))
-		return TAR_INVALID_FD;
-
-	gzf = gzdopen(fd, gzoflags);
-#else
-	gzf = gzopen(pathname, gzoflags);
-#endif
-	if (!gzf)
 	{
-		errno = ENOMEM;
-		return TAR_INVALID_FD;
+		::close(fd);
+		return -1;
 	}
 
-	return (tarfd_t)gzf;
+	gzf = ::gzdopen(fd, gzoflags);
+	if (!gzf)
+	{
+		::close(fd);
+		errno = ENOMEM;
+		return -1;
+	}
+
+	QMutexLocker lock(&m_lock);
+	return insert(m_count++, gzf).key();
 }
 
-static int gzclose_frontend(tarfd_t fd)
+int Zlib::close(int index)
 {
-	return gzclose((gzFile)fd);
+	QMutexLocker lock(&m_lock);
+	gzFile f = take(index);
+	if (!f) {
+		errno = EINVAL;
+		return -1;
+	}
+	return ::gzclose(f);
 }
 
-static ssize_t gzread_frontend(tarfd_t fd, void * buf, size_t len)
+ssize_t Zlib::read(int index, void *buf, size_t len)
 {
-	// NOTE : expected 'len' maximum value is T_BLOCKSIZE, so truncate unsigned is safe
-	return gzread((gzFile)fd, buf, (unsigned)len);
+	QMutexLocker lock(&m_lock);
+	const_iterator i = find(index);
+	if (i == end()) {
+		errno = EINVAL;
+		return -1;
+	}
+	return ::gzread(i.value(), buf, len);
 }
 
-static ssize_t gzwrite_frontend(tarfd_t fd, const void * buf, size_t len)
+ssize_t Zlib::write(int index, const void *buf, size_t len)
 {
-	// NOTE : expected 'len' maximum value is T_BLOCKSIZE, so truncate unsigned is safe
-	return gzwrite((gzFile)fd, buf, (unsigned)len);
+	QMutexLocker lock(&m_lock);
+	const_iterator i = find(index);
+	if (i == end()) {
+		errno = EINVAL;
+		return -1;
+	}
+	return ::gzwrite(i.value(), buf, len);
 }
 
-static tartype_t gztype = { gzopen_frontend, gzclose_frontend, gzread_frontend, gzwrite_frontend };
+int gzopen_frontend(const char *pathname, int oflags, int mode)
+{
+	return s_zlib.open(pathname, oflags, mode);
+}
+
+int gzclose_frontend(int index)
+{
+	return s_zlib.close(index);
+}
+
+ssize_t gzread_frontend(int index, void *buf, size_t len)
+{
+	return s_zlib.read(index, buf, len);
+}
+
+ssize_t gzwrite_frontend(int index, const void *buf, size_t len)
+{
+	return s_zlib.write(index, buf, len);
+}
+
+tartype_t s_interface = {
+	(openfunc_t)gzopen_frontend,
+	gzclose_frontend,
+	gzread_frontend,
+	gzwrite_frontend
+};
+
+} // namespace Compressor
 
 PRL_RESULT CPackedProblemReport::createInstance( CPackedProblemReport::packedReportSide side ,
 								 CPackedProblemReport ** ppReport,
@@ -313,7 +365,7 @@ PRL_RESULT CPackedProblemReport::extractArchive( const QString & strPath )
 	WRITE_TRACE(DBG_INFO, "Extract incoming archive %s to directoty %s",
 					QSTR2UTF8( m_strArchPath ),
 					QSTR2UTF8( strPath ) );
-	if ( tar_open(&t, m_strArchPath.toUtf8().data(), &gztype,O_RDONLY, 0, 0 ) == -1 )
+	if ( tar_open(&t, m_strArchPath.toUtf8().data(), &Compressor::s_interface, O_RDONLY, 0, 0 ) == -1 )
 	{
 		WRITE_TRACE(DBG_FATAL, "tar_open(): %s\n", strerror(errno));
 		return PRL_ERR_FAILURE;
@@ -329,6 +381,7 @@ PRL_RESULT CPackedProblemReport::extractArchive( const QString & strPath )
 	if (tar_close(t) != 0)
 	{
 		WRITE_TRACE(DBG_FATAL, "tar_close(): %s\n", strerror(errno));
+		return PRL_ERR_FAILURE;
 	}
 
 	// search main xml Descriptor in unpacked archive and deserialize it to
@@ -732,44 +785,35 @@ QStringList CPackedProblemReport::createReportFilesList()
 	lstFiles += QFileInfo(m_strTempDirPath + QString("/") + PR_PACKED_REP_MAIN_XML).absoluteFilePath();
 
 	lstFiles.remove( QString() );
-	return lstFiles.toList();
-}
-
-static int checkOnQuitCallback( void * pParam )
-{
-	CPackedProblemReport* pReport = dynamic_cast<CPackedProblemReport*>((CPackedProblemReport*)pParam);
-	if ( pReport && pReport->isQuitFromPack() )
-		return 1;
-
-	return 0;
+	return lstFiles.values();
 }
 
 PRL_RESULT CPackedProblemReport::packReport()
 {
 	m_bQuitFromPack = false;
-		saveMainXml();
-		QStringList lstFiles = createReportFilesList();
+	saveMainXml();
+	QStringList lstFiles = createReportFilesList();
 
 	TAR *t = NULL;
 
 	if ( tar_open( &t,
 					m_strArchPath.toUtf8().data(),
-					&gztype,
+					&Compressor::s_interface,
 					O_WRONLY | O_CREAT,
 					0644,
 					0) == -1 )
 	{
 		WRITE_TRACE( DBG_FATAL, "tar_open(): %s\n", strerror(errno) );
+		return PRL_ERR_FAILURE;
 	}
 
-	for(const QString& strPath : lstFiles )
+	for (const QString& strPath : lstFiles )
 	{
 		QString strPathToSave = QFileInfo(m_strTempDirPath).fileName() + QString("/");
 		strPathToSave += QFileInfo(strPath).fileName();
 		if ( tar_append_tree( t,
-							strPath.toUtf8().data(),
-							strPathToSave.toUtf8().data(),
-								checkOnQuitCallback, this ) != 0 )
+								strPath.toUtf8().data(),
+								strPathToSave.toUtf8().data() ) != 0 )
 		{
 			WRITE_TRACE(DBG_FATAL, "tar_append_tree(\"%s\", \"%s\"): %s\n",
 							QSTR2UTF8( m_strTempDirPath ),
@@ -793,7 +837,6 @@ PRL_RESULT CPackedProblemReport::packReport()
 		tar_close(t);
 		return PRL_ERR_FAILURE;
 	}
-
 
 	if (tar_close(t) != 0)
 	{
