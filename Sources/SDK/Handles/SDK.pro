@@ -54,7 +54,7 @@ exists(/usr/lib64/libboost_filesystem-mt*) : BOOST_FILESYSTEM = -lboost_filesyst
 BOOST_SYSTEM = -lboost_system
 exists(/usr/lib64/libboost_system-mt*) : BOOST_SYSTEM = -lboost_system-mt
 
-LIBS += -lprl_xml_model -lprlcommon $${BOOST_FILESYSTEM} $${BOOST_SYSTEM}
+LIBS += -lprl_xml_model -lprlcommon $${BOOST_FILESYSTEM} $${BOOST_SYSTEM} -ltar -lz
 
 libsdk_only {
 	# set up rpath to qt libs
