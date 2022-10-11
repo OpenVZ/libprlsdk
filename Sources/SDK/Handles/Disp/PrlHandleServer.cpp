@@ -256,7 +256,7 @@ void PrlHandleServer::CleanRegisteredThreads()
 		QList<SmartPtr<CNotificationThread> >::Iterator it = list->begin();
 		while ( it != list->end() ) {
 			SmartPtr<CNotificationThread> &thread = *it;
-			if ( thread->isRunning() ) {
+			if ( NULL != thread.getImpl() && thread->isRunning() ) {
 				bCallAgain = true;
 				++it;
 			}
