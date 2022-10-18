@@ -454,9 +454,12 @@ void ProcessFinPackage( const SmartPtr<IOPackage> &p )
 			Uuid_t parentUuid;
 			Uuid::dump( pRunProgramJob->GetJobUuid(), parentUuid );
 			::memcpy( pResponse->header.parentUuid,	parentUuid, sizeof(Uuid_t) );
-			IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(pResponse);
-			if (job.isValid())
-				pVm->GetIOChannel()->waitForSend(job);
+			if ( pVm->GetIOChannel() )//Perhaps job object wasn't initialized yet
+			{
+				IOSendJob::Handle job = pVm->GetIOChannel()->sendPackage(pResponse);
+				if (job.isValid())
+					pVm->GetIOChannel()->waitForSend(job);
+			}
 		}
 	}
 }
