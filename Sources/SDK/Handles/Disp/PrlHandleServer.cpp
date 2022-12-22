@@ -207,7 +207,7 @@ void PrlHandleServer::RegisterThreadToDelete ( SmartPtr<CNotificationThread> &th
 
 		// SDK context switcher will catch DeferredDelete event
 		QCoreApplication::postEvent( PrlContextSwitcher::Instance(),
-									 new QEvent(QEvent::DeferredDelete) );
+									 new QDeferredDeleteEvent );
 	}
 	else {
 		//Wait until thread finalized it work
@@ -237,8 +237,7 @@ void PrlHandleServer::RegisterThreadToDeleteFinMech(SmartPtr<CNotificationThread
 	locker.unlock();
 
 	// SDK context switcher will catch DeferredDelete event
-	QCoreApplication::postEvent( PrlContextSwitcher::Instance(),
-									 new QEvent(QEvent::DeferredDelete) );
+	QCoreApplication::postEvent( PrlContextSwitcher::Instance(), new QDeferredDeleteEvent );
 }
 
 void PrlHandleServer::CleanRegisteredThreads()
@@ -271,8 +270,7 @@ void PrlHandleServer::CleanRegisteredThreads()
 
 	if ( bCallAgain )
 		// SDK context switcher will catch DeferredDelete event
-		QCoreApplication::postEvent( PrlContextSwitcher::Instance(),
-									 new QEvent(QEvent::DeferredDelete) );
+		QCoreApplication::postEvent( PrlContextSwitcher::Instance(), new QDeferredDeleteEvent );
 }
 
 void PrlHandleServer::StopTransport()

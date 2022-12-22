@@ -137,9 +137,9 @@ void CNotificationThread::run ()
 	pServNotifier->moveToThread( QCoreApplication::instance()->thread() );
 	pVmNotifier->moveToThread( QCoreApplication::instance()->thread() );
 	pMapper->moveToThread( QCoreApplication::instance()->thread() );
-	QCoreApplication::postEvent( pServNotifier, new QEvent(QEvent::DeferredDelete) );
-	QCoreApplication::postEvent( pVmNotifier, new QEvent(QEvent::DeferredDelete) );
-	QCoreApplication::postEvent( pMapper, new QEvent(QEvent::DeferredDelete) );
+	QCoreApplication::postEvent( pServNotifier, new QDeferredDeleteEvent );
+	QCoreApplication::postEvent( pVmNotifier, new QDeferredDeleteEvent );
+	QCoreApplication::postEvent( pMapper, new QDeferredDeleteEvent );
 }
 
 void CNotificationThread::NotificationStarted ()
