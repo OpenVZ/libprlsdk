@@ -204,7 +204,7 @@ PRL_RESULT PrlHandleVmDeviceHardDrive::GetBlockSize(PRL_UINT32_PTR pnBytes)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	CHECK_HARD_DISK_ELEM
-	*pnBytes = m_pVmHardDisk->getBlockSize();
+	*pnBytes = m_pVmHardDisk->getPhysicalBlockSize();
 	return (PRL_ERR_SUCCESS);
 }
 
@@ -212,7 +212,7 @@ PRL_RESULT PrlHandleVmDeviceHardDrive::SetBlockSize(PRL_UINT32 nBytes)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	CHECK_HARD_DISK_ELEM
-	m_pVmHardDisk->setBlockSize(nBytes);
+	m_pVmHardDisk->setPhysicalBlockSize(nBytes);
 	return (PRL_ERR_SUCCESS);
 }
 
