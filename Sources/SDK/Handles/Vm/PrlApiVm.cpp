@@ -2213,6 +2213,92 @@ PRL_METHOD( PrlVmCfg_SetCpuSocketsCount ) (
 	return (pVm->SetCpuSocketCount(nVmCpuSocketsCount));
 }
 
+PRL_METHOD( PrlVmCfg_GetChipsetType ) (
+		PRL_HANDLE hVmCfg,
+		PRL_CHIPSET_TYPE_PTR nChipsetType
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nChipsetType Type =%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nChipsetType
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetChipsetType(nChipsetType));
+}
+
+PRL_METHOD( PrlVmCfg_SetChipsetType ) (
+		PRL_HANDLE hVmCfg,
+		PRL_CHIPSET_TYPE nChipsetType
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nChipsetType Type =%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nChipsetType
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return (PRL_ERR_INVALID_ARG);
+	if (nChipsetType < PRL_CHIPSET_TYPE::CHIP_MIN_NUMBER || nChipsetType > PRL_CHIPSET_TYPE::CHIP_MAX_NUMBER )
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->SetChipsetType(nChipsetType));
+}
+
+PRL_METHOD( PrlVmCfg_GetChipsetVersion ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR nChipsetVersion
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nChipsetVersion Version =%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nChipsetVersion
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetChipsetVersion(nChipsetVersion));
+}
+
+PRL_METHOD( PrlVmCfg_SetChipsetVersion ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nChipsetVersion
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nChipsetVersion Version =%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nChipsetVersion
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->SetChipsetVersion(nChipsetVersion));
+}
+
 PRL_METHOD( PrlVmCfg_GetCpuMode ) (
 		PRL_HANDLE hVmCfg,
 		PRL_CPU_MODE_PTR pnVmCpuMode

@@ -1124,6 +1124,40 @@ public:
 	PRL_RESULT SetCpuSocketCount(PRL_UINT32 nVmCpuSocketCount);
 
 	/**
+	 * Returns Chipset type of VM
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_NO_DATA - VM configuration do not has necessary data
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetChipsetType(PRL_CHIPSET_TYPE_PTR pnVmChipsetType);
+
+	/**
+	 * Sets Chipset Type for VM
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetChipsetType(PRL_CHIPSET_TYPE nVmChipsetType);
+
+	/**
+	 * Returns Chipset Version of VM
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_NO_DATA - VM configuration do not has necessary data
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetChipsetVersion(PRL_UINT32_PTR pnVmChipsetVersion);
+
+	/**
+	 * Sets Chipset Version for VM
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetChipsetVersion(PRL_UINT32 nVmChipsetVersion);
+
+	/**
 	 * Returns VM CPU mode
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:

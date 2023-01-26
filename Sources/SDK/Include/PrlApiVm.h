@@ -15904,6 +15904,79 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 		PRL_UINT32 nVmCpuSocketsCount
 		) );
 
+/* Returns the chipset type in the specified virtual machine.
+   Parameters
+   hVmCfg :       A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   nChipsetType :     The type of chipset PRL_CHIPSET_TYPE_PTR
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlVmCfg_GetChipsetType, (
+		PRL_HANDLE           hVmCfg,
+		PRL_CHIPSET_TYPE_PTR nChipsetType
+		) );
+
+/* Sets the chipset type in the specified virtual machine.
+   Parameters
+   hVmCfg :       A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   nChipsetType :     The type of chipset PRL_CHIPSET_TYPE
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlVmCfg_SetChipsetType, (
+		PRL_HANDLE       hVmCfg,
+		PRL_CHIPSET_TYPE nChipsetType
+		) );
+
+
+/* Returns the chipset version in the specified virtual machine.
+   Parameters
+   hVmCfg :       A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   nChipsetVersion :     The type of chipset PRL_CHIPSET_TYPE_PTR
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlVmCfg_GetChipsetVersion, (
+		PRL_HANDLE           hVmCfg,
+		PRL_UINT32_PTR nChipsetVersion
+		) );
+
+/* Sets the chipset version in the specified virtual machine.
+   Parameters
+   hVmCfg :       A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   nChipsetVersion :     The type of chipset version
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlVmCfg_SetChipsetVersion, (
+		PRL_HANDLE       hVmCfg,
+		PRL_UINT32 nChipsetVersion
+		) );
+
 /* Obtains the backup directory path of the specified virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION

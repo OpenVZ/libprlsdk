@@ -1232,6 +1232,34 @@ PRL_RESULT PrlHandleVmCfg::SetCpuSocketCount(PRL_UINT32 nVmCpuSocketCount)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleVmCfg::GetChipsetType(PRL_CHIPSET_TYPE_PTR pnVmChipsetType)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnVmChipsetType = (PRL_CHIPSET_TYPE) m_VmConfig.getVmHardwareList()->getChipset()->getType();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::SetChipsetType(PRL_CHIPSET_TYPE nVmChipsetType)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VmConfig.getVmHardwareList()->getChipset()->setType(static_cast<unsigned int>(nVmChipsetType));
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::GetChipsetVersion(PRL_UINT32_PTR pnVmChipsetVersion)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnVmChipsetVersion = (PRL_UINT32) m_VmConfig.getVmHardwareList()->getChipset()->getVersion();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::SetChipsetVersion(PRL_UINT32 pnVmChipsetVersion)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VmConfig.getVmHardwareList()->getChipset()->setVersion(pnVmChipsetVersion);
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleVmCfg::GetCpuMode(PRL_CPU_MODE_PTR pnVmCpuMode)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
