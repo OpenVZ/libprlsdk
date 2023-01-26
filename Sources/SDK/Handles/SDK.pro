@@ -32,6 +32,7 @@ QT = core network xml
 include(SDK.deps)
 include(SDKConfig.pri)
 
+DEFINES += BOOST_BIND_GLOBAL_PLACEHOLDERS
 RESOURCES     = sdk.qrc
 TRANSLATIONS += sdk_err_strings_cs.ts\
 	sdk_err_strings_en.ts\
