@@ -2706,24 +2706,6 @@ PRL_RESULT PrlHandleVmCfg::SetCapabilitiesMask(PRL_UINT32 nCapMask)
 	return PRL_ERR_SUCCESS;
 }
 
-PRL_RESULT PrlHandleVmCfg::GetNetfilterMode(PRL_NETFILTER_MODE_PTR pnMode)
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-
-	*pnMode = m_VmConfig.getCtSettings()->getNetfilterMode();
-
-	return PRL_ERR_SUCCESS;
-}
-
-PRL_RESULT PrlHandleVmCfg::SetNetfilterMode(PRL_NETFILTER_MODE nMode)
-{
-	SYNCHRO_INTERNAL_DATA_ACCESS
-
-	m_VmConfig.getCtSettings()->setNetfilterMode(nMode);
-
-	return PRL_ERR_SUCCESS;
-}
-
 PRL_RESULT PrlHandleVmCfg::GetFeaturesMask(PRL_UINT32_PTR pnOn, PRL_UINT32_PTR pnOff)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

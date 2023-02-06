@@ -2503,18 +2503,6 @@ public:
 	PRL_RESULT SetCapabilitiesMask(PRL_UINT32 nCapMask);
 
 	/**
-	 * Gets netfilter mode specified inside the CT.
-	 * @param pointer to output buffer for storing result.
-	 */
-	PRL_RESULT GetNetfilterMode(PRL_NETFILTER_MODE_PTR pnMode);
-
-	/**
-	 * Sets netfilter mode inside the CT.
-	 * @param the netfilter mode to set.
-	 */
-	PRL_RESULT SetNetfilterMode(PRL_NETFILTER_MODE nMode);
-
-	/**
 	 * Gets features mask specified inside the CT.
 	 * @param buffer for storing result.
 	 */

@@ -11069,49 +11069,6 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
 
 /* %CT_ONLY%
 
-   Returns netfilter mode specified inside the CT.
-   Parameters
-   hVmCfg : A handle of type PHT_VM_CONFIGURATION
-            identifying the virtual machine configuration.
-   pnMode  : [out] A pointer to a variable that receives the result.
-   Returns
-   PRL_RESULT. Possible values:
-
-   PRL_ERR_INVALID_ARG - invalid handle or null pointer was passed was passed.
-
-   PRL_ERR_SUCCESS - function completed successfully.
-   See Also
-   PrlVmCfg_SetNetfilterMode                                 */
-PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
-			PrlVmCfg_GetNetfilterMode, (
-		PRL_HANDLE hVmCfg,
-		PRL_NETFILTER_MODE_PTR pnMode
-		) );
-
-
-/* %CT_ONLY%
-
-   Allows to set netfilter mode inside the CT.
-   Parameters
-   hVmCfg : A handle of type PHT_VM_CONFIGURATION
-            identifying the virtual machine configuration.
-   nMode  : [in] The netfilter mode to set.
-   Returns
-   PRL_RESULT. Possible values:
-
-   PRL_ERR_INVALID_ARG - invalid handle was passed.
-
-   PRL_ERR_SUCCESS - function completed successfully.
-   See Also
-   PrlVmCfg_GetNetfilterMode                                     */
-PRL_METHOD_DECL( VIRTUOZZO_API_VER_5,
-			PrlVmCfg_SetNetfilterMode, (
-		PRL_HANDLE hVmCfg,
-		PRL_NETFILTER_MODE nMode
-		) );
-
-/* %CT_ONLY%
-
    Sets a features inside the CT.
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION

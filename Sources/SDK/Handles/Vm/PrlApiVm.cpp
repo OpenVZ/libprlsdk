@@ -4923,40 +4923,6 @@ PRL_METHOD( PrlVmCfg_SetCapabilitiesMask ) (
 	return pVm->SetCapabilitiesMask(nCapMask);
 }
 
-PRL_METHOD( PrlVmCfg_GetNetfilterMode ) (
-		PRL_HANDLE hVmCfg,
-		PRL_NETFILTER_MODE_PTR pnMode
-		)
-{
-	SYNC_CHECK_API_INITIALIZED
-
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnMode=%p)", __FUNCTION__, hVmCfg, pnMode);
-
-	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) || PRL_WRONG_PTR(pnMode))
-		return PRL_ERR_INVALID_ARG;
-
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
-
-	return pVm->GetNetfilterMode(pnMode);
-}
-
-PRL_METHOD( PrlVmCfg_SetNetfilterMode ) (
-		PRL_HANDLE hVmCfg,
-		PRL_NETFILTER_MODE nMode
-		)
-{
-	SYNC_CHECK_API_INITIALIZED
-
-	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nMode=%.8X)", __FUNCTION__, hVmCfg, nMode);
-
-	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
-		return PRL_ERR_INVALID_ARG;
-
-	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
-
-	return pVm->SetNetfilterMode(nMode);
-}
-
 PRL_METHOD( PrlVmCfg_GetFeaturesMask ) (
 		PRL_HANDLE hVmCfg,
 		PRL_UINT32_PTR pnOn,

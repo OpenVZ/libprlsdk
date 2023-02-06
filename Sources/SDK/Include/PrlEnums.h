@@ -2104,19 +2104,6 @@ typedef enum _PRL_CT_CAPMASK
 typedef PRL_CT_CAPMASK* PRL_CT_CAPMASK_PTR;
 
 /**
- * Netfilter modes list
- */
-typedef enum _PRL_NETFILTER_MODE
-{
-	PCNM_NOT_SET	= 0,
-	PCNM_DISABLED	= 1,
-	PCNM_STATELESS	= 2,
-	PCNM_STATEFUL	= 3,
-	PCNM_FULL		= 4,
-} PRL_NETFILTER_MODE;
-typedef PRL_NETFILTER_MODE* PRL_NETFILTER_MODE_PTR;
-
-/**
  * CT Features
  */
 typedef enum _PRL_CT_FEATURES
