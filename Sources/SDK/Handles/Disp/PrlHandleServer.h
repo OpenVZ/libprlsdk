@@ -2,7 +2,7 @@
  * PrlHandleServer.h
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -211,6 +211,13 @@ public://VM operations calls
 	 * @return pointer to generated job instance
 	 */
 	PrlHandleJobPtr DspCmdVmCancelCompressor(PRL_CONST_STR sVmUuid);
+
+	/**
+	 * Update Nvram for VM
+	 * @param VM uuid
+	 * @return pointer to generated job instance
+	 */
+	PrlHandleJobPtr DspCmdVmUpdateNvram(PRL_CONST_STR sVmUuid);
 	/**
 	* Commit Tools section VM config at runtime
 	* @param VM uuid

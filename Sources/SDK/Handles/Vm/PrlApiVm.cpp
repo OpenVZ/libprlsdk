@@ -2,7 +2,7 @@
  * PrlApiVm.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -12360,3 +12360,42 @@ PRL_ASYNC_METHOD( PrlCt_Reinstall ) (
 	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(),
 			PrlCt_Reinstall, (hVm, sOsTemplate, nFlags))
 }
+
+
+PRL_HANDLE PrlVm_UpdateNvram_Impl(PRL_HANDLE hVm)
+{
+	ONE_HANDLE_VM_METH_IMPLEMENTATION(UpdateNvram, PJOC_VM_UPDATE_NVRAM)
+}
+
+PRL_ASYNC_METHOD( PrlVm_UpdateNvram ) (
+		PRL_HANDLE hVm
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p)",
+		__FUNCTION__,
+		hVm
+		);
+
+	ASYNC_CHECK_API_INITIALIZED(PJOC_VM_UPDATE_NVRAM)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlVm_UpdateNvram, (hVm))
+}
+
+PRL_METHOD( PrlVmCfg_UpdateNvram ) (
+		PRL_HANDLE hVmCfg
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p)",
+		__FUNCTION__,
+		hVmCfg
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->UpdateNvram());
+}
+

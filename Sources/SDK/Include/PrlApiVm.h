@@ -15934,6 +15934,38 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 		PRL_UINT32 nChipsetVersion
 		) );
 
+/* Update NVRAM in the specified virtual machine.
+   Parameters
+   hVm :          A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_7,
+		PrlVm_UpdateNvram, (
+		PRL_HANDLE hVm
+		) );
+
+/* Sets new 4M NVRAM file in config for the virtual machine.
+   Parameters
+   handle :      A handle of type PHT_VIRTUAL_MACHINE
+                 identifying the virtual machine.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid PHT_VIRTUAL_MACHINE handle or
+   NULL pointer to the output buffer was specified.
+
+   PRL_ERR_SUCCESS - operation completed successfully             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlVmCfg_UpdateNvram, (
+		PRL_HANDLE hVmCfg
+		) );
+
 /* Obtains the backup directory path of the specified virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
