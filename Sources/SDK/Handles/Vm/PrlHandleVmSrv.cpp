@@ -2,7 +2,7 @@
  * PrlHandleVmSrv.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -85,6 +85,14 @@ PrlHandleJobPtr PrlHandleVmSrv::CancelCompressor()
 	CHECK_SERVER
 	CHECK_IDENTIFICATION
 	return (m_pServer->DspCmdVmCancelCompressor(GET_VM_UUID));
+}
+
+PrlHandleJobPtr PrlHandleVmSrv::UpdateNvram()
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	CHECK_SERVER
+	CHECK_IDENTIFICATION
+	return (m_pServer->DspCmdVmUpdateNvram(GET_VM_UUID));
 }
 
 PrlHandleJobPtr PrlHandleVmSrv::GenerateVmDevFilename(

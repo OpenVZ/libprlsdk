@@ -2,7 +2,7 @@
  * PrlEnums.h
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -1019,7 +1019,8 @@ typedef enum _PRL_ALLOWED_VM_COMMAND
 	PAR_VM_MOUNT_ACCESS						= 62,
 	PAR_VM_MOVE_ACCESS						= 63,
 	PAR_VM_CHANGE_GUEST_OS_PASSWORD_ACCESS	= 64,
-    PAR_SRV_SENDPROBLEMREPORT_ACCESS        = 65,
+	PAR_SRV_SENDPROBLEMREPORT_ACCESS		= 65,
+	PAR_VM_UPDATE_NVRAM						= 66,
 
 
 	PAR_MAX // should be the last
@@ -1347,6 +1348,7 @@ typedef enum _PRL_JOB_OPERATION_CODE
 	PJOC_SRV_BEGIN_VM_BACKUP						= 202,
 	PJOC_VM_END_BACKUP							= 203,
 	PJOC_SRV_GET_CPU_MASKING_FEATURE_SUPPORT		= 204,
+	PJOC_VM_UPDATE_NVRAM							= 205,
 }
 
 PRL_JOB_OPERATION_CODE;

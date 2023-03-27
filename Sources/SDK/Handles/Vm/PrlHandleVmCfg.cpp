@@ -2,7 +2,7 @@
  * PrlHandleVmCfg.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -915,6 +915,13 @@ PRL_RESULT PrlHandleVmCfg::SetEfiEnabled(PRL_BOOL bEfiEnabled)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
 	m_VmConfig.getVmSettings()->getVmStartupOptions()->getBios()->setEfiEnabled(bEfiEnabled);
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::UpdateNvram()
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VmConfig.getVmSettings()->getVmStartupOptions()->getBios()->setNVRAM(VZ_VM_NVRAM_FILE_NAME);
 	return (PRL_ERR_SUCCESS);
 }
 

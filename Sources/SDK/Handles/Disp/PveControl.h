@@ -3,7 +3,7 @@
  * protocol messages
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -443,6 +443,14 @@ public://Protocol methods
 	* @return id of performed asynchronous request
 	*/
 	QString DspCmdVmCancelCompressor(const char *strVmUUID);
+
+
+	/**
+	* Update Nvram for VM from 2M to 4M flash
+	* @param VM UUID
+	* @return id of performed asynchronous request
+	*/
+	QString DspCmdVmUpdateNvram(const char *strVmUUID);
 
 	/**
 	* Creates and sends request on machine SID change to VM

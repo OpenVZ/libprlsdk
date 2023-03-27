@@ -2,7 +2,7 @@
  * PrlApiMacro.h
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -1146,5 +1146,7 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmBackup_GetDisk ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_GetDefaultBackupDirectory ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetDefaultBackupDirectory ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_GetCpuMaskSupport ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_UpdateNvram ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_UpdateNvram ) \
 
 #endif // PRL_SDK_WRAP_FOR_EACH

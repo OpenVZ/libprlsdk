@@ -2,7 +2,7 @@
  * PrlHandleServerVm.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -546,6 +546,13 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmStartVncServer(PRL_CONST_STR sVmUuid,
 	QString job_uuid = m_pPveControl->DspCmdVmStartVncServer(sVmUuid, nFlags);
 	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
 							PJOC_VM_START_VNC_SERVER)));
+}
+
+PrlHandleJobPtr PrlHandleServerVm::DspCmdVmUpdateNvram(PRL_CONST_STR sVmUuid)
+{
+	QString job_uuid = m_pPveControl->DspCmdVmUpdateNvram(sVmUuid);
+	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_VM_UPDATE_NVRAM)));
 }
 
 PrlHandleJobPtr PrlHandleServerVm::DspCmdVmStopVncServer(PRL_CONST_STR sVmUuid, PRL_UINT32 nFlags)

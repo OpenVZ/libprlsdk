@@ -2,7 +2,7 @@
  * PrlHandleVmCfg.h
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -510,6 +510,14 @@ public:
 	 * * PRL_ERR_SUCCESS - operation completed successfully
 	 */
 	PRL_RESULT SetEfiEnabled(PRL_BOOL bEfiEnabled);
+
+	/**
+	 * Update NVRAM file name
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT UpdateNvram();
 
 	/**
 	 * Returns external boot device system name
