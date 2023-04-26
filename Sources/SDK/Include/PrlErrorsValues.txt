@@ -2,7 +2,7 @@
  * PrlErrorsValues.txt
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -2094,14 +2094,21 @@
 .err PRL_ERR_IPHONE_PROXY_CANNOT_STOP
 .err PRL_ERR_IPHONE_PROXY_ALREADY_STARTED
 
-//VM tools erros codes set
+//VM tools error codes set
 .align 1000
 .err PRL_ERR_VM_TOOLS_CANT_PARSE_UPDATE_PARAMETERS
 .err PRL_ERR_VM_TOOLS_CANT_UPDATE_WITHOUT_RESTART
 .err PRL_ERR_VM_TOOL_NOT_AVAILABLE
 
+//VM Update or Upgrade error codes set
+.align 500
+.err PRL_ERR_UPDATE_NVRAM_EFI_DISABLED
+.err PRL_ERR_UPDATE_NVRAM_VM_IS_RUNNING
+.err PRL_ERR_UPDATE_NVRAM_ALREADY_UPDATED
+.err PRL_ERR_UPDATE_NVRAM_OPERATION_FAILED
+
 //VM guest operations errors
-.align 1000
+.align 500
 .err PRL_ERR_ONLY_ADMIN_OR_VM_OWNER_CAN_OPEN_THIS_SESSION
 .err PRL_ERR_VM_EXEC_GUEST_TOOL_NOT_AVAILABLE
 .err PRL_ERR_VM_GUEST_SESSION_EXPIRED

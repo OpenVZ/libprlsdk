@@ -2,7 +2,7 @@
  * PrlErrStringsStorage.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -5316,6 +5316,38 @@ void PrlErrStringsStorage::Initialize()
 		tr("The virtual machine configuration is valid and does not need to be restored from backup."),
 		false,
 		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_EFI_DISABLED,
+		tr("Unable to update NVRAM."),
+		tr("This operation cannot be completed because EFI option is disabled in the virtual machine configuration."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_VM_IS_RUNNING,
+		tr("Unable to update NVRAM."),
+		tr("This operation cannot be completed because the virtual machine is running."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_ALREADY_UPDATED,
+		tr("Unable to update NVRAM."),
+		tr("This operation cannot be completed because the virtual machine has already updated NVRAM file in the configuration."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_OPERATION_FAILED,
+		tr("Unable to update NVRAM."),
+		tr("This operation failed."),
+		false,
+		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
