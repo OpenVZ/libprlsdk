@@ -2,7 +2,7 @@
  * PrlErrStringsStorage.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -5349,6 +5349,38 @@ void PrlErrStringsStorage::InitializeCritical()
 		PRL_ERR_NOT_ENOUGH_DISK_SPACE_TO_XML_SAVE,
 		tr("There is not enough free space to save the settings."),
 		tr("Free up some space on the physical hard disk and try again."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_EFI_DISABLED,
+		tr("Unable to update NVRAM."),
+		tr("This operation cannot be completed because EFI option is disabled in the virtual machine configuration."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_VM_IS_RUNNING,
+		tr("Unable to update NVRAM."),
+		tr("This operation cannot be completed because the virtual machine is running."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_ALREADY_UPDATED,
+		tr("Unable to update NVRAM."),
+		tr("This operation cannot be completed because the virtual machine has already updated NVRAM file in the configuration."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_UPDATE_NVRAM_OPERATION_FAILED,
+		tr("Unable to update NVRAM."),
+		tr("This operation failed."),
 		false,
 		PMT_CRITICAL
 		);
