@@ -5354,15 +5354,15 @@ void PrlErrStringsStorage::InitializeCritical()
 		);
 
 	REGISTER_ERROR_STRING(
-			PRL_ERR_UPDATE_NVRAM_EFI_DISABLED,
+		PRL_ERR_UPDATE_NVRAM_EFI_DISABLED,
 		tr("Unable to update NVRAM."),
-		tr("This operation cannot be completed because EFI option is disabled in the virtual machine configuration."),
+		tr("This operation cannot be completed because the EFI option is disabled in the virtual machine configuration."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
-			PRL_ERR_UPDATE_NVRAM_VM_IS_RUNNING,
+		PRL_ERR_UPDATE_NVRAM_VM_IS_RUNNING,
 		tr("Unable to update NVRAM."),
 		tr("This operation cannot be completed because the virtual machine is running."),
 		false,
@@ -5370,15 +5370,15 @@ void PrlErrStringsStorage::InitializeCritical()
 		);
 
 	REGISTER_ERROR_STRING(
-			PRL_ERR_UPDATE_NVRAM_ALREADY_UPDATED,
+		PRL_ERR_UPDATE_NVRAM_ALREADY_UPDATED,
 		tr("Unable to update NVRAM."),
-		tr("This operation cannot be completed because the virtual machine has already updated NVRAM file in the configuration."),
+		tr("This operation cannot be completed because the virtual machine has already updated the NVRAM file in the configuration."),
 		false,
 		PMT_CRITICAL
 		);
 
 	REGISTER_ERROR_STRING(
-			PRL_ERR_UPDATE_NVRAM_OPERATION_FAILED,
+		PRL_ERR_UPDATE_NVRAM_OPERATION_FAILED,
 		tr("Unable to update NVRAM."),
 		tr("This operation failed."),
 		false,
