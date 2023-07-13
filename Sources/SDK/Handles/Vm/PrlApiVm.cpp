@@ -2213,6 +2213,49 @@ PRL_METHOD( PrlVmCfg_SetCpuSocketsCount ) (
 	return (pVm->SetCpuSocketCount(nVmCpuSocketsCount));
 }
 
+PRL_METHOD( PrlVmCfg_GetNumaNodesCount ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmNumaNodesCount
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, pnVmNumaNodesCount=%p)",
+		__FUNCTION__,
+		hVmCfg,
+		pnVmNumaNodesCount
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION) ||
+			PRL_WRONG_PTR(pnVmNumaNodesCount))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->GetNumaNodesCount(pnVmNumaNodesCount));
+}
+
+PRL_METHOD( PrlVmCfg_SetNumaNodesCount ) (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nVmNumaNodesCount
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVmCfg=%p, nVmNumaNodesCount=%.8X)",
+		__FUNCTION__,
+		hVmCfg,
+		nVmNumaNodesCount
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hVmCfg, PHT_VM_CONFIGURATION))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleVmCfgPtr pVm = PRL_OBJECT_BY_HANDLE<PrlHandleVmCfg>( hVmCfg );
+
+	return (pVm->SetNumaNodesCount(nVmNumaNodesCount));
+}
+
 PRL_METHOD( PrlVmCfg_GetChipsetType ) (
 		PRL_HANDLE hVmCfg,
 		PRL_CHIPSET_TYPE_PTR nChipsetType

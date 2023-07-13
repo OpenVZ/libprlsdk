@@ -1239,6 +1239,20 @@ PRL_RESULT PrlHandleVmCfg::SetCpuSocketCount(PRL_UINT32 nVmCpuSocketCount)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleVmCfg::GetNumaNodesCount(PRL_UINT32_PTR pnVmNumaNodesCount)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pnVmNumaNodesCount = m_VmConfig.getVmHardwareList()->getCpu()->getNumaNodes();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleVmCfg::SetNumaNodesCount(PRL_UINT32 nVmNumaNodesCount)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_VmConfig.getVmHardwareList()->getCpu()->setNumaNodes(nVmNumaNodesCount);
+	return (PRL_ERR_SUCCESS);
+}
+
 PRL_RESULT PrlHandleVmCfg::GetChipsetType(PRL_CHIPSET_TYPE_PTR pnVmChipsetType)
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS

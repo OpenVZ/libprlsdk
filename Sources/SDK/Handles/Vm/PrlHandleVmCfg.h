@@ -1132,6 +1132,23 @@ public:
 	PRL_RESULT SetCpuSocketCount(PRL_UINT32 nVmCpuSocketCount);
 
 	/**
+	 * Returns VM NUMA nodes count
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_NO_DATA - VM configuration do not has necessary data
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT GetNumaNodesCount(PRL_UINT32_PTR pnVmNumaNodesCount);
+
+	/**
+	 * Sets VM NUMA nodes count
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetNumaNodesCount(PRL_UINT32 nVmNumaNodesCount);
+
+	/**
 	 * Returns Chipset type of VM
 	 * @param [out] buffer for storing result
 	 * @return PRL_RESULT. Possible values:

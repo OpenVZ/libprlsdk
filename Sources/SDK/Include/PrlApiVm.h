@@ -15861,6 +15861,46 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 		PRL_UINT32 nVmCpuSocketsCount
 		) );
 
+/* Determines the number of NUMA nodes in the virtual machine.
+   Parameters
+   hVmCfg :        A handle of type PHT_VM_CONFIGURATION
+                   identifying the virtual machine configuration.
+   pnVmNumaNodesCount :  [out] A pointer to a variable that receives
+                   the result.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_NO_DATA - the virtual machine object does not contain
+   the necessary data.
+
+   PRL_ERR_SUCCESS - function completed successfully.            */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlVmCfg_GetNumaNodesCount, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32_PTR pnVmNumaNodesCount
+		) );
+
+/* Sets the number of NUMA nodes in the specified virtual machine.
+   Parameters
+   hVmCfg :       A handle of type PHT_VM_CONFIGURATION
+                  identifying the virtual machine configuration.
+   nVmNumaNodesCount :  The number to set.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
+				 PrlVmCfg_SetNumaNodesCount, (
+		PRL_HANDLE hVmCfg,
+		PRL_UINT32 nVmNumaNodesCount
+		) );
+
 /* Returns the chipset type in the specified virtual machine.
    Parameters
    hVmCfg :       A handle of type PHT_VM_CONFIGURATION
