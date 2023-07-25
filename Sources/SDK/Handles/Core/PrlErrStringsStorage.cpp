@@ -4197,6 +4197,46 @@ void PrlErrStringsStorage::InitializeCritical()
 		);
 
 	REGISTER_ERROR_STRING(
+			PRL_ERR_VMCONF_NUMANODES_CPU_HOTPLUG,
+		tr("Unable to configure the NUMA nodes parameter."),
+		tr("The NUMA nodes parameter is not compatible with the enabled options cpu-hotplug."),
+		true,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_VMCONF_NUMANODES_MEMORY_HOTPLUG,
+		tr("Unable to configure the NUMA nodes parameter."),
+		tr("The NUMA nodes parameter is not compatible with the enabled options mem-hotplug."),
+		true,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_VMCONF_NUMANODES_NUMBER_NOT_SUPPORTED,
+		tr("Unable to configure the NUMA nodes parameter."),
+		tr("Correct the value by raising the number of NUMA nodes (%1) to the power of two and try again."),
+		true,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+			PRL_ERR_VMCONF_NUMANODES_INCONSISTENT_WITH_CPU,
+		tr("Unable to configure the NUMA nodes parameter."),
+		tr("The number of vCPUs (%1) must be a multiple of the number of NUMA nodes (%2). Correct the value and try again."),
+		true,
+		PMT_CRITICAL
+		);
+
+		REGISTER_ERROR_STRING(
+			PRL_ERR_VMCONF_NUMANODES_VM_MUST_BE_STOPPED,
+		tr("Unable to configure the NUMA nodes parameter."),
+		tr("You cannot add or remove NUMA nodes while the virtual machine is running. Stop the virtual machine and try again."),
+		true,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_MAIN_MEMORY_MAX_BALLOON_SIZE_MORE_100_PERCENT,
 		tr("The specified memory baloon size is invalid."),
 		tr("The memory baloon size must be specified in the range from 0 to 100 percent. Correct the maximum size and try again."),
