@@ -4223,7 +4223,7 @@ void PrlErrStringsStorage::InitializeCritical()
 	REGISTER_ERROR_STRING(
 			PRL_ERR_VMCONF_NUMANODES_INCONSISTENT_WITH_CPU,
 		tr("Unable to configure the NUMA nodes parameter."),
-		tr("The number of vCPUs (%1) must be a multiple of the number of NUMA nodes (%2). Correct the value and try again."),
+		tr("The number of cpu-sockets (%1) must be a multiple of the number of NUMA nodes (%2). Correct the value and try again."),
 		true,
 		PMT_CRITICAL
 		);
