@@ -404,6 +404,19 @@ bool IsStackIndexPresentsInDevicesList(const QList<CVmGenericPciDevice *> &lstDe
 	return (false);
 }
 
+template <>
+bool IsStackIndexPresentsInDevicesList(const QList<CVmHardDisk *> &lstDevices, PRL_UINT32 nStackIndex, CVmHardDisk *pVmDev)
+{
+	foreach(const CVmHardDisk *pDevice, lstDevices)
+	{
+		if	(	pDevice != pVmDev && pDevice->getStackIndex() == nStackIndex &&
+				PrlHandleVmDeviceHardDrive::IsSameStackIndex(pDevice->getInterfaceType(), pVmDev->getInterfaceType())
+			)
+			return (true);
+	}
+	return (false);
+}
+
 }
 
 #define PROCESS_STACK_INDEX(devices_list)\
@@ -465,7 +478,12 @@ PRL_RESULT PrlHandleVmDevice::SetDefaultStackIndex()
 		const PRL_UINT32 nMaxPossibleIndexValue = GetMaxPossibleIndexValue( pVmDev->getInterfaceType() );
 		while (true)
 		{
-			PROCESS_STACK_INDEX(m_pVm->GetVmConfig().getVmHardwareList()->m_lstHardDisks)
+			CVmHardDisk *pHdd = dynamic_cast<CVmHardDisk *>(pVmDev);
+			if (pHdd)
+			{
+				CVmHardDisk *pVmDev = pHdd;
+				PROCESS_STACK_INDEX(m_pVm->GetVmConfig().getVmHardwareList()->m_lstHardDisks)
+			}
 			PROCESS_STACK_INDEX(m_pVm->GetVmConfig().getVmHardwareList()->m_lstOpticalDisks)
 			PROCESS_STACK_INDEX(m_pVm->GetVmConfig().getVmHardwareList()->m_lstGenericScsiDevices)
 			break;

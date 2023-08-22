@@ -284,6 +284,15 @@ public://SDK API helpers set
 	 */
 	PRL_RESULT SetEncryption(PrlHandleVirtualDiskEncryptionPtr hEncryption);
 
+	/**
+	 * Returns true if current interface type of HDD has the same StackIndex
+	 * HDD for PMS_IDE_DEVICE and PMS_SATA_DEVICE have same StackIndex - 'hda', 'hdb', 'hdc' etc
+	 * HDD for PMS_USB_DEVICE and PMS_SCSI_DEVICE have same StackIndex - 'sda', 'sdb', 'sdc' etc
+	 * We should avoid situation of getting the same target name for different devices
+	 *
+	 */
+	static bool IsSameStackIndex(PRL_MASS_STORAGE_INTERFACE_TYPE current, PRL_MASS_STORAGE_INTERFACE_TYPE other);
+
 private:
 
 	/// Storing VM hard disk XML representation.

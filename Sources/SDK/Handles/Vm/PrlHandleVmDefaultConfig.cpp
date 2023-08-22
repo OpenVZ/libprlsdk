@@ -1580,8 +1580,12 @@ int PrlHandleVmDefaultConfig::GetFreeStackIndex( const CVmConfiguration& cfg,
 		lstFreeSlots.append( i );
 
 	foreach ( CVmHardDisk* hdd, hwList->m_lstHardDisks )
-		if ( (uint)hdd->getInterfaceType() == interfaceType )
+	{
+		if	(PrlHandleVmDeviceHardDrive::IsSameStackIndex(hdd->getInterfaceType(), (PRL_MASS_STORAGE_INTERFACE_TYPE)interfaceType))
+		{
 			lstFreeSlots.removeAll( hdd->getStackIndex() );
+		}
+	}
 
 	foreach ( CVmOpticalDisk* cdRom, hwList->m_lstOpticalDisks )
 		if ( (uint)cdRom->getInterfaceType() == interfaceType )

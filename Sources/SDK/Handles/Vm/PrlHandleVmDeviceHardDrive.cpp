@@ -80,6 +80,20 @@ PrlHandleVmDeviceHardDrive::~PrlHandleVmDeviceHardDrive()
 	}
 }
 
+bool PrlHandleVmDeviceHardDrive::IsSameStackIndex(PRL_MASS_STORAGE_INTERFACE_TYPE current, PRL_MASS_STORAGE_INTERFACE_TYPE other)
+{
+	if	(	(current == other ) ||
+			( other == PMS_USB_DEVICE && current == PMS_SCSI_DEVICE ) ||
+			( current == PMS_USB_DEVICE && other == PMS_SCSI_DEVICE ) ||
+			( other == PMS_SATA_DEVICE && current == PMS_IDE_DEVICE ) ||
+			( current == PMS_SATA_DEVICE && other == PMS_IDE_DEVICE )
+		)
+	{
+		return true;
+	}
+	return false;
+}
+
 PRL_RESULT PrlHandleVmDeviceHardDrive::fromString( PRL_CONST_STR sXml )
 {
 	SYNCHRO_INTERNAL_DATA_ACCESS
