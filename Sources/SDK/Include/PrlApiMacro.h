@@ -397,6 +397,10 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR(	PrlDispCfg_SetBackupMode ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR(	PrlDispCfg_GetBackupMode ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetBackupTimeout ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetBackupTimeout ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsBackupCompressionEnabled ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetBackupCompression ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_IsBackupTunnelEnabled ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_SetBackupTunnel ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_ArePluginsEnabled ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_EnablePlugins ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlDispCfg_GetVmCpuLimitType ) \

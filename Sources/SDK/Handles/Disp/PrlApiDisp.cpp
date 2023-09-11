@@ -2,7 +2,7 @@
  * PrlApiDisp.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -4223,6 +4223,90 @@ PRL_METHOD( PrlDispCfg_SetBackupTimeout ) (
 	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
 
 	return (pDispConfig->SetBackupTimeout(nTimeout));
+}
+
+PRL_METHOD( PrlDispCfg_IsBackupCompressionEnabled ) (
+	PRL_HANDLE hDispConfig,
+	PRL_BOOL_PTR pbFlag
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, pbFlag=%.8X)",
+		__FUNCTION__,
+		hDispConfig,
+		pbFlag
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) || PRL_WRONG_PTR(pbFlag))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->IsBackupCompressionEnabled(pbFlag));
+}
+
+PRL_METHOD( PrlDispCfg_SetBackupCompression ) (
+	PRL_HANDLE hDispConfig,
+	PRL_BOOL bFlag
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, bFlag=%d)",
+		__FUNCTION__,
+		hDispConfig,
+		bFlag
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->SetBackupCompressionFlag(bFlag));
+}
+
+PRL_METHOD( PrlDispCfg_IsBackupTunnelEnabled ) (
+	PRL_HANDLE hDispConfig,
+	PRL_BOOL_PTR pbFlag
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, pbFlag=%.8X)",
+		__FUNCTION__,
+		hDispConfig,
+		pbFlag
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG) || PRL_WRONG_PTR(pbFlag))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->IsBackupTunnelEnabled(pbFlag));
+}
+
+PRL_METHOD( PrlDispCfg_SetBackupTunnel ) (
+	PRL_HANDLE hDispConfig,
+	PRL_BOOL bFlag
+	)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hDispConfig=%.8X, bFlag=%d)",
+		__FUNCTION__,
+		hDispConfig,
+		bFlag
+		);
+
+	SYNC_CHECK_API_INITIALIZED
+
+	if (PRL_WRONG_HANDLE(hDispConfig, PHT_DISP_CONFIG))
+		return (PRL_ERR_INVALID_ARG);
+
+	PrlHandleDispConfigPtr pDispConfig = PRL_OBJECT_BY_HANDLE<PrlHandleDispConfig>( hDispConfig );
+
+	return (pDispConfig->SetBackupTunnelFlag(bFlag));
 }
 
 PRL_METHOD( PrlDispCfg_ArePluginsEnabled ) (
