@@ -2,7 +2,7 @@
  * PrlHandleDispConfig.cpp
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -482,6 +482,33 @@ PRL_RESULT PrlHandleDispConfig::SetBackupTimeout(PRL_UINT32 nTimeout)
 	return (PRL_ERR_SUCCESS);
 }
 
+PRL_RESULT PrlHandleDispConfig::IsBackupCompressionEnabled(PRL_BOOL_PTR pbFlag)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pbFlag = m_DispConfig.getBackupSourcePreferences()->isCompression();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleDispConfig::SetBackupCompressionFlag(PRL_BOOL bFlag)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_DispConfig.getBackupSourcePreferences()->setCompression(bFlag);
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleDispConfig::IsBackupTunnelEnabled(PRL_BOOL_PTR pbFlag)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	*pbFlag = m_DispConfig.getBackupSourcePreferences()->isTunnel();
+	return (PRL_ERR_SUCCESS);
+}
+
+PRL_RESULT PrlHandleDispConfig::SetBackupTunnelFlag(PRL_BOOL bFlag)
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	m_DispConfig.getBackupSourcePreferences()->setTunnel(bFlag);
+	return (PRL_ERR_SUCCESS);
+}
 
 PRL_RESULT PrlHandleDispConfig::ArePluginsEnabled(PRL_BOOL_PTR pbIsPluginsAllowed)
 {

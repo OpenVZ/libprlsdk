@@ -2,7 +2,7 @@
  * PrlApiDisp.h
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -5459,6 +5459,71 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
 		PRL_UINT32 nTimeout
 		) );
 
+/* Returns the backup compression is enabled.
+   Parameters
+   hDispConfig :             A handle of type PHT_DISP_CONFIG.
+   pbIsCompressionEnabled :  [out] Pointer to a buffer that receives
+                             the backup compression enabling sign
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
+				PrlDispCfg_IsBackupCompressionEnabled, (
+		PRL_HANDLE hDispConfig,
+		PRL_BOOL_PTR pbIsCompressionEnabled
+		) );
+
+/* Set backup timeout in seconds.
+   Parameters
+   hDispConfig :             A handle of type PHT_DISP_CONFIG.
+   bIsCompressionEnabled :  [in] compression flag
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
+				PrlDispCfg_SetBackupCompression, (
+		PRL_HANDLE hDispConfig,
+		PRL_BOOL bIsCompressionEnabled
+		) );
+
+/* Returns the backup tunnel is enabled.
+   Parameters
+   hDispConfig :             A handle of type PHT_DISP_CONFIG.
+   pbIsCompressionEnabled :  [out] Pointer to a buffer that receives
+                             the backup tunnel enabling sign
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
+				PrlDispCfg_IsBackupTunnelEnabled, (
+		PRL_HANDLE hDispConfig,
+		PRL_BOOL_PTR pbIsTunnelEnabled
+		) );
+
+/* Set backup timeout in seconds.
+   Parameters
+   hDispConfig :        A handle of type PHT_DISP_CONFIG.
+   bIsTunnelEnabled :  [in] tunnel flag
+   Returns
+   PRL_RESULT. Possible values are:
+
+   PRL_ERR_INVALID_ARG - invalid handle was passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.             */
+PRL_METHOD_DECL( VIRTUOZZO_API_VER_4,
+				PrlDispCfg_SetBackupTunnel, (
+		PRL_HANDLE hDispConfig,
+		PRL_BOOL bIsTunnelEnabled
+		) );
 
 /* %VM_ONLY%
 
