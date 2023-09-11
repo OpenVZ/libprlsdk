@@ -2,7 +2,7 @@
  * PrlHandleDispConfig.h
  *
  * Copyright (c) 1999-2017, Parallels International GmbH
- * Copyright (c) 2017-2019 Virtuozzo International GmbH. All rights reserved.
+ * Copyright (c) 2017-2023 Virtuozzo International GmbH. All rights reserved.
  *
  * This file is part of Virtuozzo SDK. Virtuozzo SDK is free
  * software; you can redistribute it and/or modify it under the
@@ -505,6 +505,38 @@ public:
 	 * PRL_ERR_SUCCESS - operation completed successfully
 	 */
 	PRL_RESULT SetBackupTimeout(PRL_UINT32 nTimeout);
+
+	/**
+	 * Get backup Compression Flag
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT IsBackupCompressionEnabled(PRL_BOOL_PTR pbFlag);
+
+	/**
+	 * Set backup Compression Flag
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetBackupCompressionFlag(PRL_BOOL bFlag);
+
+	/**
+	 * Get backup tunnel flag
+	 * @param [out] buffer for storing result
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT IsBackupTunnelEnabled(PRL_BOOL_PTR pbFlag);
+
+	/**
+	 * Set backup tunnel flag
+	 * @param setting value
+	 * @return PRL_RESULT. Possible values:
+	 * PRL_ERR_SUCCESS - operation completed successfully
+	 */
+	PRL_RESULT SetBackupTunnelFlag(PRL_BOOL bFlag);
 
 	/**
 	* Determines whether the plugins enabled or not
