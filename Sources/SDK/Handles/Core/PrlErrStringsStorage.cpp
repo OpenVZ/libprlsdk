@@ -8621,15 +8621,15 @@ void PrlErrStringsStorage::InitializeCritical()
 		PMT_CRITICAL
 		);
 
-        REGISTER_ERROR_STRING(
-                PRL_ERR_RUNNING_VM_OR_CT,
-                tr("Memory policy has been successfully changed. But it is recommended to stop all virtual environments on the server or \n"
-                        "temporarily live-migrate them to another server for all KSM settings to take effect.\n"
-                        "Then start the virtual environments again or migrate them back to the server."),
-                tr(""),
-                false,
-                PMT_WARNING
-                );
+	REGISTER_ERROR_STRING(
+		PRL_ERR_RUNNING_VM,
+		tr("Memory policy has been successfully changed. But it is recommended to stop all virtual machines on the server or \n"
+			"temporarily live-migrate them to another server for all KSM settings to take effect.\n"
+			"Then start the virtual machines again or migrate them back to the server."),
+		tr(""),
+		false,
+		PMT_WARNING
+		);
 
 	REGISTER_ERROR_STRING(
 		PRL_ERR_CPUFEATURES_NOT_IN_POOLS,
