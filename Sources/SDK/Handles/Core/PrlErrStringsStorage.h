@@ -112,6 +112,8 @@ private:
 	 * It's private due pattern Singleton usage here
 	 */
 	PrlErrStringsStorage();
+
+	~PrlErrStringsStorage();
 	/**
 	 * Initializes all errors strings database
 	 */

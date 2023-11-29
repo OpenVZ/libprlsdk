@@ -49,8 +49,17 @@ QRecursiveMutex *PrlErrStringsStorage::g_pErrorsStringsStorageMutex = new QRecur
 
 PrlErrStringsStorage::PrlErrStringsStorage()
 {
+	QMutexLocker _lock(g_pErrorsStringsStorageMutex);
 	g_pErrStringsStorage = this;
 	Initialize();
+}
+
+PrlErrStringsStorage::~PrlErrStringsStorage()
+{
+	QMutexLocker _lock(g_pErrorsStringsStorageMutex);
+	if (g_pErrStringsStorage != this)
+		delete g_pErrStringsStorage;
+	g_pErrStringsStorage = NULL;
 }
 
 PrlErrStringsStorage *PrlErrStringsStorage::GetStorageInstance()
