@@ -58,6 +58,7 @@
 * Static pointer to the instance of the main QT application thread.
 */
 static QMainThread* s_QMainThread = NULL;
+QMutex s_mutexMainThread;
 
 PrlSdkThreadsDestructor *g_pThreadsDestructor = 0;
 
@@ -79,7 +80,11 @@ bool PrlSdkStatusReader::IsSdkInitialized()
 
 PrlSdkStatusWriter::PrlSdkStatusWriter()
 {
-	if ( QThread::currentThread() == s_QMainThread )
+	QMutexLocker lock(&s_mutexMainThread);
+	bool isCurrentMain = QThread::currentThread() == s_QMainThread;
+	lock.unlock();
+
+	if ( isCurrentMain )
 	{
 		while ( ! InitStatusLocker()->tryLockForWrite() ){
 			QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents | QEventLoop::ExcludeSocketNotifiers, 50);
@@ -130,7 +135,7 @@ PrlContextSwitcher* PrlContextSwitcher::Instance ()
 {
 	QMutexLocker locker( &s_pContextSwitcherMutex );
 	if ( ! s_pContextSwitcher ) {
-		Q_ASSERT( QMainThread::Instance() == QThread::currentThread() );
+		Q_ASSERT( QMainThread::IsInitialized() && QMainThread::GetCurrentInstance() == QThread::currentThread() );
 		s_pContextSwitcher = new PrlContextSwitcher;
 	}
 	return s_pContextSwitcher;
@@ -138,7 +143,7 @@ PrlContextSwitcher* PrlContextSwitcher::Instance ()
 
 void PrlContextSwitcher::DeinitInstance ()
 {
-	Q_ASSERT( QMainThread::Instance() == QThread::currentThread() );
+	Q_ASSERT( QMainThread::IsInitialized() && QMainThread::GetCurrentInstance() == QThread::currentThread() );
 	QMutexLocker locker( &s_pContextSwitcherMutex );
 	delete s_pContextSwitcher;
 	s_pContextSwitcher = 0;
@@ -424,6 +429,7 @@ void QMainThread::start(PRL_UINT32 nFlags)
 
 void PrlContextSwitcher::SdkEventLoopStarted()
 {
+	QMutexLocker lock(&s_mutexMainThread);
 	if (s_QMainThread)
 		s_QMainThread->NotifyThatSdkEventLoopStarted();
 }
@@ -445,11 +451,18 @@ void PrlContextSwitcher::NotifyWorkFinalization()
 
 bool QMainThread::IsInitialized()
 {
+	QMutexLocker lock(&s_mutexMainThread);
 	return (s_QMainThread != NULL);
+}
+
+QMainThread *QMainThread::GetCurrentInstance()
+{
+	return (s_QMainThread);
 }
 
 QMainThread *QMainThread::Instance()
 {
+	QMutexLocker lock(&s_mutexMainThread);
 	if (!s_QMainThread)
 		s_QMainThread = new QMainThread;
 	return (s_QMainThread);
@@ -457,6 +470,7 @@ QMainThread *QMainThread::Instance()
 
 void QMainThread::Deinit()
 {
+	QMutexLocker lock(&s_mutexMainThread);
 	if (s_QMainThread)
 	{
 		delete s_QMainThread;

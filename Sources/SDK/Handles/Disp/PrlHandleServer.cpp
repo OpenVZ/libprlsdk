@@ -155,7 +155,7 @@ PrlHandleJobPtr PrlHandleServer::create_job(const QString& job_uuid, PRL_JOB_OPE
 void PrlHandleServer::FinalizeAllTransportConnections()
 {
     // Should be the main thread
-    Q_ASSERT(QMainThread::Instance() == QThread::currentThread());
+    Q_ASSERT(QMainThread::IsInitialized() && QMainThread::GetCurrentInstance() == QThread::currentThread());
 
 	QSet<PRL_HANDLE> _servers;
 	QSet<PRL_HANDLE> _vms;

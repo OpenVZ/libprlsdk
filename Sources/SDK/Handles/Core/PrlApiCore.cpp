@@ -234,7 +234,7 @@ PRL_METHOD( PrlApi_Deinit ) ()
 		return PRL_ERR_API_WASNT_INITIALIZED;
 
 	// We need to stop the main event loop and deinit the library
-	QMainThread::Instance()->stop();
+	QMainThread::GetCurrentInstance()->stop();
 	QMainThread::Deinit();
 
 	IOService::deinitSSLLibrary();

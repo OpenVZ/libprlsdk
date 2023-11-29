@@ -393,6 +393,7 @@ public:
 	void start(PRL_UINT32 nFlags);
 
 public://Static members set
+	static QMainThread *GetCurrentInstance();
 	static bool IsInitialized();
 	static QMainThread *Instance();
 	static void Deinit();
