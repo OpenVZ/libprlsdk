@@ -1093,6 +1093,14 @@ void PrlErrStringsStorage::InitializeWarnings()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_DISP_VM_IS_NOT_RUNNING,
+		tr("Unable to perform the operation because the virtual machine does not run."),
+		tr("This operation can be performed for running virtual machines only."),
+		false,
+		PMT_WARNING
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_VMCONF_VM_NAME_IS_EMPTY,
 		tr("The virtual machine name is not specified."),
 		tr("Enter a unique name for the virtual machine and try again."),
