@@ -451,6 +451,7 @@ PRL_RESULT PrlHandleSrvConfig::GetCpuFeatures(PRL_CPU_FEATURES_PTR pCpuFeatures)
 	pCpuFeatures->nEXT_00000007_EBX = m_SrvConfig.getCpu()->getEXT_00000007_EBX();
 	pCpuFeatures->nEXT_0000000D_EAX = m_SrvConfig.getCpu()->getEXT_0000000D_EAX();
 	pCpuFeatures->nEXT_00000007_EDX = m_SrvConfig.getCpu()->getEXT_00000007_EDX();
+	pCpuFeatures->nEXT_00000007_ECX = m_SrvConfig.getCpu()->getEXT_00000007_ECX();
 	return (PRL_ERR_SUCCESS);
 }
 
@@ -480,6 +481,8 @@ PRL_RESULT PrlHandleSrvConfig::GetCpuFeaturesMaskingCapabilities(PRL_HANDLE_PTR 
 			m_SrvConfig.getCpu()->getEXT_00000007_EDX_MASKING_CAP());
 	pFeatures->SetValue(PCFE_EXT_0000000D_EAX,
 			m_SrvConfig.getCpu()->getEXT_0000000D_EAX_MASKING_CAP());
+	pFeatures->SetValue(PCFE_EXT_00000007_ECX,
+			m_SrvConfig.getCpu()->getEXT_00000007_ECX_MASKING_CAP());
 
 	*phCpuFeatures = pFeatures->GetHandle();
 
@@ -501,6 +504,7 @@ PRL_RESULT PrlHandleSrvConfig::GetCpuFeaturesEx(PRL_HANDLE_PTR phCpuFeatures)
 	pFeatures->SetValue(PCFE_EXT_80000007_EDX, m_SrvConfig.getCpu()->getEXT_80000007_EDX());
 	pFeatures->SetValue(PCFE_EXT_80000008_EAX, m_SrvConfig.getCpu()->getEXT_80000008_EAX());
 	pFeatures->SetValue(PCFE_EXT_00000007_EBX, m_SrvConfig.getCpu()->getEXT_00000007_EBX());
+	pFeatures->SetValue(PCFE_EXT_00000007_ECX, m_SrvConfig.getCpu()->getEXT_00000007_ECX());
 	pFeatures->SetValue(PCFE_EXT_00000007_EDX, m_SrvConfig.getCpu()->getEXT_00000007_EDX());
 	pFeatures->SetValue(PCFE_EXT_0000000D_EAX, m_SrvConfig.getCpu()->getEXT_0000000D_EAX());
 
