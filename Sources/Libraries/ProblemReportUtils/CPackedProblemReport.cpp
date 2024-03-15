@@ -736,13 +736,13 @@ QStringList CPackedProblemReport::createReportFilesList()
 	QString strPath;
 	// get screenshot files
 	if( getUserDefinedData() && getUserDefinedData()->getScreenShots() )
-	foreach( CRepScreenShot * pScr, getUserDefinedData()->getScreenShots()->m_lstScreenShot )
-		lstFiles += getArchivePathFromTopLevelObject( pScr, pScr->getName() );
+		for( CRepScreenShot * pScr : getUserDefinedData()->getScreenShots()->m_lstScreenShot )
+			lstFiles += getArchivePathFromTopLevelObject( pScr, pScr->getName() );
 
 	// get log files
 	if( getSystemLogs() )
-	foreach( CRepSystemLog * pLog, getSystemLogs()->m_lstSystemLog )
-		lstFiles += getArchivePathFromTopLevelObject( pLog, pLog ? pLog->getName() : "" );
+		for( CRepSystemLog * pLog : getSystemLogs()->m_lstSystemLog )
+			lstFiles += getArchivePathFromTopLevelObject( pLog, pLog ? pLog->getName() : "" );
 
 	// get crash dumps
 	foreach( CRepCrashDump * pDump , m_lstCrashDumps )
@@ -1229,7 +1229,7 @@ int CPackedProblemReport::fromBaseReport( const QString & strBaseReport )
 
 	// screenshot processing
 	if( getUserDefinedData() && getUserDefinedData()->getScreenShots() )
-		foreach( CRepScreenShot * pScr, getUserDefinedData()->getScreenShots()->m_lstScreenShot )
+		for ( CRepScreenShot * pScr : getUserDefinedData()->getScreenShots()->m_lstScreenShot )
 		{
 			if( pScr )
 			{
@@ -1253,7 +1253,7 @@ int CPackedProblemReport::fromBaseReport( const QString & strBaseReport )
 
 	// log files
 	if( getSystemLogs() )
-		foreach( CRepSystemLog * pLog, getSystemLogs()->m_lstSystemLog )
+		for ( CRepSystemLog * pLog : getSystemLogs()->m_lstSystemLog )
 		{
 			if( pLog )
 			{
