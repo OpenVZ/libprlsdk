@@ -95,6 +95,14 @@ PrlHandleJobPtr PrlHandleVmSrv::UpdateNvram()
 	return (m_pServer->DspCmdVmUpdateNvram(GET_VM_UUID));
 }
 
+PrlHandleJobPtr PrlHandleVmSrv::ConvertCt()
+{
+	SYNCHRO_INTERNAL_DATA_ACCESS
+	CHECK_SERVER
+	CHECK_IDENTIFICATION
+	return (m_pServer->DspCmdCtConvert(GET_VM_UUID));
+}
+
 PrlHandleJobPtr PrlHandleVmSrv::GenerateVmDevFilename(
 					PRL_CONST_STR sFilenamePrefix,
 					PRL_CONST_STR sFilenameSuffix,

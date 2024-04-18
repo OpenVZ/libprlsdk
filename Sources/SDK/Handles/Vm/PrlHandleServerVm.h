@@ -519,13 +519,19 @@ public:
 	 */
 	PrlHandleJobPtr DspCmdVmStartVncServer(PRL_CONST_STR sVmUuid, PRL_UINT32 nFlags);
 
-
 	/**
 	 * Update Nvram for VM
 	 * @param VM uuid
 	 * @return pointer to generated job instance
 	 */
 	PrlHandleJobPtr DspCmdVmUpdateNvram(PRL_CONST_STR sVmUuid);
+
+	/**
+	 * Convert Ct into Vm
+	 * @param Ct uuid
+	 * @return pointer to generated job instance
+	 */
+	PrlHandleJobPtr DspCmdCtConvert(PRL_CONST_STR sCtConvert);
 
 	/**
 	 * Stops VM VNC server

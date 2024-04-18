@@ -1150,5 +1150,6 @@ PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_SetDefaultBackupDirectory ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlSrv_GetCpuMaskSupport ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVm_UpdateNvram ) \
 PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlVmCfg_UpdateNvram ) \
+PRL_SDK_WRAP_FOR_EACH_ITERATOR( PrlCt_Convert ) \
 
 #endif // PRL_SDK_WRAP_FOR_EACH

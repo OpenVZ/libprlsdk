@@ -221,6 +221,11 @@ public:
 	PrlHandleJobPtr UpdateNvram();
 
 	/**
+	* Convert Ct into Vm
+	*/
+	PrlHandleJobPtr ConvertCt();
+
+	/**
 	* Performs operation of changing Windows guest OS machine SID
 	* @param flags bitset
     * @return pointer to generated job instance

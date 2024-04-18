@@ -12442,3 +12442,20 @@ PRL_METHOD( PrlVmCfg_UpdateNvram ) (
 	return (pVm->UpdateNvram());
 }
 
+PRL_HANDLE PrlCt_Convert_Impl(PRL_HANDLE hVm)
+{
+	ONE_HANDLE_VM_METH_IMPLEMENTATION(ConvertCt, PJOC_CT_CONVERT)
+}
+
+PRL_ASYNC_METHOD( PrlCt_Convert ) (
+		PRL_HANDLE hVm
+		)
+{
+	LOG_MESSAGE( DBG_DEBUG, "%s (hVm=%p)",
+		__FUNCTION__,
+		hVm
+		);
+
+	ASYNC_CHECK_API_INITIALIZED(PJOC_CT_CONVERT)
+	CALL_THROUGH_CTXT_SWITCHER(PrlContextSwitcher::Instance(), PrlCt_Convert, (hVm))
+}
