@@ -218,6 +218,14 @@ public://VM operations calls
 	 * @return pointer to generated job instance
 	 */
 	PrlHandleJobPtr DspCmdVmUpdateNvram(PRL_CONST_STR sVmUuid);
+
+	/**
+	 * Convert CT into VM
+	 * @param CT uuid
+	 * @return pointer to generated job instance
+	 */
+	PrlHandleJobPtr DspCmdCtConvert(PRL_CONST_STR sCtUuid);
+
 	/**
 	* Commit Tools section VM config at runtime
 	* @param VM uuid

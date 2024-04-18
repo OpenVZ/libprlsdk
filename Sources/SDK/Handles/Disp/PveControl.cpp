@@ -2571,6 +2571,16 @@ QString CPveControl::DspCmdVmUpdateNvram(const char *strVmUUID)
 	return SendRequestToServer(pRequest);
 }
 
+QString CPveControl::DspCmdCtConvert(const char *strCtUUID)
+{
+	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdCtConvert()");
+
+	CProtoCommandPtr pRequest = CProtoSerializer::CreateProtoBasicVmCommand(PVE::DspCmdCtConvert,
+																			UTF8_2QSTR(strCtUUID));
+
+	return SendRequestToServer(pRequest);
+}
+
 QString CPveControl::DspCmdVmUpdateToolsSection(const char *strVmUUID, const char* strToolsSection)
 {
 	LOG_MESSAGE(DBG_DEBUG, "CPveControl::DspCmdVmUpdateToolsSection()");

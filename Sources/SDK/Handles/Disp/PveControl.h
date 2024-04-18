@@ -444,13 +444,19 @@ public://Protocol methods
 	*/
 	QString DspCmdVmCancelCompressor(const char *strVmUUID);
 
-
 	/**
 	* Update Nvram for VM from 2M to 4M flash
 	* @param VM UUID
 	* @return id of performed asynchronous request
 	*/
 	QString DspCmdVmUpdateNvram(const char *strVmUUID);
+
+	/**
+	* Convert CT into VM
+	* @param CT UUID
+	* @return id of performed asynchronous request
+	*/
+	QString DspCmdCtConvert(const char *strCtUUID);
 
 	/**
 	* Creates and sends request on machine SID change to VM

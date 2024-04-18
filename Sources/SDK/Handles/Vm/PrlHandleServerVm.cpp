@@ -555,6 +555,13 @@ PrlHandleJobPtr PrlHandleServerVm::DspCmdVmUpdateNvram(PRL_CONST_STR sVmUuid)
 							PJOC_VM_UPDATE_NVRAM)));
 }
 
+PrlHandleJobPtr PrlHandleServerVm::DspCmdCtConvert(PRL_CONST_STR sCtUuid)
+{
+	QString job_uuid = m_pPveControl->DspCmdCtConvert(sCtUuid);
+	return PrlHandleJobPtr((PrlHandleJob *)(new PrlHandleServerJob( PrlHandleServerPtr(this), job_uuid,
+							PJOC_CT_CONVERT)));
+}
+
 PrlHandleJobPtr PrlHandleServerVm::DspCmdVmStopVncServer(PRL_CONST_STR sVmUuid, PRL_UINT32 nFlags)
 {
 	QString job_uuid = m_pPveControl->DspCmdVmStopVncServer(sVmUuid, nFlags);

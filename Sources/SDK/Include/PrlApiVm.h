@@ -15936,6 +15936,22 @@ PRL_METHOD_DECL( VIRTUOZZO_API_VER_7,
 		PRL_HANDLE hVmCfg
 		) );
 
+/* Convert CT into VM.
+   Parameters
+   hVm :          A handle of type PHT_CT_CONFIGURATION
+                  identifying the virtual machine configuration.
+   Returns
+   PRL_RESULT. Possible values:
+
+   PRL_ERR_INVALID_ARG - invalid handle or null pointer was
+   passed.
+
+   PRL_ERR_SUCCESS - function completed successfully.        */
+PRL_ASYNC_SRV_METHOD_DECL( VIRTUOZZO_API_VER_7,
+		PrlCt_Convert, (
+		PRL_HANDLE hVm
+		) );
+
 /* Obtains the backup directory path of the specified virtual machine.
    Parameters
    hVmCfg :             A handle of type PHT_VM_CONFIGURATION
