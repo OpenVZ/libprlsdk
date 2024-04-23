@@ -6167,6 +6167,14 @@ void PrlErrStringsStorage::Initialize()
 		);
 
 	REGISTER_ERROR_STRING(
+		PRL_ERR_CANT_CREATE_DIRECTORY,
+		tr("File System error."),
+		tr("Unable to create the directory on the destination node."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
 		PRL_ERR_FILECOPY_CANT_OPEN_FILE,
 		tr("Transport protocol error."),
 		tr("Unable to open the file %1 on the destination node."),
@@ -6386,6 +6394,14 @@ void PrlErrStringsStorage::Initialize()
 	REGISTER_ERROR_STRING(
 		PRL_ERR_BACKUP_REGISTER_VM_FAILED,
 		tr("Unable to register the virtual machine \"%1\" (%2)."),
+		tr("Please try again. If the problem persists, contact your system administrator for assistance."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_REGISTER_CONVERTED_VM_FAILED,
+		tr("Unable to register converted virtual machine."),
 		tr("Please try again. If the problem persists, contact your system administrator for assistance."),
 		false,
 		PMT_CRITICAL
@@ -6967,6 +6983,14 @@ void PrlErrStringsStorage::Initialize()
 		PRL_ERR_ACTION_NOT_SUPPORTED_FOR_CT,
 		tr("Unable to perform the operation."),
 		tr("The requested operation is not supported for Containers."),
+		false,
+		PMT_CRITICAL
+		);
+
+	REGISTER_ERROR_STRING(
+		PRL_ERR_ACTION_NOT_SUPPORTED_FOR_VM,
+		tr("Unable to perform the operation."),
+		tr("The requested operation is not supported for Virtual Machines."),
 		false,
 		PMT_CRITICAL
 		);
